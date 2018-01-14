@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "jsx": "react-native",
+      "module": "es2015",
+      "strict": true,
+      "target": "es2017"
+    }
+  }
