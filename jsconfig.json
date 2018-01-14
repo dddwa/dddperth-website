@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules",
+    ".next"
+  ],
+  "files": [
+    "pages/*.js"
+  ]
+}

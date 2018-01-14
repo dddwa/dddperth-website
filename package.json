@@ -1,0 +1,19 @@
+{
+  "name": "dddperth-website",
+  "version": "1.0.0",
+  "description": "The website for DDD Perth.",
+  "main": "index.js",
+  "author": "DDD WA Inc.",
+  "license": "N/A",
+  "private": true,
+  "scripts": {
+    "dev": "next --inspect",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^4.4.0-canary.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
