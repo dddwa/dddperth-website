@@ -10,6 +10,12 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Start dev server",
+            "type": "npm",
+            "script": "dev",
+            "problemMatcher": []
         }
     ]
 }

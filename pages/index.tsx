@@ -1,9 +1,7 @@
 import * as React from 'react'
-import MyComponent from '../components/MyComponent'
-import { Fragment } from 'react';
+import Page from '../layouts/main';
 
 export default () => 
-  <Fragment>
+  <Page>
     <h1>Hello world!</h1>
-    <MyComponent />
-  </Fragment>
+  </Page>
