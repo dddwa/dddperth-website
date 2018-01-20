@@ -4,10 +4,14 @@ import Header from '../components/global/header';
 import Footer from '../components/global/footer';
 import { Fragment, StatelessComponent } from 'react';
 
-const Main : StatelessComponent<any> = ({ children }) => (
+interface MainArgs {
+  isHome? : boolean;
+}
+
+const Main : StatelessComponent<MainArgs> = ({ children, isHome }) => (
   <Fragment>
     <Meta />
-    <Header />
+    <Header isHome={isHome} />
     { children }
     <Footer />
   </Fragment>
