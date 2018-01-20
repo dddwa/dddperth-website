@@ -1,0 +1,1551 @@
+@import "mixins.scss";
+@import "colours-and-fonts.scss";
+@import "typography.scss";
+@import "slick.scss";
+@import "forms.scss";
+
+body, html {}
+body {font-family: $main-font; line-height: 1.5}
+
+// General
+section {text-align: center}
+img {max-width: 100%!important}
+hr {border-top: 3px solid #dcdcdc;}
+.clear {clear: both}
+.btn {
+  padding: 6px 12px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: $bold;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: none;
+  line-height: 1.4;
+  @include border-radius(0);
+  @include transition(.2s);
+  background: $primary-color;
+  color: #fff!important;
+}
+
+  .btn:after {content: "\f0da"; font-family: "FontAwesome"; color: #000; @include opacity(0.3); display: inline-block; margin: 0 0 0 10px; font-size: 16px; max-width: 20px; vertical-align: middle; position: relative; top: -1px; }
+  .btn:hover {background: darken($primary-color, 5%); color: #fff}
+  .btn:focus {outline: 0;}
+
+  // Back Button
+  .btn.back:after {float: left; margin: 0 15px 0 -5px; @include transform(rotateY(180deg))}
+
+  // Button Colours
+  .btn.session, .btn.remove-vote {background-color: $call-content}
+    .btn.session:hover, .btn.remove-vote:hover {background-color: darken($call-content, 5%)}
+
+  .btn.vote {background-color: $voting}
+    .btn.vote:hover {background-color: darken($voting, 5%)}
+
+  .btn.book, .btn.add-vote {background-color: $tickets}
+    .btn.book:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
+
+  .btn.agenda {background-color: $agenda}
+    .btn.agenda:hover {background-color: darken($agenda, 5%)}
+
+.btn.add-vote:after, .btn.remove-vote:after {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+}
+
+.btn.add-vote:after {
+  content: "\f067";
+}
+
+.btn.remove-vote:after {
+  content: "\f068";
+}
+
+// Sprite
+footer ul.social a,
+ul.accordion a.toggleAccordion:after,
+.slick-vertical .slick-next,
+.slick-vertical .slick-prev,
+.blog-list-post .blog-date:before,
+.blog-list-post .blog-date:after
+{background-image: url('../images/sprite.png')!important}
+
+
+// Modals
+.modal.fade.in {padding-right: 0!important}
+.modal-header {
+  .close {font-size: 30px}
+  p {margin: 5px 0}
+}
+h4.modal-title {margin-right: 30px}
+.modal-content {
+  border: 0;
+  @include border-radius(1px);
+  @include box-shadow(0 1px 2px rgba(20,20,20,0.4));
+}
+.modal-body > p {margin-top: 0}
+
+
+
+// Main Nav
+nav.main {
+  background: darken($primary-color, 10%);
+  color: #fff;
+  a.pull {
+    display: block;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    position: relative;
+    span {display: block; height: 3px; background: #fff; margin: 4px 0; width: 60%}
+    span:first-child {margin-top: 12px}
+  }
+  a.pull.active {
+    span {@include opacity(0.55); position: absolute; top: 35%; @include transform(rotate(-45deg)); width: 70%}
+    span:nth-child(2n) {@include transform(rotate(45deg))}
+    span:first-child {display: none}
+  }
+    a.pull.active:hover {
+      span {@include opacity(1)}
+    }
+  ul {
+    margin: 0; padding: 0; text-align: left; @include transition(.3s); max-height: 0; overflow: hidden;
+    li {
+      margin: 0; padding: 0; display: block; border-top: 1px solid darken($primary-color, 20%);
+      a {display: block; padding: 0; color: #fff; font-weight: $bold; @include opacity(0.55); @include transition(.2s); line-height: 42px}
+      a:after {content: "\f0da"; font-family: "FontAwesome"; color: #000; @include opacity(0.3); display: inline-block; margin: 0 0 0 10px; font-size: 120%; vertical-align: middle; position: relative; top: -1px; float: right}
+      a:hover,
+      a.active {@include opacity(1); text-decoration: none}
+    }
+    li:before {display: none}
+  }
+  ul.active {max-height: 9999px}
+}
+
+// Header
+header {
+  position: relative;
+  z-index: 9;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  background: $primary-color;
+  a {color: #fff}
+  .logo {
+    font-family: 'Montserrat', sans-serif; line-height: 70px; text-transform: uppercase;
+  }
+}
+
+// Fader
+.fader {
+  height: 220px;
+  background: url('../images/fader-back.jpg') 50% 0 no-repeat;
+  position: relative;
+  z-index: 1;
+  background-size: cover;
+}
+
+// Banner
+.banner {
+  height: 160px;
+  background: url('../images/fader-back.jpg') 50% 0 no-repeat;
+  position: relative;
+  z-index: 1;
+  background-size: cover;
+}
+
+// Intro
+.intro {
+  position: relative;
+  margin: 0;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  height: 150px;
+  .container {
+    background: #fff;
+    padding: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    @include transform(translateY(-50%));
+    @include box-shadow(0 1px 2px rgba(20,20,20,0.2));
+  }
+  h1 {font-weight: $light; margin: 0}
+}
+
+// Countdown
+.countdown {
+  padding-top: 0px;
+}
+#clock {
+  margin: 20px 0;
+  text-align: center;
+  line-height: 1.1;
+  display:block;
+  span {font-size: 75%; text-transform: uppercase; text-align: right; display: inline-block; margin: 0 5px; text-indent: -10px}
+  strong {font-size: 250%; letter-spacing: -1px; line-height: 1; text-indent: 0; display: block; font-family: 'Overpass Mono', monospace; font-weight: $bold; margin-bottom: 0}
+}
+#clock + hr {width: 90%; max-width: 280px; margin: 0 auto}
+
+
+// Next Event
+.next-event {
+  width: 90%;
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px 0;
+  .btn {float: right}
+}
+
+// Important Dates
+.important-dates {padding-bottom: 20px}
+.imp-date {
+  position: relative;
+  margin: 23px 15px;
+  padding: 1px 20px 0px 20px;
+  background: #f0f0f0;
+  border: 7px solid #000;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  text-align: left;
+  strong {display: block}
+  h3 {
+    font-weight: $regular;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    strong {font-size: 120%}
+  }
+  p {margin: 10px 0}
+}
+
+  .imp-date.done {
+    h3, p {@include opacity(0.3)}
+  }
+
+  .ico-done {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    @include border-radius(50%);
+    overflow: hidden;
+    background: #00dc24;
+    text-align: center;
+  }
+    .ico-done:before {
+      content: "\f00c";
+      font-family: "FontAwesome";
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+    }
+
+
+  .imp-date:before,
+  .imp-date:after {content: ""; display: block; width: 20px; height: 28px; background: url('../images/cal-top-mob.png') 0 0 no-repeat; position: absolute; top: 0; @include transform(translateY(-50%))}
+    .imp-date:before {left: 30px}
+    .imp-date:after {right: 30px}
+
+    // Border Colours
+    .imp-date.content {border-color: $call-content}
+    .imp-date.voting {border-color: $voting}
+    .imp-date.tickets {border-color: $tickets}
+    .imp-date.agenda {border-color: $agenda}
+
+// Strip of Photos
+section.image-strip {
+  margin: 30px auto;
+  overflow: hidden;
+  text-align: center;
+  height: 200px;
+  max-width: 273px;
+  img {display: inline-block; height: 55%; margin-bottom: 3px;}
+  img:nth-child(3n),
+  img:nth-child(4n) {height: 45%}
+}
+
+// Sponsors
+section.sponsors {padding-bottom: 20px}
+  section.sponsors.grey {background: #f7f7f7; padding: 26px 0}
+
+// DDD By Night
+section.ddd-by-night {
+  height: 250px;
+  position: relative;
+  z-index: 1;
+  background: url('../images/ddd-by-night/back.jpg') 0 0 no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  .content {
+    position: relative;
+    top: 50%;
+    @include transform(translateY(-50%));
+    color: #fff;
+    font-weight: $bold;
+    img {margin-left: -30px; max-width: 200px!important}
+    p {font-size: 120%; margin-top: 0}
+    .btn {background: url('../images/white-30pc.png')}
+    .btn:after {color: #fff}
+      .btn:hover {background: url('../images/white-40pc.png')}
+  }
+}
+
+// Footer
+footer {
+  color: #fff;
+  background: darken($primary-color, 10%);
+  padding: 0 0 30px 0;
+  nav.foot-nav {
+    text-align: center;
+    padding: 20px 0;
+    ul {margin: 0; padding: 0}
+    li {list-style: none outside}
+    li:before {display: none}
+    a {color: #fff; font-weight: 600}
+    a:hover {color: #ddd}
+  }
+  ul.social {
+    text-align: center;
+    margin: 0;
+    padding: 0 0 40px 0;
+    li {list-style: none outside; display: inline-block; margin: 0 2px; padding: 0;}
+    li:before {display: none}
+    a {display: block; width: 43px; height: 42px; background-color: $primary-color; background-repeat: no-repeat; @include transition(.2s); @include border-radius(50%)}
+    a.fb {background-position: -43px 0}
+    a.in {background-position: -86px 0}
+    a.fr {background-position: -129px 0}
+    a.ig {background-position: -171px 0}
+    a.gh {background-position: -215px 0}
+    a.em {background-position: -258px 0}
+
+
+    a:hover {background-color: darken($primary-color, 3%)}
+  }
+  .copyright {text-align: center; font-size: 90%}
+}
+
+// What Now? CTA's
+.what-now {
+  .btn {display: block; width: 200px; margin: 0 auto 10px auto}
+}
+
+// Sponsors
+.sponsors {
+  img {
+    max-width: 120px !important;
+    margin: 10px 15px 10px 15px;
+  }
+
+  small {
+    display: block;
+    clear: both;
+    text-align: center;
+    color: #333;
+  }
+}
+
+
+// Right Sidebar Page Type
+section.right-sidebar {
+  .left-col {
+    text-align: left;
+  }
+  .right-col {
+    .next-event {
+      text-align: center;
+      background: $light-grey;
+      overflow: hidden;
+      padding: 12px 15px;
+      margin: 0;
+      width: 100%;
+      max-width: 9999px;
+      margin-top: 20px;
+      h2, h3, h4 {margin-top: 0}
+      h2, h3, h4, p, ul, ol, table {text-align: left}
+      h2 span, h3 span, h4 span {display: block; font-size: 70%}
+      .btn {float: none; margin: 0 auto}
+    }
+    .important-dates-right {
+      margin-bottom: 30px;
+      .imp-date {
+        float: none;
+        width: auto;
+        margin: 10px 0 0 0;
+        border-bottom: 0;
+        border-right-width: 7px;
+        padding: 10px 15px 2px 15px;
+        h3, p {font-size: 14px}
+        h3 {
+          font-weight: 700;
+          margin: 0;
+          strong {
+            font-size: 100%; display: inline-block
+          }
+        }
+        p {
+          margin-top: 2px;
+          strong {
+            display: inline-block;
+            font-weight: 400;
+          }
+          strong:after {
+            content: "-"; display: inline-block; margin: 0 0 0 6px;
+          }
+        }
+        .ico-done {
+          right: 15px;
+          top: 16px
+        }
+      }
+      .imp-date:before, .imp-date:after {display: none}
+    }
+  }
+}
+
+// Full Width Pagetype
+section.full-width {
+  .left-col {
+    text-align: left;
+  }
+  .right-col {
+    h3 {margin-bottom: 10px}
+    .next-event {
+      text-align: center;
+      background: $light-grey;
+      overflow: hidden;
+      padding: 12px 15px;
+      width: 100%;
+      max-width: 9999px;
+      margin-top: 30px;
+      h2, h3, h4 {margin-top: 0}
+      h2, h3, h4, p, ul, ol, table {text-align: left}
+      h2 span, h3 span, h4 span {display: block; font-size: 70%}
+      .btn {float: none; margin: 0 auto; margin-top: 20px}
+    }
+  }
+  .important-dates-right {
+    margin-bottom: 30px;
+    .imp-date {
+      float: none;
+      width: auto;
+      margin: 10px 0 0 0;
+      border-bottom: 0;
+      border-right-width: 7px;
+      padding: 10px 15px 2px 15px;
+      h3, p {font-size: 14px}
+      h3 {
+        font-weight: 700;
+        margin: 0;
+        strong {
+          font-size: 100%; display: inline-block
+        }
+      }
+      p {
+        margin-top: 2px;
+        strong {
+          display: inline-block;
+          font-weight: 400;
+        }
+        strong:after {
+          content: "-"; display: inline-block; margin: 0 0 0 6px;
+        }
+      }
+      .ico-done {
+        right: 15px;
+        top: 16px
+      }
+    }
+    .imp-date:before, .imp-date:after {display: none}
+  }
+}
+
+
+// Accordions
+ul.accordion {
+  li:before {display: none}
+  a.toggleAccordion {
+    display: block;
+    position:relative;
+    padding: 13px 15px;
+    font-weight: 700;
+    background: $light-grey;
+    color: $body-color;
+    &:hover, &:visited, &:link, &:active {text-decoration: none}
+  }
+  a.toggleAccordion:after {content: ""; display: block; position: absolute; right: 0; top: 0; width: 52px; height: 52px; background-position: -52px -42px}
+  a.toggleAccordion.active:after {background-position: 0 -42px}
+  .inner {
+    overflow: hidden;
+        max-height: 0;
+    margin-bottom: 10px;
+    padding: 0px 15px;
+    background: $light-grey;
+    @include transition(max-height 0.5s cubic-bezier(0, 1, 0, 1));
+    &.show {
+          max-height: 9999px;
+      @include transition(max-height 1s ease-in-out);
+        }
+  }
+
+}
+.slick-vertical .slick-slide {border-left: 0!important; border-top: 0!important; border-bottom: 0!important}
+
+.slick-vertical .slick-next, .slick-vertical .slick-prev {border: 0; width: 31px; height: 42px; text-align:center; text-indent: -9999px; overflow: hidden; background-color: transparent; position: absolute; bottom: -45px; left: 50%; margin-left: -15px; z-index: 999}
+  .slick-vertical .slick-prev {background-position: -104px -42px; @include transform(translateX(-50%))}
+  .slick-vertical .slick-next {background-position: -135px -42px; @include transform(translateX(50%))}
+
+
+// Agenda
+.agenda-list {
+  overflow: hidden;
+  h3 {clear: both; margin-top: 0; margin-bottom: 5px}
+  .col, a.col {
+    color: $body-color; @include transition(.2s); display: block; background: $light-grey; display: block; margin: 0 0 20px 0; padding: 40px 15px; position: relative; border-bottom: 5px solid $primary-color;
+    .info {font-size: 18px; line-height: 1.3}
+    .area {position: absolute; top: 10px; left: 15px; right: 15px;}
+    .speaker {position: absolute; bottom: 10px; left: 15px; right: 15px;}
+    .twitter {display: none;}
+    .website {display: none;}
+    .abstract {display: none;}
+    .bio {display: none;}
+  }
+  a.col:hover {
+    color: #fff;
+    text-decoration: none
+  }
+
+  // Border Colours
+  .col.aqua-room {border-color: $aqua-room}
+  a.col.aqua-room:hover {background: $aqua-room}
+
+  .col.blue-room {border-color: $blue-room}
+  a.col.blue-room:hover {background: $blue-room}
+
+  .col.green-room {border-color: $green-room}
+  a.col.green-room:hover {background: $green-room}
+
+  .col.orange-room {border-color: $orange-room}
+  a.col.orange-room:hover {background: $orange-room}
+
+  .col.purple-room {border-color: $purple-room}
+  a.col.purple-room:hover {background: $purple-room}
+
+  .col.red-room {border-color: $red-room}
+  a.col.red-room:hover {background: $red-room}
+
+  .col.foyer-room {border-color: $foyer-room}
+  a.col.foyer-room:hover {background: $foyer-room}
+
+  .col.yellow-room {border-color: $yellow-room}
+  a.col.yellow-room:hover {background: $yellow-room}
+
+  .col.keynote-room {border-color: $keynote-room}
+  a.col.keynote-room:hover {background: $keynote-room}
+
+  .col.locknote-room {border-color: $locknote-room}
+  a.col.locknote-room:hover {background: $locknote-room}
+
+  .col.afterparty-room {border-color: $afterparty-room}
+  a.col.afterparty-room:hover {background: $afterparty-room}
+}
+
+
+// Directions Blocks
+.directions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .col {
+    background: $primary-color;
+    color: #fff;
+    margin: 0 0 16px 0;
+    .top {
+      background: darken($primary-color, 10%); padding: 0; overflow: hidden;
+      i {font-size: 300%; display: inline-block; margin-top: 20px}
+      h3 {margin: 10px 0 10px 0}
+    }
+    .txt {
+      padding: 15px; text-align: left;
+      p {margin: 0}
+    }
+    a {color: #fff; text-decoration: underline}
+    a:hover {color: #fff; text-decoration: none}
+  }
+
+}
+
+// Sponsor Page
+.sponsor {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .col {
+    background: $light-grey;
+    margin: 0 0 16px 0;
+    text-align: center;
+    padding: 10px 20px;
+    @include box-shadow(0 2px 3px rgba(0,0,0,.2));
+    h2 {margin-top: 10px; margin-bottom: 5px}
+  }
+}
+
+
+// Blog
+.blog-list-post {
+  margin: 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $light-grey;
+  h3 {margin: 0}
+  p.author {margin-top: 10px; font-weight: 700}
+  .blog-date {
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    background: $light-grey;
+    padding: 20px 15px 10px 15px;
+    line-height: 1.4;
+    strong {display: block; font-size: 30px; line-height: 1}
+  }
+  .blog-date:before,
+  .blog-date:after {content: ""; display: block; width: 34px; height: 43px; background-position: 0 -94px!important; position: absolute; top: -21px}
+  .blog-date:before {left: 12px}
+  .blog-date:after {right: 12px}
+}
+
+
+// Blog Post
+.blog-list-post.blog-post {
+  border: 0
+}
+
+
+//  jQuery Scrollbars
+.scrollbar-inner>.scroll-element.scroll-x {
+    bottom: 0px;
+    height: 12px;
+}
+.scroll-wrapper>.scroll-content {padding-bottom: 10px}
+
+.scrollbar-inner>.scroll-element .scroll-bar, .scrollbar-inner>.scroll-element .scroll-element_outer, .scrollbar-inner>.scroll-element .scroll-element_track {
+    @include border-radius(1px);
+}
+
+.scrollbar-inner>.scroll-element .scroll-bar {background: $primary-color; @include opacity(1)}
+
+// Sessions and Voting
+.submitted-session {
+  background: #f0f0f0;
+  border-right: 7px solid #ff9600;
+  padding: 10px 15px 2px;
+  margin-bottom: 10px;
+
+  h3 {
+    margin: 0;
+    display: inline;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .session-title {
+    margin-bottom: 10px;
+
+    h3:after {
+      content: "\f0d7";
+      font-family: "FontAwesome";
+      color: #000; @include opacity(0.3);
+      display: inline-block;
+      margin: 0 0 0 10px;
+      font-size: 24px;
+      max-width: 26px;
+      vertical-align: middle;
+      position: relative;
+      top: -2px;
+    }
+
+    .vote-for-session {
+      float: right;
+      padding: 3px 20px;
+      margin-left: 5px;
+    }
+  }
+
+  .session-content {
+    display: none;
+
+    p {
+      margin: 18px 0;
+    }
+  }
+
+  &.open {
+    .session-title {
+      h3:after {
+        content: "\f0d8";
+      }
+    }
+
+    .session-content {
+      display: block;
+    }
+  }
+}
+
+#submit-votes {
+  margin: 0 0 10px 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  h3 {
+    margin: 10px 0 0 0;
+    text-align: center;
+  }
+
+  li.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  li.submit input {
+    margin-top: 0px;
+  }
+
+  form {
+    padding: 10px;
+  }
+}
+
+#submit-votes.affix {
+  top: 0;
+  position: fixed;
+
+  + .submitted-session {
+    margin-top: 220px;
+  }
+}
+
+
+@media only screen and (min-width: 360px) {
+
+  // Intro
+  .intro {
+    height: 120px;
+  }
+
+  // Countdown
+  #clock {
+    span {font-size: 80%; margin: 0 10px}
+    strong {font-size: 300%}
+  }
+    .next-event,
+    #clock+hr {
+      max-width: 405px;
+    }
+
+}
+
+
+// Mobile Portrait Only
+@media only screen and (max-width: 480px) {
+  .blog-photo {margin-bottom: 10px; min-width: 100px}
+  .blog-intro {width: 100%!important}
+
+  #submit-votes.affix + .submitted-session {
+    margin-top: 183px !important;
+  }
+}
+
+
+//  Mobile Landscape (From 480px)
+@media only screen and (min-width: 480px) {
+  .btn {
+    padding: 6px 15px 5px 15px;
+    font-size: 14px;
+  }
+    .btn:after {margin: 0 0 0 15px; font-size: 18px}
+
+  // Header
+  header {
+    font-size: 25px;
+    }
+
+  // Banner
+  .banner {
+    height: 180px;
+  }
+
+  // Intro
+  .intro {
+    height: 120px;
+    .container {
+      padding: 25px;
+    }
+  }
+
+  // Countdown
+  #clock {
+    font-weight: $bold;
+    margin: 30px 0;
+    span {font-size: 90%; margin: 0 15px}
+    strong {font-size: 350%}
+  }
+    .next-event,
+    #clock+hr {
+      max-width: 405px;
+    }
+
+
+  // Strip of Photos
+  section.image-strip {
+    width: 100%;
+    max-width: 100%;
+    height: 150px;
+    white-space: nowrap;
+    img {display: inline-block; height: 100%}
+    img:nth-child(3n),
+    img:nth-child(4n) {height: 100%}
+  }
+
+  // Important Dates
+  .imp-date {
+    float: left;
+    width: 47%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 0
+  }
+
+  // What Now? CTA's
+  .what-now {
+    .btn {display: inline-block; width: 200px; margin: 0 5px 15px 5px;}
+    .btn.vote + span {display: block}
+  }
+
+  // Agenda
+  .agenda {
+    width: 103%;
+    .col, a.col {float: left; width: 47%; margin: 0 3% 15px 0}
+  }
+
+  #submit-votes.affix + .submitted-session {
+    margin-top: 186px !important;
+  }
+}
+
+
+//  Small devices (tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+  .btn {
+    padding: 7px 16px 6px 16px;
+    font-size: 15px;
+  }
+    .btn:after {margin: 0 0 0 17px; font-size: 19px}
+
+
+  // Modals
+  .modal-header, .modal-body, .modal-footer {padding: 18px}
+
+  // Header
+  header {
+    font-size: 30px;
+    .logo {
+      line-height: 100px;
+    }
+    }
+
+    // Main Nav
+  nav.main {
+    ul {
+      text-align: center; max-height: 999px;
+      li {
+        display: inline-block;
+        a {line-height: 52px; font-size: 14px; border: 0; padding: 0 15px}
+        a:after {display: none}
+      }
+    }
+  }
+
+  // Intro
+  .intro {
+    .container {
+      padding: 30px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  // Fader
+  .fader {
+    height: 300px;
+  }
+
+  // Banner
+  .banner {
+    height: 190px;
+  }
+
+  // Countdown
+  #clock {
+    margin: 40px 0;
+    span {font-size: 100%; margin: 0 20px}
+    strong {font-size: 500%}
+  }
+    .next-event,
+    #clock+hr {
+      width: 81%; max-width: 9999px;
+    }
+
+  // Important Dates
+  .important-dates {padding-bottom: 30px}
+  .imp-date {
+    width: 30.25%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 35px;
+  }
+
+  // Strip of Photos
+  section.image-strip {
+    height: 200px
+  }
+
+  // Footer
+  footer {
+    padding-bottom: 40px;
+    nav.foot-nav {
+      padding: 30px 0;
+      text-align: center;
+      li {display: inline-block; margin: 0; padding: 0 20px}
+    }
+  }
+
+  // Next Event
+  .next-event {
+    padding: 30px 0;
+    .btn {margin-top: 21px}
+  }
+
+  // What Now? CTA's
+  .what-now {
+    .btn {width: auto}
+    .btn.vote + span {display: none}
+  }
+
+  // Sponsors
+  .sponsors {
+    img {max-width: 100%!important}
+  }
+
+
+  // DDD By Night
+  section.ddd-by-night {
+    height: 300px;
+    .content {
+      img {margin-left: -30px; max-width: 275px!important}
+    }
+  }
+
+  // Right Sidebar Page Type
+  section.right-sidebar {
+    .right-col {
+      .next-event {
+        padding: 7px 15px;
+        margin-top: 35px
+      }
+      .important-dates-right {
+        .imp-date {
+          float: none;
+          width: auto;
+          h3, p {font-size: 15px}
+        }
+        .imp-date:nth-child(odd) {
+          margin-right: 0
+        }
+      }
+    }
+  }
+
+  // Full Width Page Type
+  section.full-width {
+    .right-col {
+      .next-event {
+        width: 48%;
+        float: left;
+        margin-top: 47px;
+        height: 278px;
+        padding: 30px;
+      }
+    }
+    .important-dates-right {
+      float: right;
+      width: 48%;
+    }
+  }
+
+  // Directions block and Sponsor page
+  .directions, .sponsor {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    .col {
+      float: left;
+      width: 49%;
+      margin-right: 2%;
+    }
+    .col:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  // Sponsor Page
+  .sponsor {
+    .col {
+      padding: 20px 40px;
+    }
+  }
+
+  // Blog
+  .blog-list-post {
+    margin: 60px 0 30px 0;
+    padding-bottom: 30px;
+    .inner {
+      padding: 0 5px
+    }
+    .blog-date {
+      padding: 25px 15px 12px 15px;
+      font-size: 14px;
+      strong {font-size: 22px}
+    }
+  }
+
+  // Agenda
+  .agenda-list {
+    .col, a.col {float: left; width: 31.25%; margin: 0 2% 20px 0}
+  }
+
+  #submit-votes.affix + .submitted-session {
+    margin-top: 200px !important;
+  }
+
+}
+
+
+//  Medium devices (desktops, 992px and up)
+@media only screen and (min-width: 992px) {
+  .btn {
+    padding: 8px 20px 7px 20px;
+    font-size: 16px;
+  }
+    .btn:after {margin: 0 0 0 20px; font-size: 19px}
+
+  // Modals
+  .modal-header, .modal-body, .modal-footer {padding: 22px}
+
+  // Header
+  header {
+    font-size: 35px;
+    .logo {
+      line-height: 134px;
+    }
+    }
+
+  // Main Nav
+  nav.main {
+    ul {
+      li {
+        a {font-size: 16px; padding: 0 25px}
+      }
+    }
+  }
+
+  // Intro
+  .intro {
+    height: 135px;
+  }
+
+  // Countdown
+  #clock {
+    margin: 40px 0;
+    span {font-size: 110%; margin: 0 25px;}
+    strong {font-size: 600%}
+  }
+    .next-event,
+    #clock+hr {
+      width: 81%;
+    }
+
+  // Fader
+  .fader {
+    height: 350px;
+  }
+
+  // Banner
+  .banner {
+    height: 195px;
+  }
+
+  // Important Dates
+  .important-dates {padding-bottom: 40px}
+  .imp-date {
+    margin-top: 53px;
+    padding: 20px 20px 10px 20px;
+    h3 {
+      font-size: 22px;
+      strong {font-size: 120%}
+    }
+  }
+  .imp-date:before,
+  .imp-date:after {width: 40px; height: 58px; background: url('../images/cal-top.png') 0 0 no-repeat}
+    .imp-date:before {left: 27px}
+    .imp-date:after {right: 27px}
+
+
+  section.right-sidebar  {
+    .imp-date {
+      .ico-done {@include transform(scale(0.9))}
+    }
+  }
+
+
+  // Date Done
+  .ico-done {
+    right: 20px;
+    top: 35px;
+    width: 35px;
+    height: 35px;
+    line-height: 37px;
+  }
+    .ico-done:before {
+      font-size: 22px;
+    }
+
+
+  // Strip of Photos
+  section.image-strip {
+    height: 250px
+  }
+
+  // Footer
+  footer {
+    padding-bottom: 50px;
+    nav.foot-nav {
+      padding: 35px 0;
+    }
+  }
+
+  // Next Event
+  .next-event {
+    padding: 40px 0;
+    .btn {margin-top: 25px}
+  }
+
+  // DDD By Night
+  section.ddd-by-night {
+    height: 350px;
+    .content {
+      img {margin-left: -30px; max-width: 100%!important}
+    }
+  }
+
+  // Right Sidebar Page Type
+  section.right-sidebar {
+    .right-col {
+      .next-event {
+        padding: 17px 23px;
+        margin-top: 40px
+      }
+    }
+  }
+
+  // Full Width Page Type
+  section.full-width {
+    .right-col {
+      .next-event {
+        margin-top: 49px;
+        .btn {margin-top: 10px}
+      }
+    }
+  }
+
+  // Directions Block and Sponsor Page
+  .directions, .sponsor {
+    margin-top: 35px;
+    margin-bottom: 30px;
+    .col,
+    .col:nth-child(2n) {
+      margin-right: 1.25%;
+      width: 24%;
+    }
+    .col:last-child  {
+      margin-right: 0;
+    }
+  }
+
+  // Sponsor Page
+  .sponsor {
+    .col {
+      padding: 20px 20px;
+      h2 {margin-top: 15px}
+    }
+  }
+
+  // Blog
+  .blog-list-post {
+    .inner {
+      padding: 0 20px
+    }
+    .blog-date {
+      padding: 25px 15px 12px 15px;
+      font-size: 15px;
+      strong {font-size: 23px}
+    }
+  }
+
+  // Agenda
+  .agenda-list {
+    .col, a.col {width: 23%; margin: 0 2% 20px 0}
+  }
+
+
+}
+
+
+//  Large devices (large desktops, 1200px and up)
+@media only screen and (min-width: 1200px) {
+  .btn {
+    padding: 9px 23px 8px 23px;
+    font-size: 17px;
+  }
+    .btn:after {margin: 0 0 0 20px; font-size: 20px}
+
+  // Modals
+  .modal-header, .modal-body, .modal-footer {padding: 25px}
+
+  // Header
+  header {
+    font-size: 40px;
+    }
+
+  // Main Nav
+  nav.main {
+    ul {
+      li {
+        a {font-size: 17px; padding: 0 28px}
+      }
+    }
+  }
+
+  // Fader
+  .fader {
+    height: 398px;
+  }
+
+  // Banner
+  .banner {
+    height: 208px;
+  }
+
+
+  // Important Dates
+  .important-dates {padding-bottom: 50px}
+  .imp-date {
+    width: 23%;
+    margin-left: 1%;
+    margin-right: 1%;
+    h3 {
+      font-size: 22px;
+      strong {font-size: 120%}
+    }
+  }
+
+  // Date Done
+  .ico-done {
+    right: 20px;
+    top: 37px;
+    width: 37px;
+    height: 37px;
+    line-height: 39px;
+  }
+    .ico-done:before {
+      font-size: 23px;
+    }
+
+
+  // Strip of Photos
+  section.image-strip {
+    height: 300px
+  }
+
+    // Footer
+  footer {
+    padding-bottom: 60px;
+    nav.foot-nav {
+      padding: 40px 0;
+    }
+    .copyright {font-size: 85%}
+  }
+
+  // Countdown
+  #clock {
+    span {font-size: 115%; margin: 0 30px;}
+    strong {font-size: 650%}
+  }
+    .next-event,
+    #clock+hr {
+      width: 81%;
+    }
+
+
+  // Next Event
+  .next-event {
+    padding: 50px 0;
+    .btn {margin-top: 30px}
+  }
+
+  // DDD By Night
+  section.ddd-by-night {
+    height: 390px;
+  }
+
+
+  // Right Sidebar Page Type
+  section.right-sidebar {
+    .right-col {
+      .next-event {
+        padding: 20px 25px;
+        margin-top: 45px
+      }
+      .important-dates-right {
+        .imp-date {
+          h3, p {font-size: 16px}
+        }
+      }
+    }
+  }
+
+  // Full Width Page Type
+  section.full-width {
+    .right-col {
+      .next-event {
+        margin-top: 51px;
+        height: 301px;
+        .btn {margin-top: 0}
+      }
+      .important-dates-right {
+        .imp-date {
+          h3, p {font-size: 16px}
+        }
+      }
+    }
+  }
+
+  // Directions Block and Sponsor Page
+  .directions, .sponsor {
+    margin-top: 50px;
+    margin-bottom: 35px;
+    .col,
+    .col:nth-child(2n) {
+      margin-right: 1.75%;
+      width: 23.5%;
+    }
+    .col:last-child  {
+      margin-right: 0;
+    }
+  }
+
+  // Agenda
+  .agenda-list {
+    .col, a.col {
+      padding: 55px 20px; margin: 0 2% 20px 0;
+      .speaker, .area {left: 20px; right: 20px;}
+      .area {top: 20px;}
+      .speaker {bottom: 20px;}
+      .info {font-size: 19px}
+    }
+  }
+
+
+}
+
+
+//  Ex Large devices (large desktops, 1200px and up)
+@media only screen and (min-width: 1400px) {
+  .btn {
+    padding: 11px 25px 10px 25px;
+    font-size: 18px;
+  }
+    .btn:after {margin: 0 0 0 20px; font-size: 20px}
+
+  // Main Nav
+  nav.main {
+    ul {
+      li {
+        a {font-size: 18px; padding: 0 30px}
+      }
+    }
+  }
+
+  // Header
+  header {
+    font-size: 45px;
+    }
+
+  // Fader
+  .fader {
+    .container {
+      .intro {
+        padding: 50px 70px
+      }
+    }
+  }
+
+  // Countdown
+  #clock {
+    span {font-size: 115%; margin: 0 30px;}
+    strong {font-size: 650%}
+    margin: 60px 0
+  }
+    .next-event,
+    #clock+hr {
+      width: 86%;
+    }
+
+  // Next Event
+  .next-event {
+    padding: 60px 0;
+    .btn {margin-top: 33px}
+  }
+
+  // Important Dates
+  .important-dates {padding-bottom: 50px}
+  .imp-date {
+    margin-top: 60px;
+    h3 {
+      font-size: 24px;
+      strong {font-size: 120%}
+    }
+  }
+  // Date Done
+  .ico-done {
+    right: 20px;
+    top: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+    .ico-done:before {
+      font-size: 24px;
+    }
+
+
+  // Strip of Photos
+  section.image-strip {
+    height: 370px
+  }
+
+  // Footer
+  footer {
+    nav.foot-nav {
+      padding: 45px 0;
+    }
+  }
+
+  // DDD By Night
+  section.ddd-by-night {
+    height: 424px;
+  }
+
+  // Right Sidebar Page Type
+  section.right-sidebar {
+    .right-col {
+      .next-event {
+        padding: 23px 30px;
+        margin-top: 50px
+      }
+    }
+  }
+
+  // Full Width Pagetype
+  section.full-width .important-dates-right .imp-date .ico-done {
+    right: 15px;
+    top: 20px;
+  }
+
+
+
+
+  // Full Width Page Type
+  section.full-width {
+    .right-col {
+      .next-event {
+        margin-top: 51px;
+        height: 360px;
+        padding: 30px 35px;
+        .btn {margin-top: 0}
+      }
+      .important-dates-right .imp-date {
+        padding: 18px 18px 8px 18px;
+      }
+    }
+  }
+
+  // Directions Block and Sponsor Page
+  .directions, .sponsor {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    .col,
+    .col:nth-child(2n) {
+      margin-right: 2%;
+      width: 23.5%;
+      .top {
+        i {font-size: 400%}
+        h3 {margin: 15px 0 10px 0}
+      }
+    }
+    .col:last-child  {
+      margin-right: 0;
+    }
+  }
+
+  // Sponsor Page
+  .sponsor {
+    .col {
+      padding: 20px 30px;
+      h2 {margin-top: 20px}
+    }
+  }
+
+  // Blog
+  .blog-list-post {
+    margin: 60px 0 30px 0;
+    padding-bottom: 30px;
+    .inner {
+      padding: 0 30px
+    }
+    .blog-date {
+      padding: 25px 17px 12px 17px;
+    }
+  }
+
+  // Agenda
+  .agenda-list {
+    .col, a.col {
+      padding: 65px 25px; margin: 0 2% 20px 0;
+      .speaker, .area {left: 25px; right: 25px;}
+      .area {top: 22px;}
+      .speaker {bottom: 22px;}
+      .info {font-size: 20px}
+    }
+  }
+
+}

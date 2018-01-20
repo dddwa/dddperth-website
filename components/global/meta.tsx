@@ -1,6 +1,7 @@
 import * as React from'react';
 import Head from 'next/head';
 import { Fragment } from 'react';
+const stylesheet = require('styles/screen.scss');
 
 export default () => (
   <Fragment>
@@ -42,10 +43,12 @@ export default () => (
         <meta property="og:site_name" content="{{ .Site.Title }}" />
         <link rel="canonical" href="{{ .URL | absLangURL }}" />
         */}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"  />
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
+        <style type="text/css" dangerouslySetInnerHTML={{ __html: stylesheet }}></style>
         {/*{ template "_internal/google_analytics_async.html" . }*/}
     </Head>
     <style jsx global>{`
