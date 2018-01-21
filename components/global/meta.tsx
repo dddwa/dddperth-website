@@ -10,6 +10,7 @@ export default () => (
       <meta charSet="utf-8" />
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
+      <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
       {/*
         <meta name="apple-mobile-web-app-title" content="DDD Melbourne">
         <meta name="format-detection" content="telephone=no">
@@ -25,9 +26,6 @@ export default () => (
         <meta name="twitter:description" content="{{ . | truncate 200 }}">
         {{- end }}
         <meta name="author" content="{{ .Site.Author.name }}"/>
-        {{- with .Site.Params.favicon }}
-        <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
-        {{- end -}}
         <!-- Social Media Tags -->
         {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
         <meta property="og:image" content="{{ . | absURL }}" />

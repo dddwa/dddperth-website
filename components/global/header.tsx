@@ -21,7 +21,7 @@ const Header : StatelessComponent<HeaderArgs> = ({isHome}) =>
 
       <section className="intro">
           <div className="container">
-          <h1>{Conference.TagLine}{!Conference.HideDate && !Dates.IsComplete && ' & will be held on ' + Dates.Display}.</h1>
+          <h1>{Conference.TagLine}{!Conference.HideDate && !Dates.IsComplete && ' & will be held on ' + Dates.Display}.<br /><br />{Conference.Goal}</h1>
           </div>
       </section>
     </Fragment>}
