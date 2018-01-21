@@ -47,7 +47,6 @@ export default () => (
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
         <style type="text/css" dangerouslySetInnerHTML={{ __html: stylesheet }}></style>
-        {/*{ template "_internal/google_analytics_async.html" . }*/}
     </Head>
     <style jsx global>{`
       body {
