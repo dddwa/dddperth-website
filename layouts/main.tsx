@@ -7,6 +7,9 @@ import * as analytics from '../components/global/analytics';
 
 interface MainArgs {
   isHome? : boolean;
+  title : string;
+  description? : string;
+  image? : string;
 }
 
 declare global {
@@ -24,7 +27,7 @@ class Main extends React.Component<MainArgs, any> {
 
   render() {
     return <Fragment>
-      <Meta />
+      <Meta pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} />
       <Header isHome={this.props.isHome} />
       { this.props.children }
       <Footer />
