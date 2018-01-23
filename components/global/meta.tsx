@@ -12,7 +12,7 @@ interface MetaArgs {
   pageImage? : string;
 }
 
-const getTitle = (title : string) => `${title} ${Conference.Name}${!Conference.HideDate && !Dates.IsComplete && ` | ${Conference.Date.format('d MMM YYYY')}`}`;
+const getTitle = (title : string) => `${title !== 'Home' ? title + ' - ' : ''}${Conference.Name}${!Conference.HideDate && !Dates.IsComplete ? ` | ${Conference.Date.format('d MMM YYYY')}` : ''}`;
 
 const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, pageDescription, pageImage}) =>
   <Fragment>
