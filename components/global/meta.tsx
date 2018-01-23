@@ -6,6 +6,7 @@ import Conference from '../../config/conference';
 import Dates from '../../config/dates';
 
 interface MetaArgs {
+  pageUrl : string,
   pageTitle : string;
   pageDescription? : string;
   pageImage? : string;
@@ -13,7 +14,7 @@ interface MetaArgs {
 
 const getTitle = (title : string) => `${title} ${Conference.Name}${!Conference.HideDate && !Dates.IsComplete && ` | ${Conference.Date.format('d MMM YYYY')}`}`;
 
-const Meta : StatelessComponent<MetaArgs> = ({pageTitle, pageDescription, pageImage}) =>
+const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, pageDescription, pageImage}) =>
   <Fragment>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,8 +37,8 @@ const Meta : StatelessComponent<MetaArgs> = ({pageTitle, pageDescription, pageIm
       <meta name="twitter:creator" content={Conference.Organiser} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={Conference.Name} />
-      {/*<link rel="canonical" href={window.location.href} />
-      <meta property="og:url" content={window.location.href} />*/}
+      <link rel="canonical" href={pageUrl} />
+      <meta property="og:url" content={pageUrl} />
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"  />

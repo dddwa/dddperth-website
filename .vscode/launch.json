@@ -19,6 +19,12 @@
             ],
             "port": 9229,
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Next: Node (attach)",
+            "port": 9229
         }
     ],
     "compounds": [

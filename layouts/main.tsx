@@ -4,6 +4,7 @@ import Header from '../components/global/header';
 import Footer from '../components/global/footer';
 import { Fragment, StatelessComponent } from 'react';
 import * as analytics from '../components/global/analytics';
+import * as PropTypes from 'prop-types';
 
 interface MainArgs {
   isHome? : boolean;
@@ -17,6 +18,11 @@ declare global {
 }
 
 class Main extends React.Component<MainArgs, any> {
+
+  static contextTypes = {
+    pageUrl : PropTypes.string
+  }
+
   componentDidMount () {
     if (!window.GA_INITIALIZED) {
       analytics.init();
@@ -27,7 +33,7 @@ class Main extends React.Component<MainArgs, any> {
 
   render() {
     return <Fragment>
-      <Meta pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} />
+      <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} />
       <Header isHome={this.props.isHome} />
       { this.props.children }
       <Footer />
