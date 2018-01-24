@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Page from '../layouts/main';
-import {withPageMetadata} from './withPageMetadata';
+import {withPageMetadata} from '../components/global/withPageMetadata';
 import Link from 'next/link'
 
 export default withPageMetadata(() =>
@@ -11,3 +11,4 @@ export default withPageMetadata(() =>
     </Link></p>
   </Page>
 );
+

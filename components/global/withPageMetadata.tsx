@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as url from '../components/utils/full-url';
+import * as url from '../utils/full-url';
 import { Fragment } from 'react';
 
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple
