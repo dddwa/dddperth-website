@@ -4,10 +4,10 @@ import {withPageMetadata} from './withPageMetadata';
 import Link from 'next/link'
 
 export default withPageMetadata(() =>
-  <Page isHome={true} title="Home">
+  <Page title="About" description="About DDD Perth...">
     <h1>Hello world!</h1>
-    <p><Link href="/about">
-      <a>About</a>
+    <p><Link href="/">
+      <a>Home</a>
     </Link></p>
   </Page>
 );
