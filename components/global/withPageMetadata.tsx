@@ -7,7 +7,8 @@ import { Fragment } from 'react';
 
 export interface InjectedProps {}
 interface ExternalProps {
-  pageUrl : string
+  pageUrl : string,
+  pagePath : string
 }
 
 export const withPageMetadata = <TOriginalProps extends {}>(WrappedComponent: React.ComponentType<TOriginalProps & InjectedProps>) => {
@@ -16,6 +17,7 @@ export const withPageMetadata = <TOriginalProps extends {}>(WrappedComponent: Re
     static displayName = `PageWithMetadata(${WrappedComponent.displayName || WrappedComponent.name})`;
 
     private pageUrl : string | null;
+    private pagePath : string | null;
 
     constructor(props: ResultProps) {
         super(props);
@@ -27,21 +29,24 @@ export const withPageMetadata = <TOriginalProps extends {}>(WrappedComponent: Re
       const wrappedInitialProps = wrappedInitialPropsMethod ? await wrappedInitialPropsMethod(context) : {};
 
       const pageUrl = context.req ? url.getUrlFromNodeRequest(context.req) : null;
+      const pagePath = context.req ? context.pathname : null;
 
-      return {pageUrl, ...wrappedInitialProps};
+      return {pageUrl, pagePath, ...wrappedInitialProps};
     }
 
     componentWillMount() {
       this.pageUrl = this.props.pageUrl || url.getUrlFromWindow(window);
+      this.pagePath = this.props.pagePath || window.location.pathname;
     }
 
     static childContextTypes = {
       pageUrl : PropTypes.string,
+      pagePath : PropTypes.string,
       ...((WrappedComponent as any).childContextTypes || {})
     }
 
     getChildContext() {
-      return { pageUrl: this.pageUrl };
+      return { pageUrl: this.pageUrl, pagePath: this.pagePath };
     }
 
     render() {
