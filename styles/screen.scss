@@ -63,7 +63,6 @@ hr {border-top: 3px solid #dcdcdc;}
 }
 
 // Sprite
-footer ul.social a,
 ul.accordion a.toggleAccordion:after,
 .slick-vertical .slick-next,
 .slick-vertical .slick-prev,
@@ -316,15 +315,7 @@ footer {
     padding: 0 0 40px 0;
     li {list-style: none outside; display: inline-block; margin: 0 2px; padding: 0;}
     li:before {display: none}
-    a {display: block; width: 43px; height: 42px; background-color: $primary-color; background-repeat: no-repeat; @include transition(.2s); @include border-radius(50%)}
-    a.fb {background-position: -43px 0}
-    a.in {background-position: -86px 0}
-    a.fr {background-position: -129px 0}
-    a.ig {background-position: -171px 0}
-    a.gh {background-position: -215px 0}
-    a.em {background-position: -258px 0}
-
-
+    a {display: block; width: 43px; height: 42px; line-height: 42px; color: #FFF; font-size: 20px; background-color: $primary-color; background-repeat: no-repeat; @include transition(.2s); @include border-radius(50%)}
     a:hover {background-color: darken($primary-color, 3%)}
   }
   .copyright {text-align: center; font-size: 90%}

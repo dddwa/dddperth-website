@@ -14,4 +14,18 @@ export default class Menu {
       name: "About"
     },
   ];
+  static Footer : MenuItem[] = [
+    {
+      href: "/about",
+      name: "About Us"
+    },
+    {
+      href: "/code-of-conduct",
+      name: "Code of Conduct"
+    },
+    {
+      href: "/contact",
+      name: "Contact"
+    }
+  ];
 }

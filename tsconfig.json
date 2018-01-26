@@ -2,6 +2,7 @@
     "compilerOptions": {
       "jsx": "react-native",
       "module": "commonjs",
+      "moduleResolution": "node",
       "strict": true,
       "target": "es2017"
     }
