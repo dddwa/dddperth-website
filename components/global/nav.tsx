@@ -13,7 +13,7 @@ const Nav : StatelessComponent<NavArgs> = ({pagePath}) =>
       <a href="#" className="pull hidden-sm hidden-md hidden-lg"><span></span><span></span><span></span></a>
       <ul>
         {Menu.Top.map(item =>
-        <li>
+        <li key={item.href}>
           <Link href={item.href}>
             <a className={item.href === pagePath ? "active" : ""}>{item.name}</a>
           </Link>
