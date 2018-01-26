@@ -46,10 +46,6 @@ const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, pageDescriptio
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
       <style type="text/css" dangerouslySetInnerHTML={{ __html: stylesheet }}></style>
     </Head>
-    <style jsx global>{`
-      body {
-      }
-    `}</style>
   </Fragment>;
 
 export default Meta;
