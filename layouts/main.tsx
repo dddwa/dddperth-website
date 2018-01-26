@@ -18,7 +18,7 @@ declare global {
   interface Window { GA_INITIALIZED: boolean; }
 }
 
-class Main extends React.Component<MainArgs, any> {
+class Main extends React.Component<MainArgs> {
 
   static contextTypes = {
     pageUrl : PropTypes.string,

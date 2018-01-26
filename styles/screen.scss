@@ -91,35 +91,71 @@ h4.modal-title {margin-right: 30px}
 nav.main {
   background: darken($primary-color, 10%);
   color: #fff;
-  a.pull {
-    display: block;
-    width: 42px;
-    height: 42px;
-    overflow: hidden;
-    position: relative;
-    span {display: block; height: 3px; background: #fff; margin: 4px 0; width: 60%}
-    span:first-child {margin-top: 12px}
+  margin-bottom: 0;
+  border: 0;
+  @include border-radius(0);
+
+  .container>.navbar-collapse {
+    margin-left: 0;
+    margin-right: 0;
+    border: 0;
   }
-  a.pull.active {
-    span {@include opacity(0.55); position: absolute; top: 35%; @include transform(rotate(-45deg)); width: 70%}
-    span:nth-child(2n) {@include transform(rotate(45deg))}
-    span:first-child {display: none}
-  }
-    a.pull.active:hover {
-      span {@include opacity(1)}
+  .navbar-header {
+    button {
+      border: 0;
+      .icon-bar {
+        background-color: #fff;
+        @include opacity(0.55);
+      }
+      &.collapsed .icon-bar {
+        @include opacity(1.0);
+      }
+      &:focus {
+        background-color: transparent;
+        .icon-bar {
+          background-color: #FFF;
+        }
+      }
+      &:hover {
+        background-color: #DDD;
+        .icon-bar {
+          background-color: #000;
+        }
+      }
     }
+  }
+
   ul {
-    margin: 0; padding: 0; text-align: left; @include transition(.3s); max-height: 0; overflow: hidden;
+    float: none;
     li {
-      margin: 0; padding: 0; display: block; border-top: 1px solid darken($primary-color, 20%);
-      a {display: block; padding: 0; color: #fff; font-weight: $bold; @include opacity(0.55); @include transition(.2s); line-height: 42px}
-      a:after {content: "\f0da"; font-family: "FontAwesome"; color: #000; @include opacity(0.3); display: inline-block; margin: 0 0 0 10px; font-size: 120%; vertical-align: middle; position: relative; top: -1px; float: right}
-      a:hover,
-      a.active {@include opacity(1); text-decoration: none}
+      float: none;
+      border-top: 1px solid darken($primary-color, 20%);
+
+      &:before { display: none; }
+      a {
+        display: block;
+        padding: 0;
+        color: #fff!important;
+        background-color: transparent!important;
+        font-weight: $bold;
+        @include opacity(0.55);
+        line-height: 42px
+      }
+      a:after {
+        content: "\f0da";
+        font-family: "FontAwesome";
+        @include opacity(0.3);
+        display: inline-block;
+        margin: 0 0 0 10px;
+        font-size: 120%;
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+        float: right;
+      }
     }
-    li:before {display: none}
+    li.active a, a:hover { @include opacity(1); text-decoration: none}
   }
-  ul.active {max-height: 9999px}
 }
 
 // Header
@@ -855,10 +891,10 @@ ul.accordion {
     }
     }
 
-    // Main Nav
+        // Main Nav
   nav.main {
     ul {
-      text-align: center; max-height: 999px;
+      text-align: center;
       li {
         display: inline-block;
         a {line-height: 52px; font-size: 14px; border: 0; padding: 0 15px}
@@ -1050,7 +1086,7 @@ ul.accordion {
     }
     }
 
-  // Main Nav
+      // Main Nav
   nav.main {
     ul {
       li {
@@ -1227,7 +1263,7 @@ ul.accordion {
     font-size: 40px;
     }
 
-  // Main Nav
+      // Main Nav
   nav.main {
     ul {
       li {
