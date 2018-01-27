@@ -17,7 +17,6 @@
     "moment": "^2.20.1",
     "next": "^4.4.0-canary.3",
     "prop-types": "^15.6.0",
-    "raw-loader": "^0.5.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0"
@@ -40,6 +39,7 @@
     "normalize.css": "^7.0.0",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.0.10",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "tslint": "^5.9.1",
     "typescript": "^2.6.2",
