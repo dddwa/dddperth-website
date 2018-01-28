@@ -22,11 +22,11 @@ class Nav extends React.Component<NavArgs> {
         </Bootstrap.Navbar.Header>
         <Bootstrap.Navbar.Collapse>
           <Bootstrap.Nav>
-            {Menu.Top.map(item =>
-              <Link href={item.href}>
+            {Menu.Top.map(item => <Fragment key={item.href}>
+              <Link href={item.href} passHref>
                 <Bootstrap.NavItem active={item.href === this.props.pagePath}>{item.name}</Bootstrap.NavItem>
               </Link>
-            )}
+            </Fragment>)}
           </Bootstrap.Nav>
         </Bootstrap.Navbar.Collapse>
       </Bootstrap.Navbar>
