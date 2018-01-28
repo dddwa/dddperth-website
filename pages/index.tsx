@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ImageStrip from '../components/imageStrip';
 import arrayShuffle from '../components/utils/arrayShuffle';
 import Conference from '../config/conference';
+import Sponsors from '../components/sponsors';
 
 interface IndexProps {
   imageStrip : string[];
@@ -21,6 +22,7 @@ class Index extends React.Component<IndexProps> {
   render() {
     return <Page isHome={true} title="Home">
       <ImageStrip images={this.props.imageStrip} />
+      <Sponsors show={Conference.ShowSponsors} sponsors={Conference.Sponsors} />
     </Page>;
   }
 }

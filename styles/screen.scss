@@ -307,7 +307,7 @@ section.image-strip {
 
 // Sponsors
 section.sponsors {padding-bottom: 20px}
-  section.sponsors.grey {background: #f7f7f7; padding: 26px 0}
+  section.sponsors.standard {background: #f7f7f7; padding: 26px 0}
 
 // DDD By Night
 section.ddd-by-night {
@@ -364,9 +364,22 @@ footer {
 
 // Sponsors
 .sponsors {
+  a {
+    display: inline-block;
+  }
+
   img {
     max-width: 120px !important;
     margin: 10px 15px 10px 15px;
+  }
+
+  &.standard img {
+    max-width: 100px !important;
+  }
+
+  img.platinum {
+    max-width: 300px !important;
+    max-height: 200px !important;
   }
 
   small {
@@ -971,7 +984,15 @@ ul.accordion {
 
   // Sponsors
   .sponsors {
-    img {max-width: 100%!important}
+    img {
+      max-width: 200px !important;
+      max-height: 150px !important;
+    }
+
+    &.standard img {
+      max-width: 120px !important;
+      max-height: 80px !important;
+    }
   }
 
 
