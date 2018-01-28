@@ -22,5 +22,12 @@ export default class Conference {
   static readonly HideDate : boolean = false;
   static readonly Goal : string = "Our goal is to create an approachable conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at conferences.";
   static readonly GoogleAnalyticsId : string = "UA-60040308-1";
-  static readonly Socials = new Socials()
+  static readonly Socials = new Socials();
+  static readonly ImageStrip = [
+    "/static/images/strip/1.jpg",
+    "/static/images/strip/2.jpg",
+    "/static/images/strip/3.jpg",
+    "/static/images/strip/4.jpg",
+    "/static/images/strip/5.jpg",
+  ];
 }
