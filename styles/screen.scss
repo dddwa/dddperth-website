@@ -197,13 +197,10 @@ header {
   z-index: 2;
   float: left;
   width: 100%;
-  height: 150px;
   .container {
     background: #fff;
     padding: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
-    @include transform(translateY(-50%));
+    margin: -100px 15px 50px 15px;
     @include box-shadow(0 1px 2px rgba(20,20,20,0.2));
   }
   h1 {font-weight: $light; margin: 0}
@@ -778,11 +775,6 @@ ul.accordion {
 
 @media only screen and (min-width: 360px) {
 
-  // Intro
-  .intro {
-    height: 120px;
-  }
-
   // Countdown
   #clock {
     span {font-size: 80%; margin: 0 10px}
@@ -827,7 +819,6 @@ ul.accordion {
 
   // Intro
   .intro {
-    height: 120px;
     .container {
       padding: 25px;
     }
@@ -1114,11 +1105,6 @@ ul.accordion {
         a {font-size: 16px; padding: 0 25px}
       }
     }
-  }
-
-  // Intro
-  .intro {
-    height: 135px;
   }
 
   // Countdown
