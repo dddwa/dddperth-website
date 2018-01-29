@@ -1,8 +1,8 @@
 import * as ReactGA from 'react-ga';
 import Conference from '../../config/conference';
 
-export const init = () => {
-  ReactGA.initialize(Conference.GoogleAnalyticsId);
+export const init = (googleAnalyticsId : string) => {
+  ReactGA.initialize(googleAnalyticsId);
 }
 
 export const logPageView = () => {

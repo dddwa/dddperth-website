@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatelessComponent, Fragment } from 'react';
-import Conference, { Sponsor, SponsorType } from '../config/conference';
+import { Sponsor, SponsorType } from '../config/types';
 
 interface SponsorsProps {
   sponsors : Sponsor[];

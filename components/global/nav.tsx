@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Link from 'next/link';
-import Menu from '../../config/menu';
 import { Fragment } from 'react';
+import Link from 'next/link';
 import * as Bootstrap from 'react-bootstrap';
+import { MenuItem } from '../../config/types';
 
 interface NavArgs {
   pagePath : string;
+  menu : MenuItem[];
 }
 
 class Nav extends React.Component<NavArgs> {
@@ -22,7 +23,7 @@ class Nav extends React.Component<NavArgs> {
         </Bootstrap.Navbar.Header>
         <Bootstrap.Navbar.Collapse>
           <Bootstrap.Nav>
-            {Menu.Top.map(item => <Fragment key={item.href}>
+            {this.props.menu.map(item => <Fragment key={item.href}>
               <Link href={item.href} passHref>
                 <Bootstrap.NavItem active={item.href === this.props.pagePath}>{item.name}</Bootstrap.NavItem>
               </Link>

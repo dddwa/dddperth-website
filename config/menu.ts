@@ -1,7 +1,4 @@
-interface MenuItem {
-  href : string,
-  name : string
-}
+import {MenuItem} from "./types";
 
 export default class Menu {
   static Top : MenuItem[] = [

@@ -1,17 +1,18 @@
 import * as React from 'react';
-import Conference from '../../config/conference';
-import Dates from '../../config/dates';
 import { StatelessComponent, Fragment } from 'react';
+import { Conference, Dates } from '../../config/types';
 
 interface HeaderArgs {
   isHome? : boolean;
+  conference : Conference;
+  dates : Dates;
 }
 
-const Header : StatelessComponent<HeaderArgs> = ({isHome}) =>
+const Header : StatelessComponent<HeaderArgs> = ({isHome, conference, dates}) =>
   <Fragment>
     <header>
       <div className="logo">
-          <a href="/">{ Conference.Name }</a>
+          <a href="/">{ conference.Name }</a>
       </div>
     </header>
 
@@ -21,7 +22,7 @@ const Header : StatelessComponent<HeaderArgs> = ({isHome}) =>
 
       <section className="intro">
           <div className="container">
-          <h1>{Conference.TagLine}{!Conference.HideDate && !Dates.IsComplete && ' & will be held on ' + Dates.Display}.<br /><br />{Conference.Goal}</h1>
+          <h1>{conference.TagLine}{!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br /><br />{conference.Goal}</h1>
           </div>
       </section>
     </Fragment>}

@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { StatelessComponent } from 'react';
 import Link from 'next/link';
-import Menu from '../../config/menu';
+import {MenuItem} from '../../config/types';
 
-const FooterNav : StatelessComponent = () =>
+interface FooterNavArgs {
+  menu : MenuItem[];
+}
+
+const FooterNav : StatelessComponent<FooterNavArgs> = ({menu}) =>
   <nav className="foot-nav">
     <ul>
-      {Menu.Footer.map(item =>
+      {menu.map(item =>
       <li key={item.href}>
         <Link href={item.href}>
           <a>{item.name}</a>
