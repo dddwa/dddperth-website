@@ -8,6 +8,7 @@ import Conference from '../config/conference';
 import Sponsors from '../components/sponsors';
 import Dates from '../config/dates';
 import SponsorData from '../config/sponsors';
+import CountdownTimer from '../components/countdownTimer';
 
 interface IndexProps {
   imageStrip : string[];
@@ -27,7 +28,7 @@ class Index extends React.Component<IndexProps> {
       <section className="countdown grey">
         <div className="container">
           <h2>Countdown to Next Event:</h2>
-          <span id="clock"></span>
+          <CountdownTimer initialTimeRemaining={Dates.IntervalToEvent} interval={1000} />
           <hr />
           <div className="next-event">
             <div className="row">
