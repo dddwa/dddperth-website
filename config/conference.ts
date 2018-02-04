@@ -11,7 +11,7 @@ const Conference : IConference = {
   Organiser : "DDD WA Inc.",
   TagLine : tagLine,
   SiteDescription : `${tagLine}.`,
-  Date : moment('2017-09-16T08:00+08:00'),
+  Date : moment('2018-09-16T08:00+08:00'),
   Goal : "Our goal is to create an approachable conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at conferences.",
   GoogleAnalyticsId : "UA-60040308-1",
   Venue : venue,

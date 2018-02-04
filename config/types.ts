@@ -23,7 +23,6 @@ export interface Conference {
 export interface Dates {
   Display : string;
   IsComplete : boolean;
-  IntervalToEvent : number;
 }
 
 export interface Socials {
