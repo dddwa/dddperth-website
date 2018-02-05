@@ -9,6 +9,7 @@ import SponsorData from '../config/sponsors';
 import { StatelessComponent } from 'react';
 import EventDetails from '../components/eventDetails';
 import ImportantDates from '../components/importantDates';
+import getConferenceDates from '../config/dates';
 
 interface IndexProps {
   imageStrip : string[];
@@ -24,7 +25,7 @@ class Index extends React.Component<IndexProps> {
 
   render() {
     return <Page isHome={true} title="Home">
-      <EventDetails conference={Conference} />
+      <EventDetails conference={Conference} dates={getConferenceDates(Conference)} />
       <ImportantDates conference={Conference} />
       <ImageStrip images={this.props.imageStrip} conferenceName={Conference.Name} />
       <Sponsors show={!Conference.HideSponsors} sponsors={SponsorData} />

@@ -7,7 +7,8 @@ import {Moment, Duration} from 'moment';
 // Generic Countdown Timer UI component
 // https://github.com/uken/react-countdown-timer
 // https://github.com/uken/react-countdown-timer/blob/master/LICENSE
-// Modifications: Updated the output to convert to TS and make a HOC.
+// Modifications: Updated the output to convert to TS, made a HOC and added strftime.
+// The strftime code is from https://github.com/hilios/jQuery.countdown.
 
 interface CountdownTimerArgs {
   countdownTo: Moment,
@@ -209,6 +210,10 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
 
     render() {
       var timeRemaining = this.state.timeRemaining;
+
+      if (timeRemaining.duration.asMilliseconds() <= 0) {
+        return null;
+      }
 
       return <WrappedComponent timeRemaining={timeRemaining} {...this.props} />;
     }
