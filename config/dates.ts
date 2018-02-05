@@ -1,11 +1,10 @@
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import Conference from './conference';
-import {Dates as IDates} from './types';
+import {Dates as IDates, Conference} from './types';
 
-const Dates : IDates = {
-  Display : Conference.HideDate ? "TBA" : `${Conference.Date.format("ddd do MMM YYYY")}`,
-  IsComplete : moment(new Date()) > Conference.Date.add(1, 'd')
+export default function getConferenceDates(conference : Conference) : IDates {
+  return {
+    Display : conference.HideDate ? "TBA" : `${conference.Date.format("ddd do MMM YYYY")}`,
+    IsComplete : moment(new Date()) > conference.Date.add(1, 'd')
+  };
 }
-
-export default Dates;
