@@ -1,8 +1,8 @@
 import * as React from "react";
 import Countdown from "./countdown";
 import { Conference, Dates } from "../config/types";
-import { Link } from "react-bootstrap/lib/Navbar";
 import { Fragment } from "react";
+import Link from 'next/link';
 
 export interface EventDetailsProps {
   conference : Conference,
@@ -38,8 +38,8 @@ export default ({conference, dates} : EventDetailsProps) =>
             <p><span>Cost</span>{conference.TicketPrice}</p>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">
-              {/*todo: Change read more button to primary action?*/}
-              <Link href={conference.DetailsLandingPage}>
+            {/*todo: Change read more button to primary action?*/}
+            <Link href={conference.DetailsLandingPage}>
               <a className="btn">Read More</a>
             </Link>
           </div>
