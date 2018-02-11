@@ -10,6 +10,7 @@ export interface Conference {
   GoogleAnalyticsId : string;
   Venue : string|null;
   TicketPrice : string;
+  DetailsLandingPage : string;
 
   HideDate : boolean;
   HideSponsors : boolean;
@@ -23,7 +24,8 @@ export interface Conference {
 export interface Dates {
   Display : string;
   IsComplete : boolean;
-  IntervalToEvent : number;
+  IsInProgress : boolean;
+  HasNotStarted : boolean;
 }
 
 export interface Socials {

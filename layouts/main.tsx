@@ -8,7 +8,7 @@ import * as analytics from '../components/global/analytics';
 import * as PropTypes from 'prop-types';
 import Conference from '../config/conference';
 import Menu from '../config/menu';
-import Dates from '../config/dates';
+import getConferenceDates from '../config/dates';
 
 interface MainArgs {
   isHome? : boolean;
@@ -37,10 +37,11 @@ class Main extends React.Component<MainArgs> {
   }
 
   render() {
+    const dates = getConferenceDates(Conference);
     return <Fragment>
-      <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} conference={Conference} dates={Dates} />
+      <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} conference={Conference} dates={dates} />
       <Nav pagePath={this.context.pagePath} menu={Menu.Top} />
-      <Header isHome={this.props.isHome} conference={Conference} dates={Dates} />
+      <Header isHome={this.props.isHome} conference={Conference} dates={dates} />
       { this.props.children }
       <Footer menu={Menu.Footer} socials={Conference.Socials} conference={Conference} />
     </Fragment>;
