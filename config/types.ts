@@ -35,6 +35,12 @@ export interface Conference {
   ImageStrip : string[]
 }
 
+export interface ImportantDate {
+  Name : string;
+  Date : Moment;
+  Description : string;
+}
+
 export interface Dates {
   Display : string;
   DateDisplayFormat : string;
@@ -43,6 +49,7 @@ export interface Dates {
   IsInProgress : boolean;
   HasNotStarted : boolean;
   RegistrationOpen : boolean;
+  ImportantDates : ImportantDate[];
 }
 
 export interface Socials {

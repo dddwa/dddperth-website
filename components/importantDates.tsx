@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Conference } from "../config/types";
+import getConferenceDates from '../config/dates';
 
 export interface ImportantDatesProps {
   conference : Conference
@@ -11,7 +12,17 @@ export default ({conference} : ImportantDatesProps) =>
       <h2>Important Dates:</h2>
 
       {/*todo: Add dates and get the same in withSidebar*/}
+      {getConferenceDates(conference).ImportantDates.map(importantDate => {
+        return <div className="imp-date content done"><span className="ico-done"></span>
+        <h3>Friday <strong>May 19</strong></h3>
+        <p>
+          <strong>09:00</strong>
+          {importantDate.Description}
+        </p>
+        </div>
+      })}
 
+      
       <div className="clear"></div>
 
       <div className="what-now">
