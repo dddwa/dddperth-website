@@ -63,12 +63,12 @@ hr {border-top: 3px solid #dcdcdc;}
 }
 
 // Sprite
-ul.accordion a.toggleAccordion:after,
+.accordion .panel-heading a:after,
 .slick-vertical .slick-next,
 .slick-vertical .slick-prev,
 .blog-list-post .blog-date:before,
 .blog-list-post .blog-date:after
-{background-image: url('../images/sprite.png')!important}
+{background-image: url('/static/images/sprite.png')!important}
 
 
 // Modals
@@ -507,9 +507,13 @@ section.full-width {
 
 
 // Accordions
-ul.accordion {
-  li:before {display: none}
-  a.toggleAccordion {
+.accordion {
+  .panel, .panel-heading, .panel-body {
+    padding: 0;
+    border: 0!important;
+    @include border-radius(0);
+  }
+  .panel-heading a {
     display: block;
     position:relative;
     padding: 13px 15px;
@@ -517,23 +521,23 @@ ul.accordion {
     background: $light-grey;
     color: $body-color;
     &:hover, &:visited, &:link, &:active {text-decoration: none}
+    &:after {content: ""; display: block; position: absolute; right: 0; top: 0; width: 52px; height: 52px; background-position: 0 -42px; }
+    &.collapsed:after {background-position: -52px -42px}
   }
-  a.toggleAccordion:after {content: ""; display: block; position: absolute; right: 0; top: 0; width: 52px; height: 52px; background-position: -52px -42px}
-  a.toggleAccordion.active:after {background-position: 0 -42px}
-  .inner {
+  .panel-body {
     overflow: hidden;
-        max-height: 0;
+    max-height: 0;
     margin-bottom: 10px;
     padding: 0px 15px;
     background: $light-grey;
     @include transition(max-height 0.5s cubic-bezier(0, 1, 0, 1));
-    &.show {
-          max-height: 9999px;
-      @include transition(max-height 1s ease-in-out);
-        }
   }
-
+  .in .panel-body {
+    max-height: 9999px;
+    @include transition(max-height 1s ease-in-out);
+  }
 }
+
 .slick-vertical .slick-slide {border-left: 0!important; border-top: 0!important; border-bottom: 0!important}
 
 .slick-vertical .slick-next, .slick-vertical .slick-prev {border: 0; width: 31px; height: 42px; text-align:center; text-indent: -9999px; overflow: hidden; background-color: transparent; position: absolute; bottom: -45px; left: 50%; margin-left: -15px; z-index: 999}
