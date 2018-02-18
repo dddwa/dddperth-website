@@ -3,7 +3,7 @@ import {Moment} from 'moment';
 import {Socials, SponsorType, Sponsor, Conference as IConference} from './types';
 
 const name = "DDD Perth";
-const date = moment('2018-02-04T23:40+08:00');
+const date = moment('2018-05-04T23:40+08:00');
 const tagLine = `${name} is an inclusive non-profit event for the Perth software community`;
 const venue = "Perth Convention and Exhibition Centre";
 const wifiDetails = "PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.";
@@ -24,6 +24,13 @@ const Conference : IConference = {
   DetailsLandingPage: "/about",
   IsSoldOut: false,
   HashTag : "dddperth",
+  SellingPoints: [
+    "One day",
+    "Fully catered",
+    "Inclusive atmosphere",
+    "Interesting presentations",
+    "Awesome people"
+  ],
 
   ContactEmail : "info@dddperth.com",
   SponsorshipEmail : "sponsorship@dddperth.com",

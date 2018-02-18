@@ -38,7 +38,7 @@ export default ({conference, dates} : EventDetailsProps) =>
             <p><span>Cost</span>{conference.TicketPrice}</p>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">
-            {/*todo: Change read more button to primary action?*/}
+            {/*todo: Change read more button to primary action and change nextEvent.tsx?*/}
             <Link href={conference.DetailsLandingPage}>
               <a className="btn">Read More</a>
             </Link>

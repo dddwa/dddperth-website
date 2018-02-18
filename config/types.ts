@@ -15,6 +15,7 @@ export interface Conference {
   DetailsLandingPage : string;
   IsSoldOut : boolean;
   HashTag : string;
+  SellingPoints : string[];
 
   ContactEmail : string;
   SponsorshipEmail : string;

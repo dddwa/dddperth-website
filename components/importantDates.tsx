@@ -10,7 +10,7 @@ export default ({conference} : ImportantDatesProps) =>
     <div className="container">
       <h2>Important Dates:</h2>
 
-      {/*todo: Add dates*/}
+      {/*todo: Add dates and get the same in withSidebar*/}
 
       <div className="clear"></div>
 

@@ -10,7 +10,7 @@ import Conference from '../config/conference';
 import Menu from '../config/menu';
 import getConferenceDates from '../config/dates';
 
-interface MainArgs {
+export interface MainArgs {
   isHome? : boolean;
   title : string;
   description? : string;

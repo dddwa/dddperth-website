@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Fragment} from 'react';
-import Page from '../layouts/main';
+import Page from '../layouts/withSidebar';
 import {withPageMetadata} from '../components/global/withPageMetadata';
 import Link from 'next/link'
 import Conference from '../config/conference';
