@@ -1,6 +1,6 @@
 import Main, {MainArgs} from "./main";
 import { StatelessComponent } from "react";
-import NextEvent from "../components/nextEvent";
+import EventDetailsSummary from "../components/eventDetailsSummary";
 import Conference from "../config/conference";
 import ImportantDates from "../components/importantDates";
 
@@ -16,7 +16,7 @@ const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}
           </div>
           <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4 right-col">
             <div className="inner">
-              <NextEvent conference={Conference} />
+              <EventDetailsSummary conference={Conference} />
               <h3>Important Dates</h3>
               <div className="important-dates-right slick">
                 {/*todo: Add dates - pre-req is importantDates.tsx*/}
