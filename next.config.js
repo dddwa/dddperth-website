@@ -1,9 +1,12 @@
 const path = require('path')
 const glob = require('glob')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const { ANALYZE } = process.env
+const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const withTypescript = require('@zeit/next-typescript')
 
-module.exports = {
+module.exports = withTypescript(withBundleAnalyzer({
+  analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
@@ -34,13 +37,6 @@ module.exports = {
         ]
       }
     )
-    if (ANALYZE) {
-      config.plugins.push(new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerPort: 8888,
-        openAnalyzer: true
-      }))
-    }
     return config
   },
   exportPathMap: function () {
@@ -48,4 +44,4 @@ module.exports = {
       '/': { page: '/' }
     }
   }
-}
+}));
