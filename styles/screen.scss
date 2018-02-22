@@ -283,7 +283,7 @@ h2+.event-details {
 
 
   .imp-date:before,
-  .imp-date:after {content: ""; display: block; width: 20px; height: 28px; background: url('../images/cal-top-mob.png') 0 0 no-repeat; position: absolute; top: 0; @include transform(translateY(-50%))}
+  .imp-date:after {content: ""; display: block; width: 20px; height: 28px; background: url('/static/images/cal-top-mob.png') 0 0 no-repeat; position: absolute; top: 0; @include transform(translateY(-50%))}
     .imp-date:before {left: 30px}
     .imp-date:after {right: 30px}
 
@@ -308,28 +308,6 @@ section.image-strip {
 // Sponsors
 section.sponsors {padding-bottom: 20px}
   section.sponsors.standard {background: #f7f7f7; padding: 26px 0}
-
-// DDD By Night
-section.ddd-by-night {
-  height: 250px;
-  position: relative;
-  z-index: 1;
-  background: url('../images/ddd-by-night/back.jpg') 0 0 no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  .content {
-    position: relative;
-    top: 50%;
-    @include transform(translateY(-50%));
-    color: #fff;
-    font-weight: $bold;
-    img {margin-left: -30px; max-width: 200px!important}
-    p {font-size: 120%; margin-top: 0}
-    .btn {background: url('../images/white-30pc.png')}
-    .btn:after {color: #fff}
-      .btn:hover {background: url('../images/white-40pc.png')}
-  }
-}
 
 // Footer
 footer {
@@ -1146,7 +1124,7 @@ section.full-width {
     }
   }
   .imp-date:before,
-  .imp-date:after {width: 40px; height: 58px; background: url('../images/cal-top.png') 0 0 no-repeat}
+  .imp-date:after {width: 40px; height: 58px; background: url('/static/images/cal-top.png') 0 0 no-repeat}
     .imp-date:before {left: 27px}
     .imp-date:after {right: 27px}
 

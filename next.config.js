@@ -1,46 +1,12 @@
-const path = require('path')
-const glob = require('glob')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const { ANALYZE } = process.env
+const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const withTypescript = require('@zeit/next-typescript');
+const withSass = require('@zeit/next-sass');
 
-module.exports = {
+module.exports = withSass(withTypescript(withBundleAnalyzer({
+  analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   webpack: (config, { dev }) => {
-    config.module.rules.push(
-      {
-        test: /\.(css|scss)/,
-        loader: 'emit-file-loader',
-        options: {
-          name: 'dist/[path][name].[ext]'
-        }
-      }
-    ,
-      {
-        test: /\.css$/,
-        use: ['babel-loader', 'raw-loader', 'postcss-loader']
-      }
-    ,
-      {
-        test: /\.s(a|c)ss$/,
-        use: ['babel-loader', 'raw-loader', 'postcss-loader',
-          { loader: 'sass-loader',
-            options: {
-              includePaths: ['styles', 'node_modules']
-                .map((d) => path.join(__dirname, d))
-                .map((g) => glob.sync(g))
-                .reduce((a, c) => a.concat(c), []),
-              minimize: true
-            }
-          }
-        ]
-      }
-    )
-    if (ANALYZE) {
-      config.plugins.push(new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerPort: 8888,
-        openAnalyzer: true
-      }))
-    }
     return config
   },
   exportPathMap: function () {
@@ -48,4 +14,4 @@ module.exports = {
       '/': { page: '/' }
     }
   }
-}
+})));

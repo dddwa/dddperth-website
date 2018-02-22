@@ -16,8 +16,8 @@ export const withPageMetadata = <TOriginalProps extends {}>(WrappedComponent: Re
   return class PageWithMetadata extends React.Component<ResultProps> {
     static displayName = `PageWithMetadata(${WrappedComponent.displayName || WrappedComponent.name})`;
 
-    private pageUrl : string | null;
-    private pagePath : string | null;
+    private pageUrl : string | null = null;
+    private pagePath : string | null = null;
 
     constructor(props: ResultProps) {
         super(props);

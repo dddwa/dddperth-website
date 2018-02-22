@@ -1,7 +1,7 @@
 import * as React from'react';
 import Head from 'next/head';
 import { Fragment, StatelessComponent } from 'react';
-const stylesheet = require('styles/screen.scss');
+import '../../styles/screen.scss';
 import { Conference, Dates } from '../../config/types';
 
 interface MetaArgs {
@@ -45,7 +45,7 @@ const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, pageDescriptio
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"  />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
-      <style type="text/css" dangerouslySetInnerHTML={{ __html: stylesheet }}></style>
+      <link rel="stylesheet" href="/_next/static/style.css" />
     </Head>
   </Fragment>;
 
