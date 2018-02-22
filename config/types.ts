@@ -2,19 +2,33 @@ import { Moment } from "moment";
 
 export interface Conference {
   Name : string;
+  Instance : string;
   Organiser : string;
   TagLine : string;
   SiteDescription : string;
-  Date : Moment;
   Goal : string;
   GoogleAnalyticsId : string;
   Venue : string|null;
+  WifiDetails : string|null;
+  AfterpartyVenue : string|null;
   TicketPrice : string;
   DetailsLandingPage : string;
+  IsSoldOut : boolean;
+  HashTag : string;
+  SellingPoints : string[];
+
+  ContactEmail : string;
+  SponsorshipEmail : string;
+
+  Date : Moment;
+  DoorsOpenTime : string;
+  FinishTime : string;
+  RegistrationOpenFrom : Moment;
 
   HideDate : boolean;
   HideSponsors : boolean;
   HideVenue : boolean;
+  HideAfterpartyVenue : boolean;
 
   Socials : Socials;
 
@@ -23,9 +37,12 @@ export interface Conference {
 
 export interface Dates {
   Display : string;
+  DateDisplayFormat : string;
+  TimeDisplayFormat : string;
   IsComplete : boolean;
   IsInProgress : boolean;
   HasNotStarted : boolean;
+  RegistrationOpen : boolean;
 }
 
 export interface Socials {
@@ -60,4 +77,10 @@ export interface Sponsor {
 export interface MenuItem {
   href : string,
   name : string
+}
+
+export interface FAQ {
+  Question: string;
+  Answer?: string|JSX.Element;
+  AnswerWithoutParagraph?: JSX.Element;
 }

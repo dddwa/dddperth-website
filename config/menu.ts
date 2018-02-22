@@ -10,6 +10,10 @@ export default class Menu {
       href: "/about",
       name: "About"
     },
+    {
+      href: "/faq",
+      name: "FAQs"
+    }
   ];
   static Footer : MenuItem[] = [
     {
