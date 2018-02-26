@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Conference } from "../config/types";
+import isPast from "./utils/isPast";
+import ImportantDatesList from "./importantDatesList";
 
 export interface ImportantDatesProps {
   conference : Conference
@@ -10,7 +12,7 @@ export default ({conference} : ImportantDatesProps) =>
     <div className="container">
       <h2>Important Dates:</h2>
 
-      {/*todo: Add dates and get the same in withSidebar*/}
+      <ImportantDatesList conference={conference} />
 
       <div className="clear"></div>
 

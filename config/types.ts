@@ -32,7 +32,15 @@ export interface Conference {
 
   Socials : Socials;
 
-  ImageStrip : string[]
+  ImageStrip : string[];
+
+  ImportantDates : ImportantDate[];
+}
+
+export interface ImportantDate {
+  Description : string;
+  Date : Moment;
+  Type : string;
 }
 
 export interface Dates {
