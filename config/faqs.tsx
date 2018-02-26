@@ -58,9 +58,13 @@ Faqs.push({
         ? <Fragment>
           The conference is now sold out.
         </Fragment>
-        : <Fragment>
-          Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
-        </Fragment>
+        : dates.RegistrationClosed
+          ? <Fragment>
+            Ticket sales have closed.
+          </Fragment>
+          : <Fragment>
+            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+          </Fragment>
     }
   </Fragment>
 });

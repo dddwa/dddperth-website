@@ -24,6 +24,12 @@ export interface Conference {
   DoorsOpenTime : string;
   FinishTime : string;
   RegistrationOpenFrom : Moment;
+  RegistrationOpenUntil : Moment | null;
+  PresentationSubmissionsOpenFrom : Moment;
+  PresentationSubmissionsOpenUntil : Moment;
+  VotingOpenFrom : Moment;
+  VotingOpenUntil : Moment;
+  AgendaPublishedFrom : Moment;
 
   HideDate : boolean;
   HideSponsors : boolean;
@@ -51,6 +57,10 @@ export interface Dates {
   IsInProgress : boolean;
   HasNotStarted : boolean;
   RegistrationOpen : boolean;
+  RegistrationClosed : boolean;
+  AcceptingPresentations : boolean;
+  VotingOpen : boolean;
+  AgendaPublished : boolean;
 }
 
 export interface Socials {

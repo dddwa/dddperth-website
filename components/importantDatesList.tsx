@@ -19,4 +19,11 @@ export default ({conference} : ImportantDatesListProps) =>
         </p>
       </div>
     })}
+    {conference.HideDate && <div className="imp-date content conference">
+        <h3>TBA <strong>&nbsp;</strong></h3>
+        <p>
+          <strong>&nbsp;</strong>
+          Conference day
+        </p>
+      </div>}
   </Fragment>;

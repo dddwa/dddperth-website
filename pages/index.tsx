@@ -24,9 +24,10 @@ class Index extends React.Component<IndexProps> {
   }
 
   render() {
+    const dates = getConferenceDates(Conference);
     return <Page isHome={true} title="Home">
-      <EventDetails conference={Conference} dates={getConferenceDates(Conference)} />
-      <ImportantDates conference={Conference} />
+      <EventDetails conference={Conference} dates={dates} />
+      <ImportantDates conference={Conference} dates={dates} />
       <ImageStrip images={this.props.imageStrip} conferenceName={Conference.Name} />
       <Sponsors show={!Conference.HideSponsors} sponsors={SponsorData} />
     </Page>;
