@@ -10,7 +10,7 @@ const afterpartyVenue = "@Liberty Cafe & Bar";
 
 const hideDate = false;
 const date = moment('2018-08-04T08:00+08:00');
-const registrationOpenFrom = moment('2018-06-08T08:00:00+08:00');
+const registrationOpenFrom = moment('2018-03-08T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const importantDates = [
   {Description: "Call for presentations open", Date: moment("2018-02-08T08:00:00+08:00"), Type: "content"},
@@ -26,7 +26,7 @@ if (registrationOpenUntil !== null) {
 }
 
 if (!hideDate) {
-  importantDates.push({Description: "Conference day", Date: date, Type: ""});
+  importantDates.push({Description: "Conference day", Date: date, Type: "conference"});
 }
 
 const Conference : IConference = {

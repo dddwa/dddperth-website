@@ -2,7 +2,7 @@ import Main, {MainArgs} from "./main";
 import { StatelessComponent } from "react";
 import EventDetailsSummary from "../components/eventDetailsSummary";
 import Conference from "../config/conference";
-import ImportantDates from "../components/importantDates";
+import ImportantDatesList from "../components/importantDatesList";
 
 interface WithSidebarProps extends MainArgs {}
 
@@ -19,7 +19,7 @@ const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}
               <EventDetailsSummary conference={Conference} />
               <h3>Important Dates</h3>
               <div className="important-dates-right slick">
-                {/*todo: Add dates - pre-req is importantDates.tsx*/}
+                <ImportantDatesList conference={Conference} />
               </div>
             </div>
           </div>

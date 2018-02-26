@@ -292,6 +292,7 @@ h2+.event-details {
     .imp-date.voting {border-color: $voting}
     .imp-date.tickets {border-color: $tickets}
     .imp-date.agenda {border-color: $agenda}
+    .imp-date.conference {border-color: $primary-color}
 
 // Strip of Photos
 section.image-strip {
@@ -413,7 +414,7 @@ section.right-sidebar {
             font-weight: 400;
           }
           strong:after {
-            content: "-"; display: inline-block; margin: 0 0 0 6px;
+            content: "-"; display: inline-block; margin: 0 6px;
           }
         }
         .ico-done {
