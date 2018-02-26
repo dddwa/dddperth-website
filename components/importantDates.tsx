@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Conference } from "../config/types";
-import getConferenceDates from '../config/dates';
+import isPast from "./utils/isPast";
 
 export interface ImportantDatesProps {
   conference : Conference
@@ -11,18 +11,17 @@ export default ({conference} : ImportantDatesProps) =>
     <div className="container">
       <h2>Important Dates:</h2>
 
-      {/*todo: Add dates and get the same in withSidebar*/}
-      {getConferenceDates(conference).ImportantDates.map(importantDate => {
-        return <div className="imp-date content done"><span className="ico-done"></span>
-        <h3>Friday <strong>May 19</strong></h3>
-        <p>
-          <strong>09:00</strong>
-          {importantDate.Description}
-        </p>
+      {conference.ImportantDates.map(importantDate => {
+        return <div key={importantDate.Description} className={"imp-date content" + (isPast(importantDate.Date) ? " done" : "") + " " + importantDate.Type}>
+          {isPast(importantDate.Date) && <span className="ico-done"></span>}
+          <h3>{importantDate.Date.format("dddd")} <strong>{importantDate.Date.format("MMM")} {importantDate.Date.format("D")}</strong></h3>
+          <p>
+            <strong>{importantDate.Date.format("hh:mma")}</strong>
+            {importantDate.Description}
+          </p>
         </div>
       })}
 
-      
       <div className="clear"></div>
 
       <div className="what-now">

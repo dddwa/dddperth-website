@@ -32,13 +32,15 @@ export interface Conference {
 
   Socials : Socials;
 
-  ImageStrip : string[]
+  ImageStrip : string[];
+
+  ImportantDates : ImportantDate[];
 }
 
 export interface ImportantDate {
-  Name : string;
-  Date : Moment;
   Description : string;
+  Date : Moment;
+  Type : string;
 }
 
 export interface Dates {
@@ -49,7 +51,6 @@ export interface Dates {
   IsInProgress : boolean;
   HasNotStarted : boolean;
   RegistrationOpen : boolean;
-  ImportantDates : ImportantDate[];
 }
 
 export interface Socials {

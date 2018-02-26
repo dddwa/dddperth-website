@@ -1,13 +1,33 @@
-import * as moment from 'moment';
-import {Moment} from 'moment';
-import {Socials, SponsorType, Sponsor, Conference as IConference} from './types';
+import * as moment from "moment";
+import {Conference as IConference} from "./types";
+import {orderBy} from "../components/utils/arraySort";
 
 const name = "DDD Perth";
-const date = moment('2018-05-04T23:40+08:00');
 const tagLine = `${name} is an inclusive non-profit event for the Perth software community`;
 const venue = "Perth Convention and Exhibition Centre";
 const wifiDetails = "PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.";
 const afterpartyVenue = "@Liberty Cafe & Bar";
+
+const hideDate = false;
+const date = moment('2018-08-04T08:00+08:00');
+const registrationOpenFrom = moment('2018-06-08T08:00:00+08:00');
+const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
+const importantDates = [
+  {Description: "Call for presentations open", Date: moment("2018-02-08T08:00:00+08:00"), Type: "content"},
+  {Description: "Call for presentations close", Date: moment("2018-05-08T23:59:59+08:00"), Type: "content"},
+  {Description: "Ticket sales open", Date: registrationOpenFrom, Type: "tickets"},
+  {Description: "Voting open", Date: moment("2018-05-15T08:00:00+08:00"), Type: "voting"},
+  {Description: "Voting close", Date: moment("2018-05-25T23:59:59+08:00"), Type: "voting"},
+  {Description: "Agenda published", Date: moment("2018-06-01T08:00:00+08:00"), Type: "agenda"}
+];
+
+if (registrationOpenUntil !== null) {
+  importantDates.push({Description: "Ticket sales close", Date: registrationOpenUntil, Type: "tickets"});
+}
+
+if (!hideDate) {
+  importantDates.push({Description: "Conference day", Date: date, Type: ""});
+}
 
 const Conference : IConference = {
   Name : name,
@@ -38,9 +58,9 @@ const Conference : IConference = {
   Date : date,
   DoorsOpenTime : "8:10am",
   FinishTime : "5:10pm",
-  RegistrationOpenFrom : moment('2018-06-08T08:00:00+08:00'),
+  RegistrationOpenFrom : registrationOpenFrom,
 
-  HideDate : false,
+  HideDate : hideDate,
   HideSponsors : false,
   HideVenue : venue === null,
   HideAfterpartyVenue : afterpartyVenue === null,
@@ -62,6 +82,8 @@ const Conference : IConference = {
     "/static/images/strip/4.jpg",
     "/static/images/strip/5.jpg",
   ],
+
+  ImportantDates : orderBy(importantDates, i => i.Date)
 }
 
 export default Conference;
