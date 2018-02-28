@@ -30,4 +30,13 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
   * `/pages` - The pages themselves, these turn into URLs as per Next.js convention
   * `/static` - Static assets
   * `/styles` - Stylesheets
-  
+
+## Re-purposing for another conference
+
+To re-purpose for another conference:
+
+1. Update the files in the `config` directory
+2. Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
+3. Update the images in the `static` directory and sub directories
+
+If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
