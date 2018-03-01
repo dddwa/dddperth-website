@@ -10,15 +10,20 @@ const afterpartyVenue = "@Liberty Cafe & Bar";
 
 const hideDate = false;
 const date = moment('2018-08-04T08:00+08:00');
-const registrationOpenFrom = moment('2018-03-08T08:00:00+08:00');
+const registrationOpenFrom = moment('2018-02-08T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
+const presentationSubmissionsOpenFrom = moment("2018-02-08T08:00:00+08:00");
+const presentationSubmissionsOpenUntil = moment("2018-05-08T23:59:59+08:00");
+const votingOpenFrom = moment("2018-02-15T08:00:00+08:00");
+const votingOpenUntil = moment("2018-05-25T23:59:59+08:00");
+const agendaPublishedFrom = moment("2018-06-01T08:00:00+08:00");
 const importantDates = [
-  {Description: "Call for presentations open", Date: moment("2018-02-08T08:00:00+08:00"), Type: "content"},
-  {Description: "Call for presentations close", Date: moment("2018-05-08T23:59:59+08:00"), Type: "content"},
+  {Description: "Call for presentations open", Date: presentationSubmissionsOpenFrom, Type: "content"},
+  {Description: "Call for presentations close", Date: presentationSubmissionsOpenUntil, Type: "content"},
   {Description: "Ticket sales open", Date: registrationOpenFrom, Type: "tickets"},
-  {Description: "Voting open", Date: moment("2018-05-15T08:00:00+08:00"), Type: "voting"},
-  {Description: "Voting close", Date: moment("2018-05-25T23:59:59+08:00"), Type: "voting"},
-  {Description: "Agenda published", Date: moment("2018-06-01T08:00:00+08:00"), Type: "agenda"}
+  {Description: "Voting open", Date: votingOpenFrom, Type: "voting"},
+  {Description: "Voting close", Date: votingOpenUntil, Type: "voting"},
+  {Description: "Agenda published", Date: agendaPublishedFrom, Type: "agenda"}
 ];
 
 if (registrationOpenUntil !== null) {
@@ -59,6 +64,12 @@ const Conference : IConference = {
   DoorsOpenTime : "8:10am",
   FinishTime : "5:10pm",
   RegistrationOpenFrom : registrationOpenFrom,
+  RegistrationOpenUntil : registrationOpenUntil,
+  PresentationSubmissionsOpenFrom : presentationSubmissionsOpenFrom,
+  PresentationSubmissionsOpenUntil : presentationSubmissionsOpenUntil,
+  VotingOpenFrom : votingOpenFrom,
+  VotingOpenUntil : votingOpenUntil,
+  AgendaPublishedFrom : agendaPublishedFrom,
 
   HideDate : hideDate,
   HideSponsors : false,

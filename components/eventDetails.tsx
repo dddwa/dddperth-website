@@ -18,18 +18,18 @@ export default ({conference, dates} : EventDetailsProps) =>
       {dates.IsComplete && <Fragment>
         <h2>Previous event</h2>
       </Fragment>}
-      {dates.HasNotStarted && <Fragment>
+      {dates.HasNotStarted && !conference.HideDate && <Fragment>
         <h2>Countdown to Next Event:</h2>
         <Countdown countdownTo={conference.Date} interval={1000} />
         <hr />
       </Fragment>}
 
       <div className="event-details">
-        <div className="row">
+        {!conference.HideVenue && <div className="row">
           <div className="col-xs-12">
             <p><span>Venue</span>{conference.Venue}</p>
           </div>
-        </div>
+        </div>}
         <div className="row">
           <div className="col-xs-12 col-sm-5 col-md-4">
             <p><span>Date</span>{dates.IsComplete ? <s>{dates.Display}</s> : <Fragment>{dates.Display}</Fragment>}</p>
