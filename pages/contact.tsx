@@ -4,7 +4,7 @@ import {withPageMetadata} from '../components/global/withPageMetadata';
 import Conference from '../config/conference';
 
 export default withPageMetadata(() =>
-  <Page title="Contact Us" description="How to contact DDD Perth.">
+  <Page title="Contact Us" description={"How to contact " + Conference.Name + "."}>
     <h1>Contact Us</h1>
     <ul>
       <li><strong>General enquiries:</strong> <a href={"mailto:" + Conference.ContactEmail}>{Conference.ContactEmail}</a></li>

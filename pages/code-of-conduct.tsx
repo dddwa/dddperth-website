@@ -4,7 +4,7 @@ import {withPageMetadata} from '../components/global/withPageMetadata';
 import Conference from '../config/conference';
 
 export default withPageMetadata(() =>
-  <Page title="Code of Conduct" description="Code of Conduct for DDD Perth.">
+  <Page title="Code of Conduct" description={"Code of Conduct for "+ Conference.Name +"."}>
     <h1>Code of Conduct</h1>
 
     <p>All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code of conduct. We are expecting cooperation from all participants to help ensuring a safe, welcoming and inclusive environment for everybody.</p>

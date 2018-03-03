@@ -6,7 +6,6 @@ import arrayShuffle from '../components/utils/arrayShuffle';
 import Conference from '../config/conference';
 import Sponsors from '../components/sponsors';
 import SponsorData from '../config/sponsors';
-import { StatelessComponent } from 'react';
 import EventDetails from '../components/eventDetails';
 import ImportantDates from '../components/importantDates';
 import getConferenceDates from '../config/dates';

@@ -19,7 +19,7 @@ class VenuePage extends React.Component {
     if (Conference.HideVenue) {
       return <Error statusCode={404} />;
     }
-    return <Page title="Venue" description="About the DDD Perth venue." hideBanner={true}>
+    return <Page title="Venue" description={"About the " + Conference.Name + " venue."} hideBanner={true}>
       <div className="container">
         <h1>Venue</h1>
         <p>{Conference.Name} will be held at {Conference.Venue.Name} at <a href={"https://www.google.com.au/maps/place/"+encodeURIComponent(Conference.Venue.Name + ", " + Conference.Venue.Address)} target="_blank">{Conference.Venue.Address}</a>.</p>
