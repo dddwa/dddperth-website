@@ -43,6 +43,7 @@ const Conference : IConference = {
   Goal : "Our goal is to create an approachable conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at conferences.",
   GoogleAnalyticsId : "UA-60040308-1",
   Venue : venue,
+  VenueAddress : "21 Mounts Bay Rd, Perth",
   WifiDetails : wifiDetails,
   AfterpartyVenue : afterpartyVenue,
   TicketPrice : "$50",
@@ -59,6 +60,7 @@ const Conference : IConference = {
 
   ContactEmail : "info@dddperth.com",
   SponsorshipEmail : "sponsorship@dddperth.com",
+  EmergencyPhoneNumber : "0400 777 763",
 
   Date : date,
   DoorsOpenTime : "8:10am",

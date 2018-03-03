@@ -587,6 +587,7 @@ section.full-width {
     background: $primary-color;
     color: #fff;
     margin: 0 0 16px 0;
+    width: 100%;
     .top {
       background: darken($primary-color, 10%); padding: 0; overflow: hidden;
       i {font-size: 300%; display: inline-block; margin-top: 20px}
@@ -756,6 +757,14 @@ section.full-width {
   + .submitted-session {
     margin-top: 220px;
   }
+}
+
+.equal-heights {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
@@ -1569,3 +1578,5 @@ section.full-width {
   }
 
 }
+
+

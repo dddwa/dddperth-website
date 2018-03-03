@@ -9,6 +9,7 @@ export interface Conference {
   Goal : string;
   GoogleAnalyticsId : string;
   Venue : string|null;
+  VenueAddress : string|null;
   WifiDetails : string|null;
   AfterpartyVenue : string|null;
   TicketPrice : string;
@@ -19,6 +20,7 @@ export interface Conference {
 
   ContactEmail : string;
   SponsorshipEmail : string;
+  EmergencyPhoneNumber : string;
 
   Date : Moment;
   DoorsOpenTime : string;
