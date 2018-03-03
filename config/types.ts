@@ -9,6 +9,7 @@ export interface Conference {
   Goal : string;
   GoogleAnalyticsId : string;
   TicketPrice : string;
+  EventbriteId : string;
   DetailsLandingPage : string;
   IsSoldOut : boolean;
   HashTag : string;
