@@ -11,8 +11,8 @@ if (!Conference.HideDate) {
   Faqs.push(
     {
       Question: "When and where is it?",
-      Answer: `The event ${dates.IsComplete ? "was" : "will be"} held on ${dates.Display}${Conference.HideVenue ? "" : " at " + Conference.Venue}.
-        Doors ${dates.IsComplete ? "opened" : "will open"} at ${Conference.DoorsOpenTime} and ${dates.IsComplete ? "we finished" : "we'll finish"} at ${Conference.FinishTime} followed by the afterparty${Conference.HideAfterpartyVenue ? "" : " at " + Conference.AfterpartyVenue}.`
+      Answer: `The event ${dates.IsComplete ? "was" : "will be"} held on ${dates.Display}${Conference.HideVenue ? "" : " at " + Conference.Venue.Name}.
+        Doors ${dates.IsComplete ? "opened" : "will open"} at ${Conference.DoorsOpenTime} and ${dates.IsComplete ? "we finished" : "we'll finish"} at ${Conference.FinishTime} followed by the afterparty${Conference.HideAfterpartyVenue ? "" : " at " + Conference.Venue.Afterparty}.`
     }
   );
 }
@@ -39,11 +39,11 @@ Faqs.push({
   Answer: "Yes, attendees will receive showbags with goodies. We typically prioritise the overall experience over mountains of swag though."
 });
 
-if (Conference.WifiDetails !== null)
+if (Conference.Venue && Conference.Venue.Wifi !== null)
 {
   Faqs.push({
     Question: "Will there be wifi?",
-    Answer: Conference.WifiDetails
+    Answer: Conference.Venue.Wifi
   });
 }
 

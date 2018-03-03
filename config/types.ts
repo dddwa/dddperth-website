@@ -8,15 +8,13 @@ export interface Conference {
   SiteDescription : string;
   Goal : string;
   GoogleAnalyticsId : string;
-  Venue : string|null;
-  VenueAddress : string|null;
-  WifiDetails : string|null;
-  AfterpartyVenue : string|null;
   TicketPrice : string;
   DetailsLandingPage : string;
   IsSoldOut : boolean;
   HashTag : string;
   SellingPoints : string[];
+
+  Venue : Venue;
 
   ContactEmail : string;
   SponsorshipEmail : string;
@@ -43,6 +41,19 @@ export interface Conference {
   ImageStrip : string[];
 
   ImportantDates : ImportantDate[];
+}
+
+export interface Venue {
+  Name : string;
+  Address : string;
+  Wifi : string|null;
+  Afterparty : string|null;
+  AfterpartyAddress : string|null;
+  Accommodation? : JSX.Element|string;
+  Car? : JSX.Element|string;
+  Train? : JSX.Element|string;
+  Bus? : JSX.Element|string;
+  Tram? : JSX.Element|string;
 }
 
 export interface ImportantDate {

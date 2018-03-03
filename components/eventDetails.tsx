@@ -27,7 +27,7 @@ export default ({conference, dates} : EventDetailsProps) =>
       <div className="event-details">
         {!conference.HideVenue && <div className="row">
           <div className="col-xs-12">
-            <p><span>Venue</span>{conference.Venue}</p>
+            <p><span>Venue</span>{conference.Venue.Name}</p>
           </div>
         </div>}
         <div className="row">
