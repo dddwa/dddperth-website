@@ -5,11 +5,12 @@ import Link from "next/link";
 
 interface HeaderArgs {
   isHome? : boolean;
+  hideBanner? : boolean;
   conference : Conference;
   dates : Dates;
 }
 
-const Header : StatelessComponent<HeaderArgs> = ({isHome, conference, dates}) =>
+const Header : StatelessComponent<HeaderArgs> = ({isHome, hideBanner, conference, dates}) =>
   <Fragment>
     <header>
       <div className="logo">
@@ -28,7 +29,7 @@ const Header : StatelessComponent<HeaderArgs> = ({isHome, conference, dates}) =>
       </section>
     </Fragment>}
 
-    {!isHome && <section className="banner">
+    {!isHome && !hideBanner && <section className="banner">
     </section>}
   </Fragment>;
 

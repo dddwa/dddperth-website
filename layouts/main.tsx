@@ -12,6 +12,7 @@ import getConferenceDates from '../config/dates';
 
 export interface MainArgs {
   isHome? : boolean;
+  hideBanner? : boolean;
   title : string;
   description? : string;
   image? : string;
@@ -41,7 +42,7 @@ class Main extends React.Component<MainArgs> {
     return <Fragment>
       <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} conference={Conference} dates={dates} />
       <Nav pagePath={this.context.pagePath} menu={Menu.Top} />
-      <Header isHome={this.props.isHome} conference={Conference} dates={dates} />
+      <Header isHome={this.props.isHome} hideBanner={this.props.hideBanner} conference={Conference} dates={dates} />
       { this.props.children }
       <Footer menu={Menu.Footer} socials={Conference.Socials} conference={Conference} />
     </Fragment>;

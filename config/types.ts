@@ -46,6 +46,8 @@ export interface Conference {
 export interface Venue {
   Name : string;
   Address : string;
+  Latitude: number;
+  Longitude: number;
   Wifi : string|null;
   Afterparty : string|null;
   AfterpartyAddress : string|null;

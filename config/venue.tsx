@@ -5,6 +5,8 @@ import * as React from "react";
 const venue : Venue = {
   Name: "Perth Convention and Exhibition Centre",
   Address: "21 Mounts Bay Rd, Perth",
+  Latitude: -31.9565004,
+  Longitude: 115.853,
   Afterparty: "@Liberty Cafe & Bar",
   AfterpartyAddress: "21 Mounts Bay Rd, Perth",
   Wifi: "PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.",

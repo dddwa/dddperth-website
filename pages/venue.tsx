@@ -3,6 +3,7 @@ import Page from '../layouts/main';
 import {withPageMetadata} from '../components/global/withPageMetadata';
 import Conference from '../config/conference';
 import Error from 'next/error';
+import GoogleMapReact from "google-map-react";
 
 class VenuePage extends React.Component {
   static getInitialProps({ res }) {
@@ -11,14 +12,33 @@ class VenuePage extends React.Component {
     }
     return {};
   }
+  handleGoogleMapApi(google : any) {
+    google.map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+  }
   render() {
     if (Conference.HideVenue) {
       return <Error statusCode={404} />;
     }
-    return <Page title="Venue" description="About the DDD Perth venue.">
+    return <Page title="Venue" description="About the DDD Perth venue." hideBanner={true}>
       <div className="container">
         <h1>Venue</h1>
         <p>{Conference.Name} will be held at {Conference.Venue.Name} at <a href={"https://www.google.com.au/maps/place/"+encodeURIComponent(Conference.Venue.Name + ", " + Conference.Venue.Address)} target="_blank">{Conference.Venue.Address}</a>.</p>
+      </div>
+      <div id="map">
+        <div id="map-view">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyACDtKFE3lyOOmHpMeUoJsYqaVY2fcaa9o" }}
+          options={{scrollwheel: false, panControl: false, mapTypeControl: false, minZoomOverride: false}}
+          center={{lat: Conference.Venue.Latitude, lng: Conference.Venue.Longitude}}
+          zoom={17}
+          yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={this.handleGoogleMapApi.bind(this)}
+        />
+        </div>
+        <div id="map-overlay">
+          <h3>{Conference.Venue.Name}</h3>
+          <h4>{Conference.Venue.Address}</h4>
+        </div>
       </div>
       <section className="right-sidebar" id="travelinfo">
         <div className="container directions equal-heights">

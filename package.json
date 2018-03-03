@@ -13,6 +13,7 @@
     "analyze": "cross-env BUNDLE_ANALYZE=both next build"
   },
   "dependencies": {
+    "google-map-react": "^0.32.0",
     "moment": "^2.20.1",
     "next": "^5.0.1-canary.8",
     "prop-types": "^15.6.0",
@@ -22,6 +23,7 @@
     "react-ga": "^2.4.1"
   },
   "devDependencies": {
+    "@types/google-map-react": "^0.23.2",
     "@types/moment": "^2.13.0",
     "@types/next": "^2.4.8",
     "@types/prop-types": "^15.5.2",
