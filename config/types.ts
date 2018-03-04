@@ -10,7 +10,6 @@ export interface Conference {
   GoogleAnalyticsId : string;
   TicketPrice : string;
   EventbriteId : string;
-  DetailsLandingPage : string;
   IsSoldOut : boolean;
   HashTag : string;
   SellingPoints : string[];
@@ -122,4 +121,10 @@ export interface FAQ {
   Answer?: string|JSX.Element;
   AnswerWithoutParagraph?: JSX.Element;
   Category?: string;
+}
+
+export interface Action {
+  Title : string;
+  Url : string;
+  Category : string;
 }

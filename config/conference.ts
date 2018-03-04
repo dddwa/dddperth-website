@@ -44,7 +44,6 @@ const Conference : IConference = {
   GoogleAnalyticsId : "UA-60040308-1",
   TicketPrice : "$50",
   EventbriteId : "34127818223",
-  DetailsLandingPage: "/about",
   IsSoldOut: false,
   HashTag : "dddperth",
   SellingPoints: [

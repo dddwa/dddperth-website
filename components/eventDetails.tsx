@@ -1,15 +1,16 @@
 import * as React from "react";
 import Countdown from "./countdown";
-import { Conference, Dates } from "../config/types";
+import { Conference, Dates, Action } from "../config/types";
 import { Fragment } from "react";
-import Link from 'next/link';
+import ActionButton from "./actionButton";
 
 export interface EventDetailsProps {
   conference : Conference,
-  dates : Dates
+  dates : Dates,
+  primaryAction : Action
 };
 
-export default ({conference, dates} : EventDetailsProps) =>
+export default ({conference, dates, primaryAction} : EventDetailsProps) =>
   <section className="countdown grey">
     <div className="container">
       {dates.IsInProgress && <Fragment>
@@ -38,10 +39,7 @@ export default ({conference, dates} : EventDetailsProps) =>
             <p><span>Cost</span>{conference.TicketPrice}</p>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">
-            {/*todo: Change read more button to primary action and change nextEvent.tsx?*/}
-            <Link href={conference.DetailsLandingPage}>
-              <a className="btn">Read More</a>
-            </Link>
+            <ActionButton action={primaryAction} />
           </div>
         </div>
       </div>
