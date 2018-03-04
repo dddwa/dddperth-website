@@ -14,6 +14,7 @@ export interface Conference {
   IsSoldOut : boolean;
   HashTag : string;
   SellingPoints : string[];
+  Handbook : string|null;
 
   Venue : Venue;
 
@@ -31,6 +32,8 @@ export interface Conference {
   VotingOpenFrom : Moment;
   VotingOpenUntil : Moment;
   AgendaPublishedFrom : Moment;
+  FeedbackOpenFrom : Moment;
+  FeedbackOpenUntil : Moment;
 
   HideDate : boolean;
   HideSponsors : boolean;
@@ -77,6 +80,7 @@ export interface Dates {
   AcceptingPresentations : boolean;
   VotingOpen : boolean;
   AgendaPublished : boolean;
+  AcceptingFeedback : boolean;
 }
 
 export interface Socials {
@@ -117,4 +121,5 @@ export interface FAQ {
   Question: string;
   Answer?: string|JSX.Element;
   AnswerWithoutParagraph?: JSX.Element;
+  Category?: string;
 }

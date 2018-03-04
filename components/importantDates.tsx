@@ -22,20 +22,11 @@ export default ({conference, dates} : ImportantDatesProps) =>
 
         {dates.AcceptingPresentations && <Link href="/cfp"><a className="btn content">Submit presentation</a></Link>}
         {dates.VotingOpen && <Link href="/vote"><a className="btn voting">Vote for agenda</a></Link>}
-        {dates.RegistrationOpen && <Link href="/tickets"><a className="btn book">Purchase a ticket</a></Link>}
-        {!dates.AgendaPublished && <Link href="/agenda"><a className="btn book">Previous agenda</a></Link>}
-        {dates.AgendaPublished && <Link href="/agenda"><a className="btn book">{dates.IsComplete ? `${conference.Instance} agenda` : "View the agenda"}</a></Link>}
-        {/*
-            @if (Conference.AcceptingFeedback)
-            {
-                @Html.ActionLink("Feedback", "Index", "Feedback", null, new { @class = "button" })
-            }
-            @Html.ActionLink("Code of conduct", "CodeOfConduct", "Main", null, new { @class = "button secondary" })
-            @if (!string.IsNullOrEmpty(Conference.Handbook))
-            {
-                @:<a href="/@Conference.Handbook" class="button">Conference Handbook</a>
-            }
-        */}
+        {dates.RegistrationOpen && <Link href="/tickets"><a className="btn tickets">Purchase a ticket</a></Link>}
+        {!dates.AgendaPublished && <Link href="/agenda"><a className="btn agenda">Previous agenda</a></Link>}
+        {dates.AgendaPublished && <Link href="/agenda"><a className="btn agenda">{dates.IsComplete ? `${conference.Instance} agenda` : "View the agenda"}</a></Link>}
+        {conference.Handbook && <a href={"/static/docs/" + conference.Handbook} className="btn conference" target="_blank">Download handbook</a>}
+        {dates.AcceptingFeedback && <Link href="/feedback"><a className="btn conference">Give feedback</a></Link>}
       </div>
     </div>
   </section>;

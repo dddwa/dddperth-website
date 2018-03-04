@@ -35,14 +35,14 @@ hr {border-top: 3px solid #dcdcdc;}
   .btn.back:after {float: left; margin: 0 15px 0 -5px; @include transform(rotateY(180deg))}
 
   // Button Colours
-  .btn.session, .btn.remove-vote {background-color: $call-content}
-    .btn.session:hover, .btn.remove-vote:hover {background-color: darken($call-content, 5%)}
+  .btn.content, .btn.remove-vote {background-color: $call-content}
+    .btn.content:hover, .btn.remove-vote:hover {background-color: darken($call-content, 5%)}
 
-  .btn.vote {background-color: $voting}
-    .btn.vote:hover {background-color: darken($voting, 5%)}
+  .btn.voting {background-color: $voting}
+    .btn.voting:hover {background-color: darken($voting, 5%)}
 
-  .btn.book, .btn.add-vote {background-color: $tickets}
-    .btn.book:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
+  .btn.tickets, .btn.add-vote {background-color: $tickets}
+    .btn.tickets:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
 
   .btn.agenda {background-color: $agenda}
     .btn.agenda:hover {background-color: darken($agenda, 5%)}

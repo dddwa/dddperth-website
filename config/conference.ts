@@ -15,6 +15,8 @@ const presentationSubmissionsOpenUntil = moment("2018-05-08T23:59:59+08:00");
 const votingOpenFrom = moment("2018-02-15T08:00:00+08:00");
 const votingOpenUntil = moment("2018-05-25T23:59:59+08:00");
 const agendaPublishedFrom = moment("2018-06-01T08:00:00+08:00");
+const feedbackOpenFrom = date.clone();
+const feedbackOpenUntil = date.clone().add(12, "h");
 const importantDates = [
   {Description: "Call for presentations open", Date: presentationSubmissionsOpenFrom, Type: "content"},
   {Description: "Call for presentations close", Date: presentationSubmissionsOpenUntil, Type: "content"},
@@ -52,6 +54,7 @@ const Conference : IConference = {
     "Interesting presentations",
     "Awesome people"
   ],
+  Handbook : "handbook2017.pdf",
 
   ContactEmail : "info@dddperth.com",
   SponsorshipEmail : "sponsorship@dddperth.com",
@@ -67,6 +70,8 @@ const Conference : IConference = {
   VotingOpenFrom : votingOpenFrom,
   VotingOpenUntil : votingOpenUntil,
   AgendaPublishedFrom : agendaPublishedFrom,
+  FeedbackOpenFrom : feedbackOpenFrom,
+  FeedbackOpenUntil : feedbackOpenUntil,
 
   HideDate : hideDate,
   HideSponsors : false,
