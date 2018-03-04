@@ -8,6 +8,8 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false;
 const date = moment('2018-08-04T08:00+08:00');
+const currentInstance = parseInt(date.format("YYYY"));
+const firstInstance = 2015;
 const registrationOpenFrom = moment('2018-02-08T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const presentationSubmissionsOpenFrom = moment("2018-02-08T08:00:00+08:00");
@@ -36,7 +38,9 @@ if (!hideDate) {
 
 const Conference : IConference = {
   Name : name,
-  Instance : date.format("YYYY"),
+  Instance : currentInstance.toString(),
+  PreviousInstance : (currentInstance - 1).toString(),
+  PreviousInstances : [... Array(currentInstance - firstInstance).keys()].map((_,i) => (firstInstance + i).toString()),
   Organiser : "DDD WA Inc.",
   TagLine : tagLine,
   SiteDescription : `${tagLine}.`,

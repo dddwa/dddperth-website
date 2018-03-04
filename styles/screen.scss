@@ -823,6 +823,104 @@ section.full-width {
   }
 }
 
+// Agenda
+
+.session {
+  cursor: pointer;
+}
+
+.dark-green {
+  background-color: $primary-color;
+  padding: 3px;
+}
+
+.green {
+  background-color: $aqua-room;
+  color: #000;
+  padding: 3px;
+}
+
+.light-green {
+  background-color: $blue-room;
+  color: #000;
+  padding: 3px;
+}
+
+tr td.highlight-session {
+  background: #00a2ff;
+  color: #fff;
+}
+
+.agenda-row {
+  padding: 1em 0 7em 0;
+}
+
+.agenda-row h2 {
+  color: #333;
+  font-family: "Lato";
+  font-weight: 900;
+  font-size: 1.75em;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2.5em 0 0.5em 0;
+}
+
+.agenda-row table {
+  width: 100%;
+}
+
+.agenda-row th {
+  background: #333;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.agenda-row th strong {
+  display: block;
+  font-size: 1.25em;
+  font-weight: 800;
+  margin-bottom: 0.3em;
+}
+
+.agenda-row .breadth-row td {
+  background: #F9F9F9;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.agenda-row .breadth-row.keynote td, .agenda-row .breadth-row td.session {
+  background: #FFF;
+}
+
+.agenda-row .breadth {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.agenda-row .breadth em {
+  font-weight: 400;
+}
+
+.agenda-row td {
+  background: #FFF;
+  width: 33%;
+  border: 1px solid #DDD;
+  line-height: 1.5;
+}
+
+.agenda-row tbody tr {
+}
+
+.agenda-row .time {
+  color: #888;
+  width: 85px;
+}
+
 
 
 @media only screen and (min-width: 360px) {
