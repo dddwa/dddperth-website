@@ -38,5 +38,6 @@ To re-purpose for another conference:
 1. Update the files in the `config` directory
 2. Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
 3. Update the images in the `static` directory and sub directories
+4. Update `pages/about.tsx`
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
