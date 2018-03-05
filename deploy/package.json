@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "google-map-react": "^0.32.0",
     "moment": "^2.20.1",
     "next": "^5.0.1-canary.8",
     "prop-types": "^15.6.0",

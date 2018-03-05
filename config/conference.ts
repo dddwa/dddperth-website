@@ -1,12 +1,10 @@
 import * as moment from "moment";
 import {Conference as IConference} from "./types";
 import {orderBy} from "../components/utils/arraySort";
+import venue from "./venue";
 
 const name = "DDD Perth";
 const tagLine = `${name} is an inclusive non-profit event for the Perth software community`;
-const venue = "Perth Convention and Exhibition Centre";
-const wifiDetails = "PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.";
-const afterpartyVenue = "@Liberty Cafe & Bar";
 
 const hideDate = false;
 const date = moment('2018-08-04T08:00+08:00');
@@ -42,10 +40,8 @@ const Conference : IConference = {
   SiteDescription : `${tagLine}.`,
   Goal : "Our goal is to create an approachable conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at conferences.",
   GoogleAnalyticsId : "UA-60040308-1",
-  Venue : venue,
-  WifiDetails : wifiDetails,
-  AfterpartyVenue : afterpartyVenue,
   TicketPrice : "$50",
+  EventbriteId : "34127818223",
   DetailsLandingPage: "/about",
   IsSoldOut: false,
   HashTag : "dddperth",
@@ -59,6 +55,7 @@ const Conference : IConference = {
 
   ContactEmail : "info@dddperth.com",
   SponsorshipEmail : "sponsorship@dddperth.com",
+  EmergencyPhoneNumber : "0400 777 763",
 
   Date : date,
   DoorsOpenTime : "8:10am",
@@ -74,7 +71,9 @@ const Conference : IConference = {
   HideDate : hideDate,
   HideSponsors : false,
   HideVenue : venue === null,
-  HideAfterpartyVenue : afterpartyVenue === null,
+  HideAfterpartyVenue : venue === null || venue.Afterparty === null,
+
+  Venue: venue,
 
   Socials: {
     Twitter: "DDDPerth",

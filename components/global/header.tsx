@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { StatelessComponent, Fragment } from 'react';
 import { Conference, Dates } from '../../config/types';
+import Link from "next/link";
 
 interface HeaderArgs {
   isHome? : boolean;
+  hideBanner? : boolean;
   conference : Conference;
   dates : Dates;
 }
 
-const Header : StatelessComponent<HeaderArgs> = ({isHome, conference, dates}) =>
+const Header : StatelessComponent<HeaderArgs> = ({isHome, hideBanner, conference, dates}) =>
   <Fragment>
     <header>
       <div className="logo">
@@ -22,12 +24,12 @@ const Header : StatelessComponent<HeaderArgs> = ({isHome, conference, dates}) =>
 
       <section className="intro">
           <div className="container">
-          <h1>{conference.TagLine}{!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br /><br />{conference.Goal}</h1>
+          <h1>{conference.TagLine}{!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br /><br />{conference.Goal} See our <Link href="/code-of-conduct"><a>Code of Conduct</a></Link>.</h1>
           </div>
       </section>
     </Fragment>}
 
-    {!isHome && <section className="banner">
+    {!isHome && !hideBanner && <section className="banner">
     </section>}
   </Fragment>;
 
