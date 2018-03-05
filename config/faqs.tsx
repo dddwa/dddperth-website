@@ -21,7 +21,8 @@ Faqs.push({
   Question: "How much does it cost to attend?",
   Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
     We are able to keep the ticket price so low thanks to our generous sponsors.
-    ${Conference.Name} is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`
+    ${Conference.Name} is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
+  Category: "tickets"
 });
 
 Faqs.push({
@@ -52,7 +53,7 @@ Faqs.push({
   Answer: <Fragment>
     {dates.RegistrationOpen
       ? <Fragment>
-        Now! Go to <a href="@Conference.RegisterLink">@Conference.RegisterLink</a> to register.
+        Now! Go to <a href="/tickets">the tickets page</a> to register.
       </Fragment>
       : Conference.IsSoldOut
         ? <Fragment>
@@ -72,15 +73,17 @@ Faqs.push({
 Faqs.push({
   Question: "Can I pay by cheque, invoice, cash, Coinye West?",
   Answer: <Fragment>
-    Payments can be made with credit card via our Eventbrite page when registrations are open. Companies that want to buy bulk tickets (> 5) can <a href={"mailto:" + Conference.ContactEmail}>contact us</a> to pay by invoice (EFT or credit card).
-  </Fragment>
+    Payments can be made with credit card using Eventbrite via our tickets page when registrations are open. Companies that want to buy bulk tickets (> 5) can <a href={"mailto:" + Conference.ContactEmail}>contact us</a> to pay by invoice (EFT or credit card).
+  </Fragment>,
+  Category: "tickets"
 });
 
 Faqs.push({
   Question: "Can I cancel/give my ticket to someone else?",
   Answer: <Fragment>
     You are welcome to send someone else in your place. Please do this through <a href="https://www.eventbrite.com/support/articles/en_US/How_To/how-to-update-your-ticket-registration-information" target="_blank">Eventbrite</a>.
-  </Fragment>
+  </Fragment>,
+  Category: "tickets"
 });
 
 Faqs.push({
