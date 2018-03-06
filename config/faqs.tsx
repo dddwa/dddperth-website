@@ -161,6 +161,7 @@ Faqs.push({
       <li><a href="https://twitter.com/zia_marjan" target="_blank">Marjan Zia Khodadadian</a></li>
       <li><a href="https://twitter.com/aidanjmorgan" target="_blank">Aidan Morgan</a></li>
       <li><a href="https://twitter.com/andrealchagas" target="_blank">Andrea Chagas</a></li>
+      <li><a href="https://twitter.com/deekob" target="_blank">Derek bingham</a></li>
     </ul>
     <p>Furthermore, we have many others who volunteer and have assisted with organisation in the past.</p>
   </Fragment>
