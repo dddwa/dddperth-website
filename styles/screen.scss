@@ -896,13 +896,13 @@ tr td.highlight-session {
   background: #FFF;
 }
 
-.agenda-row .breadth {
+.agenda-row .breadth, .agenda-row .keynote, .agenda-row .locknote {
   text-align: center;
   font-size: 1.1em;
   font-weight: 600;
 }
 
-.agenda-row .breadth em {
+.agenda-row .breadth em, .agenda-row .keynote em, .agenda-row .locknote em {
   font-weight: 400;
 }
 
