@@ -92,6 +92,6 @@ const Sponsors : Sponsor[] = [
     imageUrl: "/static/images/sponsors/seq.png",
     url: "https://www.getseq.net/"
   }
-]
+];
 
 export default Sponsors;

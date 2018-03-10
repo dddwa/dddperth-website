@@ -28,7 +28,7 @@ class AgendaPage extends React.Component {
     return <Page title="Agenda" hideBanner={true} description={Conference.Name + " agenda."}>
       <h1>{dates.IsComplete && Conference.Instance} Agenda</h1>
 
-
+      <p>The agenda has not yet been finalised.</p>
     </Page>;
   }
 }
