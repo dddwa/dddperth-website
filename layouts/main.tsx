@@ -26,7 +26,8 @@ class Main extends React.Component<MainArgs> {
 
   static contextTypes = {
     pageUrl : PropTypes.string,
-    pagePath : PropTypes.string
+    pagePath : PropTypes.string,
+    instrumentationKey : PropTypes.string,
   }
 
   componentDidMount () {
@@ -40,7 +41,7 @@ class Main extends React.Component<MainArgs> {
   render() {
     const dates = getConferenceDates(Conference);
     return <Fragment>
-      <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} pageDescription={this.props.description} pageImage={this.props.image} conference={Conference} dates={dates} />
+      <Meta pageUrl={this.context.pageUrl} pageTitle={this.props.title} instrumentationKey={this.context.instrumentationKey} pageDescription={this.props.description} pageImage={this.props.image} conference={Conference} dates={dates} />
       <Nav pagePath={this.context.pagePath} menu={Menu.Top} />
       <Header isHome={this.props.isHome} hideBanner={this.props.hideBanner} conference={Conference} dates={dates} />
       { this.props.children }

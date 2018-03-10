@@ -1,5 +1,8 @@
 import * as ReactGA from 'react-ga';
-import Conference from '../../config/conference';
+
+declare global {
+  interface Window { appInsights: any; }
+}
 
 export const init = (googleAnalyticsId : string) => {
   ReactGA.initialize(googleAnalyticsId);
@@ -8,16 +11,25 @@ export const init = (googleAnalyticsId : string) => {
 export const logPageView = () => {
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);
+  if (window.appInsights) {
+    window.appInsights.trackPageView();
+  }
 }
 
 export const logEvent = (category = '', action = '') => {
   if (category && action) {
     ReactGA.event({ category, action });
+    if (window.appInsights) {
+      window.appInsights.trackEvent(category + ":" + action, { category, action });
+    }
   }
 }
 
 export const logException = (description = '', fatal = false) => {
   if (description) {
     ReactGA.exception({ description, fatal });
+    if (window.appInsights) {
+      window.appInsights.trackEvent("Exception:" + description, { description, fatal });
+    }
   }
 }
