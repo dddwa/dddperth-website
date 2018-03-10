@@ -4,14 +4,16 @@ import {orderBy} from "../components/utils/arraySort";
 import venue from "./venue";
 
 const name = "DDD Perth";
-const tagLine = `${name} is an inclusive non-profit event for the Perth software community`;
+const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`;
 
 const hideDate = false;
 const date = moment('2018-08-04T08:00+08:00');
+const currentInstance = parseInt(date.format("YYYY"));
+const firstInstance = 2015;
 const registrationOpenFrom = moment('2018-02-08T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const presentationSubmissionsOpenFrom = moment("2018-02-08T08:00:00+08:00");
-const presentationSubmissionsOpenUntil = moment("2018-05-08T23:59:59+08:00");
+const presentationSubmissionsOpenUntil = moment("2018-03-08T23:59:59+08:00");
 const votingOpenFrom = moment("2018-02-15T08:00:00+08:00");
 const votingOpenUntil = moment("2018-05-25T23:59:59+08:00");
 const agendaPublishedFrom = moment("2018-06-01T08:00:00+08:00");
@@ -36,7 +38,9 @@ if (!hideDate) {
 
 const Conference : IConference = {
   Name : name,
-  Instance : date.format("YYYY"),
+  Instance : currentInstance.toString(),
+  PreviousInstance : (currentInstance - 1).toString(),
+  PreviousInstances : [... Array(currentInstance - firstInstance).keys()].map((_,i) => (firstInstance + i).toString()),
   Organiser : "DDD WA Inc.",
   TagLine : tagLine,
   SiteDescription : `${tagLine}.`,
@@ -87,6 +91,7 @@ const Conference : IConference = {
     Blog: "https://blog.dddperth.com/",
     Email: "info@dddperth.com",
     MailingList: "http://eepurl.com/cRvaSf",
+    GitHub: "dddwa"
   },
 
   ImageStrip : [

@@ -19,7 +19,7 @@ export default ({conference, actions} : ImportantDatesProps) =>
 
       <div className="what-now">
         <h2>What now?</h2>
-        {actions.map(a => <ActionButton action={a} />)}
+        {actions.map(a => <ActionButton action={a} key={a.Title} />)}
       </div>
     </div>
   </section>;

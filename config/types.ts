@@ -3,6 +3,8 @@ import { Moment } from "moment";
 export interface Conference {
   Name : string;
   Instance : string;
+  PreviousInstance : string;
+  PreviousInstances : string[];
   Organiser : string;
   TagLine : string;
   SiteDescription : string;
