@@ -13,5 +13,6 @@ module.exports = withSass(withTypescript(withBundleAnalyzer({
     return {
       '/': { page: '/' }
     }
-  }
+  },
+  poweredByHeader: false
 })));

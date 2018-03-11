@@ -1,3 +1,7 @@
+const appInsights = require("applicationinsights")
+appInsights.setup()
+appInsights.start()
+
 const express = require('express')
 const next = require('next')
 
@@ -9,6 +13,9 @@ const handle = app.getRequestHandler()
 app.prepare()
 .then(() => {
   const server = express()
+
+  server.disable('x-powered-by')
+  server.disable('server')
 
   server.get('*', (req, res) => {
     return handle(req, res)
