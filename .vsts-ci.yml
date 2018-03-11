@@ -1,0 +1,57 @@
+resources:
+- repo: self
+queue:
+  name: Hosted VS2017
+  demands:
+  - npm
+  - yarn
+
+steps:
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
+  displayName: Install Yarn
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: Install npm packages for app build
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: Conditionally install npm packages for app deploy
+  inputs:
+    ProjectDirectory: deploy
+  condition: and(succeeded(), ne(variables['includeServerCode'], 'false'))
+
+- task: Npm@1
+  displayName: Build
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run build'
+
+- task: CopyFiles@2
+  displayName: Copy build files to artifacts staging directory
+  inputs:
+    Contents: |
+     .next/**/*
+     static/**/*
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+
+- task: CopyFiles@2
+  displayName: Copy deploy files to artifacts staging directory
+  inputs:
+    SourceFolder: deploy
+    Contents: '**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: ArchiveFiles@2
+  displayName: Archive files
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifact
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    ArtifactName: drop
+    ArtifactType: Container
