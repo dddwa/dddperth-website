@@ -18,9 +18,9 @@ export default withPageMetadata(() =>
     <p>DDD Perth was founded in 2015 by <a href="https://www.twitter.com/robdmoore" target="_blank">Rob Moore</a> and <a href="https://www.twitter.com/mdaviesnet" target="_blank">Matt Davies</a> and <a href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">since 2018 it has been run by DDD WA Inc.</a></p>
     <p>DDD Perth has been held at the following dates:</p>
     <ul>
-      <li>29 August 2015 - 100 attendees</li>
-      <li>27 August 2016 - 180 attendees (190 tickets sold)</li>
-      <li>16 September 2017 - 330 attendees (360 tickets sold)</li>
+      <li><Link href="/agenda/2015"><a>29 August 2015 - 100 attendees</a></Link></li>
+      <li><Link href="/agenda/2016"><a>27 August 2016 - 180 attendees (190 tickets sold)</a></Link></li>
+      <li><Link href="/agenda/2017"><a>16 September 2017 - 330 attendees (360 tickets sold)</a></Link></li>
     </ul>
     <h2>What is Developer! Developer! Developer!?</h2>
     <p>Developer! Developer! Developer! started in 2005 in the United Kingdom as a community conference organised by software developers for software developers. <a href="https://en.wikipedia.org/wiki/Developer!_Developer!_Developer!" target="_blank">It's since spread all over the UK and Australia</a>.</p>
