@@ -13,7 +13,7 @@ const firstInstance = 2015;
 const registrationOpenFrom = moment('2018-02-08T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const presentationSubmissionsOpenFrom = moment("2018-02-08T08:00:00+08:00");
-const presentationSubmissionsOpenUntil = moment("2018-03-08T23:59:59+08:00");
+const presentationSubmissionsOpenUntil = moment("2018-03-15T23:59:59+08:00");
 const votingOpenFrom = moment("2018-02-15T08:00:00+08:00");
 const votingOpenUntil = moment("2018-05-25T23:59:59+08:00");
 const agendaPublishedFrom = moment("2018-06-01T08:00:00+08:00");
@@ -58,9 +58,12 @@ const Conference : IConference = {
     "Awesome people"
   ],
   Handbook : "handbook2017.pdf",
+  SessionizeUrl : "https://sessionize.com/demo-91ce3752/",
+  PreviouslySubmittedTopics : "Agile, building great teams, UI design, software testing, virtual reality, open source software, bots, IoT, machine learning, automated deployments, mobile development, architecture, microservices, APIs, actors, JavaScript, authentication, React, UWP, HTTP protocol, Git, Docker and pointers",
 
   ContactEmail : "info@dddperth.com",
   SponsorshipEmail : "sponsorship@dddperth.com",
+  MentoringEmail : "mentors@dddperth.com",
   EmergencyPhoneNumber : "0400 777 763",
 
   Date : date,
