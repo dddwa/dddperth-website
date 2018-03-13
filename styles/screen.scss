@@ -41,8 +41,8 @@ hr {border-top: 3px solid #dcdcdc;}
   .btn.voting {background-color: $voting}
     .btn.voting:hover {background-color: darken($voting, 5%)}
 
-  .btn.tickets, .btn.add-vote {background-color: $tickets}
-    .btn.tickets:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
+  .btn.tickets, .btn-secondary, .btn.add-vote {background-color: $tickets}
+    .btn.tickets:hover, .btn-secondary:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
 
   .btn.agenda {background-color: $agenda}
     .btn.agenda:hover {background-color: darken($agenda, 5%)}

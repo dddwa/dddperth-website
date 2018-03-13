@@ -38,6 +38,6 @@ To re-purpose for another conference:
 1. Update the files in the `config` directory
 2. Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
 3. Update the images in the `static` directory and sub directories
-4. Update `pages/about.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
+4. Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.

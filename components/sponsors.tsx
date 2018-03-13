@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StatelessComponent, Fragment } from 'react';
 import { Sponsor, SponsorType } from '../config/types';
+import Link from "next/link";
 
 interface SponsorsProps {
   sponsors : Sponsor[];
@@ -57,6 +58,9 @@ const Sponsors : StatelessComponent<SponsorsProps> = ({sponsors, show}) => (show
           )}
         </Fragment>
       ) : null}
+
+      <p>If you'd like to explore sponsorship opportunities, please check out our <Link href="/sponsorship"><a>sponsorship page</a></Link> for more information.</p>
+
     </section>
 
     {sponsors.find(s => s.type === SponsorType.Standard) ? (
