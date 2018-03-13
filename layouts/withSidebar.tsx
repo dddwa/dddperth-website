@@ -1,4 +1,5 @@
 import Main, {MainArgs} from "./main";
+import * as PropTypes from "prop-types";
 import { StatelessComponent } from "react";
 import EventDetailsSummary from "../components/eventDetailsSummary";
 import Conference from "../config/conference";
@@ -8,7 +9,7 @@ import getConferenceDates from "../config/dates";
 
 interface WithSidebarProps extends MainArgs {}
 
-const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}) =>
+const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}, context) =>
   <Main {...props}>
     <section className="right-sidebar">
       <div className="container">
@@ -18,7 +19,7 @@ const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}
           </div>
           <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4 right-col">
             <div className="inner">
-              <EventDetailsSummary conference={Conference} primaryAction={getConferenceActions(Conference, getConferenceDates(Conference))[0]} />
+              <EventDetailsSummary conference={Conference} primaryAction={getConferenceActions(Conference, getConferenceDates(Conference))[0]} pagePath={context.pagePath} />
               <h3>Important Dates</h3>
               <div className="important-dates-right slick">
                 <ImportantDatesList conference={Conference} />
@@ -29,5 +30,9 @@ const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}
       </div>
     </section>
   </Main>;
+
+WithSidebar.contextTypes = {
+  pagePath : PropTypes.string
+};
 
 export default WithSidebar;

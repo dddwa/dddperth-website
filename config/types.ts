@@ -16,11 +16,14 @@ export interface Conference {
   HashTag : string;
   SellingPoints : string[];
   Handbook : string|null;
+  SessionizeUrl : string|null;
+  PreviouslySubmittedTopics : string;
 
   Venue : Venue;
 
   ContactEmail : string;
   SponsorshipEmail : string;
+  MentoringEmail : string;
   EmergencyPhoneNumber : string;
 
   Date : Moment;
