@@ -189,9 +189,14 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
           </tr>
       </tbody>
     </table>
+    <h2>Handbook</h2>
+    <p><a href={From2017.HandbookUrl} className="btn">Download 2017 handbook</a></p>
     <h2>Media</h2>
-    <iframe width="560" height="315" src={From2017.YouTubeKeynoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block", marginRight: "20px"}}></iframe>
-    <iframe width="560" height="315" src={From2017.YouTubeLocknoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block"}}></iframe>
+
+    <div className="text-center">
+      <div className="responsive-video"><iframe width="560" height="315" src={From2017.YouTubeKeynoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block", marginRight: "20px"}}></iframe></div>
+      <div className="responsive-video"><iframe width="560" height="315" src={From2017.YouTubeLocknoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block"}}></iframe></div>
+    </div>
     <p><a href={From2017.YouTubePlaylistUrl} target="_blank">YouTube Playlist</a> | <a href={From2017.FlickrAlbumUrl} target="_blank">Flickr Album</a></p>
     <Sponsors show={true} sponsors={From2017.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)} />
     </Fragment>;

@@ -14,6 +14,7 @@ export default withPageMetadata(() =>
       <li>Having a democratically chosen agenda</li>
       <li>Focussing on creating a safe and inclusive environment where everyone is welcome</li>
     </ul>
+    <p className="text-center"><img src="/static/images/logo.png" alt="DDD Perth logo" style={{width: "250px"}} /></p>
     <p>DDD standards for Developer! Developer! Developer! and while it's heritage is a developer-focussed conference, DDD Perth is not just for developers, but for all professionals in the software industry.</p>
     <p>DDD Perth was founded in 2015 by <a href="https://www.twitter.com/robdmoore" target="_blank">Rob Moore</a> and <a href="https://www.twitter.com/mdaviesnet" target="_blank">Matt Davies</a> and <a href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">since 2018 it has been run by DDD WA Inc.</a></p>
     <p>DDD Perth has been held at the following dates:</p>

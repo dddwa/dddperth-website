@@ -10,6 +10,10 @@ const topMenu : MenuItem[] = [
   {
     href: "/about",
     name: "About"
+  },
+  {
+    href: "/sponsorship",
+    name: "Sponsorship"
   }
 ];
 

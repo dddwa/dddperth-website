@@ -7,16 +7,17 @@ const name = "DDD Perth";
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`;
 
 const hideDate = false;
+const isSoldOut = false;
 const date = moment('2018-08-04T08:00+08:00');
 const currentInstance = parseInt(date.format("YYYY"));
 const firstInstance = 2015;
-const registrationOpenFrom = moment('2018-02-08T08:00:00+08:00');
+const registrationOpenFrom = moment('2018-04-30T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
-const presentationSubmissionsOpenFrom = moment("2018-02-08T08:00:00+08:00");
-const presentationSubmissionsOpenUntil = moment("2018-03-15T23:59:59+08:00");
-const votingOpenFrom = moment("2018-02-15T08:00:00+08:00");
-const votingOpenUntil = moment("2018-05-25T23:59:59+08:00");
-const agendaPublishedFrom = moment("2018-06-01T08:00:00+08:00");
+const presentationSubmissionsOpenFrom = moment("2018-04-30T08:00:00+08:00");
+const presentationSubmissionsOpenUntil = moment("2018-06-03T23:59:59+08:00");
+const votingOpenFrom = moment("2018-06-06T08:00:00+08:00");
+const votingOpenUntil = moment("2018-06-14T23:59:59+08:00");
+const agendaPublishedFrom = moment("2018-06-25T08:00:00+08:00");
 const feedbackOpenFrom = date.clone();
 const feedbackOpenUntil = date.clone().add(12, "h");
 const importantDates = [
@@ -28,7 +29,7 @@ const importantDates = [
   {Description: "Agenda published", Date: agendaPublishedFrom, Type: "agenda"}
 ];
 
-if (registrationOpenUntil !== null) {
+if (registrationOpenUntil !== null && !isSoldOut) {
   importantDates.push({Description: "Ticket sales close", Date: registrationOpenUntil, Type: "tickets"});
 }
 
@@ -48,7 +49,7 @@ const Conference : IConference = {
   GoogleAnalyticsId : "UA-60040308-1",
   TicketPrice : "$50",
   EventbriteId : "34127818223",
-  IsSoldOut: false,
+  IsSoldOut: isSoldOut,
   HashTag : "dddperth",
   SellingPoints: [
     "One day",
@@ -57,7 +58,7 @@ const Conference : IConference = {
     "Interesting presentations",
     "Awesome people"
   ],
-  Handbook : "handbook2017.pdf",
+  Handbook : null,
   SessionizeUrl : "https://sessionize.com/demo-91ce3752/",
   PreviouslySubmittedTopics : "Agile, building great teams, UI design, software testing, virtual reality, open source software, bots, IoT, machine learning, automated deployments, mobile development, architecture, microservices, APIs, actors, JavaScript, authentication, React, UWP, HTTP protocol, Git, Docker and pointers",
 

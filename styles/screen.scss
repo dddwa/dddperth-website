@@ -41,8 +41,8 @@ hr {border-top: 3px solid #dcdcdc;}
   .btn.voting {background-color: $voting}
     .btn.voting:hover {background-color: darken($voting, 5%)}
 
-  .btn.tickets, .btn.add-vote {background-color: $tickets}
-    .btn.tickets:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
+  .btn.tickets, .btn-secondary, .btn.add-vote {background-color: $tickets}
+    .btn.tickets:hover, .btn-secondary:hover, .btn.add-vote:hover {background-color: darken($tickets, 5%)}
 
   .btn.agenda {background-color: $agenda}
     .btn.agenda:hover {background-color: darken($agenda, 5%)}
@@ -921,6 +921,40 @@ tr td.highlight-session {
   width: 85px;
 }
 
+// Video
+.responsive-video {
+  width: 560px;
+  height: 315px;
+  position: relative;
+  display: inline-block;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .responsive-video:first-child {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .responsive-video {
+    width: 100%;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+  }
+}
 
 
 @media only screen and (min-width: 360px) {

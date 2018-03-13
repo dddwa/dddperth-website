@@ -2,11 +2,13 @@ import { SponsorType, Sponsor } from "./types";
 
 interface From2015 {
   FlickrAlbumUrl: string;
+  HandbookUrl: string;
   Sponsors: Sponsor[];
 }
 
 const From2015 : From2015 = {
-  FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157669669516373",
+  FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157669669516373",,
+  HandbookUrl: "/static/docs/handbook2015.pdf",
   Sponsors: [
     // Platinum
     {
