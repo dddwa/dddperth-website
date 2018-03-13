@@ -5,6 +5,7 @@ interface From2017 {
   YouTubeKeynoteEmbedUrl: string;
   YouTubeLocknoteEmbedUrl: string;
   FlickrAlbumUrl: string;
+  HandbookUrl: string;
   Sponsors: Sponsor[];
 }
 
@@ -13,6 +14,7 @@ const From2017 : From2017 = {
   YouTubeKeynoteEmbedUrl: "https://www.youtube.com/embed/tlA_4-dnDyk",
   YouTubeLocknoteEmbedUrl: "https://www.youtube.com/embed/zMReShyytQA",
   FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157686384858370",
+  HandbookUrl: "/static/docs/handbook2017.pdf",
   Sponsors: [
     // Platinum
     {

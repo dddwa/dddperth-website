@@ -148,6 +148,8 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
           </tr>
       </tbody>
     </table>
+    <h2>Handbook</h2>
+    <p><a href={From2015.HandbookUrl} className="btn">Download 2015 handbook</a></p>
     <h2>Media</h2>
     <p><img src="/static/images/2015.jpg" alt="Picture from 2015 conference registration" /></p>
     <p><a href={From2015.FlickrAlbumUrl} target="_blank">Flickr Album</a></p>

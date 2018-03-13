@@ -189,6 +189,8 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
           </tr>
       </tbody>
     </table>
+    <h2>Handbook</h2>
+    <p><a href={From2017.HandbookUrl} className="btn">Download 2017 handbook</a></p>
     <h2>Media</h2>
     <iframe width="560" height="315" src={From2017.YouTubeKeynoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block", marginRight: "20px"}}></iframe>
     <iframe width="560" height="315" src={From2017.YouTubeLocknoteEmbedUrl} frameBorder="0" allowFullScreen style={{display: "inline-block"}}></iframe>

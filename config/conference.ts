@@ -14,7 +14,7 @@ const firstInstance = 2015;
 const registrationOpenFrom = moment('2018-04-30T08:00:00+08:00');
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const presentationSubmissionsOpenFrom = moment("2018-04-30T08:00:00+08:00");
-const presentationSubmissionsOpenUntil = moment("2018-06-06T23:59:59+08:00");
+const presentationSubmissionsOpenUntil = moment("2018-06-03T23:59:59+08:00");
 const votingOpenFrom = moment("2018-06-06T08:00:00+08:00");
 const votingOpenUntil = moment("2018-06-14T23:59:59+08:00");
 const agendaPublishedFrom = moment("2018-06-25T08:00:00+08:00");
@@ -58,7 +58,7 @@ const Conference : IConference = {
     "Interesting presentations",
     "Awesome people"
   ],
-  Handbook : "handbook2017.pdf",
+  Handbook : null,
   SessionizeUrl : "https://sessionize.com/demo-91ce3752/",
   PreviouslySubmittedTopics : "Agile, building great teams, UI design, software testing, virtual reality, open source software, bots, IoT, machine learning, automated deployments, mobile development, architecture, microservices, APIs, actors, JavaScript, authentication, React, UWP, HTTP protocol, Git, Docker and pointers",
 
