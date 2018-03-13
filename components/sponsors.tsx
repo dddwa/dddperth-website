@@ -71,7 +71,12 @@ const Sponsors : StatelessComponent<SponsorsProps> = ({sponsors, show}) => (show
       </section>
     ) : null}
 
-  </Fragment>) : null
+  </Fragment>) : <Fragment>
+    <section className="sponsors">
+      <h2>Sponsors</h2>
+      <p>We are currently looking for sponsors! If you'd like to explore sponsorship opportunities, please check out our <Link href="/sponsorship"><a>sponsorship page</a></Link> for more information.</p>
+    </section>
+  </Fragment>
 );
 
 export default Sponsors;
