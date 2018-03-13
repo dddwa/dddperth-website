@@ -27,7 +27,7 @@ export default withPageMetadata(() =>
     <p>We expect participants to follow these rules at conference and workshop venues and conference-related social events.</p>
 
     <h3>Attendance Is At Your Own Risk</h3>
-    <p>Attendance at {Conference.Name} is at your own risk and by entering {Conference.Name} you agree not to hold {Conference.Name}, it’s organisers, partners, subsidiaries or parent companies liable for any damage or distress incurred at the event.</p>
+    <p>Attendance at {Conference.Name} is at your own risk and by entering {Conference.Name} you agree not to hold {Conference.Name}, it’s organisers ({Conference.Organiser}), partners, subsidiaries or parent companies liable for any damage or distress incurred at the event.</p>
 
     <p>
         <small>
