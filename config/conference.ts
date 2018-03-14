@@ -2,6 +2,7 @@ import * as moment from "moment";
 import {Conference as IConference} from "./types";
 import {orderBy} from "../components/utils/arraySort";
 import venue from "./venue";
+import SponsorData from "../config/sponsors";
 
 const name = "DDD Perth";
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`;
@@ -106,7 +107,9 @@ const Conference : IConference = {
     "/static/images/strip/5.jpg",
   ],
 
-  ImportantDates : orderBy(importantDates, i => i.Date)
+  ImportantDates : orderBy(importantDates, i => i.Date),
+
+  Sponsors : SponsorData
 }
 
 export default Conference;

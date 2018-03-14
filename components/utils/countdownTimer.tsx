@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import { StatelessComponent, ReactPropTypes, Fragment } from 'react';
 import * as moment from 'moment';
 import {Moment, Duration} from 'moment';
+import dateTimeProvider from "./dateTimeProvider";
 
 // Generic Countdown Timer UI component
 // https://github.com/uken/react-countdown-timer
@@ -40,7 +41,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
     }
 
     getTimeRemaining() {
-      const duration = moment.duration(this.props.countdownTo.diff(moment(new Date())));
+      const duration = moment.duration(this.props.countdownTo.diff(dateTimeProvider.now()));
       return {
         duration: duration,
         strftime: this.strftime(duration)
@@ -105,7 +106,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
 
     private getOffsetsFor(duration : Duration) {
       const totalSecsLeft = duration.asSeconds();
-      const now = moment(new Date());
+      const now = dateTimeProvider.now();
       const destination = now.add(duration);
       return {
         seconds     : Math.floor(totalSecsLeft % 60),

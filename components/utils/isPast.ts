@@ -1,7 +1,8 @@
 import { Moment } from "moment";
 import * as moment from "moment";
+import dateTimeProvider from "./dateTimeProvider";
 
 export default function isPast(date: Moment) {
 
-  return date < moment(new Date());
+  return date < dateTimeProvider.now();
 }
