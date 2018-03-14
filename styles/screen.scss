@@ -47,6 +47,10 @@ hr {border-top: 3px solid #dcdcdc;}
   .btn.agenda {background-color: $agenda}
     .btn.agenda:hover {background-color: darken($agenda, 5%)}
 
+  $darkGrey: lighten(#000, 30%);
+  .btn.sponsors {background-color: $darkGrey}
+    .btn.sponsors:hover {background-color: darken($darkGrey, 5%)}
+
 .btn.add-vote:after, .btn.remove-vote:after {
   display: inline-block;
   margin: 0px;
@@ -954,6 +958,14 @@ tr td.highlight-session {
     padding-top: 25px;
     height: 0;
   }
+}
+
+// Testing control
+#testing-control {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 100;
 }
 
 

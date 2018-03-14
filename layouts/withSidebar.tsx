@@ -6,6 +6,7 @@ import Conference from "../config/conference";
 import ImportantDatesList from "../components/importantDatesList";
 import getConferenceActions from "../config/actions";
 import getConferenceDates from "../config/dates";
+import { updateWithTime } from "../components/withCurrentDate";
 
 interface WithSidebarProps extends MainArgs {}
 
@@ -35,4 +36,4 @@ WithSidebar.contextTypes = {
   pagePath : PropTypes.string
 };
 
-export default WithSidebar;
+export default updateWithTime(WithSidebar);

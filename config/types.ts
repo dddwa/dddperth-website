@@ -49,6 +49,8 @@ export interface Conference {
   ImageStrip : string[];
 
   ImportantDates : ImportantDate[];
+
+  Sponsors : Sponsor[];
 }
 
 export interface Venue {
