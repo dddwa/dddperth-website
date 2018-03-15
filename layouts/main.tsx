@@ -1,4 +1,3 @@
-import { Moment } from 'moment'
 import * as PropTypes from 'prop-types'
 import { Fragment } from 'react'
 import * as React from 'react'
@@ -8,7 +7,7 @@ import Header from '../components/global/header'
 import Meta from '../components/global/meta'
 import Nav from '../components/global/nav'
 import TestingControl from '../components/testingControl'
-import { updateWithTime } from '../components/withCurrentDate'
+import { InjectedProps, updateWithTime } from '../components/withCurrentDate'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import Menu from '../config/menu'
@@ -19,7 +18,6 @@ export interface MainArgs {
   title: string
   description?: string
   image?: string
-  currentDate: Moment
 }
 
 declare global {
@@ -28,7 +26,7 @@ declare global {
   }
 }
 
-class Main extends React.Component<MainArgs> {
+class Main extends React.Component<MainArgs & InjectedProps> {
   static contextTypes = {
     instrumentationKey: PropTypes.string,
     pagePath: PropTypes.string,
@@ -70,7 +68,9 @@ class Main extends React.Component<MainArgs> {
           socials={Conference.Socials}
           conference={Conference}
         />
-        {this.context.testingMode && <TestingControl />}
+        {this.context.testingMode && (
+          <TestingControl currentDate={this.props.currentDate} />
+        )}
       </Fragment>
     )
   }
