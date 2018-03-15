@@ -48,8 +48,12 @@ const dddAgendaPage = <TOriginalProps extends {}>(
   externalProps: AgendaPageParameters,
 ) => {
   type ResultProps = TOriginalProps & ExternalProps
-  return class PageWithMetadata extends React.Component<ResultProps, AgendaState> {
-    static displayName = `PageWithDDDAgenda(${WrappedComponent.displayName || WrappedComponent.name})`
+  return class PageWithMetadata extends React.Component<
+    ResultProps,
+    AgendaState
+  > {
+    static displayName = `PageWithDDDAgenda(${WrappedComponent.displayName ||
+      WrappedComponent.name})`
 
     static async getInitialProps({ req }) {
       if (req) {
@@ -75,9 +79,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
       if (this.props.sessions) {
         this.setState({
-          sessions: this.props.sessions,
-          isLoading: false,
           isError: false,
+          isLoading: false,
+          sessions: this.props.sessions,
         })
       } else {
         const that = this
@@ -116,7 +120,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
       const getIsLoading = () => this.state.isLoading
       const getIsError = () => this.state.isError
       const getSession = (sessionId: string) =>
-        this.state.sessions ? this.state.sessions.find(s => s.SessionId === sessionId) : null
+        this.state.sessions
+          ? this.state.sessions.find(s => s.SessionId === sessionId)
+          : null
       const onClick = this.selectSession
       const that = this
 
@@ -127,7 +133,12 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
         return (
           <td
-            className={'session' + (props.isKeynote ? ' keynote' : props.isLocknote ? ' locknote' : '')}
+            className={
+              'session' +
+              (props.isKeynote
+                ? ' keynote'
+                : props.isLocknote ? ' locknote' : '')
+            }
             rowSpan={props.rowSpan ? props.rowSpan : null}
             colSpan={props.isKeynote || props.isLocknote ? numTracks : null}
             onClick={() => onClick.bind(that)(session)}
@@ -150,7 +161,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
               session && (
                 <Fragment>
                   <strong>
-                    {props.isKeynote ? 'KEYNOTE - ' : props.isLocknote ? 'LOCKNOTE - ' : null}
+                    {props.isKeynote
+                      ? 'KEYNOTE - '
+                      : props.isLocknote ? 'LOCKNOTE - ' : null}
                     {session.PresenterName}
                   </strong>
                   <br />
@@ -166,13 +179,18 @@ const dddAgendaPage = <TOriginalProps extends {}>(
       return (
         <Page
           title={`${externalProps.conferenceInstance} Agenda`}
-          description={`The agenda for ${Conference.Name} ${externalProps.conferenceInstance}.`}
+          description={`The agenda for ${Conference.Name} ${
+            externalProps.conferenceInstance
+          }.`}
         >
           <div className="container">
             <h1>{externalProps.conferenceInstance} Agenda</h1>
             <p>Tap on a session to see more details...</p>
 
-            <WrappedComponent {...this.props} SessionCell={this.getSessionCell()} />
+            <WrappedComponent
+              {...this.props}
+              SessionCell={this.getSessionCell()}
+            />
 
             <h2 className="text-center">All Agendas</h2>
             <p className="text-center">
@@ -194,7 +212,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
               {this.state.selectedSession && (
                 <Fragment>
                   <Modal.Header closeButton>
-                    <Modal.Title>{this.state.selectedSession.SessionTitle}</Modal.Title>
+                    <Modal.Title>
+                      {this.state.selectedSession.SessionTitle}
+                    </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     <p>
@@ -202,7 +222,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                       {this.state.selectedSession.PresenterTwitterAlias && (
                         <Fragment>
                           {' | '}
-                          {this.state.selectedSession.PresenterTwitterAlias.split(',')
+                          {this.state.selectedSession.PresenterTwitterAlias.split(
+                            ',',
+                          )
                             .map(alias => alias.trim().replace(/^@/, ''))
                             .map(alias => (
                               <a
@@ -219,10 +241,17 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                       {this.state.selectedSession.PresenterWebsite && (
                         <Fragment>
                           {' | '}
-                          {this.state.selectedSession.PresenterWebsite.split(',')
+                          {this.state.selectedSession.PresenterWebsite.split(
+                            ',',
+                          )
                             .map(website => website.trim())
                             .map(website => (
-                              <a key={website} href={website} target="_blank" style={{ marginRight: '3px' }}>
+                              <a
+                                key={website}
+                                href={website}
+                                target="_blank"
+                                style={{ marginRight: '3px' }}
+                              >
                                 {website}
                               </a>
                             ))}
@@ -230,16 +259,22 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                       )}
                     </p>
 
-                    <p className="preserve-whitespace">{this.state.selectedSession.SessionAbstract}</p>
+                    <p className="preserve-whitespace">
+                      {this.state.selectedSession.SessionAbstract}
+                    </p>
                     {this.state.selectedSession.RecommendedAudience && (
                       <p>
                         <em>Audience:</em>{' '}
-                        <small className="preserve-whitespace">{this.state.selectedSession.RecommendedAudience}</small>
+                        <small className="preserve-whitespace">
+                          {this.state.selectedSession.RecommendedAudience}
+                        </small>
                       </p>
                     )}
 
                     <h3>Bio</h3>
-                    <p className="preserve-whitespace">{this.state.selectedSession.PresenterBio}</p>
+                    <p className="preserve-whitespace">
+                      {this.state.selectedSession.PresenterBio}
+                    </p>
                   </Modal.Body>
                 </Fragment>
               )}

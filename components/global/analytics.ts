@@ -23,8 +23,8 @@ export const logEvent = (category = '', action = '') => {
     ReactGA.event({ category, action })
     if (window.appInsights) {
       window.appInsights.trackEvent(category + ':' + action, {
-        category,
         action,
+        category,
       })
     }
   }

@@ -29,41 +29,41 @@ const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = date.clone().add(12, 'h')
 const importantDates = [
   {
-    Description: 'Call for presentations open',
     Date: presentationSubmissionsOpenFrom,
+    Description: 'Call for presentations open',
     Type: 'content',
   },
   {
-    Description: 'Call for presentations close',
     Date: presentationSubmissionsOpenUntil,
+    Description: 'Call for presentations close',
     Type: 'content',
   },
   {
-    Description: 'Ticket sales open',
     Date: registrationOpenFrom,
+    Description: 'Ticket sales open',
     Type: 'tickets',
   },
   { Description: 'Voting open', Date: votingOpenFrom, Type: 'voting' },
   { Description: 'Voting close', Date: votingOpenUntil, Type: 'voting' },
   {
-    Description: 'Agenda published',
     Date: agendaPublishedFrom,
+    Description: 'Agenda published',
     Type: 'agenda',
   },
 ]
 
 if (registrationOpenUntil !== null && !isSoldOut) {
   importantDates.push({
-    Description: 'Ticket sales close',
     Date: registrationOpenUntil,
+    Description: 'Ticket sales close',
     Type: 'tickets',
   })
 }
 
 if (!hideDate) {
   importantDates.push({
-    Description: 'Conference day',
     Date: date,
+    Description: 'Conference day',
     Type: 'conference',
   })
 }
@@ -73,7 +73,9 @@ const Conference: IConference = {
   Name: name,
   Instance: currentInstance.toString(),
   PreviousInstance: (currentInstance - 1).toString(),
-  PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
+  PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map(
+    (_, i) => (firstInstance + i).toString(),
+  ),
   Organiser: 'DDD WA Inc.',
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
@@ -84,7 +86,13 @@ const Conference: IConference = {
   EventbriteId: '34127818223',
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
-  SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
+  SellingPoints: [
+    'One day',
+    'Fully catered',
+    'Inclusive atmosphere',
+    'Interesting presentations',
+    'Awesome people',
+  ],
   Handbook: null,
   SessionizeUrl: 'https://sessionize.com/demo-91ce3752/',
   PreviouslySubmittedTopics:
