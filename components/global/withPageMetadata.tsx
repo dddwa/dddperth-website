@@ -25,8 +25,7 @@ export const withPageMetadata = <TOriginalProps extends {}>(
 ) => {
   type ResultProps = TOriginalProps & ExternalProps
   return class PageWithMetadata extends React.Component<ResultProps> {
-    static displayName = `PageWithMetadata(${WrappedComponent.displayName ||
-      WrappedComponent.name})`
+    static displayName = `PageWithMetadata(${WrappedComponent.displayName || WrappedComponent.name})`
 
     private instrumentationKey: string | null = null
     private pagePath: string | null = null
@@ -34,23 +33,14 @@ export const withPageMetadata = <TOriginalProps extends {}>(
     private testingMode: boolean | null = null
 
     static async getInitialProps(context: any) {
-      const wrappedInitialPropsMethod = (WrappedComponent as any)
-        .getInitialProps
-      const wrappedInitialProps = wrappedInitialPropsMethod
-        ? await wrappedInitialPropsMethod(context)
-        : {}
+      const wrappedInitialPropsMethod = (WrappedComponent as any).getInitialProps
+      const wrappedInitialProps = wrappedInitialPropsMethod ? await wrappedInitialPropsMethod(context) : {}
 
       const instrumentationKey =
-        process && process.env.APPINSIGHTS_INSTRUMENTATIONKEY
-          ? process.env.APPINSIGHTS_INSTRUMENTATIONKEY
-          : null
+        process && process.env.APPINSIGHTS_INSTRUMENTATIONKEY ? process.env.APPINSIGHTS_INSTRUMENTATIONKEY : null
       const pagePath = context.req ? context.pathname : null
-      const pageUrl = context.req
-        ? url.getUrlFromNodeRequest(context.req)
-        : null
-      const testingMode = context.req
-        ? process.env.TESTING_MODE === 'true'
-        : window.testingMode
+      const pageUrl = context.req ? url.getUrlFromNodeRequest(context.req) : null
+      const testingMode = context.req ? process.env.TESTING_MODE === 'true' : window.testingMode
 
       return {
         instrumentationKey,

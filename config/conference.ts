@@ -73,9 +73,7 @@ const Conference: IConference = {
   Name: name,
   Instance: currentInstance.toString(),
   PreviousInstance: (currentInstance - 1).toString(),
-  PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map(
-    (_, i) => (firstInstance + i).toString(),
-  ),
+  PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
   Organiser: 'DDD WA Inc.',
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
@@ -86,13 +84,7 @@ const Conference: IConference = {
   EventbriteId: '34127818223',
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
-  SellingPoints: [
-    'One day',
-    'Fully catered',
-    'Inclusive atmosphere',
-    'Interesting presentations',
-    'Awesome people',
-  ],
+  SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
   SessionizeUrl: 'https://sessionize.com/demo-91ce3752/',
   PreviouslySubmittedTopics:

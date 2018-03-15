@@ -6,7 +6,6 @@ import From2017 from '../config/2017'
 import Conference from '../config/conference'
 import SponsorData from '../config/sponsors'
 import dateTimeProvider from './utils/dateTimeProvider'
-import { updateWithTime } from './withCurrentDate'
 
 interface TestingControlProps {
   currentDate: Moment
@@ -86,4 +85,4 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
   }
 }
 
-export default updateWithTime(TestingControl)
+export default TestingControl
