@@ -2,83 +2,83 @@ import Conference from './conference'
 import { Dates, MenuItem } from './types'
 
 export default function Menu(dates: Dates) {
-  const topMenu: MenuItem[] = [
-    {
-      href: '/',
-      name: 'Home',
-    },
-    {
-      href: '/about',
-      name: 'About',
-    },
-    {
-      href: '/sponsorship',
-      name: 'Sponsorship',
-    },
-  ]
+    const topMenu: MenuItem[] = [
+        {
+            href: '/',
+            name: 'Home',
+        },
+        {
+            href: '/about',
+            name: 'About',
+        },
+        {
+            href: '/sponsorship',
+            name: 'Sponsorship',
+        },
+    ]
 
-  if (dates.RegistrationOpen) {
+    if (dates.RegistrationOpen) {
+        topMenu.push({
+            href: '/tickets',
+            name: 'Tickets',
+        })
+    }
+
+    if (!Conference.HideVenue) {
+        topMenu.push({
+            href: '/venue',
+            name: 'Venue',
+        })
+    }
+
+    if (dates.AcceptingPresentations) {
+        topMenu.push({
+            href: '/cfp',
+            name: 'CFP',
+        })
+    }
+
+    if (dates.VotingOpen) {
+        topMenu.push({
+            href: '/vote',
+            name: 'Vote',
+        })
+    }
+
     topMenu.push({
-      href: '/tickets',
-      name: 'Tickets',
+        href: '/agenda',
+        name: 'Agenda',
     })
-  }
 
-  if (!Conference.HideVenue) {
     topMenu.push({
-      href: '/venue',
-      name: 'Venue',
+        href: 'https://blog.dddperth.com/',
+        name: 'Blog',
     })
-  }
-
-  if (dates.AcceptingPresentations) {
     topMenu.push({
-      href: '/cfp',
-      name: 'CFP',
+        href: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
+        name: 'Videos',
     })
-  }
-
-  if (dates.VotingOpen) {
     topMenu.push({
-      href: '/vote',
-      name: 'Vote',
+        href: '/faq',
+        name: 'FAQs',
     })
-  }
 
-  topMenu.push({
-    href: '/agenda',
-    name: 'Agenda',
-  })
-
-  topMenu.push({
-    href: 'https://blog.dddperth.com/',
-    name: 'Blog',
-  })
-  topMenu.push({
-    href: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
-    name: 'Videos',
-  })
-  topMenu.push({
-    href: '/faq',
-    name: 'FAQs',
-  })
-
-  return {
-    Top: topMenu,
-    // tslint:disable-next-line:object-literal-sort-keys
-    Footer: [
-      {
-        href: '/about',
-        name: 'About Us',
-      },
-      {
-        href: '/code-of-conduct',
-        name: 'Code of Conduct',
-      },
-      {
-        href: '/contact',
-        name: 'Contact',
-      },
-    ] as MenuItem[],
-  }
+    return {
+        Top: topMenu,
+        // tslint:disable-next-line:object-literal-sort-keys
+        Footer: [
+            {
+                href: '/about',
+                name: 'About Us',
+            },
+            {
+                href: '/code-of-conduct',
+                name: 'Code of Conduct',
+            },
+            {
+                href: '/contact',
+                name: 'Contact',
+            },
+        ] as MenuItem[],
+    }
 }

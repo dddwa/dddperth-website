@@ -3,5 +3,6 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  "prettier.printWidth": 120
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 4
 }
