@@ -25,9 +25,7 @@ class Nav extends React.Component<NavArgs> {
             {this.props.menu.map(item => (
               <Fragment key={item.href}>
                 <Link href={item.href} passHref>
-                  <Bootstrap.NavItem active={item.href === this.props.pagePath}>
-                    {item.name}
-                  </Bootstrap.NavItem>
+                  <Bootstrap.NavItem active={item.href === this.props.pagePath}>{item.name}</Bootstrap.NavItem>
                 </Link>
               </Fragment>
             ))}

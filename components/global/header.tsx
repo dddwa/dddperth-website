@@ -10,12 +10,7 @@ interface HeaderArgs {
   dates: Dates
 }
 
-const Header: StatelessComponent<HeaderArgs> = ({
-  isHome,
-  hideBanner,
-  conference,
-  dates,
-}) => (
+const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference, dates }) => (
   <Fragment>
     <header>
       <div className="logo">
@@ -31,9 +26,7 @@ const Header: StatelessComponent<HeaderArgs> = ({
           <div className="container">
             <h1>
               {conference.TagLine}
-              {!conference.HideDate &&
-                !dates.IsComplete &&
-                ' & will be held on ' + dates.Display}.<br />
+              {!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br />
               <br />
               {conference.Goal} See our{' '}
               <Link href="/code-of-conduct">

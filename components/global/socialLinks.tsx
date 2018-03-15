@@ -54,45 +54,22 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Flickr && (
       <li>
-        <a
-          rel="nofollow"
-          className="fa fa-flickr"
-          href={socials.Flickr}
-          title="Flickr"
-          target="_blank"
-        />
+        <a rel="nofollow" className="fa fa-flickr" href={socials.Flickr} title="Flickr" target="_blank" />
       </li>
     )}
     {socials.Youtube && (
       <li>
-        <a
-          rel="nofollow"
-          className="fa fa-youtube"
-          href={socials.Youtube}
-          title="YouTube"
-          target="_blank"
-        />
+        <a rel="nofollow" className="fa fa-youtube" href={socials.Youtube} title="YouTube" target="_blank" />
       </li>
     )}
     {socials.Blog && (
       <li>
-        <a
-          rel="nofollow"
-          className="fa fa-pencil"
-          href={socials.Blog}
-          title={socials.Blog}
-          target="_blank"
-        />
+        <a rel="nofollow" className="fa fa-pencil" href={socials.Blog} title={socials.Blog} target="_blank" />
       </li>
     )}
     {socials.Email && (
       <li>
-        <a
-          rel="nofollow"
-          className="fa fa-envelope"
-          href={`mailto:${socials.Email}`}
-          title={socials.Email}
-        />
+        <a rel="nofollow" className="fa fa-envelope" href={`mailto:${socials.Email}`} title={socials.Email} />
       </li>
     )}
     {socials.MailingList && (

@@ -16,9 +16,7 @@ interface MetaArgs {
 
 const getTitle = (title: string, conference: Conference, dates: Dates) =>
   `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${
-    !conference.HideDate && !dates.IsComplete
-      ? ` | ${conference.Date.format('d MMM YYYY')}`
-      : ''
+    !conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('d MMM YYYY')}` : ''
   }`
 
 const Meta: StatelessComponent<MetaArgs> = ({
@@ -36,45 +34,17 @@ const Meta: StatelessComponent<MetaArgs> = ({
       <meta charSet="utf-8" />
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <link
-        rel="shortcut icon"
-        type="image/x-icon"
-        href="/static/favicon.ico"
-      />
+      <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
       <meta name="apple-mobile-web-app-title" content={conference.Name} />
       <title>{getTitle(pageTitle, conference, dates)}</title>
-      <meta
-        property="og:title"
-        content={getTitle(pageTitle, conference, dates)}
-      />
-      <meta
-        name="twitter:title"
-        content={getTitle(pageTitle, conference, dates).substring(0, 70)}
-      />
-      <meta
-        name="description"
-        content={pageDescription || conference.SiteDescription}
-      />
-      <meta
-        property="og:description"
-        content={pageDescription || conference.SiteDescription}
-      />
-      <meta
-        name="twitter:description"
-        content={(pageDescription || conference.SiteDescription).substring(
-          0,
-          200,
-        )}
-      />
+      <meta property="og:title" content={getTitle(pageTitle, conference, dates)} />
+      <meta name="twitter:title" content={getTitle(pageTitle, conference, dates).substring(0, 70)} />
+      <meta name="description" content={pageDescription || conference.SiteDescription} />
+      <meta property="og:description" content={pageDescription || conference.SiteDescription} />
+      <meta name="twitter:description" content={(pageDescription || conference.SiteDescription).substring(0, 200)} />
       <meta name="author" content={conference.Organiser} />
-      <meta
-        property="og:image"
-        content={pageImage || '/static/images/default-social-sharing-image.jpg'}
-      />
-      <meta
-        property="twitter:image"
-        content={pageImage || '/static/images/default-social-sharing-image.jpg'}
-      />
+      <meta property="og:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
+      <meta property="twitter:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={conference.Name} />
       <meta name="twitter:creator" content={conference.Organiser} />
@@ -94,18 +64,9 @@ const Meta: StatelessComponent<MetaArgs> = ({
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossOrigin="anonymous"
       />
-      <link
-        rel="stylesheet"
-        href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-      />
-      <link
-        rel="stylesheet"
-        href="//fonts.googleapis.com/css?family=Montserrat:700"
-      />
-      <link
-        rel="stylesheet"
-        href="//fonts.googleapis.com/css?family=Overpass+Mono:700"
-      />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
       <link rel="stylesheet" href="/_next/static/style.css" />
       {instrumentationKey && (
         <script

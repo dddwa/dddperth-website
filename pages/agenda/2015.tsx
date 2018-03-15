@@ -1,9 +1,6 @@
 import * as React from 'react'
 import { Fragment } from 'react'
-import dddAgendaPage, {
-  AgendaPageParameters,
-  AgendaPageProps,
-} from '../../components/dddAgendaPage'
+import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import { withPageMetadata } from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
 import From2015 from '../../config/2015'
@@ -56,10 +53,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">9:15</td>
-              <SessionCell
-                isKeynote={true}
-                sessionId="599fc187-2f4a-49d0-8531-2634467fb8f0"
-              />
+              <SessionCell isKeynote={true} sessionId="599fc187-2f4a-49d0-8531-2634467fb8f0" />
             </tr>
 
             <tr className="breadth-row">
@@ -137,10 +131,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">16:15</td>
-              <SessionCell
-                isLocknote={true}
-                sessionId="4ccb057b-c3d1-472a-8ad9-83b9f1e17c14"
-              />
+              <SessionCell isLocknote={true} sessionId="4ccb057b-c3d1-472a-8ad9-83b9f1e17c14" />
             </tr>
 
             <tr className="breadth-row">
@@ -168,10 +159,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
         </p>
         <h2>Media</h2>
         <p>
-          <img
-            src="/static/images/2015.jpg"
-            alt="Picture from 2015 conference registration"
-          />
+          <img src="/static/images/2015.jpg" alt="Picture from 2015 conference registration" />
         </p>
         <p>
           <a href={From2015.FlickrAlbumUrl} target="_blank">
@@ -180,15 +168,11 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
         </p>
         <Sponsors
           show={true}
-          sponsors={From2015.Sponsors.filter(
-            s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
-          )}
+          sponsors={From2015.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
         />
       </Fragment>
     )
   }
 }
 
-export default withPageMetadata(
-  dddAgendaPage(Agenda2015, Agenda2015.getAgendaPageParams()),
-)
+export default withPageMetadata(dddAgendaPage(Agenda2015, Agenda2015.getAgendaPageParams()))

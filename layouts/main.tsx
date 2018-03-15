@@ -56,21 +56,10 @@ class Main extends React.Component<MainArgs & InjectedProps> {
           dates={dates}
         />
         <Nav pagePath={this.context.pagePath} menu={Menu(dates).Top} />
-        <Header
-          isHome={this.props.isHome}
-          hideBanner={this.props.hideBanner}
-          conference={Conference}
-          dates={dates}
-        />
+        <Header isHome={this.props.isHome} hideBanner={this.props.hideBanner} conference={Conference} dates={dates} />
         {this.props.children}
-        <Footer
-          menu={Menu(dates).Footer}
-          socials={Conference.Socials}
-          conference={Conference}
-        />
-        {this.context.testingMode && (
-          <TestingControl currentDate={this.props.currentDate} />
-        )}
+        <Footer menu={Menu(dates).Footer} socials={Conference.Socials} conference={Conference} />
+        {this.context.testingMode && <TestingControl currentDate={this.props.currentDate} />}
       </Fragment>
     )
   }

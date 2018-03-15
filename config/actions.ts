@@ -1,61 +1,60 @@
-import {Action, Conference, Dates} from "./types";
+import { Action, Conference, Dates } from './types'
 
 export default function getConferenceActions(conference: Conference, dates: Dates): Action[] {
-
-  const actions: Action[] = [];
+  const actions: Action[] = []
 
   if (dates.AcceptingPresentations) {
     actions.push({
-      Category: "content",
-      Title: "Submit presentation",
-      Url: "/cfp"
-    });
+      Category: 'content',
+      Title: 'Submit presentation',
+      Url: '/cfp',
+    })
   }
 
   if (dates.VotingOpen) {
     actions.push({
-      Category: "voting",
-      Title: "Vote for agenda",
-      Url: "/vote",
-    });
+      Category: 'voting',
+      Title: 'Vote for agenda',
+      Url: '/vote',
+    })
   }
 
   if (dates.RegistrationOpen) {
     actions.push({
-      Category: "tickets",
-      Title: "Purchase a ticket",
-      Url: "/tickets"
-    });
+      Category: 'tickets',
+      Title: 'Purchase a ticket',
+      Url: '/tickets',
+    })
   }
 
   if (dates.AcceptingFeedback) {
     actions.push({
-      Category: "conference",
-      Title: "Give feedback",
-      Url: "/feedback"
-    });
+      Category: 'conference',
+      Title: 'Give feedback',
+      Url: '/feedback',
+    })
   }
 
-  let agendaTitle = "View the agenda";
+  let agendaTitle = 'View the agenda'
   if (!dates.AgendaPublished) {
-    agendaTitle = "Previous agenda";
+    agendaTitle = 'Previous agenda'
   }
   if (dates.IsComplete) {
-    agendaTitle = `${conference.Instance} agenda`;
+    agendaTitle = `${conference.Instance} agenda`
   }
   actions.push({
-    Category: "agenda",
+    Category: 'agenda',
     Title: agendaTitle,
-    Url: "/agenda"
-  });
+    Url: '/agenda',
+  })
 
   if (conference.Handbook) {
     actions.push({
-      Category: "conference",
-      Title: "Download handbook",
-      Url: "/static/docs/" + conference.Handbook
-    });
+      Category: 'conference',
+      Title: 'Download handbook',
+      Url: '/static/docs/' + conference.Handbook,
+    })
   }
 
-  return actions;
+  return actions
 }

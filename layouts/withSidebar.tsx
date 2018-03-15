@@ -10,27 +10,17 @@ import Main, { MainArgs } from './main'
 
 interface WithSidebarProps extends MainArgs {}
 
-const WithSidebar: StatelessComponent<WithSidebarProps> = (
-  { children, ...props },
-  context,
-) => (
+const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, ...props }, context) => (
   <Main {...props}>
     <section className="right-sidebar">
       <div className="container">
         <div className="row">
-          <div className="col-xs-12 col-sm-7 col-md-7 col-sm-8 left-col">
-            {children}
-          </div>
+          <div className="col-xs-12 col-sm-7 col-md-7 col-sm-8 left-col">{children}</div>
           <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4 right-col">
             <div className="inner">
               <EventDetailsSummary
                 conference={Conference}
-                primaryAction={
-                  getConferenceActions(
-                    Conference,
-                    getConferenceDates(Conference),
-                  )[0]
-                }
+                primaryAction={getConferenceActions(Conference, getConferenceDates(Conference))[0]}
                 pagePath={context.pagePath}
               />
               <h3>Important Dates</h3>

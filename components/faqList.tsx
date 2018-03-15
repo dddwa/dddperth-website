@@ -15,11 +15,7 @@ const FaqList: React.StatelessComponent<FaqListProps> = ({ faqs }) => (
           <Panel.Title toggle>{faq.Question}</Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible>
-          {faq.Answer ? (
-            <p>{faq.Answer}</p>
-          ) : (
-            <Fragment>{faq.AnswerWithoutParagraph}</Fragment>
-          )}
+          {faq.Answer ? <p>{faq.Answer}</p> : <Fragment>{faq.AnswerWithoutParagraph}</Fragment>}
         </Panel.Body>
       </Panel>
     ))}

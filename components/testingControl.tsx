@@ -15,10 +15,7 @@ interface TestingControlState {
   on: boolean
 }
 
-class TestingControl extends React.Component<
-  TestingControlProps,
-  TestingControlState
-> {
+class TestingControl extends React.Component<TestingControlProps, TestingControlState> {
   componentWillMount() {
     this.setState({ on: false })
   }
@@ -53,56 +50,33 @@ class TestingControl extends React.Component<
               <a
                 className="content btn"
                 style={btnStyle}
-                onClick={() =>
-                  this.setDateTo(Conference.PresentationSubmissionsOpenFrom)
-                }
+                onClick={() => this.setDateTo(Conference.PresentationSubmissionsOpenFrom)}
               >
                 CFP open
               </a>
               <br />
-              <a
-                className="voting btn"
-                style={btnStyle}
-                onClick={() => this.setDateTo(Conference.VotingOpenFrom)}
-              >
+              <a className="voting btn" style={btnStyle} onClick={() => this.setDateTo(Conference.VotingOpenFrom)}>
                 Voting open
               </a>
               <br />
-              <a
-                className="agenda btn"
-                style={btnStyle}
-                onClick={() => this.setDateTo(Conference.AgendaPublishedFrom)}
-              >
+              <a className="agenda btn" style={btnStyle} onClick={() => this.setDateTo(Conference.AgendaPublishedFrom)}>
                 Agenda published
               </a>
               <br />
-              <a
-                className="conference btn"
-                style={btnStyle}
-                onClick={() => this.setDateTo(Conference.Date)}
-              >
+              <a className="conference btn" style={btnStyle} onClick={() => this.setDateTo(Conference.Date)}>
                 On the day
               </a>
               <br />
-              <a
-                className="sponsors btn"
-                style={btnStyle}
-                onClick={() => (Conference.Sponsors = From2017.Sponsors)}
-              >
+              <a className="sponsors btn" style={btnStyle} onClick={() => (Conference.Sponsors = From2017.Sponsors)}>
                 Add sponsors
               </a>
               <br />
-              <a
-                className="btn btn-secondary"
-                style={btnStyle}
-                onClick={() => this.reset()}
-              >
+              <a className="btn btn-secondary" style={btnStyle} onClick={() => this.reset()}>
                 Reset
               </a>
               <br />
               <p className="text-center">
-                Now:{' '}
-                <code>{dateTimeProvider.now().format('DD/MM/YYYY h:mma')}</code>
+                Now: <code>{dateTimeProvider.now().format('DD/MM/YYYY h:mma')}</code>
               </p>
             </Panel.Body>
           )}

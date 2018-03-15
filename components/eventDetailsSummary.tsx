@@ -10,18 +10,10 @@ export interface EventDetailsSummaryProps {
   pagePath: string
 }
 
-const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
-  conference,
-  primaryAction,
-  pagePath,
-}) => (
+const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({ conference, primaryAction, pagePath }) => (
   <div className="event-details">
     <h3>
-      <span>
-        {!getConferenceDates(conference).IsComplete
-          ? 'Next event'
-          : 'Previous event'}
-      </span>{' '}
+      <span>{!getConferenceDates(conference).IsComplete ? 'Next event' : 'Previous event'}</span>{' '}
       {getConferenceDates(conference).Display}
     </h3>
     <ul>

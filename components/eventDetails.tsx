@@ -47,11 +47,7 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
           <div className="col-xs-12 col-sm-5 col-md-4">
             <p>
               <span>Date</span>
-              {dates.IsComplete ? (
-                <s>{dates.Display}</s>
-              ) : (
-                <Fragment>{dates.Display}</Fragment>
-              )}
+              {dates.IsComplete ? <s>{dates.Display}</s> : <Fragment>{dates.Display}</Fragment>}
             </p>
           </div>
           <div className="col-xs-12 col-sm-3 col-md-4">

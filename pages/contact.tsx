@@ -4,31 +4,20 @@ import Conference from '../config/conference'
 import Page from '../layouts/withSidebar'
 
 export default withPageMetadata(() => (
-  <Page
-    title="Contact Us"
-    description={'How to contact ' + Conference.Name + '.'}
-  >
+  <Page title="Contact Us" description={'How to contact ' + Conference.Name + '.'}>
     <h1>Contact Us</h1>
     <ul>
       <li>
-        <strong>General enquiries:</strong>{' '}
-        <a href={'mailto:' + Conference.ContactEmail}>
-          {Conference.ContactEmail}
-        </a>
+        <strong>General enquiries:</strong> <a href={'mailto:' + Conference.ContactEmail}>{Conference.ContactEmail}</a>
       </li>
       <li>
         <strong>Sponsorship Enquiries:</strong>{' '}
-        <a href={'mailto:' + Conference.SponsorshipEmail}>
-          {Conference.SponsorshipEmail}
-        </a>
+        <a href={'mailto:' + Conference.SponsorshipEmail}>{Conference.SponsorshipEmail}</a>
       </li>
       {Conference.Socials.Twitter && (
         <li>
           <strong>Twitter:</strong>{' '}
-          <a
-            href={'https://twitter.com/' + Conference.Socials.Twitter}
-            target="_blank"
-          >
+          <a href={'https://twitter.com/' + Conference.Socials.Twitter} target="_blank">
             @{Conference.Socials.Twitter}
           </a>
         </li>

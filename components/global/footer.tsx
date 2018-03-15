@@ -11,11 +11,7 @@ interface FooterArgs {
   conference: Conference
 }
 
-const Footer: StatelessComponent<FooterArgs> = ({
-  menu,
-  socials,
-  conference,
-}) => (
+const Footer: StatelessComponent<FooterArgs> = ({ menu, socials, conference }) => (
   <footer>
     <Grid>
       <Row>

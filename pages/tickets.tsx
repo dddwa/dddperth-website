@@ -20,18 +20,12 @@ class TicketPage extends React.Component {
     }
 
     return (
-      <Page
-        title="Tickets"
-        description={'Purchase tickets for ' + Conference.Name}
-      >
+      <Page title="Tickets" description={'Purchase tickets for ' + Conference.Name}>
         <div className="container">
           <h1>Tickets</h1>
           <FaqList faqs={Faqs.filter(f => f.Category === 'tickets')} />
           <iframe
-            src={
-              '//eventbrite.com.au/tickets-external?ref=etckt&eid=' +
-              Conference.EventbriteId
-            }
+            src={'//eventbrite.com.au/tickets-external?ref=etckt&eid=' + Conference.EventbriteId}
             style={{ border: 0 }}
             height="480"
             width="100%"

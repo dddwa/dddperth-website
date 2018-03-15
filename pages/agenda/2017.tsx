@@ -1,9 +1,6 @@
 import * as React from 'react'
 import { Fragment } from 'react'
-import dddAgendaPage, {
-  AgendaPageParameters,
-  AgendaPageProps,
-} from '../../components/dddAgendaPage'
+import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import { withPageMetadata } from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
 import From2017 from '../../config/2017'
@@ -65,10 +62,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">9:00</td>
-              <SessionCell
-                isKeynote={true}
-                sessionId="44f64f98-53ef-4344-93f6-9d852f845ed2"
-              />
+              <SessionCell isKeynote={true} sessionId="44f64f98-53ef-4344-93f6-9d852f845ed2" />
             </tr>
 
             <tr className="breadth-row">
@@ -110,14 +104,8 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
             <tr>
               <td className="time">11:55</td>
               <SessionCell sessionId="6742a7ad-0e47-4704-86d0-22b038afe2c4" />
-              <SessionCell
-                rowSpan={3}
-                sessionId="20f26760-d2bf-400a-8a73-807502c11291"
-              />
-              <SessionCell
-                rowSpan={3}
-                sessionId="7e482ec2-9657-40ea-a3dd-ba0c53f824c3"
-              />
+              <SessionCell rowSpan={3} sessionId="20f26760-d2bf-400a-8a73-807502c11291" />
+              <SessionCell rowSpan={3} sessionId="7e482ec2-9657-40ea-a3dd-ba0c53f824c3" />
             </tr>
 
             <tr className="breadth-row">
@@ -138,15 +126,9 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
 
             <tr>
               <td className="time">13:40</td>
-              <SessionCell
-                rowSpan={3}
-                sessionId="286930b8-ab3d-4a33-9b3a-ba863032aa1d"
-              />
+              <SessionCell rowSpan={3} sessionId="286930b8-ab3d-4a33-9b3a-ba863032aa1d" />
               <SessionCell sessionId="3a75a53c-3cb1-41dc-ba5a-b74efc8546ac" />
-              <SessionCell
-                rowSpan={3}
-                sessionId="83ce0668-9d21-41bb-802a-50a810abfa9a"
-              />
+              <SessionCell rowSpan={3} sessionId="83ce0668-9d21-41bb-802a-50a810abfa9a" />
             </tr>
             <tr className="breadth-row">
               <td className="time">14:00</td>
@@ -191,10 +173,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">16:20</td>
-              <SessionCell
-                isLocknote={true}
-                sessionId="d06d45de-de42-44da-83eb-ea1d9d14b6cc"
-              />
+              <SessionCell isLocknote={true} sessionId="d06d45de-de42-44da-83eb-ea1d9d14b6cc" />
             </tr>
 
             <tr className="breadth-row">
@@ -257,15 +236,11 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
         </p>
         <Sponsors
           show={true}
-          sponsors={From2017.Sponsors.filter(
-            s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
-          )}
+          sponsors={From2017.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
         />
       </Fragment>
     )
   }
 }
 
-export default withPageMetadata(
-  dddAgendaPage(Agenda2017, Agenda2017.getAgendaPageParams()),
-)
+export default withPageMetadata(dddAgendaPage(Agenda2017, Agenda2017.getAgendaPageParams()))

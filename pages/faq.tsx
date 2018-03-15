@@ -6,12 +6,7 @@ import Faqs from '../config/faqs'
 import Page from '../layouts/withSidebar'
 
 export default withPageMetadata(() => (
-  <Page
-    title="FAQs"
-    description={
-      'Frequently asked questions for the ' + Conference.Name + ' conference.'
-    }
-  >
+  <Page title="FAQs" description={'Frequently asked questions for the ' + Conference.Name + ' conference.'}>
     <h1>FAQs</h1>
     <FaqList faqs={Faqs} />
   </Page>

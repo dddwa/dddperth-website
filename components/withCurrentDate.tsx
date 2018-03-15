@@ -17,12 +17,8 @@ export const updateWithTime = <TOriginalProps extends {}>(
   WrappedComponent: React.ComponentType<TOriginalProps & InjectedProps>,
 ) => {
   type ResultProps = TOriginalProps & ExternalProps
-  return class WithCurrentDate extends React.Component<
-    ResultProps,
-    WithCurrentDateState
-  > {
-    static displayName = `WithCurrentDate(${WrappedComponent.displayName ||
-      WrappedComponent.name})`
+  return class WithCurrentDate extends React.Component<ResultProps, WithCurrentDateState> {
+    static displayName = `WithCurrentDate(${WrappedComponent.displayName || WrappedComponent.name})`
 
     private timerId: NodeJS.Timer
 
@@ -32,11 +28,8 @@ export const updateWithTime = <TOriginalProps extends {}>(
     }
 
     static async getInitialProps(context: any) {
-      const wrappedInitialPropsMethod = (WrappedComponent as any)
-        .getInitialProps
-      const wrappedInitialProps = wrappedInitialPropsMethod
-        ? await wrappedInitialPropsMethod(context)
-        : {}
+      const wrappedInitialPropsMethod = (WrappedComponent as any).getInitialProps
+      const wrappedInitialProps = wrappedInitialPropsMethod ? await wrappedInitialPropsMethod(context) : {}
 
       return { ...wrappedInitialProps }
     }
@@ -46,10 +39,7 @@ export const updateWithTime = <TOriginalProps extends {}>(
     }
 
     componentDidMount() {
-      this.timerId = setInterval(
-        () => this.tick(),
-        window.testingMode ? 1000 : 60000,
-      )
+      this.timerId = setInterval(() => this.tick(), window.testingMode ? 1000 : 60000)
     }
 
     componentWillUnmount() {
@@ -58,12 +48,7 @@ export const updateWithTime = <TOriginalProps extends {}>(
 
     render() {
       // Setting currentDate as a prop that updates regularly will ensure that the component updates when time changes
-      return (
-        <WrappedComponent
-          {...this.props}
-          currentDate={this.state.currentDate}
-        />
-      )
+      return <WrappedComponent {...this.props} currentDate={this.state.currentDate} />
     }
   }
 }

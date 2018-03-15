@@ -6,10 +6,7 @@ interface ImageStripProps {
   conferenceName: string
 }
 
-const ImageStrip: StatelessComponent<ImageStripProps> = ({
-  images,
-  conferenceName,
-}) => (
+const ImageStrip: StatelessComponent<ImageStripProps> = ({ images, conferenceName }) => (
   <section className="image-strip">
     {images.map(i => (
       <Fragment key={i}>

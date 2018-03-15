@@ -72,8 +72,7 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show }) =>
         ) : null}
 
         <p>
-          If you'd like to explore sponsorship opportunities, please check out
-          our{' '}
+          If you'd like to explore sponsorship opportunities, please check out our{' '}
           <Link href="/sponsorship">
             <a>sponsorship page</a>
           </Link>{' '}
@@ -96,8 +95,8 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show }) =>
       <section className="sponsors">
         <h2>Sponsors</h2>
         <p>
-          We are currently looking for sponsors! If you'd like to explore
-          sponsorship opportunities, please check out our{' '}
+          We are currently looking for sponsors! If you'd like to explore sponsorship opportunities, please check out
+          our{' '}
           <Link href="/sponsorship">
             <a>sponsorship page</a>
           </Link>{' '}

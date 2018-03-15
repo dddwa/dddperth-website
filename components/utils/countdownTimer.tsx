@@ -32,24 +32,16 @@ interface CountdownTimerState {
   timeoutId: NodeJS.Timer | null
 }
 
-export const countdownTimer = (
-  WrappedComponent: React.ComponentType<InjectedArgs>,
-) => {
-  return class CountdownTimer extends React.Component<
-    CountdownTimerArgs,
-    CountdownTimerState
-  > {
-    static displayName = `CountdownTimer(${WrappedComponent.displayName ||
-      WrappedComponent.name})`
+export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArgs>) => {
+  return class CountdownTimer extends React.Component<CountdownTimerArgs, CountdownTimerState> {
+    static displayName = `CountdownTimer(${WrappedComponent.displayName || WrappedComponent.name})`
 
     constructor(props: CountdownTimerArgs) {
       super(props)
     }
 
     getTimeRemaining() {
-      const duration = moment.duration(
-        this.props.countdownTo.diff(dateTimeProvider.now()),
-      )
+      const duration = moment.duration(this.props.countdownTo.diff(dateTimeProvider.now()))
       return {
         duration,
         strftime: this.strftime(duration),
@@ -81,10 +73,7 @@ export const countdownTimer = (
     }
 
     componentDidUpdate() {
-      if (
-        !this.state.timeoutId &&
-        this.state.timeRemaining.duration.asMilliseconds() > 0
-      ) {
+      if (!this.state.timeoutId && this.state.timeRemaining.duration.asMilliseconds() > 0) {
         this.tick()
       }
     }
@@ -107,10 +96,7 @@ export const countdownTimer = (
         this.setState({
           timeoutId: setTimeout(
             () => this.tick(),
-            Math.min(
-              this.props.interval,
-              timeRemaining.duration.asMilliseconds(),
-            ),
+            Math.min(this.props.interval, timeRemaining.duration.asMilliseconds()),
           ),
         })
       } else {
@@ -197,9 +183,7 @@ export const countdownTimer = (
         const directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi)
         if (directives) {
           for (let i = 0, len = directives.length; i < len; ++i) {
-            const directive = directives[i].match(
-              /%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/,
-            )
+            const directive = directives[i].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/)
             if (directive === null) {
               continue
             }

@@ -1,9 +1,6 @@
 import * as React from 'react'
 import { Fragment } from 'react'
-import dddAgendaPage, {
-  AgendaPageParameters,
-  AgendaPageProps,
-} from '../../components/dddAgendaPage'
+import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import { withPageMetadata } from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
 import From2016 from '../../config/2016'
@@ -65,10 +62,7 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">9:15</td>
-              <SessionCell
-                isKeynote={true}
-                sessionId="aa9f3fc0-8d47-404d-ba3e-2e5e058a00be"
-              />
+              <SessionCell isKeynote={true} sessionId="aa9f3fc0-8d47-404d-ba3e-2e5e058a00be" />
             </tr>
 
             <tr className="breadth-row">
@@ -160,10 +154,7 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
 
             <tr className="breadth-row keynote">
               <td className="time">16:10</td>
-              <SessionCell
-                isLocknote={true}
-                sessionId="82988c58-8d9c-4518-a4f7-94cf7739299d"
-              />
+              <SessionCell isLocknote={true} sessionId="82988c58-8d9c-4518-a4f7-94cf7739299d" />
             </tr>
 
             <tr className="breadth-row">
@@ -219,15 +210,11 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
         </p>
         <Sponsors
           show={true}
-          sponsors={From2016.Sponsors.filter(
-            s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
-          )}
+          sponsors={From2016.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
         />
       </Fragment>
     )
   }
 }
 
-export default withPageMetadata(
-  dddAgendaPage(Agenda2016, Agenda2016.getAgendaPageParams()),
-)
+export default withPageMetadata(dddAgendaPage(Agenda2016, Agenda2016.getAgendaPageParams()))

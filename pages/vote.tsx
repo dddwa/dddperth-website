@@ -23,11 +23,7 @@ class VotePage extends React.Component {
   }
   render() {
     return (
-      <Page
-        title="Vote"
-        hideBanner={true}
-        description={Conference.Name + ' voting page.'}
-      >
+      <Page title="Vote" hideBanner={true} description={Conference.Name + ' voting page.'}>
         <div className="container">
           <h1>Voting</h1>
 

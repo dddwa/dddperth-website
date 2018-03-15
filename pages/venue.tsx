@@ -20,11 +20,7 @@ class VenuePage extends React.Component {
       return <Error statusCode={404} />
     }
     return (
-      <Page
-        title="Venue"
-        description={'About the ' + Conference.Name + ' venue.'}
-        hideBanner={true}
-      >
+      <Page title="Venue" description={'About the ' + Conference.Name + ' venue.'} hideBanner={true}>
         <div className="container">
           <h1>Venue</h1>
           <p>
@@ -32,9 +28,7 @@ class VenuePage extends React.Component {
             <a
               href={
                 'https://www.google.com.au/maps/place/' +
-                encodeURIComponent(
-                  Conference.Venue.Name + ', ' + Conference.Venue.Address,
-                )
+                encodeURIComponent(Conference.Venue.Name + ', ' + Conference.Venue.Address)
               }
               target="_blank"
             >

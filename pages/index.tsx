@@ -29,20 +29,10 @@ class Index extends React.Component<IndexProps> {
     const actions = getConferenceActions(Conference, dates)
     return (
       <Page isHome={true} title="Home">
-        <EventDetails
-          conference={Conference}
-          dates={dates}
-          primaryAction={actions[0]}
-        />
+        <EventDetails conference={Conference} dates={dates} primaryAction={actions[0]} />
         <ImportantDates conference={Conference} actions={actions} />
-        <ImageStrip
-          images={this.props.imageStrip}
-          conferenceName={Conference.Name}
-        />
-        <Sponsors
-          show={!Conference.HideSponsors}
-          sponsors={Conference.Sponsors}
-        />
+        <ImageStrip images={this.props.imageStrip} conferenceName={Conference.Name} />
+        <Sponsors show={!Conference.HideSponsors} sponsors={Conference.Sponsors} />
       </Page>
     )
   }
