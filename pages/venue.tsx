@@ -1,9 +1,9 @@
+import GoogleMapReact from 'google-map-react'
+import Error from 'next/error'
 import * as React from 'react'
-import Page from '../layouts/main'
 import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
-import Error from 'next/error'
-import GoogleMapReact from 'google-map-react'
+import Page from '../layouts/main'
 
 class VenuePage extends React.Component {
   static getInitialProps({ res }) {
@@ -49,10 +49,10 @@ class VenuePage extends React.Component {
                 key: 'AIzaSyACDtKFE3lyOOmHpMeUoJsYqaVY2fcaa9o',
               }}
               options={{
-                scrollwheel: false,
-                panControl: false,
                 mapTypeControl: false,
                 minZoomOverride: false,
+                panControl: false,
+                scrollwheel: false,
               }}
               center={{
                 lat: Conference.Venue.Latitude,

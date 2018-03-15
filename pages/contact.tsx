@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Page from '../layouts/withSidebar'
 import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
+import Page from '../layouts/withSidebar'
 
 export default withPageMetadata(() => (
   <Page

@@ -3,13 +3,15 @@
   "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
-    "quotemark": [true, "double", "jsx-double"],
+    "quotemark": [true, "single", "jsx-double"],
+    "semicolon": [true, "never"],
     "interface-name": false,
     "max-line-length": false,
     "member-access": false,
     "no-empty-interface": false,
     "member-ordering": false,
-    "trailing-comma": [true, {"arrays": "never"}]
+    "trailing-comma": [true, { "arrays": "never" }],
+    "arrow-parens": false
   },
   "rulesDirectory": []
 }

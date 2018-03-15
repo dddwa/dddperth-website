@@ -1,9 +1,9 @@
 import * as React from 'react'
-import Page from '../layouts/withSidebar'
+import FaqList from '../components/faqList'
 import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
 import Faqs from '../config/faqs'
-import FaqList from '../components/faqList'
+import Page from '../layouts/withSidebar'
 
 export default withPageMetadata(() => (
   <Page

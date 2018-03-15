@@ -1,11 +1,11 @@
-import * as React from 'react'
-import Page from '../layouts/main'
-import { withPageMetadata } from '../components/global/withPageMetadata'
 import Error from 'next/error'
+import * as React from 'react'
+import FaqList from '../components/faqList'
+import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import FaqList from '../components/faqList'
 import Faqs from '../config/faqs'
+import Page from '../layouts/main'
 
 class TicketPage extends React.Component {
   static getInitialProps({ res }) {

@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { Fragment } from 'react'
-import { withPageMetadata } from '../../components/global/withPageMetadata'
 import dddAgendaPage, {
-  AgendaPageProps,
   AgendaPageParameters,
+  AgendaPageProps,
 } from '../../components/dddAgendaPage'
+import { withPageMetadata } from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
-import { SponsorType } from '../../config/types'
 import From2016 from '../../config/2016'
+import { SponsorType } from '../../config/types'
 
 class Agenda2016 extends React.Component<AgendaPageProps> {
   static getAgendaPageParams(): AgendaPageParameters {

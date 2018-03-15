@@ -1,20 +1,20 @@
 import * as React from 'react'
 import { Fragment } from 'react'
-import { withPageMetadata } from '../../components/global/withPageMetadata'
 import dddAgendaPage, {
-  AgendaPageProps,
   AgendaPageParameters,
+  AgendaPageProps,
 } from '../../components/dddAgendaPage'
+import { withPageMetadata } from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
-import { SponsorType } from '../../config/types'
 import From2017 from '../../config/2017'
+import { SponsorType } from '../../config/types'
 
 class Agenda2017 extends React.Component<AgendaPageProps> {
   static getAgendaPageParams(): AgendaPageParameters {
     return {
-      sessionsUrl: 'https://dddperth.com/Session/Sessions/?year=2017',
-      numTracks: 3,
       conferenceInstance: '2017',
+      numTracks: 3,
+      sessionsUrl: 'https://dddperth.com/Session/Sessions/?year=2017',
     }
   }
 

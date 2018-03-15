@@ -1,9 +1,8 @@
-import * as React from 'react'
-import Page from '../layouts/withSidebar'
-import { withPageMetadata } from '../components/global/withPageMetadata'
 import Link from 'next/link'
+import * as React from 'react'
+import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
-import { Grid, Row, Col, Panel } from 'react-bootstrap'
+import Page from '../layouts/withSidebar'
 
 export default withPageMetadata(() => (
   <Page

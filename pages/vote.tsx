@@ -1,9 +1,9 @@
-import * as React from 'react'
-import Page from '../layouts/main'
-import { withPageMetadata } from '../components/global/withPageMetadata'
 import Router from 'next/router'
+import * as React from 'react'
+import { withPageMetadata } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
+import Page from '../layouts/main'
 
 class VotePage extends React.Component {
   static getInitialProps({ res }) {
