@@ -1,84 +1,84 @@
-import Conference from "./conference";
-import {Dates, MenuItem} from "./types";
+import Conference from './conference'
+import { Dates, MenuItem } from './types'
 
 export default function Menu(dates: Dates) {
   const topMenu: MenuItem[] = [
     {
-      href: "/",
-      name: "Home"
+      href: '/',
+      name: 'Home',
     },
     {
-      href: "/about",
-      name: "About"
+      href: '/about',
+      name: 'About',
     },
     {
-      href: "/sponsorship",
-      name: "Sponsorship"
-    }
-  ];
+      href: '/sponsorship',
+      name: 'Sponsorship',
+    },
+  ]
 
   if (dates.RegistrationOpen) {
     topMenu.push({
-      href: "/tickets",
-      name: "Tickets"
-    });
+      href: '/tickets',
+      name: 'Tickets',
+    })
   }
 
   if (!Conference.HideVenue) {
     topMenu.push({
-      href: "/venue",
-      name: "Venue"
-    });
+      href: '/venue',
+      name: 'Venue',
+    })
   }
 
   if (dates.AcceptingPresentations) {
     topMenu.push({
-      href: "/cfp",
-      name: "CFP"
-    });
+      href: '/cfp',
+      name: 'CFP',
+    })
   }
 
   if (dates.VotingOpen) {
     topMenu.push({
-      href: "/vote",
-      name: "Vote"
-    });
+      href: '/vote',
+      name: 'Vote',
+    })
   }
 
   topMenu.push({
-    href: "/agenda",
-    name: "Agenda"
-  });
+    href: '/agenda',
+    name: 'Agenda',
+  })
 
   topMenu.push({
-    href: "https://blog.dddperth.com/",
-    name: "Blog"
-  });
+    href: 'https://blog.dddperth.com/',
+    name: 'Blog',
+  })
   topMenu.push({
-    href: "https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ",
-    name: "Videos"
-  });
+    href: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
+    name: 'Videos',
+  })
   topMenu.push({
-    href: "/faq",
-    name: "FAQs"
-  });
+    href: '/faq',
+    name: 'FAQs',
+  })
 
   return {
-    Top : topMenu,
+    Top: topMenu,
     // tslint:disable-next-line:object-literal-sort-keys
-    Footer : [
+    Footer: [
       {
-        href: "/about",
-        name: "About Us"
+        href: '/about',
+        name: 'About Us',
       },
       {
-        href: "/code-of-conduct",
-        name: "Code of Conduct"
+        href: '/code-of-conduct',
+        name: 'Code of Conduct',
       },
       {
-        href: "/contact",
-        name: "Contact"
-      }
-    ] as MenuItem[]
-  };
+        href: '/contact',
+        name: 'Contact',
+      },
+    ] as MenuItem[],
+  }
 }

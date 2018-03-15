@@ -10,7 +10,9 @@
     "dev": "cross-env TESTING_MODE=true next --inspect",
     "build": "next build",
     "start": "next start",
-    "analyze": "cross-env BUNDLE_ANALYZE=both next build"
+    "analyze": "cross-env BUNDLE_ANALYZE=both next build",
+    "format-code": "prettier --print-width 120 --no-semi --single-quote --trailing-comma all \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" --write",
+    "lint": "yarn tslint --config tslint.json \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" "
   },
   "dependencies": {
     "google-map-react": "^0.32.0",
