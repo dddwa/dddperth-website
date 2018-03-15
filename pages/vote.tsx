@@ -26,7 +26,6 @@ class VotePage extends React.Component {
       <Page title="Vote" hideBanner={true} description={Conference.Name + ' voting page.'}>
         <div className="container">
           <h1>Voting</h1>
-
           <p>Voting is not yet ready; stay tuned!</p>
         </div>
       </Page>
