@@ -1,12 +1,11 @@
-import * as React from "react";
-import { Panel } from "react-bootstrap";
-import { Button } from "react-bootstrap/lib/InputGroup";
-import Conference from "../config/conference";
-import dateTimeProvider from "./utils/dateTimeProvider";
 import {Moment} from "moment";
 import * as moment from "moment";
+import * as React from "react";
+import { Panel } from "react-bootstrap";
 import From2017 from "../config/2017";
+import Conference from "../config/conference";
 import SponsorData from "../config/sponsors";
+import dateTimeProvider from "./utils/dateTimeProvider";
 import { updateWithTime } from "./withCurrentDate";
 
 interface TestingControlProps {
@@ -35,7 +34,7 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
     const btnStyle = {cursor: "pointer", width: "100%"};
     return <div id="testing-control">
       <Panel>
-        <Panel.Heading>Testing [<a style={btnStyle} onClick={() => {this.setState({on: !this.state.on}); this.reset();}}>{this.state.on ? "On" : "Off"}]</a></Panel.Heading>
+        <Panel.Heading>Testing [<a style={btnStyle} onClick={() => {this.setState({on: !this.state.on}); this.reset(); }}>{this.state.on ? "On" : "Off"}]</a></Panel.Heading>
         {this.state.on && <Panel.Body>
           <a className="content btn" style={btnStyle} onClick={() => this.setDateTo(Conference.PresentationSubmissionsOpenFrom)}>CFP open</a><br />
           <a className="voting btn" style={btnStyle} onClick={() => this.setDateTo(Conference.VotingOpenFrom)}>Voting open</a><br />

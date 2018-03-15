@@ -1,4 +1,4 @@
-import { SponsorType, Sponsor } from "./types";
+import { Sponsor, SponsorType } from "./types";
 
 interface From2015 {
   FlickrAlbumUrl: string;
@@ -6,31 +6,31 @@ interface From2015 {
   Sponsors: Sponsor[];
 }
 
-const From2015 : From2015 = {
-  FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157669669516373",,
+const From2015: From2015 = {
+  FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157669669516373",
   HandbookUrl: "/static/docs/handbook2015.pdf",
   Sponsors: [
     // Platinum
     {
+      imageUrl: "/static/images/sponsors/bankwest.png",
       name: "Bankwest",
       type: SponsorType.Platinum,
-      imageUrl: "/static/images/sponsors/bankwest.png",
       url: "https://www.bankwest.com.au/"
     },
     // Gold
     {
+      imageUrl: "/static/images/sponsors/readify.png",
       name: "Readify",
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/readify.png",
       url: "https://readify.net/"
     },
     {
+      imageUrl: "/static/images/sponsors/gooroo.png",
       name: "Gooroo",
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/gooroo.png",
       url: "https://gooroo.io/"
     }
   ]
-}
+};
 
 export default From2015;

@@ -1,22 +1,22 @@
-import * as React from'react';
-import Head from 'next/head';
-import { Fragment, StatelessComponent } from 'react';
-import '../../styles/screen.scss';
-import { Conference, Dates } from '../../config/types';
+import Head from "next/head";
+import * as React from "react";
+import { Fragment, StatelessComponent } from "react";
+import { Conference, Dates } from "../../config/types";
+import "../../styles/screen.scss";
 
 interface MetaArgs {
   instrumentationKey: string|null;
-  pageUrl : string,
-  pageTitle : string;
-  pageDescription? : string;
-  pageImage? : string;
-  conference : Conference;
-  dates : Dates;
+  pageUrl: string;
+  pageTitle: string;
+  pageDescription?: string;
+  pageImage?: string;
+  conference: Conference;
+  dates: Dates;
 }
 
-const getTitle = (title : string, conference : Conference, dates : Dates) => `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${!conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('d MMM YYYY')}` : ''}`;
+const getTitle = (title: string, conference: Conference, dates: Dates) => `${title !== "Home" ? title + " - " : ""}${conference.Name}${!conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format("d MMM YYYY")}` : ""}`;
 
-const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, instrumentationKey, pageDescription, pageImage, conference, dates}) =>
+const Meta: StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, instrumentationKey, pageDescription, pageImage, conference, dates}) =>
   <Fragment>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,8 +32,8 @@ const Meta : StatelessComponent<MetaArgs> = ({pageUrl, pageTitle, instrumentatio
       <meta property="og:description" content={pageDescription || conference.SiteDescription} />
       <meta name="twitter:description" content={(pageDescription || conference.SiteDescription).substring(0, 200)} />
       <meta name="author" content={conference.Organiser} />
-      <meta property="og:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
-      <meta property="twitter:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
+      <meta property="og:image" content={pageImage || "/static/images/default-social-sharing-image.jpg"} />
+      <meta property="twitter:image" content={pageImage || "/static/images/default-social-sharing-image.jpg"} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={conference.Name} />
       <meta name="twitter:creator" content={conference.Organiser} />

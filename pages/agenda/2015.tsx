@@ -1,18 +1,18 @@
-import * as React from 'react';
-import {Fragment} from 'react';
-import {withPageMetadata} from '../../components/global/withPageMetadata';
-import dddAgendaPage, { AgendaPageProps, AgendaPageParameters } from '../../components/dddAgendaPage';
-import Sponsors from '../../components/sponsors';
-import { SponsorType } from '../../config/types';
-import From2015 from '../../config/2015';
+import * as React from "react";
+import {Fragment} from "react";
+import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from "../../components/dddAgendaPage";
+import {withPageMetadata} from "../../components/global/withPageMetadata";
+import Sponsors from "../../components/sponsors";
+import From2015 from "../../config/2015";
+import { SponsorType } from "../../config/types";
 
 class Agenda2015 extends React.Component<AgendaPageProps> {
 
-  static getAgendaPageParams() : AgendaPageParameters {
+  static getAgendaPageParams(): AgendaPageParameters {
     return {
-      sessionsUrl: "https://dddperth.com/Session/Sessions/?year=2015",
+      conferenceInstance: "2015",
       numTracks: 2,
-      conferenceInstance: "2015"
+      sessionsUrl: "https://dddperth.com/Session/Sessions/?year=2015"
     };
   }
 
@@ -41,7 +41,6 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
                   1 Camfield Drive, Burswood
               </td>
           </tr>
-
 
           <tr className="breadth-row">
               <td className="time">9:00</td>
@@ -153,10 +152,9 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
     <h2>Media</h2>
     <p><img src="/static/images/2015.jpg" alt="Picture from 2015 conference registration" /></p>
     <p><a href={From2015.FlickrAlbumUrl} target="_blank">Flickr Album</a></p>
-    <Sponsors show={true} sponsors={From2015.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)} />
+    <Sponsors show={true} sponsors={From2015.Sponsors.filter((s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)} />
     </Fragment>;
   }
 }
 
 export default withPageMetadata(dddAgendaPage(Agenda2015, Agenda2015.getAgendaPageParams()));
-

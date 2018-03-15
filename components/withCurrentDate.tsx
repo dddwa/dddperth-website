@@ -1,16 +1,16 @@
-import * as React from 'react';
 import {Moment} from "moment";
-import dateTimeProvider from './utils/dateTimeProvider';
+import * as React from "react";
+import dateTimeProvider from "./utils/dateTimeProvider";
 
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple
 
 export interface InjectedProps {
-  currentDate: Moment
+  currentDate: Moment;
 }
 interface ExternalProps {}
 
 interface WithCurrentDateState {
-  currentDate : Moment;
+  currentDate: Moment;
 }
 
 export const updateWithTime = <TOriginalProps extends {}>(WrappedComponent: React.ComponentType<TOriginalProps & InjectedProps>) => {
@@ -18,14 +18,14 @@ export const updateWithTime = <TOriginalProps extends {}>(WrappedComponent: Reac
   return class WithCurrentDate extends React.Component<ResultProps, WithCurrentDateState> {
     static displayName = `WithCurrentDate(${WrappedComponent.displayName || WrappedComponent.name})`;
 
-    private timerId : number;
+    private timerId: NodeJS.Timer;
 
     constructor(props: ResultProps) {
         super(props);
         this.state = {currentDate: dateTimeProvider.now()};
     }
 
-    static async getInitialProps(context : any) {
+    static async getInitialProps(context: any) {
 
       const wrappedInitialPropsMethod = (WrappedComponent as any).getInitialProps;
       const wrappedInitialProps = wrappedInitialPropsMethod ? await wrappedInitialPropsMethod(context) : {};
@@ -53,4 +53,4 @@ export const updateWithTime = <TOriginalProps extends {}>(WrappedComponent: Reac
       return <WrappedComponent {...this.props} currentDate={this.state.currentDate} />;
     }
   };
-}
+};

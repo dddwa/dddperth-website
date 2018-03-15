@@ -1,18 +1,20 @@
-import * as React from 'react'
-import Page from '../layouts/main';
-import {withPageMetadata} from '../components/global/withPageMetadata';
-import ImageStrip from '../components/imageStrip';
-import arrayShuffle from '../components/utils/arrayShuffle';
-import Conference from '../config/conference';
-import Sponsors from '../components/sponsors';
-import EventDetails from '../components/eventDetails';
-import ImportantDates from '../components/importantDates';
-import getConferenceDates from '../config/dates';
-import getConferenceActions from '../config/actions';
-import { updateWithTime } from '../components/withCurrentDate';
+import { Moment } from "moment";
+import * as React from "react";
+import EventDetails from "../components/eventDetails";
+import {withPageMetadata} from "../components/global/withPageMetadata";
+import ImageStrip from "../components/imageStrip";
+import ImportantDates from "../components/importantDates";
+import Sponsors from "../components/sponsors";
+import arrayShuffle from "../components/utils/arrayShuffle";
+import { updateWithTime } from "../components/withCurrentDate";
+import getConferenceActions from "../config/actions";
+import Conference from "../config/conference";
+import getConferenceDates from "../config/dates";
+import Page from "../layouts/main";
 
 interface IndexProps {
-  imageStrip : string[];
+  imageStrip: string[];
+  currentDate: Moment;
 }
 
 class Index extends React.Component<IndexProps> {

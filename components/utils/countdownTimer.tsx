@@ -1,8 +1,6 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { StatelessComponent, ReactPropTypes, Fragment } from 'react';
-import * as moment from 'moment';
-import {Moment, Duration} from 'moment';
+import * as moment from "moment";
+import {Duration, Moment} from "moment";
+import * as React from "react";
 import dateTimeProvider from "./dateTimeProvider";
 
 // Generic Countdown Timer UI component
@@ -12,14 +10,16 @@ import dateTimeProvider from "./dateTimeProvider";
 // The strftime code is from https://github.com/hilios/jQuery.countdown.
 
 interface CountdownTimerArgs {
-  countdownTo: Moment,
-  interval: number,
-  tickCallback?: Function,
-  completeCallback?: Function,
+  countdownTo: Moment;
+  interval: number;
+  // tslint:disable-next-line:ban-types
+  tickCallback?: Function;
+  // tslint:disable-next-line:ban-types
+  completeCallback?: Function;
 }
 
 interface InjectedArgs {
-  timeRemaining: TimeRemaining
+  timeRemaining: TimeRemaining;
 }
 
 export interface TimeRemaining {
@@ -32,7 +32,7 @@ interface CountdownTimerState {
   timeoutId: NodeJS.Timer|null;
 }
 
-export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: React.ComponentType<InjectedArgs>) => {
+export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArgs>) => {
   return class CountdownTimer extends React.Component<CountdownTimerArgs, CountdownTimerState> {
     static displayName = `CountdownTimer(${WrappedComponent.displayName || WrappedComponent.name})`;
 
@@ -43,7 +43,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
     getTimeRemaining() {
       const duration = moment.duration(this.props.countdownTo.diff(dateTimeProvider.now()));
       return {
-        duration: duration,
+        duration,
         strftime: this.strftime(duration)
       };
     }
@@ -53,7 +53,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
         timeRemaining: this.getTimeRemaining(),
         timeoutId: null
       };
-    };
+    }
 
     componentWillMount() {
       this.setState(this.initialState());
@@ -64,7 +64,8 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
       this.tick();
     }
 
-    componentWillReceiveProps(newProps : CountdownTimerArgs) {
+    // tslint:disable-next-line:variable-name
+    componentWillReceiveProps(_newProps: CountdownTimerArgs) {
       if (this.state.timeoutId) {
         clearTimeout(this.state.timeoutId);
       }
@@ -93,7 +94,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
       this.setState({timeRemaining});
 
       if (!countdownComplete) {
-        this.setState({timeoutId: setTimeout(() => this.tick(), Math.min(this.props.interval, timeRemaining.duration.asMilliseconds()))})
+        this.setState({timeoutId: setTimeout(() => this.tick(), Math.min(this.props.interval, timeRemaining.duration.asMilliseconds()))});
       } else {
         if (this.props.completeCallback) { this.props.completeCallback(); }
         return;
@@ -104,12 +105,13 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
       }
     }
 
-    private getOffsetsFor(duration : Duration) {
+    private getOffsetsFor(duration: Duration) {
       const totalSecsLeft = duration.asSeconds();
       const now = dateTimeProvider.now();
       const destination = now.add(duration);
       return {
         seconds     : Math.floor(totalSecsLeft % 60),
+        // tslint:disable-next-line:object-literal-sort-keys
         minutes     : Math.floor(totalSecsLeft / 60) % 60,
         hours       : Math.floor(totalSecsLeft / 60 / 60) % 24,
         days        : Math.floor(totalSecsLeft / 60 / 60 / 24) % 7,
@@ -118,38 +120,40 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
         weeks       : Math.floor(totalSecsLeft / 60 / 60 / 24 / 7),
         weeksToMonth: Math.floor(totalSecsLeft / 60 / 60 / 24 / 7) % 4,
         months      : Math.floor(totalSecsLeft / 60 / 60 / 24 / 30.4368),
-        years       : Math.abs(destination.year()-now.year()),
+        years       : Math.abs(destination.year() - now.year()),
         totalDays   : Math.floor(totalSecsLeft / 60 / 60 / 24),
         totalHours  : Math.floor(totalSecsLeft / 60 / 60),
         totalMinutes: Math.floor(totalSecsLeft / 60),
-        totalSeconds: Math.floor(totalSecsLeft)
+        totalSeconds: Math.floor(totalSecsLeft),
       };
     }
   // Map to convert from a directive to offset object property
   private DIRECTIVE_KEY_MAP = {
-    'Y': 'years',
-    'm': 'months',
-    'n': 'daysToMonth',
-    'd': 'daysToWeek',
-    'w': 'weeks',
-    'W': 'weeksToMonth',
-    'H': 'hours',
-    'M': 'minutes',
-    'S': 'seconds',
-    'D': 'totalDays',
-    'I': 'totalHours',
-    'N': 'totalMinutes',
-    'T': 'totalSeconds'
+    Y: "years",
+    m: "months",
+    n: "daysToMonth",
+    // tslint:disable-next-line:object-literal-sort-keys
+    d: "daysToWeek",
+    w: "weeks",
+    W: "weeksToMonth",
+    H: "hours",
+    M: "minutes",
+    S: "seconds",
+    D: "totalDays",
+    I: "totalHours",
+    N: "totalMinutes",
+    T: "totalSeconds",
   };
   // Returns an escaped regexp from the string
-  private escapedRegExp(str : string) : RegExp {
-    var sanitize = str.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+  private escapedRegExp(str: string): RegExp {
+    const sanitize = str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
     return new RegExp(sanitize);
   }
-  private pluralize(format : string, count : number) {
-    var plural = 's', singular = '';
+  private pluralize(format: string, count: number) {
+    let plural = "s";
+    let singular = "";
     if (format) {
-      const formats = format.replace(/(:|;|\s)/gi, '').split(/\,/);
+      const formats = format.replace(/(:|;|\s)/gi, "").split(/\,/);
       if (formats.length === 1) {
         plural = format[0];
       } else {
@@ -158,7 +162,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
       }
     }
     // Fix #187
-    if(Math.abs(count) > 1) {
+    if (Math.abs(count) > 1) {
       return plural;
     } else {
       return singular;
@@ -169,20 +173,21 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
     const that = this;
     const offsets = this.getOffsetsFor(duration);
 
-    return function(format : string) {
-      var directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
+    return (format: string) => {
+      const directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
       if (directives) {
         for (let i = 0, len = directives.length; i < len; ++i) {
-          let directive = directives[i]
+          const directive = directives[i]
               .match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/);
           if (directive === null) {
             continue;
           }
-          let regexp    = that.escapedRegExp(directive[0]),
-            modifier  = directive[1] || '',
-            plural    = directive[3] || '',
-            value     = null,
-            key = directive[2];
+          const regexp    = that.escapedRegExp(directive[0]);
+          const modifier  = directive[1] || "";
+          const plural    = directive[3] || "";
+          const key       = directive[2];
+          let value       = null;
+
           // Swap shot-versions directives
           if (that.DIRECTIVE_KEY_MAP.hasOwnProperty(key)) {
             value = (that.DIRECTIVE_KEY_MAP as any)[key];
@@ -190,13 +195,13 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
           }
           if (value !== null) {
             // Pluralize
-            if (modifier === '!') {
+            if (modifier === "!") {
               value = that.pluralize(plural, value);
             }
             // Add zero-padding
-            if (modifier === '') {
-              if(value < 10) {
-                value = '0' + value.toString();
+            if (modifier === "") {
+              if (value < 10) {
+                value = "0" + value.toString();
               }
             }
             // Replace the directive
@@ -204,13 +209,13 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
           }
         }
       }
-      format = format.replace(/%%/, '%');
+      format = format.replace(/%%/, "%");
       return format;
     };
   }
 
     render() {
-      var timeRemaining = this.state.timeRemaining;
+      const timeRemaining = this.state.timeRemaining;
 
       if (timeRemaining.duration.asMilliseconds() <= 0) {
         return null;
@@ -218,7 +223,7 @@ export const countdownTimer = <TOriginalProps extends {}>(WrappedComponent: Reac
 
       return <WrappedComponent timeRemaining={timeRemaining} {...this.props} />;
     }
-  }
+  };
 };
 
 export default countdownTimer;

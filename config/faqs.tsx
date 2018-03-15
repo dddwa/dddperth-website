@@ -1,10 +1,11 @@
-import {FAQ} from "./types";
-import Conference from "./conference";
-import getConferenceDates from "./dates";
+// tslint:disable:object-literal-sort-keys
 import * as React from "react";
 import {Fragment} from "react";
+import Conference from "./conference";
+import getConferenceDates from "./dates";
+import {FAQ} from "./types";
 
-let Faqs : FAQ[] = [];
+const Faqs: FAQ[] = [];
 const dates = getConferenceDates(Conference);
 
 if (!Conference.HideDate) {
@@ -40,8 +41,7 @@ Faqs.push({
   Answer: "Yes, attendees will receive showbags with goodies. We typically prioritise the overall experience over mountains of swag though."
 });
 
-if (Conference.Venue && Conference.Venue.Wifi !== null)
-{
+if (Conference.Venue && Conference.Venue.Wifi !== null) {
   Faqs.push({
     Question: "Will there be wifi?",
     Answer: Conference.Venue.Wifi

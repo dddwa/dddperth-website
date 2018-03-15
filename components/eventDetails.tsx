@@ -1,16 +1,16 @@
 import * as React from "react";
-import Countdown from "./countdown";
-import { Conference, Dates, Action } from "../config/types";
 import { Fragment } from "react";
+import { Action, Conference, Dates } from "../config/types";
 import ActionButton from "./actionButton";
+import Countdown from "./countdown";
 
 export interface EventDetailsProps {
-  conference : Conference,
-  dates : Dates,
-  primaryAction : Action
-};
+  conference: Conference;
+  dates: Dates;
+  primaryAction: Action;
+}
 
-export default ({conference, dates, primaryAction} : EventDetailsProps) =>
+export default ({conference, dates, primaryAction}: EventDetailsProps) =>
   <section className="countdown grey">
     <div className="container">
       {dates.IsInProgress && <Fragment>

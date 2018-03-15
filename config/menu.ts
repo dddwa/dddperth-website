@@ -1,10 +1,8 @@
-import {MenuItem, Dates} from "./types";
-import getConferenceDates from "./dates";
 import Conference from "./conference";
-import { MenuItem } from "react-bootstrap";
+import {Dates, MenuItem} from "./types";
 
-export default function Menu(dates : Dates) {
-  const topMenu : MenuItem[] = [
+export default function Menu(dates: Dates) {
+  const topMenu: MenuItem[] = [
     {
       href: "/",
       name: "Home"
@@ -67,6 +65,7 @@ export default function Menu(dates : Dates) {
 
   return {
     Top : topMenu,
+    // tslint:disable-next-line:object-literal-sort-keys
     Footer : [
       {
         href: "/about",
@@ -80,6 +79,6 @@ export default function Menu(dates : Dates) {
         href: "/contact",
         name: "Contact"
       }
-    ]
+    ] as MenuItem[]
   };
 }

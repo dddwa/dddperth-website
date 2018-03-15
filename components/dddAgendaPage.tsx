@@ -1,35 +1,36 @@
-import {Fragment} from 'react';
-import Page from '../layouts/main';
-import Conference from '../config/conference';
-import Link from 'next/link';
-import fetch from 'isomorphic-fetch';
-import { Modal } from 'react-bootstrap';
+import fetch from "isomorphic-fetch";
+import Link from "next/link";
+import React from "react";
+import {Fragment} from "react";
+import { Modal } from "react-bootstrap";
+import Conference from "../config/conference";
+import Page from "../layouts/main";
 
 interface DddSession {
-  SessionId : string;
-  SessionTitle : string;
-  SessionAbstract : string;
-  RecommendedAudience? : string;
-  PresenterName : string;
-  PresenterTwitterAlias? : string;
-  PresenterWebsite? : string;
-  PresenterBio : string;
+  SessionId: string;
+  SessionTitle: string;
+  SessionAbstract: string;
+  RecommendedAudience?: string;
+  PresenterName: string;
+  PresenterTwitterAlias?: string;
+  PresenterWebsite?: string;
+  PresenterBio: string;
 }
 
 export interface SessionCellProps {
-  sessionId : string;
-  isKeynote? : boolean;
-  isLocknote? : boolean;
-  rowSpan? : number;
+  sessionId: string;
+  isKeynote?: boolean;
+  isLocknote?: boolean;
+  rowSpan?: number;
 }
 
 export interface AgendaPageProps {
-  SessionCell : React.StatelessComponent<SessionCellProps>;
+  SessionCell: React.StatelessComponent<SessionCellProps>;
 }
 export interface AgendaPageParameters {
-  sessionsUrl : string;
-  conferenceInstance : string;
-  numTracks : number;
+  sessionsUrl: string;
+  conferenceInstance: string;
+  numTracks: number;
 }
 interface ExternalProps {
   sessions?: DddSession[];
@@ -42,7 +43,7 @@ interface AgendaState {
   selectedSession: DddSession;
 }
 
-const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.ComponentType<TOriginalProps & AgendaPageProps>, externalProps : AgendaPageParameters) => {
+const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.ComponentType<TOriginalProps & AgendaPageProps>, externalProps: AgendaPageParameters) => {
   type ResultProps = TOriginalProps & ExternalProps;
   return class PageWithMetadata extends React.Component<ResultProps, AgendaState> {
     static displayName = `PageWithDDDAgenda(${WrappedComponent.displayName || WrappedComponent.name})`;
@@ -75,24 +76,27 @@ const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.Compon
         const that = this;
         this.setState({isLoading: true, isError: false});
         fetch(externalProps.sessionsUrl)
-          .then(response => {
+          .then((response) => {
             if (response.status !== 200) {
               throw response.statusText;
             }
             return response.json();
           })
-          .then(body => that.setState({sessions: body, isLoading: false}))
-          .catch(error => {
+          .then((body) => that.setState({sessions: body, isLoading: false}))
+          .catch((error) => {
             that.setState({isError: true, isLoading: false});
-            console && console.error("Error loading sessions", error);
+            if (console) {
+              // tslint:disable-next-line:no-console
+              console.error("Error loading sessions", error);
+            }
           });
       }
     }
 
-    selectSession(session : DddSession) {
+    selectSession(session: DddSession) {
       this.setState({
-        showModal: true,
-        selectedSession: session
+        selectedSession: session,
+        showModal: true
       });
     }
 
@@ -100,12 +104,12 @@ const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.Compon
       this.setState({showModal : false});
     }
 
-    getSessionCell() : React.StatelessComponent<SessionCellProps> {
+    getSessionCell(): React.StatelessComponent<SessionCellProps> {
 
       const numTracks = externalProps.numTracks;
       const getIsLoading = () => this.state.isLoading;
       const getIsError = () => this.state.isError;
-      const getSession = (sessionId: string) => this.state.sessions ? this.state.sessions.find(s => s.SessionId == sessionId) : null;
+      const getSession = (sessionId: string) => this.state.sessions ? this.state.sessions.find((s) => s.SessionId === sessionId) : null;
       const onClick = this.selectSession;
       const that = this;
 
@@ -127,7 +131,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.Compon
             <br />
             <em>{session.SessionTitle}</em>
           </Fragment>}
-        </td>
+        </td>;
       };
     }
 
@@ -140,7 +144,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.Compon
           <WrappedComponent {...this.props} SessionCell={this.getSessionCell()} />
 
           <h2 className="text-center">All Agendas</h2>
-          <p className="text-center">{Conference.PreviousInstances.map((instance, i) => <Fragment key={instance}>{i !== 0 ? ' | ' : null}{instance === externalProps.conferenceInstance ? instance : <Link href={"/agenda/" + instance}><a>{instance}</a></Link>}</Fragment>)}</p>
+          <p className="text-center">{Conference.PreviousInstances.map((instance, i) => <Fragment key={instance}>{i !== 0 ? " | " : null}{instance === externalProps.conferenceInstance ? instance : <Link href={"/agenda/" + instance}><a>{instance}</a></Link>}</Fragment>)}</p>
 
           <Modal show={this.state.showModal} onHide={() => this.hideModal()}>
             {this.state.selectedSession && <Fragment>
@@ -151,11 +155,11 @@ const dddAgendaPage = <TOriginalProps extends {}>(WrappedComponent: React.Compon
                 <p>
                   {this.state.selectedSession.PresenterName}
                   {this.state.selectedSession.PresenterTwitterAlias && <Fragment>
-                  {" | "}{this.state.selectedSession.PresenterTwitterAlias.split(",").map(alias => alias.trim().replace(/^@/, "")).map(alias =>
+                  {" | "}{this.state.selectedSession.PresenterTwitterAlias.split(",").map((alias) => alias.trim().replace(/^@/, "")).map((alias) =>
                       <a key={alias} href={"https://twitter.com/" + alias} target="_blank" style={{marginRight: "3px"}}>@{alias}</a>)}
                   </Fragment>}
                   {this.state.selectedSession.PresenterWebsite && <Fragment>
-                    {" | "}{this.state.selectedSession.PresenterWebsite.split(",").map(website => website.trim()).map(website =>
+                    {" | "}{this.state.selectedSession.PresenterWebsite.split(",").map((website) => website.trim()).map((website) =>
                       <a key={website} href={website} target="_blank" style={{marginRight: "3px"}}>{website}</a>)}
                   </Fragment>}
                 </p>

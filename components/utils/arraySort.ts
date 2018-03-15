@@ -1,6 +1,6 @@
 import { Moment } from "moment";
 
-export function orderBy<T>(input: T[], propertyToOrderBy : (a: T) => Moment) {
+export function orderBy<T>(input: T[], propertyToOrderBy: (a: T) => Moment) {
 
   const output = [...input];
 

@@ -1,18 +1,18 @@
 import * as moment from "moment";
-import {Conference as IConference} from "./types";
 import {orderBy} from "../components/utils/arraySort";
-import venue from "./venue";
 import SponsorData from "../config/sponsors";
+import {Conference as IConference} from "./types";
+import venue from "./venue";
 
 const name = "DDD Perth";
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`;
 
 const hideDate = false;
 const isSoldOut = false;
-const date = moment('2018-08-04T08:00+08:00');
-const currentInstance = parseInt(date.format("YYYY"));
+const date = moment("2018-08-04T08:00+08:00");
+const currentInstance = parseInt(date.format("YYYY"), 10);
 const firstInstance = 2015;
-const registrationOpenFrom = moment('2018-04-30T08:00:00+08:00');
+const registrationOpenFrom = moment("2018-04-30T08:00:00+08:00");
 const registrationOpenUntil = hideDate ? null : date.clone().add(-1, "d").startOf("day").add(17, "h");
 const presentationSubmissionsOpenFrom = moment("2018-04-30T08:00:00+08:00");
 const presentationSubmissionsOpenUntil = moment("2018-06-03T23:59:59+08:00");
@@ -38,11 +38,12 @@ if (!hideDate) {
   importantDates.push({Description: "Conference day", Date: date, Type: "conference"});
 }
 
-const Conference : IConference = {
+// tslint:disable:object-literal-sort-keys
+const Conference: IConference = {
   Name : name,
   Instance : currentInstance.toString(),
   PreviousInstance : (currentInstance - 1).toString(),
-  PreviousInstances : [... Array(currentInstance - firstInstance).keys()].map((_,i) => (firstInstance + i).toString()),
+  PreviousInstances : [... Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
   Organiser : "DDD WA Inc.",
   TagLine : tagLine,
   SiteDescription : `${tagLine}.`,
@@ -107,9 +108,9 @@ const Conference : IConference = {
     "/static/images/strip/5.jpg",
   ],
 
-  ImportantDates : orderBy(importantDates, i => i.Date),
+  ImportantDates : orderBy(importantDates, (i) => i.Date),
 
   Sponsors : SponsorData
-}
+};
 
 export default Conference;

@@ -1,12 +1,12 @@
 import * as React from "react";
-import { TimeRemaining, countdownTimer } from "./utils/countdownTimer";
+import { countdownTimer, TimeRemaining } from "./utils/countdownTimer";
 
 interface CountdownProps {
   timeRemaining: TimeRemaining;
 }
 
 class Countdown extends React.Component<CountdownProps> {
-  constructor(props : CountdownProps) {
+  constructor(props: CountdownProps) {
     super(props);
   }
 
@@ -19,6 +19,6 @@ class Countdown extends React.Component<CountdownProps> {
       <span><strong>{this.props.timeRemaining.strftime("%S")}</strong> sec{this.props.timeRemaining.strftime("%!S")} </span>
     </div>;
   }
-};
+}
 
 export default countdownTimer(Countdown);

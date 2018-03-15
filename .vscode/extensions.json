@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "msjsdiag.debugger-for-chrome",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "eg2.tslint"
     ]
 }

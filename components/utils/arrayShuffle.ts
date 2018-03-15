@@ -1,11 +1,11 @@
-export default function arrayShuffle<T>(input: Array<T>) {
+export default function arrayShuffle<T>(input: T[]) {
 
   const output = [...input];
 
-  for (var i = input.length-1; i >=0; i--) {
+  for (let i = input.length - 1; i >= 0; i--) {
 
-      var randomIndex = Math.floor(Math.random()*(i+1));
-      var itemAtIndex = output[randomIndex];
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      const itemAtIndex = output[randomIndex];
 
       output[randomIndex] = output[i];
       output[i] = itemAtIndex;

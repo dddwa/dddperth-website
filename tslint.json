@@ -3,8 +3,13 @@
   "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
-    "quotemark": [true, "single", "jsx-double"],
-    "semicolon": [true, "never"]
+    "quotemark": [true, "double", "jsx-double"],
+    "interface-name": false,
+    "max-line-length": false,
+    "member-access": false,
+    "no-empty-interface": false,
+    "member-ordering": false,
+    "trailing-comma": [true, {"arrays": "never"}]
   },
   "rulesDirectory": []
 }

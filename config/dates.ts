@@ -1,14 +1,14 @@
-import * as moment from 'moment';
-import {Dates as IDates, Conference} from './types';
 import dateTimeProvider from "../components/utils/dateTimeProvider";
+import {Conference, Dates as IDates} from "./types";
 
-export default function getConferenceDates(conference : Conference) : IDates {
+export default function getConferenceDates(conference: Conference): IDates {
   const now = dateTimeProvider.now();
-  const isComplete = now > conference.Date.clone().add(1, 'd');
+  const isComplete = now > conference.Date.clone().add(1, "d");
   const isInProgress = now > conference.Date;
   const dateDisplayFormat = "ddd Do MMM YYYY";
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil;
 
+  // tslint:disable:object-literal-sort-keys
   return {
     Display : conference.HideDate ? "TBA" : `${conference.Date.format(dateDisplayFormat)}`,
     DateDisplayFormat : dateDisplayFormat,

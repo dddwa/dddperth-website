@@ -1,16 +1,16 @@
-import Main, {MainArgs} from "./main";
 import * as PropTypes from "prop-types";
 import { StatelessComponent } from "react";
 import EventDetailsSummary from "../components/eventDetailsSummary";
-import Conference from "../config/conference";
 import ImportantDatesList from "../components/importantDatesList";
-import getConferenceActions from "../config/actions";
-import getConferenceDates from "../config/dates";
 import { updateWithTime } from "../components/withCurrentDate";
+import getConferenceActions from "../config/actions";
+import Conference from "../config/conference";
+import getConferenceDates from "../config/dates";
+import Main, {MainArgs} from "./main";
 
 interface WithSidebarProps extends MainArgs {}
 
-const WithSidebar : StatelessComponent<WithSidebarProps> = ({children, ...props}, context) =>
+const WithSidebar: StatelessComponent<WithSidebarProps> = ({children, ...props}, context) =>
   <Main {...props}>
     <section className="right-sidebar">
       <div className="container">

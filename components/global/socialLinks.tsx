@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { StatelessComponent } from 'react';
-import { Socials } from '../../config/types';
+import * as React from "react";
+import { StatelessComponent } from "react";
+import { Socials } from "../../config/types";
 
 interface SocialLinksArgs {
-  socials : Socials;
+  socials: Socials;
 }
 
-const SocialLinks : StatelessComponent<SocialLinksArgs> = ({socials}) =>
+const SocialLinks: StatelessComponent<SocialLinksArgs> = ({socials}) =>
   <ul className="social">
-    {socials.Twitter && <li><a rel="nofollow" className="fa fa-twitter" href={`https://twitter.com/${socials.Twitter}`} title={'@' + socials.Twitter} target="_blank"></a></li>}
+    {socials.Twitter && <li><a rel="nofollow" className="fa fa-twitter" href={`https://twitter.com/${socials.Twitter}`} title={"@" + socials.Twitter} target="_blank"></a></li>}
     {socials.Facebook && <li><a rel="nofollow" className="fa fa-facebook" href={`https://facebook.com/${socials.Facebook}`} title="Facebook" target="_blank"></a></li>}
     {socials.GitHub && <li><a rel="nofollow" className="fa fa-github" href={`https://github.com/${socials.GitHub}`} title="GitHub" target="_blank"></a></li>}
     {socials.Instagram && <li><a rel="nofollow" className="fa fa-instagram" href={`https://www.instagram.com/${socials.Instagram}`} title="Instagram" target="_blank"></a></li>}

@@ -1,38 +1,38 @@
-import {Dates, Conference, Action} from './types';
+import {Action, Conference, Dates} from "./types";
 
-export default function getConferenceActions(conference : Conference, dates : Dates) : Action[] {
+export default function getConferenceActions(conference: Conference, dates: Dates): Action[] {
 
-  const actions : Action[] = [];
+  const actions: Action[] = [];
 
   if (dates.AcceptingPresentations) {
     actions.push({
+      Category: "content",
       Title: "Submit presentation",
-      Url: "/cfp",
-      Category: "content"
+      Url: "/cfp"
     });
   }
 
   if (dates.VotingOpen) {
     actions.push({
+      Category: "voting",
       Title: "Vote for agenda",
       Url: "/vote",
-      Category: "voting"
     });
   }
 
   if (dates.RegistrationOpen) {
     actions.push({
+      Category: "tickets",
       Title: "Purchase a ticket",
-      Url: "/tickets",
-      Category: "tickets"
+      Url: "/tickets"
     });
   }
 
   if (dates.AcceptingFeedback) {
     actions.push({
+      Category: "conference",
       Title: "Give feedback",
-      Url: "/feedback",
-      Category: "conference"
+      Url: "/feedback"
     });
   }
 
@@ -44,16 +44,16 @@ export default function getConferenceActions(conference : Conference, dates : Da
     agendaTitle = `${conference.Instance} agenda`;
   }
   actions.push({
+    Category: "agenda",
     Title: agendaTitle,
-    Url: "/agenda",
-    Category: "agenda"
+    Url: "/agenda"
   });
 
   if (conference.Handbook) {
     actions.push({
+      Category: "conference",
       Title: "Download handbook",
-      Url: "/static/docs/" + conference.Handbook,
-      Category: "conference"
+      Url: "/static/docs/" + conference.Handbook
     });
   }
 

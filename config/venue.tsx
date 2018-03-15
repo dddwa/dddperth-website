@@ -1,8 +1,9 @@
-import { Venue } from "./types";
 import { Fragment } from "react";
 import * as React from "react";
+import { Venue } from "./types";
 
-const venue : Venue = {
+// tslint:disable:object-literal-sort-keys
+const venue: Venue = {
   Name: "Perth Convention and Exhibition Centre",
   Address: "21 Mounts Bay Rd, Perth",
   Latitude: -31.9565004,

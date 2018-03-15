@@ -1,23 +1,25 @@
-import * as React from 'react'
-import { Fragment, StatelessComponent } from 'react';
-import Meta from '../components/global/meta';
-import Nav from '../components/global/nav';
-import Header from '../components/global/header';
-import Footer from '../components/global/footer';
-import * as analytics from '../components/global/analytics';
-import * as PropTypes from 'prop-types';
-import Conference from '../config/conference';
-import Menu from '../config/menu';
-import getConferenceDates from '../config/dates';
-import TestingControl from '../components/testingControl';
-import { updateWithTime } from '../components/withCurrentDate';
+import { Moment } from "moment";
+import * as PropTypes from "prop-types";
+import { Fragment } from "react";
+import * as React from "react";
+import * as analytics from "../components/global/analytics";
+import Footer from "../components/global/footer";
+import Header from "../components/global/header";
+import Meta from "../components/global/meta";
+import Nav from "../components/global/nav";
+import TestingControl from "../components/testingControl";
+import { updateWithTime } from "../components/withCurrentDate";
+import Conference from "../config/conference";
+import getConferenceDates from "../config/dates";
+import Menu from "../config/menu";
 
 export interface MainArgs {
-  isHome? : boolean;
-  hideBanner? : boolean;
-  title : string;
-  description? : string;
-  image? : string;
+  isHome?: boolean;
+  hideBanner?: boolean;
+  title: string;
+  description?: string;
+  image?: string;
+  currentDate: Moment;
 }
 
 declare global {
@@ -27,13 +29,13 @@ declare global {
 class Main extends React.Component<MainArgs> {
 
   static contextTypes = {
-    pageUrl : PropTypes.string,
-    pagePath : PropTypes.string,
     instrumentationKey : PropTypes.string,
+    pagePath : PropTypes.string,
+    pageUrl : PropTypes.string,
     testingMode : PropTypes.bool
-  }
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     if (!window.GA_INITIALIZED) {
       analytics.init(Conference.GoogleAnalyticsId);
       window.GA_INITIALIZED = true;
