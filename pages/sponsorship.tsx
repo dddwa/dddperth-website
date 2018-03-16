@@ -1,22 +1,22 @@
 import Link from 'next/link'
 import * as React from 'react'
-import { withPageMetadata } from '../components/global/withPageMetadata'
-import Conference from '../config/conference'
+import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
-export default withPageMetadata(() => (
-  <Page title="Sponsorship" description="Sponsorship opportunities for DDD Perth.">
+export default withPageMetadata((props: WithPageMetadataProps) => (
+  <Page pageMetadata={props.pageMetadata} title="Sponsorship" description="Sponsorship opportunities for DDD Perth.">
     <h1>Sponsorship</h1>
 
     <p>
-      <a className="btn" href={'mailto:' + Conference.SponsorshipEmail}>
+      <a className="btn" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
         Contact us to explore sponsorship opportunities
       </a>
     </p>
 
     <p>
-      {Conference.TagLine}. {Conference.Name} provides a unique opportunity to sponsors because we attract people that
-      don't normally go to software conferences. This occurs as a natural result of our core principles:
+      {props.pageMetadata.conference.TagLine}. {props.pageMetadata.conference.Name} provides a unique opportunity to
+      sponsors because we attract people that don't normally go to software conferences. This occurs as a natural result
+      of our core principles:
     </p>
     <ul>
       <li>
@@ -39,14 +39,14 @@ export default withPageMetadata(() => (
     </ul>
     <p>
       <Link href="/about">
-        <a className="btn btn-secondary">Find out more about {Conference.Name}</a>
+        <a className="btn btn-secondary">Find out more about {props.pageMetadata.conference.Name}</a>
       </Link>
     </p>
 
     <p>
-      {Conference.Name} is a not-for-profit community event with a low ticket price for attendees (much lower than the
-      per-person cost) and the only way we can run it is via generous corporate sponsorship. Thanks to all our sponsors
-      new and old - we can't do this without you!
+      {props.pageMetadata.conference.Name} is a not-for-profit community event with a low ticket price for attendees
+      (much lower than the per-person cost) and the only way we can run it is via generous corporate sponsorship. Thanks
+      to all our sponsors new and old - we can't do this without you!
     </p>
 
     <p>
@@ -57,11 +57,11 @@ export default withPageMetadata(() => (
     <p>
       We have a sponsorship prospectus that will be provided on request that explains detailed benefits and impact of
       sponsorship and the difference between the various levels; if you would like a copy{' '}
-      <a href={'mailto:' + Conference.SponsorshipEmail}>please contact us</a>!
+      <a href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>please contact us</a>!
     </p>
 
     <p>
-      <a className="btn" href={'mailto:' + Conference.SponsorshipEmail}>
+      <a className="btn" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
         Contact us to explore sponsorship opportunities
       </a>
     </p>

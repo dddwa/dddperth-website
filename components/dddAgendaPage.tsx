@@ -3,8 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
-import Conference from '../config/conference'
 import Page from '../layouts/main'
+import { WithPageMetadataProps } from './global/withPageMetadata'
 
 interface DddSession {
   SessionId: string
@@ -47,7 +47,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(
   WrappedComponent: React.ComponentType<TOriginalProps & AgendaPageProps>,
   externalProps: AgendaPageParameters,
 ) => {
-  type ResultProps = TOriginalProps & ExternalProps
+  type ResultProps = TOriginalProps & ExternalProps & WithPageMetadataProps
   return class PageWithMetadata extends React.Component<ResultProps, AgendaState> {
     static displayName = `PageWithDDDAgenda(${WrappedComponent.displayName || WrappedComponent.name})`
 
@@ -163,10 +163,12 @@ const dddAgendaPage = <TOriginalProps extends {}>(
     }
 
     render() {
+      const conference = this.props.pageMetadata.conference
       return (
         <Page
           title={`${externalProps.conferenceInstance} Agenda`}
-          description={`The agenda for ${Conference.Name} ${externalProps.conferenceInstance}.`}
+          description={`The agenda for ${conference.Name} ${externalProps.conferenceInstance}.`}
+          pageMetadata={this.props.pageMetadata}
         >
           <div className="container">
             <h1>{externalProps.conferenceInstance} Agenda</h1>
@@ -176,7 +178,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
             <h2 className="text-center">All Agendas</h2>
             <p className="text-center">
-              {Conference.PreviousInstances.map((instance, i) => (
+              {conference.PreviousInstances.map((instance, i) => (
                 <Fragment key={instance}>
                   {i !== 0 ? ' | ' : null}
                   {instance === externalProps.conferenceInstance ? (

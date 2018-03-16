@@ -19,7 +19,7 @@ export const withCurrentDate = <TOriginalProps extends {}>(
   return class WithCurrentDate extends React.Component<ResultProps, WithCurrentDateState> {
     static displayName = `WithCurrentDate(${WrappedComponent.displayName || WrappedComponent.name})`
 
-    private timerId: NodeJS.Timer
+    private timerId: number
 
     constructor(props: ResultProps) {
       super(props)
@@ -38,7 +38,7 @@ export const withCurrentDate = <TOriginalProps extends {}>(
     }
 
     componentDidMount() {
-      this.timerId = setInterval(() => this.tick(), window.testingMode ? 1000 : 60000)
+      this.timerId = setInterval(() => this.tick(), (window.appConfig.testingMode ? 1000 : 60000) as any)
     }
 
     componentWillUnmount() {

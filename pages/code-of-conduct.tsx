@@ -1,10 +1,13 @@
 import * as React from 'react'
-import { withPageMetadata } from '../components/global/withPageMetadata'
-import Conference from '../config/conference'
+import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
-export default withPageMetadata(() => (
-  <Page title="Code of Conduct" description={'Code of Conduct for ' + Conference.Name + '.'}>
+export default withPageMetadata((props: WithPageMetadataProps) => (
+  <Page
+    pageMetadata={props.pageMetadata}
+    title="Code of Conduct"
+    description={'Code of Conduct for ' + props.pageMetadata.conference.Name + '.'}
+  >
     <h1>Code of Conduct</h1>
 
     <p>
@@ -25,7 +28,8 @@ export default withPageMetadata(() => (
 
     <h2>Need Help?</h2>
     <p>
-      Email <a href={Conference.ContactEmail}>{Conference.ContactEmail}</a> or call {Conference.EmergencyPhoneNumber}.
+      Email <a href={props.pageMetadata.conference.ContactEmail}>{props.pageMetadata.conference.ContactEmail}</a> or
+      call {props.pageMetadata.conference.EmergencyPhoneNumber}.
     </p>
 
     <h2>The Quick Version</h2>
@@ -72,9 +76,10 @@ export default withPageMetadata(() => (
 
     <h3>Attendance Is At Your Own Risk</h3>
     <p>
-      Attendance at {Conference.Name} is at your own risk and by entering {Conference.Name} you agree not to hold{' '}
-      {Conference.Name}, it’s organisers ({Conference.Organiser}), partners, subsidiaries or parent companies liable for
-      any damage or distress incurred at the event.
+      Attendance at {props.pageMetadata.conference.Name} is at your own risk and by entering{' '}
+      {props.pageMetadata.conference.Name} you agree not to hold {props.pageMetadata.conference.Name}, it’s organisers ({
+        props.pageMetadata.conference.Organiser
+      }), partners, subsidiaries or parent companies liable for any damage or distress incurred at the event.
     </p>
 
     <p>

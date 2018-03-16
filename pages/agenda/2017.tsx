@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
-import { withPageMetadata } from '../../components/global/withPageMetadata'
+import withPageMetadata from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
 import From2017 from '../../config/2017'
 import { SponsorType } from '../../config/types'

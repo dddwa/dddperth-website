@@ -1,17 +1,13 @@
-import * as PropTypes from 'prop-types'
 import { StatelessComponent } from 'react'
 import EventDetailsSummary from '../components/eventDetailsSummary'
 import ImportantDatesList from '../components/importantDatesList'
-import { withCurrentDate, WithCurrentDateProps } from '../components/withCurrentDate'
 import getConferenceActions from '../config/actions'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import Main, { MainArgs } from './main'
+import Main, { MainProps } from './main'
 
-interface WithSidebarProps extends MainArgs {}
+interface WithSidebarProps extends MainProps {}
 
-const WithSidebar: StatelessComponent<WithSidebarProps & WithCurrentDateProps> = ({ children, ...props }, context) => (
-  <Main {...props}>
+const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetadata, ...props }, context) => (
+  <Main pageMetadata={pageMetadata} {...props}>
     <section className="right-sidebar">
       <div className="container">
         <div className="row">
@@ -19,14 +15,14 @@ const WithSidebar: StatelessComponent<WithSidebarProps & WithCurrentDateProps> =
           <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4 right-col">
             <div className="inner">
               <EventDetailsSummary
-                conference={Conference}
-                dates={getConferenceDates(Conference, props.currentDate)}
-                primaryAction={getConferenceActions(Conference, getConferenceDates(Conference, props.currentDate))[0]}
+                conference={pageMetadata.conference}
+                dates={pageMetadata.dates}
+                primaryAction={getConferenceActions(pageMetadata.conference, pageMetadata.dates)[0]}
                 pagePath={context.pagePath}
               />
               <h3>Important Dates</h3>
               <div className="important-dates-right slick">
-                <ImportantDatesList conference={Conference} currentDate={props.currentDate} />
+                <ImportantDatesList conference={pageMetadata.conference} currentDate={pageMetadata.currentDate} />
               </div>
             </div>
           </div>
@@ -36,8 +32,4 @@ const WithSidebar: StatelessComponent<WithSidebarProps & WithCurrentDateProps> =
   </Main>
 )
 
-WithSidebar.contextTypes = {
-  pagePath: PropTypes.string,
-}
-
-export default withCurrentDate(WithSidebar)
+export default WithSidebar

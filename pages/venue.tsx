@@ -1,11 +1,11 @@
 import GoogleMapReact from 'google-map-react'
 import Error from 'next/error'
 import * as React from 'react'
-import { withPageMetadata } from '../components/global/withPageMetadata'
+import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
 import Page from '../layouts/main'
 
-class VenuePage extends React.Component {
+class VenuePage extends React.Component<WithPageMetadataProps> {
   static getInitialProps({ res }) {
     if (Conference.HideVenue && res) {
       res.statusCode = 404
@@ -16,23 +16,30 @@ class VenuePage extends React.Component {
     google.map.setMapTypeId(google.maps.MapTypeId.SATELLITE)
   }
   render() {
-    if (Conference.HideVenue) {
+    const conference = this.props.pageMetadata.conference
+
+    if (conference.HideVenue) {
       return <Error statusCode={404} />
     }
     return (
-      <Page title="Venue" description={'About the ' + Conference.Name + ' venue.'} hideBanner={true}>
+      <Page
+        pageMetadata={this.props.pageMetadata}
+        title="Venue"
+        description={'About the ' + conference.Name + ' venue.'}
+        hideBanner={true}
+      >
         <div className="container">
           <h1>Venue</h1>
           <p>
-            {Conference.Name} will be held at {Conference.Venue.Name} at{' '}
+            {conference.Name} will be held at {conference.Venue.Name} at{' '}
             <a
               href={
                 'https://www.google.com.au/maps/place/' +
-                encodeURIComponent(Conference.Venue.Name + ', ' + Conference.Venue.Address)
+                encodeURIComponent(conference.Venue.Name + ', ' + conference.Venue.Address)
               }
               target="_blank"
             >
-              {Conference.Venue.Address}
+              {conference.Venue.Address}
             </a>.
           </p>
         </div>
@@ -49,8 +56,8 @@ class VenuePage extends React.Component {
                 scrollwheel: false,
               }}
               center={{
-                lat: Conference.Venue.Latitude,
-                lng: Conference.Venue.Longitude,
+                lat: conference.Venue.Latitude,
+                lng: conference.Venue.Longitude,
               }}
               zoom={17}
               yesIWantToUseGoogleMapApiInternals={true}
@@ -58,64 +65,64 @@ class VenuePage extends React.Component {
             />
           </div>
           <div id="map-overlay">
-            <h3>{Conference.Venue.Name}</h3>
-            <h4>{Conference.Venue.Address}</h4>
+            <h3>{conference.Venue.Name}</h3>
+            <h4>{conference.Venue.Address}</h4>
           </div>
         </div>
         <section className="right-sidebar" id="travelinfo">
           <div className="container directions equal-heights">
-            {Conference.Venue.Car && (
+            {conference.Venue.Car && (
               <div className="col">
                 <div className="top">
                   <i className="fa fa-car" aria-hidden="true" />
                   <h3>Car</h3>
                 </div>
                 <div className="txt">
-                  <p>{Conference.Venue.Car}</p>
+                  <p>{conference.Venue.Car}</p>
                 </div>
               </div>
             )}
-            {Conference.Venue.Train && (
+            {conference.Venue.Train && (
               <div className="col">
                 <div className="top">
                   <i className="fa fa-train" aria-hidden="true" />
                   <h3>Train</h3>
                 </div>
                 <div className="txt">
-                  <p>{Conference.Venue.Train}</p>
+                  <p>{conference.Venue.Train}</p>
                 </div>
               </div>
             )}
-            {Conference.Venue.Tram && (
+            {conference.Venue.Tram && (
               <div className="col">
                 <div className="top">
                   <i className="fa fa-subway" aria-hidden="true" />
                   <h3>Tram</h3>
                 </div>
                 <div className="txt">
-                  <p>{Conference.Venue.Tram}</p>
+                  <p>{conference.Venue.Tram}</p>
                 </div>
               </div>
             )}
-            {Conference.Venue.Bus && (
+            {conference.Venue.Bus && (
               <div className="col">
                 <div className="top">
                   <i className="fa fa-bus" aria-hidden="true" />
                   <h3>Bus</h3>
                 </div>
                 <div className="txt">
-                  <p>{Conference.Venue.Bus}</p>
+                  <p>{conference.Venue.Bus}</p>
                 </div>
               </div>
             )}
-            {Conference.Venue.Accommodation && (
+            {conference.Venue.Accommodation && (
               <div className="col">
                 <div className="top">
                   <i className="fa fa-building" aria-hidden="true" />
                   <h3>Accommodation</h3>
                 </div>
                 <div className="txt">
-                  <p>{Conference.Venue.Accommodation}</p>
+                  <p>{conference.Venue.Accommodation}</p>
                 </div>
               </div>
             )}

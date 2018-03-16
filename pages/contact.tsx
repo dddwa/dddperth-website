@@ -1,24 +1,32 @@
 import * as React from 'react'
-import { withPageMetadata } from '../components/global/withPageMetadata'
-import Conference from '../config/conference'
+import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
-export default withPageMetadata(() => (
-  <Page title="Contact Us" description={'How to contact ' + Conference.Name + '.'}>
+export default withPageMetadata((props: WithPageMetadataProps) => (
+  <Page
+    pageMetadata={props.pageMetadata}
+    title="Contact Us"
+    description={'How to contact ' + props.pageMetadata.conference.Name + '.'}
+  >
     <h1>Contact Us</h1>
     <ul>
       <li>
-        <strong>General enquiries:</strong> <a href={'mailto:' + Conference.ContactEmail}>{Conference.ContactEmail}</a>
+        <strong>General enquiries:</strong>{' '}
+        <a href={'mailto:' + props.pageMetadata.conference.ContactEmail}>
+          {props.pageMetadata.conference.ContactEmail}
+        </a>
       </li>
       <li>
         <strong>Sponsorship Enquiries:</strong>{' '}
-        <a href={'mailto:' + Conference.SponsorshipEmail}>{Conference.SponsorshipEmail}</a>
+        <a href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
+          {props.pageMetadata.conference.SponsorshipEmail}
+        </a>
       </li>
-      {Conference.Socials.Twitter && (
+      {props.pageMetadata.conference.Socials.Twitter && (
         <li>
           <strong>Twitter:</strong>{' '}
-          <a href={'https://twitter.com/' + Conference.Socials.Twitter} target="_blank">
-            @{Conference.Socials.Twitter}
+          <a href={'https://twitter.com/' + props.pageMetadata.conference.Socials.Twitter} target="_blank">
+            @{props.pageMetadata.conference.Socials.Twitter}
           </a>
         </li>
       )}
