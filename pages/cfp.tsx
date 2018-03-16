@@ -1,13 +1,15 @@
+import { withCurrentDate, WithCurrentDateProps } from 'components/withCurrentDate'
 import Router from 'next/router'
 import * as React from 'react'
 import { withPageMetadata } from '../components/global/withPageMetadata'
+import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import Page from '../layouts/withSidebar'
 
-class CFPPage extends React.Component {
+class CFPPage extends React.Component<WithCurrentDateProps> {
   static getInitialProps({ res }) {
-    const dates = getConferenceDates(Conference)
+    const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.AcceptingPresentations) {
       if (res) {
         res.writeHead(302, {
@@ -22,7 +24,7 @@ class CFPPage extends React.Component {
     return {}
   }
   render() {
-    const dates = getConferenceDates(Conference)
+    const dates = getConferenceDates(Conference, this.props.currentDate)
     return (
       <Page
         title="Call For Presentations (CFP)"
@@ -108,4 +110,4 @@ class CFPPage extends React.Component {
   }
 }
 
-export default withPageMetadata(CFPPage)
+export default withPageMetadata(withCurrentDate(CFPPage))

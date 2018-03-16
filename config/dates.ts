@@ -1,8 +1,8 @@
-import dateTimeProvider from '../components/utils/dateTimeProvider'
+import { CurrentDate } from '../components/utils/dateTimeProvider'
 import { Conference, Dates as IDates } from './types'
 
-export default function getConferenceDates(conference: Conference): IDates {
-  const now = dateTimeProvider.now()
+export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
+  const now = currentDate.Value
   const isComplete = now > conference.Date.clone().add(1, 'd')
   const isInProgress = now > conference.Date
   const dateDisplayFormat = 'ddd Do MMM YYYY'

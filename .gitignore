@@ -2,3 +2,4 @@ node_modules
 .next
 out
 yarn-error.log
+npm-debug.log

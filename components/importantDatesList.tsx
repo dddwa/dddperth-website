@@ -1,21 +1,25 @@
 import * as React from 'react'
 import { Fragment } from 'react'
 import { Conference } from '../config/types'
+import { CurrentDate } from './utils/dateTimeProvider'
 import isPast from './utils/isPast'
 
 export interface ImportantDatesListProps {
   conference: Conference
+  currentDate: CurrentDate
 }
 
-export default ({ conference }: ImportantDatesListProps) => (
+export default ({ conference, currentDate }: ImportantDatesListProps) => (
   <Fragment>
     {conference.ImportantDates.map(importantDate => {
       return (
         <div
           key={importantDate.Description}
-          className={'imp-date content' + (isPast(importantDate.Date) ? ' done' : '') + ' ' + importantDate.Type}
+          className={
+            'imp-date content' + (isPast(importantDate.Date, currentDate) ? ' done' : '') + ' ' + importantDate.Type
+          }
         >
-          {isPast(importantDate.Date) && <span className="ico-done" />}
+          {isPast(importantDate.Date, currentDate) && <span className="ico-done" />}
           <h3>
             {importantDate.Date.format('dddd')}{' '}
             <strong>

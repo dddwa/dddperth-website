@@ -2,18 +2,20 @@ import * as React from 'react'
 import { Action, Conference } from '../config/types'
 import ActionButton from './actionButton'
 import ImportantDatesList from './importantDatesList'
+import { CurrentDate } from './utils/dateTimeProvider'
 
 export interface ImportantDatesProps {
   conference: Conference
   actions: Action[]
+  currentDate: CurrentDate
 }
 
-export default ({ conference, actions }: ImportantDatesProps) => (
+export default ({ conference, actions, currentDate }: ImportantDatesProps) => (
   <section className="important-dates">
     <div className="container">
       <h2>Important Dates:</h2>
 
-      <ImportantDatesList conference={conference} />
+      <ImportantDatesList conference={conference} currentDate={currentDate} />
 
       <div className="clear" />
 

@@ -1,13 +1,14 @@
 import Router from 'next/router'
 import * as React from 'react'
 import { withPageMetadata } from '../components/global/withPageMetadata'
+import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import Page from '../layouts/main'
 
 class VotePage extends React.Component {
   static getInitialProps({ res }) {
-    const dates = getConferenceDates(Conference)
+    const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.VotingOpen) {
       if (res) {
         res.writeHead(302, {

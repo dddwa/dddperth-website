@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types'
 import { StatelessComponent } from 'react'
 import EventDetailsSummary from '../components/eventDetailsSummary'
 import ImportantDatesList from '../components/importantDatesList'
-import { updateWithTime } from '../components/withCurrentDate'
+import { withCurrentDate, WithCurrentDateProps } from '../components/withCurrentDate'
 import getConferenceActions from '../config/actions'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
@@ -10,7 +10,7 @@ import Main, { MainArgs } from './main'
 
 interface WithSidebarProps extends MainArgs {}
 
-const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, ...props }, context) => (
+const WithSidebar: StatelessComponent<WithSidebarProps & WithCurrentDateProps> = ({ children, ...props }, context) => (
   <Main {...props}>
     <section className="right-sidebar">
       <div className="container">
@@ -20,12 +20,13 @@ const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, ...props 
             <div className="inner">
               <EventDetailsSummary
                 conference={Conference}
-                primaryAction={getConferenceActions(Conference, getConferenceDates(Conference))[0]}
+                dates={getConferenceDates(Conference, props.currentDate)}
+                primaryAction={getConferenceActions(Conference, getConferenceDates(Conference, props.currentDate))[0]}
                 pagePath={context.pagePath}
               />
               <h3>Important Dates</h3>
               <div className="important-dates-right slick">
-                <ImportantDatesList conference={Conference} />
+                <ImportantDatesList conference={Conference} currentDate={props.currentDate} />
               </div>
             </div>
           </div>
@@ -39,4 +40,4 @@ WithSidebar.contextTypes = {
   pagePath: PropTypes.string,
 }
 
-export default updateWithTime(WithSidebar)
+export default withCurrentDate(WithSidebar)

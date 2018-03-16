@@ -5,10 +5,10 @@ import { Panel } from 'react-bootstrap'
 import From2017 from '../config/2017'
 import Conference from '../config/conference'
 import SponsorData from '../config/sponsors'
-import dateTimeProvider from './utils/dateTimeProvider'
+import dateTimeProvider, { CurrentDate } from './utils/dateTimeProvider'
 
 interface TestingControlProps {
-  currentDate: Moment
+  currentDate: CurrentDate
 }
 interface TestingControlState {
   on: boolean
@@ -20,11 +20,19 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
   }
 
   setDateTo(date: Moment) {
-    dateTimeProvider.now = () => date.clone().add(1, 'minute')
+    dateTimeProvider.now = () => {
+      return {
+        Value: date.clone().add(1, 'minute'),
+      }
+    }
   }
 
   reset() {
-    dateTimeProvider.now = () => moment(new Date())
+    dateTimeProvider.now = () => {
+      return {
+        Value: moment(new Date()),
+      }
+    }
     Conference.Sponsors = SponsorData
   }
 
@@ -75,7 +83,7 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
               </a>
               <br />
               <p className="text-center">
-                Now: <code>{dateTimeProvider.now().format('DD/MM/YYYY h:mma')}</code>
+                Now: <code>{this.props.currentDate.Value.format('DD/MM/YYYY h:mma')}</code>
               </p>
             </Panel.Body>
           )}

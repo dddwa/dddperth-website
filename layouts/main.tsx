@@ -1,13 +1,13 @@
 import * as PropTypes from 'prop-types'
-import { Fragment } from 'react'
 import * as React from 'react'
+import { Fragment } from 'react'
 import * as analytics from '../components/global/analytics'
 import Footer from '../components/global/footer'
 import Header from '../components/global/header'
 import Meta from '../components/global/meta'
 import Nav from '../components/global/nav'
 import TestingControl from '../components/testingControl'
-import { InjectedProps, updateWithTime } from '../components/withCurrentDate'
+import { withCurrentDate, WithCurrentDateProps } from '../components/withCurrentDate'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import Menu from '../config/menu'
@@ -26,7 +26,7 @@ declare global {
   }
 }
 
-class Main extends React.Component<MainArgs & InjectedProps> {
+class Main extends React.Component<MainArgs & WithCurrentDateProps> {
   static contextTypes = {
     instrumentationKey: PropTypes.string,
     pagePath: PropTypes.string,
@@ -43,7 +43,7 @@ class Main extends React.Component<MainArgs & InjectedProps> {
   }
 
   render() {
-    const dates = getConferenceDates(Conference)
+    const dates = getConferenceDates(Conference, this.props.currentDate)
     return (
       <Fragment>
         <Meta
@@ -65,4 +65,4 @@ class Main extends React.Component<MainArgs & InjectedProps> {
   }
 }
 
-export default updateWithTime(Main)
+export default withCurrentDate(Main)

@@ -1,4 +1,4 @@
-import { Sponsor, SponsorType } from './types'
+import { Sponsor } from './types'
 
 const Sponsors: Sponsor[] = []
 

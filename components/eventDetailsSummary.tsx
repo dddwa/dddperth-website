@@ -1,20 +1,24 @@
 import * as React from 'react'
 import { StatelessComponent } from 'react'
-import getConferenceDates from '../config/dates'
-import { Action, Conference } from '../config/types'
+import { Action, Conference, Dates } from '../config/types'
 import ActionButton from './actionButton'
 
 export interface EventDetailsSummaryProps {
   conference: Conference
   primaryAction: Action
   pagePath: string
+  dates: Dates
 }
 
-const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({ conference, primaryAction, pagePath }) => (
+const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
+  conference,
+  primaryAction,
+  pagePath,
+  dates,
+}) => (
   <div className="event-details">
     <h3>
-      <span>{!getConferenceDates(conference).IsComplete ? 'Next event' : 'Previous event'}</span>{' '}
-      {getConferenceDates(conference).Display}
+      <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> {dates.Display}
     </h3>
     <ul>
       {conference.SellingPoints.map((point, i) => <li key={i}>{point}</li>)}
