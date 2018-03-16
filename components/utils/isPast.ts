@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
-import dateTimeProvider from './dateTimeProvider'
+import { CurrentDate } from './dateTimeProvider'
 
-export default function isPast(date: Moment) {
-  return date < dateTimeProvider.now()
+export default function isPast(date: Moment, currentDate: CurrentDate) {
+  return date < currentDate.Value
 }

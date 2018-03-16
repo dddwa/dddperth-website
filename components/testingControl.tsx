@@ -3,12 +3,13 @@ import * as moment from 'moment'
 import * as React from 'react'
 import { Panel } from 'react-bootstrap'
 import From2017 from '../config/2017'
-import Conference from '../config/conference'
 import SponsorData from '../config/sponsors'
-import dateTimeProvider from './utils/dateTimeProvider'
+import { Conference } from '../config/types'
+import dateTimeProvider, { CurrentDate } from './utils/dateTimeProvider'
 
 interface TestingControlProps {
-  currentDate: Moment
+  currentDate: CurrentDate
+  conference: Conference
 }
 interface TestingControlState {
   on: boolean
@@ -20,12 +21,20 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
   }
 
   setDateTo(date: Moment) {
-    dateTimeProvider.now = () => date.clone().add(1, 'minute')
+    dateTimeProvider.now = () => {
+      return {
+        Value: date.clone().add(1, 'minute'),
+      }
+    }
   }
 
   reset() {
-    dateTimeProvider.now = () => moment(new Date())
-    Conference.Sponsors = SponsorData
+    dateTimeProvider.now = () => {
+      return {
+        Value: moment(new Date()),
+      }
+    }
+    this.props.conference.Sponsors = SponsorData
   }
 
   render() {
@@ -49,24 +58,36 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
               <a
                 className="content btn"
                 style={btnStyle}
-                onClick={() => this.setDateTo(Conference.PresentationSubmissionsOpenFrom)}
+                onClick={() => this.setDateTo(this.props.conference.PresentationSubmissionsOpenFrom)}
               >
                 CFP open
               </a>
               <br />
-              <a className="voting btn" style={btnStyle} onClick={() => this.setDateTo(Conference.VotingOpenFrom)}>
+              <a
+                className="voting btn"
+                style={btnStyle}
+                onClick={() => this.setDateTo(this.props.conference.VotingOpenFrom)}
+              >
                 Voting open
               </a>
               <br />
-              <a className="agenda btn" style={btnStyle} onClick={() => this.setDateTo(Conference.AgendaPublishedFrom)}>
+              <a
+                className="agenda btn"
+                style={btnStyle}
+                onClick={() => this.setDateTo(this.props.conference.AgendaPublishedFrom)}
+              >
                 Agenda published
               </a>
               <br />
-              <a className="conference btn" style={btnStyle} onClick={() => this.setDateTo(Conference.Date)}>
+              <a className="conference btn" style={btnStyle} onClick={() => this.setDateTo(this.props.conference.Date)}>
                 On the day
               </a>
               <br />
-              <a className="sponsors btn" style={btnStyle} onClick={() => (Conference.Sponsors = From2017.Sponsors)}>
+              <a
+                className="sponsors btn"
+                style={btnStyle}
+                onClick={() => (this.props.conference.Sponsors = From2017.Sponsors)}
+              >
                 Add sponsors
               </a>
               <br />
@@ -75,7 +96,7 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
               </a>
               <br />
               <p className="text-center">
-                Now: <code>{dateTimeProvider.now().format('DD/MM/YYYY h:mma')}</code>
+                Now: <code>{this.props.currentDate.Value.format('DD/MM/YYYY h:mma')}</code>
               </p>
             </Panel.Body>
           )}

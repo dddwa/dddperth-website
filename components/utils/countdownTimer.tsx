@@ -41,7 +41,7 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
     }
 
     getTimeRemaining() {
-      const duration = moment.duration(this.props.countdownTo.diff(dateTimeProvider.now()))
+      const duration = moment.duration(this.props.countdownTo.diff(dateTimeProvider.now().Value))
       return {
         duration,
         strftime: this.strftime(duration),
@@ -113,7 +113,7 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
 
     private getOffsetsFor(duration: Duration) {
       const totalSecsLeft = duration.asSeconds()
-      const now = dateTimeProvider.now()
+      const now = dateTimeProvider.now().Value
       const destination = now.add(duration)
       return {
         seconds: Math.floor(totalSecsLeft % 60),

@@ -1,26 +1,25 @@
-import { Moment } from 'moment'
 import * as React from 'react'
-import dateTimeProvider from './utils/dateTimeProvider'
+import dateTimeProvider, { CurrentDate } from './utils/dateTimeProvider'
 
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple
 
-export interface InjectedProps {
-  currentDate: Moment
+export interface WithCurrentDateProps {
+  currentDate: CurrentDate
 }
 interface ExternalProps {}
 
 interface WithCurrentDateState {
-  currentDate: Moment
+  currentDate: CurrentDate
 }
 
-export const updateWithTime = <TOriginalProps extends {}>(
-  WrappedComponent: React.ComponentType<TOriginalProps & InjectedProps>,
+export const withCurrentDate = <TOriginalProps extends {}>(
+  WrappedComponent: React.ComponentType<TOriginalProps & WithCurrentDateProps>,
 ) => {
   type ResultProps = TOriginalProps & ExternalProps
   return class WithCurrentDate extends React.Component<ResultProps, WithCurrentDateState> {
     static displayName = `WithCurrentDate(${WrappedComponent.displayName || WrappedComponent.name})`
 
-    private timerId: NodeJS.Timer
+    private timerId: number
 
     constructor(props: ResultProps) {
       super(props)
@@ -39,7 +38,7 @@ export const updateWithTime = <TOriginalProps extends {}>(
     }
 
     componentDidMount() {
-      this.timerId = setInterval(() => this.tick(), window.testingMode ? 1000 : 60000)
+      this.timerId = setInterval(() => this.tick(), (window.appConfig.testingMode ? 1000 : 60000) as any)
     }
 
     componentWillUnmount() {
