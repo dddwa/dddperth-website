@@ -1,7 +1,6 @@
-import Conference from './conference'
-import { Dates, MenuItem } from './types'
+import { Conference, Dates, MenuItem } from './types'
 
-export default function Menu(dates: Dates) {
+export default function Menu(conference: Conference, dates: Dates) {
   const topMenu: MenuItem[] = [
     {
       href: '/',
@@ -24,7 +23,7 @@ export default function Menu(dates: Dates) {
     })
   }
 
-  if (!Conference.HideVenue) {
+  if (!conference.HideVenue) {
     topMenu.push({
       href: '/venue',
       name: 'Venue',
@@ -50,14 +49,13 @@ export default function Menu(dates: Dates) {
     name: 'Agenda',
   })
 
-  topMenu.push({
-    href: 'https://blog.dddperth.com/',
-    name: 'Blog',
-  })
-  topMenu.push({
-    href: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
-    name: 'Videos',
-  })
+  if (conference.Socials.Blog) {
+    topMenu.push({
+      href: conference.Socials.Blog,
+      name: 'Blog',
+    })
+  }
+
   topMenu.push({
     href: '/faq',
     name: 'FAQs',
