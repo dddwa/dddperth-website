@@ -56,6 +56,16 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
           {this.state.on && (
             <Panel.Body>
               <a
+                className="btn"
+                style={btnStyle}
+                onClick={() =>
+                  this.setDateTo(this.props.conference.PresentationSubmissionsOpenFrom.clone().add(-1, 'd'))
+                }
+              >
+                Pre-CFP
+              </a>
+              <br />
+              <a
                 className="content btn"
                 style={btnStyle}
                 onClick={() => this.setDateTo(this.props.conference.PresentationSubmissionsOpenFrom)}

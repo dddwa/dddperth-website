@@ -47,7 +47,7 @@ class Main extends React.Component<MainProps> {
           conference={metadata.conference}
           dates={metadata.dates}
         />
-        <Nav pagePath={metadata.pagePath} menu={Menu(metadata.dates).Top} />
+        <Nav pagePath={metadata.pagePath} menu={Menu(metadata.conference, metadata.dates).Top} />
         <Header
           isHome={this.props.isHome}
           hideBanner={this.props.hideBanner}
@@ -56,7 +56,7 @@ class Main extends React.Component<MainProps> {
         />
         {this.props.children}
         <Footer
-          menu={Menu(metadata.dates).Footer}
+          menu={Menu(metadata.conference, metadata.dates).Footer}
           socials={metadata.conference.Socials}
           conference={metadata.conference}
         />

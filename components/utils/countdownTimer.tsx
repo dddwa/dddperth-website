@@ -29,7 +29,7 @@ export interface TimeRemaining {
 
 interface CountdownTimerState {
   timeRemaining: TimeRemaining
-  timeoutId: NodeJS.Timer | null
+  timeoutId: number
 }
 
 export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArgs>) => {
@@ -79,7 +79,7 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
     }
 
     componentWillUnmount() {
-      clearTimeout(this.state.timeoutId as NodeJS.Timer)
+      clearTimeout(this.state.timeoutId)
     }
 
     tick() {
@@ -94,10 +94,10 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
 
       if (!countdownComplete) {
         this.setState({
-          timeoutId: setTimeout(
-            () => this.tick(),
-            Math.min(this.props.interval, timeRemaining.duration.asMilliseconds()),
-          ),
+          timeoutId: setTimeout(() => this.tick(), Math.min(
+            this.props.interval,
+            timeRemaining.duration.asMilliseconds(),
+          ) as any),
         })
       } else {
         if (this.props.completeCallback) {

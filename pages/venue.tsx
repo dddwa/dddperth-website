@@ -49,12 +49,15 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
               bootstrapURLKeys={{
                 key: 'AIzaSyACDtKFE3lyOOmHpMeUoJsYqaVY2fcaa9o',
               }}
-              options={{
-                mapTypeControl: false,
-                minZoomOverride: false,
-                panControl: false,
-                scrollwheel: false,
-              }}
+              options={
+                {
+                  mapTypeControl: false,
+                  minZoomOverride: false,
+                  panControl: false,
+                  scrollwheel: false,
+                  zoomControl: false,
+                } as any
+              }
               center={{
                 lat: conference.Venue.Latitude,
                 lng: conference.Venue.Longitude,
