@@ -1,113 +1,114 @@
-import { SponsorType, Sponsor } from "./types";
+import { Sponsor, SponsorType } from './types'
 
 interface From2017 {
-  YouTubePlaylistUrl: string;
-  YouTubeKeynoteEmbedUrl: string;
-  YouTubeLocknoteEmbedUrl: string;
-  FlickrAlbumUrl: string;
-  HandbookUrl: string;
-  Sponsors: Sponsor[];
+  YouTubePlaylistUrl: string
+  YouTubeKeynoteEmbedUrl: string
+  YouTubeLocknoteEmbedUrl: string
+  FlickrAlbumUrl: string
+  HandbookUrl: string
+  Sponsors: Sponsor[]
 }
 
-const From2017 : From2017 = {
-  YouTubePlaylistUrl: "https://www.youtube.com/watch?v=tlA_4-dnDyk&list=PLkLJSte3oodQ_7JG0iRdZS7P4TdlFSzYy",
-  YouTubeKeynoteEmbedUrl: "https://www.youtube.com/embed/tlA_4-dnDyk",
-  YouTubeLocknoteEmbedUrl: "https://www.youtube.com/embed/zMReShyytQA",
-  FlickrAlbumUrl: "https://www.flickr.com/photos/135003652@N08/albums/72157686384858370",
-  HandbookUrl: "/static/docs/handbook2017.pdf",
+const From2017: From2017 = {
+  YouTubePlaylistUrl: 'https://www.youtube.com/watch?v=tlA_4-dnDyk&list=PLkLJSte3oodQ_7JG0iRdZS7P4TdlFSzYy',
+  // tslint:disable-next-line:object-literal-sort-keys
+  YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/tlA_4-dnDyk',
+  YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/zMReShyytQA',
+  FlickrAlbumUrl: 'https://www.flickr.com/photos/135003652@N08/albums/72157686384858370',
+  HandbookUrl: '/static/docs/handbook2017.pdf',
   Sponsors: [
     // Platinum
     {
-      name: "Bankwest",
+      imageUrl: '/static/images/sponsors/bankwest.png',
+      name: 'Bankwest',
       type: SponsorType.Platinum,
-      imageUrl: "/static/images/sponsors/bankwest.png",
-      url: "https://www.bankwest.com.au/"
+      url: 'https://www.bankwest.com.au/',
     },
     // Gold
     {
-      name: "Readify",
+      imageUrl: '/static/images/sponsors/readify.png',
+      name: 'Readify',
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/readify.png",
-      url: "https://readify.net/"
+      url: 'https://readify.net/',
     },
     {
-      name: "Microsoft",
+      imageUrl: '/static/images/sponsors/microsoft.png',
+      name: 'Microsoft',
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/microsoft.png",
-      url: "https://www.microsoft.com/en-au"
+      url: 'https://www.microsoft.com/en-au',
     },
     {
-      name: "LiveHire",
+      imageUrl: '/static/images/sponsors/livehire.png',
+      name: 'LiveHire',
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/livehire.png",
-      url: "https://www.livehire.com/"
+      url: 'https://www.livehire.com/',
     },
     {
-      name: "Lateral Solutions",
+      imageUrl: '/static/images/sponsors/lateral.png',
+      name: 'Lateral Solutions',
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/lateral.png",
-      url: "http://www.lateral.com.au/"
+      url: 'http://www.lateral.com.au/',
     },
     {
-      name: "Virtual Gaming Worlds",
+      imageUrl: '/static/images/sponsors/vgw.png',
+      name: 'Virtual Gaming Worlds',
       type: SponsorType.Gold,
-      imageUrl: "/static/images/sponsors/vgw.png",
-      url: "https://www.vgw.co/"
+      url: 'https://www.vgw.co/',
     },
     // Silver
     {
-      name: "NDC Sydney",
+      imageUrl: '/static/images/sponsors/ndc-sydney.png',
+      name: 'NDC Sydney',
       type: SponsorType.Silver,
-      imageUrl: "/static/images/sponsors/ndc-sydney.png",
-      url: "http://ndcsydney.com/"
+      url: 'http://ndcsydney.com/',
     },
     {
-      name: "Octopus Deploy",
+      imageUrl: '/static/images/sponsors/octopus-deploy.png',
+      name: 'Octopus Deploy',
       type: SponsorType.Silver,
-      imageUrl: "/static/images/sponsors/octopus-deploy.png",
-      url: "https://octopus.com/"
+      url: 'https://octopus.com/',
     },
     // Services
     {
-      name: "Virtual Gaming Worlds",
+      imageUrl: '/static/images/sponsors/vgw.png',
+      name: 'Virtual Gaming Worlds',
+      serviceProvided: 'Afterparty',
       type: SponsorType.Service,
-      imageUrl: "/static/images/sponsors/vgw.png",
-      url: "https://www.vgw.co/",
-      serviceProvided: "Afterparty"
+      url: 'https://www.vgw.co/',
     },
     {
-      name: "Mechanical Rock",
+      imageUrl: '/static/images/sponsors/mechanical-rock.png',
+      name: 'Mechanical Rock',
+      serviceProvided: 'Coffee Cart',
       type: SponsorType.Service,
-      imageUrl: "/static/images/sponsors/mechanical-rock.png",
-      url: "https://mechanicalrock.io/",
-      serviceProvided: "Coffee Cart"
+      url: 'https://mechanicalrock.io/',
     },
     // Standard
     {
-      name: "Jetbrains",
+      imageUrl: '/static/images/sponsors/jetbrains.png',
+      name: 'Jetbrains',
       type: SponsorType.Standard,
-      imageUrl: "/static/images/sponsors/jetbrains.png",
-      url: "https://www.jetbrains.com/"
+      url: 'https://www.jetbrains.com/',
     },
     {
-      name: "Thales",
+      imageUrl: '/static/images/sponsors/thales.png',
+      name: 'Thales',
       type: SponsorType.Standard,
-      imageUrl: "/static/images/sponsors/thales.png",
-      url: "https://www.thalesgroup.com/en/career"
+      url: 'https://www.thalesgroup.com/en/career',
     },
     {
-      name: "Aspose",
+      imageUrl: '/static/images/sponsors/aspose.png',
+      name: 'Aspose',
       type: SponsorType.Standard,
-      imageUrl: "/static/images/sponsors/aspose.png",
-      url: "http://www.aspose.com/"
+      url: 'http://www.aspose.com/',
     },
     {
-      name: "Seq",
+      imageUrl: '/static/images/sponsors/seq.png',
+      name: 'Seq',
       type: SponsorType.Standard,
-      imageUrl: "/static/images/sponsors/seq.png",
-      url: "https://www.getseq.net/"
-    }
-  ]
+      url: 'https://www.getseq.net/',
+    },
+  ],
 }
 
-export default From2017;
+export default From2017

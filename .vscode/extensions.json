@@ -1,6 +1,8 @@
 {
-    "recommendations": [
-        "msjsdiag.debugger-for-chrome",
-        "EditorConfig.EditorConfig"
-    ]
+  "recommendations": [
+    "msjsdiag.debugger-for-chrome",
+    "EditorConfig.EditorConfig",
+    "eg2.tslint",
+    "esbenp.prettier-vscode"
+  ]
 }

@@ -1,5 +1,5 @@
-import {Sponsor, SponsorType} from "./types";
+import { Sponsor, SponsorType } from './types'
 
-const Sponsors : Sponsor[] = [];
+const Sponsors: Sponsor[] = []
 
-export default Sponsors;
+export default Sponsors

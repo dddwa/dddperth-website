@@ -20,7 +20,14 @@ steps:
   condition: and(succeeded(), ne(variables['includeServerCode'], 'false'))
 
 - task: Npm@1
-  displayName: Build
+displayName: Lint
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run lint'
+
+- task: Npm@1
+displayName: Build
   inputs:
     command: custom
     verbose: false
@@ -35,6 +42,7 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     OverWrite: true
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: CopyFiles@2
   displayName: Copy deploy files to artifacts staging directory
@@ -42,12 +50,14 @@ steps:
     SourceFolder: deploy
     Contents: '**/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: ArchiveFiles@2
   displayName: Archive files
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
   displayName: Publish artifact
@@ -55,3 +65,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: drop
     ArtifactType: Container
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))

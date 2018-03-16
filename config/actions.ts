@@ -1,61 +1,60 @@
-import {Dates, Conference, Action} from './types';
+import { Action, Conference, Dates } from './types'
 
-export default function getConferenceActions(conference : Conference, dates : Dates) : Action[] {
-
-  const actions : Action[] = [];
+export default function getConferenceActions(conference: Conference, dates: Dates): Action[] {
+  const actions: Action[] = []
 
   if (dates.AcceptingPresentations) {
     actions.push({
-      Title: "Submit presentation",
-      Url: "/cfp",
-      Category: "content"
-    });
+      Category: 'content',
+      Title: 'Submit presentation',
+      Url: '/cfp',
+    })
   }
 
   if (dates.VotingOpen) {
     actions.push({
-      Title: "Vote for agenda",
-      Url: "/vote",
-      Category: "voting"
-    });
+      Category: 'voting',
+      Title: 'Vote for agenda',
+      Url: '/vote',
+    })
   }
 
   if (dates.RegistrationOpen) {
     actions.push({
-      Title: "Purchase a ticket",
-      Url: "/tickets",
-      Category: "tickets"
-    });
+      Category: 'tickets',
+      Title: 'Purchase a ticket',
+      Url: '/tickets',
+    })
   }
 
   if (dates.AcceptingFeedback) {
     actions.push({
-      Title: "Give feedback",
-      Url: "/feedback",
-      Category: "conference"
-    });
+      Category: 'conference',
+      Title: 'Give feedback',
+      Url: '/feedback',
+    })
   }
 
-  let agendaTitle = "View the agenda";
+  let agendaTitle = 'View the agenda'
   if (!dates.AgendaPublished) {
-    agendaTitle = "Previous agenda";
+    agendaTitle = 'Previous agenda'
   }
   if (dates.IsComplete) {
-    agendaTitle = `${conference.Instance} agenda`;
+    agendaTitle = `${conference.Instance} agenda`
   }
   actions.push({
+    Category: 'agenda',
     Title: agendaTitle,
-    Url: "/agenda",
-    Category: "agenda"
-  });
+    Url: '/agenda',
+  })
 
   if (conference.Handbook) {
     actions.push({
-      Title: "Download handbook",
-      Url: "/static/docs/" + conference.Handbook,
-      Category: "conference"
-    });
+      Category: 'conference',
+      Title: 'Download handbook',
+      Url: '/static/docs/' + conference.Handbook,
+    })
   }
 
-  return actions;
+  return actions
 }
