@@ -93,7 +93,8 @@ const Conference: IConference = {
   ContactEmail: 'info@dddperth.com',
   SponsorshipEmail: 'sponsorship@dddperth.com',
   MentoringEmail: 'mentors@dddperth.com',
-  EmergencyPhoneNumber: '0400 777 763',
+  EmergencyContactName: 'Rob Moore',
+  EmergencyContactPhoneNumber: '0400 777 763',
 
   Date: date,
   DoorsOpenTime: '8:10am',

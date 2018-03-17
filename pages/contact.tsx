@@ -30,6 +30,12 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           </a>
         </li>
       )}
+      <li>
+        <strong>Emergency contact:</strong>{' '}
+        {props.pageMetadata.conference.EmergencyContactName +
+          ' on ' +
+          props.pageMetadata.conference.EmergencyContactPhoneNumber}
+      </li>
     </ul>
     <h2>DDD WA Inc.</h2>
     <ul>
