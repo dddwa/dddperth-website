@@ -340,6 +340,19 @@ footer {
   .copyright {text-align: center; font-size: 90%}
 }
 
+@media only screen and (max-width: 600px) {
+  footer {
+    ul.social {
+      a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 // What Now? CTA's
 .what-now {
   .btn {display: block; width: 200px; margin: 0 auto 10px auto}
