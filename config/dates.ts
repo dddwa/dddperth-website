@@ -5,7 +5,7 @@ export default function getConferenceDates(conference: Conference, currentDate: 
   const now = currentDate.Value
   const isComplete = now > conference.Date.clone().add(1, 'd')
   const isInProgress = now > conference.Date
-  const dateDisplayFormat = 'ddd Do MMM YYYY'
+  const dateDisplayFormat = 'dddd Do MMMM YYYY'
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil
 
   // tslint:disable:object-literal-sort-keys

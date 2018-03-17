@@ -78,7 +78,7 @@ const Conference: IConference = {
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
   Goal:
-    "Our goal is to create an approachable conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at conferences.",
+    "Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
   GoogleAnalyticsId: 'UA-60040308-1',
   TicketPrice: '$50',
   EventbriteId: '34127818223',

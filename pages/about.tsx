@@ -7,9 +7,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
   <Page pageMetadata={props.pageMetadata} title="About" description="The goal and history of DDD Perth and DDD WA Inc.">
     <h1>About DDD Perth</h1>
     <p>
-      DDD Perth is an inclusive non-profit event for the Perth software community. Our goal is to create an approachable
-      conference that anyone can attend or speak at, especially people that don't normally get to attend / speak at
-      conferences. We do this by:
+      {props.pageMetadata.conference.TagLine}. {props.pageMetadata.conference.Goal} We do this by:
     </p>
     <ul>
       <li>Making the ticket price as low as possible ($50)</li>

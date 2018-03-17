@@ -9,6 +9,12 @@ interface NavArgs {
   menu: MenuItem[]
 }
 
+const isFirstBranchMatched = (pagePath: string, href: string) => {
+  const last = pagePath.lastIndexOf('/')
+  const sub = last > 0 ? pagePath.substring(0, last) : pagePath
+  return href === sub
+}
+
 class Nav extends React.Component<NavArgs> {
   constructor(props: NavArgs) {
     super(props)
@@ -25,7 +31,9 @@ class Nav extends React.Component<NavArgs> {
             {this.props.menu.map(item => (
               <Fragment key={item.href}>
                 <Link href={item.href} passHref>
-                  <Bootstrap.NavItem active={item.href === this.props.pagePath}>{item.name}</Bootstrap.NavItem>
+                  <Bootstrap.NavItem active={isFirstBranchMatched(this.props.pagePath, item.href)}>
+                    {item.name}
+                  </Bootstrap.NavItem>
                 </Link>
               </Fragment>
             ))}
