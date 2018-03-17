@@ -20,7 +20,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <img src="/static/images/logo.png" alt="DDD Perth logo" style={{ width: '250px' }} />
     </p>
     <p>
-      DDD standards for Developer! Developer! Developer! and while it's heritage is a developer-focussed conference, DDD
+      DDD stands for Developer! Developer! Developer! and while it's heritage is a developer-focussed conference, DDD
       Perth is not just for developers, but for all professionals in the software industry.
     </p>
     <p>
