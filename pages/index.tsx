@@ -23,7 +23,7 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
   render() {
     const conference = this.props.pageMetadata.conference
     const dates = this.props.pageMetadata.dates
-    const actions = getConferenceActions(this.props.pageMetadata.conference, dates)
+    const actions = getConferenceActions(conference, dates)
     return (
       <Page pageMetadata={this.props.pageMetadata} isHome={true} title="Home">
         <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} />
