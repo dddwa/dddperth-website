@@ -12,12 +12,12 @@ interface TestingControlProps {
   conference: Conference
 }
 interface TestingControlState {
-  on: boolean
+  show: boolean
 }
 
 class TestingControl extends React.Component<TestingControlProps, TestingControlState> {
   componentWillMount() {
-    this.setState({ on: false })
+    this.setState({ show: false })
   }
 
   setDateTo(date: Moment) {
@@ -46,14 +46,13 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
             Testing [<a
               style={btnStyle}
               onClick={() => {
-                this.setState({ on: !this.state.on })
-                this.reset()
+                this.setState({ show: !this.state.show })
               }}
             >
-              {this.state.on ? 'On' : 'Off'}]
+              {this.state.show ? 'Hide' : 'Show'}]
             </a>
           </Panel.Heading>
-          {this.state.on && (
+          {this.state.show && (
             <Panel.Body>
               <a
                 className="btn"

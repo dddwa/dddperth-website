@@ -979,6 +979,15 @@ tr td.highlight-session {
   top: 40px;
   right: 40px;
   z-index: 100;
+  @include opacity(0.9)
+}
+
+@media only screen and (max-width: 500px) {
+  #testing-control {
+    right: inherit;
+    left: 0;
+    top: 0;
+  }
 }
 
 
