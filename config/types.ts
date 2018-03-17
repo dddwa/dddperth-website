@@ -28,6 +28,7 @@ export interface Conference {
   EmergencyContactPhoneNumber: string
 
   Date: Moment
+  EndDate: Moment
   DoorsOpenTime: string
   FinishTime: string
   RegistrationOpenFrom: Moment

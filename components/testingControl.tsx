@@ -35,6 +35,7 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
       }
     }
     this.props.conference.Sponsors = SponsorData
+    this.props.conference.IsSoldOut = false
   }
 
   render() {
@@ -81,6 +82,14 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
               </a>
               <br />
               <a
+                className="voting btn"
+                style={btnStyle}
+                onClick={() => this.setDateTo(this.props.conference.VotingOpenUntil)}
+              >
+                Voting closed
+              </a>
+              <br />
+              <a
                 className="agenda btn"
                 style={btnStyle}
                 onClick={() => this.setDateTo(this.props.conference.AgendaPublishedFrom)}
@@ -90,6 +99,18 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
               <br />
               <a className="conference btn" style={btnStyle} onClick={() => this.setDateTo(this.props.conference.Date)}>
                 On the day
+              </a>
+              <br />
+              <a
+                className="conference btn"
+                style={btnStyle}
+                onClick={() => this.setDateTo(this.props.conference.EndDate)}
+              >
+                Conference over
+              </a>
+              <br />
+              <a className="sponsors btn" style={btnStyle} onClick={() => (this.props.conference.IsSoldOut = true)}>
+                Tickets sold out
               </a>
               <br />
               <a
