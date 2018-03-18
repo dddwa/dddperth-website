@@ -56,12 +56,11 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">9:00</td>
                 <td colSpan={3} className="breadth">
-                  <strong>Welcome and house-keeping</strong>
-                  <br />
+                  Welcome and house-keeping
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">9:15</td>
                 <SessionCell isKeynote={true} sessionId="aa9f3fc0-8d47-404d-ba3e-2e5e058a00be" />
               </tr>
@@ -69,8 +68,7 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">10:00</td>
                 <td colSpan={3} className="breadth">
-                  <strong>Changeover</strong>
-                  <br />
+                  Changeover
                 </td>
               </tr>
 
@@ -153,7 +151,7 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">16:10</td>
                 <SessionCell isLocknote={true} sessionId="82988c58-8d9c-4518-a4f7-94cf7739299d" />
               </tr>
@@ -218,6 +216,7 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
         </p>
         <Sponsors
           show={true}
+          hideUpsell={true}
           sponsors={From2016.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
         />
       </Fragment>
