@@ -16,7 +16,7 @@ interface MetaArgs {
 
 const getTitle = (title: string, conference: Conference, dates: Dates) =>
   `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${
-    !conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('d MMM YYYY')}` : ''
+    !conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('Do MMMM YYYY')}` : ''
   }`
 
 const Meta: StatelessComponent<MetaArgs> = ({

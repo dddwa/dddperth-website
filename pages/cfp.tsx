@@ -79,7 +79,6 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
 
         <p>Other things to note for presenters:</p>
         <ul>
-          <li>You will likely be speaking to an audience of between 50-100 people</li>
           <li>
             In the past we've had a huge range of presentations including the following topics:{' '}
             {conference.PreviouslySubmittedTopics}.

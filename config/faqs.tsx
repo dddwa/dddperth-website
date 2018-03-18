@@ -325,7 +325,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
           </li>
           <li>
             <a href="https://twitter.com/deekob" target="_blank">
-              Derek bingham
+              Derek Bingham
             </a>
           </li>
         </ul>

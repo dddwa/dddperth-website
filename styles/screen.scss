@@ -340,6 +340,19 @@ footer {
   .copyright {text-align: center; font-size: 90%}
 }
 
+@media only screen and (max-width: 600px) {
+  footer {
+    ul.social {
+      a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 // What Now? CTA's
 .what-now {
   .btn {display: block; width: 200px; margin: 0 auto 10px auto}
@@ -499,7 +512,7 @@ section.full-width {
   .panel-heading a {
     display: block;
     position:relative;
-    padding: 13px 15px;
+    padding: 13px 52px 13px 15px;
     font-weight: 700;
     background: $light-grey;
     color: $body-color;
@@ -966,6 +979,15 @@ tr td.highlight-session {
   top: 40px;
   right: 40px;
   z-index: 100;
+  @include opacity(0.9)
+}
+
+@media only screen and (max-width: 500px) {
+  #testing-control {
+    right: inherit;
+    left: 0;
+    top: 0;
+  }
 }
 
 

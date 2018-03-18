@@ -9,7 +9,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       <a className="btn" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
-        Contact us to explore sponsorship opportunities
+        Explore sponsorship opportunities
       </a>
     </p>
 
@@ -62,7 +62,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       <a className="btn" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
-        Contact us to explore sponsorship opportunities
+        Explore sponsorship opportunities
       </a>
     </p>
   </Page>

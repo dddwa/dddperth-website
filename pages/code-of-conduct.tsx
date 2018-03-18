@@ -29,7 +29,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>Need Help?</h2>
     <p>
       Email <a href={props.pageMetadata.conference.ContactEmail}>{props.pageMetadata.conference.ContactEmail}</a> or
-      call {props.pageMetadata.conference.EmergencyPhoneNumber}.
+      call {props.pageMetadata.conference.EmergencyContactName} on{' '}
+      {props.pageMetadata.conference.EmergencyContactPhoneNumber}.
     </p>
 
     <h2>The Quick Version</h2>

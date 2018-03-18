@@ -24,9 +24,11 @@ export interface Conference {
   ContactEmail: string
   SponsorshipEmail: string
   MentoringEmail: string
-  EmergencyPhoneNumber: string
+  EmergencyContactName: string
+  EmergencyContactPhoneNumber: string
 
   Date: Moment
+  EndDate: Moment
   DoorsOpenTime: string
   FinishTime: string
   RegistrationOpenFrom: Moment
