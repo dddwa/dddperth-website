@@ -329,7 +329,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </a>
           </li>
         </ul>
-        <p>Furthermore, we have many others who volunteer and have assisted with organisation in the past.</p>
+        <p>
+          <a href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
+            Meet the team
+          </a>! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
+        </p>
       </Fragment>
     ),
   })
