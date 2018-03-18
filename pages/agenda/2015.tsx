@@ -11,7 +11,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
     return {
       conferenceInstance: '2015',
       numTracks: 2,
-      sessionsUrl: 'https://dddperth.com/Session/Sessions/?year=2015',
+      sessionsUrl: '/static/agenda/2015.json',
     }
   }
 
