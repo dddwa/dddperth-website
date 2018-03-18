@@ -53,7 +53,11 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
     static async getInitialProps({ req }) {
       if (req) {
-        const response = await fetch(externalProps.sessionsUrl)
+        const secure = (req.connection as any).encrypted || req.headers['x-forwarded-proto'] === 'https'
+        const url = externalProps.sessionsUrl.startsWith('/')
+          ? 'http' + (secure ? 's' : '') + '://' + req.headers.host + externalProps.sessionsUrl
+          : externalProps.sessionsUrl
+        const response = await fetch(url)
 
         if (response.status !== 200) {
           return {}
