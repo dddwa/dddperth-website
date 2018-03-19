@@ -11,7 +11,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
     return {
       conferenceInstance: '2017',
       numTracks: 3,
-      sessionsUrl: 'https://dddperth.com/Session/Sessions/?year=2017',
+      sessionsUrl: '/static/agenda/2017.json',
     }
   }
 
@@ -56,12 +56,11 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">8:45</td>
                 <td colSpan={3} className="breadth">
-                  <strong>Welcome and house-keeping</strong>
-                  <br />
+                  Welcome and house-keeping
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">9:00</td>
                 <SessionCell isKeynote={true} sessionId="44f64f98-53ef-4344-93f6-9d852f845ed2" />
               </tr>
@@ -69,8 +68,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">9:45</td>
                 <td colSpan={3} className="breadth">
-                  <strong>Morning tea</strong>
-                  <br />
+                  Morning tea
                 </td>
               </tr>
 
@@ -172,7 +170,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">16:20</td>
                 <SessionCell isLocknote={true} sessionId="d06d45de-de42-44da-83eb-ea1d9d14b6cc" />
               </tr>

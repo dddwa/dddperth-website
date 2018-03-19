@@ -11,7 +11,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
     return {
       conferenceInstance: '2015',
       numTracks: 2,
-      sessionsUrl: 'https://dddperth.com/Session/Sessions/?year=2015',
+      sessionsUrl: '/static/agenda/2015.json',
     }
   }
 
@@ -47,12 +47,11 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">9:00</td>
                 <td colSpan={2} className="breadth">
-                  <strong>Welcome and house-keeping</strong>
-                  <br />
+                  Welcome and house-keeping
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">9:15</td>
                 <SessionCell isKeynote={true} sessionId="599fc187-2f4a-49d0-8531-2634467fb8f0" />
               </tr>
@@ -60,8 +59,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">10:00</td>
                 <td colSpan={2} className="breadth">
-                  <strong>Morning tea</strong>
-                  <br />
+                  Morning tea
                 </td>
               </tr>
 
@@ -130,7 +128,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
                 </td>
               </tr>
 
-              <tr className="breadth-row keynote">
+              <tr className="breadth-row">
                 <td className="time">16:15</td>
                 <SessionCell isLocknote={true} sessionId="4ccb057b-c3d1-472a-8ad9-83b9f1e17c14" />
               </tr>
@@ -138,7 +136,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">16:50</td>
                 <td colSpan={2} className="breadth">
-                  <strong>Afterparty</strong>
+                  Afterparty
                   <br />
                   <em>Including thankyous</em>
                 </td>
@@ -170,6 +168,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
         </p>
         <Sponsors
           show={true}
+          hideUpsell={true}
           sponsors={From2015.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
         />
       </Fragment>

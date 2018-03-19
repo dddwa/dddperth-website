@@ -6,9 +6,10 @@ import { Sponsor, SponsorType } from '../config/types'
 interface SponsorsProps {
   sponsors: Sponsor[]
   show: boolean
+  hideUpsell?: boolean
 }
 
-const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show }) =>
+const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsell }) =>
   show && sponsors.length ? (
     <Fragment>
       <section className="sponsors">
@@ -71,13 +72,15 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show }) =>
           </Fragment>
         ) : null}
 
-        <p>
-          If you'd like to explore sponsorship opportunities, please check out our{' '}
-          <Link href="/sponsorship">
-            <a>sponsorship page</a>
-          </Link>{' '}
-          for more information.
-        </p>
+        {!hideUpsell && (
+          <p>
+            If you'd like to explore sponsorship opportunities, please check out our{' '}
+            <Link href="/sponsorship">
+              <a>sponsorship page</a>
+            </Link>{' '}
+            for more information.
+          </p>
+        )}
       </section>
 
       {sponsors.find(s => s.type === SponsorType.Standard) ? (
