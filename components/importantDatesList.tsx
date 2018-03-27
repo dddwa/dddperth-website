@@ -25,7 +25,12 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             </strong>
           </h3>
           <p>
-            <strong>{importantDate.Date.format('hh:mma')}</strong>
+            <strong>
+              {importantDate.Date.format('hh:mma')}
+              <small>
+                {importantDate.Date.zone() !== currentDate.Value.zone() && ' (' + importantDate.Date.format('ZZ') + ')'}
+              </small>
+            </strong>
             {importantDate.Description}
           </p>
         </div>
@@ -57,7 +62,12 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             </strong>
           </h3>
           <p>
-            <strong>{importantDate.Date.format('hh:mma')}</strong>
+            <strong>
+              {importantDate.Date.format('hh:mma')}
+              <small>
+                {importantDate.Date.zone() !== currentDate.Value.zone() && ' (' + importantDate.Date.format('ZZ') + ')'}
+              </small>
+            </strong>
             {importantDate.Description}
           </p>
         </div>
