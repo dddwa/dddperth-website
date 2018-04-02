@@ -28,7 +28,8 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             <strong>
               {importantDate.Date.format('hh:mma')}
               <small>
-                {importantDate.Date.zone() !== currentDate.Value.zone() && ' (' + importantDate.Date.format('ZZ') + ')'}
+                {importantDate.Date.utcOffset() !== currentDate.Value.utcOffset() &&
+                  ' (' + importantDate.Date.format('ZZ') + ')'}
               </small>
             </strong>
             {importantDate.Description}
@@ -65,7 +66,8 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             <strong>
               {importantDate.Date.format('hh:mma')}
               <small>
-                {importantDate.Date.zone() !== currentDate.Value.zone() && ' (' + importantDate.Date.format('ZZ') + ')'}
+                {importantDate.Date.utcOffset() !== currentDate.Value.utcOffset() &&
+                  ' (' + importantDate.Date.format('ZZ') + ')'}
               </small>
             </strong>
             {importantDate.Description}
