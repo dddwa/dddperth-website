@@ -9,11 +9,11 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const isSoldOut = false
-const date = moment('2018-08-04T08:00+08:00')
+const date = moment.parseZone('2018-08-04T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2015
-const registrationOpenFrom = moment('2018-04-30T08:00:00+08:00')
+const registrationOpenFrom = moment.parseZone('2018-04-30T08:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
@@ -21,11 +21,11 @@ const registrationOpenUntil = hideDate
       .add(-1, 'd')
       .startOf('day')
       .add(17, 'h')
-const presentationSubmissionsOpenFrom = moment('2018-04-30T08:00:00+08:00')
-const presentationSubmissionsOpenUntil = moment('2018-06-03T23:59:59+08:00')
-const votingOpenFrom = moment('2018-06-06T08:00:00+08:00')
-const votingOpenUntil = moment('2018-06-14T23:59:59+08:00')
-const agendaPublishedFrom = moment('2018-06-25T08:00:00+08:00')
+const presentationSubmissionsOpenFrom = moment.parseZone('2018-04-30T08:00:00+08:00')
+const presentationSubmissionsOpenUntil = moment.parseZone('2018-06-03T23:59:59+08:00')
+const votingOpenFrom = moment.parseZone('2018-06-06T08:00:00+08:00')
+const votingOpenUntil = moment.parseZone('2018-06-14T23:59:59+08:00')
+const agendaPublishedFrom = moment.parseZone('2018-06-25T08:00:00+08:00')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = endDate
 const importantDates = [
