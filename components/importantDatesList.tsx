@@ -11,6 +11,11 @@ export interface ImportantDatesListProps {
 
 export default ({ conference, currentDate }: ImportantDatesListProps) => (
   <Fragment>
+    {conference.ImportantDates[0].Date.utcOffset() !== currentDate.Value.utcOffset() && (
+      <p>
+        <em>Note: All dates in {conference.ImportantDates[0].Date.format('ZZ')}.</em>
+      </p>
+    )}
     {conference.ImportantDates.filter(
       importantDate =>
         !isPast(importantDate.Date, currentDate) ||
@@ -25,13 +30,7 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             </strong>
           </h3>
           <p>
-            <strong>
-              {importantDate.Date.format('hh:mma')}
-              <small>
-                {importantDate.Date.utcOffset() !== currentDate.Value.utcOffset() &&
-                  ' (' + importantDate.Date.format('ZZ') + ')'}
-              </small>
-            </strong>
+            <strong>{importantDate.Date.format('hh:mma')}</strong>
             {importantDate.Description}
           </p>
         </div>
@@ -63,13 +62,7 @@ export default ({ conference, currentDate }: ImportantDatesListProps) => (
             </strong>
           </h3>
           <p>
-            <strong>
-              {importantDate.Date.format('hh:mma')}
-              <small>
-                {importantDate.Date.utcOffset() !== currentDate.Value.utcOffset() &&
-                  ' (' + importantDate.Date.format('ZZ') + ')'}
-              </small>
-            </strong>
+            <strong>{importantDate.Date.format('hh:mma')}</strong>
             {importantDate.Description}
           </p>
         </div>
