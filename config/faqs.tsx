@@ -59,6 +59,17 @@ export default function getFaqs(dates: Dates): FAQ[] {
   }
 
   Faqs.push({
+    Question: 'Will childcare be available?',
+    Answer: (
+      <Fragment>
+        We are hoping to introduce a childcare facility at this year's conference. This would likely be an additional
+        cost on top of your ticket. If you are interested in using this service then please{' '}
+        <a href={'mailto:' + Conference.ContactEmail}>get in touch</a>.
+      </Fragment>
+    ),
+  })
+
+  Faqs.push({
     Question: 'When does registration open?',
     Answer: (
       <Fragment>
