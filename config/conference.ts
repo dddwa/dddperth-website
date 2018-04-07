@@ -49,7 +49,7 @@ const importantDates = [
   {
     Date: agendaPublishedFrom,
     Description: 'Agenda published',
-    Type: 'agenda',
+    Type: 'agendapub',
   },
 ]
 
