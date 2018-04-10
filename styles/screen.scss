@@ -1496,8 +1496,7 @@ tr td.highlight-session {
   }
 
   // Important Dates
-  .imp-date,
-  .imp-date.agenda {
+  .imp-date {
     float: left;
     width: 47%;
     margin-left: 1.5%;
@@ -1514,17 +1513,6 @@ tr td.highlight-session {
     }
     .btn.vote + span {
       display: block;
-    }
-  }
-
-  // Agenda
-  .agenda {
-    width: 97%;
-    .col,
-    a.col {
-      float: left;
-      width: 47%;
-      margin: 0 3% 15px 0;
     }
   }
 
