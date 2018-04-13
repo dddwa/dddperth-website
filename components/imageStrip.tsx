@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { Fragment, StatelessComponent } from 'react'
+import { Image } from '../config/types'
 
 interface ImageStripProps {
-  images: string[]
-  conferenceName: string
+  images: Image[]
 }
 
-const ImageStrip: StatelessComponent<ImageStripProps> = ({ images, conferenceName }) => (
+const ImageStrip: StatelessComponent<ImageStripProps> = ({ images }) => (
   <section className="image-strip">
     {images.map(i => (
-      <Fragment key={i}>
-        <img src={i} alt={conferenceName + ' photo'} />{' '}
+      <Fragment key={i.Url}>
+        <img src={i.Url} alt={i.Alternate} />{' '}
       </Fragment>
     ))}
   </section>

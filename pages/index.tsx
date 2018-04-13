@@ -7,10 +7,11 @@ import Sponsors from '../components/sponsors'
 import arrayShuffle from '../components/utils/arrayShuffle'
 import getConferenceActions from '../config/actions'
 import Conference from '../config/conference'
+import { Image } from '../config/types'
 import Page from '../layouts/main'
 
 interface IndexProps {
-  imageStrip: string[]
+  imageStrip: Image[]
 }
 
 class Index extends React.Component<IndexProps & WithPageMetadataProps> {
@@ -28,7 +29,7 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
       <Page pageMetadata={this.props.pageMetadata} isHome={true} title="Home">
         <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} />
         <ImportantDates conference={conference} actions={actions} currentDate={this.props.pageMetadata.currentDate} />
-        <ImageStrip images={this.props.imageStrip} conferenceName={conference.Name} />
+        <ImageStrip images={this.props.imageStrip} />
         <Sponsors show={!conference.HideSponsors} sponsors={conference.Sponsors} />
       </Page>
     )
