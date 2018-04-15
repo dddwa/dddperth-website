@@ -130,11 +130,11 @@ const Conference: IConference = {
   },
 
   ImageStrip: [
-    '/static/images/strip/1.jpg',
-    '/static/images/strip/2.jpg',
-    '/static/images/strip/3.jpg',
-    '/static/images/strip/4.jpg',
-    '/static/images/strip/5.jpg',
+    { Url: '/static/images/strip/1.jpg', Alternate: 'Kris Howard delivering her 2017 locknote' },
+    { Url: '/static/images/strip/2.jpg', Alternate: 'Our 2017 speakers' },
+    { Url: '/static/images/strip/3.jpg', Alternate: 'Visting the readify booth' },
+    { Url: '/static/images/strip/4.jpg', Alternate: 'Early morning registration' },
+    { Url: '/static/images/strip/5.jpg', Alternate: 'Donna Edwards speaking at DDD 2017' },
   ],
 
   ImportantDates: orderBy(importantDates, i => i.Date),

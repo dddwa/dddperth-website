@@ -48,7 +48,7 @@ export interface Conference {
 
   Socials: Socials
 
-  ImageStrip: string[]
+  ImageStrip: Image[]
 
   ImportantDates: ImportantDate[]
 
@@ -136,4 +136,9 @@ export interface Action {
   Title: string
   Url: string
   Category: string
+}
+
+export interface Image {
+  Url: string
+  Alternate: string
 }
