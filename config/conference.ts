@@ -87,7 +87,7 @@ const Conference: IConference = {
   HashTag: 'dddperth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
-  SessionizeUrl: 'https://sessionize.com/demo-91ce3752/',
+  SessionizeUrl: 'https://sessionize.com/dddperth2018/',
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, software testing, virtual reality, open source software, bots, IoT, machine learning, automated deployments, mobile development, architecture, microservices, APIs, actors, JavaScript, authentication, React, UWP, HTTP protocol, Git, Docker and pointers',
 
