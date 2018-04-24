@@ -49,15 +49,15 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         <p>We want to encourage people that wouldn't normally speak at conferences to give it a go! We do this by:</p>
         <ul>
           <li>
-            Having <strong>anonymous session voting</strong>; we will only show the title and abstract of a talk to
-            voters to remove unconscious bias
+            Having <strong>anonymous session voting</strong>; we will only show the title, abstract and tags of a talk
+            to voters to remove unconscious bias
           </li>
           <li>
             Having a <strong>long (45 mins) and short (20 mins)</strong> talk option
           </li>
           <li>
             Accepting a <strong>broad range of technical and non-technical topics</strong> related to the software
-            industry; if voters think you're talk is relevant, it's in!
+            industry; if voters think you're talk is interesting, it's in!
           </li>
           <li>
             Encouraging submissions from <strong>multiple presenters as well as solo presenters</strong>

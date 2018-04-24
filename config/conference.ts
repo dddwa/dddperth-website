@@ -89,7 +89,7 @@ const Conference: IConference = {
   Handbook: null,
   SessionizeUrl: 'https://sessionize.com/dddperth2018/',
   PreviouslySubmittedTopics:
-    'Agile, building great teams, UI design, software testing, virtual reality, open source software, bots, IoT, machine learning, automated deployments, mobile development, architecture, microservices, APIs, actors, JavaScript, authentication, React, UWP, HTTP protocol, Git, Docker and pointers',
+    'Agile, building great teams, UI design, software testing, virtual reality, women in tech, web accessibility, open source software, feedback culture, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, Assembly language, automated deployments, mobile development, mobile test automation, architecture, microservices, serverless, APIs, GraphQL, actors, JavaScript, authentication, React, UWP,  HTTP protocol, Git, Docker and pointers',
 
   ContactEmail: 'info@dddperth.com',
   SponsorshipEmail: 'sponsorship@dddperth.com',
