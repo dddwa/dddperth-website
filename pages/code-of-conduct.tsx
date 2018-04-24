@@ -11,6 +11,15 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h1>Code of Conduct</h1>
 
     <p>
+      <em>
+        Note: we are currently reviewing our Code of Conduct for a{' '}
+        <a href="https://twitter.com/DDDPerth/status/988585013833752576" target="_blank">
+          long overdue overhaul
+        </a>!
+      </em>
+    </p>
+
+    <p>
       All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code
       of conduct. We are expecting cooperation from all participants to help ensuring a safe, welcoming and inclusive
       environment for everybody.
