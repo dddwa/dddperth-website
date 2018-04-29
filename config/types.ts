@@ -12,6 +12,7 @@ export interface Conference {
   GoogleAnalyticsId: string
   TicketPrice: string
   EventbriteId: string
+  FinancialAssistanceEventbriteCode: string
   IsSoldOut: boolean
   HashTag: string
   SellingPoints: string[]

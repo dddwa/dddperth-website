@@ -69,6 +69,10 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             </strong>; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run
             through any ideas you have or give safe and constructive feedback
           </li>
+          <li>
+            Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
+            feel comfortable doing it.
+          </li>
         </ul>
 
         <p className="text-center">
