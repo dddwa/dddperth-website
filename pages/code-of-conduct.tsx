@@ -11,15 +11,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h1>Code of Conduct</h1>
 
     <p>
-      <em>
-        Note: we are currently reviewing our Code of Conduct for a{' '}
-        <a href="https://twitter.com/DDDPerth/status/988585013833752576" target="_blank">
-          long overdue overhaul
-        </a>!
-      </em>
-    </p>
-
-    <p>
       All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code
       of conduct. We are expecting cooperation from all participants to help ensuring a safe, welcoming and inclusive
       environment for everybody.
@@ -38,8 +29,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>Need Help?</h2>
     <p>
       Email <a href={props.pageMetadata.conference.ContactEmail}>{props.pageMetadata.conference.ContactEmail}</a> or
-      call {props.pageMetadata.conference.EmergencyContactName} on{' '}
-      {props.pageMetadata.conference.EmergencyContactPhoneNumber}.
+      call our designated contact person {props.pageMetadata.conference.EmergencyContactName} on{' '}
+      {props.pageMetadata.conference.EmergencyContactPhoneNumber}. You can also approach any one of the conference staff
+      who will be identifiable by the branded DDD Perth t-shirts they'll be wearing.
     </p>
 
     <h2>The Quick Version</h2>
@@ -84,14 +76,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       events.
     </p>
 
-    <h3>Attendance Is At Your Own Risk</h3>
-    <p>
-      Attendance at {props.pageMetadata.conference.Name} is at your own risk and by entering{' '}
-      {props.pageMetadata.conference.Name} you agree not to hold {props.pageMetadata.conference.Name}, it’s organisers ({
-        props.pageMetadata.conference.Organiser
-      }), partners, subsidiaries or parent companies liable for any damage or distress incurred at the event.
-    </p>
-
     <p>
       <small>
         <em>
@@ -107,9 +91,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
             Creative Commons Attribution 3.0 Unported License
           </a>
-          <br />
-          "Attendance Is At Your Own Risk" section has been additionally added to the licensed "Conference Code of
-          Conduct".
         </em>
       </small>
     </p>
