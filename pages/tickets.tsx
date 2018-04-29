@@ -35,7 +35,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
           <iframe
             src={'//eventbrite.com.au/tickets-external?ref=etckt&eid=' + conference.EventbriteId}
             style={{ border: 0 }}
-            height="480"
+            height="650"
             width="100%"
             scrolling="auto"
           />
