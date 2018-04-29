@@ -85,13 +85,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Will childcare be available?',
-    Answer: (
-      <Fragment>
-        We are hoping to introduce a childcare facility at this year's conference. This would likely be an additional
-        cost on top of your ticket. If you are interested in using this service then please{' '}
-        <a href={'mailto:' + Conference.ContactEmail}>get in touch</a>.
-      </Fragment>
-    ),
+    Answer:
+      'Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost $50. For this year we are limiting it to children 3 years and above, and to a maximum of 20 places. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket.',
   })
 
   Faqs.push({
