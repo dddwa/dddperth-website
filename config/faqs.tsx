@@ -38,7 +38,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <div>
         <p>
-          If you can't afford the ticket price then we have Sponsored [Financial Assistance] tickets available. DDD
+          If you can't afford the ticket price then we have Sponsored (Financial Assistance) tickets available. DDD
           Perth is donating 10 such tickets and we also have an option for people within the community to donate further
           tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
           Financial Assistance tickets by entering the promotional code of{' '}
