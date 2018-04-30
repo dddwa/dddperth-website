@@ -15,7 +15,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
       everyone, regardless of gender, gender identity and expression, sexual orientation, disability, physical
       appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
-      form. Sexual language and imagery is not appropriate anywhere. This applies to talks also.
+      form. Sexual language and imagery is not appropriate anywhere. This applies to conference talks also.
     </p>
 
     <p>
@@ -43,11 +43,11 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <h2>Enforcement</h2>
 
-    <p>Participants asked to stop any harassing behavior are expected to:</p>
+    <p>Participants asked to stop any harassing behaviour are expected to:</p>
 
     <ul>
       <li>
-        Listen to the complaint with an open mind and consider the effect rather than intent of the behavior in question
+        Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in question
       </li>
       <li>Don’t be dismissive of the complainant</li>
       <li>Understand any advice given on how to act in the future</li>
