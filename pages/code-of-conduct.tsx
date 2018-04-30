@@ -13,9 +13,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>Purpose</h2>
     <p>
       {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
-      everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation, disability, physical
-      appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
-      form. Sexual language and imagery is not appropriate anywhere. This applies to conference talks also.
+      everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation,
+      disability, physical appearance, body size, race, age or religion. We do not tolerate harassment of conference
+      participants in any form. Sexual language and imagery is not appropriate anywhere. This applies to conference
+      talks also.
     </p>
 
     <p>
@@ -45,9 +46,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
-      staff can be identified by {props.pageMetadata.conference.Organiser.BrandColour} event branded t-shirts and organiser
-      name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone. We want you to
-      be happy at our event. People like you make our event a better place. You can make a report either personally or anonymously.
+      staff can be identified by {props.pageMetadata.conference.Organiser.BrandColour} event branded t-shirts and
+      organiser name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone.
+      We want you to be happy at our event. People like you make our event a better place. You can make a report either
+      personally or anonymously.
     </p>
 
     <h3>Personal report</h3>
@@ -59,7 +61,13 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.BrandColour} event branded
         t-shirts and organiser name tags
       </li>
-      <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter.Name}</li>
+      <li>
+        <a
+          href={`https://twitter.com/messages/compose?recipient_id=${props.pageMetadata.conference.Socials.Twitter.Id}`}
+        >
+          Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter.Name}
+        </a>
+      </li>
       <li>
         Emailing us:{' '}
         <a href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
@@ -100,7 +108,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>
         <strong>Police:</strong>{' '}
         <a href={props.pageMetadata.conference.ImportantContacts.Police.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.Police.Details}</a>
+          {props.pageMetadata.conference.ImportantContacts.Police.Details}
+        </a>
       </li>
       <li>
         <strong>Centre Against Sexual Assault 24 hour line:</strong>{' '}
@@ -109,12 +118,14 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>
         <strong>Emergency Medical:</strong>{' '}
         <a href={props.pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}</a>
+          {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}
+        </a>
       </li>
       <li>
         <strong>Non Emergency Medical:</strong>{' '}
         <a href={props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}</a>
+          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
+        </a>
       </li>
     </ul>
 

@@ -12,12 +12,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
       Question: 'When and where is it?',
       Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${
         Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
-        }.
+      }.
           Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
         dates.IsComplete ? 'we finished' : "we'll finish"
-        } at ${Conference.FinishTime} followed by the afterparty${
+      } at ${Conference.FinishTime} followed by the afterparty${
         Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
-        }.`,
+      }.`,
     })
   }
 
@@ -25,10 +25,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How much does it cost to attend?',
     Answer: `${
       Conference.TicketPrice
-      } covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
+    } covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
       ${
-      Conference.Name
+        Conference.Name
       } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
@@ -102,11 +102,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
         ) : dates.RegistrationClosed ? (
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
-                <Fragment>
-                  Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
-                  {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+          <Fragment>
+            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
+            {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
           </Fragment>
-              )}
+        )}
       </Fragment>
     ),
   })
@@ -183,8 +183,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </a>. See also the other Social Media accounts at the footer of this page.
           </Fragment>
         ) : (
-            '. Also, see our various social media accounts at the footer of this page.'
-          )}
+          '. Also, see our various social media accounts at the footer of this page.'
+        )}
       </Fragment>
     ),
   })

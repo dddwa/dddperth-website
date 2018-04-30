@@ -17,10 +17,10 @@ const registrationOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
-    .clone()
-    .add(-1, 'd')
-    .startOf('day')
-    .add(17, 'h')
+      .clone()
+      .add(-1, 'd')
+      .startOf('day')
+      .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const presentationSubmissionsOpenUntil = moment.parseZone('2018-06-03T23:59:59+08:00')
 const votingOpenFrom = moment.parseZone('2018-06-06T08:00:00+08:00')
@@ -78,7 +78,7 @@ const Conference: IConference = {
   Organiser: {
     Name: 'DDD WA Inc.',
     Url: 'https://blog.dddperth.com/meet-the-team-35865433cb39',
-    BrandColour: 'green'
+    BrandColour: 'green',
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
@@ -130,7 +130,7 @@ const Conference: IConference = {
   Socials: {
     Twitter: {
       Id: '977876011',
-      Name: 'DDDPerth'
+      Name: 'DDDPerth',
     },
     Facebook: 'DDDPerth',
     Flickr: 'https://www.flickr.com/photos/135003652@N08/albums',
@@ -152,19 +152,22 @@ const Conference: IConference = {
   ImportantContacts: {
     Police: {
       Details: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
-      MapUrl: 'https://www.google.com.au/maps/place/WA+Police/@-31.9539457,115.8571227,15z/data=!4m8!1m2!2m1!1swa+police!3m4!1s0x2a32bad2aad309a9:0x132b875b4c12ce8a!8m2!3d-31.9465398!4d115.852523'
+      MapUrl:
+        'https://www.google.com.au/maps/place/WA+Police/@-31.9539457,115.8571227,15z/data=!4m8!1m2!2m1!1swa+police!3m4!1s0x2a32bad2aad309a9:0x132b875b4c12ce8a!8m2!3d-31.9465398!4d115.852523',
     },
     CentreAgainstSexualAssault: {
-      Details: '1800 806 292'
+      Details: '1800 806 292',
     },
     EmergencyMedical: {
       Details: 'Royal Perth Hospital, 197 Wellington St, Perth WA 6000',
-      MapUrl: 'https://www.google.com.au/maps/place/Royal+Perth+Hospital/@-31.953946,115.8637156,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bb26d7818b2d:0x31db7aa443eb9c11!8m2!3d-31.953946!4d115.8659043'
+      MapUrl:
+        'https://www.google.com.au/maps/place/Royal+Perth+Hospital/@-31.953946,115.8637156,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bb26d7818b2d:0x31db7aa443eb9c11!8m2!3d-31.953946!4d115.8659043',
     },
     NonEmergencyMedical: {
       Details: 'Perth Medical Centre, 713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
-      MapUrl: 'https://www.google.com.au/maps/place/Perth+Medical+Centre/@-31.9539771,115.8552714,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bad5d00fb27f:0xa93cc014867a5f8b!8m2!3d-31.9539771!4d115.8574654'
-    }
+      MapUrl:
+        'https://www.google.com.au/maps/place/Perth+Medical+Centre/@-31.9539771,115.8552714,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bad5d00fb27f:0xa93cc014867a5f8b!8m2!3d-31.9539771!4d115.8574654',
+    },
   },
 
   ImportantDates: orderBy(importantDates, i => i.Date),
