@@ -105,7 +105,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         <strong>Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}
       </li>
       <li>
-        <strong>Non Emergency:</strong> {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}
+        <strong>Non Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}
       </li>
     </ul>
 
