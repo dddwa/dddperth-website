@@ -15,7 +15,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
       everyone, regardless of gender, gender identity and expression, sexual orientation, disability, physical
       appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
-      form. Sexual language and imagery is not appropriate for any conference venue, including talks.
+      form. Sexual language and imagery is not appropriate anywhere. This applies to talks also.
     </p>
 
     <p>
@@ -64,17 +64,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
-      staff can be identified by event branded t-shirts. Harassment and other Code of Conduct violations reduce the
-      value of our event for everyone. We want you to be happy at our event. People like you make our event a better
-      place. You can make a report either personally or anonymously.
-    </p>
-
-    <h3>Anonymous report</h3>
-
-    <p>
-      You can <a href={props.pageMetadata.conference.AnonymousReportFormUrl}>make an anonymous report here</a>. We can't
-      follow up an anonymous report with you directly, but we will fully investigate it and take whatever action is
-      necessary to prevent a recurrence.
+      staff can be identified by event branded t-shirts and organiser name tags. Harassment and other Code of Conduct
+      violations reduce the value of our event for everyone. We want you to be happy at our event. People like you make
+      our event a better place. You can make a report either personally or anonymously.
     </p>
 
     <h3>Personal report</h3>
@@ -82,10 +74,20 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p>You can make a personal report by:</p>
 
     <ul>
-      <li>Contacting a staff member, identified by event branded t-shirts</li>
+      <li>Contacting a staff member, identified by event branded t-shirts and organiser name tags</li>
       <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter}</li>
-      <li>Emailing us: {props.pageMetadata.conference.Socials.Email}</li>
+      <li>
+        Emailing us:{' '}
+        <a href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
+          {props.pageMetadata.conference.Socials.Email}
+        </a>
+      </li>
     </ul>
+
+    <p>
+      Emails and Twitter direct messages will be monitored by our media officer{' '}
+      {props.pageMetadata.conference.MediaOfficerName}.
+    </p>
 
     <p>
       When taking a personal report, our staff will ensure you are safe and cannot be overheard. They may involve other
@@ -99,6 +101,14 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       provide escorts, or otherwise assist you to feel safe for the duration of the event. We value your attendance.
     </p>
 
+    <h3>Anonymous report</h3>
+
+    <p>
+      You can <a href={props.pageMetadata.conference.AnonymousReportFormUrl}>make an anonymous report here</a>. We can't
+      follow up an anonymous report with you directly, but we will fully investigate it and take whatever action is
+      necessary to prevent a recurrence.
+    </p>
+
     <h3>Important contact numbers</h3>
 
     <ul>
@@ -106,7 +116,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         <strong>Police:</strong> {props.pageMetadata.conference.ImportantContactNumbers.Police}
       </li>
       <li>
-        <strong>Centre Against Sexual Assault 24 hour line:</strong>
+        <strong>Centre Against Sexual Assault 24 hour line:</strong>{' '}
         {props.pageMetadata.conference.ImportantContactNumbers.CentreAgainstSexualAssault}
       </li>
       <li>
@@ -123,10 +133,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        <strong>Blue:</strong> ask beforehand
+        <strong>Black:</strong> ask beforehand
       </li>
       <li>
-        <strong>Black:</strong> fine to photograph
+        <strong>Green:</strong> fine to photograph
       </li>
       <li>
         <strong>Red:</strong> do not photograph

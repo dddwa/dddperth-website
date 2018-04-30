@@ -97,6 +97,7 @@ const Conference: IConference = {
   MentoringEmail: 'mentors@dddperth.com',
   EmergencyContactName: 'Rob Moore',
   EmergencyContactPhoneNumber: '0400 777 763',
+  MediaOfficerName: 'Rebecca Waters',
 
   AnonymousReportFormUrl:
     'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
@@ -144,8 +145,8 @@ const Conference: IConference = {
   ImportantContactNumbers: {
     Police: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
     CentreAgainstSexualAssault: '1800 806 292',
-    EmergencyMedical: '197 Wellington St, Perth WA 6000',
-    NonEmergencyMedical: '713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
+    EmergencyMedical: 'Royal Perth Hospital, 197 Wellington St, Perth WA 6000',
+    NonEmergencyMedical: 'Perth Medical Centre, 713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
   },
 
   ImportantDates: orderBy(importantDates, i => i.Date),

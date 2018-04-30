@@ -27,6 +27,7 @@ export interface Conference {
   MentoringEmail: string
   EmergencyContactName: string
   EmergencyContactPhoneNumber: string
+  MediaOfficerName: string
 
   AnonymousReportFormUrl: string
 
