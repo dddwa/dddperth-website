@@ -43,7 +43,16 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <h2>Enforcement</h2>
 
-    <p>Participants asked to stop any harassing behavior are expected to comply immediately.</p>
+    <p>
+      Participants asked to stop any harassing behavior are expected to:
+    </p>
+
+    <ul>
+      <li>Listen to the complaint with an open mind and consider the effect rather than intent of the behavior in question</li>
+      <li>Don’t be dismissive of the complainant</li>
+      <li>Understand any advice given on how to act in the future</li>
+      <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
+    </ul>
 
     <p>
       If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the
