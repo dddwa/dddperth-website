@@ -164,7 +164,7 @@ export interface Image {
 export interface Organiser {
   Name: string
   Url: string
-  BrandColour: string
+  ShirtColour: string
 }
 
 export interface Twitter {

@@ -46,7 +46,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
-      staff can be identified by {props.pageMetadata.conference.Organiser.BrandColour} event branded t-shirts and
+      staff can be identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded t-shirts and
       organiser name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone.
       We want you to be happy at our event. People like you make our event a better place. You can make a report either
       personally or anonymously.
@@ -58,7 +58,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.BrandColour} event branded
+        Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded
         t-shirts and organiser name tags
       </li>
       <li>
