@@ -181,7 +181,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        <strong>Green:</strong> fine to photograph
+        <strong>Black:</strong> fine to photograph
       </li>
       <li>
         <strong>Red:</strong> do not photograph
