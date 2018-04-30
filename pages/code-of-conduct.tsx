@@ -70,7 +70,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       Emails and Twitter direct messages will be monitored by our media officer{' '}
-      {props.pageMetadata.conference.MediaOfficerName}.
+      {props.pageMetadata.conference.MediaOfficerName} as well as select subset of the organising team.
     </p>
 
     <p>
