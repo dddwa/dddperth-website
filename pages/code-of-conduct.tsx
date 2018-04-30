@@ -47,7 +47,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in question
+        Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
+        question
       </li>
       <li>Don’t be dismissive of the complainant</li>
       <li>Understand any advice given on how to act in the future</li>
@@ -99,10 +100,11 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </p>
 
     <p>
-      When taking a personal report, our staff will ensure you are safe and cannot be overheard. They may involve other
-      event staff to ensure your report is managed properly. Once safe, we'll ask you to tell us about what happened.
-      This can be upsetting, but we'll handle it as respectfully as possible, and you can bring someone to support you.
-      You won't be asked to confront anyone and we won't tell anyone who you are.
+      When taking a personal report, <a href={props.pageMetadata.conference.Organiser.Url}>our staff</a> will ensure you
+      are safe and cannot be overheard. They may involve other event staff to ensure your report is managed properly.
+      Once safe, we'll ask you to tell us about what happened. This can be upsetting, but we'll handle it as
+      respectfully as possible, and you can bring someone to support you. You won't be asked to confront anyone and we
+      won't tell anyone who you are.
     </p>
 
     <p>

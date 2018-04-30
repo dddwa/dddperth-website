@@ -75,7 +75,10 @@ const Conference: IConference = {
   Instance: currentInstance.toString(),
   PreviousInstance: (currentInstance - 1).toString(),
   PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
-  Organiser: 'DDD WA Inc.',
+  Organiser: {
+    Name: 'DDD WA Inc.',
+    Url: 'https://blog.dddperth.com/meet-the-team-35865433cb39',
+  },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
   Goal:

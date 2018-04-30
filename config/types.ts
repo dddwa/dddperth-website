@@ -5,7 +5,7 @@ export interface Conference {
   Instance: string
   PreviousInstance: string
   PreviousInstances: string[]
-  Organiser: string
+  Organiser: Organiser
   TagLine: string
   SiteDescription: string
   Goal: string
@@ -154,4 +154,9 @@ export interface Action {
 export interface Image {
   Url: string
   Alternate: string
+}
+
+export interface Organiser {
+  Name: string
+  Url: string
 }
