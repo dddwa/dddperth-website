@@ -118,7 +118,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
         question
       </li>
-      <li>Don’t be dismissive of the complainant</li>
+      <li>Not be dismissive of the complainant</li>
       <li>Understand any advice given on how to act in the future</li>
       <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
     </ul>
