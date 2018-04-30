@@ -98,17 +98,23 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        <strong>Police:</strong> {props.pageMetadata.conference.ImportantContactNumbers.Police}
+        <strong>Police:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.Police.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.Police.Details}</a>
       </li>
       <li>
         <strong>Centre Against Sexual Assault 24 hour line:</strong>{' '}
-        {props.pageMetadata.conference.ImportantContactNumbers.CentreAgainstSexualAssault}
+        {props.pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Details}
       </li>
       <li>
-        <strong>Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}
+        <strong>Emergency Medical:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}</a>
       </li>
       <li>
-        <strong>Non Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}
+        <strong>Non Emergency Medical:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}</a>
       </li>
     </ul>
 
