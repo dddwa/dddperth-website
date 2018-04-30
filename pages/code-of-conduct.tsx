@@ -13,7 +13,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>Purpose</h2>
     <p>
       {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
-      everyone, regardless of gender, gender identity and expression, sexual orientation, disability, physical
+      everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation, disability, physical
       appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
       form. Sexual language and imagery is not appropriate anywhere. This applies to conference talks also.
     </p>
