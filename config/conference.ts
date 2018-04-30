@@ -17,10 +17,10 @@ const registrationOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
-    .clone()
-    .add(-1, 'd')
-    .startOf('day')
-    .add(17, 'h')
+      .clone()
+      .add(-1, 'd')
+      .startOf('day')
+      .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const presentationSubmissionsOpenUntil = moment.parseZone('2018-06-03T23:59:59+08:00')
 const votingOpenFrom = moment.parseZone('2018-06-06T08:00:00+08:00')
@@ -98,7 +98,8 @@ const Conference: IConference = {
   EmergencyContactName: 'Rob Moore',
   EmergencyContactPhoneNumber: '0400 777 763',
 
-  AnonymousReportFormUrl: 'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
+  AnonymousReportFormUrl:
+    'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
   Date: date,
   EndDate: endDate,
@@ -144,7 +145,7 @@ const Conference: IConference = {
     Police: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
     CentreAgainstSexualAssault: '1800 806 292',
     EmergencyMedical: '197 Wellington St, Perth WA 6000',
-    NonEmergencyMedical: '713 Hay St, Perth WA 6000 ph: (08) 9481 4342'
+    NonEmergencyMedical: '713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
   },
 
   ImportantDates: orderBy(importantDates, i => i.Date),
