@@ -152,7 +152,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       For more information please familiarise yourself with <a href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</a>.
     </p>
 
-
     <h2>Attribution</h2>
 
     <p>
