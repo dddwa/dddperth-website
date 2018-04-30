@@ -56,7 +56,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>Contacting a staff member, identified by event branded t-shirts and organiser name tags</li>
-      <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter}</li>
+      <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter.Name}</li>
       <li>
         Emailing us:{' '}
         <a href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>

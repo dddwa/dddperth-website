@@ -17,10 +17,10 @@ const registrationOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
-      .clone()
-      .add(-1, 'd')
-      .startOf('day')
-      .add(17, 'h')
+    .clone()
+    .add(-1, 'd')
+    .startOf('day')
+    .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const presentationSubmissionsOpenUntil = moment.parseZone('2018-06-03T23:59:59+08:00')
 const votingOpenFrom = moment.parseZone('2018-06-06T08:00:00+08:00')
@@ -127,7 +127,10 @@ const Conference: IConference = {
   Venue: venue,
 
   Socials: {
-    Twitter: 'DDDPerth',
+    Twitter: {
+      Id: '977876011',
+      Name: 'DDDPerth'
+    },
     Facebook: 'DDDPerth',
     Flickr: 'https://www.flickr.com/photos/135003652@N08/albums',
     Youtube: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
