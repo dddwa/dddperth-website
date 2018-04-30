@@ -41,36 +41,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Advocating for, or encouraging, any of the above behaviour</li>
     </ul>
 
-    <h2>Enforcement</h2>
-
-    <p>Participants asked to stop any harassing behaviour are expected to:</p>
-
-    <ul>
-      <li>
-        Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
-        question
-      </li>
-      <li>Don’t be dismissive of the complainant</li>
-      <li>Understand any advice given on how to act in the future</li>
-      <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
-    </ul>
-
-    <p>
-      If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the
-      event a welcoming environment for all participants. This includes warning the offender or expulsion from the
-      conference with no refund.
-    </p>
-
-    <p>
-      Event organisers may take action to redress anything designed to, or with the clear impact of, disrupting the
-      event or making the environment hostile for any participants.{' '}
-      <strong>
-        We expect participants to follow these rules at all event venues, event-related social activities as well as
-        social media.
-      </strong>
-    </p>
-
-    <h2>Reporting</h2>
+    <h2>Need Help?</h2>
 
     <p>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
@@ -138,22 +109,36 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       </li>
     </ul>
 
-    <h2>Photo Policy</h2>
+    <h2>Enforcement</h2>
 
-    <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
+    <p>Participants asked to stop any harassing behaviour are expected to:</p>
 
     <ul>
       <li>
-        <strong>Green:</strong> fine to photograph
+        Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
+        question
       </li>
-      <li>
-        <strong>Red:</strong> do not photograph
-      </li>
+      <li>Don’t be dismissive of the complainant</li>
+      <li>Understand any advice given on how to act in the future</li>
+      <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
     </ul>
 
-    <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
+    <p>
+      If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the
+      event a welcoming environment for all participants. This includes warning the offender or expulsion from the
+      conference with no refund.
+    </p>
 
-    <h2>Inclusive language</h2>
+    <p>
+      Event organisers may take action to redress anything designed to, or with the clear impact of, disrupting the
+      event or making the environment hostile for any participants.{' '}
+      <strong>
+        We expect participants to follow these rules at all event venues, event-related social activities as well as
+        social media.
+      </strong>
+    </p>
+
+    <h2>Inclusivity</h2>
 
     <p>
       In our commitment to a harassment-free and inclusive environment we strongly believe it's important to pay
@@ -187,13 +172,29 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <a href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</a>.
     </p>
 
+    <h3>Photo Policy</h3>
+
+    <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
+
+    <ul>
+      <li>
+        <strong>Green:</strong> fine to photograph
+      </li>
+      <li>
+        <strong>Red:</strong> do not photograph
+      </li>
+    </ul>
+
+    <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
+
     <h2>Attribution</h2>
 
     <p>
       This Code of Conduct was based on{' '}
       <a href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy">The Geek Feminism wiki</a>, the
       work of <a href="https://frameshiftconsulting.com/code-of-conduct-training/">Valerie Aurora</a>, the{' '}
-      <a href="https://2018.jsconfau.com/code-of-conduct">JSConf AU Code of Conduct</a> and the{' '}
+      <a href="https://2018.jsconfau.com/code-of-conduct">JSConf AU Code of Conduct</a>, the{' '}
+      <a href="https://www.levelsconf.com/codeofconduct.html">Levels Conference Code of Conduct</a>, and the{' '}
       <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>
     </p>
 
