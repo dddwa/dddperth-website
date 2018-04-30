@@ -28,6 +28,8 @@ export interface Conference {
   EmergencyContactName: string
   EmergencyContactPhoneNumber: string
 
+  AnonymousReportFormUrl: string
+
   Date: Moment
   EndDate: Moment
   DoorsOpenTime: string
@@ -50,6 +52,8 @@ export interface Conference {
   Socials: Socials
 
   ImageStrip: Image[]
+
+  ImportantContactNumbers: ImportantContactNumbers
 
   ImportantDates: ImportantDate[]
 
@@ -102,6 +106,13 @@ export interface Socials {
   Blog?: string
   Email?: string
   MailingList?: string
+}
+
+export interface ImportantContactNumbers {
+  Police?: string
+  CentreAgainstSexualAssault?: string
+  EmergencyMedical?: string
+  NonEmergencyMedical?: string
 }
 
 export enum SponsorType {

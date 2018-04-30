@@ -10,89 +10,159 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
   >
     <h1>Code of Conduct</h1>
 
+    <h2>Purpose</h2>
     <p>
-      All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code
-      of conduct. We are expecting cooperation from all participants to help ensuring a safe, welcoming and inclusive
-      environment for everybody.
-    </p>
-
-    <p
-      style={{
-        fontSize: '150%',
-        textAlign: 'center',
-        textDecoration: 'underline',
-      }}
-    >
-      <strong>Organisers will enforce this code throughout the event.</strong>
-    </p>
-
-    <h2>Need Help?</h2>
-    <p>
-      Email <a href={props.pageMetadata.conference.ContactEmail}>{props.pageMetadata.conference.ContactEmail}</a> or
-      call our designated contact person {props.pageMetadata.conference.EmergencyContactName} on{' '}
-      {props.pageMetadata.conference.EmergencyContactPhoneNumber}. You can also approach any one of the conference staff
-      who will be identifiable by the branded DDD Perth t-shirts they'll be wearing.
-    </p>
-
-    <h2>The Quick Version</h2>
-    <p>
-      Our conference is dedicated to providing a harassment-free conference experience for everyone, regardless of
-      gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race,
-      ethnicity, or religion (or lack thereof). We do not tolerate harassment of conference participants in any form.
-      Sexual language and imagery is not appropriate for any conference venue, including talks, workshops, parties,
-      Twitter and other online media. Conference participants violating these rules may be sanctioned or expelled from
-      the conference <em>without a refund</em> at the discretion of the conference organisers.
-    </p>
-
-    <h2>The Less Quick Version</h2>
-    <p>
-      Harassment includes offensive verbal comments related to gender, gender identity and expression, age, sexual
-      orientation, disability, physical appearance, body size, race, ethnicity, religion, sexual images in public
-      spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of
-      talks or other events, inappropriate physical contact, and unwelcome sexual attention.
-    </p>
-    <p>Participants asked to stop any harassing behavior are expected to comply immediately.</p>
-    <p>
-      Sponsors are also subject to the anti-harassment policy. In particular, sponsors should not use sexualised images,
-      activities, or other material. Booth staff (including volunteers) should not use sexualised
-      clothing/uniforms/costumes, or otherwise create a sexualised environment.
-    </p>
-    <p>
-      If a participant engages in harassing behavior, the conference organisers may take any action they deem
-      appropriate, including warning the offender or expulsion from the conference with no refund.
-    </p>
-    <p>
-      If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact
-      a member of conference staff immediately. Conference staff can be identified as they&#39;ll be wearing branded
-      t-shirts.
-    </p>
-    <p>
-      Conference staff will be happy to help participants contact hotel/venue security or local law enforcement, provide
-      escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the conference. We
-      value your attendance.
-    </p>
-    <p>
-      We expect participants to follow these rules at conference and workshop venues and conference-related social
-      events.
+      {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for everyone, regardless of
+      gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race,
+      age or religion. We do not tolerate harassment of conference participants in any form. Sexual language and imagery
+      is not appropriate for any conference venue, including talks.
     </p>
 
     <p>
-      <small>
-        <em>
-          Original source and credit: <a href="http://2012.jsconf.us/#/about">{'http://2012.jsconf.us/#/about'}</a>{' '}
-          &amp; <a href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy">The Ada Initiative</a>
-          <br />
-          Please help by translating or improving:{' '}
-          <a href="https://github.com/leftlogic/confcodeofconduct.com">
-            {'http://github.com/leftlogic/confcodeofconduct.com'}
-          </a>
-          <br />
-          This work is licensed under a{' '}
-          <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
-            Creative Commons Attribution 3.0 Unported License
-          </a>
-        </em>
-      </small>
+      Conference participants or anyone interacting with the event violating these rules may be sanctioned or expelled from the conference without
+      a refund at the discretion of the conference organisers.
+    </p>
+
+    <h2>Anti-harassment</h2>
+
+    <p>
+      Harassment includes, but is not limited to:
+    </p>
+
+    <ul>
+      <li>
+        Verbal or written comments that reinforce social structures of domination related to gender, gender identity and expression, sexual orientation, disability, physical appearance,
+        body size, race, age, religion
+      </li>
+      <li>Sexual images in public spaces</li>
+      <li>Deliberate intimidation, stalking, or following</li>
+      <li>Harassing photography or recording</li>
+      <li>Sustained disruption of talks or other events</li>
+      <li>Inappropriate physical contact</li>
+      <li>Unwelcome sexual attention</li>
+      <li>Advocating for, or encouraging, any of the above behaviour</li>
+    </ul>
+
+    <h2>Enforcement</h2>
+
+    <p>
+      Participants asked to stop any harassing behavior are expected to comply immediately.
+    </p>
+
+    <p>
+      If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the event a
+      welcoming environment for all participants. This includes warning the offender or expulsion from the conference with no refund.
+    </p>
+
+    <p>
+      Event organisers may take action to redress anything designed to, or with the clear impact of, disrupting the event or making
+      the environment hostile for any participants. We expect participants to follow these rules at all event venues, event-related social
+      activities as well as social media.
+    </p>
+
+    <h2>Reporting</h2>
+
+    <p>
+      If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference staff can be identified
+      by event branded t-shirts. Harassment and other Code of Conduct violations reduce the value of our event for everyone. We want you to be
+      happy at our event. People like you make our event a better place. You can make a report either personally or anonymously.
+    </p>
+
+    <h3>Anonymous report</h3>
+
+    <p>
+      You can <a href={props.pageMetadata.conference.AnonymousReportFormUrl}>make an anonymous report here</a>. We can't follow up an anonymous report with you directly, but we will fully investigate
+      it and take whatever action is necessary to prevent a recurrence.
+    </p>
+
+    <h3>Personal report</h3>
+
+    <p>
+      You can make a personal report by:
+    </p>
+
+    <ul>
+      <li>Contacting a staff member, identified by event branded t-shirts</li>
+      <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter}</li>
+      <li>Emailing us: {props.pageMetadata.conference.Socials.Email}</li>
+    </ul>
+
+    <p>
+      When taking a personal report, our staff will ensure you are safe and cannot be overheard. They may involve other event staff to ensure your report
+      is managed properly. Once safe, we'll ask you to tell us about what happened. This can be upsetting, but we'll handle it as respectfully as possible,
+      and you can bring someone to support you. You won't be asked to confront anyone and we won't tell anyone who you are.
+    </p>
+
+    <p>
+      Our team will be happy to help you contact hotel/venue security, local law enforcement, local support services, provide escorts, or otherwise assist you to feel safe for the duration of the event.
+      We value your attendance.
+    </p>
+
+    <h3>Important contact numbers</h3>
+
+    <ul>
+      <li>Police: {props.pageMetadata.conference.ImportantContactNumbers.Police}</li>
+      <li>Centre Against Sexual Assault 24 hour line: {props.pageMetadata.conference.ImportantContactNumbers.CentreAgainstSexualAssault}</li>
+      <li>Emergency Medical: {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}</li>
+      <li>Non Emergency: {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}</li>
+    </ul>
+
+    <h2>Photo Policy</h2>
+
+    <p>
+      We will have colored lanyards for attendees to indicate their comfort level with being photographed:
+    </p>
+
+    <ul>
+      <li>Blue: ask beforehand</li>
+      <li>Black: fine to photograph</li>
+      <li>Red: do not photograph</li>
+    </ul>
+
+    <p>
+      In case of any doubt, please ask before taking photographs of attendees, speakers or staff.
+    </p>
+
+    <h2>Inclusive language</h2>
+
+    <p>
+      In our commitment to a harassment-free and inclusive environment we strongly believe it's important to pay attention to harmful language patterns.
+    </p>
+
+    <h3>Ableism</h3>
+
+    <p>
+      Words like "crazy", "dumb", "insane" or "lame" are examples of ableist language, devaluating people who have physical or mental disabilities.
+      Its appearance often stems not from any intentional desire to offend, but from our innate sense of what it means to be normal. These words can
+      be avoided by using more fitting, clearer descriptions of what we intend to communicate.
+    </p>
+
+    <p>
+      To find out more about ableism and replacement terms please read <a href="https://www.autistichoya.com/p/ableist-words-and-terms-to-avoid.html">this guide</a>.
+    </p>
+
+    <h3>Sexism</h3>
+
+    <p>
+      Using gendered terms like "dude" or "guys" to address a mixed-gendered group of people contributes to furthering exclusion of underrepresented individuals.
+      We strongly advise avoiding gendered pronouns as well as gendered terms.
+    </p>
+
+    <p>
+      For more information please familiarise yourself with <a href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</a>.
+    </p>
+
+
+    <h2>Attribution</h2>
+
+    <p>
+      This Code of Conduct was based on <a href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy">The Geek Feminism wiki</a>,
+      the work of <a href="https://frameshiftconsulting.com/code-of-conduct-training/">Valerie Aurora</a>,
+      the <a href="https://2018.jsconfau.com/code-of-conduct">JSConf AU Code of Conduct</a> and the <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>
+    </p>
+
+    <p>
+      Last update: 30 Apr 2018
     </p>
   </Page>
 ))
