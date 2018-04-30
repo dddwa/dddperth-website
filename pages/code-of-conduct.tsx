@@ -53,8 +53,11 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       Event organisers may take action to redress anything designed to, or with the clear impact of, disrupting the
-      event or making the environment hostile for any participants. We expect participants to follow these rules at all
-      event venues, event-related social activities as well as social media.
+      event or making the environment hostile for any participants.{' '}
+      <strong>
+        We expect participants to follow these rules at all event venues, event-related social activities as well as
+        social media.
+      </strong>
     </p>
 
     <h2>Reporting</h2>
@@ -99,13 +102,19 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h3>Important contact numbers</h3>
 
     <ul>
-      <li>Police: {props.pageMetadata.conference.ImportantContactNumbers.Police}</li>
       <li>
-        Centre Against Sexual Assault 24 hour line:{' '}
+        <strong>Police:</strong> {props.pageMetadata.conference.ImportantContactNumbers.Police}
+      </li>
+      <li>
+        <strong>Centre Against Sexual Assault 24 hour line:</strong>
         {props.pageMetadata.conference.ImportantContactNumbers.CentreAgainstSexualAssault}
       </li>
-      <li>Emergency Medical: {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}</li>
-      <li>Non Emergency: {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}</li>
+      <li>
+        <strong>Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}
+      </li>
+      <li>
+        <strong>Non Emergency:</strong> {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}
+      </li>
     </ul>
 
     <h2>Photo Policy</h2>
@@ -113,9 +122,15 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
 
     <ul>
-      <li>Blue: ask beforehand</li>
-      <li>Black: fine to photograph</li>
-      <li>Red: do not photograph</li>
+      <li>
+        <strong>Blue:</strong> ask beforehand
+      </li>
+      <li>
+        <strong>Black:</strong> fine to photograph
+      </li>
+      <li>
+        <strong>Red:</strong> do not photograph
+      </li>
     </ul>
 
     <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
@@ -130,10 +145,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h3>Ableism</h3>
 
     <p>
-      Words like "crazy", "dumb", "insane" or "lame" are examples of ableist language, devaluating people who have
-      physical or mental disabilities. Its appearance often stems not from any intentional desire to offend, but from
-      our innate sense of what it means to be normal. These words can be avoided by using more fitting, clearer
-      descriptions of what we intend to communicate.
+      Words like "crazy", "dumb", "insane" or "lame" are examples of <strong>ableist language</strong>, devaluating
+      people who have physical or mental disabilities. Its appearance often stems not from any intentional desire to
+      offend, but from our innate sense of what it means to be normal. These words can be avoided by using more fitting,
+      clearer descriptions of what we intend to communicate.
     </p>
 
     <p>
