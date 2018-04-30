@@ -22,7 +22,7 @@ const Footer: StatelessComponent<FooterArgs> = ({ menu, socials, conference }) =
           <SocialLinks socials={socials} />
         </Col>
         <Col xs={12} className="copyright">
-          Copyright &copy; {new Date().getFullYear()} {conference.Organiser}
+          Copyright &copy; {new Date().getFullYear()} {conference.Organiser.Name}
         </Col>
       </Row>
     </Grid>

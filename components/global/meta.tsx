@@ -42,12 +42,12 @@ const Meta: StatelessComponent<MetaArgs> = ({
       <meta name="description" content={pageDescription || conference.SiteDescription} />
       <meta property="og:description" content={pageDescription || conference.SiteDescription} />
       <meta name="twitter:description" content={(pageDescription || conference.SiteDescription).substring(0, 200)} />
-      <meta name="author" content={conference.Organiser} />
+      <meta name="author" content={conference.Organiser.Name} />
       <meta property="og:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
       <meta property="twitter:image" content={pageImage || '/static/images/default-social-sharing-image.jpg'} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={conference.Name} />
-      <meta name="twitter:creator" content={conference.Organiser} />
+      <meta name="twitter:creator" content={conference.Organiser.Name} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={conference.Name} />
       <link rel="canonical" href={pageUrl} />

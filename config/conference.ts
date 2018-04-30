@@ -75,7 +75,10 @@ const Conference: IConference = {
   Instance: currentInstance.toString(),
   PreviousInstance: (currentInstance - 1).toString(),
   PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
-  Organiser: 'DDD WA Inc.',
+  Organiser: {
+    Name: 'DDD WA Inc.',
+    Url: 'https://blog.dddperth.com/meet-the-team-35865433cb39',
+  },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
   Goal:
@@ -97,6 +100,10 @@ const Conference: IConference = {
   MentoringEmail: 'mentors@dddperth.com',
   EmergencyContactName: 'Rob Moore',
   EmergencyContactPhoneNumber: '0400 777 763',
+  MediaOfficerName: 'Rebecca Waters',
+
+  AnonymousReportFormUrl:
+    'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
   Date: date,
   EndDate: endDate,
@@ -137,6 +144,13 @@ const Conference: IConference = {
     { Url: '/static/images/strip/4.jpg', Alternate: 'Early morning registration' },
     { Url: '/static/images/strip/5.jpg', Alternate: 'Donna Edwards speaking at DDD 2017' },
   ],
+
+  ImportantContactNumbers: {
+    Police: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
+    CentreAgainstSexualAssault: '1800 806 292',
+    EmergencyMedical: 'Royal Perth Hospital, 197 Wellington St, Perth WA 6000',
+    NonEmergencyMedical: 'Perth Medical Centre, 713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
+  },
 
   ImportantDates: orderBy(importantDates, i => i.Date),
 
