@@ -156,7 +156,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Media personnel authorised by {Conference.Name} will be in attendance. These media personnel will respect the
-        photo policy as defined in the <a href="/code-of-conduct">Code of Conduct</a>.
+        photo policy as defined in the <a href="/code-of-conduct#photo-policy">Code of Conduct</a>.
       </Fragment>
     ),
   })
