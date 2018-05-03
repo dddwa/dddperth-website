@@ -17,7 +17,11 @@ const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetad
               <EventDetailsSummary
                 conference={pageMetadata.conference}
                 dates={pageMetadata.dates}
-                primaryAction={getConferenceActions(pageMetadata.conference, pageMetadata.dates)[0]}
+                primaryAction={
+                  getConferenceActions(pageMetadata.conference, pageMetadata.dates).filter(
+                    a => a.Url !== pageMetadata.pagePath,
+                  )[0]
+                }
                 pagePath={context.pagePath}
               />
               <h3>Important Dates</h3>
