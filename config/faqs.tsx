@@ -178,12 +178,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         We can be contacted via email at <a href={'mailto:' + Conference.ContactEmail}>{Conference.ContactEmail}</a>
-        {Conference.Socials.Twitter !== null ? (
+        {Conference.Socials.Twitter.Name !== null ? (
           <Fragment>
             {' '}
             and Twitter at{' '}
-            <a href={'https://twitter.com/' + Conference.Socials.Twitter} target="_blank">
-              @{Conference.Socials.Twitter}
+            <a href={'https://twitter.com/' + Conference.Socials.Twitter.Name} target="_blank">
+              @{Conference.Socials.Twitter.Name}
             </a>. See also the other Social Media accounts at the footer of this page.
           </Fragment>
         ) : (

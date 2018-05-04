@@ -54,7 +54,7 @@ export interface Conference {
 
   ImageStrip: Image[]
 
-  ImportantContactNumbers: ImportantContactNumbers
+  ImportantContacts: ImportantContacts
 
   ImportantDates: ImportantDate[]
 
@@ -98,7 +98,7 @@ export interface Dates {
 }
 
 export interface Socials {
-  Twitter?: string
+  Twitter?: Twitter
   Facebook?: string
   GitHub?: string
   Instagram?: string
@@ -109,11 +109,16 @@ export interface Socials {
   MailingList?: string
 }
 
-export interface ImportantContactNumbers {
-  Police?: string
-  CentreAgainstSexualAssault?: string
-  EmergencyMedical?: string
-  NonEmergencyMedical?: string
+export interface ImportantContacts {
+  Police?: Contact
+  CentreAgainstSexualAssault?: Contact
+  EmergencyMedical?: Contact
+  NonEmergencyMedical?: Contact
+}
+
+export interface Contact {
+  Details: string
+  MapUrl?: string
 }
 
 export enum SponsorType {
@@ -159,4 +164,10 @@ export interface Image {
 export interface Organiser {
   Name: string
   Url: string
+  ShirtColour: string
+}
+
+export interface Twitter {
+  Id?: string
+  Name: string
 }

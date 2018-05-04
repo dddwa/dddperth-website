@@ -8,13 +8,13 @@ interface SocialLinksArgs {
 
 const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
   <ul className="social">
-    {socials.Twitter && (
+    {socials.Twitter.Name && (
       <li>
         <a
           rel="nofollow"
           className="fa fa-twitter"
-          href={`https://twitter.com/${socials.Twitter}`}
-          title={'@' + socials.Twitter}
+          href={`https://twitter.com/${socials.Twitter.Name}`}
+          title={'@' + socials.Twitter.Name}
           target="_blank"
         />
       </li>

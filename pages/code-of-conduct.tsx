@@ -13,9 +13,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>Purpose</h2>
     <p>
       {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
-      everyone, regardless of gender, gender identity and expression, sexual orientation, disability, physical
-      appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
-      form. Sexual language and imagery is not appropriate anywhere. This applies to conference talks also.
+      everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation,
+      disability, physical appearance, body size, race, age or religion. We do not tolerate harassment of conference
+      participants in any form. Sexual language and imagery is not appropriate anywhere. This applies to conference
+      talks also.
     </p>
 
     <p>
@@ -45,9 +46,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
-      staff can be identified by event branded t-shirts and organiser name tags. Harassment and other Code of Conduct
-      violations reduce the value of our event for everyone. We want you to be happy at our event. People like you make
-      our event a better place. You can make a report either personally or anonymously.
+      staff can be identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded t-shirts and
+      organiser name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone.
+      We want you to be happy at our event. People like you make our event a better place. You can make a report either
+      personally or anonymously.
     </p>
 
     <h3>Personal report</h3>
@@ -55,8 +57,17 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p>You can make a personal report by:</p>
 
     <ul>
-      <li>Contacting a staff member, identified by event branded t-shirts and organiser name tags</li>
-      <li>Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter}</li>
+      <li>
+        Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded
+        t-shirts and organiser name tags
+      </li>
+      <li>
+        <a
+          href={`https://twitter.com/messages/compose?recipient_id=${props.pageMetadata.conference.Socials.Twitter.Id}`}
+        >
+          Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter.Name}
+        </a>
+      </li>
       <li>
         Emailing us:{' '}
         <a href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
@@ -67,7 +78,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       Emails and Twitter direct messages will be monitored by our media officer{' '}
-      {props.pageMetadata.conference.MediaOfficerName}.
+      {props.pageMetadata.conference.MediaOfficerName} as well as select subset of the organising team.
     </p>
 
     <p>
@@ -95,17 +106,26 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        <strong>Police:</strong> {props.pageMetadata.conference.ImportantContactNumbers.Police}
+        <strong>Police:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.Police.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.Police.Details}
+        </a>
       </li>
       <li>
         <strong>Centre Against Sexual Assault 24 hour line:</strong>{' '}
-        {props.pageMetadata.conference.ImportantContactNumbers.CentreAgainstSexualAssault}
+        {props.pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Details}
       </li>
       <li>
-        <strong>Emergency Medical:</strong> {props.pageMetadata.conference.ImportantContactNumbers.EmergencyMedical}
+        <strong>Emergency Medical:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}
+        </a>
       </li>
       <li>
-        <strong>Non Emergency:</strong> {props.pageMetadata.conference.ImportantContactNumbers.NonEmergencyMedical}
+        <strong>Non Emergency Medical:</strong>{' '}
+        <a href={props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
+          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
+        </a>
       </li>
     </ul>
 
@@ -178,7 +198,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <ul>
       <li>
-        <strong>Green:</strong> fine to photograph
+        <strong>Black:</strong> fine to photograph
       </li>
       <li>
         <strong>Red:</strong> do not photograph
