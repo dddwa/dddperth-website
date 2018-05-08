@@ -29,12 +29,10 @@ h3 {
 
 a,
 a:link,
-a:active {
-  text-decoration: none;
-  outline: none;
-  color: $primary-color;
-}
+a:active,
 a:hover {
+  text-decoration: underline;
+  outline: none;
   color: $primary-color;
 }
 button,
