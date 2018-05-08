@@ -1,21 +1,74 @@
+body {
+  font-size: 14px;
+}
+* {
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.25;
+  font-weight: $bold;
+  margin: 20px 0 15px 0;
+}
+h1 {
+  font-size: 30px;
+}
+.intro h1 {
+  line-height: 1.35;
+  font-size: 18px;
+}
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 16px;
+}
 
-body {font-size: 14px}
-* {outline: none}
-h1, h2, h3, h4, h5 {line-height: 1.25; font-weight: $bold; margin: 20px 0 15px 0}
-h1 {font-size: 30px}
-.intro h1 {line-height: 1.35; font-size: 18px}
-h2 {font-size: 18px}
-h3 {font-size: 16px}
+a,
+a:link,
+a:active {
+  text-decoration: none;
+  outline: none;
+  color: $primary-color;
+}
+a:hover {
+  color: $primary-color;
+}
+button,
+button:link,
+button:active {
+  outline: none;
+}
 
-a, a:link, a:active {text-decoration: none; outline: none; color: $primary-color}
-a:hover {color: $primary-color}
-button, button:link, button:active {outline: none}
+p,
+ol,
+ul,
+table {
+  margin: 10px 0;
+  padding: 0;
+}
 
-p, ol, ul, table {margin: 10px 0; padding: 0}
-
-ul, ol {
-  li {margin: 0; padding: 0; list-style: none outside;}
-  li:before {content: ""; display: inline-block; vertical-align: middle; width: 7px; height: 7px; background: $primary-color; margin: 0 13px 0 0; position: relative; top: -1px}
+ul,
+ol {
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none outside;
+  }
+  li:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 7px;
+    height: 7px;
+    background: $primary-color;
+    margin: 0 13px 0 0;
+    position: relative;
+    top: -1px;
+  }
 }
 
 .preserve-whitespace {
@@ -24,43 +77,51 @@ ul, ol {
 
 // Tables
 table {
-  th {background: #f4f4f4}
-  tr {background: #fafafa}
+  th {
+    background: #f4f4f4;
+  }
+  tr {
+    background: #fafafa;
+  }
   tr.even,
   tr.alt,
   tr:nth-of-type(even) {
     background: #f4f4f4;
   }
-
 }
 
-
 // Logo
-.logo a, .logo a:hover {
+.logo a,
+.logo a:hover {
   color: #fff;
-  text-decoration: none
+  text-decoration: none;
 }
 
 // Next Event
 .event-details {
   p {
-    font-size: 16px; font-weight: $bold;
-    span {text-transform: uppercase; display: block; font-weight: $regular; font-size: initial}
+    font-size: 16px;
+    font-weight: $bold;
+    span {
+      text-transform: uppercase;
+      display: block;
+      font-weight: $regular;
+      font-size: initial;
+    }
   }
 }
 
 section.right-sidebar {
-
 }
-
-
-
 
 //  Mobile Landscape (From 480px)
 @media only screen and (min-width: 480px) {
-  h1 {font-size: 32px}
-  .intro h1 {font-size: 19px}
-
+  h1 {
+    font-size: 32px;
+  }
+  .intro h1 {
+    font-size: 19px;
+  }
 
   // Next Event
   .event-details {
@@ -70,19 +131,39 @@ section.right-sidebar {
   }
 }
 
-
 //  Small devices (tablets, 768px and up)
 @media only screen and (min-width: 768px) {
-  body {font-size: 14px}
+  body {
+    font-size: 14px;
+  }
 
-  h1, h2, h3, h4, h5 {margin: 30px 0 17px 0}
-  h1 {font-size: 38px}
-  .intro h1 {font-size: 21px}
-  h2 {font-size: 23px}
-  h3 {font-size: 22px}
-  p, ol, ul, table {margin: 15px 0;}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 30px 0 17px 0;
+  }
+  h1 {
+    font-size: 38px;
+  }
+  .intro h1 {
+    font-size: 21px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  p,
+  ol,
+  ul,
+  table {
+    margin: 15px 0;
+  }
 
-   // Next Event
+  // Next Event
   .event-details {
     p {
       font-size: 21px;
@@ -90,19 +171,36 @@ section.right-sidebar {
   }
 }
 
-
 //  Medium devices (desktops, 992px and up)
 @media only screen and (min-width: 992px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 35px 0 20px 0;
+  }
+  h1 {
+    font-size: 42px;
+  }
+  .intro h1 {
+    font-size: 26px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 24px;
+  }
 
-  h1, h2, h3, h4, h5 {margin: 35px 0 20px 0}
-  h1 {font-size: 42px}
-  .intro h1 {font-size: 26px}
-  h2 {font-size: 25px}
-  h3 {font-size: 24px}
+  p,
+  ol,
+  ul,
+  table {
+    margin: 18px 0;
+  }
 
-  p, ol, ul, table {margin: 18px 0;}
-
-   // Next Event
+  // Next Event
   .event-details {
     p {
       font-size: 23px;
@@ -110,20 +208,40 @@ section.right-sidebar {
   }
 }
 
-
 //  Large devices (large desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {
-    body {font-size: 15px}
+  body {
+    font-size: 15px;
+  }
 
-  h1, h2, h3, h4, h5 {margin: 45px 0 25px 0}
-  h1 {font-size: 45px}
-  .intro h1 {font-size: 28px}
-  h2 {font-size: 27px}
-  h3 {font-size: 25px}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 45px 0 25px 0;
+  }
+  h1 {
+    font-size: 45px;
+  }
+  .intro h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 27px;
+  }
+  h3 {
+    font-size: 25px;
+  }
 
-  p, ol, ul, table {margin: 23px 0;}
+  p,
+  ol,
+  ul,
+  table {
+    margin: 23px 0;
+  }
 
-   // Next Event
+  // Next Event
   .event-details {
     p {
       font-size: 27px;
@@ -131,24 +249,43 @@ section.right-sidebar {
   }
 }
 
-
 //  Ex Large devices (large desktops, 1200px and up)
 @media only screen and (min-width: 1400px) {
-  body {font-size: 16px}
+  body {
+    font-size: 16px;
+  }
 
-  h1, h2, h3, h4, h5 {margin: 50px 0 30px 0}
-  h1 {font-size: 48px}
-  .intro h1 {font-size: 30px}
-  h2 {font-size: 29px}
-  h3 {font-size: 26px}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 50px 0 30px 0;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  .intro h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 29px;
+  }
+  h3 {
+    font-size: 26px;
+  }
 
-  p, ol, ul, table {margin: 30px 0;}
+  p,
+  ol,
+  ul,
+  table {
+    margin: 30px 0;
+  }
 
-    // Next Event
+  // Next Event
   .event-details {
     p {
       font-size: 30px;
     }
   }
-
 }
