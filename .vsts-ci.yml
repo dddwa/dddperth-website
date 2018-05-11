@@ -1,33 +1,47 @@
-resources:
-- repo: self
 queue:
   name: Hosted VS2017
   demands:
   - npm
-  - yarn
+  - azureps
+
+variables:
+  StorageAccount: 'dddperthdeployments'
+  StorageContainer: 'dddperth-website'
 
 steps:
+- task: DeleteFiles@1
+  inputs:
+    Contents: '.next/**/*.*'
+
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
   displayName: Install Yarn
 
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: Install npm packages for app build
+  displayName: Install npm packages for app build (production)
+  inputs:
+    ProductionMode: true
+
+- task: CopyFiles@2
+  displayName: Copy deployment packages to artifacts staging directory
+  inputs:
+    Contents: 'node_modules/**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: Conditionally install npm packages for app deploy
-  inputs:
-    ProjectDirectory: deploy
-  condition: and(succeeded(), ne(variables['includeServerCode'], 'false'))
+  displayName: Install npm packages for app build
 
 - task: Npm@1
-displayName: Lint
+  displayName: Lint
   inputs:
     command: custom
     verbose: false
     customCommand: 'run lint'
 
 - task: Npm@1
-displayName: Build
+  displayName: Build
   inputs:
     command: custom
     verbose: false
@@ -40,7 +54,6 @@ displayName: Build
      .next/**/*
      static/**/*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
     OverWrite: true
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
@@ -59,10 +72,12 @@ displayName: Build
     includeRootFolder: false
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish artifact
+- task: AzureFileCopy@1
+  displayName: Copy deployment to blob storage
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: drop
-    ArtifactType: Container
+    SourcePath: '$(Build.ArtifactStagingDirectory)\$(Build.BuildNumber).zip'
+    azureSubscription: 'Microsoft Azure Sponsorship (dd079971-2023-4b56-be3a-85a346d51344)'
+    Destination: AzureBlob
+    storage: '$(StorageAccount)'
+    ContainerName: '$(StorageContainer)'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
