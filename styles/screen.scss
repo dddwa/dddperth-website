@@ -61,6 +61,14 @@ hr {
   outline: 0;
 }
 
+a.btn {
+  &,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
 // Back Button
 .btn.back:after {
   float: left;
@@ -215,6 +223,11 @@ nav.main {
         font-weight: $bold;
         @include opacity(0.55);
         line-height: 42px;
+        &,
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
       }
       a:after {
         content: '\f0da';
@@ -232,7 +245,6 @@ nav.main {
     li.active a,
     a:hover {
       @include opacity(1);
-      text-decoration: none;
     }
   }
 }
@@ -511,6 +523,11 @@ footer {
       background-repeat: no-repeat;
       @include transition(0.2s);
       @include border-radius(50%);
+      &,
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
     }
     a:hover {
       background-color: darken($primary-color, 3%);
