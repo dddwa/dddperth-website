@@ -35,9 +35,13 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
 
 To re-purpose for another conference:
 
-1. Update the files in the `config` directory
-2. Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
-3. Update the images in the `static` directory and sub directories
-4. Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
+1.  Update the files in the `config` directory
+2.  Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
+3.  Update the images in the `static` directory and sub directories
+4.  Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
+
+## Contributing
+
+So you’re thinking about contributing to the project? You are awesome! It’s **massively** appreciated. Before getting started, please take the time to review the [contribution guidelines](CONTRIBUTING.MD) before sending that epic pull request / bug report.
