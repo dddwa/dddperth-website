@@ -24,7 +24,7 @@ const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetad
                 }
                 pagePath={context.pagePath}
               />
-              <h3>Important Dates</h3>
+              <h2>Important Dates</h2>
               <div className="important-dates-right slick">
                 <ImportantDatesList conference={pageMetadata.conference} currentDate={pageMetadata.currentDate} />
               </div>
