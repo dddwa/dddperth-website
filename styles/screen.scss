@@ -170,7 +170,7 @@ h4.modal-title {
 
 // Main Nav
 nav.main {
-  background: darken($primary-color, 10%);
+  background: darken($primary-color, 15%);
   color: #fff;
   margin-bottom: 0;
   border: 0;
@@ -210,7 +210,6 @@ nav.main {
     float: none;
     li {
       float: none;
-      border-top: 1px solid darken($primary-color, 20%);
 
       &:before {
         display: none;
@@ -221,12 +220,11 @@ nav.main {
         color: #fff !important;
         background-color: transparent !important;
         font-weight: $bold;
-        @include opacity(0.55);
         line-height: 42px;
-        &,
+        text-decoration: none;
         &:hover,
         &:focus {
-          text-decoration: none;
+          text-decoration: underline;
         }
       }
       a:after {
@@ -242,9 +240,8 @@ nav.main {
         float: right;
       }
     }
-    li.active a,
-    a:hover {
-      @include opacity(1);
+    li.active {
+      background: $primary-color;
     }
   }
 }
