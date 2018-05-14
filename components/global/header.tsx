@@ -13,18 +13,23 @@ interface HeaderArgs {
 const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference, dates }) => (
   <Fragment>
     <header>
-      <div className="logo">
-        <a href="/">{conference.Name}</a>
-      </div>
+      {isHome ? (
+        <h1 className="logo">
+          <a href="/">{conference.Name}</a>
+        </h1>
+      ) : (
+        <div className="logo">
+          <a href="/">{conference.Name}</a>
+        </div>
+      )}
     </header>
 
     {isHome && (
       <Fragment>
         <section className="fader" />
-
         <section className="intro">
           <div className="container">
-            <h1>
+            <p>
               {conference.TagLine}
               {!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br />
               <br />
@@ -32,7 +37,7 @@ const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference
               <Link href="/code-of-conduct">
                 <a>Code of Conduct</a>
               </Link>.
-            </h1>
+            </p>
           </div>
         </section>
       </Fragment>
