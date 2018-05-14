@@ -14,6 +14,9 @@ $voting: #ff9600;
 $tickets: #00df88;
 $agenda: #bcd800;
 
+$link-hover-fg: #2a7dac;
+$link-focus-bg: #54a6d6;
+
 // Agenda
 $aqua-room: #01b6ad;
 $blue-room: #54a6d6;
@@ -27,14 +30,22 @@ $keynote-room: #01b6ad;
 $locknote-room: #01b6ad;
 $afterparty-room: #dd4876;
 
-p.blue {color: #00a2ff}
+p.blue {
+  color: #00a2ff;
+}
 div.blue,
-section.blue {background-color: #00a2ff}
+section.blue {
+  background-color: #00a2ff;
+}
 
 p.light-grey,
-p.grey {color: #f0f0f0}
+p.grey {
+  color: #f0f0f0;
+}
 
 div.light-grey,
 div.grey,
 section.light-grey,
-section.grey {background-color:#f0f0f0}
+section.grey {
+  background-color: #f0f0f0;
+}

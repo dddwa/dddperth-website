@@ -27,13 +27,26 @@ h3 {
   font-size: 16px;
 }
 
-a,
-a:link,
-a:active,
-a:hover {
-  text-decoration: underline;
-  outline: none;
-  color: $primary-color;
+a {
+  &,
+  &:link,
+  &:active,
+  &:hover {
+    text-decoration: underline;
+    outline: none;
+    color: $primary-color;
+  }
+  &:hover,
+  &:focus {
+    color: $link-hover-fg;
+  }
+  &:focus {
+    z-index: 100;
+    text-decoration: none;
+    color: white;
+    background: $link-focus-bg;
+    box-shadow: 0 0 0 3px $link-focus-bg;
+  }
 }
 button,
 button:link,
