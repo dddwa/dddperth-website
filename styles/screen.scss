@@ -53,6 +53,9 @@ hr {
   position: relative;
   top: -1px;
 }
+.btn-mail:after {
+  content: '\f0e0';
+}
 .btn:hover {
   background: darken($primary-color, 5%);
   color: #fff;
