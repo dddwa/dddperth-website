@@ -178,8 +178,8 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
         </div>
         <h2>Handbook</h2>
         <p>
-          <a href={From2016.HandbookUrl} className="btn">
-            Download 2016 handbook
+          <a className="btn btn-pdf" href={From2016.HandbookUrl}>
+            Download 2015 Handbook (PDF)
           </a>
         </p>
         <h2>Media</h2>

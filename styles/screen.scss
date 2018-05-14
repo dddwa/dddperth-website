@@ -39,7 +39,6 @@ hr {
   background: $primary-color;
   color: #fff !important;
 }
-
 .btn:after {
   content: '\f0da';
   font-family: 'FontAwesome';
@@ -54,7 +53,14 @@ hr {
   top: -1px;
 }
 .btn-mail:after {
-  content: '\f0e0';
+  @include opacity(1);
+  content: '\f003';
+  color: #fff;
+}
+.btn-pdf:after {
+  @include opacity(1);
+  content: '\f1c1';
+  color: #fff;
 }
 .btn:hover {
   background: darken($primary-color, 5%);
