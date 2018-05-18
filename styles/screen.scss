@@ -38,6 +38,7 @@ hr {
   @include transition(0.2s);
   background: $primary-color;
   color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 .btn:after {
   content: '\f0da';
@@ -105,19 +106,19 @@ a.btn {
 .btn.tickets,
 .btn-secondary,
 .btn.add-vote {
-  background-color: $tickets;
+  background-color: darken($tickets, 5%);
 }
 .btn.tickets:hover,
 .btn-secondary:hover,
 .btn.add-vote:hover {
-  background-color: darken($tickets, 5%);
+  background-color: darken($tickets, 10%);
 }
 
 .btn.agenda {
-  background-color: $agenda;
+  background-color: darken($agenda, 5%);
 }
 .btn.agenda:hover {
-  background-color: darken($agenda, 5%);
+  background-color: darken($agenda, 10%);
 }
 
 $darkGrey: lighten(#000, 30%);
