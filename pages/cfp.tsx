@@ -125,9 +125,11 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           </a>
         </p>
 
+        <h2>Already submitted, but want to edit?</h2>
+
         <p className="text-center">
-          <a className="btn content" target="_blank" href={conference.SessionizeEditUrl}>
-            Edit a session via Sessionize
+          <a className="btn btn-secondary" target="_blank" href={conference.SessionizeEditUrl}>
+            Edit your session(s) via Sessionize
           </a>
         </p>
       </Page>

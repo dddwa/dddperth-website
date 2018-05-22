@@ -18,6 +18,7 @@ export interface Conference {
   SellingPoints: string[]
   Handbook: string | null
   SessionizeUrl: string | null
+  SessionizeEditUrl: string | null
   PreviouslySubmittedTopics: string
 
   Venue: Venue
