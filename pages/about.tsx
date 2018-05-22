@@ -17,7 +17,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Focussing on creating a safe and inclusive environment where everyone is welcome</li>
     </ul>
     <p className="text-center">
-      <img src="/static/images/logo.png" alt="DDD Perth logo" style={{ width: '250px' }} />
+      <img src="/static/images/logo-2018.png" alt="DDD Perth 2018 logo" style={{ width: '250px' }} />
     </p>
     <p>
       DDD stands for Developer! Developer! Developer! and while it's heritage is a developer-focussed conference, DDD
@@ -36,6 +36,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <a href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
         since 2018 it has been run by DDD WA Inc.
       </a>
+    </p>
+    <p>The original DDD Perth logo was:</p>
+    <p className="text-center">
+      <img src="/static/images/logo-old.png" alt="DDD Perth logo" style={{ width: '250px' }} />
     </p>
     <p>DDD Perth has been held at the following dates:</p>
     <ul>
