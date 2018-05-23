@@ -69,7 +69,9 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           <li>
             Providing a{' '}
             <strong>
-              <a href={'mailto:' + conference.MentoringEmail}>free mentoring service</a>
+              <a className="maillink" href={'mailto:' + conference.MentoringEmail}>
+                free mentoring service
+              </a>
             </strong>; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run
             through any ideas you have or give safe and constructive feedback.
           </li>
@@ -100,7 +102,10 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           <li>
             Speakers get free entry into the event; flights and accommodation for speakers are not normally covered
             (outside of keynote speakers), but if that's a limitation that stops you from speaking then please{' '}
-            <a href={'mailto:' + conference.ContactEmail}>let us know</a> and we'll reach out to discuss options.
+            <a className="maillink" href={'mailto:' + conference.ContactEmail}>
+              let us know
+            </a>{' '}
+            and we'll reach out to discuss options.
           </li>
           <li>You will likely be speaking to an audience of between 50-150 people.</li>
           <li>
@@ -114,8 +119,11 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             presentation gets voted in and you agree to present then this is a serious commitment.
           </li>
           <li>
-            Questions? <a href={'mailto:' + conference.ContactEmail}>Fire off an email</a> and we'll get right back to
-            you :)
+            Questions?{' '}
+            <a className="maillink" href={'mailto:' + conference.ContactEmail}>
+              Fire off an email
+            </a>{' '}
+            and we'll get right back to you :)
           </li>
         </ul>
 

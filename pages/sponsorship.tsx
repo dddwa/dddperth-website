@@ -61,7 +61,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p>
       We have a sponsorship prospectus that will be provided on request that explains detailed benefits and impact of
       sponsorship and the difference between the various levels; if you would like a copy{' '}
-      <a href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>please contact us</a>!
+      <a className="maillink" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
+        please contact us
+      </a>!
     </p>
 
     <p>

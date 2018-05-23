@@ -12,13 +12,13 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <ul>
       <li>
         <strong>General enquiries:</strong>{' '}
-        <a href={'mailto:' + props.pageMetadata.conference.ContactEmail}>
+        <a className="maillink" href={'mailto:' + props.pageMetadata.conference.ContactEmail}>
           {props.pageMetadata.conference.ContactEmail}
         </a>
       </li>
       <li>
         <strong>Sponsorship Enquiries:</strong>{' '}
-        <a href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
+        <a className="maillink" href={'mailto:' + props.pageMetadata.conference.SponsorshipEmail}>
           {props.pageMetadata.conference.SponsorshipEmail}
         </a>
       </li>
