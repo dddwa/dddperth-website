@@ -70,7 +70,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       </li>
       <li>
         Emailing us:{' '}
-        <a href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
+        <a className="maillink" href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
           {props.pageMetadata.conference.Socials.Email}
         </a>
       </li>

@@ -116,7 +116,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Payments can be made with credit card using Eventbrite via our tickets page when registrations are open.
-        Companies that want to buy bulk tickets (> 5) can <a href={'mailto:' + Conference.ContactEmail}>contact us</a>{' '}
+        Companies that want to buy bulk tickets (> 5) can{' '}
+        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+          contact us
+        </a>{' '}
         to pay by invoice (EFT or credit card).
       </Fragment>
     ),
@@ -167,8 +170,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <Fragment>
         We are always looking for volunteers and sometimes looking for organisers! It takes a lot of effort to organise
         a volunteer-run conference like {Conference.Name}. Shoot us an email at{' '}
-        <a href={'mailto:' + Conference.ContactEmail}>{Conference.ContactEmail}</a> and we can work with you to figure
-        out the best way to assist.
+        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+          {Conference.ContactEmail}
+        </a>{' '}
+        and we can work with you to figure out the best way to assist.
       </Fragment>
     ),
   })
@@ -177,7 +182,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How can I contact the organisers?',
     Answer: (
       <Fragment>
-        We can be contacted via email at <a href={'mailto:' + Conference.ContactEmail}>{Conference.ContactEmail}</a>
+        We can be contacted via email at{' '}
+        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+          {Conference.ContactEmail}
+        </a>
         {Conference.Socials.Twitter.Name !== null ? (
           <Fragment>
             {' '}
@@ -202,7 +210,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
         a great chance to give back and support the local software community. We have various levels of sponsorship
         available with various benefits and price points. We have a sponsorship prospectus that will be provided on
         request that explains detailed benefits and impact of sponsorship and the difference between the various levels;
-        if you would like a copy <a href={'mailto:' + Conference.SponsorshipEmail}>please contact us</a>.
+        if you would like a copy{' '}
+        <a className="maillink" href={'mailto:' + Conference.SponsorshipEmail}>
+          please contact us
+        </a>.
       </Fragment>
     ),
   })

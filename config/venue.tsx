@@ -18,7 +18,9 @@ const venue: Venue = {
       <a href="https://gc.synxis.com/rez.aspx?Chain=14687&amp;locale=en-US&amp;promo=PERTHCONV" target="_blank">
         booking link
       </a>. Adina Hotel can be contacted on +61 8 9217 8000 or{' '}
-      <a href="mailto:perth@adinahotels.com.au">perth@adinahotels.com.au</a>.
+      <a className="maillink" href="mailto:perth@adinahotels.com.au">
+        perth@adinahotels.com.au
+      </a>.
     </Fragment>
   ),
   Car: (
