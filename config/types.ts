@@ -30,7 +30,10 @@ export interface Conference {
   MediaOfficerName: string
 
   AnonymousReportFormUrl: string
+
   AnonymousVoting: boolean
+  MinVotes: number
+  MaxVotes: number
 
   Date: Moment
   EndDate: Moment
