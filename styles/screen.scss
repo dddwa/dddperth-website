@@ -1119,103 +1119,14 @@ section.full-width {
 }
 
 // Sessions and Voting
-.submitted-session {
-  background: #f0f0f0;
-  border-right: 7px solid #ff9600;
-  padding: 10px 15px 2px;
-  margin-bottom: 10px;
-
-  h3 {
-    margin: 0;
-    display: inline;
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .session-title {
-    margin-bottom: 10px;
-
-    h3:after {
-      content: '\f0d7';
-      font-family: 'FontAwesome';
-      color: #000;
-      @include opacity(0.3);
-      display: inline-block;
-      margin: 0 0 0 10px;
-      font-size: 24px;
-      max-width: 26px;
-      vertical-align: middle;
-      position: relative;
-      top: -2px;
-    }
-
-    .vote-for-session {
-      float: right;
-      padding: 3px 20px;
-      margin-left: 5px;
-    }
-  }
-
-  .session-content {
-    display: none;
-
-    p {
-      margin: 18px 0;
-    }
-  }
-
-  &.open {
-    .session-title {
-      h3:after {
-        content: '\f0d8';
-      }
-    }
-
-    .session-content {
-      display: block;
-    }
-  }
-}
-
-#submit-votes {
-  margin: 0 0 10px 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-
-  h3 {
-    margin: 10px 0 0 0;
-    text-align: center;
-  }
-
-  li.form-group {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  li.submit input {
-    margin-top: 0px;
-  }
-
-  form {
-    padding: 10px;
-  }
-}
-
-#submit-votes.affix {
-  top: 0;
-  position: fixed;
-
-  + .submitted-session {
-    margin-top: 220px;
-  }
+.profile-photo {
+  width: 50px;
+  margin-right: 15px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 }
 
 .equal-heights {

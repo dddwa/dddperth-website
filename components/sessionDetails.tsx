@@ -12,6 +12,9 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
     {showPresenter &&
       session.Presenters.map(p => (
         <p>
+          {p.ProfilePhotoUrl && (
+            <img src={p.ProfilePhotoUrl} alt={p.Name + ' profile photo'} className="profile-photo" />
+          )}
           <em>{p.Name}</em>{' '}
           {p.TwitterHandle || p.WebsiteUrl ? (
             <small>
