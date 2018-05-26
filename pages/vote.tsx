@@ -2,8 +2,11 @@ import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
+import { Typeahead } from 'react-bootstrap-typeahead'
+import { AutoAffix } from 'react-overlays'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import SessionDetails from '../components/sessionDetails'
+import '../components/utils/arrayExtensions'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
@@ -12,6 +15,7 @@ import Page from '../layouts/main'
 
 interface VoteState {
   sessions?: Session[]
+  tags: string[]
   isLoading: boolean
   isError: boolean
   expandAll: boolean
@@ -36,7 +40,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
 
   componentWillMount() {
     const that = this
-    this.setState({ isLoading: true, isError: false })
+    this.setState({ isLoading: true, isError: false, tags: [] })
     fetch('/static/tmp.json')
       .then(response => {
         if (response.status !== 200) {
@@ -44,7 +48,16 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
         }
         return response.json()
       })
-      .then(body => that.setState({ sessions: body, isLoading: false }))
+      .then(body =>
+        that.setState({
+          isLoading: false,
+          sessions: body,
+          tags: body
+            .selectMany(s => s.Tags)
+            .unique()
+            .sort(),
+        }),
+      )
       .catch(error => {
         that.setState({ isError: true, isLoading: false })
         if (console) {
@@ -99,15 +112,30 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             sessions.
           </p>
 
-          <h2>Lodge votes</h2>
+          {this.state.sessions && (
+            <AutoAffix>
+              <Panel className="voting-control">
+                <Panel.Heading>
+                  <strong>Lodge votes</strong>
+                </Panel.Heading>
+                <Panel.Body>
+                  <button className="btn btn-secondary" onClick={() => this.toggleExpandAll()}>
+                    {this.state.expandAll ? 'Collapse' : 'Expand'} all sessions
+                  </button>
+                  <label className="filter">
+                    Tags: <Typeahead multiple options={this.state.tags} />
+                  </label>
+                </Panel.Body>
+              </Panel>
+            </AutoAffix>
+          )}
 
-          <p>
-            <button className="btn btn-secondary" onClick={() => this.toggleExpandAll()}>
-              {this.state.expandAll ? 'Collapse' : 'Expand'} all sessions
-            </button>
-          </p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <hr />
+          <h2>Sessions</h2>
 
-          <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion" ref="voteAccordion">
+          <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
             {(this.state.sessions || []).map((s, i) => (
               <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
                 <Panel.Heading>
