@@ -11,7 +11,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
   <Fragment>
     {showPresenter &&
       session.Presenters.map(p => (
-        <p>
+        <p key={p.Id}>
           {p.ProfilePhotoUrl && (
             <img src={p.ProfilePhotoUrl} alt={p.Name + ' profile photo'} className="profile-photo" />
           )}
@@ -43,10 +43,8 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
       <span className="badge badge-primary">{session.Level}</span>{' '}
       <span className="badge badge-secondary">{session.Format}</span>{' '}
       {(session.Tags || []).map(tag => (
-        <React.Fragment>
-          <span className="badge badge-info" key={tag}>
-            {tag}
-          </span>{' '}
+        <React.Fragment key={tag}>
+          <span className="badge badge-info">{tag}</span>{' '}
         </React.Fragment>
       ))}
     </p>

@@ -14,6 +14,7 @@ interface VoteState {
   sessions?: Session[]
   isLoading: boolean
   isError: boolean
+  expandAll: boolean
 }
 
 class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
@@ -51,6 +52,10 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           console.error('Error loading sessions', error)
         }
       })
+  }
+
+  toggleExpandAll() {
+    this.setState({ expandAll: !this.state.expandAll })
   }
 
   render() {
@@ -94,11 +99,21 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             sessions.
           </p>
 
-          <PanelGroup accordion className="accordion" id="vote-accordion">
+          <h2>Lodge votes</h2>
+
+          <p>
+            <button className="btn btn-secondary" onClick={() => this.toggleExpandAll()}>
+              {this.state.expandAll ? 'Collapse' : 'Expand'} all sessions
+            </button>
+          </p>
+
+          <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion" ref="voteAccordion">
             {(this.state.sessions || []).map((s, i) => (
-              <Panel eventKey={i} key={i}>
+              <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
                 <Panel.Heading>
-                  <Panel.Title toggle>{s.Title}</Panel.Title>
+                  <Panel.Title toggle={!this.state.expandAll}>
+                    {this.state.expandAll ? <span>{s.Title}</span> : s.Title}
+                  </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
                   <SessionDetails session={s} showPresenter={!this.props.pageMetadata.conference.AnonymousVoting} />

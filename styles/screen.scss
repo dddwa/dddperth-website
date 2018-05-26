@@ -790,7 +790,8 @@ section.full-width {
     border: 0 !important;
     @include border-radius(0);
   }
-  .panel-heading a {
+  .panel-heading a,
+  .panel-heading span {
     display: block;
     position: relative;
     padding: 13px 52px 13px 15px;
@@ -1135,6 +1136,10 @@ section.full-width {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.panel-body p:first-child {
+  margin-top: 10px;
 }
 
 #map {
