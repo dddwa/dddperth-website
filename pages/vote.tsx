@@ -19,6 +19,7 @@ interface VoteState {
   isLoading: boolean
   isError: boolean
   expandAll: boolean
+  tagFilters: string[]
 }
 
 class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
@@ -123,7 +124,16 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                     {this.state.expandAll ? 'Collapse' : 'Expand'} all sessions
                   </button>
                   <label className="filter">
-                    Tags: <Typeahead multiple options={this.state.tags} />
+                    Tags:{' '}
+                    <Typeahead
+                      multiple
+                      options={this.state.tags}
+                      clearButton
+                      onChange={selected => {
+                        this.setState({ tagFilters: selected })
+                      }}
+                      selected={this.state.tagFilters}
+                    />
                   </label>
                 </Panel.Body>
               </Panel>
@@ -136,18 +146,20 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           <h2>Sessions</h2>
 
           <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
-            {(this.state.sessions || []).map((s, i) => (
-              <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
-                <Panel.Heading>
-                  <Panel.Title toggle={!this.state.expandAll}>
-                    {this.state.expandAll ? <span>{s.Title}</span> : s.Title}
-                  </Panel.Title>
-                </Panel.Heading>
-                <Panel.Body collapsible>
-                  <SessionDetails session={s} showPresenter={!this.props.pageMetadata.conference.AnonymousVoting} />
-                </Panel.Body>
-              </Panel>
-            ))}
+            {(this.state.sessions || [])
+              .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
+              .map((s, i) => (
+                <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
+                  <Panel.Heading>
+                    <Panel.Title toggle={!this.state.expandAll}>
+                      {this.state.expandAll ? <span>{s.Title}</span> : s.Title}
+                    </Panel.Title>
+                  </Panel.Heading>
+                  <Panel.Body collapsible>
+                    <SessionDetails session={s} showPresenter={!this.props.pageMetadata.conference.AnonymousVoting} />
+                  </Panel.Body>
+                </Panel>
+              ))}
           </PanelGroup>
         </div>
       </Page>
