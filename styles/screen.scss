@@ -69,7 +69,8 @@ hr {
   content: '\f1c1';
   color: #fff;
 }
-.btn:hover {
+.btn:hover,
+.badge-primary {
   background: darken($primary-color, 5%);
   color: #fff;
 }
@@ -98,14 +99,16 @@ a.btn {
   background-color: $call-content;
 }
 .btn.content:hover,
-.btn.remove-vote:hover {
+.btn.remove-vote:hover,
+.badge-secondary {
   background-color: darken($call-content, 5%);
 }
 
 .btn.voting {
   background-color: $voting;
 }
-.btn.voting:hover {
+.btn.voting:hover,
+.badge-info {
   background-color: darken($voting, 5%);
 }
 

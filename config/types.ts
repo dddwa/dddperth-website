@@ -30,6 +30,7 @@ export interface Conference {
   MediaOfficerName: string
 
   AnonymousReportFormUrl: string
+  AnonymousVoting: boolean
 
   Date: Moment
   EndDate: Moment
@@ -170,4 +171,24 @@ export interface Organiser {
 export interface Twitter {
   Id?: string
   Name: string
+}
+
+export interface Session {
+  Id: string
+  Title: string
+  Abstract: string
+  Presenters: Presenter[]
+  Format: string
+  Level: string
+  Tags: string[]
+}
+
+export interface Presenter {
+  Id: string
+  Name: string
+  Tagline: string
+  Bio: string
+  ProfilePhotoUrl: string
+  TwitterHandle?: string
+  WebsiteUrl?: string
 }
