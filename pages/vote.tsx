@@ -15,11 +15,15 @@ import Page from '../layouts/main'
 
 interface VoteState {
   sessions?: Session[]
-  tags: string[]
   isLoading: boolean
   isError: boolean
   expandAll: boolean
   tagFilters: string[]
+  tags: string[]
+  levelFilters: string[]
+  levels: string[]
+  formatFilters: string[]
+  formats: string[]
 }
 
 class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
@@ -41,7 +45,16 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
 
   componentWillMount() {
     const that = this
-    this.setState({ isLoading: true, isError: false, tags: [] })
+    this.setState({
+      formatFilters: [],
+      formats: [],
+      isError: false,
+      isLoading: true,
+      levelFilters: [],
+      levels: [],
+      tagFilters: [],
+      tags: [],
+    })
     fetch('/static/tmp.json')
       .then(response => {
         if (response.status !== 200) {
@@ -51,9 +64,17 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       })
       .then(body =>
         that.setState({
+          formats: (body as Session[])
+            .map(s => s.Format)
+            .unique()
+            .sort(),
           isLoading: false,
-          sessions: body,
-          tags: body
+          levels: (body as Session[])
+            .map(s => s.Level)
+            .unique()
+            .sort(),
+          sessions: body as Session[],
+          tags: (body as Session[])
             .selectMany(s => s.Tags)
             .unique()
             .sort(),
@@ -135,6 +156,30 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                       selected={this.state.tagFilters}
                     />
                   </label>
+                  <label className="filter">
+                    Format:{' '}
+                    <Typeahead
+                      multiple
+                      options={this.state.formats}
+                      clearButton
+                      onChange={selected => {
+                        this.setState({ formatFilters: selected })
+                      }}
+                      selected={this.state.formatFilters}
+                    />
+                  </label>
+                  <label className="filter">
+                    Level:{' '}
+                    <Typeahead
+                      multiple
+                      options={this.state.levels}
+                      clearButton
+                      onChange={selected => {
+                        this.setState({ levelFilters: selected })
+                      }}
+                      selected={this.state.levelFilters}
+                    />
+                  </label>
                 </Panel.Body>
               </Panel>
             </AutoAffix>
@@ -148,6 +193,8 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
             {(this.state.sessions || [])
               .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
+              .filter(s => this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l))
+              .filter(s => this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f))
               .map((s, i) => (
                 <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
                   <Panel.Heading>
