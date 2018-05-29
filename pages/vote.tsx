@@ -24,6 +24,8 @@ interface VoteState {
   levels: string[]
   formatFilters: string[]
   formats: string[]
+  shortlist: string[]
+  show: string
 }
 
 class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
@@ -52,6 +54,8 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       isLoading: true,
       levelFilters: [],
       levels: [],
+      shortlist: [],
+      show: 'all',
       tagFilters: [],
       tags: [],
     })
@@ -93,7 +97,36 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
     this.setState({ expandAll: !this.state.expandAll })
   }
 
+  show(whatToShow: string) {
+    this.setState({ show: whatToShow })
+  }
+
+  isInShortlist(session: Session) {
+    return this.state.shortlist.includes(session.Id)
+  }
+
+  toggleShortlist(session: Session) {
+    this.setState({
+      shortlist: this.isInShortlist(session)
+        ? this.state.shortlist.without(session.Id)
+        : [...this.state.shortlist, session.Id],
+    })
+  }
+
   render() {
+    const visibleSessions = (this.state.sessions || [])
+      .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
+      .filter(s => this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l))
+      .filter(s => this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f))
+      .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
+
+    const SpanIf: React.StatelessComponent<any> = ({ condition, children }) => (
+      <React.Fragment>
+        {condition && <span>{children}</span>}
+        {!condition && children}
+      </React.Fragment>
+    )
+
     return (
       <Page
         pageMetadata={this.props.pageMetadata}
@@ -141,9 +174,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                   <strong>Lodge votes</strong>
                 </Panel.Heading>
                 <Panel.Body>
-                  <button className="btn btn-secondary" onClick={() => this.toggleExpandAll()}>
-                    {this.state.expandAll ? 'Collapse' : 'Expand'} all sessions
-                  </button>
+                  <em>Filter by:</em>
                   <label className="filter">
                     Tags:{' '}
                     <Typeahead
@@ -180,6 +211,21 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                       selected={this.state.levelFilters}
                     />
                   </label>
+                  <br />
+                  <em>View:</em>{' '}
+                  <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
+                    {this.state.expandAll ? 'Collapse' : 'Expand'} all
+                  </button>{' '}
+                  <button className="btn btn-sm" onClick={() => this.show('all')} disabled={this.state.show === 'all'}>
+                    All sessions
+                  </button>{' '}
+                  <button
+                    className="btn btn-sm voting"
+                    onClick={() => this.show('shortlist')}
+                    disabled={this.state.show === 'shortlist'}
+                  >
+                    Show shortlist
+                  </button>
                 </Panel.Body>
               </Panel>
             </AutoAffix>
@@ -190,24 +236,41 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           <hr />
           <h2>Sessions</h2>
 
+          {visibleSessions.length === 0 && (
+            <p>
+              <em>No sessions yet.</em>
+            </p>
+          )}
+
           <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
-            {(this.state.sessions || [])
-              .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
-              .filter(s => this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l))
-              .filter(s => this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f))
-              .map((s, i) => (
-                <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
-                  <Panel.Heading>
-                    <Panel.Title toggle={!this.state.expandAll}>
-                      {this.state.expandAll ? <span>{s.Title}</span> : s.Title}
-                    </Panel.Title>
-                  </Panel.Heading>
-                  <Panel.Body collapsible>
-                    <SessionDetails session={s} showPresenter={!this.props.pageMetadata.conference.AnonymousVoting} />
-                  </Panel.Body>
-                </Panel>
-              ))}
+            {visibleSessions.map((s, i) => (
+              <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
+                <Panel.Heading>
+                  <Panel.Title toggle={!this.state.expandAll}>
+                    <SpanIf condition={this.state.expandAll}>
+                      {s.Title}
+                      <br />
+                      <button
+                        onClick={e => {
+                          this.toggleShortlist(s)
+                          e.stopPropagation()
+                          e.preventDefault()
+                        }}
+                        className="btn voting btn-sm"
+                      >
+                        {!this.isInShortlist(s) ? 'Add to shortlist' : 'Remove from shortlist'}
+                      </button>
+                    </SpanIf>
+                  </Panel.Title>
+                </Panel.Heading>
+                <Panel.Body collapsible>
+                  <SessionDetails session={s} showPresenter={!this.props.pageMetadata.conference.AnonymousVoting} />
+                </Panel.Body>
+              </Panel>
+            ))}
           </PanelGroup>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
         </div>
       </Page>
     )
