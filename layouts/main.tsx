@@ -47,22 +47,27 @@ class Main extends React.Component<MainProps> {
           conference={metadata.conference}
           dates={metadata.dates}
         />
-        <Nav pagePath={metadata.pagePath} menu={Menu(metadata.conference, metadata.dates).Top} />
-        <Header
-          isHome={this.props.isHome}
-          hideBanner={this.props.hideBanner}
-          conference={metadata.conference}
-          dates={metadata.dates}
-        />
-        {this.props.children}
-        <Footer
-          menu={Menu(metadata.conference, metadata.dates).Footer}
-          socials={metadata.conference.Socials}
-          conference={metadata.conference}
-        />
-        {metadata.appConfig.testingMode && (
-          <TestingControl currentDate={metadata.currentDate} conference={metadata.conference} />
-        )}
+        <div>
+          <a className="skip-to-content" href="#content">
+            Skip to content
+          </a>
+          <Nav pagePath={metadata.pagePath} menu={Menu(metadata.conference, metadata.dates).Top} />
+          <Header
+            isHome={this.props.isHome}
+            hideBanner={this.props.hideBanner}
+            conference={metadata.conference}
+            dates={metadata.dates}
+          />
+          <div id="content">{this.props.children}</div>
+          <Footer
+            menu={Menu(metadata.conference, metadata.dates).Footer}
+            socials={metadata.conference.Socials}
+            conference={metadata.conference}
+          />
+          {metadata.appConfig.testingMode && (
+            <TestingControl currentDate={metadata.currentDate} conference={metadata.conference} />
+          )}
+        </div>
       </Fragment>
     )
   }
