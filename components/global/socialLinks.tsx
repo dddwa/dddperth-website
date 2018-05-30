@@ -11,10 +11,11 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     {socials.Twitter.Name && (
       <li>
         <a
-          rel="nofollow"
           className="fa fa-twitter"
+          rel="nofollow"
           href={`https://twitter.com/${socials.Twitter.Name}`}
-          title={'@' + socials.Twitter.Name}
+          title="Twitter"
+          aria-label="Twitter"
           target="_blank"
         />
       </li>
@@ -26,6 +27,7 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
           className="fa fa-facebook"
           href={`https://facebook.com/${socials.Facebook}`}
           title="Facebook"
+          aria-label="Facebook"
           target="_blank"
         />
       </li>
@@ -37,6 +39,7 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
           className="fa fa-github"
           href={`https://github.com/${socials.GitHub}`}
           title="GitHub"
+          aria-label="GitHub"
           target="_blank"
         />
       </li>
@@ -48,28 +51,49 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
           className="fa fa-instagram"
           href={`https://www.instagram.com/${socials.Instagram}`}
           title="Instagram"
+          aria-label="Instagram"
           target="_blank"
         />
       </li>
     )}
     {socials.Flickr && (
       <li>
-        <a rel="nofollow" className="fa fa-flickr" href={socials.Flickr} title="Flickr" target="_blank" />
+        <a
+          rel="nofollow"
+          className="fa fa-flickr"
+          href={socials.Flickr}
+          title="Flickr"
+          aria-label="Flickr"
+          target="_blank"
+        />
       </li>
     )}
     {socials.Youtube && (
       <li>
-        <a rel="nofollow" className="fa fa-youtube" href={socials.Youtube} title="YouTube" target="_blank" />
+        <a
+          rel="nofollow"
+          className="fa fa-youtube"
+          href={socials.Youtube}
+          title="YouTube"
+          aria-label="YouTube"
+          target="_blank"
+        />
       </li>
     )}
     {socials.Blog && (
       <li>
-        <a rel="nofollow" className="fa fa-pencil" href={socials.Blog} title={socials.Blog} target="_blank" />
+        <a rel="nofollow" className="fa fa-pencil" href={socials.Blog} title="Blog" aria-label="Blog" target="_blank" />
       </li>
     )}
     {socials.Email && (
       <li>
-        <a rel="nofollow" className="fa fa-envelope" href={`mailto:${socials.Email}`} title={socials.Email} />
+        <a
+          rel="nofollow"
+          className="fa fa-envelope"
+          href={`mailto:${socials.Email}`}
+          title="Email"
+          aria-label="Email"
+        />
       </li>
     )}
     {socials.MailingList && (
@@ -79,6 +103,7 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
           className="fa fa-envelope-o"
           href={socials.MailingList}
           title="Mailing List"
+          aria-label="Mailing List"
           target="_blank"
         />
       </li>
