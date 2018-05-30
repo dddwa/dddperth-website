@@ -25,6 +25,7 @@ interface VoteState {
   formatFilters: string[]
   formats: string[]
   shortlist: string[]
+  votes: string[]
   show: string
 }
 
@@ -58,6 +59,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       show: 'all',
       tagFilters: [],
       tags: [],
+      votes: [],
     })
     fetch('/static/tmp.json')
       .then(response => {
@@ -113,12 +115,23 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
     })
   }
 
+  isVotedFor(session: Session) {
+    return this.state.votes.includes(session.Id)
+  }
+
+  toggleVote(session: Session) {
+    this.setState({
+      votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
+    })
+  }
+
   render() {
     const visibleSessions = (this.state.sessions || [])
       .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
       .filter(s => this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l))
       .filter(s => this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f))
       .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
+      .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
 
     const SpanIf: React.StatelessComponent<any> = ({ condition, children }) => (
       <React.Fragment>
@@ -126,6 +139,9 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
         {!condition && children}
       </React.Fragment>
     )
+
+    const minVotes = this.props.pageMetadata.conference.MinVotes
+    const maxVotes = this.props.pageMetadata.conference.MaxVotes
 
     return (
       <Page
@@ -157,12 +173,12 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             This year we have a combination of 20 minute and 45 minutes sessions (or sessions that are designated as
             being able to be both). You can optionally filter the sessions by tag, format and level to assist you to
             create a shortlist. You will be required to vote for{' '}
-            {this.props.pageMetadata.conference.MinVotes !== this.props.pageMetadata.conference.MaxVotes ? (
+            {minVotes !== maxVotes ? (
               <span>
-                between {this.props.pageMetadata.conference.MinVotes} and {this.props.pageMetadata.conference.MaxVotes}
+                between {minVotes} and {maxVotes}
               </span>
             ) : (
-              <span>{this.props.pageMetadata.conference.MinVotes}</span>
+              <span>{minVotes}</span>
             )}{' '}
             sessions.
           </p>
@@ -171,7 +187,11 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             <AutoAffix>
               <Panel className="voting-control">
                 <Panel.Heading>
-                  <strong>Lodge votes</strong>
+                  <strong>Lodge votes</strong> - {this.state.votes.length}/{this.props.pageMetadata.conference
+                    .MinVotes !== maxVotes
+                    ? `(${minVotes}-${maxVotes})`
+                    : minVotes}{' '}
+                  votes
                 </Panel.Heading>
                 <Panel.Body>
                   <em>Filter by:</em>
@@ -213,10 +233,11 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                   </label>
                   <br />
                   <em>View:</em>{' '}
-                  <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
-                    {this.state.expandAll ? 'Collapse' : 'Expand'} all
-                  </button>{' '}
-                  <button className="btn btn-sm" onClick={() => this.show('all')} disabled={this.state.show === 'all'}>
+                  <button
+                    className="btn btn-sm agenda"
+                    onClick={() => this.show('all')}
+                    disabled={this.state.show === 'all'}
+                  >
                     All sessions
                   </button>{' '}
                   <button
@@ -224,7 +245,17 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                     onClick={() => this.show('shortlist')}
                     disabled={this.state.show === 'shortlist'}
                   >
-                    Show shortlist
+                    My shortlist
+                  </button>{' '}
+                  <button
+                    className="btn btn-sm btn-primary"
+                    onClick={() => this.show('votes')}
+                    disabled={this.state.show === 'votes'}
+                  >
+                    My votes
+                  </button>{' '}
+                  <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
+                    {this.state.expandAll ? 'Collapse' : 'Expand'} all
                   </button>
                 </Panel.Body>
               </Panel>
@@ -234,7 +265,9 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <hr />
-          <h2>Sessions</h2>
+          <h2>
+            {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}
+          </h2>
 
           {visibleSessions.length === 0 && (
             <p>
@@ -259,6 +292,17 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                         className="btn voting btn-sm"
                       >
                         {!this.isInShortlist(s) ? 'Add to shortlist' : 'Remove from shortlist'}
+                      </button>{' '}
+                      <button
+                        onClick={e => {
+                          this.toggleVote(s)
+                          e.stopPropagation()
+                          e.preventDefault()
+                        }}
+                        className="btn btn-primary btn-sm"
+                        disabled={this.state.votes.length >= maxVotes && !this.isVotedFor(s)}
+                      >
+                        {!this.isVotedFor(s) ? 'Vote' : 'Remove vote'}
                       </button>
                     </SpanIf>
                   </Panel.Title>
