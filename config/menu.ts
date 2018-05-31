@@ -49,17 +49,18 @@ export default function Menu(conference: Conference, dates: Dates) {
     name: 'Agenda',
   })
 
-  if (conference.Socials.Blog) {
-    topMenu.push({
-      href: conference.Socials.Blog,
-      name: 'Blog',
-    })
-  }
-
   topMenu.push({
     href: '/faq',
     name: 'FAQs',
   })
+
+  if (conference.Socials.Blog) {
+    topMenu.push({
+      external: true,
+      href: conference.Socials.Blog,
+      name: 'Blog',
+    })
+  }
 
   return {
     Top: topMenu,
