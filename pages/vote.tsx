@@ -191,7 +191,10 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                     .MinVotes !== maxVotes
                     ? `(${minVotes}-${maxVotes})`
                     : minVotes}{' '}
-                  votes
+                  votes cast{' '}
+                  <button className="btn btn-primary btn-sm" disabled={this.state.votes.length < minVotes}>
+                    Submit votes
+                  </button>
                 </Panel.Heading>
                 <Panel.Body>
                   <em>Filter by:</em>
