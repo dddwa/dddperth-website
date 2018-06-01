@@ -32,7 +32,17 @@ class Nav extends React.Component<NavArgs> {
               <Fragment key={item.href}>
                 <Link href={item.href} passHref>
                   <Bootstrap.NavItem active={isFirstBranchMatched(this.props.pagePath, item.href)}>
-                    {item.name}
+                    {!item.external && item.name}
+                    {item.external && (
+                      <span>
+                        <span aria-hidden="true">
+                          {item.name}
+                          &nbsp;
+                          <i className="fa fa-external-link" />
+                        </span>
+                        <span className="sr-only">Blog, will open in a new window</span>
+                      </span>
+                    )}
                   </Bootstrap.NavItem>
                 </Link>
               </Fragment>

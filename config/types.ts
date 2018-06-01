@@ -142,6 +142,7 @@ export interface Sponsor {
 export interface MenuItem {
   href: string
   name: string
+  external?: boolean
 }
 
 export interface FAQ {
