@@ -3,8 +3,8 @@ import Router from 'next/router'
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead'
-import { AutoAffix } from 'react-overlays'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
+import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
@@ -24,6 +24,7 @@ interface VoteState {
   levels: string[]
   formatFilters: string[]
   formats: string[]
+  seen: string[]
   shortlist: string[]
   votes: string[]
   show: string
@@ -55,6 +56,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       isLoading: true,
       levelFilters: [],
       levels: [],
+      seen: [],
       shortlist: [],
       show: 'all',
       tagFilters: [],
@@ -112,6 +114,16 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       shortlist: this.isInShortlist(session)
         ? this.state.shortlist.without(session.Id)
         : [...this.state.shortlist, session.Id],
+    })
+  }
+
+  isSeen(session: Session) {
+    return this.state.seen.includes(session.Id)
+  }
+
+  toggleSeen(session: Session) {
+    this.setState({
+      seen: this.isSeen(session) ? this.state.seen.without(session.Id) : [...this.state.seen, session.Id],
     })
   }
 
@@ -184,7 +196,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           </p>
 
           {this.state.sessions && (
-            <AutoAffix>
+            <NonJumpingAffix>
               <Panel className="voting-control">
                 <Panel.Heading>
                   <strong>Lodge votes</strong> - {this.state.votes.length}/{this.props.pageMetadata.conference
@@ -236,40 +248,39 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                   </label>
                   <br />
                   <em>View:</em>{' '}
-                  <button
-                    className="btn btn-sm agenda"
-                    onClick={() => this.show('all')}
-                    disabled={this.state.show === 'all'}
-                  >
-                    All sessions
-                  </button>{' '}
-                  <button
-                    className="btn btn-sm voting"
-                    onClick={() => this.show('shortlist')}
-                    disabled={this.state.show === 'shortlist'}
-                  >
-                    My shortlist
-                  </button>{' '}
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={() => this.show('votes')}
-                    disabled={this.state.show === 'votes'}
-                  >
-                    My votes
-                  </button>{' '}
-                  <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
-                    {this.state.expandAll ? 'Collapse' : 'Expand'} all
-                  </button>
+                  <div className="btn-group" role="group">
+                    <button
+                      className="btn btn-sm agenda"
+                      onClick={() => this.show('all')}
+                      disabled={this.state.show === 'all'}
+                    >
+                      All sessions
+                    </button>{' '}
+                    <button
+                      className="btn btn-sm agenda"
+                      onClick={() => this.show('shortlist')}
+                      disabled={this.state.show === 'shortlist'}
+                    >
+                      My shortlist
+                    </button>{' '}
+                    <button
+                      className="btn btn-sm agenda"
+                      onClick={() => this.show('votes')}
+                      disabled={this.state.show === 'votes'}
+                    >
+                      My votes
+                    </button>
+                  </div>
                 </Panel.Body>
               </Panel>
-            </AutoAffix>
+            </NonJumpingAffix>
           )}
 
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <hr />
           <h2>
-            {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}
+            {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
+            <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
+              {this.state.expandAll ? 'Collapse' : 'Expand'} all
+            </button>
           </h2>
 
           {visibleSessions.length === 0 && (
@@ -280,7 +291,14 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
 
           <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
             {visibleSessions.map((s, i) => (
-              <Panel eventKey={i} key={i} expanded={this.state.expandAll}>
+              <Panel
+                eventKey={i}
+                key={i}
+                expanded={this.state.expandAll || null}
+                className={
+                  this.isVotedFor(s) ? 'voted' : this.isInShortlist(s) ? 'shortlisted' : this.isSeen(s) ? 'seen' : null
+                }
+              >
                 <Panel.Heading>
                   <Panel.Title toggle={!this.state.expandAll}>
                     <SpanIf condition={this.state.expandAll}>
@@ -288,13 +306,23 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                       <br />
                       <button
                         onClick={e => {
+                          this.toggleSeen(s)
+                          e.stopPropagation()
+                          e.preventDefault()
+                        }}
+                        className="btn seen btn-sm"
+                      >
+                        {!this.isSeen(s) ? 'Seen' : 'Un-seen'}
+                      </button>{' '}
+                      <button
+                        onClick={e => {
                           this.toggleShortlist(s)
                           e.stopPropagation()
                           e.preventDefault()
                         }}
-                        className="btn voting btn-sm"
+                        className="btn btn-secondary btn-sm"
                       >
-                        {!this.isInShortlist(s) ? 'Add to shortlist' : 'Remove from shortlist'}
+                        {!this.isInShortlist(s) ? 'Shortlist' : 'Un-shortlist'}
                       </button>{' '}
                       <button
                         onClick={e => {
@@ -305,7 +333,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
                         className="btn btn-primary btn-sm"
                         disabled={this.state.votes.length >= maxVotes && !this.isVotedFor(s)}
                       >
-                        {!this.isVotedFor(s) ? 'Vote' : 'Remove vote'}
+                        {!this.isVotedFor(s) ? 'Vote' : 'Un-vote'}
                       </button>
                     </SpanIf>
                   </Panel.Title>
@@ -316,8 +344,6 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
               </Panel>
             ))}
           </PanelGroup>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
         </div>
       </Page>
     )

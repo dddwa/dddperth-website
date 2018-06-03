@@ -1151,6 +1151,59 @@ section.full-width {
     text-decoration: none;
   }
 }
+.seen {
+  .panel-heading {
+    a,
+    span {
+      background: #fff;
+      border: 1px solid #eee;
+    }
+  }
+}
+.shortlisted {
+  .panel-heading {
+    a,
+    span {
+      background: #ddd;
+    }
+  }
+}
+.voted {
+  .panel-heading {
+    a,
+    span {
+      background: rgb(202, 240, 202);
+    }
+  }
+}
+.btn.seen {
+  background-color: rgb(207, 152, 0);
+}
+.btn.seen:hover {
+  background-color: darken(rgb(207, 152, 0), 10%);
+}
+@media (max-width: 650px) {
+  .filter,
+  .filter .rbt-token,
+  .filter .dropdown-item,
+  .filter input {
+    font-size: 0.8em;
+  }
+
+  .filter .rbt,
+  .filter .rbt-input .rbt-input-wrapper {
+    min-width: 50px;
+  }
+
+  .filter .form-control {
+    padding: 0;
+  }
+
+  .voting-control .panel-body em {
+    display: block;
+    font-size: 0.8em;
+  }
+}
 
 .equal-heights {
   display: -ms-flex;
