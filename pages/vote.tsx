@@ -145,9 +145,9 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
       .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
 
-    const SpanIf: React.StatelessComponent<any> = ({ condition, children }) => (
+    const SpanIf: React.StatelessComponent<any> = ({ condition, className, children }) => (
       <React.Fragment>
-        {condition && <span>{children}</span>}
+        {condition && <span className={className}>{children}</span>}
         {!condition && children}
       </React.Fragment>
     )
@@ -289,19 +289,19 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             </p>
           )}
 
-          <PanelGroup accordion={!this.state.expandAll} className="accordion" id="vote-accordion">
+          <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
             {visibleSessions.map((s, i) => (
-              <Panel
-                eventKey={i}
-                key={i}
-                expanded={this.state.expandAll || null}
-                className={
-                  this.isVotedFor(s) ? 'voted' : this.isInShortlist(s) ? 'shortlisted' : this.isSeen(s) ? 'seen' : null
-                }
-              >
+              <Panel eventKey={i} key={i} expanded={this.state.expandAll || null}>
                 <Panel.Heading>
                   <Panel.Title toggle={!this.state.expandAll}>
-                    <SpanIf condition={this.state.expandAll}>
+                    <SpanIf condition={this.state.expandAll} className="title">
+                      {this.isSeen(s) && <span className="fa fa-eye" aria-label="Seen" role="status" title="Seen" />}
+                      {this.isInShortlist(s) && (
+                        <span className="fa fa-list-ol" aria-label="Shortlisted" role="status" title="Shortlisted" />
+                      )}
+                      {this.isVotedFor(s) && (
+                        <span className="fa fa-check" aria-label="Voted" role="status" title="Voted" />
+                      )}
                       {s.Title}
                       <br />
                       <button

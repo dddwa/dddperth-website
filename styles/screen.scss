@@ -795,7 +795,7 @@ section.full-width {
     @include border-radius(0);
   }
   .panel-heading a,
-  .panel-heading span {
+  .panel-heading span.title {
     display: block;
     position: relative;
     padding: 13px 52px 13px 15px;
@@ -1151,28 +1151,13 @@ section.full-width {
     text-decoration: none;
   }
 }
-.seen {
+#voting-interface {
   .panel-heading {
-    a,
-    span {
-      background: #fff;
-      border: 1px solid #eee;
-    }
-  }
-}
-.shortlisted {
-  .panel-heading {
-    a,
-    span {
-      background: #ddd;
-    }
-  }
-}
-.voted {
-  .panel-heading {
-    a,
-    span {
-      background: rgb(202, 240, 202);
+    .fa {
+      float: right;
+      margin-left: 10px;
+      color: $call-content;
+      font-size: 30px;
     }
   }
 }
