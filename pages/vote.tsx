@@ -38,7 +38,7 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
       isError: false,
       isLoading: true,
     })
-    fetch('/static/tmp.json')
+    fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
       .then(response => {
         if (response.status !== 200) {
           throw response.statusText

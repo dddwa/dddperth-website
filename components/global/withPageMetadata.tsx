@@ -9,6 +9,7 @@ import { withCurrentDate, WithCurrentDateProps } from '../withCurrentDate'
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple
 
 export interface AppConfig {
+  getSubmissionsUrl: string
   instrumentationKey: string
   testingMode: boolean
 }
@@ -55,6 +56,7 @@ const withPageMetadata = <TOriginalProps extends {}>(
 
       const appConfig = context.req
         ? {
+            getSubmissionsUrl: process.env.GET_SUBMISSIONS_URL,
             instrumentationKey: process.env.APPINSIGHTS_INSTRUMENTATIONKEY,
             testingMode: process.env.TESTING_MODE === 'true',
           }
