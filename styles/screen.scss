@@ -1135,6 +1135,10 @@ section.full-width {
 }
 .voting-control {
   z-index: 200;
+  h3 {
+    display: inline;
+    padding-right: 20px;
+  }
 }
 .filter {
   margin-left: 10px;
@@ -1168,25 +1172,29 @@ section.full-width {
   background-color: darken(rgb(207, 152, 0), 10%);
 }
 @media (max-width: 650px) {
-  .filter,
-  .filter .rbt-token,
-  .filter .dropdown-item,
-  .filter input {
-    font-size: 0.8em;
-  }
+  .voting-control {
+    .filter,
+    .filter .rbt-token,
+    .filter .dropdown-item,
+    .filter input,
+    .form-control,
+    label {
+      font-size: 0.8em;
+    }
 
-  .filter .rbt,
-  .filter .rbt-input .rbt-input-wrapper {
-    min-width: 50px;
-  }
+    .filter .rbt,
+    .filter .rbt-input .rbt-input-wrapper {
+      min-width: 50px;
+    }
 
-  .filter .form-control {
-    padding: 0;
-  }
+    .filter .form-control {
+      padding: 0;
+    }
 
-  .voting-control .panel-body em {
-    display: block;
-    font-size: 0.8em;
+    .panel-body em {
+      display: block;
+      font-size: 0.8em;
+    }
   }
 }
 

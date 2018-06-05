@@ -109,16 +109,28 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
     return (
       <React.Fragment>
-        ;{' '}
         <NonJumpingAffix>
-          <Panel className="voting-control">
+          <Panel className="voting-control form-inline">
             <Panel.Heading>
-              <strong>Lodge votes</strong> - {this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
-                ? `(${this.props.minVotes}-${this.props.maxVotes})`
-                : this.props.minVotes}{' '}
-              votes cast{' '}
+              <h3>Lodge votes</h3>
+              <label>
+                Ticket order # <em>(Optional)</em>{' '}
+                <span
+                  className="fa fa-question-circle"
+                  style={{ cursor: 'pointer' }}
+                  title="Your vote will have double weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
+                  onClick={() =>
+                    alert(
+                      'Your vote will have double weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
+                    )
+                  }
+                />: <input type="text" className="form-control input-sm" id="voteOrderNumber" />
+              </label>{' '}
               <button className="btn btn-primary btn-sm" disabled={this.state.votes.length < this.props.minVotes}>
-                Submit votes
+                Submit {this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
+                  ? `(${this.props.minVotes}-${this.props.maxVotes})`
+                  : this.props.minVotes}{' '}
+                votes
               </button>
             </Panel.Heading>
             <Panel.Body>
@@ -189,6 +201,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         </NonJumpingAffix>
         <h2>
           {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
+          <small>{`(showing ${visibleSessions.length}/${this.props.sessions.length} sessions)`}</small>{' '}
           <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
             {this.state.expandAll ? 'Collapse' : 'Expand'} all
           </button>
