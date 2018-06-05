@@ -192,7 +192,7 @@ nav.main {
   border: 0;
   @include border-radius(0);
 
-  .container > .navbar-collapse {
+  .navbar-collapse {
     margin-left: 0;
     margin-right: 0;
     border: 0;
@@ -1584,7 +1584,7 @@ tr td.highlight-session {
         display: inline-block;
         a {
           line-height: 52px;
-          font-size: 14px;
+          font-size: 13px;
           border: 0;
           padding: 0 15px;
         }
