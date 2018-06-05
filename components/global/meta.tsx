@@ -64,6 +64,7 @@ const Meta: StatelessComponent<MetaArgs> = ({
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossOrigin="anonymous"
       />
+      <link rel="stylesheet" href="https://unpkg.com/react-bootstrap-typeahead/css/Typeahead.css" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />

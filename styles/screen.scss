@@ -40,6 +40,10 @@ hr {
   color: #fff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 11px;
+}
 .btn:after,
 .maillink:after {
   content: '\f0da';
@@ -69,7 +73,8 @@ hr {
   content: '\f1c1';
   color: #fff;
 }
-.btn:hover {
+.btn:hover,
+.badge-primary {
   background: darken($primary-color, 5%);
   color: #fff;
 }
@@ -98,14 +103,16 @@ a.btn {
   background-color: $call-content;
 }
 .btn.content:hover,
-.btn.remove-vote:hover {
+.btn.remove-vote:hover,
+.badge-secondary {
   background-color: darken($call-content, 5%);
 }
 
 .btn.voting {
   background-color: $voting;
 }
-.btn.voting:hover {
+.btn.voting:hover,
+.badge-info {
   background-color: darken($voting, 5%);
 }
 
@@ -787,7 +794,8 @@ section.full-width {
     border: 0 !important;
     @include border-radius(0);
   }
-  .panel-heading a {
+  .panel-heading a,
+  .panel-heading span.title {
     display: block;
     position: relative;
     padding: 13px 52px 13px 15px;
@@ -1116,102 +1124,77 @@ section.full-width {
 }
 
 // Sessions and Voting
-.submitted-session {
-  background: #f0f0f0;
-  border-right: 7px solid #ff9600;
-  padding: 10px 15px 2px;
-  margin-bottom: 10px;
-
+.profile-photo {
+  width: 50px;
+  margin-right: 15px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+.voting-control {
+  z-index: 200;
   h3 {
-    margin: 0;
     display: inline;
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    padding-right: 20px;
   }
-
-  .session-title {
-    margin-bottom: 10px;
-
-    h3:after {
-      content: '\f0d7';
-      font-family: 'FontAwesome';
-      color: #000;
-      @include opacity(0.3);
-      display: inline-block;
-      margin: 0 0 0 10px;
-      font-size: 24px;
-      max-width: 26px;
-      vertical-align: middle;
-      position: relative;
-      top: -2px;
-    }
-
-    .vote-for-session {
-      float: right;
-      padding: 3px 20px;
-      margin-left: 5px;
-    }
+}
+.filter {
+  margin-left: 10px;
+  .rbt,
+  .rbt-input .rbt-input-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 150px;
   }
-
-  .session-content {
+  li:before {
     display: none;
-
-    p {
-      margin: 18px 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+#voting-interface {
+  .panel-heading {
+    .fa {
+      float: right;
+      margin-left: 10px;
+      color: $call-content;
+      font-size: 30px;
     }
   }
-
-  &.open {
-    .session-title {
-      h3:after {
-        content: '\f0d8';
-      }
+}
+.btn.seen {
+  background-color: rgb(207, 152, 0);
+}
+.btn.seen:hover {
+  background-color: darken(rgb(207, 152, 0), 10%);
+}
+@media (max-width: 650px) {
+  .voting-control {
+    .filter,
+    .filter .rbt-token,
+    .filter .dropdown-item,
+    .filter input,
+    .form-control,
+    label {
+      font-size: 0.8em;
     }
 
-    .session-content {
+    .filter .rbt,
+    .filter .rbt-input .rbt-input-wrapper {
+      min-width: 50px;
+    }
+
+    .filter .form-control {
+      padding: 0;
+    }
+
+    .panel-body em {
       display: block;
+      font-size: 0.8em;
     }
-  }
-}
-
-#submit-votes {
-  margin: 0 0 10px 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-
-  h3 {
-    margin: 10px 0 0 0;
-    text-align: center;
-  }
-
-  li.form-group {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  li.submit input {
-    margin-top: 0px;
-  }
-
-  form {
-    padding: 10px;
-  }
-}
-
-#submit-votes.affix {
-  top: 0;
-  position: fixed;
-
-  + .submitted-session {
-    margin-top: 220px;
   }
 }
 
@@ -1221,6 +1204,10 @@ section.full-width {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.panel-body p:first-child {
+  margin-top: 10px;
 }
 
 #map {
@@ -1471,6 +1458,10 @@ tr td.highlight-session {
     padding: 6px 15px 5px 15px;
     font-size: 14px;
   }
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
   .btn:after {
     margin: 0 0 0 15px;
     font-size: 18px;
@@ -1557,6 +1548,10 @@ tr td.highlight-session {
   .btn {
     padding: 7px 16px 6px 16px;
     font-size: 15px;
+  }
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 13px;
   }
   .btn:after {
     margin: 0 0 0 17px;
@@ -1802,6 +1797,10 @@ tr td.highlight-session {
     padding: 8px 20px 7px 20px;
     font-size: 16px;
   }
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
   .btn:after {
     margin: 0 0 0 20px;
     font-size: 19px;
@@ -2014,6 +2013,10 @@ tr td.highlight-session {
     padding: 9px 23px 8px 23px;
     font-size: 17px;
   }
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 15px;
+  }
   .btn:after {
     margin: 0 0 0 20px;
     font-size: 20px;
@@ -2208,6 +2211,10 @@ tr td.highlight-session {
   .btn {
     padding: 11px 25px 10px 25px;
     font-size: 18px;
+  }
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 16px;
   }
   .btn:after {
     margin: 0 0 0 20px;

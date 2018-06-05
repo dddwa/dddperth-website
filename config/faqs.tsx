@@ -280,11 +280,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </a>
           </li>
           <li>
-            <a href="https://localhost.events/" target="_blank">
-              Localhost
-            </a>
-          </li>
-          <li>
             <a href="http://mixinconf.com/" target="_blank">
               Mixin conference
             </a>
