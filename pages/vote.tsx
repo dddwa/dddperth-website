@@ -60,11 +60,6 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
           if (orderings == null) {
             const ids = JSON.stringify(sessions.map(({ Id }) => Id)) // Randomizing will be done in backend API
 
-            if (console) {
-              // tslint:disable-next-line:no-console
-              console.log('New Session Order:', ids)
-            }
-
             localStorage.setItem('ddd-voting-session-order', ids)
 
             this.setState({
@@ -72,11 +67,6 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
               sessions,
             })
           } else {
-            if (console) {
-              // tslint:disable-next-line:no-console
-              console.log('Existing Session Order:', orderings)
-            }
-
             // if previous ordering data has been persisted then apply this and override API response ordering
             const indicies = new Map<string, number>(JSON.parse(orderings).map((id, index) => [id, index]))
             const preordered = sessions
