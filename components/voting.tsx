@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
-import { Typeahead } from 'react-bootstrap-typeahead'
+import Select, { Option } from 'react-select'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
@@ -14,7 +14,7 @@ interface VotingState {
   levels: string[]
   formatFilters: string[]
   formats: string[]
-  seen: string[]
+  flagged: string[]
   shortlist: string[]
   votes: string[]
   show: string
@@ -30,6 +30,7 @@ interface VotingProps {
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
+      flagged: this.readFromStorage('ddd-voting-session-flagged'),
       formatFilters: [],
       formats: (this.props.sessions as Session[])
         .map(s => s.Format)
@@ -40,7 +41,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .map(s => s.Level)
         .unique()
         .sort(),
-      seen: this.readFromStorage('ddd-voting-session-seen'),
       shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
       show: 'all',
       tagFilters: [],
@@ -75,16 +75,16 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     )
   }
 
-  isSeen(session: Session) {
-    return this.state.seen.includes(session.Id)
+  isFlagged(session: Session) {
+    return this.state.flagged.includes(session.Id)
   }
 
-  toggleSeen(session: Session) {
+  toggleFlagged(session: Session) {
     this.setState(
       {
-        seen: this.isSeen(session) ? this.state.seen.without(session.Id) : [...this.state.seen, session.Id],
+        flagged: this.isFlagged(session) ? this.state.flagged.without(session.Id) : [...this.state.flagged, session.Id],
       },
-      () => this.writeToStorage('ddd-voting-session-seen', this.state.seen),
+      () => this.writeToStorage('ddd-voting-session-flagged', this.state.flagged),
     )
   }
 
@@ -119,9 +119,21 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
   render() {
     const visibleSessions = (this.props.sessions || [])
-      .filter(s => this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t)))
-      .filter(s => this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l))
-      .filter(s => this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f))
+      .filter(
+        s =>
+          this.state.show !== 'all' ||
+          (this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t))),
+      )
+      .filter(
+        s =>
+          this.state.show !== 'all' ||
+          (this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l)),
+      )
+      .filter(
+        s =>
+          this.state.show !== 'all' ||
+          (this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f)),
+      )
       .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
       .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
 
@@ -137,21 +149,28 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         <NonJumpingAffix>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
-              <h3>Lodge votes</h3>
+              <h3>Vote</h3>
               <label>
-                Ticket order # <em>(Optional)</em>{' '}
-                <span
-                  className="fa fa-question-circle"
-                  style={{ cursor: 'pointer' }}
-                  title="Your vote will have double weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
-                  onClick={() =>
-                    alert(
-                      'Your vote will have double weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
-                    )
-                  }
-                />: <input type="text" className="form-control input-sm" id="voteOrderNumber" />
+                Ticket order #{' '}
+                <em>
+                  (Optional,{' '}
+                  <span
+                    className="fa fa-question-circle"
+                    style={{ cursor: 'pointer', fontSize: '20px' }}
+                    title="Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
+                    onClick={() =>
+                      alert(
+                        'Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
+                      )
+                    }
+                  />)
+                </em>: <input type="number" className="form-control input-sm" id="voteOrderNumber" />
               </label>{' '}
-              <button className="btn btn-primary btn-sm" disabled={this.state.votes.length < this.props.minVotes}>
+              <button
+                className="btn btn-primary btn-sm"
+                disabled={this.state.votes.length < this.props.minVotes}
+                onClick={() => alert('todo...')}
+              >
                 Submit {this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
                   ? `(${this.props.minVotes}-${this.props.maxVotes})`
                   : this.props.minVotes}{' '}
@@ -159,44 +178,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               </button>
             </Panel.Heading>
             <Panel.Body>
-              <em>Filter by:</em>
-              <label className="filter">
-                Tags:{' '}
-                <Typeahead
-                  multiple
-                  options={this.state.tags}
-                  clearButton
-                  onChange={selected => {
-                    this.setState({ tagFilters: selected })
-                  }}
-                  selected={this.state.tagFilters}
-                />
-              </label>
-              <label className="filter">
-                Format:{' '}
-                <Typeahead
-                  multiple
-                  options={this.state.formats}
-                  clearButton
-                  onChange={selected => {
-                    this.setState({ formatFilters: selected })
-                  }}
-                  selected={this.state.formatFilters}
-                />
-              </label>
-              <label className="filter">
-                Level:{' '}
-                <Typeahead
-                  multiple
-                  options={this.state.levels}
-                  clearButton
-                  onChange={selected => {
-                    this.setState({ levelFilters: selected })
-                  }}
-                  selected={this.state.levelFilters}
-                />
-              </label>
-              <br />
               <em>View:</em>{' '}
               <div className="btn-group" role="group">
                 <button
@@ -204,29 +185,74 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   onClick={() => this.show('all')}
                   disabled={this.state.show === 'all'}
                 >
-                  All sessions
+                  All sessions ({this.props.sessions.length})
                 </button>{' '}
                 <button
                   className="btn btn-sm agenda"
                   onClick={() => this.show('shortlist')}
                   disabled={this.state.show === 'shortlist'}
                 >
-                  My shortlist
+                  My shortlist ({this.state.shortlist.length})
                 </button>{' '}
                 <button
                   className="btn btn-sm agenda"
                   onClick={() => this.show('votes')}
                   disabled={this.state.show === 'votes'}
                 >
-                  My votes
+                  My votes ({this.state.votes.length})
                 </button>
               </div>
+              {this.state.show === 'all' && (
+                <React.Fragment>
+                  <br />
+                  <br />
+                  <em>Filter by:</em>
+                  <label className="filter">
+                    Tags:{' '}
+                    <Select
+                      options={this.state.tags.map(t => ({ value: t, label: t }))}
+                      clearable={true}
+                      multi={true}
+                      onChange={selected => {
+                        this.setState({ tagFilters: (selected as Array<Option<string>>).map(t => t.value) })
+                      }}
+                      value={this.state.tagFilters}
+                    />
+                  </label>
+                  <label className="filter">
+                    Format:{' '}
+                    <Select
+                      options={this.state.formats.map(f => ({ value: f, label: f }))}
+                      clearable={true}
+                      multi={true}
+                      onChange={selected => {
+                        this.setState({ formatFilters: (selected as Array<Option<string>>).map(f => f.value) })
+                      }}
+                      value={this.state.formatFilters}
+                    />
+                  </label>
+                  <label className="filter">
+                    Level:{' '}
+                    <Select
+                      options={this.state.levels.map(l => ({ value: l, label: l }))}
+                      clearable={true}
+                      multi={true}
+                      onChange={selected => {
+                        this.setState({ levelFilters: (selected as Array<Option<string>>).map(l => l.value) })
+                      }}
+                      value={this.state.levelFilters}
+                    />
+                  </label>
+                </React.Fragment>
+              )}
             </Panel.Body>
           </Panel>
         </NonJumpingAffix>
         <h2>
           {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
-          <small>{`(showing ${visibleSessions.length}/${this.props.sessions.length} sessions)`}</small>{' '}
+          <small>{`(showing ${visibleSessions.length}${
+            this.state.show === 'all' ? '/' + this.props.sessions.length : ''
+          } session(s))`}</small>{' '}
           <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
             {this.state.expandAll ? 'Collapse' : 'Expand'} all
           </button>
@@ -242,24 +268,33 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               <Panel.Heading>
                 <Panel.Title toggle={!this.state.expandAll}>
                   <SpanIf condition={this.state.expandAll} className="title">
-                    {this.isSeen(s) && <span className="fa fa-eye" aria-label="Seen" role="status" title="Seen" />}
-                    {this.isInShortlist(s) && (
-                      <span className="fa fa-list-ol" aria-label="Shortlisted" role="status" title="Shortlisted" />
-                    )}
                     {this.isVotedFor(s) && (
                       <span className="fa fa-check" aria-label="Voted" role="status" title="Voted" />
                     )}
+                    {this.isInShortlist(s) && (
+                      <span className="fa fa-list-ol" aria-label="Shortlisted" role="status" title="Shortlisted" />
+                    )}
+                    {this.isFlagged(s) && (
+                      <span className="fa fa-flag" aria-label="Flag" role="status" title="Flagged" />
+                    )}
                     {s.Title}
+                    <br />
+                    {(s.Tags || []).map(tag => (
+                      <React.Fragment key={tag}>
+                        <span className="badge">{tag}</span>{' '}
+                      </React.Fragment>
+                    ))}
+                    <br />
                     <br />
                     <button
                       onClick={e => {
-                        this.toggleSeen(s)
+                        this.toggleFlagged(s)
                         e.stopPropagation()
                         e.preventDefault()
                       }}
-                      className="btn seen btn-sm"
+                      className="btn flagged btn-sm"
                     >
-                      {!this.isSeen(s) ? 'Seen' : 'Un-seen'}
+                      {!this.isFlagged(s) ? 'Flag' : 'Un-flag'}
                     </button>{' '}
                     <button
                       onClick={e => {
