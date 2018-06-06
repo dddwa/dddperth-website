@@ -45,12 +45,55 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
         }
         return response.json()
       })
-      .then(body =>
-        this.setState({
-          isLoading: false,
-          sessions: body as Session[],
-        }),
-      )
+      .then(body => {
+        // if the client does not support local storage then just set session state
+        if (!localStorage) {
+          this.setState({
+            isLoading: false,
+            sessions: body as Session[],
+          })
+        } else {
+          const sessions = body as Session[]
+          const orderings = localStorage.getItem('ddd-voting-session-order')
+
+          // if previous ordering data has not been persisted in local storage
+          if (orderings == null) {
+            const ids = JSON.stringify(sessions.map(({ Id }) => Id)) // Randomizing will be done in backend API
+
+            if (console) {
+              // tslint:disable-next-line:no-console
+              console.log('New Session Order:', ids)
+            }
+
+            localStorage.setItem('ddd-voting-session-order', ids)
+
+            this.setState({
+              isLoading: false,
+              sessions,
+            })
+          } else {
+            if (console) {
+              // tslint:disable-next-line:no-console
+              console.log('Existing Session Order:', orderings)
+            }
+
+            // if previous ordering data has been persisted then apply this and override API response ordering
+            const indicies = new Map<string, number>(JSON.parse(orderings).map((id, index) => [id, index]))
+            const preordered = sessions
+              .map(session => ({
+                Index: indicies.get(session.Id) || 0,
+                Session: session,
+              }))
+              .sort(({ Index: first }, { Index: second }) => first - second)
+              .map(({ Session: session }) => session) as Session[]
+
+            this.setState({
+              isLoading: false,
+              sessions: preordered,
+            })
+          }
+        }
+      })
       .catch(error => {
         that.setState({ isError: true, isLoading: false })
         if (console) {
