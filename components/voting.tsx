@@ -40,15 +40,15 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .map(s => s.Level)
         .unique()
         .sort(),
-      seen: [],
-      shortlist: [],
+      seen: this.readFromStorage('ddd-voting-session-seen'),
+      shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
       show: 'all',
       tagFilters: [],
       tags: (this.props.sessions as Session[])
         .selectMany(s => s.Tags)
         .unique()
         .sort(),
-      votes: [],
+      votes: this.readFromStorage('ddd-voting-session-votes'),
     })
   }
 
@@ -65,11 +65,14 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleShortlist(session: Session) {
-    this.setState({
-      shortlist: this.isInShortlist(session)
-        ? this.state.shortlist.without(session.Id)
-        : [...this.state.shortlist, session.Id],
-    })
+    this.setState(
+      {
+        shortlist: this.isInShortlist(session)
+          ? this.state.shortlist.without(session.Id)
+          : [...this.state.shortlist, session.Id],
+      },
+      () => this.writeToStorage('ddd-voting-session-shortlist', this.state.shortlist),
+    )
   }
 
   isSeen(session: Session) {
@@ -77,9 +80,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleSeen(session: Session) {
-    this.setState({
-      seen: this.isSeen(session) ? this.state.seen.without(session.Id) : [...this.state.seen, session.Id],
-    })
+    this.setState(
+      {
+        seen: this.isSeen(session) ? this.state.seen.without(session.Id) : [...this.state.seen, session.Id],
+      },
+      () => this.writeToStorage('ddd-voting-session-seen', this.state.seen),
+    )
   }
 
   isVotedFor(session: Session) {
@@ -87,9 +93,28 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleVote(session: Session) {
-    this.setState({
-      votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
-    })
+    this.setState(
+      {
+        votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
+      },
+      () => this.writeToStorage('ddd-voting-session-votes', this.state.votes),
+    )
+  }
+
+  writeToStorage(key: string, sessions: string[]) {
+    if (localStorage) {
+      localStorage.setItem(key, JSON.stringify(sessions))
+    }
+  }
+
+  readFromStorage(key: string) {
+    if (localStorage) {
+      const data = localStorage.getItem(key)
+      if (data != null) {
+        return JSON.parse(data)
+      }
+    }
+    return []
   }
 
   render() {
