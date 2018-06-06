@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
-import { Typeahead } from 'react-bootstrap-typeahead'
+import Select, { Option } from 'react-select'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
@@ -30,6 +30,7 @@ interface VotingProps {
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
+      flagged: this.readFromStorage('ddd-voting-session-flagged'),
       formatFilters: [],
       formats: (this.props.sessions as Session[])
         .map(s => s.Format)
@@ -40,7 +41,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .map(s => s.Level)
         .unique()
         .sort(),
-      flagged: this.readFromStorage('ddd-voting-session-flagged'),
       shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
       show: 'all',
       tagFilters: [],
@@ -209,40 +209,38 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   <em>Filter by:</em>
                   <label className="filter">
                     Tags:{' '}
-                    <select
-                      onChange={e => {
-                        this.setState({ tagFilters: e.target.value ? [e.target.value] : [] })
+                    <Select
+                      options={this.state.tags.map(t => ({ value: t, label: t }))}
+                      clearable={true}
+                      multi={true}
+                      onChange={selected => {
+                        this.setState({ tagFilters: (selected as Array<Option<string>>).map(t => t.value) })
                       }}
-                      value={this.state.tagFilters[0]}
-                    >
-                      <option value="" style={{ fontStyle: 'italic' }}>
-                        --- All sessions
-                      </option>
-                      {this.state.tags.map(t => <option key={t}>{t}</option>)}
-                    </select>
+                      value={this.state.tagFilters}
+                    />
                   </label>
                   <label className="filter">
                     Format:{' '}
-                    <Typeahead
-                      multiple
-                      options={this.state.formats}
-                      clearButton
+                    <Select
+                      options={this.state.formats.map(f => ({ value: f, label: f }))}
+                      clearable={true}
+                      multi={true}
                       onChange={selected => {
-                        this.setState({ formatFilters: selected })
+                        this.setState({ formatFilters: (selected as Array<Option<string>>).map(f => f.value) })
                       }}
-                      selected={this.state.formatFilters}
+                      value={this.state.formatFilters}
                     />
                   </label>
                   <label className="filter">
                     Level:{' '}
-                    <Typeahead
-                      multiple
-                      options={this.state.levels}
-                      clearButton
+                    <Select
+                      options={this.state.levels.map(l => ({ value: l, label: l }))}
+                      clearable={true}
+                      multi={true}
                       onChange={selected => {
-                        this.setState({ levelFilters: selected })
+                        this.setState({ levelFilters: (selected as Array<Option<string>>).map(l => l.value) })
                       }}
-                      selected={this.state.levelFilters}
+                      value={this.state.levelFilters}
                     />
                   </label>
                 </React.Fragment>
@@ -270,14 +268,14 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               <Panel.Heading>
                 <Panel.Title toggle={!this.state.expandAll}>
                   <SpanIf condition={this.state.expandAll} className="title">
-                    {this.isFlagged(s) && (
-                      <span className="fa fa-flag" aria-label="Flag" role="status" title="Flagged" />
+                    {this.isVotedFor(s) && (
+                      <span className="fa fa-check" aria-label="Voted" role="status" title="Voted" />
                     )}
                     {this.isInShortlist(s) && (
                       <span className="fa fa-list-ol" aria-label="Shortlisted" role="status" title="Shortlisted" />
                     )}
-                    {this.isVotedFor(s) && (
-                      <span className="fa fa-check" aria-label="Voted" role="status" title="Voted" />
+                    {this.isFlagged(s) && (
+                      <span className="fa fa-flag" aria-label="Flag" role="status" title="Flagged" />
                     )}
                     {s.Title}
                     <br />

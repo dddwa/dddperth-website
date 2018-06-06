@@ -3,6 +3,7 @@
 @import 'typography.scss';
 @import 'slick.scss';
 @import 'forms.scss';
+@import '../node_modules/react-select/dist/react-select.css';
 
 body,
 html {
@@ -1142,11 +1143,15 @@ section.full-width {
 }
 .filter {
   margin-left: 10px;
-  .rbt,
-  .rbt-input .rbt-input-wrapper {
+  font-weight: normal;
+  font-size: 14px;
+  .Select {
+    min-width: 150px;
+  }
+  .Select,
+  .Select-control {
     display: inline-block;
     vertical-align: middle;
-    min-width: 150px;
   }
   li:before {
     display: none;
@@ -1171,6 +1176,15 @@ section.full-width {
 .btn.flagged:hover {
   background-color: darken(rgb(207, 152, 0), 10%);
 }
+@media (max-width: 750px) {
+  .voting-control {
+    .Select {
+      min-width: 120px;
+      font-size: 12px;
+    }
+  }
+}
+
 @media (max-width: 650px) {
   .voting-control {
     .filter,
@@ -1181,13 +1195,30 @@ section.full-width {
       font-weight: normal;
     }
 
-    .filter .form-control {
-      padding: 0;
+    .Select {
+      min-width: 90px;
+      margin-top: 2px;
     }
 
-    .panel-body em {
+    .filter .form-control,
+    .filter {
+      padding: 0;
+      margin: 0;
+    }
+
+    .filter:first {
       display: block;
-      font-size: 0.8em;
+    }
+
+    .panel-body em,
+    .panel-body br + br {
+      display: none;
+    }
+
+    .panel-body,
+    .panel-heading {
+      padding: 2px;
+      text-align: center;
     }
   }
 }
