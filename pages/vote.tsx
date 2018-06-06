@@ -190,6 +190,13 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
 
           <hr />
 
+          {this.state.isLoading && <p>Loading sessions...</p>}
+          {this.state.isError && (
+            <p className="alert alert-danger">
+              There was an error loading sessions; please refresh the page to try again.
+            </p>
+          )}
+
           {!this.state.isLoading &&
             !this.state.isError && (
               <Voting
