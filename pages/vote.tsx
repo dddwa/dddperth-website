@@ -71,11 +71,11 @@ class VotePage extends React.Component<WithPageMetadataProps, VoteState> {
             const indicies = new Map<string, number>(JSON.parse(orderings).map((id, index) => [id, index]))
             const preordered = sessions
               .map(session => ({
-                Index: indicies.get(session.Id) || 0,
-                Session: session,
+                index: indicies.get(session.Id) || 0,
+                session,
               }))
-              .sort(({ Index: first }, { Index: second }) => first - second)
-              .map(({ Session: session }) => session) as Session[]
+              .sort(({ index: first }, { index: second }) => first - second)
+              .map(({ session }) => session) as Session[]
 
             this.setState({
               isLoading: false,
