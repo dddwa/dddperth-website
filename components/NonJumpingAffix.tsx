@@ -26,7 +26,7 @@ export default class AffixWrapper extends React.Component<AffixWrapperProps, Aff
           <div ref={c => (this.content = c)}>{this.props.children}</div>
         </AutoAffix>
 
-        {this.state.affixed && <div style={{ width: '100%', height: this.contentHeight }} />}
+        {this.state.affixed && <div style={{ width: '100%', height: this.contentHeight - 20 }} />}
       </div>
     )
   }

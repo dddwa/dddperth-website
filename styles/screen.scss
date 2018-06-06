@@ -1165,26 +1165,20 @@ section.full-width {
     }
   }
 }
-.btn.seen {
+.btn.flagged {
   background-color: rgb(207, 152, 0);
 }
-.btn.seen:hover {
+.btn.flagged:hover {
   background-color: darken(rgb(207, 152, 0), 10%);
 }
 @media (max-width: 650px) {
   .voting-control {
     .filter,
-    .filter .rbt-token,
-    .filter .dropdown-item,
     .filter input,
     .form-control,
     label {
       font-size: 0.8em;
-    }
-
-    .filter .rbt,
-    .filter .rbt-input .rbt-input-wrapper {
-      min-width: 50px;
+      font-weight: normal;
     }
 
     .filter .form-control {
