@@ -102,13 +102,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   writeToStorage(key: string, sessions: string[]) {
-    if (localStorage) {
+    if (!process && localStorage) {
       localStorage.setItem(key, JSON.stringify(sessions))
     }
   }
 
   readFromStorage(key: string) {
-    if (localStorage) {
+    if (!process && localStorage) {
       const data = localStorage.getItem(key)
       if (data != null) {
         return JSON.parse(data)
