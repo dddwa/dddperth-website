@@ -5,9 +5,10 @@ import { Session } from '../config/types'
 interface SessionProps {
   session: Session
   showPresenter: boolean
+  hideTags: boolean
 }
 
-const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showPresenter }) => (
+const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showPresenter, hideTags }) => (
   <Fragment>
     {showPresenter &&
       session.Presenters.map(p => (
@@ -38,15 +39,18 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
           ) : null}
         </p>
       ))}
-    <p className="preserve-whitespace">{session.Abstract}</p>
-    <p>
+    <p className="preserve-whitespace" style={{ marginBottom: '10px' }}>
+      {session.Abstract}
+    </p>
+    <p style={{ margin: '10px 0 15px 0' }}>
       <span className="badge badge-primary">{session.Level}</span>{' '}
       <span className="badge badge-secondary">{session.Format}</span>{' '}
-      {(session.Tags || []).map(tag => (
-        <React.Fragment key={tag}>
-          <span className="badge badge-info">{tag}</span>{' '}
-        </React.Fragment>
-      ))}
+      {!hideTags &&
+        (session.Tags || []).map(tag => (
+          <React.Fragment key={tag}>
+            <span className="badge badge-info">{tag}</span>{' '}
+          </React.Fragment>
+        ))}
     </p>
   </Fragment>
 )

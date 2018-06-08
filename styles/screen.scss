@@ -41,9 +41,15 @@ hr {
   color: #fff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
+.btn:focus,
+.btn:active,
+.btn-primary:active:hover {
+  background: darken($primary-color, 5%);
+}
 .btn-sm {
   padding: 5px 10px;
   font-size: 11px;
+  line-height: 1.1;
 }
 .btn:after,
 .maillink:after {
@@ -75,6 +81,7 @@ hr {
   color: #fff;
 }
 .btn:hover,
+.btn-primary:hover[disabled]:hover,
 .badge-primary {
   background: darken($primary-color, 5%);
   color: #fff;
@@ -105,6 +112,10 @@ a.btn {
 }
 .btn.content:hover,
 .btn.remove-vote:hover,
+.btn.content:active,
+.btn.remove-vote:active,
+.btn.content:focus,
+.btn.remove-vote:focus,
 .badge-secondary {
   background-color: darken($call-content, 5%);
 }
@@ -113,6 +124,8 @@ a.btn {
   background-color: $voting;
 }
 .btn.voting:hover,
+.btn.voting:active,
+.btn.voting:focus,
 .badge-info {
   background-color: darken($voting, 5%);
 }
@@ -124,14 +137,22 @@ a.btn {
 }
 .btn.tickets:hover,
 .btn-secondary:hover,
-.btn.add-vote:hover {
+.btn.add-vote:hover,
+.btn.tickets:active,
+.btn-secondary:active,
+.btn.add-vote:active,
+.btn.tickets:focus,
+.btn-secondary:focus,
+.btn.add-vote:focus {
   background-color: darken($tickets, 10%);
 }
 
 .btn.agenda {
   background-color: darken($agenda, 5%);
 }
-.btn.agenda:hover {
+.btn.agenda:hover,
+.btn.agenda:active,
+.btn.agenda:focus {
   background-color: darken($agenda, 10%);
 }
 
@@ -139,7 +160,9 @@ $darkGrey: lighten(#000, 30%);
 .btn.sponsors {
   background-color: $darkGrey;
 }
-.btn.sponsors:hover {
+.btn.sponsors:hover,
+.btn.sponsors:active,
+.btn.sponsors:focus {
   background-color: darken($darkGrey, 5%);
 }
 
@@ -1140,6 +1163,30 @@ section.full-width {
     display: inline;
     padding-right: 20px;
   }
+  .panel-heading {
+    padding: 15px;
+  }
+  .btn {
+    padding: 10px;
+    margin-left: 0 !important;
+  }
+  .btn:nth-child(2) {
+    border-left: 1px solid darken($agenda, 10%);
+    border-right: 1px solid darken($agenda, 10%);
+  }
+  .btn:last-child {
+    border: 0;
+  }
+  .btn:after {
+    display: none;
+  }
+  &.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+  }
+  input {
+    font-size: 16px !important;
+  }
 }
 .filter {
   margin-left: 10px;
@@ -1162,12 +1209,32 @@ section.full-width {
 }
 #voting-interface {
   .panel-heading {
-    .fa {
+    .fa.status {
       float: right;
       margin-left: 10px;
-      color: $call-content;
-      font-size: 30px;
+      font-size: 18px;
+      background-color: $primary-color;
+      color: #fff;
+      @include border-radius(50%);
+      padding: 7px;
     }
+  }
+  .panel-heading a,
+  .panel-heading span.title {
+    padding: 13px 15px;
+
+    &:after {
+      display: none;
+    }
+  }
+  .panel-default > .panel-heading .badge {
+    background-color: #666;
+  }
+  .panel-body {
+    margin-bottom: 10px;
+  }
+  .panel-heading {
+    margin-top: 10px;
   }
 }
 .btn.flagged {
@@ -1176,34 +1243,32 @@ section.full-width {
 .btn.flagged:hover {
   background-color: darken(rgb(207, 152, 0), 10%);
 }
-@media (max-width: 750px) {
+@media (max-width: 770px) {
   .voting-control {
     .Select {
       min-width: 120px;
       font-size: 12px;
     }
+
+    h3 {
+      line-height: 35px;
+    }
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 690px) {
   .voting-control {
     .filter,
-    .filter input,
     .form-control,
     label {
       font-size: 0.8em;
       font-weight: normal;
+      padding: 0 5px;
     }
 
     .Select {
       min-width: 90px;
-      margin-top: 2px;
-    }
-
-    .filter .form-control,
-    .filter {
-      padding: 0;
-      margin: 0;
+      margin-top: 5px;
     }
 
     .filter:first {
@@ -1217,8 +1282,7 @@ section.full-width {
 
     .panel-body,
     .panel-heading {
-      padding: 2px;
-      text-align: center;
+      padding: 5px;
     }
   }
 }
@@ -1823,7 +1887,7 @@ tr td.highlight-session {
     font-size: 16px;
   }
   .btn-sm {
-    padding: 5px 10px;
+    padding: 7px 10px 5px 10px;
     font-size: 14px;
   }
   .btn:after {
@@ -2035,11 +2099,11 @@ tr td.highlight-session {
 //  Large devices (large desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {
   .btn {
-    padding: 9px 23px 8px 23px;
+    padding: 10px 23px 8px 23px;
     font-size: 17px;
   }
   .btn-sm {
-    padding: 5px 10px;
+    padding: 7px 10px 5px 10px;
     font-size: 15px;
   }
   .btn:after {
@@ -2234,11 +2298,11 @@ tr td.highlight-session {
 //  Ex Large devices (large desktops, 1200px and up)
 @media only screen and (min-width: 1400px) {
   .btn {
-    padding: 11px 25px 10px 25px;
+    padding: 12px 25px 10px 25px;
     font-size: 18px;
   }
   .btn-sm {
-    padding: 5px 10px;
+    padding: 7px 10px 5px 10px;
     font-size: 16px;
   }
   .btn:after {
