@@ -1190,6 +1190,9 @@ section.full-width {
   .panel-heading .alert {
     margin: 0;
   }
+  .submit-block {
+    float: right;
+  }
 }
 .filter {
   margin-left: 10px;
@@ -1269,8 +1272,20 @@ section.full-width {
       padding: 0 5px;
     }
 
+    .filter {
+      margin-left: 0;
+    }
+
+    &.form-inline .form-control {
+      width: 80px;
+    }
+
+    h3 {
+      padding-right: 10px;
+    }
+
     .Select {
-      min-width: 90px;
+      min-width: 75px;
       margin-top: 5px;
     }
 
@@ -1286,6 +1301,63 @@ section.full-width {
     .panel-body,
     .panel-heading {
       padding: 5px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .voting-control {
+    .filter,
+    .form-control,
+    label {
+      font-size: 0.7em;
+    }
+    .submit-block {
+      display: inline;
+    }
+
+    .filter {
+      padding-right: 0;
+      margin-bottom: 2px;
+    }
+
+    .remove-when-small {
+      display: none;
+    }
+
+    .Select-control {
+      padding: 0;
+    }
+
+    .Select--multi .Select-value {
+      margin-top: 0;
+      margin-left: 0;
+    }
+
+    .Select-menu-outer div {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .voting-control {
+    .Select {
+      min-width: 55px;
+    }
+
+    &.form-inline .form-control {
+      width: 60px;
+    }
+
+    .btn {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    h3 {
+      font-size: 14px;
+      padding-right: 0;
     }
   }
 }

@@ -205,7 +205,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <div style={{ float: 'right' }}>
+                  <div className="submitBlock">
                     <label>
                       Ticket order #{' '}
                       <em>
@@ -238,7 +238,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         'Submitting...'
                       ) : (
                         <React.Fragment>
-                          Submit votes ({this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
+                          Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/{this.props
+                            .minVotes !== this.props.maxVotes
                             ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
                                 this.state.votes.length < this.props.maxVotes ? '+' : ''
                               }`
