@@ -94,9 +94,13 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
   }
 
+  isRunningInBrowser() {
+    return typeof window !== 'undefined'
+  }
+
   setSessions(sessions: Session[]) {
-    // if the client does not support local storage then just set session state
-    if (!localStorage) {
+    // if the we're rendering on the server or the client does not support local storage then just set session state
+    if (!(this.isRunningInBrowser() && localStorage)) {
       this.setState({
         isLoading: false,
         sessions,
