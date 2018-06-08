@@ -11,6 +11,7 @@ import { withCurrentDate, WithCurrentDateProps } from '../withCurrentDate'
 export interface AppConfig {
   getSubmissionsUrl: string
   instrumentationKey: string
+  submitVoteUrl: string
   testingMode: boolean
 }
 declare global {
@@ -58,6 +59,7 @@ const withPageMetadata = <TOriginalProps extends {}>(
         ? {
             getSubmissionsUrl: process.env.GET_SUBMISSIONS_URL,
             instrumentationKey: process.env.APPINSIGHTS_INSTRUMENTATIONKEY,
+            submitVoteUrl: process.env.SUBMIT_VOTE_URL,
             testingMode: process.env.TESTING_MODE === 'true',
           }
         : window.appConfig

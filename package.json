@@ -7,7 +7,7 @@
   "license": "N/A",
   "private": true,
   "scripts": {
-    "dev": "cross-env TESTING_MODE=true GET_SUBMISSIONS_URL=/static/tmp.json next --inspect",
+    "dev": "cross-env TESTING_MODE=true GET_SUBMISSIONS_URL=http://localhost:7071/api/GetSubmissions SUBMIT_VOTE_URL=http://localhost:7071/api/SubmitVote next --inspect",
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
@@ -28,7 +28,8 @@
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.1",
     "react-overlays": "^0.8.3",
-    "react-select": "^1.2.1"
+    "react-select": "^1.2.1",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@types/google-map-react": "^0.23.2",
@@ -43,6 +44,7 @@
     "@types/react-overlays": "^0.8.4",
     "@types/react-select": "^1.2.6",
     "@types/styled-jsx": "^2.2.1",
+    "@types/uuid": "^3.4.3",
     "@zeit/next-bundle-analyzer": "^0.0.4",
     "@zeit/next-sass": "^0.1.1",
     "@zeit/next-typescript": "^0.0.10",

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import Select, { Option } from 'react-select'
+import { getSessionId } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
@@ -18,13 +19,20 @@ interface VotingState {
   shortlist: string[]
   votes: string[]
   show: string
+  ticketNumber: string
+  submitInProgress: boolean
+  submitError: boolean
+  submitted: boolean
 }
 
 interface VotingProps {
   anonymousVoting: boolean
   sessions: Session[]
+  submitVoteUrl: string
   maxVotes: number
   minVotes: number
+  startTime: string
+  voteId: string
 }
 
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
@@ -43,6 +51,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .sort(),
       shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
       show: 'all',
+      submitError: false,
+      submitInProgress: false,
+      submitted: this.readFromStorage('ddd-voting-submitted') === 'true',
       tagFilters: [],
       tags: (this.props.sessions as Session[])
         .selectMany(s => s.Tags)
@@ -101,9 +112,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     )
   }
 
-  writeToStorage(key: string, sessions: string[]) {
+  writeToStorage(key: string, value: string | string[]) {
     if (!process && localStorage) {
-      localStorage.setItem(key, JSON.stringify(sessions))
+      if (value instanceof String) {
+        localStorage.setItem(key, value as string)
+      }
+      localStorage.setItem(key, JSON.stringify(value))
     }
   }
 
@@ -115,6 +129,37 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       }
     }
     return []
+  }
+
+  async submit() {
+    const vote = {
+      Id: this.props.voteId,
+      Indices: this.state.votes.map(
+        id => this.props.sessions.indexOf(this.props.sessions.filter(s => s.Id === id)[0]) + 1,
+      ),
+      SessionIds: this.state.votes,
+      TicketNumber: this.state.ticketNumber,
+      VoterSessionId: getSessionId(),
+      VotingStartTime: this.props.startTime,
+    }
+    const headers: any = { 'Content-Type': 'application/json' }
+    this.setState({ submitInProgress: true, submitError: false })
+    try {
+      const response = await fetch(this.props.submitVoteUrl, {
+        body: JSON.stringify(vote),
+        headers,
+        method: 'POST',
+      })
+
+      if (!response.ok) {
+        this.setState({ submitInProgress: false, submitError: true })
+      } else {
+        this.setState({ submitInProgress: false, submitted: true })
+        this.writeToStorage('ddd-voting-submitted', 'true')
+      }
+    } catch (e) {
+      this.setState({ submitInProgress: false, submitError: true })
+    }
   }
 
   render() {
@@ -149,33 +194,59 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         <NonJumpingAffix>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
-              <h3>Vote</h3>
-              <label>
-                Ticket order #{' '}
-                <em>
-                  (Optional,{' '}
-                  <span
-                    className="fa fa-question-circle"
-                    style={{ cursor: 'pointer', fontSize: '20px' }}
-                    title="Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
-                    onClick={() =>
-                      alert(
-                        'Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
-                      )
-                    }
-                  />)
-                </em>: <input type="number" className="form-control input-sm" id="voteOrderNumber" />
-              </label>{' '}
-              <button
-                className="btn btn-primary btn-sm"
-                disabled={this.state.votes.length < this.props.minVotes}
-                onClick={() => alert('todo...')}
-              >
-                Submit {this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
-                  ? `(${this.props.minVotes}-${this.props.maxVotes})`
-                  : this.props.minVotes}{' '}
-                votes
-              </button>
+              {!this.state.submitted && (
+                <React.Fragment>
+                  <h3>Vote</h3>
+                  <label>
+                    Ticket order #{' '}
+                    <em>
+                      (Optional,{' '}
+                      <span
+                        className="fa fa-question-circle"
+                        style={{ cursor: 'pointer', fontSize: '20px' }}
+                        title="Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
+                        onClick={() =>
+                          alert(
+                            'Your vote will have a higher weighting if you supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
+                          )
+                        }
+                      />)
+                    </em>:{' '}
+                    <input
+                      type="text"
+                      className="form-control input-sm"
+                      onChange={e => this.setState({ ticketNumber: e.target.value })}
+                      value={this.state.ticketNumber}
+                    />
+                  </label>{' '}
+                  <button
+                    className="btn btn-primary btn-sm"
+                    disabled={this.state.votes.length < this.props.minVotes || this.state.submitInProgress}
+                    onClick={() => this.submit()}
+                  >
+                    {this.state.submitInProgress ? (
+                      'Submitting...'
+                    ) : (
+                      <React.Fragment>
+                        Submit {this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
+                          ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
+                              this.state.votes.length < this.props.maxVotes ? '+' : ''
+                            }`
+                          : this.props.minVotes}{' '}
+                        votes
+                      </React.Fragment>
+                    )}
+                  </button>
+                </React.Fragment>
+              )}
+              {this.state.submitError && (
+                <React.Fragment>
+                  <br />
+                  <span className="alert alert-danger" style={{ padding: '2px' }}>
+                    There was a problem submitting your votes; please try again or refresh the page and try again.
+                  </span>
+                </React.Fragment>
+              )}
             </Panel.Heading>
             <Panel.Body>
               <em>View:</em>{' '}
@@ -248,6 +319,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             </Panel.Body>
           </Panel>
         </NonJumpingAffix>
+        {this.state.submitted && (
+          <p className="alert alert-success">
+            You've submitted your vote for this year :) Thanks! &lt;3 DDD Perth team
+          </p>
+        )}
         <h2>
           {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
           <small>{`(showing ${visibleSessions.length}${
@@ -284,39 +360,43 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         <span className="badge">{tag}</span>{' '}
                       </React.Fragment>
                     ))}
-                    <br />
-                    <br />
-                    <button
-                      onClick={e => {
-                        this.toggleFlagged(s)
-                        e.stopPropagation()
-                        e.preventDefault()
-                      }}
-                      className="btn flagged btn-sm"
-                    >
-                      {!this.isFlagged(s) ? 'Flag' : 'Un-flag'}
-                    </button>{' '}
-                    <button
-                      onClick={e => {
-                        this.toggleShortlist(s)
-                        e.stopPropagation()
-                        e.preventDefault()
-                      }}
-                      className="btn btn-secondary btn-sm"
-                    >
-                      {!this.isInShortlist(s) ? 'Shortlist' : 'Un-shortlist'}
-                    </button>{' '}
-                    <button
-                      onClick={e => {
-                        this.toggleVote(s)
-                        e.stopPropagation()
-                        e.preventDefault()
-                      }}
-                      className="btn btn-primary btn-sm"
-                      disabled={this.state.votes.length >= this.props.maxVotes && !this.isVotedFor(s)}
-                    >
-                      {!this.isVotedFor(s) ? 'Vote' : 'Un-vote'}
-                    </button>
+                    {!this.state.submitted && (
+                      <React.Fragment>
+                        <br />
+                        <br />
+                        <button
+                          onClick={e => {
+                            this.toggleFlagged(s)
+                            e.stopPropagation()
+                            e.preventDefault()
+                          }}
+                          className="btn flagged btn-sm"
+                        >
+                          {!this.isFlagged(s) ? 'Flag' : 'Un-flag'}
+                        </button>{' '}
+                        <button
+                          onClick={e => {
+                            this.toggleShortlist(s)
+                            e.stopPropagation()
+                            e.preventDefault()
+                          }}
+                          className="btn btn-secondary btn-sm"
+                        >
+                          {!this.isInShortlist(s) ? 'Shortlist' : 'Un-shortlist'}
+                        </button>{' '}
+                        <button
+                          onClick={e => {
+                            this.toggleVote(s)
+                            e.stopPropagation()
+                            e.preventDefault()
+                          }}
+                          className="btn btn-primary btn-sm"
+                          disabled={this.state.votes.length >= this.props.maxVotes && !this.isVotedFor(s)}
+                        >
+                          {!this.isVotedFor(s) ? 'Vote' : 'Un-vote'}
+                        </button>
+                      </React.Fragment>
+                    )}
                   </SpanIf>
                 </Panel.Title>
               </Panel.Heading>
