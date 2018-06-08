@@ -197,10 +197,15 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         <NonJumpingAffix>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
+              {this.state.submitted && (
+                <p className="alert alert-success">
+                  You've submitted your vote for this year :) Thanks! &lt;3 DDD Perth team
+                </p>
+              )}
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <div style={{ float: 'right' }}>
+                  <div className="submitBlock">
                     <label>
                       Ticket order #{' '}
                       <em>
@@ -233,7 +238,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         'Submitting...'
                       ) : (
                         <React.Fragment>
-                          Submit votes ({this.state.votes.length}/{this.props.minVotes !== this.props.maxVotes
+                          Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/{this.props
+                            .minVotes !== this.props.maxVotes
                             ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
                                 this.state.votes.length < this.props.maxVotes ? '+' : ''
                               }`
@@ -325,11 +331,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             </Panel.Body>
           </Panel>
         </NonJumpingAffix>
-        {this.state.submitted && (
-          <p className="alert alert-success">
-            You've submitted your vote for this year :) Thanks! &lt;3 DDD Perth team
-          </p>
-        )}
         <h2>
           {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
           <small>{`(showing ${visibleSessions.length}${
