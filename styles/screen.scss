@@ -1187,6 +1187,9 @@ section.full-width {
   input {
     font-size: 16px !important;
   }
+  .panel-heading .alert {
+    margin: 0;
+  }
 }
 .filter {
   margin-left: 10px;

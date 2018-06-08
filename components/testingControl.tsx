@@ -27,6 +27,10 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
       }
     }
   }
+  resetVote() {
+    localStorage.removeItem('ddd-voting-submitted')
+    localStorage.removeItem('ddd-voting-id')
+  }
 
   reset() {
     dateTimeProvider.now = () => {
@@ -119,6 +123,10 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
                 onClick={() => (this.props.conference.Sponsors = From2017.Sponsors)}
               >
                 Add sponsors
+              </a>
+              <br />
+              <a className="btn btn-secondary" style={btnStyle} onClick={() => this.resetVote()}>
+                Reset Vote
               </a>
               <br />
               <a className="btn btn-secondary" style={btnStyle} onClick={() => this.reset()}>
