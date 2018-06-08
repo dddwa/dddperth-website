@@ -134,9 +134,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   async submit() {
     const vote = {
       Id: this.props.voteId,
-      Indices: this.state.votes.map(
-        id => this.props.sessions.indexOf(this.props.sessions.filter(s => s.Id === id)[0]) + 1,
-      ),
+      Indices: this.state.votes.map(id => this.props.sessions.indexOf(this.props.sessions.find(s => s.Id === id)) + 1),
       SessionIds: this.state.votes,
       TicketNumber: this.state.ticketNumber,
       VoterSessionId: getSessionId(),
@@ -154,8 +152,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       if (!response.ok) {
         this.setState({ submitInProgress: false, submitError: true })
       } else {
-        this.setState({ submitInProgress: false, submitted: true })
-        this.writeToStorage('ddd-voting-submitted', 'true')
+        this.setState({ submitInProgress: false, submitted: true }, () =>
+          this.writeToStorage('ddd-voting-submitted', 'true'),
+        )
       }
     } catch (e) {
       this.setState({ submitInProgress: false, submitError: true })

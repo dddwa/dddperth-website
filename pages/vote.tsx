@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
@@ -102,7 +103,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
     } else {
       if (!localStorage.getItem('ddd-voting-start-time')) {
-        localStorage.setItem('ddd-voting-start-time', dateTimeProvider.now().Value.toISOString())
+        localStorage.setItem('ddd-voting-start-time', moment().toISOString())
       }
       if (!localStorage.getItem('ddd-voting-id')) {
         localStorage.setItem('ddd-voting-id', uuid())
