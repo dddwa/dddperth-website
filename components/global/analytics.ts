@@ -10,6 +10,10 @@ export const init = (googleAnalyticsId: string) => {
   ReactGA.initialize(googleAnalyticsId)
 }
 
+export const getSessionId = () => {
+  return window.appInsights ? window.appInsights.context.user.id : null
+}
+
 export const logPageView = () => {
   ReactGA.set({ page: window.location.pathname })
   ReactGA.pageview(window.location.pathname)

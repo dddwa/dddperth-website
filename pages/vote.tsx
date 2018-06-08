@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
+import uuid from 'uuid/v1'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
@@ -18,6 +19,8 @@ interface VoteState {
   sessions?: Session[]
   isLoading: boolean
   isError: boolean
+  startTime: string
+  voteId: string
 }
 
 class VotePage extends React.Component<VoteProps, VoteState> {
@@ -98,6 +101,18 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         sessions,
       })
     } else {
+      if (!localStorage.getItem('ddd-voting-start-time')) {
+        localStorage.setItem('ddd-voting-start-time', dateTimeProvider.now().Value.toISOString())
+      }
+      if (!localStorage.getItem('ddd-voting-id')) {
+        localStorage.setItem('ddd-voting-id', uuid())
+      }
+
+      this.setState({
+        startTime: localStorage.getItem('ddd-voting-start-time'),
+        voteId: localStorage.getItem('ddd-voting-id'),
+      })
+
       const orderings = localStorage.getItem('ddd-voting-session-order')
 
       // if previous ordering data has not been persisted in local storage
@@ -176,7 +191,8 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                 this.props.pageMetadata.dates.TimeDisplayFormat + ' ' + this.props.pageMetadata.dates.DateDisplayFormat,
               )}
             </strong>{' '}
-            to submit your votes.
+            to submit your votes. <strong>Each person should only lodge one set of votes</strong>; we have a number of
+            mechanisms in place to detect fraudulent votes.
           </p>
 
           <p>
@@ -237,9 +253,12 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             !this.state.isError && (
               <Voting
                 sessions={this.state.sessions}
+                startTime={this.state.startTime}
+                voteId={this.state.voteId}
                 minVotes={minVotes}
                 maxVotes={maxVotes}
                 anonymousVoting={this.props.pageMetadata.conference.AnonymousVoting}
+                submitVoteUrl={this.props.pageMetadata.appConfig.submitVoteUrl}
               />
             )}
         </div>
