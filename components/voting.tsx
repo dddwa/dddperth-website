@@ -79,8 +79,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
   toggleShortlist(session: Session) {
     logEvent('voting', this.isInShortlist(session) ? 'unshortlist' : 'shortlist', {
-      sessionId: session.Id,
       id: this.props.voteId,
+      sessionId: session.Id,
     })
     this.setState(
       {
