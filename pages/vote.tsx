@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
 import uuid from 'uuid/v1'
+import { logEvent } from '../components/global/analytics'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
@@ -110,7 +111,11 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         localStorage.setItem('ddd-voting-start-time', moment().toISOString())
       }
       if (!localStorage.getItem('ddd-voting-id')) {
-        localStorage.setItem('ddd-voting-id', uuid())
+        const voteId = uuid()
+        logEvent('voting', 'voteIdGenerated', { id: voteId, startTime: localStorage.getItem('ddd-voting-start-time') })
+        localStorage.setItem('ddd-voting-id', voteId)
+      } else {
+        logEvent('voting', 'returnToVoting', { id: localStorage.getItem('ddd-voting-id') })
       }
 
       this.setState({
@@ -132,18 +137,18 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         })
       } else {
         // if previous ordering data has been persisted then apply this and override API response ordering
-        const indicies = new Map<string, number>(JSON.parse(orderings).map((id, index) => [id, index]))
-        const preordered = sessions
-          .map(session => ({
-            index: indicies.get(session.Id) || 0,
-            session,
-          }))
-          .sort(({ index: first }, { index: second }) => first - second)
-          .map(({ session }) => session) as Session[]
+        const orderingsArray = JSON.parse(orderings)
+        const ordered = orderingsArray
+          .map(id => sessions.find(s => s.Id === id))
+          .filter(s => s)
+          .concat(sessions.filter(s => !orderingsArray.find(id => id === s.Id)))
+
+        const ids = JSON.stringify(ordered.map(({ Id }) => Id))
+        localStorage.setItem('ddd-voting-session-order', ids)
 
         this.setState({
           isLoading: false,
-          sessions: preordered,
+          sessions: ordered,
         })
       }
     }
