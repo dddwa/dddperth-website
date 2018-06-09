@@ -1,3 +1,4 @@
+import * as moment from 'moment'
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
@@ -6,6 +7,7 @@ import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
 import { Session } from '../config/types'
+import { logEvent } from './global/analytics'
 
 interface VotingState {
   expandAll: boolean
@@ -76,6 +78,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleShortlist(session: Session) {
+    logEvent('voting', this.isInShortlist(session) ? 'unshortlist' : 'shortlist', {
+      sessionId: session.Id,
+      id: this.props.voteId,
+    })
     this.setState(
       {
         shortlist: this.isInShortlist(session)
@@ -91,6 +97,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleFlagged(session: Session) {
+    logEvent('voting', this.isFlagged(session) ? 'unflag' : 'flag', { sessionId: session.Id, id: this.props.voteId })
     this.setState(
       {
         flagged: this.isFlagged(session) ? this.state.flagged.without(session.Id) : [...this.state.flagged, session.Id],
@@ -104,6 +111,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   toggleVote(session: Session) {
+    logEvent('voting', this.isVotedFor(session) ? 'unvote' : 'vote', { sessionId: session.Id, id: this.props.voteId })
     this.setState(
       {
         votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
@@ -156,6 +164,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       if (!response.ok) {
         this.setState({ submitInProgress: false, submitError: true })
       } else {
+        logEvent(
+          'voting',
+          'submit',
+          { startTime: this.props.startTime, id: this.props.voteId },
+          { votingDurationInMins: moment().diff(moment.parseZone(this.props.startTime), 'minutes') },
+        )
         this.setState({ submitInProgress: false, submitted: true }, () =>
           this.writeToStorage('ddd-voting-submitted', 'true'),
         )
@@ -306,7 +320,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                       multiselect={true}
                       caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ tagFilters: selected.options.filter(o => o != null).map(o => o.value) })
+                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                        if (newFilter.length > 0) {
+                          logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
+                        }
+                        this.setState({ tagFilters: newFilter })
                       }}
                       selectedValues={this.state.tagFilters.length > 0 ? this.state.tagFilters : undefined}
                     />
@@ -319,7 +337,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                       multiselect={true}
                       caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ formatFilters: selected.options.filter(o => o != null).map(o => o.value) })
+                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                        if (newFilter.length > 0) {
+                          logEvent('voting', 'formatFilter', { filter: newFilter.join(',') })
+                        }
+                        this.setState({ formatFilters: newFilter })
                       }}
                       selectedValues={this.state.formatFilters.length > 0 ? this.state.formatFilters : undefined}
                     />
@@ -332,7 +354,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                       multiselect={true}
                       caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ levelFilters: selected.options.filter(o => o != null).map(o => o.value) })
+                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                        if (newFilter.length > 0) {
+                          logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
+                        }
+                        this.setState({ levelFilters: newFilter })
                       }}
                       selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
                     />
