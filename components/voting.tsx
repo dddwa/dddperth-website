@@ -409,7 +409,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         <span className="badge">{tag}</span>{' '}
                       </React.Fragment>
                     ))}
-                    <small style={{ marginTop: '10px', display: 'block' }}>
+                    <small
+                      style={{
+                        display: 'block',
+                        marginTop: '10px',
+                        visibility: this.state.expandAll ? 'hidden' : 'visible',
+                      }}
+                    >
                       <span className="fa fa-plus" title="More details" /> Tap for session details
                     </small>
                     {!this.state.submitted && (
