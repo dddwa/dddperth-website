@@ -219,7 +219,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
               </p>
               <ul>
                 <li>
-                  Any actions you take on this page (e.g. vote, shortlist) will be saved to this device -{' '}
+                  Any actions you take on this page (e.g. vote, shortlist) will be saved to this device/browser -{' '}
                   <strong>you can do the voting over a number of sittings</strong> and don't need to worry about trying
                   to complete it in one go
                 </li>
