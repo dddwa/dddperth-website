@@ -23,7 +23,7 @@ const registrationOpenUntil = hideDate
       .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2018-04-30T22:00:00+08:00')
 const presentationSubmissionsOpenUntil = moment.parseZone('2018-06-03T23:59:59+08:00')
-const votingOpenFrom = moment.parseZone('2018-06-10T08:00:00+08:00')
+const votingOpenFrom = moment.parseZone('2018-06-09T23:00:00+08:00')
 const votingOpenUntil = moment.parseZone('2018-06-17T23:59:59+08:00')
 const agendaPublishedFrom = moment.parseZone('2018-07-01T08:00:00+08:00')
 const feedbackOpenFrom = date.clone()
