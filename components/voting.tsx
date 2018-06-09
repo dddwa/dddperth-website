@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
-import Select, { Option } from 'react-select'
+import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
@@ -192,6 +192,14 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       </React.Fragment>
     )
 
+    const option = text => (
+      <div>
+        <span className="fa fa-check-circle-o selected-marker" />
+        <span className="fa fa-circle-o not-selected-marker" />
+        <span> {text}</span>
+      </div>
+    )
+
     return (
       <React.Fragment>
         <NonJumpingAffix>
@@ -205,7 +213,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <div className="submitBlock">
+                  <div className="submit-block">
                     <label>
                       Ticket order #{' '}
                       <em>
@@ -287,45 +295,48 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               </div>
               {this.state.show === 'all' && (
                 <React.Fragment>
-                  <br />
-                  <br />
-                  <em>Filter by:</em>
-                  <label className="filter">
-                    Tags:{' '}
-                    <Select
-                      options={this.state.tags.map(t => ({ value: t, label: t }))}
-                      clearable={true}
-                      multi={true}
+                  <div className="filters">
+                    <em>Filter by:</em>{' '}
+                    <ReactResponsiveSelect
+                      name="tagsFilter"
+                      prefix="Tags:"
+                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                        this.state.tags.map(t => ({ value: t, text: t, markup: option(t) })),
+                      )}
+                      multiselect={true}
+                      caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ tagFilters: (selected as Array<Option<string>>).map(t => t.value) })
+                        this.setState({ tagFilters: selected.options.filter(o => o != null).map(o => o.value) })
                       }}
-                      value={this.state.tagFilters}
+                      selectedValues={this.state.tagFilters.length > 0 ? this.state.tagFilters : undefined}
                     />
-                  </label>
-                  <label className="filter">
-                    Format:{' '}
-                    <Select
-                      options={this.state.formats.map(f => ({ value: f, label: f }))}
-                      clearable={true}
-                      multi={true}
+                    <ReactResponsiveSelect
+                      name="formatFilter"
+                      prefix="Format:"
+                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                        this.state.formats.map(f => ({ value: f, text: f, markup: option(f) })),
+                      )}
+                      multiselect={true}
+                      caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ formatFilters: (selected as Array<Option<string>>).map(f => f.value) })
+                        this.setState({ formatFilters: selected.options.filter(o => o != null).map(o => o.value) })
                       }}
-                      value={this.state.formatFilters}
+                      selectedValues={this.state.formatFilters.length > 0 ? this.state.formatFilters : undefined}
                     />
-                  </label>
-                  <label className="filter">
-                    Level:{' '}
-                    <Select
-                      options={this.state.levels.map(l => ({ value: l, label: l }))}
-                      clearable={true}
-                      multi={true}
+                    <ReactResponsiveSelect
+                      name="levelsFilter"
+                      prefix="Level:"
+                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                        this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
+                      )}
+                      multiselect={true}
+                      caretIcon={<span className="fa fa-caret-down" />}
                       onChange={selected => {
-                        this.setState({ levelFilters: (selected as Array<Option<string>>).map(l => l.value) })
+                        this.setState({ levelFilters: selected.options.filter(o => o != null).map(o => o.value) })
                       }}
-                      value={this.state.levelFilters}
+                      selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
                     />
-                  </label>
+                  </div>
                 </React.Fragment>
               )}
             </Panel.Body>

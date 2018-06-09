@@ -3,7 +3,7 @@
 @import 'typography.scss';
 @import 'slick.scss';
 @import 'forms.scss';
-@import '../node_modules/react-select/dist/react-select.css';
+@import '../node_modules/react-responsive-select/dist/ReactResponsiveSelect.css';
 
 body,
 html {
@@ -1193,24 +1193,60 @@ section.full-width {
   .submit-block {
     float: right;
   }
-}
-.filter {
-  margin-left: 10px;
-  font-weight: normal;
-  font-size: 14px;
-  .Select {
+  .filters {
+    margin-top: 10px;
+    > div {
+      display: inline-block;
+    }
+  }
+
+  .rrs__button + .rrs__options {
     min-width: 150px;
+    font-size: 0.9em;
   }
-  .Select,
-  .Select-control {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  li:before {
+
+  .rrs__options li:before {
     display: none;
   }
-  a {
-    text-decoration: none;
+
+  .fa-caret-down {
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+    fill: #333;
+    margin-right: -3px;
+  }
+  .rrs--options-visible .fa-caret-down {
+    transform: rotate(180deg);
+  }
+  .rrs__multiselect-label {
+    line-height: 1.2;
+  }
+
+  .rrs__option.rrs__option {
+    .selected-marker {
+      display: none;
+    }
+  }
+
+  .rrs__option.rrs__option--selected {
+    .selected-marker {
+      display: inline;
+    }
+    .not-selected-marker {
+      display: none;
+    }
+  }
+
+  .rrs__option:hover,
+  .rrs__option.rrs__option--next-selection,
+  .rrs__option.rrs__option--selected,
+  .rrs--has-changed .rrs__label {
+    color: $primary-color;
+  }
+
+  .rrs__option.rrs__option--next-selection {
+    background: none;
   }
 }
 #voting-interface {
@@ -1251,11 +1287,6 @@ section.full-width {
 }
 @media (max-width: 770px) {
   .voting-control {
-    .Select {
-      min-width: 120px;
-      font-size: 12px;
-    }
-
     h3 {
       line-height: 35px;
     }
@@ -1264,7 +1295,9 @@ section.full-width {
 
 @media (max-width: 690px) {
   .voting-control {
-    .filter,
+    margin: 0 -15px;
+    @include border-radius(0);
+
     .form-control,
     label {
       font-size: 0.8em;
@@ -1272,8 +1305,22 @@ section.full-width {
       padding: 0 5px;
     }
 
-    .filter {
-      margin-left: 0;
+    .rrs__button {
+      height: 32px;
+      line-height: 32px;
+    }
+
+    .rrs__button + .rrs__options {
+      top: 32px;
+    }
+
+    .fa-caret-down {
+      top: 1rem;
+    }
+
+    .filters {
+      margin-top: 5px;
+      font-size: 12px;
     }
 
     &.form-inline .form-control {
@@ -1282,15 +1329,6 @@ section.full-width {
 
     h3 {
       padding-right: 10px;
-    }
-
-    .Select {
-      min-width: 75px;
-      margin-top: 5px;
-    }
-
-    .filter:first {
-      display: block;
     }
 
     .panel-body em,
@@ -1307,7 +1345,6 @@ section.full-width {
 
 @media (max-width: 400px) {
   .voting-control {
-    .filter,
     .form-control,
     label {
       font-size: 0.7em;
@@ -1316,36 +1353,24 @@ section.full-width {
       display: inline;
     }
 
-    .filter {
-      padding-right: 0;
-      margin-bottom: 2px;
+    .filters,
+    .rrs__multiselect-label__badge {
+      font-size: 10px;
+    }
+
+    .rrs__multiselect-label__badge {
+      padding: 1px 3px;
+      lineheight: 1;
     }
 
     .remove-when-small {
       display: none;
-    }
-
-    .Select-control {
-      padding: 0;
-    }
-
-    .Select--multi .Select-value {
-      margin-top: 0;
-      margin-left: 0;
-    }
-
-    .Select-menu-outer div {
-      width: auto;
     }
   }
 }
 
 @media (max-width: 370px) {
   .voting-control {
-    .Select {
-      min-width: 55px;
-    }
-
     &.form-inline .form-control {
       width: 60px;
     }

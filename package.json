@@ -28,7 +28,7 @@
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.1",
     "react-overlays": "^0.8.3",
-    "react-select": "^1.2.1",
+    "react-responsive-select": "^4.0.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -42,7 +42,6 @@
     "@types/react-bootstrap-typeahead": "^2.3.0",
     "@types/react-ga": "^2.3.0",
     "@types/react-overlays": "^0.8.4",
-    "@types/react-select": "^1.2.6",
     "@types/styled-jsx": "^2.2.1",
     "@types/uuid": "^3.4.3",
     "@zeit/next-bundle-analyzer": "^0.0.4",
