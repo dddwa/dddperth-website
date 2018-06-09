@@ -22,14 +22,19 @@ export const logPageView = () => {
   }
 }
 
-export const logEvent = (category = '', action = '') => {
+export const logEvent = (category = '', action = '', data: any, measurements?: any) => {
   if (category && action) {
     ReactGA.event({ category, action })
     if (window.appInsights) {
-      window.appInsights.trackEvent(category + ':' + action, {
-        action,
-        category,
-      })
+      window.appInsights.trackEvent(
+        category + ':' + action,
+        {
+          action,
+          category,
+          ...data,
+        },
+        measurements,
+      )
     }
   }
 }
