@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
 import uuid from 'uuid/v1'
-import { logEvent } from '../components/global/analytics'
+import { logEvent, logException } from '../components/global/analytics'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
@@ -87,6 +87,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         this.setSessions(body as Session[])
       })
       .catch(error => {
+        logException('Error when getting sessions', error, {
+          voteId: !!localStorage ? localStorage.getItem('ddd-voting-id') : null,
+        })
         that.setState({ isError: true, isLoading: false })
         if (console) {
           // tslint:disable-next-line:no-console
