@@ -11,7 +11,9 @@ export const init = (googleAnalyticsId: string) => {
 }
 
 export const getSessionId = () => {
-  return window.appInsights ? window.appInsights.context.user.id : null
+  return window.appInsights && window.appInsights && window.appInsights.context && window.appInsights.context.user
+    ? window.appInsights.context.user.id
+    : null
 }
 
 export const logPageView = () => {
@@ -22,10 +24,9 @@ export const logPageView = () => {
   }
 }
 
-export const logEvent = (category = '', action = '', data: any, measurements?: any) => {
-  if (category && action) {
-    ReactGA.event({ category, action })
-    if (window.appInsights) {
+export const logEvent = (category: string, action: string, data: any, measurements?: any) => {
+  if (category && action && logEvent) {
+    if (window.appInsights && window.appInsights.trackEvent) {
       window.appInsights.trackEvent(
         category + ':' + action,
         {
@@ -39,13 +40,13 @@ export const logEvent = (category = '', action = '', data: any, measurements?: a
   }
 }
 
-export const logException = (description = '', fatal = false) => {
+export const logException = (description: string, exception: Error, data: any) => {
   if (description) {
-    ReactGA.exception({ description, fatal })
-    if (window.appInsights) {
-      window.appInsights.trackEvent('Exception:' + description, {
+    ReactGA.exception({ description, exception: exception.toString() })
+    if (window.appInsights && window.appInsights.trackException) {
+      window.appInsights.trackException(exception, 'unhandled', {
         description,
-        fatal,
+        ...data,
       })
     }
   }

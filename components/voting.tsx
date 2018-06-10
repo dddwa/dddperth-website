@@ -2,7 +2,7 @@ import * as moment from 'moment'
 import * as React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
-import { getSessionId } from '../components/global/analytics'
+import { getSessionId, logException } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
@@ -162,6 +162,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       })
 
       if (!response.ok) {
+        logException(
+          'Error when submitting vote',
+          new Error(`Got ${response.status} ${response.statusText} when posting vote.`),
+          { voteId: this.props.voteId },
+        )
         this.setState({ submitInProgress: false, submitError: true })
       } else {
         logEvent(
@@ -175,6 +180,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         )
       }
     } catch (e) {
+      logException('Error when submitting vote', e, { voteId: this.props.voteId })
       this.setState({ submitInProgress: false, submitError: true })
     }
   }
