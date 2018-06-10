@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
@@ -26,7 +25,7 @@ interface VoteState {
 }
 
 class VotePage extends React.Component<VoteProps, VoteState> {
-  static async getInitialProps({ req, res }) {
+  static getInitialProps({ res }) {
     const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.VotingOpen) {
       if (res) {
@@ -39,38 +38,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         Router.replace('/')
       }
     }
-    if (req) {
-      const sessionSubmissionsUrl = process.env.GET_SUBMISSIONS_URL
-      const secure = (req.connection as any).encrypted || req.headers['x-forwarded-proto'] === 'https'
-      const url = sessionSubmissionsUrl.startsWith('/')
-        ? 'http' + (secure ? 's' : '') + '://' + req.headers.host + sessionSubmissionsUrl
-        : sessionSubmissionsUrl
-      const response = await fetch(url)
-
-      if (response.status !== 200) {
-        return {}
-      }
-
-      const body = await response.json()
-      return { sessions: body }
-    }
-    return {}
   }
 
   componentWillMount() {
-    this.setState({
-      isError: false,
-      isLoading: !this.props.sessions,
-      sessions: this.props.sessions || [],
-    })
-  }
-
-  componentDidMount() {
-    if (this.props.sessions) {
-      this.setSessions(this.props.sessions)
-      return
-    }
-
     const that = this
     this.setState({
       isError: false,
@@ -98,13 +68,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
   }
 
-  isRunningInBrowser() {
-    return typeof window !== 'undefined'
-  }
-
   setSessions(sessions: Session[]) {
-    // if the we're rendering on the server or the client does not support local storage then just set session state
-    if (!(this.isRunningInBrowser() && localStorage)) {
+    // if the client does not support local storage then just set session state
+    if (!localStorage) {
       this.setState({
         isLoading: false,
         sessions,

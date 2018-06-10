@@ -120,12 +120,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     )
   }
 
-  isRunningInBrowser() {
-    return typeof window !== 'undefined'
-  }
-
   writeToStorage(key: string, value: string | string[]) {
-    if (this.isRunningInBrowser() && localStorage) {
+    if (localStorage) {
       if (value instanceof String) {
         localStorage.setItem(key, value as string)
       }
@@ -134,7 +130,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   readFromStorage(key: string) {
-    if (this.isRunningInBrowser() && localStorage) {
+    if (localStorage) {
       const data = localStorage.getItem(key)
       if (data != null) {
         return JSON.parse(data)
