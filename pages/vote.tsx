@@ -186,9 +186,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             <div className="col-md-8" style={{ backgroundColor: '#f5f5f5', padding: '0 20px' }}>
               <h2 style={{ marginTop: '30px' }}>Getting the most out of voting</h2>
               <p>
-                This year we had {this.state.sessions ? this.state.sessions.length : '...'} sessions submitted! We've
-                implemented the following features to assist you to manage voting across such a large number of
-                sessions:
+                This year we had {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'}{' '}
+                sessions submitted! We've implemented the following features to assist you to manage voting across such
+                a large number of sessions:
               </p>
               <ul>
                 <li>
@@ -209,7 +209,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                   When viewing all sessions you can filter by <em>tags</em>, <em>format</em> and <em>level</em>; this is{' '}
                   <strong>
                     useful if you don't have the time to review all{' '}
-                    {this.state.sessions ? this.state.sessions.length : '...'} sessions
+                    {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'} sessions
                   </strong>{' '}
                   and instead want to narrow down on sessions that are likely to be of interest
                 </li>
