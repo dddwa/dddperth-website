@@ -41,11 +41,15 @@ class VotePage extends React.Component<VoteProps, VoteState> {
   }
 
   componentWillMount() {
-    const that = this
     this.setState({
       isError: false,
       isLoading: true,
+      sessions: [],
     })
+  }
+
+  componentDidMount() {
+    const that = this
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
       .then(response => {
         if (response.status !== 200) {
