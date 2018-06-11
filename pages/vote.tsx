@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
@@ -26,7 +25,7 @@ interface VoteState {
 }
 
 class VotePage extends React.Component<VoteProps, VoteState> {
-  static async getInitialProps({ req, res }) {
+  static getInitialProps({ res }) {
     const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.VotingOpen) {
       if (res) {
@@ -39,43 +38,18 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         Router.replace('/')
       }
     }
-    if (req) {
-      const sessionSubmissionsUrl = process.env.GET_SUBMISSIONS_URL
-      const secure = (req.connection as any).encrypted || req.headers['x-forwarded-proto'] === 'https'
-      const url = sessionSubmissionsUrl.startsWith('/')
-        ? 'http' + (secure ? 's' : '') + '://' + req.headers.host + sessionSubmissionsUrl
-        : sessionSubmissionsUrl
-      const response = await fetch(url)
-
-      if (response.status !== 200) {
-        return {}
-      }
-
-      const body = await response.json()
-      return { sessions: body }
-    }
-    return {}
   }
 
   componentWillMount() {
     this.setState({
       isError: false,
-      isLoading: !this.props.sessions,
-      sessions: this.props.sessions || [],
+      isLoading: true,
+      sessions: [],
     })
   }
 
   componentDidMount() {
-    if (this.props.sessions) {
-      this.setSessions(this.props.sessions)
-      return
-    }
-
     const that = this
-    this.setState({
-      isError: false,
-      isLoading: true,
-    })
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
       .then(response => {
         if (response.status !== 200) {
@@ -98,13 +72,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
   }
 
-  isRunningInBrowser() {
-    return typeof window !== 'undefined'
-  }
-
   setSessions(sessions: Session[]) {
-    // if the we're rendering on the server or the client does not support local storage then just set session state
-    if (!(this.isRunningInBrowser() && localStorage)) {
+    // if the client does not support local storage then just set session state
+    if (!localStorage) {
       this.setState({
         isLoading: false,
         sessions,
@@ -216,9 +186,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             <div className="col-md-8" style={{ backgroundColor: '#f5f5f5', padding: '0 20px' }}>
               <h2 style={{ marginTop: '30px' }}>Getting the most out of voting</h2>
               <p>
-                This year we had {this.state.sessions ? this.state.sessions.length : '...'} sessions submitted! We've
-                implemented the following features to assist you to manage voting across such a large number of
-                sessions:
+                This year we had {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'}{' '}
+                sessions submitted! We've implemented the following features to assist you to manage voting across such
+                a large number of sessions:
               </p>
               <ul>
                 <li>
@@ -239,7 +209,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                   When viewing all sessions you can filter by <em>tags</em>, <em>format</em> and <em>level</em>; this is{' '}
                   <strong>
                     useful if you don't have the time to review all{' '}
-                    {this.state.sessions ? this.state.sessions.length : '...'} sessions
+                    {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'} sessions
                   </strong>{' '}
                   and instead want to narrow down on sessions that are likely to be of interest
                 </li>

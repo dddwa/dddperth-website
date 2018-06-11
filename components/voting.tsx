@@ -40,7 +40,7 @@ interface VotingProps {
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
-      flagged: this.readFromStorage('ddd-voting-session-flagged'),
+      flagged: [],
       formatFilters: [],
       formats: (this.props.sessions as Session[])
         .map(s => s.Format)
@@ -51,16 +51,25 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .map(s => s.Level)
         .unique()
         .sort(),
-      shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
+      shortlist: [],
       show: 'all',
       submitError: false,
       submitInProgress: false,
-      submitted: this.readFromStorage('ddd-voting-submitted') === 'true',
+      submitted: false,
       tagFilters: [],
       tags: (this.props.sessions as Session[])
         .selectMany(s => s.Tags)
         .unique()
         .sort(),
+      votes: [],
+    })
+  }
+
+  componentDidMount() {
+    this.setState({
+      flagged: this.readFromStorage('ddd-voting-session-flagged'),
+      shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
+      submitted: this.readFromStorage('ddd-voting-submitted') === 'true',
       votes: this.readFromStorage('ddd-voting-session-votes'),
     })
   }
@@ -120,12 +129,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     )
   }
 
-  isRunningInBrowser() {
-    return typeof window !== 'undefined'
-  }
-
   writeToStorage(key: string, value: string | string[]) {
-    if (this.isRunningInBrowser() && localStorage) {
+    if (localStorage) {
       if (value instanceof String) {
         localStorage.setItem(key, value as string)
       }
@@ -134,7 +139,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   readFromStorage(key: string) {
-    if (this.isRunningInBrowser() && localStorage) {
+    if (localStorage) {
       const data = localStorage.getItem(key)
       if (data != null) {
         return JSON.parse(data)
