@@ -38,6 +38,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         Router.replace('/')
       }
     }
+    return {}
   }
 
   componentWillMount() {
@@ -52,7 +53,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
     const that = this
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
       .then(response => {
-        if (response.status !== 200) {
+        if (!response.ok) {
           throw response.statusText
         }
         return response.json()
@@ -131,6 +132,8 @@ class VotePage extends React.Component<VoteProps, VoteState> {
     const minVotes = this.props.pageMetadata.conference.MinVotes
     const maxVotes = this.props.pageMetadata.conference.MaxVotes
 
+    const isLoadingComplete = !(this.state.isLoading || this.state.isError)
+
     return (
       <Page
         pageMetadata={this.props.pageMetadata}
@@ -186,7 +189,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             <div className="col-md-8" style={{ backgroundColor: '#f5f5f5', padding: '0 20px' }}>
               <h2 style={{ marginTop: '30px' }}>Getting the most out of voting</h2>
               <p>
-                This year we had {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'}{' '}
+                This year we had {isLoadingComplete && this.state.sessions ? this.state.sessions.length : '...'}{' '}
                 sessions submitted! We've implemented the following features to assist you to manage voting across such
                 a large number of sessions:
               </p>
@@ -209,7 +212,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                   When viewing all sessions you can filter by <em>tags</em>, <em>format</em> and <em>level</em>; this is{' '}
                   <strong>
                     useful if you don't have the time to review all{' '}
-                    {!this.state.isLoading && this.state.sessions ? this.state.sessions.length : '...'} sessions
+                    {isLoadingComplete && this.state.sessions ? this.state.sessions.length : '...'} sessions
                   </strong>{' '}
                   and instead want to narrow down on sessions that are likely to be of interest
                 </li>
