@@ -241,7 +241,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
           <p className="alert alert-warning">
             <strong>Please note:</strong> Our expectation of the community, <strong>and you as a voter</strong>, is that
             you will only lodge one vote and you will vote for a set of talks that make up <em>your</em> perfect agenda
-            regardless of your friends talks.<br />
+            regardless of your friends' talks.<br />
             <br />If you know who submitted any of the sessions we ask that you do not discuss that with anyone or post
             it on social media so we can retain a level playing field for all submitters through anonymity. We
             definitely want you to post/talk about the conference and encouraging others to vote though so spread the
