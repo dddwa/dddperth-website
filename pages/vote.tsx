@@ -240,14 +240,14 @@ class VotePage extends React.Component<VoteProps, VoteState> {
 
           <p className="alert alert-warning">
             <strong>Please note:</strong> Our expectation of the community, <strong>and you as a voter</strong>, is that
-            you will only lodge one vote and you will vote for a set of talks that make up <em>your</em> perfect agenda
+            you will only vote once and you will vote for a set of talks that make up <em>your</em> perfect agenda
             regardless of your friends' talks.<br />
-            <br />If you know who submitted any of the sessions we ask that you do not discuss that with anyone or post
+            <br />If you know who submitted any of the sessions we ask that you do not discuss it with anyone or post
             it on social media so we can retain a level playing field for all submitters through anonymity. We
-            definitely want you to post/talk about the conference and encouraging others to vote though so spread the
+            definitely want you to post and talk about the conference and encourage others to vote though so spread the
             word.
             <br />
-            <br /> If we follow this as a community then we can be fair to the submitters who have put time, effort and
+            <br /> If we follow this approach as a community then we can be fair to all the submitters who have put time, effort and
             courage into crafting the amazing session proposals below. If you have any questions please{' '}
             <a href={'mailto:' + this.props.pageMetadata.conference.ContactEmail}>contact us</a>.
             <br />
