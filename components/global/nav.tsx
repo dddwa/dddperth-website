@@ -40,7 +40,7 @@ class Nav extends React.Component<NavArgs> {
                           &nbsp;
                           <i className="fa fa-external-link" />
                         </span>
-                        <span className="sr-only">Blog, will open in a new window</span>
+                        <span className="sr-only">{item.name}, will open in a new window</span>
                       </span>
                     )}
                   </Bootstrap.NavItem>
