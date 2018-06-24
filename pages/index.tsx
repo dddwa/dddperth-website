@@ -30,7 +30,11 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
         <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} />
         <ImportantDates conference={conference} actions={actions} currentDate={this.props.pageMetadata.currentDate} />
         <ImageStrip images={this.props.imageStrip} />
-        <Sponsors show={!conference.HideSponsors} sponsors={conference.Sponsors} />
+        <Sponsors
+          show={!conference.HideSponsors}
+          sponsors={conference.Sponsors}
+          hideUpsell={conference.HideConferenceUpsell}
+        />
       </Page>
     )
   }
