@@ -52,7 +52,7 @@ export interface Conference {
 
   HideDate: boolean
   HideSponsors: boolean
-  HideConferenceUpsell: boolean
+  HideSponsorshipUpsell: boolean
   HideVenue: boolean
   HideAfterpartyVenue: boolean
 

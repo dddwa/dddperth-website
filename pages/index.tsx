@@ -33,7 +33,7 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
         <Sponsors
           show={!conference.HideSponsors}
           sponsors={conference.Sponsors}
-          hideUpsell={conference.HideConferenceUpsell}
+          hideUpsell={conference.HideSponsorshipUpsell}
         />
       </Page>
     )
