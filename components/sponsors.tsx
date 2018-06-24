@@ -85,6 +85,7 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
 
       {sponsors.find(s => s.type === SponsorType.Standard) ? (
         <section className="sponsors standard">
+          <h2>Standard Sponsors</h2>
           {sponsors.filter(s => s.type === SponsorType.Standard).map(s => (
             <a href={s.url} target="_blank" key={s.name} title={s.name}>
               <img src={s.imageUrl} alt={s.name} />

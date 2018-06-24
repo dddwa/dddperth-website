@@ -127,6 +127,7 @@ const Conference: IConference = {
 
   HideDate: hideDate,
   HideSponsors: false,
+  HideSponsorshipUpsell: true,
   HideVenue: venue === null,
   HideAfterpartyVenue: venue === null || venue.Afterparty === null,
 
