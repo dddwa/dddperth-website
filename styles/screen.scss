@@ -491,6 +491,31 @@ h2 + .event-details {
   border-color: $primary-color;
 }
 
+// Keynotes
+.keynote {
+  text-align: left;
+  padding: 20px;
+
+  img {
+    margin-right: 20px;
+    float: left;
+    width: 250px;
+  }
+
+  h3 {
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .tags {
+    text-align: right;
+  }
+}
+
 // Strip of Photos
 section.image-strip {
   margin: 30px auto;

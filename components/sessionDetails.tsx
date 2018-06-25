@@ -6,9 +6,15 @@ interface SessionProps {
   session: Session
   showPresenter: boolean
   hideTags: boolean
+  hideLevelAndFormat: boolean
 }
 
-const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showPresenter, hideTags }) => (
+const SessionDetails: React.StatelessComponent<SessionProps> = ({
+  session,
+  showPresenter,
+  hideTags,
+  hideLevelAndFormat,
+}) => (
   <Fragment>
     {showPresenter &&
       session.Presenters.map(p => (
@@ -22,7 +28,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
               ({p.TwitterHandle ? (
                 <React.Fragment>
                   <a href={'https://twitter.com/' + p.TwitterHandle} target="_blank">
-                    {p.TwitterHandle}
+                    @{p.TwitterHandle}
                   </a>
                   {p.WebsiteUrl ? ' | ' : null}
                 </React.Fragment>
@@ -42,13 +48,17 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({ session, showP
     <p className="preserve-whitespace" style={{ marginBottom: '10px' }}>
       {session.Abstract}
     </p>
-    <p style={{ margin: '10px 0 15px 0' }}>
-      <span className="badge badge-primary">{session.Level}</span>{' '}
-      <span className="badge badge-secondary">{session.Format}</span>{' '}
+    <p style={{ margin: '10px 0 15px 0' }} className="tags">
+      {!hideLevelAndFormat && (
+        <Fragment>
+          <span className="badge badge-primary">{session.Level}</span>{' '}
+          <span className="badge badge-secondary">{session.Format}</span>{' '}
+        </Fragment>
+      )}
       {!hideTags &&
         (session.Tags || []).map(tag => (
           <React.Fragment key={tag}>
-            <span className="badge badge-info">{tag}</span>{' '}
+            <span className={'badge ' + (hideLevelAndFormat ? 'badge-secondary' : 'badge-info')}>{tag}</span>{' '}
           </React.Fragment>
         ))}
     </p>

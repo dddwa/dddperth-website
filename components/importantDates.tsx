@@ -13,7 +13,7 @@ export interface ImportantDatesProps {
 export default ({ conference, actions, currentDate }: ImportantDatesProps) => (
   <section className="important-dates">
     <div className="container">
-      <h2>Important Dates:</h2>
+      <h2>Important Dates</h2>
 
       <ImportantDatesList conference={conference} currentDate={currentDate} />
 

@@ -26,7 +26,7 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
       {dates.HasNotStarted &&
         !conference.HideDate && (
           <Fragment>
-            <h2>Countdown to Next Event:</h2>
+            <h2>Countdown to Next Event</h2>
             <Countdown countdownTo={conference.Date} interval={1000} />
             <hr />
           </Fragment>
