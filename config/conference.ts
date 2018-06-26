@@ -224,7 +224,7 @@ const Conference: IConference = {
     },
     {
       Id: '',
-      Title: 'Workplace mental health: an exploration',
+      Title: 'Better mental health in the workplace',
       Abstract:
         'Mark Leopold, beyondblue’s Head of Workplace Engagement, will discuss the importance of improving workplace mental health. Attendees will learn about best practice approaches in workplace mental health and strategies for adopting an integrated approach to workplace mental health including: minimising risk, supporting those with mental health conditions and promoting the positives within the workplace. This session will include introduction to resources to help people and organisations take effective action to improve workplace mental health. Mark is a passionate advocate for workplace mental health. Informed by his personal experience with depression and experience across numerous industries, Mark discusses the topic in a relatable manner; helping people and organisations to take action.',
       Format: '45 mins',
