@@ -234,7 +234,7 @@ const Conference: IConference = {
       Presenters: [
         {
           Id: '',
-          Name: 'Mark Leopald',
+          Name: 'Mark Leopold',
           Bio:
             "Mark Leopold is Head of Workplace Engagement for beyondblue, a national organisation that provides information and support to help everyone in Australia achieve their best possible mental health.\r\n\r\nPrior to beyondblue, Mark gained 25 years of operational and management experience across a diverse array of industries. He joined beyondblue because he understands the benefit that professional men and women can gain by working in mentally heathy workplaces; as a member of the beyondblue team he helps to stimulate more conversations within Australian organisations.\r\n\r\nHe's a passionate advocate of Heads Up – an initiative of beyondblue and the Mentally Healthy Workplace Alliance (headsup.org.au). Heads Up is all about giving individuals and businesses the tools to drive change and create more mentally healthy workplaces. Mark keeps mentally and physically healthy by working, running, lifting, strumming, golfing and laughing. His wife Sara and two daughters, Annalise and Sienna, are a great support to each other.",
           Tagline: 'Head of Workplace Engagement for beyondblue',
