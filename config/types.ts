@@ -65,6 +65,8 @@ export interface Conference {
   ImportantDates: ImportantDate[]
 
   Sponsors: Sponsor[]
+
+  Keynotes: Session[]
 }
 
 export interface Venue {
