@@ -206,6 +206,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
         <div className="text-center">
           <div className="responsive-video">
             <iframe
+              title="YouTube Video Player"
               width="560"
               height="315"
               src={From2017.YouTubeKeynoteEmbedUrl}
@@ -216,6 +217,7 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
           </div>
           <div className="responsive-video">
             <iframe
+              title="YouTube Video Player"
               width="560"
               height="315"
               src={From2017.YouTubeLocknoteEmbedUrl}
