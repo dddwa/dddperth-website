@@ -21,6 +21,7 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     AcceptingPresentations:
       now > conference.PresentationSubmissionsOpenFrom && now < conference.PresentationSubmissionsOpenUntil,
     VotingOpen: now > conference.VotingOpenFrom && now < conference.VotingOpenUntil,
+    VotingFinished: now > conference.VotingOpenUntil,
     AgendaPublished: now > conference.AgendaPublishedFrom,
     AcceptingFeedback: now > conference.FeedbackOpenFrom && now < conference.FeedbackOpenUntil,
   }

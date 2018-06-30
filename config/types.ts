@@ -101,6 +101,7 @@ export interface Dates {
   RegistrationClosed: boolean
   AcceptingPresentations: boolean
   VotingOpen: boolean
+  VotingFinished: boolean
   AgendaPublished: boolean
   AcceptingFeedback: boolean
 }

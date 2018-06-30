@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch'
-import Link from 'next/link'
 import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
 import Page from '../layouts/main'
+import AllAgendas from './allAgendas'
 import { WithPageMetadataProps } from './global/withPageMetadata'
 
 interface DddSession {
@@ -84,8 +84,13 @@ const dddAgendaPage = <TOriginalProps extends {}>(
           sessions: this.props.sessions,
         })
       } else {
-        const that = this
         this.setState({ isLoading: true, isError: false })
+      }
+    }
+
+    componentDidMount() {
+      if (!this.props.sessions) {
+        const that = this
         fetch(externalProps.sessionsUrl)
           .then(response => {
             if (response.status !== 200) {
@@ -180,21 +185,11 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
             <WrappedComponent {...this.props} SessionCell={this.getSessionCell()} />
 
-            <h2 className="text-center">All Agendas</h2>
-            <p className="text-center">
-              {conference.PreviousInstances.map((instance, i) => (
-                <Fragment key={instance}>
-                  {i !== 0 ? ' | ' : null}
-                  {instance === externalProps.conferenceInstance ? (
-                    instance
-                  ) : (
-                    <Link href={'/agenda/' + instance}>
-                      <a>{instance}</a>
-                    </Link>
-                  )}
-                </Fragment>
-              ))}
-            </p>
+            <AllAgendas
+              conference={conference}
+              dates={this.props.pageMetadata.dates}
+              conferenceInstance={externalProps.conferenceInstance}
+            />
 
             <Modal show={this.state.showModal} onHide={() => this.hideModal()}>
               {this.state.selectedSession && (

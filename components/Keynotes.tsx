@@ -42,10 +42,13 @@ export default ({ conference }: KeynotesProps) => (
                   </small>
                 ) : null}
               </h4>
-              <SessionDetails session={keynote} hideTags={false} showPresenter={false} hideLevelAndFormat={true} />
-              <p style={{ fontStyle: 'italic', clear: 'both' }} className="preserve-whitespace">
-                {keynote.Presenters[0].Bio}
-              </p>
+              <SessionDetails
+                session={keynote}
+                hideTags={false}
+                showPresenter={false}
+                hideLevelAndFormat={true}
+                showBio={true}
+              />
             </article>
           ))}
         </div>
