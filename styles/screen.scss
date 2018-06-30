@@ -1506,6 +1506,12 @@ section.full-width {
   padding: 3px;
 }
 
+.pink {
+  background-color: $call-content;
+  color: #000;
+  padding: 3px;
+}
+
 tr td.highlight-session {
   background: #00a2ff;
   color: #fff;
@@ -1558,7 +1564,8 @@ tr td.highlight-session {
 
 .agenda-row .breadth,
 .agenda-row .keynote,
-.agenda-row .locknote {
+.agenda-row .locknote,
+.agenda-row .lunchnote {
   text-align: center;
   font-size: 1.1em;
   font-weight: 600;
@@ -1566,7 +1573,8 @@ tr td.highlight-session {
 
 .agenda-row .breadth em,
 .agenda-row .keynote em,
-.agenda-row .locknote em {
+.agenda-row .locknote em,
+.agenda-row .lunchnote em {
   font-weight: 400;
 }
 
@@ -1575,6 +1583,10 @@ tr td.highlight-session {
   width: 33%;
   border: 1px solid #ddd;
   line-height: 1.5;
+}
+
+.agenda-row td.session-4 {
+  width: 24%;
 }
 
 .agenda-row tbody tr {

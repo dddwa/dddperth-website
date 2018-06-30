@@ -7,10 +7,12 @@ interface SessionProps {
   showPresenter: boolean
   hideTags: boolean
   hideLevelAndFormat: boolean
+  showBio: boolean
 }
 
 const SessionDetails: React.StatelessComponent<SessionProps> = ({
   session,
+  showBio,
   showPresenter,
   hideTags,
   hideLevelAndFormat,
@@ -19,16 +21,24 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
     {showPresenter &&
       session.Presenters.map(p => (
         <p key={p.Id}>
-          {p.ProfilePhotoUrl && (
-            <img src={p.ProfilePhotoUrl} alt={p.Name + ' profile photo'} className="profile-photo" />
-          )}
+          <img
+            src={p.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
+            alt={p.Name + ' profile photo'}
+            className="profile-photo"
+          />
           <em>{p.Name}</em>{' '}
           {p.TwitterHandle || p.WebsiteUrl ? (
             <small>
               ({p.TwitterHandle ? (
                 <React.Fragment>
-                  <a href={'https://twitter.com/' + p.TwitterHandle} target="_blank">
-                    @{p.TwitterHandle}
+                  <a
+                    href={
+                      'https://twitter.com/' +
+                      p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')
+                    }
+                    target="_blank"
+                  >
+                    @{p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')}
                   </a>
                   {p.WebsiteUrl ? ' | ' : null}
                 </React.Fragment>
@@ -36,7 +46,9 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
               {p.WebsiteUrl ? (
                 <React.Fragment>
                   <a href={p.WebsiteUrl} target="_blank">
-                    {p.WebsiteUrl}
+                    {p.WebsiteUrl.includes('linkedin.com')
+                      ? 'LinkedIn'
+                      : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/, '')}
                   </a>
                 </React.Fragment>
               ) : null}
@@ -62,6 +74,18 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
           </React.Fragment>
         ))}
     </p>
+    {showBio &&
+      session.Presenters.map(p => (
+        <p className="preserve-whitespace">
+          {session.Presenters.length > 1 && (
+            <Fragment>
+              <strong>{p.Name}</strong>
+              <br />
+            </Fragment>
+          )}
+          <em>{p.Bio}</em>
+        </p>
+      ))}
   </Fragment>
 )
 

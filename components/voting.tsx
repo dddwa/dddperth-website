@@ -472,6 +472,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   session={s}
                   showPresenter={!this.props.anonymousVoting}
                   hideTags={true}
+                  showBio={false}
                   hideLevelAndFormat={false}
                 />
               </Panel.Body>

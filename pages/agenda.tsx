@@ -1,15 +1,23 @@
+import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
 import * as React from 'react'
+import AllAgendas from '../components/allAgendas'
+import CurrentAgenda from '../components/currentAgenda'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
+import { Session } from '../config/types'
 import Page from '../layouts/main'
 
-class AgendaPage extends React.Component<WithPageMetadataProps> {
-  static getInitialProps({ res }) {
+interface AgendaPageProps extends WithPageMetadataProps {
+  sessions?: Session[]
+}
+
+class AgendaPage extends React.Component<AgendaPageProps> {
+  static async getInitialProps({ req, res }) {
     const dates = getConferenceDates(Conference, dateTimeProvider.now())
-    if (!dates.AgendaPublished) {
+    if (!dates.VotingFinished) {
       if (res) {
         res.writeHead(302, {
           Location: '/agenda/' + Conference.PreviousInstance,
@@ -20,6 +28,17 @@ class AgendaPage extends React.Component<WithPageMetadataProps> {
         Router.replace('/agenda/' + Conference.PreviousInstance)
       }
     }
+
+    if (req) {
+      const response = await fetch(process.env.GET_AGENDA_URL)
+      if (!response.ok) {
+        return {}
+      }
+
+      const body = await response.json()
+      return { sessions: body as Session[] }
+    }
+
     return {}
   }
   render() {
@@ -32,9 +51,30 @@ class AgendaPage extends React.Component<WithPageMetadataProps> {
         hideBanner={true}
         description={conference.Name + ' agenda.'}
       >
-        <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
+        <div className="container">
+          <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
 
-        <p>The agenda has not yet been finalised.</p>
+          {!dates.AgendaPublished && (
+            <p>
+              The agenda has not yet been finalised; please come back on{' '}
+              {conference.AgendaPublishedFrom.format(dates.DateDisplayFormat)}{' '}
+              {conference.AgendaPublishedFrom.format(dates.TimeDisplayFormat)}. In the meantime, check out our previous
+              agendas below.
+            </p>
+          )}
+          {dates.AgendaPublished && (
+            <CurrentAgenda
+              sessions={this.props.sessions}
+              previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
+              sessionsUrl={this.props.pageMetadata.appConfig.getAgendaUrl}
+            />
+          )}
+          <AllAgendas
+            conference={this.props.pageMetadata.conference}
+            conferenceInstance={this.props.pageMetadata.conference.Instance}
+            dates={this.props.pageMetadata.dates}
+          />
+        </div>
       </Page>
     )
   }
