@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import withPageMetadata from '../../components/global/withPageMetadata'
+import ResponsiveVideo from '../../components/responsiveVideo'
 import Sponsors from '../../components/sponsors'
 import From2016 from '../../config/2016'
 import { SponsorType } from '../../config/types'
@@ -184,28 +185,8 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
         </p>
         <h2>Media</h2>
         <div className="text-center">
-          <div className="responsive-video">
-            <iframe
-              title="YouTube Video Player"
-              width="560"
-              height="315"
-              src={From2016.YouTubeKeynoteEmbedUrl}
-              frameBorder="0"
-              allowFullScreen
-              style={{ display: 'inline-block', marginRight: '20px' }}
-            />
-          </div>
-          <div className="responsive-video">
-            <iframe
-              title="YouTube Video Player"
-              width="560"
-              height="315"
-              src={From2016.YouTubeLocknoteEmbedUrl}
-              frameBorder="0"
-              allowFullScreen
-              style={{ display: 'inline-block' }}
-            />
-          </div>
+          <ResponsiveVideo src={From2016.YouTubeKeynoteEmbedUrl} />
+          <ResponsiveVideo src={From2016.YouTubeLocknoteEmbedUrl} />
         </div>
         <p>
           <a href={From2016.YouTubePlaylistUrl} target="_blank">
