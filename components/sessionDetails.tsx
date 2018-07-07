@@ -20,7 +20,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
   <Fragment>
     {showPresenter &&
       session.Presenters.map(p => (
-        <p key={p.Id}>
+        <p key={p.Name.replace(/ /g, '-')}>
           <img
             src={p.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
             alt={p.Name + ' profile photo'}
@@ -76,7 +76,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
     </p>
     {showBio &&
       session.Presenters.map(p => (
-        <p className="preserve-whitespace">
+        <p key={`bio-${p.Name.replace(/ /g, '-')}`} className="preserve-whitespace">
           {session.Presenters.length > 1 && (
             <Fragment>
               <strong>{p.Name}</strong>
