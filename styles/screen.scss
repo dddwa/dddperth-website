@@ -1602,6 +1602,7 @@ tr td.highlight-session {
   width: 560px;
   height: 315px;
   position: relative;
+  vertical-align: top;
   display: inline-block;
 
   &:first-child {
@@ -1614,11 +1615,13 @@ tr td.highlight-session {
     left: 0;
     width: 100%;
     height: 100%;
+    display: inline-block;
   }
 }
 
 @media (max-width: 1199px) {
   .responsive-video:first-child {
+    margin-bottom: 10px;
     margin-right: 0;
   }
 }
