@@ -1453,19 +1453,19 @@ section.full-width {
     z-index: 100;
   }
 
-  #map-overlay h3,
-  #map-overlay h4 {
+  #map-overlay h2,
+  #map-overlay h3 {
     color: #fff;
     margin: 0;
   }
 
-  #map-overlay h3 {
+  #map-overlay h2 {
     font-size: 40px;
     font-weight: 900;
     margin-top: 140px;
   }
 
-  #map-overlay h4 {
+  #map-overlay h3 {
     font-size: 24px;
     font-weight: 300;
     font-style: oblique;
@@ -1476,7 +1476,7 @@ section.full-width {
       padding: 0 2em;
     }
 
-    #map-overlay h3 {
+    #map-overlay h2 {
       margin-top: 100px;
       margin-bottom: 15px;
     }
