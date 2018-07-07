@@ -35,7 +35,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: "[Financial Assistance] What if I can't afford to attend?",
-    Answer: (
+    AnswerWithoutParagraph: (
       <div>
         <p>
           If you can't afford the ticket price then we have Sponsored (Financial Assistance) tickets available. DDD
