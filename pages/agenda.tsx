@@ -67,6 +67,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               sessions={this.props.sessions}
               previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
               sessionsUrl={this.props.pageMetadata.appConfig.getAgendaUrl}
+              sponsors={this.props.pageMetadata.conference.Sponsors}
             />
           )}
           <AllAgendas

@@ -63,7 +63,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr className="breadth-row">
             <td className="time">9:10</td>
-            <SessionCell isKeynote={true} sessionId="c79f149d-4e7b-4202-ba30-13cbb1df1b33" />
+            <SessionCell isKeynote={true} sessionId="c79f149d-4e7b-4202-ba30-13cbb1df1b33" sponsorName="YOW! Perth" />
           </tr>
 
           <tr className="breadth-row">
@@ -135,7 +135,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr className="breadth-row">
             <td className="time">13:15</td>
-            <SessionCell isLunchnote={true} sessionId="26c62196-0d96-4e52-b4ba-7896ddf2ff04" />
+            <SessionCell isLunchnote={true} sessionId="26c62196-0d96-4e52-b4ba-7896ddf2ff04" sponsorName="Bankwest" />
           </tr>
 
           <tr className="breadth-row">
@@ -184,7 +184,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr className="breadth-row">
             <td className="time">16:20</td>
-            <SessionCell isLocknote={true} sessionId="264b7669-8127-41a3-9f6b-87511a879cf1" />
+            <SessionCell isLocknote={true} sessionId="264b7669-8127-41a3-9f6b-87511a879cf1" sponsorName="YOW! Perth" />
           </tr>
 
           <tr className="breadth-row">

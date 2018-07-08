@@ -78,7 +78,7 @@ const Conference: IConference = {
   Organiser: {
     Name: 'DDD WA Inc.',
     Url: 'https://blog.dddperth.com/meet-the-team-35865433cb39',
-    ShirtColour: 'green',
+    ShirtColour: 'pink',
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
