@@ -21,6 +21,12 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Gold,
     url: 'https://www.livehire.com/',
   },
+  {
+    imageUrl: '/static/images/sponsors/microsoft.png',
+    name: 'Microsoft',
+    type: SponsorType.Gold,
+    url: 'https://www.microsoft.com/',
+  },
   // Silver
   {
     imageUrl: '/static/images/sponsors/ndc-sydney.png',
@@ -33,6 +39,19 @@ const Sponsors: Sponsor[] = [
     name: 'Progress Telerik',
     type: SponsorType.Silver,
     url: 'https://www.progress.com/',
+  },
+  {
+    imageUrl: '/static/images/sponsors/octopus-deploy.png',
+    name: 'Octopus Deploy',
+    type: SponsorType.Silver,
+    url: 'https://octopus.com/',
+  },
+  // Community
+  {
+    imageUrl: '/static/images/sponsors/yow-perth.png',
+    name: 'YOW! Perth',
+    type: SponsorType.Community,
+    url: 'http://west.yowconference.com.au/',
   },
   // Services
   {
