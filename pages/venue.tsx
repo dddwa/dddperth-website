@@ -68,8 +68,8 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
             />
           </div>
           <div id="map-overlay">
-            <h3>{conference.Venue.Name}</h3>
-            <h4>{conference.Venue.Address}</h4>
+            <h2>{conference.Venue.Name}</h2>
+            <h3>{conference.Venue.Address}</h3>
           </div>
         </div>
         <section className="right-sidebar" id="travelinfo">
