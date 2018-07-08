@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
-import { Session } from '../config/types'
+import { Session, Sponsor } from '../config/types'
 import SessionDetails from './sessionDetails'
 
 export interface SessionCellProps {
@@ -11,6 +11,7 @@ export interface SessionCellProps {
   isLocknote?: boolean
   isLunchnote?: boolean
   rowSpan?: number
+  sponsorName?: string
 }
 
 export interface AgendaProps {
@@ -23,6 +24,7 @@ interface ExternalProps {
   previousConferenceInstances: string[]
   sessionsUrl: string
   sessions?: Session[]
+  sponsors: Sponsor[]
 }
 interface AgendaState {
   sessions: Session[]
@@ -30,6 +32,7 @@ interface AgendaState {
   isLoading: boolean
   showModal: boolean
   selectedSession: Session
+  selectedSessionSponsor: Sponsor
 }
 
 const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProps: AgendaParameters) => {
@@ -76,9 +79,10 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
       }
     }
 
-    selectSession(session: Session) {
+    selectSession(session: Session, sponsor?: Sponsor) {
       this.setState({
         selectedSession: session,
+        selectedSessionSponsor: sponsor,
         showModal: true,
       })
     }
@@ -110,7 +114,12 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
             }
             rowSpan={props.rowSpan ? props.rowSpan : null}
             colSpan={props.isKeynote || props.isLocknote || props.isLunchnote ? numTracks : null}
-            onClick={() => onClick.bind(that)(session)}
+            onClick={() =>
+              onClick.bind(that)(
+                session,
+                !!props.sponsorName ? that.props.sponsors.find(s => s.name === props.sponsorName) : undefined,
+              )
+            }
           >
             {isLoading !== false && (
               <Fragment>
@@ -141,6 +150,12 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                   </strong>
                   <br />
                   <em>{session.Title}</em>
+                  {props.sponsorName && (
+                    <Fragment>
+                      <br />
+                      <small>Sponsored by: {props.sponsorName}</small>
+                    </Fragment>
+                  )}
                 </Fragment>
               )}
           </td>
@@ -169,6 +184,26 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                     showBio={true}
                     hideLevelAndFormat={false}
                   />
+                  {this.state.selectedSessionSponsor && (
+                    <Fragment>
+                      <hr />
+                      <p className="text-center">
+                        Sponsored by:
+                        <a
+                          href={this.state.selectedSessionSponsor.url}
+                          target="_blank"
+                          key={this.state.selectedSessionSponsor.name}
+                          title={this.state.selectedSessionSponsor.name}
+                        >
+                          <img
+                            src={this.state.selectedSessionSponsor.imageUrl}
+                            alt={this.state.selectedSessionSponsor.name}
+                            style={{ width: '200px' }}
+                          />
+                        </a>
+                      </p>
+                    </Fragment>
+                  )}
                 </Modal.Body>
               </Fragment>
             )}

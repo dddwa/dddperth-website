@@ -75,6 +75,13 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Service,
     url: 'https://mechanicalrock.io/',
   },
+  {
+    imageUrl: '/static/images/sponsors/yow-perth.png',
+    name: 'YOW! Perth',
+    serviceProvided: 'Keynote',
+    type: SponsorType.Service,
+    url: 'http://west.yowconference.com.au/',
+  },
   // Standard
   {
     imageUrl: '/static/images/sponsors/wallabyjs.png',
