@@ -147,9 +147,9 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr>
             <td className="time">14:05</td>
-            <SessionCell sessionId="9ac2e311-7559-436c-8ee8-6f0aed17a431" />
-            <SessionCell sessionId="2f2a3626-5ec3-4085-baca-941910c09467" />
             <SessionCell sessionId="3a0236e4-c8fa-4cc9-ab48-fc0371a6b990" />
+            <SessionCell sessionId="2f2a3626-5ec3-4085-baca-941910c09467" />
+            <SessionCell sessionId="9ac2e311-7559-436c-8ee8-6f0aed17a431" />
             <SessionCell sessionId="9a72d1fa-6563-4de2-bb3c-27d13d7e0d64" />
           </tr>
 
@@ -162,9 +162,9 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr>
             <td className="time">14:35</td>
-            <SessionCell sessionId="4f463f9b-bf28-446a-9558-c6ac59697cc9" />
-            <SessionCell sessionId="2234f8f6-6e13-4998-ba37-baf53ae44d9d" />
             <SessionCell sessionId="f7fc010d-8c47-4b86-b1e9-1221b63e0281" />
+            <SessionCell sessionId="2234f8f6-6e13-4998-ba37-baf53ae44d9d" />
+            <SessionCell sessionId="4f463f9b-bf28-446a-9558-c6ac59697cc9" />
             <SessionCell sessionId="fd830fb5-8e7b-4527-bc79-f7ddf693232f" />
           </tr>
 
