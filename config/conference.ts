@@ -182,7 +182,7 @@ const Conference: IConference = {
 
   Keynotes: [
     {
-      Id: '',
+      Id: 'Keynote',
       Title: 'Towards a welcoming Web',
       Abstract:
         "The Internet is supposed to be an open, accessible platform. Unfortunately, frequently we see pitfalls in reliability, accessibility or performance stemming from a privileged understanding of connectivity, cultural and economic context. It turns out, the Web can be unwelcoming to many.\r\n\r\nThis talk will set the necessary context for an inclusive design practice, focusing on accessibility, performance and equality. We'll learn how to foster a user-experience focused culture, no matter whether you're a developer, designer, project or business owner. You will leave inspired to build a better Web for everyone.",
@@ -203,7 +203,7 @@ const Conference: IConference = {
       ],
     },
     {
-      Id: '',
+      Id: 'Lunchnote',
       Title: 'The Structure of Software Revolutions',
       Abstract:
         'This talk will provide a new view of the Agile and DevOps movements, through the lens of scientific and cognitive revolutions.\r\n\r\nIt will show how to make strategic choices in recruitment, organization, culture, and technology to best situate an organization for success in this brave new world.',
@@ -224,7 +224,7 @@ const Conference: IConference = {
       ],
     },
     {
-      Id: '',
+      Id: 'Locknote',
       Title: 'Better mental health in the workplace',
       Abstract:
         'Mark Leopold, beyondblue’s Head of Workplace Engagement, will discuss the importance of improving workplace mental health. Attendees will learn about best practice approaches in workplace mental health and strategies for adopting an integrated approach to workplace mental health including: minimising risk, supporting those with mental health conditions and promoting the positives within the workplace. This session will include introduction to resources to help people and organisations take effective action to improve workplace mental health. Mark is a passionate advocate for workplace mental health. Informed by his personal experience with depression and experience across numerous industries, Mark discusses the topic in a relatable manner; helping people and organisations to take action.',

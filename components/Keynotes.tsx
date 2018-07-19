@@ -13,7 +13,7 @@ export default ({ conference }: KeynotesProps) => (
         <div className="container">
           <h2>Keynote speakers</h2>
           {conference.Keynotes.map(keynote => (
-            <article className="keynote" key={keynote.Title.replace(/ /g, '-')}>
+            <article id={keynote.Id} className="keynote" key={keynote.Title.replace(/ /g, '-')}>
               <h3>{keynote.Title}</h3>
               <img src={keynote.Presenters[0].ProfilePhotoUrl} alt={keynote.Presenters[0].Name} />
               <h4>
