@@ -156,14 +156,13 @@ a.btn {
   background-color: darken($agenda, 10%);
 }
 
-$darkGrey: lighten(#000, 30%);
 .btn.sponsors {
-  background-color: $darkGrey;
+  background-color: $dark-grey;
 }
 .btn.sponsors:hover,
 .btn.sponsors:active,
 .btn.sponsors:focus {
-  background-color: darken($darkGrey, 5%);
+  background-color: darken($dark-grey, 5%);
 }
 
 .btn.add-vote:after,
@@ -445,7 +444,7 @@ h2 + .event-details {
   line-height: 30px;
   @include border-radius(50%);
   overflow: hidden;
-  background: #00dc24;
+  background: $primary-color;
   text-align: center;
 }
 .ico-done:before {
@@ -1508,7 +1507,7 @@ section.full-width {
 
 .pink {
   background-color: $call-content;
-  color: #000;
+  color: #fff;
   padding: 3px;
 }
 
