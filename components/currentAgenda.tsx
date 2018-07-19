@@ -42,7 +42,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
           <tr className="breadth-row">
             <td className="time">8:45</td>
             <td colSpan={4} className="breadth">
-              Welcome and house-keeping
+              Welcome and housekeeping
             </td>
           </tr>
 
