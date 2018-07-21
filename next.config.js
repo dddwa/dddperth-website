@@ -27,17 +27,7 @@ module.exports = withSass(
         }
         return config;
       },
-      exportPathMap: function () {
-        return {
-          '/': {
-            page: '/'
-          }
-        }
-      },
-      poweredByHeader: false,
-      typescriptLoaderOptions: {
-        transpileOnly: false
-      }
+      poweredByHeader: false
     })
   )
 )

@@ -1,4 +1,4 @@
-import { Array } from 'global'
+export {} // this file needs to be a module
 
 declare global {
   interface Array<T> {
