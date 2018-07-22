@@ -1,6 +1,3 @@
 {
-  "presets": [
-    "next/babel"
-  ],
-  "ignore": []
+  "presets": ["next/babel", "@zeit/next-typescript/babel"]
 }
