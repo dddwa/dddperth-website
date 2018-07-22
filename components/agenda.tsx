@@ -12,6 +12,7 @@ export interface SessionCellProps {
   isLunchnote?: boolean
   rowSpan?: number
   sponsorName?: string
+  room?: string
 }
 
 export interface AgendaProps {
@@ -154,6 +155,12 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                     <Fragment>
                       <br />
                       <small>Sponsored by: {props.sponsorName}</small>
+                    </Fragment>
+                  )}
+                  {props.room && (
+                    <Fragment>
+                      <br />
+                      <small className="room">{props.room}</small>
                     </Fragment>
                   )}
                 </Fragment>
