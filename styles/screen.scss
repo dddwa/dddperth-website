@@ -1505,10 +1505,13 @@ section.full-width {
   padding: 3px;
 }
 
-.pink {
+strong.room {
   background-color: $call-content;
   color: #fff;
   padding: 3px;
+}
+small.room {
+  color: $call-content;
 }
 
 tr td.highlight-session {

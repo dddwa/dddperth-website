@@ -5,25 +5,21 @@ import Agenda, { AgendaProps } from './agenda'
 const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
   <Fragment>
     <div style={{ overflow: 'auto' }}>
-      <p style={{ marginTop: '0' }}>
-        Keynote / lunchnote / locknote and morning tea / lunch / afternoon tea are all held upstairs, session tracks are
-        held downstairs in the designated rooms.
-      </p>
       <table className="agenda-row table">
         <thead>
           <tr>
             <th style={{ width: '4%' }} />
             <th style={{ width: '24%' }}>
-              <strong className="pink">RR4</strong>
+              <strong className="room">RR4</strong>
             </th>
             <th style={{ width: '24%' }}>
-              <strong className="pink">M3</strong>
+              <strong className="room">M3</strong>
             </th>
             <th style={{ width: '24%' }}>
-              <strong className="pink">M2</strong>
+              <strong className="room">M2</strong>
             </th>
             <th style={{ width: '24%' }}>
-              <strong className="pink">M1</strong>
+              <strong className="room">M1</strong>
             </th>
           </tr>
         </thead>
@@ -36,6 +32,8 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
               <em>Perth Convention and Exhibition Centre</em>
               <br />
               21 Mounts Bay Rd, Perth
+              <br />
+              <small className="room">Upstairs foyer (Level 3)</small>
             </td>
           </tr>
 
@@ -43,6 +41,8 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">8:45</td>
             <td colSpan={4} className="breadth">
               Welcome and housekeeping
+              <br />
+              <small className="room">VGW Ballroom 2</small>
             </td>
           </tr>
 
@@ -50,12 +50,19 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">9:00</td>
             <td colSpan={4} className="breadth">
               Welcome to country
+              <br />
+              <small className="room">VGW Ballroom 2</small>
             </td>
           </tr>
 
           <tr className="breadth-row">
             <td className="time">9:10</td>
-            <SessionCell isKeynote={true} sessionId="c79f149d-4e7b-4202-ba30-13cbb1df1b33" sponsorName="YOW! Perth" />
+            <SessionCell
+              isKeynote={true}
+              sessionId="c79f149d-4e7b-4202-ba30-13cbb1df1b33"
+              sponsorName="YOW! Perth"
+              room="VGW Ballroom 2"
+            />
           </tr>
 
           <tr className="breadth-row">
@@ -77,6 +84,8 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">10:50</td>
             <td colSpan={4} className="breadth">
               Morning tea
+              <br />
+              <small className="room">Upstairs foyer</small>
             </td>
           </tr>
 
@@ -122,18 +131,27 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">13:05</td>
             <td colSpan={4} className="breadth">
               Lunch
+              <br />
+              <small className="room">Upstairs foyer</small>
             </td>
           </tr>
 
           <tr className="breadth-row">
             <td className="time">13:15</td>
-            <SessionCell isLunchnote={true} sessionId="26c62196-0d96-4e52-b4ba-7896ddf2ff04" sponsorName="Bankwest" />
+            <SessionCell
+              isLunchnote={true}
+              sessionId="26c62196-0d96-4e52-b4ba-7896ddf2ff04"
+              sponsorName="Bankwest"
+              room="VGW Ballroom 2"
+            />
           </tr>
 
           <tr className="breadth-row">
             <td className="time">13:45</td>
             <td colSpan={4} className="breadth">
-              Lunch (cont)
+              Lunch (continued)
+              <br />
+              <small className="room">Upstairs foyer</small>
             </td>
           </tr>
 
@@ -164,6 +182,8 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">15:20</td>
             <td colSpan={4} className="breadth">
               Afternoon tea
+              <br />
+              <small className="room">Upstairs foyer</small>
             </td>
           </tr>
 
@@ -171,18 +191,27 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td className="time">15:50</td>
             <td colSpan={4} className="breadth">
               Prize Draw
+              <br />
+              <small className="room">VGW Ballroom 2</small>
             </td>
           </tr>
 
           <tr className="breadth-row">
             <td className="time">16:20</td>
-            <SessionCell isLocknote={true} sessionId="264b7669-8127-41a3-9f6b-87511a879cf1" sponsorName="YOW! Perth" />
+            <SessionCell
+              isLocknote={true}
+              sessionId="264b7669-8127-41a3-9f6b-87511a879cf1"
+              sponsorName="YOW! Perth"
+              room="VGW Ballroom 2"
+            />
           </tr>
 
           <tr className="breadth-row">
             <td className="time">17:05</td>
             <td colSpan={4} className="breadth">
               <strong>Thank yous and wrap up</strong>
+              <br />
+              <small className="room">VGW Ballroom 2</small>
             </td>
           </tr>
 
@@ -191,9 +220,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
             <td colSpan={4} className="breadth">
               <strong>Afterparty</strong>
               <br />
-              <em>@Liberty Cafe &amp; Bar</em>
-              <br />
-              21 Mounts Bay Rd, Perth
+              <small className="room">Upstairs foyer</small>
             </td>
           </tr>
         </tbody>
