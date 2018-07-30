@@ -84,6 +84,16 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               afterSessionDetails={AfterSessionDetails}
             />
           )}
+          {conference.Handbook && (
+            <>
+              <h2>Handbook</h2>
+              <p>
+                <a className="btn btn-pdf" href={'/static/docs/' + conference.Handbook}>
+                  Download handbook (PDF)
+                </a>
+              </p>
+            </>
+          )}
           <AllAgendas
             conference={this.props.pageMetadata.conference}
             conferenceInstance={this.props.pageMetadata.conference.Instance}

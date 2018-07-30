@@ -91,7 +91,7 @@ const Conference: IConference = {
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
-  Handbook: null,
+  Handbook: 'handbook2018.pdf',
   SessionizeUrl: 'https://sessionize.com/dddperth2018/',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
