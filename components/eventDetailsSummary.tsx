@@ -21,6 +21,11 @@ const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
       <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> {dates.Display}
     </h2>
     <ul>
+      {conference.IsSoldOut && (
+        <li>
+          <strong>SOLD OUT</strong>
+        </li>
+      )}
       {conference.SellingPoints.map((point, i) => <li key={i}>{point}</li>)}
       <li>Only {conference.TicketPrice}</li>
     </ul>

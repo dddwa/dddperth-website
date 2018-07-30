@@ -107,7 +107,8 @@ a.btn {
 
 // Button Colours
 .btn.content,
-.btn.remove-vote {
+.btn.remove-vote,
+.btn-secondary {
   background-color: $call-content;
 }
 .btn.content:hover,
@@ -116,7 +117,10 @@ a.btn {
 .btn.remove-vote:active,
 .btn.content:focus,
 .btn.remove-vote:focus,
-.badge-secondary {
+.badge-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
   background-color: darken($call-content, 5%);
 }
 
@@ -131,18 +135,14 @@ a.btn {
 }
 
 .btn.tickets,
-.btn-secondary,
 .btn.add-vote {
   background-color: darken($tickets, 5%);
 }
 .btn.tickets:hover,
-.btn-secondary:hover,
 .btn.add-vote:hover,
 .btn.tickets:active,
-.btn-secondary:active,
 .btn.add-vote:active,
 .btn.tickets:focus,
-.btn-secondary:focus,
 .btn.add-vote:focus {
   background-color: darken($tickets, 10%);
 }

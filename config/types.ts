@@ -50,6 +50,9 @@ export interface Conference {
   FeedbackOpenFrom: Moment
   FeedbackOpenUntil: Moment
 
+  ConferenceFeedbackLink: string
+  SessionFeedbackLink: string
+
   HideDate: boolean
   HideSponsors: boolean
   HideSponsorshipUpsell: boolean

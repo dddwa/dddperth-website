@@ -53,7 +53,8 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
           <div className="col-xs-12 col-sm-2 col-md-2">
             <p>
               <span>Cost</span>
-              {conference.TicketPrice}
+              {conference.IsSoldOut && <>SOLD&nbsp;OUT</>}
+              {!conference.IsSoldOut && conference.TicketPrice}
             </p>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">
