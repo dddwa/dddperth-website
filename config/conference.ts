@@ -8,7 +8,7 @@ const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
 const hideDate = false
-const isSoldOut = false
+const isSoldOut = true
 const date = moment.parseZone('2018-08-04T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
@@ -91,7 +91,7 @@ const Conference: IConference = {
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
-  Handbook: null,
+  Handbook: 'handbook2018.pdf',
   SessionizeUrl: 'https://sessionize.com/dddperth2018/',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
@@ -124,6 +124,9 @@ const Conference: IConference = {
   AgendaPublishedFrom: agendaPublishedFrom,
   FeedbackOpenFrom: feedbackOpenFrom,
   FeedbackOpenUntil: feedbackOpenUntil,
+
+  ConferenceFeedbackLink: 'https://bit.ly/dddperth2018-conf-feedback',
+  SessionFeedbackLink: 'https://bit.ly/dddperth2018-session-feedback',
 
   HideDate: hideDate,
   HideSponsors: false,

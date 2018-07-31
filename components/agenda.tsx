@@ -26,6 +26,7 @@ interface ExternalProps {
   sessionsUrl: string
   sessions?: Session[]
   sponsors: Sponsor[]
+  afterSessionDetails?: (s: Session) => JSX.Element
 }
 interface AgendaState {
   sessions: Session[]
@@ -191,6 +192,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                     showBio={true}
                     hideLevelAndFormat={false}
                   />
+                  {this.props.afterSessionDetails && this.props.afterSessionDetails(this.state.selectedSession)}
                   {this.state.selectedSessionSponsor && (
                     <Fragment>
                       <hr />

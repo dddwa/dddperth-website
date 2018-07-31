@@ -44,6 +44,19 @@ class AgendaPage extends React.Component<AgendaPageProps> {
   render() {
     const conference = this.props.pageMetadata.conference
     const dates = this.props.pageMetadata.dates
+
+    const AfterSessionDetails = (s: Session) => {
+      return (
+        <>
+          <p className="text-center">
+            <a className="btn btn-secondary" target="_blank" href={conference.SessionFeedbackLink}>
+              Give feedback
+            </a>
+          </p>
+        </>
+      )
+    }
+
     return (
       <Page
         pageMetadata={this.props.pageMetadata}
@@ -68,7 +81,18 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
               sessionsUrl={this.props.pageMetadata.appConfig.getAgendaUrl}
               sponsors={this.props.pageMetadata.conference.Sponsors}
+              afterSessionDetails={AfterSessionDetails}
             />
+          )}
+          {conference.Handbook && (
+            <>
+              <h2>Handbook</h2>
+              <p>
+                <a className="btn btn-pdf" href={'/static/docs/' + conference.Handbook}>
+                  Download handbook (PDF)
+                </a>
+              </p>
+            </>
           )}
           <AllAgendas
             conference={this.props.pageMetadata.conference}
