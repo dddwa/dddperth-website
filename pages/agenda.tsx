@@ -46,7 +46,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     const dates = this.props.pageMetadata.dates
 
     const AfterSessionDetails = (s: Session) => {
-      return (
+      return dates.AcceptingFeedback ? (
         <>
           <p className="text-center">
             <a className="btn btn-secondary" target="_blank" href={conference.SessionFeedbackLink}>
@@ -54,7 +54,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             </a>
           </p>
         </>
-      )
+      ) : null
     }
 
     return (
