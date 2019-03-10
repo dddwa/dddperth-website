@@ -8,8 +8,8 @@ const venue: Venue = {
   Address: '21 Mounts Bay Rd, Perth',
   Latitude: -31.9565004,
   Longitude: 115.853,
-  Afterparty: '@Liberty Cafe & Bar',
-  AfterpartyAddress: '21 Mounts Bay Rd, Perth',
+  Afterparty: 'TBD',
+  AfterpartyAddress: 'TBD',
   Wifi: 'PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.',
   Accommodation: (
     <Fragment>
@@ -17,10 +17,12 @@ const venue: Venue = {
       special{' '}
       <a href="https://gc.synxis.com/rez.aspx?Chain=14687&amp;locale=en-US&amp;promo=PERTHCONV" target="_blank">
         booking link
-      </a>. Adina Hotel can be contacted on +61 8 9217 8000 or{' '}
+      </a>
+      . Adina Hotel can be contacted on +61 8 9217 8000 or{' '}
       <a className="maillink" href="mailto:perth@adinahotels.com.au">
         perth@adinahotels.com.au
-      </a>.
+      </a>
+      .
     </Fragment>
   ),
   Car: (
@@ -28,7 +30,8 @@ const venue: Venue = {
       PCEC has parking underneath it for{' '}
       <a href="https://www.cityofperthparking.com.au/convention-centre" target="_blank">
         $16.80 for the day
-      </a>.
+      </a>
+      .
     </Fragment>
   ),
   Train: (
