@@ -68,7 +68,6 @@ const Meta: StatelessComponent<MetaArgs> = ({
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
-      <link rel="stylesheet" href="/_next/static/style.css" />
       {instrumentationKey && (
         <script
           type="text/javascript"
