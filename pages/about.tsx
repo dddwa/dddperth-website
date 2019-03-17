@@ -17,7 +17,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Focussing on creating a safe and inclusive environment where everyone is welcome</li>
     </ul>
     <p className="text-center">
-      <img src="/static/images/logo-2018_.png" alt="DDD Perth 2018 logo" style={{ width: '250px' }} />
+      <img src="/static/images/logo.png" alt="DDD Perth logo" style={{ width: '250px' }} />
+      <img src="/static/images/logo-2019.png" alt="DDD Perth 2019 logo" style={{ width: '250px' }} />
     </p>
     <p>
       Furthermore, {props.pageMetadata.conference.Name} aims to both create opportunities for underrepresented
@@ -83,13 +84,19 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           <a>16 September 2017 @ Perth Convention and Exhibition Centre - 330 attendees (360 tickets sold)</a>
         </Link>
       </li>
+      <li>
+        <Link href="/agenda/2018">
+          <a>4 August 2018 @ Perth Convention and Exhibition Centre - 470 attendees (510 tickets sold)</a>
+        </Link>
+      </li>
     </ul>
     <p>
       Developer! Developer! Developer! started in 2005 in the United Kingdom as a community conference organised by
       software developers for software developers.{' '}
       <a href="https://en.wikipedia.org/wiki/Developer!_Developer!_Developer!" target="_blank">
         It's since spread all over the UK and Australia
-      </a>.
+      </a>
+      .
     </p>
     <p>DDD was set up with a number of key elements in mind, which hold true for all DDD conferences held worlwide:</p>
     <ul>
