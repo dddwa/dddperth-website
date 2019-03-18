@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
-import { Fragment, StatelessComponent } from 'react'
+import React, { Fragment, StatelessComponent } from 'react'
 import { Sponsor, SponsorType } from '../config/types'
 
 interface SponsorsProps {
@@ -16,33 +15,39 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
         {sponsors.find(s => s.type === SponsorType.Platinum) ? (
           <Fragment>
             <h2>Platinum Partner</h2>
-            {sponsors.filter(s => s.type === SponsorType.Platinum).map(s => (
-              <a href={s.url} target="_blank" key={s.name} title={s.name}>
-                <img src={s.imageUrl} alt={s.name} className="platinum" />
-              </a>
-            ))}
+            {sponsors
+              .filter(s => s.type === SponsorType.Platinum)
+              .map(s => (
+                <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                  <img src={s.imageUrl} alt={s.name} className="platinum" />
+                </a>
+              ))}
           </Fragment>
         ) : null}
 
         {sponsors.find(s => s.type === SponsorType.Gold) ? (
           <Fragment>
             <h2>Gold Sponsors</h2>
-            {sponsors.filter(s => s.type === SponsorType.Gold).map(s => (
-              <a href={s.url} target="_blank" key={s.name} title={s.name}>
-                <img src={s.imageUrl} alt={s.name} />
-              </a>
-            ))}
+            {sponsors
+              .filter(s => s.type === SponsorType.Gold)
+              .map(s => (
+                <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                  <img src={s.imageUrl} alt={s.name} />
+                </a>
+              ))}
           </Fragment>
         ) : null}
 
         {sponsors.find(s => s.type === SponsorType.Silver) ? (
           <Fragment>
             <h2>Silver Sponsors</h2>
-            {sponsors.filter(s => s.type === SponsorType.Silver).map(s => (
-              <a href={s.url} target="_blank" key={s.name} title={s.name}>
-                <img src={s.imageUrl} alt={s.name} />
-              </a>
-            ))}
+            {sponsors
+              .filter(s => s.type === SponsorType.Silver)
+              .map(s => (
+                <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                  <img src={s.imageUrl} alt={s.name} />
+                </a>
+              ))}
           </Fragment>
         ) : null}
 
@@ -52,23 +57,27 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
             <br />
             <br />
             <br />
-            {sponsors.filter(s => s.type === SponsorType.Service).map(s => (
-              <a href={s.url} target="_blank" key={s.name} title={s.name}>
-                <small>{s.serviceProvided} by:</small>
-                <img src={s.imageUrl} alt={s.name} />
-              </a>
-            ))}
+            {sponsors
+              .filter(s => s.type === SponsorType.Service)
+              .map(s => (
+                <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                  <small>{s.serviceProvided} by:</small>
+                  <img src={s.imageUrl} alt={s.name} />
+                </a>
+              ))}
           </Fragment>
         ) : null}
 
         {sponsors.find(s => s.type === SponsorType.Community) ? (
           <Fragment>
             <h2>Community Partners</h2>
-            {sponsors.filter(s => s.type === SponsorType.Community).map(s => (
-              <a href={s.url} target="_blank" key={s.name} title={s.name}>
-                <img src={s.imageUrl} alt={s.name} />
-              </a>
-            ))}
+            {sponsors
+              .filter(s => s.type === SponsorType.Community)
+              .map(s => (
+                <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                  <img src={s.imageUrl} alt={s.name} />
+                </a>
+              ))}
           </Fragment>
         ) : null}
 
@@ -86,11 +95,13 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
       {sponsors.find(s => s.type === SponsorType.Standard) ? (
         <section className="sponsors standard">
           <h2>Prize Sponsors</h2>
-          {sponsors.filter(s => s.type === SponsorType.Standard).map(s => (
-            <a href={s.url} target="_blank" key={s.name} title={s.name}>
-              <img src={s.imageUrl} alt={s.name} />
-            </a>
-          ))}
+          {sponsors
+            .filter(s => s.type === SponsorType.Standard)
+            .map(s => (
+              <a href={s.url} target="_blank" key={s.name} title={s.name}>
+                <img src={s.imageUrl} alt={s.name} />
+              </a>
+            ))}
         </section>
       ) : null}
     </Fragment>

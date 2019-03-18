@@ -1,5 +1,4 @@
-import React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Action, Conference, Dates } from '../config/types'
 import ActionButton from './actionButton'
 import Countdown from './countdown'

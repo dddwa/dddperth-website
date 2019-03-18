@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
-import { Fragment, StatelessComponent } from 'react'
+import React, { Fragment, StatelessComponent } from 'react'
 import { Conference, Dates } from '../../config/types'
 import '../../styles/screen.scss'
 

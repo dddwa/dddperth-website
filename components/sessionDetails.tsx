@@ -1,5 +1,4 @@
-import React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Session } from '../config/types'
 
 interface SessionProps {
@@ -29,7 +28,8 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
           <em>{p.Name}</em>{' '}
           {p.TwitterHandle || p.WebsiteUrl ? (
             <small>
-              ({p.TwitterHandle ? (
+              (
+              {p.TwitterHandle ? (
                 <React.Fragment>
                   <a
                     href={

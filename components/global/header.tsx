@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
-import { Fragment, StatelessComponent } from 'react'
+import React, { Fragment, StatelessComponent } from 'react'
 import { Conference, Dates } from '../../config/types'
 
 interface HeaderArgs {

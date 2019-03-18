@@ -1,5 +1,4 @@
-import React from 'react'
-import { StatelessComponent } from 'react'
+import React, { StatelessComponent } from 'react'
 import { Socials } from '../../config/types'
 
 interface SocialLinksArgs {

@@ -1,5 +1,4 @@
-import React from 'react'
-import { StatelessComponent } from 'react'
+import React, { StatelessComponent } from 'react'
 import { Action, Conference, Dates } from '../config/types'
 import ActionButton from './actionButton'
 
