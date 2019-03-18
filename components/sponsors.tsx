@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import * as React from 'react'
+import React from 'react'
 import { Fragment, StatelessComponent } from 'react'
 import { Sponsor, SponsorType } from '../config/types'
 

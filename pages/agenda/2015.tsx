@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
@@ -39,8 +38,7 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
                   Registration
                   <br />
                   <em>Burswood on Swan</em>
-                  <br />
-                  1 Camfield Drive, Burswood
+                  <br />1 Camfield Drive, Burswood
                 </td>
               </tr>
 

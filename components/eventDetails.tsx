@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Fragment } from 'react'
 import { Action, Conference, Dates } from '../config/types'
 import ActionButton from './actionButton'
@@ -23,14 +23,13 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
           <h2>Previous event</h2>
         </Fragment>
       )}
-      {dates.HasNotStarted &&
-        !conference.HideDate && (
-          <Fragment>
-            <h2>Countdown to Next Event</h2>
-            <Countdown countdownTo={conference.Date} interval={1000} />
-            <hr />
-          </Fragment>
-        )}
+      {dates.HasNotStarted && !conference.HideDate && (
+        <Fragment>
+          <h2>Countdown to Next Event</h2>
+          <Countdown countdownTo={conference.Date} interval={1000} />
+          <hr />
+        </Fragment>
+      )}
 
       <div className="event-details">
         {!conference.HideVenue && (

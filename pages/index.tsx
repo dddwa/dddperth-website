@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import EventDetails from '../components/eventDetails'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import ImageStrip from '../components/imageStrip'

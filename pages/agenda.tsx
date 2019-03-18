@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
-import * as React from 'react'
+import React from 'react'
 import AllAgendas from '../components/allAgendas'
 import CurrentAgenda from '../components/currentAgenda'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'

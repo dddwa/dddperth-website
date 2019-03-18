@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Action, Conference } from '../config/types'
 import ActionButton from './actionButton'
 import ImportantDatesList from './importantDatesList'

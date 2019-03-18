@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Conference from '../../config/conference'
 import getConferenceDates from '../../config/dates'
 import { Conference as IConference, Dates } from '../../config/types'

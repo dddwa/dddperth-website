@@ -1,5 +1,5 @@
-import * as moment from 'moment'
-import * as React from 'react'
+import moment from 'moment'
+import React from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
@@ -253,7 +253,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                             )
                           }
                         />
-                      </em>:{' '}
+                      </em>
+                      :{' '}
                       <input
                         type="text"
                         className="form-control input-sm"
@@ -271,12 +272,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         'Submitting...'
                       ) : (
                         <React.Fragment>
-                          Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/{this.props
-                            .minVotes !== this.props.maxVotes
+                          Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/
+                          {this.props.minVotes !== this.props.maxVotes
                             ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
                                 this.state.votes.length < this.props.maxVotes ? '+' : ''
                               }`
-                            : this.props.minVotes})
+                            : this.props.minVotes}
+                          )
                         </React.Fragment>
                       )}
                     </button>
