@@ -1,7 +1,7 @@
 import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
-import * as React from 'react'
+import React from 'react'
 import uuid from 'uuid/v1'
 import { logEvent, logException } from '../components/global/analytics'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
@@ -241,18 +241,21 @@ class VotePage extends React.Component<VoteProps, VoteState> {
           <p className="alert alert-warning">
             <strong>Please note:</strong> Our expectation of the community, <strong>and you as a voter</strong>, is that
             you will only vote once and you will vote for a set of talks that make up <em>your</em> perfect agenda
-            regardless of your friends' talks.<br />
-            <br />If you know who submitted any of the sessions we ask that you do not discuss it with anyone or post
-            it on social media so we can retain a level playing field for all submitters through anonymity. We
-            definitely want you to post and talk about the conference and encourage others to vote though so spread the
-            word.
+            regardless of your friends' talks.
             <br />
-            <br /> If we follow this approach as a community then we can be fair to all the submitters who have put time, effort and
-            courage into crafting the amazing session proposals below. If you have any questions please{' '}
+            <br />
+            If you know who submitted any of the sessions we ask that you do not discuss it with anyone or post it on
+            social media so we can retain a level playing field for all submitters through anonymity. We definitely want
+            you to post and talk about the conference and encourage others to vote though so spread the word.
+            <br />
+            <br /> If we follow this approach as a community then we can be fair to all the submitters who have put
+            time, effort and courage into crafting the amazing session proposals below. If you have any questions please{' '}
             <a href={'mailto:' + this.props.pageMetadata.conference.ContactEmail}>contact us</a>.
             <br />
             <br />
-            Thanks!<br />&lt;3 DDD Perth team
+            Thanks!
+            <br />
+            &lt;3 DDD Perth team
           </p>
 
           {this.state.isLoading && <p>Loading sessions...</p>}
@@ -262,18 +265,17 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             </p>
           )}
 
-          {!this.state.isLoading &&
-            !this.state.isError && (
-              <Voting
-                sessions={this.state.sessions}
-                startTime={this.state.startTime}
-                voteId={this.state.voteId}
-                minVotes={minVotes}
-                maxVotes={maxVotes}
-                anonymousVoting={this.props.pageMetadata.conference.AnonymousVoting}
-                submitVoteUrl={this.props.pageMetadata.appConfig.submitVoteUrl}
-              />
-            )}
+          {!this.state.isLoading && !this.state.isError && (
+            <Voting
+              sessions={this.state.sessions}
+              startTime={this.state.startTime}
+              voteId={this.state.voteId}
+              minVotes={minVotes}
+              maxVotes={maxVotes}
+              anonymousVoting={this.props.pageMetadata.conference.AnonymousVoting}
+              submitVoteUrl={this.props.pageMetadata.appConfig.submitVoteUrl}
+            />
+          )}
         </div>
       </Page>
     )

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
@@ -70,7 +70,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       </li>
       <li>
         Emailing us:{' '}
-        <a className="maillink" href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
+        <a
+          className="maillink"
+          href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}
+        >
           {props.pageMetadata.conference.Socials.Email}
         </a>
       </li>

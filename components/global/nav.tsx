@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import * as React from 'react'
-import { Fragment } from 'react'
-import * as Bootstrap from 'react-bootstrap'
+import React, { Fragment } from 'react'
+import { Nav as BSNav, Navbar, NavItem } from 'react-bootstrap'
 import { MenuItem } from '../../config/types'
 
 interface NavArgs {
@@ -22,16 +21,16 @@ class Nav extends React.Component<NavArgs> {
 
   render() {
     return (
-      <Bootstrap.Navbar className="main">
-        <Bootstrap.Navbar.Header>
-          <Bootstrap.Navbar.Toggle />
-        </Bootstrap.Navbar.Header>
-        <Bootstrap.Navbar.Collapse>
-          <Bootstrap.Nav>
+      <Navbar className="main">
+        <Navbar.Header>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <BSNav>
             {this.props.menu.map(item => (
               <Fragment key={item.href}>
                 <Link href={item.href} passHref>
-                  <Bootstrap.NavItem active={isFirstBranchMatched(this.props.pagePath, item.href)}>
+                  <NavItem active={isFirstBranchMatched(this.props.pagePath, item.href)}>
                     {!item.external && item.name}
                     {item.external && (
                       <span>
@@ -43,13 +42,13 @@ class Nav extends React.Component<NavArgs> {
                         <span className="sr-only">{item.name}, will open in a new window</span>
                       </span>
                     )}
-                  </Bootstrap.NavItem>
+                  </NavItem>
                 </Link>
               </Fragment>
             ))}
-          </Bootstrap.Nav>
-        </Bootstrap.Navbar.Collapse>
-      </Bootstrap.Navbar>
+          </BSNav>
+        </Navbar.Collapse>
+      </Navbar>
     )
   }
 }

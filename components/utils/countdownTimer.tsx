@@ -1,6 +1,5 @@
-import * as moment from 'moment'
-import { Duration, Moment } from 'moment'
-import * as React from 'react'
+import moment, { Duration, Moment } from 'moment'
+import React from 'react'
 import dateTimeProvider from './dateTimeProvider'
 
 // Generic Countdown Timer UI component

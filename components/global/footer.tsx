@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { StatelessComponent } from 'react'
+import React, { StatelessComponent } from 'react'
 import { Col, Grid, Row } from 'react-bootstrap'
 import { Conference, MenuItem, Socials } from '../../config/types'
 import FooterNav from './footerNav'

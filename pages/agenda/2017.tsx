@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import ResponsiveVideo from '../../components/responsiveVideo'

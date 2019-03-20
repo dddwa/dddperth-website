@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import dateTimeProvider, { CurrentDate } from './utils/dateTimeProvider'
 
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple

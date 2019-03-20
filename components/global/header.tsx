@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import * as React from 'react'
-import { Fragment, StatelessComponent } from 'react'
+import React, { Fragment, StatelessComponent } from 'react'
 import { Conference, Dates } from '../../config/types'
 
 interface HeaderArgs {
@@ -36,7 +35,8 @@ const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference
               {conference.Goal} See our{' '}
               <Link href="/code-of-conduct">
                 <a>Code of Conduct</a>
-              </Link>.
+              </Link>
+              .
             </p>
           </div>
         </section>

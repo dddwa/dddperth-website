@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Conference } from '../config/types'
 import { CurrentDate } from './utils/dateTimeProvider'
 import isPast from './utils/isPast'

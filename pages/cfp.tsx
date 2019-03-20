@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import * as React from 'react'
+import React from 'react'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
@@ -72,8 +72,9 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
               <a className="maillink" href={'mailto:' + conference.MentoringEmail}>
                 free mentoring service
               </a>
-            </strong>; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run
-            through any ideas you have or give safe and constructive feedback.
+            </strong>
+            ; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run through
+            any ideas you have or give safe and constructive feedback.
           </li>
           <li>
             There will also be free speaker training and support for all speakers, so first timers, juniors, and

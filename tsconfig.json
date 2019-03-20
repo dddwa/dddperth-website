@@ -6,6 +6,7 @@
     "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -15,5 +16,6 @@
     "skipLibCheck": true,
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2015", "es2016"]
-  }
+  },
+  "exclude": ["./deploy/**"]
 }

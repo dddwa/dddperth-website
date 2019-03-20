@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import AutoAffix from 'react-overlays/lib/AutoAffix'
 
 interface AffixWrapperProps {}

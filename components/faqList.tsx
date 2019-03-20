@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import { FAQ } from '../config/types'
 

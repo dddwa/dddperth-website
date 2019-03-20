@@ -1,6 +1,5 @@
-import { Moment } from 'moment'
-import * as moment from 'moment'
-import * as React from 'react'
+import moment, { Moment } from 'moment'
+import React from 'react'
 import { Panel } from 'react-bootstrap'
 import From2017 from '../config/2017'
 import SponsorData from '../config/sponsors'
@@ -48,7 +47,8 @@ class TestingControl extends React.Component<TestingControlProps, TestingControl
       <div id="testing-control">
         <Panel>
           <Panel.Heading>
-            Testing [<a
+            Testing [
+            <a
               style={btnStyle}
               onClick={() => {
                 this.setState({ show: !this.state.show })

@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import ResponsiveVideo from '../../components/responsiveVideo'
@@ -111,7 +110,8 @@ class Agenda2016 extends React.Component<AgendaPageProps> {
               <tr className="breadth-row">
                 <td className="time">12:45</td>
                 <td colSpan={2} className="breadth">
-                  Lunch<br />
+                  Lunch
+                  <br />
                   <em>Ground floor (downstairs)</em>
                 </td>
                 <SessionCell sessionId="ccbb469f-5406-48dc-8e70-d20a84dd2044" />

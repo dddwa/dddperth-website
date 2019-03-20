@@ -1,6 +1,5 @@
 // tslint:disable:object-literal-sort-keys
-import * as React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import Conference from './conference'
 import { Dates, FAQ } from './types'
 
@@ -136,7 +135,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           target="_blank"
         >
           Eventbrite
-        </a>.
+        </a>
+        .
       </Fragment>
     ),
     Category: 'tickets',
@@ -149,7 +149,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
         The Twitter hashtag is{' '}
         <a href={'https://twitter.com/search?q=%23' + Conference.HashTag} target="_blank">
           #{Conference.HashTag}
-        </a>.
+        </a>
+        .
       </Fragment>
     ),
   })
@@ -192,7 +193,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
             and Twitter at{' '}
             <a href={'https://twitter.com/' + Conference.Socials.Twitter.Name} target="_blank">
               @{Conference.Socials.Twitter.Name}
-            </a>. See also the other Social Media accounts at the footer of this page.
+            </a>
+            . See also the other Social Media accounts at the footer of this page.
           </Fragment>
         ) : (
           '. Also, see our various social media accounts at the footer of this page.'
@@ -213,7 +215,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
         if you would like a copy{' '}
         <a className="maillink" href={'mailto:' + Conference.SponsorshipEmail}>
           please contact us
-        </a>.
+        </a>
+        .
       </Fragment>
     ),
   })
@@ -294,7 +297,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           Furthermore, you can see an up to date list of Australian conferences at{' '}
           <a href="https://github.com/readify/devevents" target="_blank">
             Readify's DevEvents repository
-          </a>.
+          </a>
+          .
         </p>
       </Fragment>
     ),
@@ -373,7 +377,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
         <p>
           <a href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
             Meet the team
-          </a>! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
+          </a>
+          ! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
         </p>
       </Fragment>
     ),

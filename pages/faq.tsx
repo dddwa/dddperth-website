@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import FaqList from '../components/faqList'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import getFaqs from '../config/faqs'

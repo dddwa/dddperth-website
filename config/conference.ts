@@ -1,4 +1,4 @@
-import * as moment from 'moment'
+import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
 import { Conference as IConference } from './types'

@@ -1,6 +1,6 @@
 import GoogleMapReact from 'google-map-react'
 import Error from 'next/error'
-import * as React from 'react'
+import React from 'react'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
 import Page from '../layouts/main'
@@ -40,7 +40,8 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
               target="_blank"
             >
               {conference.Venue.Address}
-            </a>.
+            </a>
+            .
           </p>
         </div>
         <div id="map">

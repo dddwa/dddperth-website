@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import * as React from 'react'
-import { StatelessComponent } from 'react'
+import React, { StatelessComponent } from 'react'
 import { MenuItem } from '../../config/types'
 
 interface FooterNavArgs {

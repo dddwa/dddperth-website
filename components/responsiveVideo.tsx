@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { StatelessComponent } from 'react'
+import React, { StatelessComponent } from 'react'
 
 interface ResponsiveVideoArg {
   src: string

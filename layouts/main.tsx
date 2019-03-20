@@ -1,5 +1,4 @@
-import { Fragment } from 'react'
-import * as React from 'react'
+import React, { Fragment } from 'react'
 import * as analytics from '../components/global/analytics'
 import Footer from '../components/global/footer'
 import Header from '../components/global/header'

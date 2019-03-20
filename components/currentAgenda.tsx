@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Fragment, StatelessComponent } from 'react'
+import React, { Fragment, StatelessComponent } from 'react'
 import Agenda, { AgendaProps } from './agenda'
 
 const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => <Fragment>todo</Fragment>
