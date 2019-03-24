@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
+import { SafeLink } from '../../components/global/safeLink'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import Sponsors from '../../components/sponsors'
 import From2015 from '../../config/2015'
@@ -160,9 +161,9 @@ class Agenda2015 extends React.Component<AgendaPageProps> {
           <img src="/static/images/2015.jpg" alt="Picture from 2015 conference registration" />
         </p>
         <p>
-          <a href={From2015.FlickrAlbumUrl} target="_blank">
+          <SafeLink href={From2015.FlickrAlbumUrl} target="_blank">
             Flickr Album
-          </a>
+          </SafeLink>
         </p>
         <Sponsors
           show={true}

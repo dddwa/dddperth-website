@@ -1,5 +1,6 @@
 import React, { StatelessComponent } from 'react'
 import { Socials } from '../../config/types'
+import { SafeLink } from './safeLink'
 
 interface SocialLinksArgs {
   socials: Socials
@@ -9,9 +10,9 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
   <ul className="social">
     {socials.Twitter.Name && (
       <li>
-        <a
+        <SafeLink
           className="fa fa-twitter"
-          rel="nofollow"
+          rel="noopener nofollow"
           href={`https://twitter.com/${socials.Twitter.Name}`}
           title="Twitter, will open in a new window"
           aria-label="Twitter, will open in a new window"
@@ -21,8 +22,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Facebook && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-facebook"
           href={`https://facebook.com/${socials.Facebook}`}
           title="Facebook, will open in a new window"
@@ -33,8 +34,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.GitHub && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-github"
           href={`https://github.com/${socials.GitHub}`}
           title="GitHub, will open in a new window"
@@ -45,8 +46,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Instagram && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-instagram"
           href={`https://www.instagram.com/${socials.Instagram}`}
           title="Instagram, will open in a new window"
@@ -57,8 +58,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Flickr && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-flickr"
           href={socials.Flickr}
           title="Flickr, will open in a new window"
@@ -69,8 +70,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Youtube && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-youtube"
           href={socials.Youtube}
           title="YouTube, will open in a new window"
@@ -81,8 +82,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Blog && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-pencil"
           href={socials.Blog}
           title="Blog, will open in a new window"
@@ -93,8 +94,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Email && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-envelope"
           href={`mailto:${socials.Email}`}
           title="Email, will open in system default mail app"
@@ -104,8 +105,8 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.MailingList && (
       <li>
-        <a
-          rel="nofollow"
+        <SafeLink
+          rel="noopener nofollow"
           className="fa fa-envelope-o"
           href={socials.MailingList}
           title="Mailing List, will open in a new window"

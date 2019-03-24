@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import dddAgendaPage, { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
+import { SafeLink } from '../../components/global/safeLink'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import ResponsiveVideo from '../../components/responsiveVideo'
 import Sponsors from '../../components/sponsors'
@@ -208,13 +209,13 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
           <ResponsiveVideo src={From2017.YouTubeLocknoteEmbedUrl} />
         </div>
         <p>
-          <a href={From2017.YouTubePlaylistUrl} target="_blank">
+          <SafeLink href={From2017.YouTubePlaylistUrl} target="_blank">
             YouTube Playlist
-          </a>{' '}
+          </SafeLink>{' '}
           |{' '}
-          <a href={From2017.FlickrAlbumUrl} target="_blank">
+          <SafeLink href={From2017.FlickrAlbumUrl} target="_blank">
             Flickr Album
-          </a>
+          </SafeLink>
         </p>
         <Sponsors
           show={true}

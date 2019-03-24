@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Session } from '../config/types'
+import { SafeLink } from './global/safeLink'
 
 interface SessionProps {
   session: Session
@@ -26,12 +27,12 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
             className="profile-photo"
           />
           <em>{p.Name}</em>{' '}
-          {p.TwitterHandle || p.WebsiteUrl ? (
+          {(p.TwitterHandle || p.WebsiteUrl) && (
             <small>
               (
-              {p.TwitterHandle ? (
+              {p.TwitterHandle && (
                 <React.Fragment>
-                  <a
+                  <SafeLink
                     href={
                       'https://twitter.com/' +
                       p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')
@@ -39,22 +40,20 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
                     target="_blank"
                   >
                     @{p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')}
-                  </a>
+                  </SafeLink>
                   {p.WebsiteUrl ? ' | ' : null}
                 </React.Fragment>
-              ) : null}
-              {p.WebsiteUrl ? (
-                <React.Fragment>
-                  <a href={p.WebsiteUrl} target="_blank">
-                    {p.WebsiteUrl.includes('linkedin.com')
-                      ? 'LinkedIn'
-                      : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/, '')}
-                  </a>
-                </React.Fragment>
-              ) : null}
+              )}
+              {p.WebsiteUrl && (
+                <SafeLink href={p.WebsiteUrl} target="_blank">
+                  {p.WebsiteUrl.includes('linkedin.com')
+                    ? 'LinkedIn'
+                    : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/, '')}
+                </SafeLink>
+              )}
               )
             </small>
-          ) : null}
+          )}
         </p>
       ))}
     <p className="preserve-whitespace" style={{ marginBottom: '10px' }}>

@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
 import Page from '../layouts/main'
 import AllAgendas from './allAgendas'
+import { SafeLink } from './global/safeLink'
 import { WithPageMetadataProps } from './global/withPageMetadata'
 
 interface DddSession {
@@ -154,18 +155,16 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                 <em>Error loading this session</em>
               </Fragment>
             )}
-            {isLoading === false &&
-              isError === false &&
-              session && (
-                <Fragment>
-                  <strong>
-                    {props.isKeynote ? 'KEYNOTE - ' : props.isLocknote ? 'LOCKNOTE - ' : null}
-                    {session.PresenterName}
-                  </strong>
-                  <br />
-                  <em>{session.SessionTitle}</em>
-                </Fragment>
-              )}
+            {isLoading === false && isError === false && session && (
+              <Fragment>
+                <strong>
+                  {props.isKeynote ? 'KEYNOTE - ' : props.isLocknote ? 'LOCKNOTE - ' : null}
+                  {session.PresenterName}
+                </strong>
+                <br />
+                <em>{session.SessionTitle}</em>
+              </Fragment>
+            )}
           </td>
         )
       }
@@ -206,14 +205,14 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                           {this.state.selectedSession.PresenterTwitterAlias.split(',')
                             .map(alias => alias.trim().replace(/^@/, ''))
                             .map(alias => (
-                              <a
+                              <SafeLink
                                 key={alias}
                                 href={'https://twitter.com/' + alias}
                                 target="_blank"
                                 style={{ marginRight: '3px' }}
                               >
                                 @{alias}
-                              </a>
+                              </SafeLink>
                             ))}
                         </Fragment>
                       )}
@@ -223,9 +222,9 @@ const dddAgendaPage = <TOriginalProps extends {}>(
                           {this.state.selectedSession.PresenterWebsite.split(',')
                             .map(website => website.trim())
                             .map(website => (
-                              <a key={website} href={website} target="_blank" style={{ marginRight: '3px' }}>
+                              <SafeLink key={website} href={website} target="_blank" style={{ marginRight: '3px' }}>
                                 {website}
-                              </a>
+                              </SafeLink>
                             ))}
                         </Fragment>
                       )}
