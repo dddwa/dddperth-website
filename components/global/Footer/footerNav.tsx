@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { StatelessComponent } from 'react'
-import { MenuItem } from '../../config/types'
-import { SafeLink } from './safeLink'
+import { MenuItem } from '../../../config/types'
+import { SafeLink } from '../safeLink'
 
 interface FooterNavArgs {
   menu: MenuItem[]
