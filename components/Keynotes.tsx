@@ -1,5 +1,6 @@
 import React from 'react'
 import { Conference } from '../config/types'
+import { SafeLink } from './global/safeLink'
 import SessionDetails from './sessionDetails'
 
 export interface KeynotesProps {
@@ -22,21 +23,19 @@ export default ({ conference }: KeynotesProps) => (
                 <small>{keynote.Presenters[0].Tagline}</small>
                 {keynote.Presenters[0].TwitterHandle || keynote.Presenters[0].WebsiteUrl ? (
                   <small>
-                    <br />
-                    ({keynote.Presenters[0].TwitterHandle ? (
+                    <br />(
+                    {keynote.Presenters[0].TwitterHandle ? (
                       <React.Fragment>
-                        <a href={'https://twitter.com/' + keynote.Presenters[0].TwitterHandle} target="_blank">
+                        <SafeLink href={'https://twitter.com/' + keynote.Presenters[0].TwitterHandle} target="_blank">
                           @{keynote.Presenters[0].TwitterHandle}
-                        </a>
+                        </SafeLink>
                         {keynote.Presenters[0].WebsiteUrl ? ' | ' : null}
                       </React.Fragment>
                     ) : null}
                     {keynote.Presenters[0].WebsiteUrl ? (
-                      <React.Fragment>
-                        <a href={keynote.Presenters[0].WebsiteUrl} target="_blank">
-                          {keynote.Presenters[0].WebsiteUrl}
-                        </a>
-                      </React.Fragment>
+                      <SafeLink href={keynote.Presenters[0].WebsiteUrl} target="_blank">
+                        {keynote.Presenters[0].WebsiteUrl}
+                      </SafeLink>
                     ) : null}
                     )
                   </small>

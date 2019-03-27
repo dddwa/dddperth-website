@@ -3,6 +3,7 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
 import { Session, Sponsor } from '../config/types'
+import { SafeLink } from './global/safeLink'
 import SessionDetails from './sessionDetails'
 
 export interface SessionCellProps {
@@ -136,36 +137,34 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                 <em>Error loading this session</em>
               </Fragment>
             )}
-            {isLoading === false &&
-              isError === false &&
-              session && (
-                <Fragment>
-                  <strong>
-                    {props.isKeynote
-                      ? 'KEYNOTE - '
-                      : props.isLocknote
-                        ? 'LOCKNOTE - '
-                        : props.isLunchnote
-                          ? 'LUNCHNOTE - '
-                          : null}
-                    {session.Presenters.map(p => p.Name).join(', ')}
-                  </strong>
-                  <br />
-                  <em>{session.Title}</em>
-                  {props.sponsorName && (
-                    <Fragment>
-                      <br />
-                      <small>Sponsored by: {props.sponsorName}</small>
-                    </Fragment>
-                  )}
-                  {props.room && (
-                    <Fragment>
-                      <br />
-                      <small className="room">{props.room}</small>
-                    </Fragment>
-                  )}
-                </Fragment>
-              )}
+            {isLoading === false && isError === false && session && (
+              <Fragment>
+                <strong>
+                  {props.isKeynote
+                    ? 'KEYNOTE - '
+                    : props.isLocknote
+                    ? 'LOCKNOTE - '
+                    : props.isLunchnote
+                    ? 'LUNCHNOTE - '
+                    : null}
+                  {session.Presenters.map(p => p.Name).join(', ')}
+                </strong>
+                <br />
+                <em>{session.Title}</em>
+                {props.sponsorName && (
+                  <Fragment>
+                    <br />
+                    <small>Sponsored by: {props.sponsorName}</small>
+                  </Fragment>
+                )}
+                {props.room && (
+                  <Fragment>
+                    <br />
+                    <small className="room">{props.room}</small>
+                  </Fragment>
+                )}
+              </Fragment>
+            )}
           </td>
         )
       }
@@ -198,7 +197,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                       <hr />
                       <p className="text-center">
                         Sponsored by:
-                        <a
+                        <SafeLink
                           href={this.state.selectedSessionSponsor.url}
                           target="_blank"
                           key={this.state.selectedSessionSponsor.name}
@@ -209,7 +208,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                             alt={this.state.selectedSessionSponsor.name}
                             style={{ width: '200px' }}
                           />
-                        </a>
+                        </SafeLink>
                       </p>
                     </Fragment>
                   )}

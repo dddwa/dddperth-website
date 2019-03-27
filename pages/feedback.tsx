@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
+import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
@@ -61,12 +62,12 @@ class FeedbackPage extends React.Component<WithPageMetadataProps> {
             </Link>
           </li>
           <p className="text-center">
-            <a href={conference.ConferenceFeedbackLink} target="_blank" className="btn btn-primary">
+            <SafeLink href={conference.ConferenceFeedbackLink} target="_blank" className="btn btn-primary">
               Give conference feedback
-            </a>{' '}
-            <a href={conference.SessionFeedbackLink} target="_blank" className="btn btn-secondary">
+            </SafeLink>{' '}
+            <SafeLink href={conference.SessionFeedbackLink} target="_blank" className="btn btn-secondary">
               Give session feedback
-            </a>
+            </SafeLink>
           </p>
         </ul>
       </Page>

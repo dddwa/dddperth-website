@@ -1,4 +1,5 @@
 import React from 'react'
+import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
@@ -25,9 +26,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       {props.pageMetadata.conference.Socials.Twitter.Name && (
         <li>
           <strong>Twitter:</strong>{' '}
-          <a href={'https://twitter.com/' + props.pageMetadata.conference.Socials.Twitter.Name} target="_blank">
+          <SafeLink href={'https://twitter.com/' + props.pageMetadata.conference.Socials.Twitter.Name} target="_blank">
             @{props.pageMetadata.conference.Socials.Twitter.Name}
-          </a>
+          </SafeLink>
         </li>
       )}
       <li>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
+import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
@@ -93,9 +94,9 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         </p>
 
         <p className="text-center">
-          <a className="btn content" target="_blank" href={conference.SessionizeUrl}>
+          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
             Submit a session via Sessionize
-          </a>
+          </SafeLink>
         </p>
 
         <p>Other things to note for presenters:</p>
@@ -129,17 +130,17 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         </ul>
 
         <p className="text-center">
-          <a className="btn content" target="_blank" href={conference.SessionizeUrl}>
+          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
             Submit a session via Sessionize
-          </a>
+          </SafeLink>
         </p>
 
         <h2>Already submitted, but want to edit?</h2>
 
         <p className="text-center">
-          <a className="btn btn-secondary" target="_blank" href={conference.SessionizeEditUrl}>
+          <SafeLink className="btn btn-secondary" target="_blank" href={conference.SessionizeEditUrl}>
             Edit your session(s) via Sessionize
-          </a>
+          </SafeLink>
         </p>
       </Page>
     )
