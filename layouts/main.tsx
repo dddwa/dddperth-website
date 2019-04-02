@@ -5,7 +5,7 @@ import Header from '../components/global/header'
 import Meta from '../components/global/meta'
 import Nav from '../components/global/nav'
 import { PageMetadata } from '../components/global/withPageMetadata'
-import TestingControl from '../components/testingControl'
+import { TestingControl } from '../components/TestingControl/TestingControl'
 import Menu from '../config/menu'
 
 export interface MainProps {

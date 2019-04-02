@@ -1633,23 +1633,6 @@ tr td.highlight-session {
   }
 }
 
-// Testing control
-#testing-control {
-  position: fixed;
-  top: 40px;
-  right: 40px;
-  z-index: 100;
-  @include opacity(0.9);
-}
-
-@media only screen and (max-width: 500px) {
-  #testing-control {
-    right: inherit;
-    left: 0;
-    top: 0;
-  }
-}
-
 @media only screen and (min-width: 360px) {
   // Countdown
   .timer {

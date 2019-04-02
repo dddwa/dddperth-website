@@ -5,13 +5,17 @@ import styled, { CreateStyled } from '@emotion/styled-base'
 export const theme = {
   colors: {
     primary: '#008554',
+    primaryDark: '#006c44',
+    secondary: '#da459c',
+    secondaryDark: '#d63091',
+    inverse: '#4b4c4e',
+    inverseDark: '#3f4041',
+    tertiary: '#2274a5',
+    tertiaryDark: '#1e6590',
     body: '#292929',
     darkGrey: '#58595b',
     lightGrey: '#f0f0f4',
-    callContent: '#da459c',
-    voting: '#2274a5',
     tickets: '#eac435',
-    agenda: '#58595b',
     linkHoverFg: '#2a7dac',
     linkFocusBg: '#54a6d6',
     // Agenda
@@ -35,7 +39,10 @@ export const theme = {
   },
   fonts: {
     main: "'Open Sans', Arial, sans-serif",
+    // this is hopefully temporary while we return to 16px as the top font
+    insaneBootstrapDefault: 10,
     defaultSize: 16,
+    sizeSm: 14,
   },
 }
 
