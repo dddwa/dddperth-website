@@ -37,7 +37,13 @@ export interface StyledButtonProps {
   kind: ButtonKinds
 }
 
-export const StyledButton = styled('button')<StyledButtonProps>(({ theme, kind }) => ({
+function shouldStyledButtonForwardProps(prop: string) {
+  return prop !== 'kind'
+}
+
+export const StyledButton = styled('button', {
+  shouldForwardProp: shouldStyledButtonForwardProps,
+})<StyledButtonProps>(({ theme, kind }) => ({
   ...buttonKindStyles(kind, theme),
   cursor: 'pointer',
   display: 'block',
@@ -107,7 +113,9 @@ export const StyledButton = styled('button')<StyledButtonProps>(({ theme, kind }
   },
 }))
 
-export const StyledLinkButton = styled('button')(({ theme }) => ({
+export const StyledLinkButton = styled('button', {
+  shouldForwardProp: shouldStyledButtonForwardProps,
+})(({ theme }) => ({
   display: 'inline',
   padding: 0,
   margin: 0,

@@ -10,5 +10,9 @@ export interface ButtonProps
 
 export const Button: React.FC<ButtonProps> = props => {
   const Component = props.kind !== 'link' ? StyledButton : StyledLinkButton
-  return <Component {...props}>{props.children}</Component>
+  return (
+    <Component type="button" {...props}>
+      {props.children}
+    </Component>
+  )
 }
