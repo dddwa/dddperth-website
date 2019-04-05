@@ -8,7 +8,9 @@ export interface FaqDetailProps {
 
 export const FaqDetail: React.FC<FaqDetailProps> = ({ faq }) => (
   <StyledDetails>
-    <StyledSummary>{faq.Question}</StyledSummary>
+    <StyledSummary>
+      <span>{faq.Question}</span>
+    </StyledSummary>
     <StyledDetailsBody>
       {faq.Answer ? <p>{faq.Answer}</p> : <Fragment>{faq.AnswerWithoutParagraph}</Fragment>}
     </StyledDetailsBody>
