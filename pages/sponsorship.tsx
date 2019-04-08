@@ -24,8 +24,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </p>
     <ul>
       <li>
-        Making the ticket price as low as possible ($50); people don't need to request PD budget from their employer to
-        attend and it's accessible to most people regardless of financial circumstance
+        Making the ticket price as low as possible ({props.pageMetadata.conference.TicketPrice}); people don't need to
+        request PD budget from their employer to attend and it's accessible to most people regardless of financial
+        circumstance
       </li>
       <li>
         Running the event on a Saturday; people don't have to arrange time off work and contractors don't have to miss
