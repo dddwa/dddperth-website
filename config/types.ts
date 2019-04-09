@@ -11,6 +11,7 @@ export interface Conference {
   Goal: string
   GoogleAnalyticsId: string
   TicketPrice: string
+  ChildcarePrice: string
   EventbriteId: string
   FinancialAssistanceEventbriteCode: string
   IsSoldOut: boolean
