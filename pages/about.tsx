@@ -110,13 +110,13 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p>We have a number of sister events across Australia:</p>
     <p className="text-center">
       <SafeLink href="https://dddmelbourne.com/" target="_blank">
-        <img src="/static/images/logo-dddmelbourne.png" alt="DDD Melbourne logo" style={{ height: '125px' }} />
+        <img src="/static/images/logo-dddmelbourne-2019.jpg" alt="DDD Melbourne logo" style={{ height: '125px' }} />
       </SafeLink>{' '}
       <SafeLink href="http://dddsydney.com.au/" target="_blank">
-        <img src="/static/images/logo-dddsydney-new.png" alt="DDD Sydney logo" style={{ height: '125px' }} />
+        <img src="/static/images/logo-dddsydney-2019.png" alt="DDD Sydney logo" style={{ height: '125px' }} />
       </SafeLink>{' '}
       <SafeLink href="http://dddbrisbane.com/" target="_blank">
-        <img src="/static/images/logo-dddbrisbane-new.png" alt="DDD Brisbane logo" style={{ height: '125px' }} />
+        <img src="/static/images/logo-dddbrisbane-2019.jpg" alt="DDD Brisbane logo" style={{ height: '125px' }} />
       </SafeLink>
     </p>
   </Page>
