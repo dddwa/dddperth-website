@@ -601,10 +601,6 @@ footer {
       background-color: darken($primary-color, 3%);
     }
   }
-  .copyright {
-    text-align: center;
-    font-size: 90%;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -1637,23 +1633,6 @@ tr td.highlight-session {
   }
 }
 
-// Testing control
-#testing-control {
-  position: fixed;
-  top: 40px;
-  right: 40px;
-  z-index: 100;
-  @include opacity(0.9);
-}
-
-@media only screen and (max-width: 500px) {
-  #testing-control {
-    right: inherit;
-    left: 0;
-    top: 0;
-  }
-}
-
 @media only screen and (min-width: 360px) {
   // Countdown
   .timer {
@@ -2328,9 +2307,6 @@ tr td.highlight-session {
     padding-bottom: 60px;
     nav.foot-nav {
       padding: 40px 0;
-    }
-    .copyright {
-      font-size: 85%;
     }
   }
 
