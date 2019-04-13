@@ -50,15 +50,10 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
         />
       )
     } else if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      // <tito-widget event="dddperth/{conference.EventId}"></tito-widget>
-      ticketFrame = (
-        <div style={{ border: 0 }}>
-          <div
-            id="tito-frame"
-            dangerouslySetInnerHTML={{ __html: `<tito-widget event="dddperth/${conference.EventId}" />` }}
-          />
-        </div>
-      )
+      // need to use this custom elemement <tito-widget event="{account_id}/{conference.EventId}"></tito-widget>
+      ticketFrame = ticketFrame = React.createElement('tito-widget', {
+        event: `dddperth/${conference.EventId}`,
+      })
     }
 
     return (
