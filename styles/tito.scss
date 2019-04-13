@@ -341,3 +341,13 @@ input.form-control.tito-discount-code-field.discount-code-field {
   text-align: center;
   width: 100%;
 }
+
+/* Removing conflicts with our CSS */
+.tito-wrapper form {
+  padding: 0;
+  background-color: transparent;
+}
+
+.tito-ticket.row::before {
+  content: none;
+}
