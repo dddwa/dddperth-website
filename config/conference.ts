@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
-import { Conference as IConference } from './types'
+import { Conference as IConference, TicketsProvider } from './types'
 import venue from './venue'
 
 const name = 'DDD Perth'
@@ -13,7 +13,7 @@ const date = moment.parseZone('2019-08-03T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2015
-const registrationOpenFrom = moment.parseZone('2019-04-30T17:00:00+08:00')
+const registrationOpenFrom = moment.parseZone('2019-04-01T17:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
@@ -87,7 +87,8 @@ const Conference: IConference = {
   GoogleAnalyticsId: 'UA-60040308-1',
   TicketPrice: '$60',
   ChildcarePrice: '$30',
-  EventbriteId: null,
+  TicketsProviderId: TicketsProvider.Tito,
+  EventId: 'testevent',
   FinancialAssistanceEventbriteCode: 'financialassistance',
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',

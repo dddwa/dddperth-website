@@ -12,7 +12,8 @@ export interface Conference {
   GoogleAnalyticsId: string
   TicketPrice: string
   ChildcarePrice: string
-  EventbriteId: string
+  TicketsProviderId: TicketsProvider
+  EventId: string
   FinancialAssistanceEventbriteCode: string
   IsSoldOut: boolean
   HashTag: string
@@ -71,6 +72,11 @@ export interface Conference {
   Sponsors: Sponsor[]
 
   Keynotes: Session[]
+}
+
+export enum TicketsProvider {
+  Eventbrite,
+  Tito,
 }
 
 export interface Venue {
