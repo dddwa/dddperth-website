@@ -401,94 +401,6 @@ h2 + .event-details {
 .important-dates {
   padding-bottom: 20px;
 }
-.imp-date {
-  position: relative;
-  margin: 23px 15px;
-  padding: 1px 20px 0px 20px;
-  background: #f0f0f0;
-  border: 7px solid #000;
-  border-top-width: 0;
-  border-right-width: 0;
-  border-left-width: 0;
-  text-align: left;
-  strong {
-    display: block;
-  }
-  h3 {
-    font-weight: $regular;
-    font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    strong {
-      font-size: 120%;
-    }
-  }
-  p {
-    margin: 10px 0;
-  }
-}
-
-.imp-date.done {
-  h3,
-  p {
-    @include opacity(0.3);
-  }
-}
-
-.ico-done {
-  position: absolute;
-  right: 20px;
-  top: 25px;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  @include border-radius(50%);
-  overflow: hidden;
-  background: $primary-color;
-  text-align: center;
-}
-.ico-done:before {
-  content: '\f00c';
-  font-family: 'FontAwesome';
-  color: #fff;
-  text-align: center;
-  font-size: 20px;
-}
-
-.imp-date:before,
-.imp-date:after {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 28px;
-  background: url('/static/images/cal-top-mob.png') 0 0 no-repeat;
-  position: absolute;
-  top: 0;
-  @include transform(translateY(-50%));
-}
-.imp-date:before {
-  left: 30px;
-}
-.imp-date:after {
-  right: 30px;
-}
-
-// Border Colours
-.imp-date.content {
-  border-color: $call-content;
-}
-.imp-date.voting {
-  border-color: $voting;
-}
-.imp-date.tickets {
-  border-color: $tickets;
-}
-.imp-date.agenda {
-  border-color: $agenda;
-}
-.imp-date.conference {
-  border-color: $primary-color;
-}
 
 // Keynotes
 .keynote {
@@ -693,49 +605,6 @@ section.right-sidebar {
         margin: 0 auto;
       }
     }
-    .important-dates-right {
-      margin-bottom: 30px;
-      .imp-date {
-        float: none;
-        width: auto;
-        margin: 10px 0 0 0;
-        border-bottom: 0;
-        border-right-width: 7px;
-        padding: 10px 15px 2px 15px;
-        h3,
-        p {
-          font-size: 14px;
-        }
-        h3 {
-          font-weight: 700;
-          margin: 0;
-          strong {
-            font-size: 100%;
-            display: inline-block;
-          }
-        }
-        p {
-          margin-top: 2px;
-          strong {
-            display: inline-block;
-            font-weight: 400;
-          }
-          strong:after {
-            content: '-';
-            display: inline-block;
-            margin: 0 6px;
-          }
-        }
-        .ico-done {
-          right: 15px;
-          top: 16px;
-        }
-      }
-      .imp-date:before,
-      .imp-date:after {
-        display: none;
-      }
-    }
   }
 }
 
@@ -781,49 +650,6 @@ section.full-width {
         margin: 0 auto;
         margin-top: 20px;
       }
-    }
-  }
-  .important-dates-right {
-    margin-bottom: 30px;
-    .imp-date {
-      float: none;
-      width: auto;
-      margin: 10px 0 0 0;
-      border-bottom: 0;
-      border-right-width: 7px;
-      padding: 10px 15px 2px 15px;
-      h3,
-      p {
-        font-size: 14px;
-      }
-      h3 {
-        font-weight: 700;
-        margin: 0;
-        strong {
-          font-size: 100%;
-          display: inline-block;
-        }
-      }
-      p {
-        margin-top: 2px;
-        strong {
-          display: inline-block;
-          font-weight: 400;
-        }
-        strong:after {
-          content: '-';
-          display: inline-block;
-          margin: 0 0 0 6px;
-        }
-      }
-      .ico-done {
-        right: 15px;
-        top: 16px;
-      }
-    }
-    .imp-date:before,
-    .imp-date:after {
-      display: none;
     }
   }
 }
@@ -1730,15 +1556,6 @@ tr td.highlight-session {
     }
   }
 
-  // Important Dates
-  .imp-date {
-    float: left;
-    width: 47%;
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    margin-bottom: 0;
-  }
-
   // What Now? CTA's
   .what-now {
     .btn {
@@ -1843,12 +1660,6 @@ tr td.highlight-session {
   .important-dates {
     padding-bottom: 30px;
   }
-  .imp-date {
-    width: 30.25%;
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    margin-top: 35px;
-  }
 
   // Strip of Photos
   section.image-strip {
@@ -1918,19 +1729,6 @@ tr td.highlight-session {
         padding: 7px 15px;
         margin-top: 35px;
       }
-      .important-dates-right {
-        .imp-date {
-          float: none;
-          width: auto;
-          h3,
-          p {
-            font-size: 15px;
-          }
-        }
-        .imp-date:nth-child(odd) {
-          margin-right: 0;
-        }
-      }
     }
   }
 
@@ -1944,10 +1742,6 @@ tr td.highlight-session {
         height: 278px;
         padding: 30px;
       }
-    }
-    .important-dates-right {
-      float: right;
-      width: 48%;
     }
   }
 
@@ -2073,48 +1867,6 @@ tr td.highlight-session {
   // Important Dates
   .important-dates {
     padding-bottom: 40px;
-  }
-  .imp-date {
-    margin-top: 53px;
-    padding: 20px 20px 10px 20px;
-    h3 {
-      font-size: 22px;
-      strong {
-        font-size: 120%;
-      }
-    }
-  }
-  .imp-date:before,
-  .imp-date:after {
-    width: 40px;
-    height: 58px;
-    background: url('/static/images/cal-top.png') 0 0 no-repeat;
-  }
-  .imp-date:before {
-    left: 27px;
-  }
-  .imp-date:after {
-    right: 27px;
-  }
-
-  section.right-sidebar {
-    .imp-date {
-      .ico-done {
-        @include transform(scale(0.9));
-      }
-    }
-  }
-
-  // Date Done
-  .ico-done {
-    right: 20px;
-    top: 35px;
-    width: 35px;
-    height: 35px;
-    line-height: 37px;
-  }
-  .ico-done:before {
-    font-size: 22px;
   }
 
   // Strip of Photos
@@ -2273,29 +2025,6 @@ tr td.highlight-session {
   .important-dates {
     padding-bottom: 50px;
   }
-  .imp-date {
-    width: 23%;
-    margin-left: 1%;
-    margin-right: 1%;
-    h3 {
-      font-size: 22px;
-      strong {
-        font-size: 120%;
-      }
-    }
-  }
-
-  // Date Done
-  .ico-done {
-    right: 20px;
-    top: 37px;
-    width: 37px;
-    height: 37px;
-    line-height: 39px;
-  }
-  .ico-done:before {
-    font-size: 23px;
-  }
 
   // Strip of Photos
   section.image-strip {
@@ -2345,14 +2074,6 @@ tr td.highlight-session {
         padding: 20px 25px;
         margin-top: 45px;
       }
-      .important-dates-right {
-        .imp-date {
-          h3,
-          p {
-            font-size: 16px;
-          }
-        }
-      }
     }
   }
 
@@ -2364,14 +2085,6 @@ tr td.highlight-session {
         height: 301px;
         .btn {
           margin-top: 0;
-        }
-      }
-      .important-dates-right {
-        .imp-date {
-          h3,
-          p {
-            font-size: 16px;
-          }
         }
       }
     }
@@ -2485,26 +2198,6 @@ tr td.highlight-session {
   .important-dates {
     padding-bottom: 50px;
   }
-  .imp-date {
-    margin-top: 60px;
-    h3 {
-      font-size: 24px;
-      strong {
-        font-size: 120%;
-      }
-    }
-  }
-  // Date Done
-  .ico-done {
-    right: 20px;
-    top: 40px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-  }
-  .ico-done:before {
-    font-size: 24px;
-  }
 
   // Strip of Photos
   section.image-strip {
@@ -2533,12 +2226,6 @@ tr td.highlight-session {
     }
   }
 
-  // Full Width Pagetype
-  section.full-width .important-dates-right .imp-date .ico-done {
-    right: 15px;
-    top: 20px;
-  }
-
   // Full Width Page Type
   section.full-width {
     .right-col {
@@ -2549,9 +2236,6 @@ tr td.highlight-session {
         .btn {
           margin-top: 0;
         }
-      }
-      .important-dates-right .imp-date {
-        padding: 18px 18px 8px 18px;
       }
     }
   }
