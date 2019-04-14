@@ -1,6 +1,6 @@
 import { StatelessComponent } from 'react'
 import EventDetailsSummary from '../components/eventDetailsSummary'
-import ImportantDatesList from '../components/importantDatesList'
+import { ImportantDatesList } from '../components/ImportantDatesList/importantDatesList'
 import getConferenceActions from '../config/actions'
 import Main, { MainProps } from './main'
 
@@ -25,9 +25,11 @@ const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetad
                 pagePath={context.pagePath}
               />
               <h2>Important Dates</h2>
-              <div className="important-dates-right slick">
-                <ImportantDatesList conference={pageMetadata.conference} currentDate={pageMetadata.currentDate} />
-              </div>
+              <ImportantDatesList
+                layout="inline"
+                conference={pageMetadata.conference}
+                currentDate={pageMetadata.currentDate}
+              />
             </div>
           </div>
         </div>
