@@ -45,7 +45,7 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
             .
           </p>
         </div>
-        <div id="map">
+        <div id="map" aria-hidden>
           <div id="map-view">
             <GoogleMapReact
               bootstrapURLKeys={{
