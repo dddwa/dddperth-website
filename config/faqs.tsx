@@ -87,7 +87,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Will childcare be available?',
     Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${
       Conference.ChildcarePrice
-    }. For this year we are limiting it to children 3 years and above, and to a maximum of 20 places. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket.`,
+    }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
   })
 
   Faqs.push({
@@ -316,38 +316,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
         </p>
         <ul>
           <li>
-            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
-              Rob Moore
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/JakeGinnivan" target="_blank">
-              Jake Ginnivan
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/LeeRyanCampbell" target="_blank">
-              Lee Campbell
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/ian_hughes" target="_blank">
-              Ian Hughes
-            </SafeLink>
-          </li>
-          <li>
             <SafeLink href="https://www.linkedin.com/in/rebeccacwaters/" target="_blank">
               Rebecca Waters
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/AshleyAitken" target="_blank">
-              Ashley Aitken
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/robdcrowley" target="_blank">
-              Rob Crowley
             </SafeLink>
           </li>
           <li>
@@ -356,8 +326,13 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/zia_marjan" target="_blank">
-              Marjan Zia Khodadadian
+            <SafeLink href="https://twitter.com/ian_hughes" target="_blank">
+              Ian Hughes
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
+              Rob Moore
             </SafeLink>
           </li>
           <li>
@@ -366,8 +341,23 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/andrealchagas" target="_blank">
-              Andrea Chagas
+            <SafeLink href="https://twitter.com/AshleyAitken" target="_blank">
+              Ashley Aitken
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
+              David Schokker
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/kristysachse" target="_blank">
+              Kristy Sachse
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/meliss_houghton" target="_blank">
+              Melissa Houghton
             </SafeLink>
           </li>
           <li>
@@ -375,9 +365,49 @@ export default function getFaqs(dates: Dates): FAQ[] {
               Derek Bingham
             </SafeLink>
           </li>
+          <li>
+            <SafeLink href="https://twitter.com/_vedusha_" target="_blank">
+              Vedusha Chooramun
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/mzaatar" target="_blank">
+              Mo Zaatar
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/al5848" target="_blank">
+              Allen Azemia
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/Caiwrote" target="_blank">
+              Cairo Malet
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/mattclarkdotnet" target="_blank">
+              Matt Clark
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/inaiei" target="_blank">
+              Inaie Ignacio
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/amys_kapers" target="_blank">
+              Amy Kapernick
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/eleusis7" target="_blank">
+              Priyaj Sham Chukoury
+            </SafeLink>
+          </li>
         </ul>
         <p>
-          <SafeLink href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
+          <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
             Meet the team
           </SafeLink>
           ! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
