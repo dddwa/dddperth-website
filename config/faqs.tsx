@@ -67,7 +67,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'Will refreshments be provided?',
     Answer:
-      'Yes, attendees will receive lunch and snacks throughout the day and we will have a coffee cart operating all day. We usually will also have a couple of small snacks in the showbags.',
+      'Yes, attendees will receive lunch and snacks throughout the day and we will have a coffee cart operating all day.',
   })
 
   Faqs.push({
@@ -116,8 +116,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Can I pay by cheque, invoice, cash, Coinye West?',
     Answer: (
       <Fragment>
-        Payments can be made with credit card using Eventbrite via our tickets page when registrations are open.
-        Companies that want to buy bulk tickets (> 5) can{' '}
+        Payments can be made with credit card using Tito via our tickets page when registrations are open. Companies
+        that want to buy bulk tickets (> 10) can{' '}
         <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
           contact us
         </a>{' '}
@@ -129,18 +129,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Can I cancel/give my ticket to someone else?',
-    Answer: (
-      <Fragment>
-        You are welcome to send someone else in your place. Please do this through{' '}
-        <SafeLink
-          href="https://www.eventbrite.com/support/articles/en_US/How_To/how-to-update-your-ticket-registration-information"
-          target="_blank"
-        >
-          Eventbrite
-        </SafeLink>
-        .
-      </Fragment>
-    ),
+    Answer: <Fragment>You are welcome to send someone else in your place. Please do this through Tito.</Fragment>,
     Category: 'tickets',
   })
 
