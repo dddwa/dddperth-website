@@ -1,6 +1,7 @@
 import Error from 'next/error'
 import React from 'react'
-import FaqList from '../components/faqList'
+import { FaqList } from '../components/FAQList/FaqList'
+import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
@@ -27,19 +28,19 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
       <Page
         pageMetadata={this.props.pageMetadata}
         title="Tickets"
-        description={'Purchase tickets for ' + conference.Name}
+        description={`Purchase tickets for ${conference.Name}`}
       >
-        <div className="container">
+        <StyledContainer>
           <h1>Tickets</h1>
           <FaqList faqs={faqs.filter(f => f.Category === 'tickets')} />
           <iframe
-            src={'//eventbrite.com.au/tickets-external?ref=etckt&eid=' + conference.EventbriteId}
+            src={`//eventbrite.com.au/tickets-external?ref=etckt&eid=${conference.EventbriteId}`}
             style={{ border: 0 }}
             height="650"
             width="100%"
             scrolling="auto"
           />
-        </div>
+        </StyledContainer>
       </Page>
     )
   }
