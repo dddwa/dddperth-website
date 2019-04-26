@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
-import { Conference as IConference } from './types'
+import { Conference as IConference, TicketsProvider } from './types'
 import venue from './venue'
 
 const name = 'DDD Perth'
@@ -87,7 +87,9 @@ const Conference: IConference = {
   GoogleAnalyticsId: 'UA-60040308-1',
   TicketPrice: '$60',
   ChildcarePrice: '$30',
-  EventbriteId: null,
+  TicketsProviderId: TicketsProvider.Tito,
+  TicketsProviderAccountId: 'dddperth',
+  EventId: 'testevent',
   FinancialAssistanceEventbriteCode: 'financialassistance',
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
