@@ -1,5 +1,7 @@
 import { Moment } from 'moment'
 
+export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'conference'
+
 export interface Conference {
   Name: string
   Instance: string
@@ -97,7 +99,7 @@ export interface Venue {
 export interface ImportantDate {
   Description: string
   Date: Moment
-  Type: string
+  Type: Types
 }
 
 export interface Dates {
