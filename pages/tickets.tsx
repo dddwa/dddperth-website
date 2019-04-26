@@ -1,5 +1,6 @@
 import Error from 'next/error'
 import React from 'react'
+import { isNullOrUndefined } from 'util'
 import { FaqList } from '../components/FAQList/FaqList'
 import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
@@ -18,15 +19,17 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
     return {}
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const conference = this.props.pageMetadata.conference
     if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      // need to include this script <script src='https://js.tito.io/v1' async></script>
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = 'https://js.tito.io/v1'
-      script.async = true
-      document.body.appendChild(script)
+      if (!isNullOrUndefined(document) && document.getElementById('tito') === null) {
+        // need to include this script <script src='https://js.tito.io/v1' async></script>
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = 'https://js.tito.io/v1'
+        script.async = true
+        document.body.appendChild(script)
+      }
     }
   }
 
@@ -51,9 +54,9 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
         />
       )
     } else if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      // need to use this custom elemement <tito-widget event="{account_id}/{conference.EventId}"></tito-widget>
-      ticketFrame = ticketFrame = React.createElement('tito-widget', {
-        event: `dddperth/${conference.EventId}`,
+      // need to use this custom elemement <tito-widget event="{conference.TicketProviderAccountId}/{conference.EventId}"></tito-widget>
+      ticketFrame = React.createElement('tito-widget', {
+        event: `${conference.TicketsProviderAccountId}/${conference.EventId}`,
       })
     }
 
