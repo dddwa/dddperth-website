@@ -62,6 +62,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       and{' '}
       <SafeLink href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
         since 2018 it has been run by DDD WA Inc.
+      </SafeLink>.{' '}
+      We are now in our fifth year, which we think is worth celebrating!{' '}
+      <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
+        Meet this year's team.
       </SafeLink>
     </p>
     <p>The original DDD Perth logo was:</p>
