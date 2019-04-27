@@ -89,7 +89,7 @@ const Conference: IConference = {
   ChildcarePrice: '$30',
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',
-  EventId: 'testevent',
+  EventId: '2019',
   FinancialAssistanceEventbriteCode: 'financialassistance',
   IsSoldOut: isSoldOut,
   HashTag: 'dddperth',
