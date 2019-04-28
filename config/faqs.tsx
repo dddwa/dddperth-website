@@ -67,7 +67,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'Will refreshments be provided?',
     Answer:
-      'Yes, attendees will receive lunch and snacks throughout the day and we will have a coffee cart operating all day.',
+      'Yes, attendees will receive lunch and snacks throughout the day and we will have a coffee cart operating all day.',
   })
 
   Faqs.push({
