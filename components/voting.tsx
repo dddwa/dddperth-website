@@ -246,10 +246,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         <span
                           className="fa fa-question-circle"
                           style={{ cursor: 'pointer', fontSize: '20px' }}
-                          title="Your vote will have a higher weighting if you optionally supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket."
+                          title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
                           onClick={() =>
                             alert(
-                              'Your vote will have a higher weighting if you optionally supply your EventBrite order # from your ticket confirmation email when getting a 2018 attendee ticket.',
+                              'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
                             )
                           }
                         />

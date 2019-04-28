@@ -46,7 +46,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
     if (conference.TicketsProviderId === TicketsProvider.Eventbrite) {
       ticketFrame = (
         <iframe
-          src={'//eventbrite.com.au/tickets-external?ref=etckt&eid=' + conference.EventId}
+          src={'//eventbrite.com.au/tickets-external?ref=etckt&eid=' + conference.TicketsProviderEventId}
           style={{ border: 0 }}
           height="650"
           width="100%"
@@ -54,9 +54,8 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
         />
       )
     } else if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      // need to use this custom elemement <tito-widget event="{conference.TicketProviderAccountId}/{conference.EventId}"></tito-widget>
       ticketFrame = React.createElement('tito-widget', {
-        event: `${conference.TicketsProviderAccountId}/${conference.EventId}`,
+        event: `${conference.TicketsProviderAccountId}/${conference.TicketsProviderEventId}`,
       })
     }
 

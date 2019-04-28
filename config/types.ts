@@ -16,8 +16,8 @@ export interface Conference {
   ChildcarePrice: string
   TicketsProviderId: TicketsProvider
   TicketsProviderAccountId: string
-  EventId: string
-  FinancialAssistanceEventbriteCode: string
+  TicketsProviderEventId: string
+  TicketsProviderFinancialAssistanceCode: string
   IsSoldOut: boolean
   HashTag: string
   SellingPoints: string[]
