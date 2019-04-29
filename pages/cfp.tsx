@@ -84,8 +84,8 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             any ideas you have or give safe and constructive feedback.
           </li>
           <li>
-            There will also be free speaker training and support for all speakers, so first timers, juniors, and
-            everyone else are all encouraged to submit and will have support!
+            There will also be <strong>free speaker training and support</strong> for all speakers, so <strong>first timers, juniors, and
+            everyone else</strong> are all encouraged to submit and will have support!
           </li>
           <li>
             Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
