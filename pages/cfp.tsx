@@ -36,6 +36,12 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
       >
         <h1>Call For Presentations (CFP)</h1>
 
+        <p className="text-center">
+          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
+            Submit a session via Sessionize
+          </SafeLink>
+        </p>
+
         <p>
           We welcome sessions from any software related topic and from anyone in the software industry (you don't have
           to be a developer!). Previously we have had a wide range of sessions including{' '}
@@ -91,12 +97,6 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           This year we are using Sessionize to track submissions - this provides a great experience for speakers since
           you can resubmit talks submitted to other conferences that use Sessionize (e.g. NDC Sydney and the other DDD
           conferences in Australia) and you can update your profile and session information at any time.
-        </p>
-
-        <p className="text-center">
-          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
-            Submit a session via Sessionize
-          </SafeLink>
         </p>
 
         <p>Other things to note for presenters:</p>
