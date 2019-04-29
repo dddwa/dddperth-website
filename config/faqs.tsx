@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import Conference from './conference'
-import { Dates, FAQ } from './types'
+import { Dates, FAQ, TicketsProvider } from './types'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -41,8 +41,29 @@ export default function getFaqs(dates: Dates): FAQ[] {
           If you can't afford the ticket price then we have Sponsored (Financial Assistance) tickets available. DDD
           Perth is donating 10 such tickets and we also have an option for people within the community to donate further
           tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
-          Financial Assistance tickets by entering the promotional code of{' '}
-          <code>{Conference.FinancialAssistanceEventbriteCode}</code>.
+          Financial Assistance tickets by{' '}
+          {Conference.TicketsProviderId === TicketsProvider.Eventbrite ? (
+            <>
+              entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
+            </>
+          ) : (
+            <>
+              <SafeLink
+                href={
+                  'https://ti.to/' +
+                  Conference.TicketsProviderAccountId +
+                  '/' +
+                  Conference.TicketsProviderEventId +
+                  '/discount/' +
+                  Conference.TicketsProviderFinancialAssistanceCode
+                }
+                target="_blank"
+              >
+                following this link
+              </SafeLink>
+            </>
+          )}
+          .
         </p>
         <ul>
           <li>Already attended a conference in the past? That's ok.</li>
