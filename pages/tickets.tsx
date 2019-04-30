@@ -19,7 +19,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
     return {}
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const conference = this.props.pageMetadata.conference
     if (conference.TicketsProviderId === TicketsProvider.Tito) {
       if (!isNullOrUndefined(document) && document.getElementById('tito') === null) {
