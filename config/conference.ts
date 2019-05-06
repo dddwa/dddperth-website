@@ -13,7 +13,7 @@ const date = moment.parseZone('2019-08-03T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2015
-const registrationOpenFrom = moment.parseZone('2019-04-30T17:00:00+08:00')
+const registrationOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
@@ -21,7 +21,7 @@ const registrationOpenUntil = hideDate
       .add(-1, 'd')
       .startOf('day')
       .add(17, 'h')
-const presentationSubmissionsOpenFrom = moment.parseZone('2019-04-30T17:00:00+08:00')
+const presentationSubmissionsOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
 const presentationSubmissionsOpenUntil = moment.parseZone('2019-06-02T23:59:59+08:00')
 const votingOpenFrom = moment.parseZone('2019-06-08T17:00:00+08:00')
 const votingOpenUntil = moment.parseZone('2019-06-16T23:59:59+08:00')
@@ -95,10 +95,10 @@ const Conference: IConference = {
   HashTag: 'dddperth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
-  SessionizeUrl: null,
+  SessionizeUrl: 'https://sessionize.com/dddperth2019',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
-    'Agile, building great teams, UI design, software testing, virtual reality, women in tech, web accessibility, open source software, feedback culture, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, Assembly language, automated deployments, mobile development, mobile test automation, architecture, microservices, serverless, APIs, GraphQL, actors, JavaScript, authentication, React, UWP,  HTTP protocol, Git, Docker and pointers',
+    'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
 
   ContactEmail: 'info@dddperth.com',
   SponsorshipEmail: 'sponsorship@dddperth.com',

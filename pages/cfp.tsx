@@ -42,6 +42,12 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           {conference.PreviouslySubmittedTopics}.
         </p>
 
+        <p className="text-center">
+          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
+            Submit a session via Sessionize
+          </SafeLink>
+        </p>
+
         <p>We want to encourage people that wouldn't normally speak at conferences to give it a go! We do this by:</p>
         <ul>
           <li>
@@ -78,8 +84,8 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             any ideas you have or give safe and constructive feedback.
           </li>
           <li>
-            There will also be free speaker training and support for all speakers, so first timers, juniors, and
-            everyone else are all encouraged to submit and will have support!
+            There will also be <strong>free speaker training and support</strong> for all speakers, so <strong>first timers, juniors, and
+            everyone else</strong> are all encouraged to submit and will have support!
           </li>
           <li>
             Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
@@ -91,12 +97,6 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           This year we are using Sessionize to track submissions - this provides a great experience for speakers since
           you can resubmit talks submitted to other conferences that use Sessionize (e.g. NDC Sydney and the other DDD
           conferences in Australia) and you can update your profile and session information at any time.
-        </p>
-
-        <p className="text-center">
-          <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
-            Submit a session via Sessionize
-          </SafeLink>
         </p>
 
         <p>Other things to note for presenters:</p>
