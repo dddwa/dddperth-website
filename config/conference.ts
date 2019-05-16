@@ -92,7 +92,7 @@ const Conference: IConference = {
   TicketsProviderEventId: '2019',
   TicketsProviderFinancialAssistanceCode: 'financialassistance',
   IsSoldOut: isSoldOut,
-  HashTag: 'dddperth',
+  HashTag: 'DDDPerth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
   SessionizeUrl: 'https://sessionize.com/dddperth2019',
