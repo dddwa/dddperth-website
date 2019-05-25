@@ -1043,6 +1043,58 @@ section.full-width {
     > div {
       display: inline-block;
     }
+
+    .tag-cloud {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        &:before {
+          content: normal;
+        }
+      }
+
+      input {
+        position: absolute;
+        left: -200vw;
+
+        &:checked {
+          & + label {
+            background: $voting;
+            color: #fff;
+          }
+        }
+
+        &:focus {
+          & + label {
+            border-color: $voting;
+          }
+        }
+      }
+
+      label {
+        border: 2px solid transparent;
+        cursor: pointer;
+        display: block;
+        font-size: 0.9em;
+        margin: 2px;
+        padding: 5px;
+
+        &:active {
+          background: $voting;
+          color: #fff;
+        }
+
+        &:hover,
+        &:focus {
+        }
+      }
+    }
   }
 
   .rrs__button + .rrs__options {

@@ -5,6 +5,7 @@ import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveS
 import { getSessionId, logException } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
+import TagCloud from '../components/tagCloud'
 import '../components/utils/arrayExtensions'
 import { Session } from '../config/types'
 import { logEvent } from './global/analytics'
@@ -320,64 +321,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   My votes ({this.state.votes.length})
                 </button>
               </div>
-              {this.state.show === 'all' && (
-                <React.Fragment>
-                  <div className="filters">
-                    <em>Filter by:</em>{' '}
-                    <ReactResponsiveSelect
-                      name="tagsFilter"
-                      prefix="Tags:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.tags.map(t => ({ value: t, text: t, markup: option(t) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ tagFilters: newFilter })
-                      }}
-                      selectedValues={this.state.tagFilters.length > 0 ? this.state.tagFilters : undefined}
-                    />
-                    <ReactResponsiveSelect
-                      name="formatFilter"
-                      prefix="Format:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.formats.map(f => ({ value: f, text: f, markup: option(f) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'formatFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ formatFilters: newFilter })
-                      }}
-                      selectedValues={this.state.formatFilters.length > 0 ? this.state.formatFilters : undefined}
-                    />
-                    <ReactResponsiveSelect
-                      name="levelsFilter"
-                      prefix="Level:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ levelFilters: newFilter })
-                      }}
-                      selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
-                    />
-                  </div>
-                </React.Fragment>
-              )}
             </Panel.Body>
           </Panel>
         </NonJumpingAffix>
@@ -394,6 +337,55 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <p>
             <em>No sessions yet.</em>
           </p>
+        )}
+        {this.state.show === 'all' && (
+          <React.Fragment>
+            <div className="filters">
+              <em>Filter by:</em>{' '}
+              <fieldset className="tag-cloud">
+                <ul>
+                  {this.state.tags.map(tag => (
+                    <li key={tag}>
+                      <input
+                        type="checkbox"
+                        value={tag}
+                        id={tag}
+                        name={tag}
+                        onChange={selected => {
+                          console.log(document.querySelectorAll('.tag-cloud input:checked'))
+                          const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
+                            .map(o => o.value)
+                            .filter(o => o !== null)
+                          if (newFilter.length > 0) {
+                            logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
+                          }
+                          this.setState({ tagFilters: newFilter })
+                        }}
+                      />
+                      <label htmlFor={tag}>{tag}</label>
+                    </li>
+                  ))}
+                </ul>
+              </fieldset>
+              <ReactResponsiveSelect
+                name="levelsFilter"
+                prefix="Level:"
+                options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                  this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
+                )}
+                multiselect={true}
+                caretIcon={<span className="fa fa-caret-down" />}
+                onChange={selected => {
+                  const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                  if (newFilter.length > 0) {
+                    logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
+                  }
+                  this.setState({ levelFilters: newFilter })
+                }}
+                selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
+              />
+            </div>
+          </React.Fragment>
         )}
         {this.state.show === 'votes' && <p>This year we're doing preferential voting.</p>}
         <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
