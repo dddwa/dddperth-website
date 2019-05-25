@@ -4,7 +4,7 @@ import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
-import SessionDetails from '../components/sessionDetails'
+import { SessionPanel } from '../components/Voting/sessionPanel'
 import TagCloud from '../components/tagCloud'
 import '../components/utils/arrayExtensions'
 import { Session } from '../config/types'
@@ -338,128 +338,76 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             <em>No sessions yet.</em>
           </p>
         )}
-        {this.state.show === 'all' && (
-          <React.Fragment>
-            <div className="filters">
-              <em>Filter by:</em>{' '}
-              <fieldset className="tag-cloud">
-                <ul>
-                  {this.state.tags.map(tag => (
-                    <li key={tag}>
-                      <input
-                        type="checkbox"
-                        value={tag}
-                        id={tag}
-                        name={tag}
-                        onChange={selected => {
-                          console.log(document.querySelectorAll('.tag-cloud input:checked'))
-                          const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
-                            .map(o => o.value)
-                            .filter(o => o !== null)
-                          if (newFilter.length > 0) {
-                            logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
-                          }
-                          this.setState({ tagFilters: newFilter })
-                        }}
-                      />
-                      <label htmlFor={tag}>{tag}</label>
-                    </li>
-                  ))}
-                </ul>
-              </fieldset>
-              <ReactResponsiveSelect
-                name="levelsFilter"
-                prefix="Level:"
-                options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                  this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
-                )}
-                multiselect={true}
-                caretIcon={<span className="fa fa-caret-down" />}
-                onChange={selected => {
-                  const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                  if (newFilter.length > 0) {
-                    logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-                  }
-                  this.setState({ levelFilters: newFilter })
-                }}
-                selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
-              />
-            </div>
-          </React.Fragment>
-        )}
+
         {this.state.show === 'votes' && <p>This year we're doing preferential voting.</p>}
         <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
-          {visibleSessions.map((s, i) => (
-            <Panel eventKey={i} key={i} expanded={this.state.expandAll || null}>
-              <Panel.Heading>
-                <Panel.Title toggle={!this.state.expandAll}>
-                  <SpanIf condition={this.state.expandAll} className="title">
-                    {this.isVotedFor(s) && (
-                      <span className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />
-                    )}
-                    {this.isInShortlist(s) && (
-                      <span
-                        className="fa fa-list-ol status"
-                        aria-label="Shortlisted"
-                        role="status"
-                        title="Shortlisted"
-                      />
-                    )}
-                    {s.Title}
-                    <br />
-                    {(s.Tags || []).map(tag => (
-                      <React.Fragment key={tag}>
-                        <span className="badge">{tag}</span>{' '}
-                      </React.Fragment>
+          {this.state.show === 'all' && (
+            <React.Fragment>
+              <div className="filters">
+                <em>Filter by:</em>{' '}
+                <fieldset className="tag-cloud">
+                  <ul>
+                    {this.state.tags.map(tag => (
+                      <li key={tag}>
+                        <input
+                          type="checkbox"
+                          value={tag}
+                          id={tag}
+                          name={tag}
+                          onChange={selected => {
+                            console.log(document.querySelectorAll('.tag-cloud input:checked'))
+                            const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
+                              .map(o => o.value)
+                              .filter(o => o !== null)
+                            if (newFilter.length > 0) {
+                              logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
+                            }
+                            this.setState({ tagFilters: newFilter })
+                          }}
+                        />
+                        <label htmlFor={tag}>{tag}</label>
+                      </li>
                     ))}
-                    <small
-                      style={{
-                        display: 'block',
-                        marginTop: '10px',
-                        visibility: this.state.expandAll ? 'hidden' : 'visible',
-                      }}
-                    >
-                      <span className="fa fa-plus" title="More details" /> Tap for session details
-                    </small>
-                    {!this.state.submitted && (
-                      <div style={{ textAlign: 'right', paddingTop: '10px' }}>
-                        <button
-                          onClick={e => {
-                            this.toggleShortlist(s)
-                            e.stopPropagation()
-                            e.preventDefault()
-                          }}
-                          className="btn btn-secondary btn-sm"
-                        >
-                          {!this.isInShortlist(s) ? 'Shortlist' : 'Un-shortlist'}
-                        </button>{' '}
-                        <button
-                          onClick={e => {
-                            this.toggleVote(s)
-                            e.stopPropagation()
-                            e.preventDefault()
-                          }}
-                          className="btn btn-primary btn-sm"
-                          disabled={this.state.votes.length >= this.props.maxVotes && !this.isVotedFor(s)}
-                        >
-                          {!this.isVotedFor(s) ? 'Vote' : 'Un-vote'}
-                        </button>
-                      </div>
-                    )}
-                  </SpanIf>
-                </Panel.Title>
-              </Panel.Heading>
-              <Panel.Body collapsible>
-                <SessionDetails
-                  session={s}
-                  showPresenter={!this.props.anonymousVoting}
-                  hideTags={true}
-                  showBio={false}
-                  hideLevelAndFormat={false}
+                  </ul>
+                </fieldset>
+                <ReactResponsiveSelect
+                  name="levelsFilter"
+                  prefix="Level:"
+                  options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                    this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
+                  )}
+                  multiselect={true}
+                  caretIcon={<span className="fa fa-caret-down" />}
+                  onChange={selected => {
+                    const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                    if (newFilter.length > 0) {
+                      logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
+                    }
+                    this.setState({ levelFilters: newFilter })
+                  }}
+                  selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
                 />
-              </Panel.Body>
-            </Panel>
-          ))}
+              </div>
+            </React.Fragment>
+          )}
+          <ul className="talk-list">
+            {visibleSessions.map((s, i) => {
+              const sessionPanelDetails = {
+                anonymousVoting: this.state.anonymousVoting,
+                expandAll: this.state.expandAll,
+                votes: this.state.votes,
+                maxVotes: this.state.maxVotes,
+                isVotedFor: this.isVotedFor(s),
+                isInShortlist: this.isInShortlist(s),
+                submitted: this.state.submitted,
+                s: s,
+                i: i,
+                toggleVote: () => this.toggleVote(),
+              }
+
+              return <SessionPanel {...sessionPanelDetails} />
+            })}
+          </ul>
         </PanelGroup>
       </React.Fragment>
     )

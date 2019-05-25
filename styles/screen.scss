@@ -1038,6 +1038,61 @@ section.full-width {
   .submit-block {
     float: right;
   }
+
+  .rrs__button + .rrs__options {
+    min-width: 150px;
+    font-size: 0.9em;
+  }
+
+  .rrs__options li:before {
+    display: none;
+  }
+
+  .fa-caret-down {
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+    fill: #333;
+    margin-right: -3px;
+  }
+  .rrs--options-visible .fa-caret-down {
+    transform: rotate(180deg);
+  }
+  .rrs__multiselect-label {
+    line-height: 1.2;
+  }
+
+  .rrs__option.rrs__option {
+    .selected-marker {
+      display: none;
+    }
+  }
+
+  .rrs__option.rrs__option--selected {
+    .selected-marker {
+      display: inline;
+    }
+    .not-selected-marker {
+      display: none;
+    }
+  }
+
+  .rrs__option.rrs__option--next-selection {
+    color: #333;
+    background-color: lighten($primary-color, 70%);
+  }
+
+  .rrs__option.rrs__option--next-selection:hover {
+    background-color: #f7f7f7;
+  }
+
+  .rrs__option:hover,
+  .rrs__option.rrs__option--selected,
+  .rrs--has-changed .rrs__label {
+    color: $primary-color;
+  }
+}
+#voting-interface {
   .filters {
     margin-top: 10px;
     > div {
@@ -1096,61 +1151,6 @@ section.full-width {
       }
     }
   }
-
-  .rrs__button + .rrs__options {
-    min-width: 150px;
-    font-size: 0.9em;
-  }
-
-  .rrs__options li:before {
-    display: none;
-  }
-
-  .fa-caret-down {
-    position: absolute;
-    right: 1rem;
-    top: 1.5rem;
-    fill: #333;
-    margin-right: -3px;
-  }
-  .rrs--options-visible .fa-caret-down {
-    transform: rotate(180deg);
-  }
-  .rrs__multiselect-label {
-    line-height: 1.2;
-  }
-
-  .rrs__option.rrs__option {
-    .selected-marker {
-      display: none;
-    }
-  }
-
-  .rrs__option.rrs__option--selected {
-    .selected-marker {
-      display: inline;
-    }
-    .not-selected-marker {
-      display: none;
-    }
-  }
-
-  .rrs__option.rrs__option--next-selection {
-    color: #333;
-    background-color: lighten($primary-color, 70%);
-  }
-
-  .rrs__option.rrs__option--next-selection:hover {
-    background-color: #f7f7f7;
-  }
-
-  .rrs__option:hover,
-  .rrs__option.rrs__option--selected,
-  .rrs--has-changed .rrs__label {
-    color: $primary-color;
-  }
-}
-#voting-interface {
   .panel-heading {
     .fa.status {
       float: right;
