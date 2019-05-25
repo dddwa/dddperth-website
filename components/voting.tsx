@@ -412,9 +412,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         title="Shortlisted"
                       />
                     )}
-                    {this.isFlagged(s) && (
-                      <span className="fa fa-flag status" aria-label="Flag" role="status" title="Flagged" />
-                    )}
                     {s.Title}
                     <br />
                     {(s.Tags || []).map(tag => (
@@ -433,7 +430,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                     </small>
                     {!this.state.submitted && (
                       <div style={{ textAlign: 'right', paddingTop: '10px' }}>
-                        
                         <button
                           onClick={e => {
                             this.toggleShortlist(s)
