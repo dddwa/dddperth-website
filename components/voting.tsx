@@ -395,6 +395,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             <em>No sessions yet.</em>
           </p>
         )}
+        {this.state.show === 'votes' && <p>This year we're doing preferential voting.</p>}
         <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
           {visibleSessions.map((s, i) => (
             <Panel eventKey={i} key={i} expanded={this.state.expandAll || null}>
