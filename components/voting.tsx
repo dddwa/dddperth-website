@@ -433,16 +433,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                     </small>
                     {!this.state.submitted && (
                       <div style={{ textAlign: 'right', paddingTop: '10px' }}>
-                        <button
-                          onClick={e => {
-                            this.toggleFlagged(s)
-                            e.stopPropagation()
-                            e.preventDefault()
-                          }}
-                          className="btn btn-secondary btn-sm"
-                        >
-                          {!this.isFlagged(s) ? 'Flag' : 'Un-flag'}
-                        </button>{' '}
+                        
                         <button
                           onClick={e => {
                             this.toggleShortlist(s)
