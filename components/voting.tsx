@@ -402,7 +402,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 submitted: this.state.submitted,
                 s: s,
                 i: i,
-                toggleVote: () => this.toggleVote(),
+                toggleVote: () => this.toggleVote(s),
+                toggleShortlist: () => this.toggleShortlist,
               }
 
               return <SessionPanel {...sessionPanelDetails} />

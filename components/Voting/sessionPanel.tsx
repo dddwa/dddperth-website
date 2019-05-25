@@ -13,6 +13,7 @@ export const SessionPanel: React.FC = ({
   isInShortlist,
   expandAll,
   toggleVote,
+  toggleShortlist,
 }) => {
   return (
     <li class="panel" key={s}>
@@ -32,7 +33,7 @@ export const SessionPanel: React.FC = ({
             <div className="buttons">
               <button
                 onClick={e => {
-                  this.toggleShortlist(s)
+                  toggleShortlist(s)
                   e.stopPropagation()
                   e.preventDefault()
                 }}
@@ -42,7 +43,6 @@ export const SessionPanel: React.FC = ({
               </button>{' '}
               <button
                 onClick={e => {
-                  console.log(s)
                   toggleVote(s)
                   e.stopPropagation()
                   e.preventDefault()
