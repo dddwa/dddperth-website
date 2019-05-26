@@ -111,8 +111,8 @@ const Conference: IConference = {
     'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
   AnonymousVoting: true,
-  MinVotes: 8,
-  MaxVotes: 12,
+  MinVotes: 6,
+  MaxVotes: 6,
 
   Date: date,
   EndDate: endDate,
