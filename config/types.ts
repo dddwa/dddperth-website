@@ -38,6 +38,8 @@ export interface Conference {
   AnonymousReportFormUrl: string
 
   AnonymousVoting: boolean
+  PreferentialVoting: boolean
+  TicketNumberWhileVoting: TicketNumberWhileVoting
   MinVotes: number
   MaxVotes: number
 
@@ -80,6 +82,12 @@ export interface Conference {
 export enum TicketsProvider {
   Eventbrite,
   Tito,
+}
+
+export enum TicketNumberWhileVoting {
+  None,
+  Required,
+  Optional,
 }
 
 export interface Venue {
