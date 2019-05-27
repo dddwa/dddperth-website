@@ -486,7 +486,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                       key={s.Id}
                       draggableId={s.Id}
                       index={i}
-                      isDragDisabled={this.state.show !== 'votes' || !this.props.preferentialVoting}
+                      isDragDisabled={!isVoting || !this.props.preferentialVoting}
                     >
                       {dragProvider => (
                         <div
@@ -498,7 +498,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                             <Panel.Heading>
                               <Panel.Title toggle={!this.state.expandAll}>
                                 <SpanIf condition={this.state.expandAll} className="title">
-                                  {this.isVotedFor(s) && this.state.show !== 'votes' && (
+                                  {this.isVotedFor(s) && !isVoting && (
                                     <span
                                       className="fa fa-check status"
                                       aria-label="Voted"
@@ -506,7 +506,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                                       title="Voted"
                                     />
                                   )}
-                                  {this.isInShortlist(s) && this.state.show !== 'votes' && (
+                                  {this.isInShortlist(s) && !isVoting && (
                                     <span
                                       className="fa fa-list-ol status"
                                       aria-label="Shortlisted"
@@ -514,7 +514,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                                       title="Shortlisted"
                                     />
                                   )}
-                                  {this.isFlagged(s) && this.state.show !== 'votes' && (
+                                  {this.isFlagged(s) && !isVoting && (
                                     <span
                                       className="fa fa-flag status"
                                       aria-label="Flag"
@@ -522,7 +522,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                                       title="Flagged"
                                     />
                                   )}
-                                  {this.props.preferentialVoting && this.state.show === 'votes' && (
+                                  {this.props.preferentialVoting && isVoting && (
                                     <span className="status" title="Voting position">
                                       #{i + 1}
                                     </span>
