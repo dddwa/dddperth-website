@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
-import { Conference as IConference, TicketsProvider } from './types'
+import { Conference as IConference, TicketNumberWhileVoting, TicketsProvider } from './types'
 import venue from './venue'
 
 const name = 'DDD Perth'
@@ -111,6 +111,8 @@ const Conference: IConference = {
     'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
   AnonymousVoting: true,
+  PreferentialVoting: true,
+  TicketNumberWhileVoting: TicketNumberWhileVoting.Required,
   MinVotes: 6,
   MaxVotes: 6,
 

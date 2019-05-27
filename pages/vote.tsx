@@ -254,7 +254,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             <br />
             Thanks!
             <br />
-            &lt;3 DDD Perth team
+            &lt;3 {this.props.pageMetadata.conference.Name} team
           </p>
 
           {this.state.isLoading && <p>Loading sessions...</p>}
@@ -273,6 +273,10 @@ class VotePage extends React.Component<VoteProps, VoteState> {
               maxVotes={maxVotes}
               anonymousVoting={this.props.pageMetadata.conference.AnonymousVoting}
               submitVoteUrl={this.props.pageMetadata.appConfig.submitVoteUrl}
+              conferenceName={this.props.pageMetadata.conference.Name}
+              ticketsProvider={this.props.pageMetadata.conference.TicketsProviderId}
+              preferentialVoting={this.props.pageMetadata.conference.PreferentialVoting}
+              ticketNumberHandling={this.props.pageMetadata.conference.TicketNumberWhileVoting}
             />
           )}
         </div>

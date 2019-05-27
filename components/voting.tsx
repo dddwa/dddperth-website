@@ -6,7 +6,7 @@ import { getSessionId, logException } from '../components/global/analytics'
 import NonJumpingAffix from '../components/NonJumpingAffix'
 import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
-import { Session } from '../config/types'
+import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
 import { logEvent } from './global/analytics'
 // tslint:disable-next-line: ordered-imports
 import { DragDropContext, DropResult, Droppable, Draggable } from 'react-beautiful-dnd'
@@ -33,7 +33,11 @@ interface VotingState {
 }
 
 interface VotingProps {
+  conferenceName: string
+  ticketsProvider: TicketsProvider
   anonymousVoting: boolean
+  preferentialVoting: boolean
+  ticketNumberHandling: TicketNumberWhileVoting
   sessions: Session[]
   submitVoteUrl: string
   maxVotes: number
@@ -267,40 +271,65 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             <Panel.Heading>
               {this.state.submitted && (
                 <p className="alert alert-success">
-                  You've submitted your vote for this year :) Thanks! &lt;3 DDD Perth team
+                  You've submitted your vote for this year :) Thanks! &lt;3 {this.props.conferenceName} team
                 </p>
               )}
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
                   <div className="submit-block">
-                    <label>
-                      Ticket order #{' '}
-                      <em>
-                        {' '}
-                        <span
-                          className="fa fa-question-circle"
-                          style={{ cursor: 'pointer', fontSize: '20px' }}
-                          title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
-                          onClick={() =>
-                            alert(
-                              'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
-                            )
+                    {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
+                      <label>
+                        Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
+                        <em>
+                          {' '}
+                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional && (
+                            <span
+                              className="fa fa-question-circle"
+                              style={{ cursor: 'pointer', fontSize: '20px' }}
+                              title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
+                              onClick={() =>
+                                alert(
+                                  'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                                )
+                              }
+                            />
+                          )}
+                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                            <span
+                              className="fa fa-question-circle"
+                              style={{ cursor: 'pointer', fontSize: '20px' }}
+                              title="To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket."
+                              onClick={() =>
+                                alert(
+                                  'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                                )
+                              }
+                            />
+                          )}
+                        </em>
+                        :{' '}
+                        <input
+                          type="text"
+                          className="form-control input-sm"
+                          onChange={e => this.setState({ ticketNumber: e.target.value })}
+                          value={this.state.ticketNumber}
+                          placeholder={
+                            this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
+                              ? 'Optional'
+                              : 'Required to submit'
                           }
                         />
-                      </em>
-                      :{' '}
-                      <input
-                        type="text"
-                        className="form-control input-sm"
-                        onChange={e => this.setState({ ticketNumber: e.target.value })}
-                        value={this.state.ticketNumber}
-                        placeholder="Optional"
-                      />
-                    </label>{' '}
+                      </label>
+                    )}{' '}
                     <button
                       className="btn btn-primary btn-sm"
-                      disabled={this.state.votes.length < this.props.minVotes || this.state.submitInProgress}
+                      disabled={
+                        this.state.votes.length < this.props.minVotes ||
+                        this.state.submitInProgress ||
+                        (this.props.ticketNumberHandling === TicketNumberWhileVoting.Required &&
+                          !this.state.ticketNumber)
+                      }
                       onClick={() => this.submit()}
                     >
                       {this.state.submitInProgress ? (
@@ -325,7 +354,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 <React.Fragment>
                   <br />
                   <span className="alert alert-danger" style={{ padding: '2px' }}>
-                    There was a problem submitting your votes; please try again or refresh the page and try again.
+                    There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
+                    {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                      <>
+                        If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised
+                        by the voting validation service.
+                      </>
+                    )}
                   </span>
                 </React.Fragment>
               )}
@@ -423,6 +458,15 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             </button>
           )}
         </h2>
+        {isVoting && this.props.preferentialVoting && (
+          <p>
+            <strong>You now need to order your votes based on your preference.</strong> We are using a{' '}
+            <a href="https://en.wikipedia.org/wiki/Preferential_voting" target="_blank">
+              preferential voting system
+            </a>{' '}
+            to maximise the impact of your votes.
+          </p>
+        )}
         {visibleSessions.length === 0 && (
           <p>
             <em>No sessions yet.</em>
@@ -438,7 +482,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               <div ref={provider.innerRef} {...provider.droppableProps}>
                 <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
                   {visibleSessions.map((s, i) => (
-                    <Draggable key={s.Id} draggableId={s.Id} index={i} isDragDisabled={this.state.show !== 'votes'}>
+                    <Draggable
+                      key={s.Id}
+                      draggableId={s.Id}
+                      index={i}
+                      isDragDisabled={!isVoting || !this.props.preferentialVoting}
+                    >
                       {dragProvider => (
                         <div
                           {...dragProvider.draggableProps}
@@ -449,7 +498,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                             <Panel.Heading>
                               <Panel.Title toggle={!this.state.expandAll}>
                                 <SpanIf condition={this.state.expandAll} className="title">
-                                  {this.isVotedFor(s) && (
+                                  {this.isVotedFor(s) && !isVoting && (
                                     <span
                                       className="fa fa-check status"
                                       aria-label="Voted"
@@ -457,7 +506,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                                       title="Voted"
                                     />
                                   )}
-                                  {this.isInShortlist(s) && (
+                                  {this.isInShortlist(s) && !isVoting && (
                                     <span
                                       className="fa fa-list-ol status"
                                       aria-label="Shortlisted"
@@ -465,13 +514,18 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                                       title="Shortlisted"
                                     />
                                   )}
-                                  {this.isFlagged(s) && (
+                                  {this.isFlagged(s) && !isVoting && (
                                     <span
                                       className="fa fa-flag status"
                                       aria-label="Flag"
                                       role="status"
                                       title="Flagged"
                                     />
+                                  )}
+                                  {this.props.preferentialVoting && isVoting && (
+                                    <span className="status" title="Voting position">
+                                      #{i + 1}
+                                    </span>
                                   )}
                                   {s.Title}
                                   <br />

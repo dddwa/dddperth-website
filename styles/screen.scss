@@ -1100,9 +1100,12 @@ section.full-width {
 }
 #voting-interface {
   .panel-heading {
-    .fa.status {
+    .status {
       float: right;
       margin-left: 10px;
+      font-size: 30px;
+    }
+    .fa.status {
       font-size: 18px;
       background-color: $primary-color;
       color: #fff;
