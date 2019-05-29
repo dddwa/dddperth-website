@@ -1,5 +1,5 @@
 import moment from 'moment'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
@@ -7,8 +7,13 @@ import NonJumpingAffix from '../components/NonJumpingAffix'
 import { SessionPanel } from '../components/Voting/sessionPanel'
 import TagCloud from '../components/tagCloud'
 import '../components/utils/arrayExtensions'
-import { Session } from '../config/types'
+import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
 import { logEvent } from './global/analytics'
+// tslint:disable-next-line: ordered-imports
+import { DragDropContext, DropResult, Droppable, Draggable } from 'react-beautiful-dnd'
+
+type SessionId = Session['Id']
+type Views = 'all' | 'shortlist' | 'votes'
 
 interface VotingState {
   expandAll: boolean
@@ -19,9 +24,9 @@ interface VotingState {
   formatFilters: string[]
   formats: string[]
   flagged: string[]
-  shortlist: string[]
-  votes: string[]
-  show: string
+  shortlist: SessionId[]
+  votes: SessionId[]
+  show: Views
   ticketNumber: string
   submitInProgress: boolean
   submitError: boolean
@@ -29,7 +34,11 @@ interface VotingState {
 }
 
 interface VotingProps {
+  conferenceName: string
+  ticketsProvider: TicketsProvider
   anonymousVoting: boolean
+  preferentialVoting: boolean
+  ticketNumberHandling: TicketNumberWhileVoting
   sessions: Session[]
   submitVoteUrl: string
   maxVotes: number
@@ -38,17 +47,25 @@ interface VotingProps {
   voteId: string
 }
 
+const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
+
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
       flagged: [],
       formatFilters: [],
-      formats: (this.props.sessions as Session[])
+      formats: this.props.sessions
         .map(s => s.Format)
         .unique()
         .sort(),
       levelFilters: [],
-      levels: (this.props.sessions as Session[])
+      levels: this.props.sessions
         .map(s => s.Level)
         .unique()
         .sort(),
@@ -58,7 +75,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       submitInProgress: false,
       submitted: false,
       tagFilters: [],
-      tags: (this.props.sessions as Session[])
+      tags: this.props.sessions
         .selectMany(s => s.Tags)
         .unique()
         .sort(),
@@ -79,7 +96,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     this.setState({ expandAll: !this.state.expandAll })
   }
 
-  show(whatToShow: string) {
+  show(whatToShow: Views) {
     this.setState({ show: whatToShow })
   }
 
@@ -149,6 +166,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     return []
   }
 
+  onDragEnd(result: DropResult) {
+    this.setState({
+      votes: reorder(this.state.votes, result.source.index, result.destination.index),
+    })
+  }
+
   async submit() {
     const vote = {
       Id: this.props.voteId,
@@ -192,6 +215,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   render() {
+    const isVoting = this.state.show === 'votes'
     const visibleSessions = (this.props.sessions || [])
       .filter(
         s =>
@@ -210,6 +234,21 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       )
       .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
       .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
+      .sort((a, b) => {
+        if (!isVoting) {
+          return 0
+        }
+
+        const aIndex = this.state.votes.indexOf(a.Id)
+        const bIndex = this.state.votes.indexOf(b.Id)
+        if (aIndex > bIndex) {
+          return 1
+        } else if (aIndex < bIndex) {
+          return -1
+        } else {
+          return 0
+        }
+      })
 
     const SpanIf: React.StatelessComponent<any> = ({ condition, className, children }) => (
       <React.Fragment>
@@ -233,40 +272,65 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             <Panel.Heading>
               {this.state.submitted && (
                 <p className="alert alert-success">
-                  You've submitted your vote for this year :) Thanks! &lt;3 DDD Perth team
+                  You've submitted your vote for this year :) Thanks! &lt;3 {this.props.conferenceName} team
                 </p>
               )}
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
                   <div className="submit-block">
-                    <label>
-                      Ticket order #{' '}
-                      <em>
-                        {' '}
-                        <span
-                          className="fa fa-question-circle"
-                          style={{ cursor: 'pointer', fontSize: '20px' }}
-                          title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
-                          onClick={() =>
-                            alert(
-                              'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
-                            )
+                    {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
+                      <label>
+                        Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
+                        <em>
+                          {' '}
+                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional && (
+                            <span
+                              className="fa fa-question-circle"
+                              style={{ cursor: 'pointer', fontSize: '20px' }}
+                              title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
+                              onClick={() =>
+                                alert(
+                                  'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                                )
+                              }
+                            />
+                          )}
+                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                            <span
+                              className="fa fa-question-circle"
+                              style={{ cursor: 'pointer', fontSize: '20px' }}
+                              title="To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket."
+                              onClick={() =>
+                                alert(
+                                  'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                                )
+                              }
+                            />
+                          )}
+                        </em>
+                        :{' '}
+                        <input
+                          type="text"
+                          className="form-control input-sm"
+                          onChange={e => this.setState({ ticketNumber: e.target.value })}
+                          value={this.state.ticketNumber}
+                          placeholder={
+                            this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
+                              ? 'Optional'
+                              : 'Required to submit'
                           }
                         />
-                      </em>
-                      :{' '}
-                      <input
-                        type="text"
-                        className="form-control input-sm"
-                        onChange={e => this.setState({ ticketNumber: e.target.value })}
-                        value={this.state.ticketNumber}
-                        placeholder="Optional"
-                      />
-                    </label>{' '}
+                      </label>
+                    )}{' '}
                     <button
                       className="btn btn-primary btn-sm"
-                      disabled={this.state.votes.length < this.props.minVotes || this.state.submitInProgress}
+                      disabled={
+                        this.state.votes.length < this.props.minVotes ||
+                        this.state.submitInProgress ||
+                        (this.props.ticketNumberHandling === TicketNumberWhileVoting.Required &&
+                          !this.state.ticketNumber)
+                      }
                       onClick={() => this.submit()}
                     >
                       {this.state.submitInProgress ? (
@@ -291,7 +355,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 <React.Fragment>
                   <br />
                   <span className="alert alert-danger" style={{ padding: '2px' }}>
-                    There was a problem submitting your votes; please try again or refresh the page and try again.
+                    There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
+                    {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                      <>
+                        If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised
+                        by the voting validation service.
+                      </>
+                    )}
                   </span>
                 </React.Fragment>
               )}
@@ -313,11 +383,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 >
                   My shortlist ({this.state.shortlist.length})
                 </button>{' '}
-                <button
-                  className="btn btn-sm agenda"
-                  onClick={() => this.show('votes')}
-                  disabled={this.state.show === 'votes'}
-                >
+                <button className="btn btn-sm agenda" onClick={() => this.show('votes')} disabled={isVoting}>
                   My votes ({this.state.votes.length})
                 </button>
               </div>
@@ -329,87 +395,128 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <small>{`(showing ${visibleSessions.length}${
             this.state.show === 'all' ? '/' + this.props.sessions.length : ''
           } session(s))`}</small>{' '}
-          <button className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
-            {this.state.expandAll ? 'Hide all session details' : 'Show all session details'}
-          </button>
+          {visibleSessions.length !== 0 && (
+            <button type="button" className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
+              {this.state.expandAll ? 'Hide all session details' : 'Show all session details'}
+            </button>
+          )}
         </h2>
+        {isVoting && this.props.preferentialVoting && (
+          <p>
+            <strong>You now need to order your votes based on your preference.</strong> We are using a{' '}
+            <a href="https://en.wikipedia.org/wiki/Preferential_voting" target="_blank">
+              preferential voting system
+            </a>{' '}
+            to maximise the impact of your votes.
+          </p>
+        )}
         {visibleSessions.length === 0 && (
           <p>
             <em>No sessions yet.</em>
           </p>
         )}
-
         {this.state.show === 'votes' && <p>This year we're doing preferential voting.</p>}
-        <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
-          {this.state.show === 'all' && (
-            <React.Fragment>
-              <div className="filters">
-                <em>Filter by:</em>{' '}
-                <fieldset className="tag-cloud">
-                  <ul>
-                    {this.state.tags.map(tag => (
-                      <li key={tag}>
-                        <input
-                          type="checkbox"
-                          value={tag}
-                          id={tag}
-                          name={tag}
-                          onChange={selected => {
-                            console.log(document.querySelectorAll('.tag-cloud input:checked'))
-                            const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
-                              .map(o => o.value)
-                              .filter(o => o !== null)
-                            if (newFilter.length > 0) {
-                              logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
-                            }
-                            this.setState({ tagFilters: newFilter })
-                          }}
-                        />
-                        <label htmlFor={tag}>{tag}</label>
-                      </li>
-                    ))}
-                  </ul>
-                </fieldset>
-                <ReactResponsiveSelect
-                  name="levelsFilter"
-                  prefix="Level:"
-                  options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                    this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
-                  )}
-                  multiselect={true}
-                  caretIcon={<span className="fa fa-caret-down" />}
-                  onChange={selected => {
-                    const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                    if (newFilter.length > 0) {
-                      logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-                    }
-                    this.setState({ levelFilters: newFilter })
-                  }}
-                  selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
-                />
-              </div>
-            </React.Fragment>
-          )}
-          <ul className="talk-list">
-            {visibleSessions.map((s, i) => {
-              const sessionPanelDetails = {
-                anonymousVoting: this.state.anonymousVoting,
-                expandAll: this.state.expandAll,
-                votes: this.state.votes,
-                maxVotes: this.state.maxVotes,
-                isVotedFor: this.isVotedFor(s),
-                isInShortlist: this.isInShortlist(s),
-                submitted: this.state.submitted,
-                s: s,
-                i: i,
-                toggleVote: () => this.toggleVote(s),
-                toggleShortlist: () => this.toggleShortlist(s),
-              }
 
-              return <SessionPanel {...sessionPanelDetails} />
-            })}
-          </ul>
-        </PanelGroup>
+        {this.state.show === 'all' && (
+          <React.Fragment>
+            <div className="filters">
+              <em>Filter by:</em>{' '}
+              <fieldset className="tag-cloud">
+                <ul>
+                  {this.state.tags.map(tag => (
+                    <li key={tag}>
+                      <input
+                        type="checkbox"
+                        value={tag}
+                        id={tag}
+                        name={tag}
+                        onChange={selected => {
+                          console.log(document.querySelectorAll('.tag-cloud input:checked'))
+                          const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
+                            .map(o => o.value)
+                            .filter(o => o !== null)
+                          if (newFilter.length > 0) {
+                            logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
+                          }
+                          this.setState({ tagFilters: newFilter })
+                        }}
+                      />
+                      <label htmlFor={tag}>{tag}</label>
+                    </li>
+                  ))}
+                </ul>
+              </fieldset>
+              <ReactResponsiveSelect
+                name="levelsFilter"
+                prefix="Level:"
+                options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                  this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
+                )}
+                multiselect={true}
+                caretIcon={<span className="fa fa-caret-down" />}
+                onChange={selected => {
+                  const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                  if (newFilter.length > 0) {
+                    logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
+                  }
+                  this.setState({ levelFilters: newFilter })
+                }}
+                selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
+              />
+            </div>
+          </React.Fragment>
+        )}
+
+        <DragDropContext
+          onDragEnd={(result: DropResult) => {
+            this.onDragEnd(result)
+          }}
+        >
+          <Droppable droppableId="voteDroppable">
+            {provider => (
+              <div ref={provider.innerRef} {...provider.droppableProps}>
+                <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
+                  <ul className="talk-list">
+                    {visibleSessions.map((s, i) => {
+                      const sessionPanelDetails = {
+                        anonymousVoting: this.state.anonymousVoting,
+                        expandAll: this.state.expandAll,
+                        votes: this.state.votes,
+                        maxVotes: this.state.maxVotes,
+                        isVotedFor: this.isVotedFor(s),
+                        isInShortlist: this.isInShortlist(s),
+                        submitted: this.state.submitted,
+                        s: s,
+                        i: i,
+                        toggleVote: () => this.toggleVote(s),
+                        toggleShortlist: () => this.toggleShortlist(s),
+                      }
+                      return (
+                        <Draggable
+                          key={s.Id}
+                          draggableId={s.Id}
+                          index={i}
+                          isDragDisabled={!isVoting || !this.props.preferentialVoting}
+                        >
+                          {dragProvider => (
+                            <div
+                              {...dragProvider.draggableProps}
+                              {...dragProvider.dragHandleProps}
+                              ref={dragProvider.innerRef}
+                            >
+                              <SessionPanel {...sessionPanelDetails} />
+                            </div>
+                          )}
+                        </Draggable>
+                      )
+                    })}
+                  </ul>
+                </PanelGroup>
+                {provider.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </React.Fragment>
     )
   }
