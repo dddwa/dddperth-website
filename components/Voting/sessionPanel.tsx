@@ -1,4 +1,5 @@
 import React from 'react'
+import { Panel, Icon, Title, Badge, Details, Buttons } from './sessionPanel.styled'
 
 import SessionDetails from '../sessionDetails'
 
@@ -16,21 +17,21 @@ export const SessionPanel: React.FC = ({
   toggleShortlist,
 }) => {
   return (
-    <li class="panel" key={s}>
+    <Panel class="panel" key={s}>
       <a href="#">
-        {isVotedFor && <span className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
+        {isVotedFor && <Icon className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
         {isInShortlist && (
-          <span className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
+          <Icon className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
         )}
-        <h4>{s.Title}</h4>
+        <Title>{s.Title}</Title>
         <ul>
           {(s.Tags || []).map(tag => (
-            <li>{tag}</li>
+            <Badge>{tag}</Badge>
           ))}
         </ul>
         <div className="controls">
           {!submitted && (
-            <div className="buttons">
+            <Buttons>
               <button
                 onClick={e => {
                   toggleShortlist(s)
@@ -52,11 +53,11 @@ export const SessionPanel: React.FC = ({
               >
                 {!isVotedFor ? 'Vote' : 'Un-vote'}
               </button>
-            </div>
+            </Buttons>
           )}
         </div>
       </a>
-      <details open={expandAll}>
+      <Details open={expandAll}>
         <summary>Tap for session details</summary>
         <SessionDetails
           session={s}
@@ -65,7 +66,7 @@ export const SessionPanel: React.FC = ({
           showBio={false}
           hideLevelAndFormat={false}
         />
-      </details>
-    </li>
+      </Details>
+    </Panel>
   )
 }
