@@ -6,8 +6,8 @@ import styled from '../utils/styles/theme'
 
 export const Panel = styled('li')(({ theme }) => ({
   backgroundColor: theme.colors.lightGrey,
-  marginTop: '10px',
-  padding: '13px 15px',
+  marginTop: calcRem(10),
+  padding: calcRem(13, 15),
   listStyle: 'none',
 
   '&:before': {
@@ -43,7 +43,7 @@ export const Title = styled('h4')(({ theme }) => ({
   margin: '0 0 10px',
 }))
 
-export const Badge = styled('li')(() => ({
+export const Badge = styled('li')(({ theme }) => ({
   display: 'inline-block',
   minWidth: '10px',
   padding: '3px 7px',
@@ -51,10 +51,10 @@ export const Badge = styled('li')(() => ({
   fontWeight: '700',
   lineHeight: '1',
   marginRight: '5px',
-  color: '#f5f5f5',
+  color: '#fff',
   textAlign: 'center',
   whiteSpace: 'nowrap',
-  backgroundColor: '#666',
+  backgroundColor: theme.colors.darkGrey,
   borderRadius: '10px',
 
   '&:before': {

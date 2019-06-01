@@ -418,7 +418,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         {this.state.show === 'votes' && <p>This year we're doing preferential voting.</p>}
 
         {this.state.show === 'all' && (
-          <React.Fragment>
             <div className="filters">
               <em>Filter by:</em>{' '}
               <fieldset className="tag-cloud">
@@ -431,7 +430,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                         id={tag}
                         name={tag}
                         onChange={selected => {
-                          console.log(document.querySelectorAll('.tag-cloud input:checked'))
                           const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
                             .map(o => o.value)
                             .filter(o => o !== null)
@@ -464,7 +462,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
               />
             </div>
-          </React.Fragment>
         )}
 
         <DragDropContext

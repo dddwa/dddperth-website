@@ -18,47 +18,47 @@ export const SessionPanel: React.FC = ({
 }) => {
   return (
     <Panel class="panel" key={s}>
-      <a href="#">
-        {isVotedFor && <Icon className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
-        {isInShortlist && (
-          <Icon className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
+      {isVotedFor && <Icon className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
+      {isInShortlist && (
+        <Icon className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
+      )}
+      <Title>{s.Title}</Title>
+      <ul>
+        {(s.Tags || []).map(tag => (
+          <Badge>{tag}</Badge>
+        ))}
+      </ul>
+      <div className="controls">
+        {!submitted && (
+          <Buttons>
+            <button
+              onClick={e => {
+                toggleShortlist(s)
+                e.stopPropagation()
+                e.preventDefault()
+              }}
+              className="btn btn-secondary btn-sm"
+            >
+              {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
+            </button>{' '}
+            <button
+              onClick={e => {
+                toggleVote(s)
+                e.stopPropagation()
+                e.preventDefault()
+              }}
+              className="btn btn-primary btn-sm"
+              disabled={votes.length >= maxVotes && !isVotedFor}
+            >
+              {!isVotedFor ? 'Vote' : 'Un-vote'}
+            </button>
+          </Buttons>
         )}
-        <Title>{s.Title}</Title>
-        <ul>
-          {(s.Tags || []).map(tag => (
-            <Badge>{tag}</Badge>
-          ))}
-        </ul>
-        <div className="controls">
-          {!submitted && (
-            <Buttons>
-              <button
-                onClick={e => {
-                  toggleShortlist(s)
-                  e.stopPropagation()
-                  e.preventDefault()
-                }}
-                className="btn btn-secondary btn-sm"
-              >
-                {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
-              </button>{' '}
-              <button
-                onClick={e => {
-                  toggleVote(s)
-                  e.stopPropagation()
-                  e.preventDefault()
-                }}
-                className="btn btn-primary btn-sm"
-                disabled={votes.length >= maxVotes && !isVotedFor}
-              >
-                {!isVotedFor ? 'Vote' : 'Un-vote'}
-              </button>
-            </Buttons>
-          )}
-        </div>
-      </a>
+      </div>
       <Details open={expandAll}>
-        <summary>Tap for session details</summary>
+        <summary>
+          <span class="fa fa-plus" title="More details" /> Tap for session details
+        </summary>
         <SessionDetails
           session={s}
           showPresenter={!anonymousVoting}
