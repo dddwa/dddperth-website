@@ -34,9 +34,8 @@ export const SessionPanel: React.FC = ({
             <button
               onClick={e => {
                 toggleShortlist(s)
-                e.stopPropagation()
-                e.preventDefault()
               }}
+              type="button"
               className="btn btn-secondary btn-sm"
             >
               {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
@@ -44,9 +43,8 @@ export const SessionPanel: React.FC = ({
             <button
               onClick={e => {
                 toggleVote(s)
-                e.stopPropagation()
-                e.preventDefault()
               }}
+              type="button"
               className="btn btn-primary btn-sm"
               disabled={votes.length >= maxVotes && !isVotedFor}
             >
