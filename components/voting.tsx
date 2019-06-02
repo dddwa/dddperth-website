@@ -1,16 +1,15 @@
 import moment from 'moment'
 import React, { Fragment } from 'react'
+import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
-import NonJumpingAffix from '../components/NonJumpingAffix'
 import { SessionPanel } from '../components/Voting/sessionPanel'
 import TagCloud from '../components/tagCloud'
 import '../components/utils/arrayExtensions'
 import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
 import { logEvent } from './global/analytics'
-// tslint:disable-next-line: ordered-imports
-import { DragDropContext, DropResult, Droppable, Draggable } from 'react-beautiful-dnd'
+import { StyledVotingPanel } from './Voting/Voting.styled'
 
 type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
@@ -267,7 +266,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
     return (
       <React.Fragment>
-        <NonJumpingAffix>
+        <StyledVotingPanel>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
               {this.state.submitted && (
@@ -389,7 +388,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               </div>
             </Panel.Body>
           </Panel>
-        </NonJumpingAffix>
+        </StyledVotingPanel>
         <h2>
           {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
           <small>{`(showing ${visibleSessions.length}${
