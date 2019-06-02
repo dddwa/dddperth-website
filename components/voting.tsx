@@ -1,11 +1,11 @@
 import moment from 'moment'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
-import SessionDetails from '../components/sessionDetails'
 import '../components/utils/arrayExtensions'
+import { SessionPanel } from '../components/Voting/sessionPanel'
 import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
 import { logEvent } from './global/analytics'
 import { StyledVotingPanel } from './Voting/Voting.styled'
@@ -385,64 +385,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   My votes ({this.state.votes.length})
                 </button>
               </div>
-              {this.state.show === 'all' && (
-                <React.Fragment>
-                  <div className="filters">
-                    <em>Filter by:</em>{' '}
-                    <ReactResponsiveSelect
-                      name="tagsFilter"
-                      prefix="Tags:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.tags.map(t => ({ value: t, text: t, markup: option(t) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ tagFilters: newFilter })
-                      }}
-                      selectedValues={this.state.tagFilters.length > 0 ? this.state.tagFilters : undefined}
-                    />
-                    <ReactResponsiveSelect
-                      name="formatFilter"
-                      prefix="Format:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.formats.map(f => ({ value: f, text: f, markup: option(f) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'formatFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ formatFilters: newFilter })
-                      }}
-                      selectedValues={this.state.formatFilters.length > 0 ? this.state.formatFilters : undefined}
-                    />
-                    <ReactResponsiveSelect
-                      name="levelsFilter"
-                      prefix="Level:"
-                      options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                        this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
-                      )}
-                      multiselect={true}
-                      caretIcon={<span className="fa fa-caret-down" />}
-                      onChange={selected => {
-                        const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ levelFilters: newFilter })
-                      }}
-                      selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
-                    />
-                  </div>
-                </React.Fragment>
-              )}
             </Panel.Body>
           </Panel>
         </StyledVotingPanel>
@@ -471,6 +413,54 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             <em>No sessions yet.</em>
           </p>
         )}
+
+        {this.state.show === 'all' && (
+          <div className="filters">
+            <em>Filter by:</em>{' '}
+            <fieldset className="tag-cloud">
+              <ul>
+                {this.state.tags.map(tag => (
+                  <li key={tag}>
+                    <input
+                      type="checkbox"
+                      value={tag}
+                      id={tag}
+                      name={tag}
+                      onChange={selected => {
+                        const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
+                          .map(o => o.value)
+                          .filter(o => o !== null)
+                        if (newFilter.length > 0) {
+                          logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
+                        }
+                        this.setState({ tagFilters: newFilter })
+                      }}
+                    />
+                    <label htmlFor={tag}>{tag}</label>
+                  </li>
+                ))}
+              </ul>
+            </fieldset>
+            <ReactResponsiveSelect
+              name="levelsFilter"
+              prefix="Level:"
+              options={[{ value: null, text: 'All', markup: option('All') }].concat(
+                this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
+              )}
+              multiselect={true}
+              caretIcon={<span className="fa fa-caret-down" />}
+              onChange={selected => {
+                const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
+                if (newFilter.length > 0) {
+                  logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
+                }
+                this.setState({ levelFilters: newFilter })
+              }}
+              selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
+            />
+          </div>
+        )}
+
         <DragDropContext
           onDragEnd={(result: DropResult) => {
             this.onDragEnd(result)
@@ -480,124 +470,40 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             {provider => (
               <div ref={provider.innerRef} {...provider.droppableProps}>
                 <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
-                  {visibleSessions.map((s, i) => (
-                    <Draggable
-                      key={s.Id}
-                      draggableId={s.Id}
-                      index={i}
-                      isDragDisabled={!isVoting || !this.props.preferentialVoting}
-                    >
-                      {dragProvider => (
-                        <div
-                          {...dragProvider.draggableProps}
-                          {...dragProvider.dragHandleProps}
-                          ref={dragProvider.innerRef}
+                  <ul className="talk-list">
+                    {visibleSessions.map((s, i) => {
+                      const sessionPanelDetails = {
+                        anonymousVoting: this.props.anonymousVoting,
+                        expandAll: this.state.expandAll,
+                        hideVotingButtons: this.state.submitted,
+                        index: i,
+                        isInShortlist: this.isInShortlist(s),
+                        isVotedFor: this.isVotedFor(s),
+                        isVotingDisabled: this.state.votes.length >= this.props.maxVotes || this.state.submitted,
+                        session: s,
+                        toggleShortlist: () => this.toggleShortlist(s),
+                        toggleVote: () => this.toggleVote(s),
+                      }
+                      return (
+                        <Draggable
+                          key={s.Id}
+                          draggableId={s.Id}
+                          index={i}
+                          isDragDisabled={!isVoting || !this.props.preferentialVoting}
                         >
-                          <Panel eventKey={i} key={s.Id} expanded={this.state.expandAll || null}>
-                            <Panel.Heading>
-                              <Panel.Title toggle={!this.state.expandAll}>
-                                <SpanIf condition={this.state.expandAll} className="title">
-                                  {this.isVotedFor(s) && !isVoting && (
-                                    <span
-                                      className="fa fa-check status"
-                                      aria-label="Voted"
-                                      role="status"
-                                      title="Voted"
-                                    />
-                                  )}
-                                  {this.isInShortlist(s) && !isVoting && (
-                                    <span
-                                      className="fa fa-list-ol status"
-                                      aria-label="Shortlisted"
-                                      role="status"
-                                      title="Shortlisted"
-                                    />
-                                  )}
-                                  {this.isFlagged(s) && !isVoting && (
-                                    <span
-                                      className="fa fa-flag status"
-                                      aria-label="Flag"
-                                      role="status"
-                                      title="Flagged"
-                                    />
-                                  )}
-                                  {this.props.preferentialVoting && isVoting && (
-                                    <span className="status" title="Voting position">
-                                      #{i + 1}
-                                    </span>
-                                  )}
-                                  {s.Title}
-                                  <br />
-                                  {(s.Tags || []).map(tag => (
-                                    <React.Fragment key={tag}>
-                                      <span className="badge">{tag}</span>{' '}
-                                    </React.Fragment>
-                                  ))}
-                                  <small
-                                    style={{
-                                      display: 'block',
-                                      marginTop: '10px',
-                                      visibility: this.state.expandAll ? 'hidden' : 'visible',
-                                    }}
-                                  >
-                                    <span className="fa fa-plus" title="More details" /> Tap for session details
-                                  </small>
-                                  {!this.state.submitted && (
-                                    <div style={{ textAlign: 'right', paddingTop: '10px' }}>
-                                      {!isVoting && (
-                                        <Fragment>
-                                          <button
-                                            onClick={e => {
-                                              this.toggleFlagged(s)
-                                              e.stopPropagation()
-                                              e.preventDefault()
-                                            }}
-                                            className="btn btn-secondary btn-sm"
-                                          >
-                                            {!this.isFlagged(s) ? 'Flag' : 'Un-flag'}
-                                          </button>{' '}
-                                          <button
-                                            onClick={e => {
-                                              this.toggleShortlist(s)
-                                              e.stopPropagation()
-                                              e.preventDefault()
-                                            }}
-                                            className="btn btn-secondary btn-sm"
-                                          >
-                                            {!this.isInShortlist(s) ? 'Shortlist' : 'Un-shortlist'}
-                                          </button>{' '}
-                                        </Fragment>
-                                      )}
-                                      <button
-                                        onClick={e => {
-                                          this.toggleVote(s)
-                                          e.stopPropagation()
-                                          e.preventDefault()
-                                        }}
-                                        className="btn btn-primary btn-sm"
-                                        disabled={this.state.votes.length >= this.props.maxVotes && !this.isVotedFor(s)}
-                                      >
-                                        {!this.isVotedFor(s) ? 'Vote' : 'Un-vote'}
-                                      </button>
-                                    </div>
-                                  )}
-                                </SpanIf>
-                              </Panel.Title>
-                            </Panel.Heading>
-                            <Panel.Body collapsible>
-                              <SessionDetails
-                                session={s}
-                                showPresenter={!this.props.anonymousVoting}
-                                hideTags={true}
-                                showBio={false}
-                                hideLevelAndFormat={false}
-                              />
-                            </Panel.Body>
-                          </Panel>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
+                          {dragProvider => (
+                            <div
+                              {...dragProvider.draggableProps}
+                              {...dragProvider.dragHandleProps}
+                              ref={dragProvider.innerRef}
+                            >
+                              <SessionPanel {...sessionPanelDetails} />
+                            </div>
+                          )}
+                        </Draggable>
+                      )
+                    })}
+                  </ul>
                 </PanelGroup>
                 {provider.placeholder}
               </div>

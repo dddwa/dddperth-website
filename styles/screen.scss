@@ -1037,11 +1037,47 @@ section.full-width {
   .submit-block {
     float: right;
   }
-  .filters {
-    margin-top: 10px;
-    > div {
-      display: inline-block;
+
+  
+}
+#voting-interface {
+  
+  .panel-heading {
+    .status {
+      float: right;
+      margin-left: 10px;
+      font-size: 30px;
     }
+    .fa.status {
+      font-size: 18px;
+      background-color: $primary-color;
+      color: #fff;
+      @include border-radius(50%);
+      padding: 7px;
+    }
+  }
+  .panel-heading a,
+  .panel-heading span.title {
+    padding: 13px 15px;
+
+    &:after {
+      display: none;
+    }
+  }
+  .panel-default > .panel-heading .badge {
+    background-color: #666;
+  }
+  .panel-body {
+    margin-bottom: 10px;
+  }
+  .panel-heading {
+    margin-top: 10px;
+  }
+}
+.filters {
+  margin-top: 10px;
+  > div {
+    display: inline-block;
   }
 
   .rrs__button + .rrs__options {
@@ -1096,38 +1132,57 @@ section.full-width {
   .rrs--has-changed .rrs__label {
     color: $primary-color;
   }
-}
-#voting-interface {
-  .panel-heading {
-    .status {
-      float: right;
-      margin-left: 10px;
-      font-size: 30px;
-    }
-    .fa.status {
-      font-size: 18px;
-      background-color: $primary-color;
-      color: #fff;
-      @include border-radius(50%);
-      padding: 7px;
-    }
-  }
-  .panel-heading a,
-  .panel-heading span.title {
-    padding: 13px 15px;
 
-    &:after {
-      display: none;
+  .tag-cloud {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
     }
-  }
-  .panel-default > .panel-heading .badge {
-    background-color: #666;
-  }
-  .panel-body {
-    margin-bottom: 10px;
-  }
-  .panel-heading {
-    margin-top: 10px;
+
+    li {
+      &:before {
+        content: normal;
+      }
+    }
+
+    input {
+      position: absolute;
+      left: -200vw;
+
+      &:checked {
+        & + label {
+          background: $voting;
+          color: #fff;
+        }
+      }
+
+      &:focus {
+        & + label {
+          border-color: $voting;
+        }
+      }
+    }
+
+    label {
+      border: 2px solid transparent;
+      cursor: pointer;
+      display: block;
+      font-size: 0.9em;
+      margin: 2px;
+      padding: 5px;
+
+      &:active {
+        background: $voting;
+        color: #fff;
+      }
+
+      &:hover,
+      &:focus {
+      }
+    }
   }
 }
 .btn.flagged {
