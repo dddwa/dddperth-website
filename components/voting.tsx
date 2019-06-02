@@ -1,10 +1,9 @@
 import moment from 'moment'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
 import { Panel, PanelGroup } from 'react-bootstrap'
 import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
-import TagCloud from '../components/tagCloud'
 import '../components/utils/arrayExtensions'
 import { SessionPanel } from '../components/Voting/sessionPanel'
 import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
@@ -474,17 +473,16 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   <ul className="talk-list">
                     {visibleSessions.map((s, i) => {
                       const sessionPanelDetails = {
-                        anonymousVoting: this.state.anonymousVoting,
+                        anonymousVoting: this.props.anonymousVoting,
                         expandAll: this.state.expandAll,
-                        votes: this.state.votes,
-                        maxVotes: this.state.maxVotes,
-                        isVotedFor: this.isVotedFor(s),
+                        hideVotingButtons: this.state.submitted,
+                        index: i,
                         isInShortlist: this.isInShortlist(s),
-                        submitted: this.state.submitted,
-                        s,
-                        i,
-                        toggleVote: () => this.toggleVote(s),
+                        isVotedFor: this.isVotedFor(s),
+                        isVotingDisabled: this.state.votes.length >= this.props.maxVotes || this.state.submitted,
+                        session: s,
                         toggleShortlist: () => this.toggleShortlist(s),
+                        toggleVote: () => this.toggleVote(s),
                       }
                       return (
                         <Draggable

@@ -1,23 +1,34 @@
 import React from 'react'
-import { Panel, Icon, Title, Badge, Details, Buttons } from './sessionPanel.styled'
+import { Badge, Buttons, Details, Icon, Panel, Title } from './sessionPanel.styled'
 
+import { Session } from '../../config/types'
 import SessionDetails from '../sessionDetails'
 
-export const SessionPanel: React.FC = ({
-  s,
-  i,
+interface SessionPanelProps {
+  session: Session
+  anonymousVoting: boolean
+  isVotedFor: boolean
+  isVotingDisabled: boolean
+  hideVotingButtons: boolean
+  isInShortlist: boolean
+  expandAll: boolean
+  toggleVote: (Session) => void
+  toggleShortlist: (Session) => void
+}
+
+export const SessionPanel: React.FC<SessionPanelProps> = ({
+  session: s,
   anonymousVoting,
   isVotedFor,
-  votes,
-  maxVotes,
-  submitted,
+  isVotingDisabled,
+  hideVotingButtons,
   isInShortlist,
   expandAll,
   toggleVote,
   toggleShortlist,
 }) => {
   return (
-    <Panel class="panel" key={s}>
+    <Panel class="panel" key={s.Id}>
       {isVotedFor && <Icon className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
       {isInShortlist && (
         <Icon className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
@@ -29,10 +40,10 @@ export const SessionPanel: React.FC = ({
         ))}
       </ul>
       <div className="controls">
-        {!submitted && (
+        {!hideVotingButtons && (
           <Buttons>
             <button
-              onClick={e => {
+              onClick={_ => {
                 toggleShortlist(s)
               }}
               type="button"
@@ -41,12 +52,12 @@ export const SessionPanel: React.FC = ({
               {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
             </button>{' '}
             <button
-              onClick={e => {
+              onClick={_ => {
                 toggleVote(s)
               }}
               type="button"
               className="btn btn-primary btn-sm"
-              disabled={votes.length >= maxVotes && !isVotedFor}
+              disabled={isVotingDisabled && !isVotedFor}
             >
               {!isVotedFor ? 'Vote' : 'Un-vote'}
             </button>
