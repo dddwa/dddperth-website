@@ -1,17 +1,29 @@
 import React from 'react'
-import { Badge, Buttons, Details, Icon, Panel, Title } from './sessionPanel.styled'
-
 import { Session } from '../../config/types'
+import { Button } from '../global/Button/Button'
 import SessionDetails from '../sessionDetails'
+import {
+  StyledBadge,
+  StyledButtons,
+  StyledDetails,
+  StyledHeader,
+  StyledIcon,
+  StyledPanel,
+  StyledSummary,
+  StyledTitle,
+} from './sessionPanel.styled'
 
 interface SessionPanelProps {
   session: Session
   anonymousVoting: boolean
+  isVoting: boolean
   isVotedFor: boolean
   isVotingDisabled: boolean
   hideVotingButtons: boolean
   isInShortlist: boolean
   expandAll: boolean
+  index: number
+  preferentialVoting: boolean
   toggleVote: (Session) => void
   toggleShortlist: (Session) => void
 }
@@ -19,55 +31,65 @@ interface SessionPanelProps {
 export const SessionPanel: React.FC<SessionPanelProps> = ({
   session: s,
   anonymousVoting,
+  isVoting,
   isVotedFor,
   isVotingDisabled,
   hideVotingButtons,
   isInShortlist,
   expandAll,
+  index,
+  preferentialVoting,
   toggleVote,
   toggleShortlist,
 }) => {
   return (
-    <Panel class="panel" key={s.Id}>
-      {isVotedFor && <Icon className="fa fa-check status" aria-label="Voted" role="status" title="Voted" />}
-      {isInShortlist && (
-        <Icon className="fa fa-list-ol status" aria-label="Shortlisted" role="status" title="Shortlisted" />
+    <StyledPanel key={s.Id}>
+      {isVotedFor && !isVoting && <StyledIcon className="fa fa-check" aria-label="Voted" role="status" title="Voted" />}
+      {isInShortlist && !isVoting && (
+        <StyledIcon className="fa fa-list-ol" aria-label="Shortlisted" role="status" title="Shortlisted" />
       )}
-      <Title>{s.Title}</Title>
+      <StyledHeader>
+        <StyledTitle>{s.Title}</StyledTitle>
+        {preferentialVoting && isVoting && (
+          <span className="status" title="Voting position">
+            #{index + 1}
+          </span>
+        )}
+      </StyledHeader>
       <ul>
-        {(s.Tags || []).map(tag => (
-          <Badge>{tag}</Badge>
+        {(s.Tags || []).map((tag, n) => (
+          <StyledBadge key={n + tag}>{tag}</StyledBadge>
         ))}
       </ul>
-      <div className="controls">
-        {!hideVotingButtons && (
-          <Buttons>
-            <button
+      {!hideVotingButtons && (
+        <StyledButtons>
+          {!isVoting && (
+            <Button
+              kind="secondary"
+              size="small"
               onClick={_ => {
                 toggleShortlist(s)
               }}
-              type="button"
-              className="btn btn-secondary btn-sm"
             >
               {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
-            </button>{' '}
-            <button
-              onClick={_ => {
-                toggleVote(s)
-              }}
-              type="button"
-              className="btn btn-primary btn-sm"
-              disabled={isVotingDisabled && !isVotedFor}
-            >
-              {!isVotedFor ? 'Vote' : 'Un-vote'}
-            </button>
-          </Buttons>
-        )}
-      </div>
-      <Details open={expandAll}>
-        <summary>
-          <span class="fa fa-plus" title="More details" /> Tap for session details
-        </summary>
+            </Button>
+          )}
+          <Button
+            kind="primary"
+            size="small"
+            onClick={_ => {
+              toggleVote(s)
+            }}
+            disabled={isVotingDisabled && !isVotedFor}
+          >
+            {!isVotedFor ? 'Vote' : 'Un-vote'}
+          </Button>
+        </StyledButtons>
+      )}
+      <StyledDetails open={expandAll}>
+        <StyledSummary>
+          <span className="fa fa-plus" title="More details" /> Tap for session details
+        </StyledSummary>
         <SessionDetails
           session={s}
           showPresenter={!anonymousVoting}
@@ -75,7 +97,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
           showBio={false}
           hideLevelAndFormat={false}
         />
-      </Details>
-    </Panel>
+      </StyledDetails>
+    </StyledPanel>
   )
 }

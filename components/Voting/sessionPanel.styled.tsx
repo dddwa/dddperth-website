@@ -4,10 +4,10 @@ import { breakpoint } from '../utils/styles/breakpoints'
 import { calcRem } from '../utils/styles/calcRem'
 import styled from '../utils/styles/theme'
 
-export const Panel = styled('li')(({ theme }) => ({
+export const StyledPanel = styled('li')(({ theme }) => ({
   backgroundColor: theme.colors.lightGrey,
-  marginTop: calcRem(10),
   padding: calcRem(13, 15),
+  marginTop: calcRem(10),
   listStyle: 'none',
 
   '&:before': {
@@ -24,53 +24,81 @@ export const Panel = styled('li')(({ theme }) => ({
   },
 }))
 
-export const Icon = styled('span')(({ theme }) => ({
-  fontSize: '18px',
+export const StyledIcon = styled('span')(({ theme }) => ({
   float: 'right',
+  marginLeft: calcRem(10),
+  padding: calcRem(7),
+  fontSize: calcRem(18),
   backgroundColor: theme.colors.primary,
   color: '#fff',
   borderRadius: '50%',
-  padding: '7px',
-  marginLeft: '10px',
 }))
 
-export const Title = styled('h4')(({ theme }) => ({
+export const StyledTitle = styled('h4')(({ theme }) => ({
+  margin: 0,
   color: theme.colors.body,
+  fontSize: calcRem(16),
+  fontWeight: theme.weights.bold,
+  lineHeight: 1.5,
   textDecoration: 'none',
-  fontWeight: '700',
-  fontSize: '16px',
-  lineHeight: '1.5',
-  margin: '0 0 10px',
 }))
 
-export const Badge = styled('li')(({ theme }) => ({
+export const StyledBadge = styled('li')(({ theme }) => ({
   display: 'inline-block',
-  minWidth: '10px',
-  padding: '3px 7px',
-  fontSize: '12px',
-  fontWeight: '700',
-  lineHeight: '1',
-  marginRight: '5px',
-  color: '#fff',
-  textAlign: 'center',
-  whiteSpace: 'nowrap',
+  minWidth: calcRem(10),
+  padding: calcRem(3, 7),
+  marginRight: calcRem(5),
   backgroundColor: theme.colors.darkGrey,
-  borderRadius: '10px',
+  borderRadius: calcRem(10),
+  color: '#fff',
+  fontSize: calcRem(12),
+  fontWeight: theme.weights.bold,
+  lineHeight: 1,
+  textAlign: 'center',
 
   '&:before': {
     content: 'normal',
   },
 }))
 
-export const Details = styled('details')(() => ({
-  summary: {
-    cursor: 'pointer',
-    marginTop: '-20px',
-    fontWeight: '700',
+export const StyledDetails = styled('details')({
+  marginTop: calcRem(10),
+
+  [breakpoint('xs')]: {
+    marginTop: calcRem(-20),
+  },
+})
+
+export const StyledSummary = styled('summary')(({ theme }) => ({
+  cursor: 'pointer',
+  fontWeight: theme.weights.bold,
+
+  '&::-webkit-details-marker': {
+    display: 'none',
   },
 }))
 
-export const Buttons = styled('div')(() => ({
-  textAlign: 'right',
-  paddingTop: '10px',
+export const StyledButtons = styled('div')(() => ({
+  display: 'flex',
+  paddingTop: calcRem(10),
+
+  '& > *:not(:first-child)': {
+    marginLeft: calcRem(4),
+  },
+
+  [breakpoint('xs')]: {
+    justifyContent: 'flex-end',
+  },
+}))
+
+export const StyledHeader = styled('header')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  margin: calcRem(0, 0, 10),
+  fontSize: calcRem(30),
+  // competing styles
+  backgroundColor: 'transparent',
+  textAlign: 'start',
+  color: theme.colors.body,
+  zIndex: 'auto',
 }))
