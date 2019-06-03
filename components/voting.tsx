@@ -13,6 +13,12 @@ import { StyledVotingPanel } from './Voting/Voting.styled'
 type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
 
+enum StorageKeys {
+  SHORTLIST = 'ddd-2019-voting-session-shortlist',
+  SUBMITTED = 'ddd-2019-voting-submitted',
+  VOTES = 'ddd-2019-voting-session-votes',
+}
+
 interface VotingState {
   expandAll: boolean
   tagFilters: string[]
@@ -84,9 +90,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   componentDidMount() {
     this.setState({
       flagged: this.readFromStorage('ddd-voting-session-flagged'),
-      shortlist: this.readFromStorage('ddd-voting-session-shortlist'),
-      submitted: this.readFromStorage('ddd-voting-submitted') === 'true',
-      votes: this.readFromStorage('ddd-voting-session-votes'),
+      shortlist: this.readFromStorage(StorageKeys.SHORTLIST),
+      submitted: this.readFromStorage(StorageKeys.SUBMITTED) === 'true',
+      votes: this.readFromStorage(StorageKeys.VOTES),
     })
   }
 
@@ -113,7 +119,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           ? this.state.shortlist.without(session.Id)
           : [...this.state.shortlist, session.Id],
       },
-      () => this.writeToStorage('ddd-voting-session-shortlist', this.state.shortlist),
+      () => this.writeToStorage(StorageKeys.SHORTLIST, this.state.shortlist),
     )
   }
 
@@ -141,7 +147,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       {
         votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
       },
-      () => this.writeToStorage('ddd-voting-session-votes', this.state.votes),
+      () => this.writeToStorage(StorageKeys.VOTES, this.state.votes),
     )
   }
 
@@ -203,7 +209,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           { votingDurationInMins: moment().diff(moment.parseZone(this.props.startTime), 'minutes') },
         )
         this.setState({ submitInProgress: false, submitted: true }, () =>
-          this.writeToStorage('ddd-voting-submitted', 'true'),
+          this.writeToStorage(StorageKeys.SUBMITTED, 'true'),
         )
       }
     } catch (e) {
