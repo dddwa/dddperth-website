@@ -9,7 +9,7 @@ import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import { Session } from '../config/types'
+import { Session, TicketNumberWhileVoting } from '../config/types'
 import Page from '../layouts/main'
 
 interface VoteProps extends WithPageMetadataProps {
@@ -221,16 +221,29 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                   in your technical area, cover soft skills / leadership and/or are a bit more out there (to stretch
                   yourself), but it's totally up to you to vote for your perfect agenda!
                 </li>
-                <li>
-                  We ideally want the people who are actually attending to be the ones that have the greatest influence
-                  on the agenda and we also feel this is fairer to session submitters since it makes for a more level
-                  playing field for social network reach; this year we've added an optional field for you to add in your
-                  ticket # (from your confirmation email) if you've{' '}
-                  <Link href="/tickets">
-                    <a>purchased a ticket</a>
-                  </Link>{' '}
-                  which will <strong>give your vote a higher weighting</strong>
-                </li>
+                {this.props.pageMetadata.conference.TicketNumberWhileVoting === TicketNumberWhileVoting.Optional && (
+                  <li>
+                    We ideally want the people who are attending to have the greatest influence on the agenda and we
+                    also feel this is fairer to session submitters since it makes for a more level playing field for
+                    social network reach; this year we have an optional field for you to add in your ticket # (from your
+                    confirmation email) if you've{' '}
+                    <Link href="/tickets">
+                      <a>purchased a ticket</a>
+                    </Link>{' '}
+                    which will <strong>give your vote a higher weighting</strong>.
+                  </li>
+                )}
+                {this.props.pageMetadata.conference.TicketNumberWhileVoting === TicketNumberWhileVoting.Required && (
+                  <li>
+                    We ideally want the people who are attending to have the greatest influence on the agenda and we
+                    also feel this is fairer to session submitters since it makes for a more level playing field for
+                    social network reach; this year you have to{' '}
+                    <Link href="/tickets">
+                      <a>purchase a ticket</a>
+                    </Link>{' '}
+                    in order to vote.
+                  </li>
+                )}
               </ul>
             </div>
           </div>
