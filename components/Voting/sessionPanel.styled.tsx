@@ -74,11 +74,3 @@ export const Buttons = styled('div')(() => ({
   textAlign: 'right',
   paddingTop: '10px',
 }))
-
-// export const Icon = styled('span')(({ theme }) => ({
-
-// }))
-
-// export const Icon = styled('span')(({ theme }) => ({
-
-// }))
