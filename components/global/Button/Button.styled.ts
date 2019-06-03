@@ -60,6 +60,11 @@ export const StyledButton = styled('button', {
   verticalAlign: 'middle',
   userSelect: 'none',
 
+  '&[disabled]': {
+    opacity: 0.65,
+    cursor: 'not-allowed',
+  },
+
   '&:after': {
     position: 'relative',
     display: 'inline-block',

@@ -24,8 +24,8 @@ interface SessionPanelProps {
   expandAll: boolean
   index: number
   preferentialVoting: boolean
-  toggleVote: (Session) => void
-  toggleShortlist: (Session) => void
+  toggleVote: () => void
+  toggleShortlist: () => void
 }
 
 export const SessionPanel: React.FC<SessionPanelProps> = ({
@@ -68,7 +68,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
               kind="secondary"
               size="small"
               onClick={_ => {
-                toggleShortlist(s)
+                toggleShortlist()
               }}
             >
               {!isInShortlist ? 'Shortlist' : 'Un-shortlist'}
@@ -78,7 +78,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
             kind="primary"
             size="small"
             onClick={_ => {
-              toggleVote(s)
+              toggleVote()
             }}
             disabled={isVotingDisabled && !isVotedFor}
           >
