@@ -14,9 +14,9 @@ type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
 
 enum StorageKeys {
-  SHORTLIST = 'ddd-2019-voting-session-shortlist',
-  SUBMITTED = 'ddd-2019-voting-submitted',
-  VOTES = 'ddd-2019-voting-session-votes',
+  SHORTLIST = 'voting-session-shortlist',
+  SUBMITTED = 'voting-submitted',
+  VOTES = 'voting-session-votes',
 }
 
 interface VotingState {
@@ -39,6 +39,7 @@ interface VotingState {
 
 interface VotingProps {
   conferenceName: string
+  conferenceInstance: string
   ticketsProvider: TicketsProvider
   anonymousVoting: boolean
   preferentialVoting: boolean
@@ -50,6 +51,8 @@ interface VotingProps {
   startTime: string
   voteId: string
 }
+
+const storageKey = (votingProps: VotingProps, key: StorageKeys) => `${key}-${votingProps.conferenceInstance}`
 
 const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
   const result = Array.from(list)
@@ -90,9 +93,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   componentDidMount() {
     this.setState({
       flagged: this.readFromStorage('ddd-voting-session-flagged'),
-      shortlist: this.readFromStorage(StorageKeys.SHORTLIST),
-      submitted: this.readFromStorage(StorageKeys.SUBMITTED) === 'true',
-      votes: this.readFromStorage(StorageKeys.VOTES),
+      shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
+      submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
+      votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
     })
   }
 
@@ -119,7 +122,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           ? this.state.shortlist.without(session.Id)
           : [...this.state.shortlist, session.Id],
       },
-      () => this.writeToStorage(StorageKeys.SHORTLIST, this.state.shortlist),
+      () => this.writeToStorage(storageKey(this.props, StorageKeys.SHORTLIST), this.state.shortlist),
     )
   }
 
@@ -147,7 +150,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       {
         votes: this.isVotedFor(session) ? this.state.votes.without(session.Id) : [...this.state.votes, session.Id],
       },
-      () => this.writeToStorage(StorageKeys.VOTES, this.state.votes),
+      () => this.writeToStorage(storageKey(this.props, StorageKeys.VOTES), this.state.votes),
     )
   }
 
@@ -209,7 +212,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           { votingDurationInMins: moment().diff(moment.parseZone(this.props.startTime), 'minutes') },
         )
         this.setState({ submitInProgress: false, submitted: true }, () =>
-          this.writeToStorage(StorageKeys.SUBMITTED, 'true'),
+          this.writeToStorage(storageKey(this.props, StorageKeys.SUBMITTED), 'true'),
         )
       }
     } catch (e) {

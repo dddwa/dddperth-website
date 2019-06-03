@@ -273,6 +273,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
               maxVotes={maxVotes}
               anonymousVoting={this.props.pageMetadata.conference.AnonymousVoting}
               submitVoteUrl={this.props.pageMetadata.appConfig.submitVoteUrl}
+              conferenceInstance={this.props.pageMetadata.conference.Instance}
               conferenceName={this.props.pageMetadata.conference.Name}
               ticketsProvider={this.props.pageMetadata.conference.TicketsProviderId}
               preferentialVoting={this.props.pageMetadata.conference.PreferentialVoting}
