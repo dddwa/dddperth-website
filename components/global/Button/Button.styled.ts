@@ -3,7 +3,7 @@
 import { breakpoint } from '../../utils/styles/breakpoints'
 import { calcRem } from '../../utils/styles/calcRem'
 import styled, { Theme } from '../../utils/styles/theme'
-import { ButtonKinds } from './Button'
+import { ButtonKinds, Size } from './Button'
 
 function buttonState(color: string, dark: string, focus: string) {
   return {
@@ -35,29 +35,35 @@ function buttonKindStyles(kind: ButtonKinds, theme: Theme) {
 
 export interface StyledButtonProps {
   kind: ButtonKinds
+  size?: Size
 }
 
 function shouldStyledButtonForwardProps(prop: string) {
-  return prop !== 'kind'
+  return prop !== 'kind' && prop !== 'size'
 }
 
 export const StyledButton = styled('button', {
   shouldForwardProp: shouldStyledButtonForwardProps,
-})<StyledButtonProps>(({ theme, kind }) => ({
+})<StyledButtonProps>(({ theme, kind, size }) => ({
   ...buttonKindStyles(kind, theme),
   cursor: 'pointer',
   display: 'block',
   margin: 0,
-  padding: calcRem(6, 12),
+  padding: size === 'small' ? calcRem(5, 10) : calcRem(6, 12),
   color: '#fff',
   border: 'none',
   fontSize: calcRem(14),
   fontWeight: theme.weights.bold,
-  lineHeight: 1.4,
+  lineHeight: size === 'small' ? 1.1 : 1.4,
   textAlign: 'center',
   textShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
   verticalAlign: 'middle',
   userSelect: 'none',
+
+  '&[disabled]': {
+    opacity: 0.65,
+    cursor: 'not-allowed',
+  },
 
   '&:after': {
     position: 'relative',
@@ -74,12 +80,12 @@ export const StyledButton = styled('button', {
   },
 
   [breakpoint('xs')]: {
-    padding: calcRem(6, 15, 5),
+    padding: size === 'small' ? calcRem(5, 10) : calcRem(6, 15, 5),
   },
 
   [breakpoint('sm')]: {
-    padding: calcRem(7, 16, 6),
-    fontSize: calcRem(15),
+    padding: size === 'small' ? calcRem(5, 10) : calcRem(7, 16, 6),
+    fontSize: size === 'small' ? calcRem(13) : calcRem(15),
 
     '&:after': {
       margin: `0 0 0 ${calcRem(17)}`,
@@ -88,13 +94,13 @@ export const StyledButton = styled('button', {
   },
 
   [breakpoint('md')]: {
-    padding: calcRem(8, 20, 7),
-    fontSize: calcRem(16),
+    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(8, 20, 7),
+    fontSize: size === 'small' ? calcRem(14) : calcRem(16),
   },
 
   [breakpoint('lg')]: {
-    padding: calcRem(10, 23, 8),
-    fontSize: calcRem(17),
+    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(10, 23, 8),
+    fontSize: size === 'small' ? calcRem(15) : calcRem(17),
 
     '&:after': {
       margin: `0 0 0 ${calcRem(20)}`,
@@ -103,8 +109,8 @@ export const StyledButton = styled('button', {
   },
 
   [breakpoint('xl')]: {
-    padding: calcRem(12, 25, 10),
-    fontSize: calcRem(18),
+    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(12, 25, 10),
+    fontSize: size === 'small' ? calcRem(16) : calcRem(18),
 
     '&:after': {
       margin: `0 0 0 ${calcRem(20)}`,

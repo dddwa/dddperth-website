@@ -654,57 +654,6 @@ section.full-width {
   }
 }
 
-// Accordions
-.accordion {
-  .panel,
-  .panel-heading,
-  .panel-body {
-    padding: 0;
-    border: 0 !important;
-    @include border-radius(0);
-  }
-  .panel-heading a,
-  .panel-heading span.title {
-    display: block;
-    position: relative;
-    padding: 13px 52px 13px 15px;
-    font-weight: 700;
-    background: $light-grey;
-    color: $body-color;
-    &:hover,
-    &:visited,
-    &:link,
-    &:active {
-      text-decoration: none;
-    }
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 52px;
-      height: 52px;
-      background-position: 0 -42px;
-    }
-    &.collapsed:after {
-      background-position: -52px -42px;
-    }
-  }
-  .panel-body {
-    overflow: hidden;
-    max-height: 0;
-    margin-bottom: 10px;
-    padding: 0px 15px;
-    background: $light-grey;
-    @include transition(max-height 0.5s cubic-bezier(0, 1, 0, 1));
-  }
-  .in .panel-body {
-    max-height: 9999px;
-    @include transition(max-height 1s ease-in-out);
-  }
-}
-
 .slick-vertical .slick-slide {
   border-left: 0 !important;
   border-top: 0 !important;
@@ -1038,39 +987,7 @@ section.full-width {
     float: right;
   }
 }
-#voting-interface {
-  .panel-heading {
-    .status {
-      float: right;
-      margin-left: 10px;
-      font-size: 30px;
-    }
-    .fa.status {
-      font-size: 18px;
-      background-color: $primary-color;
-      color: #fff;
-      @include border-radius(50%);
-      padding: 7px;
-    }
-  }
-  .panel-heading a,
-  .panel-heading span.title {
-    padding: 13px 15px;
 
-    &:after {
-      display: none;
-    }
-  }
-  .panel-default > .panel-heading .badge {
-    background-color: #666;
-  }
-  .panel-body {
-    margin-bottom: 10px;
-  }
-  .panel-heading {
-    margin-top: 10px;
-  }
-}
 .filters {
   margin-top: 10px;
   > div {

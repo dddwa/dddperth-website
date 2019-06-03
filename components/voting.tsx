@@ -1,7 +1,7 @@
 import moment from 'moment'
 import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
-import { Panel, PanelGroup } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
 import { getSessionId, logException } from '../components/global/analytics'
 import '../components/utils/arrayExtensions'
 import { SessionPanel } from '../components/Voting/sessionPanel'
@@ -27,7 +27,6 @@ interface VotingState {
   levels: string[]
   formatFilters: string[]
   formats: string[]
-  flagged: string[]
   shortlist: SessionId[]
   votes: SessionId[]
   show: Views
@@ -65,7 +64,6 @@ const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
-      flagged: [],
       formatFilters: [],
       formats: this.props.sessions
         .map(s => s.Format)
@@ -92,7 +90,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
   componentDidMount() {
     this.setState({
-      flagged: this.readFromStorage('ddd-voting-session-flagged'),
       shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
       submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
@@ -123,20 +120,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           : [...this.state.shortlist, session.Id],
       },
       () => this.writeToStorage(storageKey(this.props, StorageKeys.SHORTLIST), this.state.shortlist),
-    )
-  }
-
-  isFlagged(session: Session) {
-    return this.state.flagged.includes(session.Id)
-  }
-
-  toggleFlagged(session: Session) {
-    logEvent('voting', this.isFlagged(session) ? 'unflag' : 'flag', { sessionId: session.Id, id: this.props.voteId })
-    this.setState(
-      {
-        flagged: this.isFlagged(session) ? this.state.flagged.without(session.Id) : [...this.state.flagged, session.Id],
-      },
-      () => this.writeToStorage('ddd-voting-session-flagged', this.state.flagged),
     )
   }
 
@@ -415,11 +398,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             levelFilters={this.state.levelFilters}
             onTagFilter={tags => {
               this.setState({ tagFilters: tags })
-            }}
+                      }}
             onLevelsFilter={levels => {
               this.setState({ levelFilters: levels })
-            }}
-          />
+              }}
+            />
         )}
 
         <DragDropContext
@@ -430,21 +413,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <Droppable droppableId="voteDroppable">
             {provider => (
               <div ref={provider.innerRef} {...provider.droppableProps}>
-                <PanelGroup accordion={!this.state.expandAll} className="accordion" id="voting-interface">
+                <div id="voting-interface">
                   <ul className="talk-list">
                     {visibleSessions.map((s, i) => {
-                      const sessionPanelDetails = {
-                        anonymousVoting: this.props.anonymousVoting,
-                        expandAll: this.state.expandAll,
-                        hideVotingButtons: this.state.submitted,
-                        index: i,
-                        isInShortlist: this.isInShortlist(s),
-                        isVotedFor: this.isVotedFor(s),
-                        isVotingDisabled: this.state.votes.length >= this.props.maxVotes || this.state.submitted,
-                        session: s,
-                        toggleShortlist: () => this.toggleShortlist(s),
-                        toggleVote: () => this.toggleVote(s),
-                      }
                       return (
                         <Draggable
                           key={s.Id}
@@ -458,14 +429,29 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                               {...dragProvider.dragHandleProps}
                               ref={dragProvider.innerRef}
                             >
-                              <SessionPanel {...sessionPanelDetails} />
+                              <SessionPanel
+                                anonymousVoting={this.props.anonymousVoting}
+                                expandAll={this.state.expandAll}
+                                hideVotingButtons={this.state.submitted}
+                                index={i}
+                                preferentialVoting={this.props.preferentialVoting}
+                                isVoting={isVoting}
+                                isInShortlist={this.isInShortlist(s)}
+                                isVotedFor={this.isVotedFor(s)}
+                                isVotingDisabled={
+                                  this.state.votes.length >= this.props.maxVotes || this.state.submitted
+                                }
+                                session={s}
+                                toggleShortlist={() => this.toggleShortlist(s)}
+                                toggleVote={() => this.toggleVote(s)}
+                              />
                             </div>
                           )}
                         </Draggable>
                       )
                     })}
                   </ul>
-                </PanelGroup>
+                </div>
                 {provider.placeholder}
               </div>
             )}
