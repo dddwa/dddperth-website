@@ -2,13 +2,13 @@ import moment from 'moment'
 import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
 import { Panel, PanelGroup } from 'react-bootstrap'
-import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { getSessionId, logException } from '../components/global/analytics'
 import '../components/utils/arrayExtensions'
 import { SessionPanel } from '../components/Voting/sessionPanel'
 import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
 import { logEvent } from './global/analytics'
 import { StyledVotingPanel } from './Voting/Voting.styled'
+import { VotingFilters } from './Voting/VotingFilters'
 
 type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
@@ -248,21 +248,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         }
       })
 
-    const SpanIf: React.StatelessComponent<any> = ({ condition, className, children }) => (
-      <React.Fragment>
-        {condition && <span className={className}>{children}</span>}
-        {!condition && children}
-      </React.Fragment>
-    )
-
-    const option = text => (
-      <div>
-        <span className="fa fa-check-circle-o selected-marker" />
-        <span className="fa fa-circle-o not-selected-marker" />
-        <span> {text}</span>
-      </div>
-    )
-
     return (
       <React.Fragment>
         <StyledVotingPanel>
@@ -415,50 +400,17 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         )}
 
         {this.state.show === 'all' && (
-          <div className="filters">
-            <em>Filter by:</em>{' '}
-            <fieldset className="tag-cloud">
-              <ul>
-                {this.state.tags.map(tag => (
-                  <li key={tag}>
-                    <input
-                      type="checkbox"
-                      value={tag}
-                      id={tag}
-                      name={tag}
-                      onChange={selected => {
-                        const newFilter = Array.from(document.querySelectorAll('.tag-cloud input:checked'))
-                          .map(o => o.value)
-                          .filter(o => o !== null)
-                        if (newFilter.length > 0) {
-                          logEvent('voting', 'tagFilter', { filter: newFilter.join(',') })
-                        }
-                        this.setState({ tagFilters: newFilter })
-                      }}
-                    />
-                    <label htmlFor={tag}>{tag}</label>
-                  </li>
-                ))}
-              </ul>
-            </fieldset>
-            <ReactResponsiveSelect
-              name="levelsFilter"
-              prefix="Level:"
-              options={[{ value: null, text: 'All', markup: option('All') }].concat(
-                this.state.levels.map(l => ({ value: l, text: l, markup: option(l) })),
-              )}
-              multiselect={true}
-              caretIcon={<span className="fa fa-caret-down" />}
-              onChange={selected => {
-                const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-                if (newFilter.length > 0) {
-                  logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-                }
-                this.setState({ levelFilters: newFilter })
-              }}
-              selectedValues={this.state.levelFilters.length > 0 ? this.state.levelFilters : undefined}
-            />
-          </div>
+          <VotingFilters
+            tags={this.state.tags}
+            levels={this.state.levels}
+            levelFilters={this.state.levelFilters}
+            onTagFilter={tags => {
+              this.setState({ tagFilters: tags })
+            }}
+            onLevelsFilter={levels => {
+              this.setState({ levelFilters: levels })
+            }}
+          />
         )}
 
         <DragDropContext
