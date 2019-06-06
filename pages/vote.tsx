@@ -200,10 +200,6 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                   to complete it in one go
                 </li>
                 <li>
-                  There is an ability to <em>flag</em> sessions with a visual indicator; you can use this in any way
-                  that suits you e.g. mark sessions you've seen, mark sessions you aren't interested in, etc.
-                </li>
-                <li>
                   You can add/remove sessions to/from a shortlist and view that shortlist separately;{' '}
                   <strong>we recommend trying to come up with a shortlist first</strong> and then selecting your votes
                   from the shortlist after removing the sessions you are less interested in from the shortlist
