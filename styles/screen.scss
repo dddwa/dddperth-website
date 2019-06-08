@@ -942,6 +942,9 @@ section.full-width {
 }
 
 // Sessions and Voting
+details[open] .fa-plus:before {
+  content: '\f068';
+}
 .profile-photo {
   width: 50px;
   margin-right: 15px;
@@ -950,6 +953,12 @@ section.full-width {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+}
+.submit-block {
+  .form-control {
+    display: inline-block;
+    width: auto;
+  }
 }
 .voting-control {
   h3 {

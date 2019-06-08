@@ -27,10 +27,11 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({
   onLevelsFilter,
 }) => {
   const tagCloudRef = useRef<HTMLFieldSetElement | null>(null)
+  const filterCloudRef = useRef<HTMLFieldSetElement | null>(null)
 
   return (
     <div className="filters">
-      <em>Filter by:</em>{' '}
+      <em>Filter by tag:</em>{' '}
       <fieldset ref={tagCloudRef} className="tag-cloud">
         <StyledTagCloudList>
           {tags.map(tag => (
@@ -57,24 +58,33 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({
           ))}
         </StyledTagCloudList>
       </fieldset>
-      <ReactResponsiveSelect
-        name="levelsFilter"
-        prefix="Level:"
-        options={[{ value: null, text: 'All', markup: OptionItem('All') }].concat(
-          levels.map(l => ({ value: l, text: l, markup: OptionItem(l) })),
-        )}
-        multiselect={true}
-        caretIcon={<span className="fa fa-caret-down" />}
-        onChange={selected => {
-          const newFilter = selected.options.map(o => o.value).filter(o => o !== null)
-          if (newFilter.length > 0) {
-            logEvent('voting', 'levelFilter', { filter: newFilter.join(',') })
-          }
+      <em>Filter by level:</em>{' '}
+      <fieldset ref={filterCloudRef} className="tag-cloud">
+        <StyledTagCloudList>
+          {levels.map(level => (
+            <li key={level}>
+              <StyledTagCloudInput
+                type="checkbox"
+                value={level}
+                id={level}
+                name={level}
+                onChange={() => {
+                  const filteredTags = Array.from<HTMLInputElement>(
+                    filterCloudRef.current.querySelectorAll('input:checked'),
+                  ).map(input => input.value)
 
-          onLevelsFilter(newFilter)
-        }}
-        selectedValues={levelFilters.length > 0 ? levelFilters : undefined}
-      />
+                  if (filteredTags.length > 0) {
+                    logEvent('voting', 'levelFilter', { filter: filteredTags.join(',') })
+                  }
+
+                  onLevelsFilter(filteredTags)
+                }}
+              />
+              <StyledTagCloudLabel htmlFor={level}>{level}</StyledTagCloudLabel>
+            </li>
+          ))}
+        </StyledTagCloudList>
+      </fieldset>
     </div>
   )
 }

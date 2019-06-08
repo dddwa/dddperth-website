@@ -83,8 +83,26 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
             disabled={isVotingDisabled && !isVotedFor}
           >
             {!isVotedFor ? 'Vote' : 'Un-vote'}
+            {isVotingDisabled && !isVotedFor && (
+              <span
+                className="fa fa-question-circle"
+                style={{ cursor: 'pointer', fontSize: '20px', marginLeft: '5px' }}
+                title="You have placed the maximum number of votes, if you want to vote for this talk then you need to unvote one of your voted talks."
+                onClick={() =>
+                  alert(
+                    'You have placed the maximum number of votes, if you want to vote for this talk then you need to unvote one of your voted talks.',
+                  )
+                }
+              />
+            )}
           </Button>
         </StyledButtons>
+      )}
+      {hideVotingButtons && (
+        <>
+          <br />
+          <br />
+        </>
       )}
       <StyledDetails open={expandAll}>
         <StyledSummary>

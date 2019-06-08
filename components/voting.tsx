@@ -253,77 +253,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <div className="submit-block">
-                    {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
-                      <label>
-                        Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
-                        <em>
-                          {' '}
-                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional && (
-                            <span
-                              className="fa fa-question-circle"
-                              style={{ cursor: 'pointer', fontSize: '20px' }}
-                              title="Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket."
-                              onClick={() =>
-                                alert(
-                                  'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
-                                )
-                              }
-                            />
-                          )}
-                          {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
-                            <span
-                              className="fa fa-question-circle"
-                              style={{ cursor: 'pointer', fontSize: '20px' }}
-                              title="To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket."
-                              onClick={() =>
-                                alert(
-                                  'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
-                                )
-                              }
-                            />
-                          )}
-                        </em>
-                        :{' '}
-                        <input
-                          type="text"
-                          className="form-control input-sm"
-                          onChange={e => this.setState({ ticketNumber: e.target.value })}
-                          value={this.state.ticketNumber}
-                          placeholder={
-                            this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
-                              ? 'Optional'
-                              : 'Required to submit'
-                          }
-                        />
-                      </label>
-                    )}{' '}
-                    <button
-                      className="btn btn-primary btn-sm"
-                      disabled={
-                        this.state.votes.length < this.props.minVotes ||
-                        this.state.submitInProgress ||
-                        (this.props.ticketNumberHandling === TicketNumberWhileVoting.Required &&
-                          !this.state.ticketNumber)
-                      }
-                      onClick={() => this.submit()}
-                    >
-                      {this.state.submitInProgress ? (
-                        'Submitting...'
-                      ) : (
-                        <React.Fragment>
-                          Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/
-                          {this.props.minVotes !== this.props.maxVotes
-                            ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
-                                this.state.votes.length < this.props.maxVotes ? '+' : ''
-                              }`
-                            : this.props.minVotes}
-                          )
-                        </React.Fragment>
-                      )}
-                    </button>
-                  </div>
-                  <div style={{ clear: 'both' }} />
                 </React.Fragment>
               )}
               {this.state.submitError && (
@@ -359,14 +288,24 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   My shortlist ({this.state.shortlist.length})
                 </button>{' '}
                 <button className="btn btn-sm agenda" onClick={() => this.show('votes')} disabled={isVoting}>
-                  My votes ({this.state.votes.length})
+                  View &amp; submit votes ({this.state.votes.length}/
+                  {this.props.minVotes !== this.props.maxVotes
+                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
+                        this.state.votes.length < this.props.maxVotes ? '+' : ''
+                      }`
+                    : this.props.minVotes}
+                  )
                 </button>
               </div>
             </Panel.Body>
           </Panel>
         </StyledVotingPanel>
         <h2>
-          {this.state.show === 'all' ? 'All sessions' : this.state.show === 'shortlist' ? 'My shortlist' : 'My votes'}{' '}
+          {this.state.show === 'all'
+            ? 'All sessions'
+            : this.state.show === 'shortlist'
+            ? 'My shortlist'
+            : 'View and submit votes'}{' '}
           <small>{`(showing ${visibleSessions.length}${
             this.state.show === 'all' ? '/' + this.props.sessions.length : ''
           } session(s))`}</small>{' '}
@@ -377,12 +316,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           )}
         </h2>
         {isVoting && this.props.preferentialVoting && (
-          <p>
+          <p className="alert alert-warning">
             <strong>You now need to order your votes based on your preference.</strong> We are using a{' '}
             <a href="https://en.wikipedia.org/wiki/Preferential_voting" target="_blank">
               preferential voting system
             </a>{' '}
-            to maximise the impact of your votes.
+            to maximise the impact of your votes - this means your vote places a higher weighting to the talks that
+            appear higher in your list. You can change the order by dragging and dropping the talks.
           </p>
         )}
         {visibleSessions.length === 0 && (
@@ -398,11 +338,11 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             levelFilters={this.state.levelFilters}
             onTagFilter={tags => {
               this.setState({ tagFilters: tags })
-                      }}
+            }}
             onLevelsFilter={levels => {
               this.setState({ levelFilters: levels })
-              }}
-            />
+            }}
+          />
         )}
 
         <DragDropContext
@@ -457,6 +397,84 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             )}
           </Droppable>
         </DragDropContext>
+
+        {isVoting && !this.state.submitted && (
+          <div className="submit-block inline-form">
+            <h3>Submit votes</h3>
+            {this.props.ticketsProvider === TicketsProvider.Tito && (
+              <p>
+                To submit a vote you{' '}
+                {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required ? 'will need' : 'can use'} your
+                ticket number, which you can get from the email you were sent from Tito:
+                <br />
+                <img
+                  src="/static/images/voting-tito-ticket-number.jpg"
+                  alt="Ticket email showing ticket number placement"
+                />
+              </p>
+            )}
+            {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
+              <label>
+                Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
+                <em>
+                  {' '}
+                  <span
+                    className="fa fa-question-circle"
+                    style={{ cursor: 'pointer', fontSize: '20px' }}
+                    title={
+                      this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
+                        ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+                        : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+                    }
+                    onClick={() =>
+                      alert(
+                        this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
+                          ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+                          : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                      )
+                    }
+                  />
+                </em>
+                :{' '}
+                <input
+                  type="text"
+                  className="form-control input-sm"
+                  onChange={e => this.setState({ ticketNumber: e.target.value })}
+                  value={this.state.ticketNumber}
+                  placeholder={
+                    this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
+                      ? 'Optional'
+                      : 'Required to submit'
+                  }
+                />
+              </label>
+            )}{' '}
+            <button
+              className="btn btn-primary btn-sm"
+              disabled={
+                this.state.votes.length < this.props.minVotes ||
+                this.state.submitInProgress ||
+                (this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && !this.state.ticketNumber)
+              }
+              onClick={() => this.submit()}
+            >
+              {this.state.submitInProgress ? (
+                'Submitting...'
+              ) : (
+                <React.Fragment>
+                  Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/
+                  {this.props.minVotes !== this.props.maxVotes
+                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
+                        this.state.votes.length < this.props.maxVotes ? '+' : ''
+                      }`
+                    : this.props.minVotes}
+                  )
+                </React.Fragment>
+              )}
+            </button>
+            <p>&nbsp;</p>
+          </div>
+        )}
       </React.Fragment>
     )
   }
