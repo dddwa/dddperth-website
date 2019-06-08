@@ -98,6 +98,12 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
           </Button>
         </StyledButtons>
       )}
+      {hideVotingButtons && (
+        <>
+          <br />
+          <br />
+        </>
+      )}
       <StyledDetails open={expandAll}>
         <StyledSummary>
           <span className="fa fa-plus" title="More details" /> Tap for session details

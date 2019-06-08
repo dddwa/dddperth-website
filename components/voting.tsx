@@ -398,7 +398,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           </Droppable>
         </DragDropContext>
 
-        {isVoting && (
+        {isVoting && !this.state.submitted && (
           <div className="submit-block inline-form">
             <h3>Submit votes</h3>
             {this.props.ticketsProvider === TicketsProvider.Tito && (
