@@ -170,6 +170,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     if (this.votingTopRef.current) {
       window.scrollTo(0, this.votingTopRef.current.offsetTop)
     }
+    return false
   }
 
   async submit() {
@@ -264,20 +265,16 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                </React.Fragment>
-              )}
-              {this.state.submitError && (
-                <React.Fragment>
-                  <br />
-                  <span className="alert alert-danger" style={{ padding: '2px' }}>
-                    There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
-                    {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
-                      <>
-                        If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised
-                        by the voting validation service.
-                      </>
-                    )}
-                  </span>
+                  <a
+                    href="#"
+                    style={{ float: 'right' }}
+                    onClick={e => {
+                      e.preventDefault()
+                      return this.scrollToTop()
+                    }}
+                  >
+                    Scroll to top
+                  </a>
                 </React.Fragment>
               )}
             </Panel.Heading>
@@ -346,7 +343,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <VotingFilters
             tags={this.state.tags}
             levels={this.state.levels}
-            levelFilters={this.state.levelFilters}
             onTagFilter={tags => {
               this.setState({ tagFilters: tags })
             }}
@@ -483,6 +479,20 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 </React.Fragment>
               )}
             </button>
+            {this.state.submitError && (
+              <React.Fragment>
+                <br />
+                <span className="alert alert-danger" style={{ padding: '2px' }}>
+                  There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
+                  {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                    <>
+                      If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised by
+                      the voting validation service.
+                    </>
+                  )}
+                </span>
+              </React.Fragment>
+            )}
             <p>&nbsp;</p>
           </div>
         )}
