@@ -285,10 +285,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   onClick={() => this.show('shortlist')}
                   disabled={this.state.show === 'shortlist'}
                 >
-                  My shortlist ({this.state.shortlist.length})
+                  Shortlist ({this.state.shortlist.length})
                 </button>{' '}
                 <button className="btn btn-sm agenda" onClick={() => this.show('votes')} disabled={isVoting}>
-                  View &amp; submit votes ({this.state.votes.length}/
+                  View/submit votes ({this.state.votes.length}/
                   {this.props.minVotes !== this.props.maxVotes
                     ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
                         this.state.votes.length < this.props.maxVotes ? '+' : ''
