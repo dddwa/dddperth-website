@@ -161,9 +161,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   }
 
   onDragEnd(result: DropResult) {
-    this.setState({
-      votes: reorder(this.state.votes, result.source.index, result.destination.index),
-    })
+    this.setState(
+      {
+        votes: reorder(this.state.votes, result.source.index, result.destination.index),
+      },
+      () => this.writeToStorage(storageKey(this.props, StorageKeys.VOTES), this.state.votes),
+    )
   }
 
   scrollToTop() {

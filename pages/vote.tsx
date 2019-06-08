@@ -9,7 +9,7 @@ import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import { Session, TicketNumberWhileVoting } from '../config/types'
+import { Conference as Conf, Session, TicketNumberWhileVoting } from '../config/types'
 import Page from '../layouts/main'
 
 interface VoteProps extends WithPageMetadataProps {
@@ -23,6 +23,14 @@ interface VoteState {
   startTime: string
   voteId: string
 }
+
+enum StorageKeys {
+  VOTING_ID = 'ddd-voting-id',
+  VOTING_START_TIME = 'ddd-voting-start-time',
+  VOTING_SESSION_ORDER = 'ddd-voting-session-order',
+}
+
+const storageKey = (conference: Conf, key: StorageKeys) => `${key}-${conference.Instance}`
 
 class VotePage extends React.Component<VoteProps, VoteState> {
   static getInitialProps({ res }) {
@@ -63,7 +71,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
       .catch(error => {
         logException('Error when getting sessions', error, {
-          voteId: !!localStorage ? localStorage.getItem('ddd-voting-id') : null,
+          voteId: !!localStorage
+            ? localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))
+            : null,
         })
         that.setState({ isError: true, isLoading: false })
         if (console) {
@@ -81,29 +91,63 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         sessions,
       })
     } else {
-      if (!localStorage.getItem('ddd-voting-start-time')) {
-        localStorage.setItem('ddd-voting-start-time', moment().toISOString())
+      // Patch up existing new sessions for this conference instance from before we fixed the local storage 'old data' issue
+      if (
+        !localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)) &&
+        localStorage.getItem(StorageKeys.VOTING_ID) &&
+        moment
+          .parseZone(localStorage.getItem(StorageKeys.VOTING_START_TIME))
+          .isAfter(this.props.pageMetadata.conference.VotingOpenFrom)
+      ) {
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID),
+          localStorage.getItem(StorageKeys.VOTING_ID),
+        )
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
+          localStorage.getItem(StorageKeys.VOTING_START_TIME),
+        )
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER),
+          localStorage.getItem(StorageKeys.VOTING_SESSION_ORDER),
+        )
       }
-      if (!localStorage.getItem('ddd-voting-id')) {
+
+      if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME))) {
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
+          moment().toISOString(),
+        )
+      }
+      if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))) {
         const voteId = uuid()
-        logEvent('voting', 'voteIdGenerated', { id: voteId, startTime: localStorage.getItem('ddd-voting-start-time') })
-        localStorage.setItem('ddd-voting-id', voteId)
+        logEvent('voting', 'voteIdGenerated', {
+          id: voteId,
+          startTime: localStorage.getItem(
+            storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
+          ),
+        })
+        localStorage.setItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID), voteId)
       } else {
-        logEvent('voting', 'returnToVoting', { id: localStorage.getItem('ddd-voting-id') })
+        logEvent('voting', 'returnToVoting', {
+          id: localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)),
+        })
       }
 
       this.setState({
-        startTime: localStorage.getItem('ddd-voting-start-time'),
-        voteId: localStorage.getItem('ddd-voting-id'),
+        startTime: localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME)),
+        voteId: localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)),
       })
 
-      const orderings = localStorage.getItem('ddd-voting-session-order')
+      const orderings = localStorage.getItem(
+        storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER),
+      )
 
       // if previous ordering data has not been persisted in local storage
       if (orderings == null) {
         const ids = JSON.stringify(sessions.map(({ Id }) => Id)) // Randomizing will be done in backend API
 
-        localStorage.setItem('ddd-voting-session-order', ids)
+        localStorage.setItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER), ids)
 
         this.setState({
           isLoading: false,
@@ -118,7 +162,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
           .concat(sessions.filter(s => !orderingsArray.find(id => id === s.Id)))
 
         const ids = JSON.stringify(ordered.map(({ Id }) => Id))
-        localStorage.setItem('ddd-voting-session-order', ids)
+        localStorage.setItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER), ids)
 
         this.setState({
           isLoading: false,
