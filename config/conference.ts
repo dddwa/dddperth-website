@@ -188,7 +188,48 @@ const Conference: IConference = {
 
   Sponsors: SponsorData,
 
-  Keynotes: [],
+  Keynotes: [
+    {
+      Id: 'Keynote',
+      Title: 'TBD',
+      Abstract: 'TBD',
+      Format: '45 mins',
+      Level: 'No experience necessary',
+      Tags: ['TBD'],
+      Presenters: [
+        {
+          Id: '',
+          Name: 'Jennifer Marsman',
+          Bio:
+            'Jennifer Marsman is the Principal Engineer of Microsoft’s “AI for Earth” group, where she uses data science, machine learning, and artificial intelligence to aid with clean water, agriculture, biodiversity, and climate change.  Jennifer is a frequent speaker at software development conferences around the world.  Since 2016, Jennifer was recognized as one of the “top 100 most influential individuals in artificial intelligence and machine learning” by Onalytica, reaching the #2 slot in 2018.  She has been featured in Bloomberg for her work using EEG and machine learning to perform lie detection.  In 2009, Jennifer was chosen as "Techie whose innovation will have the biggest impact" by X-OLOGY for her work with GiveCamps, a weekend-long event where developers code for charity.  She has also received many honors from Microsoft, including the “Best in Role” award for Technical Evangelism, Central Region Top Contributor Award, Heartland District Top Contributor Award, DPE Community Evangelist Award, CPE Champion Award, MSUS Diversity & Inclusion Award, Gold Club, and Platinum Club.  Prior to becoming a Developer Evangelist, Jennifer was a software developer in Microsoft’s Natural Interactive Services division.  In this role, she earned two patents for her work in search and data mining algorithms.  Jennifer has also held positions with Ford Motor Company, National Instruments, and Soar Technology.  Jennifer holds a Bachelor’s Degree in Computer Engineering and Master’s Degree in Computer Science and Engineering from the University of Michigan in Ann Arbor.  Her graduate work specialized in artificial intelligence and computational theory.',
+          Tagline: 'Principal Engineer & speaker on the AI for Earth team at Microsoft',
+          ProfilePhotoUrl: '/static/images/keynotes/jennifer.jpg',
+          TwitterHandle: 'jennifermarsman',
+          WebsiteUrl: 'https://blogs.msdn.microsoft.com/jennifer/',
+        },
+      ],
+    },
+    {
+      Id: 'Locknote',
+      Title: 'TBD',
+      Abstract: 'TBD',
+      Format: '45 mins',
+      Level: 'No experience necessary',
+      Tags: ['TBD'],
+      Presenters: [
+        {
+          Id: '',
+          Name: 'David Neal',
+          Bio:
+            'David is a family man, software developer, musician, illustrator, and Microsoft MVP living in North Georgia, USA. He is currently a Senior Developer Advocate for Okta. David runs on a high-octane mixture of caffeine and JavaScript, and is made entirely of bacon.',
+          Tagline: 'Senior Developer Advocate at Okta',
+          ProfilePhotoUrl: '/static/images/keynotes/david.jpg',
+          TwitterHandle: 'reverentgeek',
+          WebsiteUrl: 'https://reverentgeek.com/',
+        },
+      ],
+    },
+  ],
 }
 
 export default Conference
