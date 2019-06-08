@@ -88,12 +88,15 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     })
   }
 
+  votingTopRef: any
+
   componentDidMount() {
     this.setState({
       shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
       submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
     })
+    this.votingTopRef = React.createRef()
   }
 
   toggleExpandAll() {
@@ -102,6 +105,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
   show(whatToShow: Views) {
     this.setState({ show: whatToShow })
+    this.scrollToTop()
   }
 
   isInShortlist(session: Session) {
@@ -160,6 +164,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     this.setState({
       votes: reorder(this.state.votes, result.source.index, result.destination.index),
     })
+  }
+
+  scrollToTop() {
+    if (this.votingTopRef.current) {
+      window.scrollTo(0, this.votingTopRef.current.offsetTop)
+    }
   }
 
   async submit() {
@@ -242,6 +252,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
     return (
       <React.Fragment>
+        <div ref={this.votingTopRef} />
         <StyledVotingPanel>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
