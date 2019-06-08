@@ -6,32 +6,19 @@ import { StyledTagCloudInput, StyledTagCloudLabel, StyledTagCloudList } from './
 interface VotingFiltersProps {
   tags: string[]
   levels: string[]
-  levelFilters: string[]
   onTagFilter: (tags: string[]) => void
   onLevelsFilter: (levels: string[]) => void
 }
 
-const OptionItem = text => (
-  <div>
-    <span className="fa fa-check-circle-o selected-marker" />
-    <span className="fa fa-circle-o not-selected-marker" />
-    <span> {text}</span>
-  </div>
-)
-
-export const VotingFilters: React.FC<VotingFiltersProps> = ({
-  tags,
-  levels,
-  levelFilters,
-  onTagFilter,
-  onLevelsFilter,
-}) => {
+export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTagFilter, onLevelsFilter }) => {
   const tagCloudRef = useRef<HTMLFieldSetElement | null>(null)
   const filterCloudRef = useRef<HTMLFieldSetElement | null>(null)
 
   return (
     <div className="filters">
-      <em>Filter by tag:</em>{' '}
+      <p style={{ marginBottom: 0 }}>
+        <em>Filter by tag:</em>
+      </p>
       <fieldset ref={tagCloudRef} className="tag-cloud">
         <StyledTagCloudList>
           {tags.map(tag => (
@@ -58,7 +45,9 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({
           ))}
         </StyledTagCloudList>
       </fieldset>
-      <em>Filter by level:</em>{' '}
+      <p style={{ marginBottom: 0 }}>
+        <em>Filter by level:</em>
+      </p>
       <fieldset ref={filterCloudRef} className="tag-cloud">
         <StyledTagCloudList>
           {levels.map(level => (

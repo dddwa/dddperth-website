@@ -88,12 +88,15 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     })
   }
 
+  votingTopRef: any
+
   componentDidMount() {
     this.setState({
       shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
       submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
     })
+    this.votingTopRef = React.createRef()
   }
 
   toggleExpandAll() {
@@ -102,6 +105,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
   show(whatToShow: Views) {
     this.setState({ show: whatToShow })
+    this.scrollToTop()
   }
 
   isInShortlist(session: Session) {
@@ -160,6 +164,13 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     this.setState({
       votes: reorder(this.state.votes, result.source.index, result.destination.index),
     })
+  }
+
+  scrollToTop() {
+    if (this.votingTopRef.current) {
+      window.scrollTo(0, this.votingTopRef.current.offsetTop)
+    }
+    return false
   }
 
   async submit() {
@@ -242,6 +253,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
     return (
       <React.Fragment>
+        <div ref={this.votingTopRef} />
         <StyledVotingPanel>
           <Panel className="voting-control form-inline">
             <Panel.Heading>
@@ -253,20 +265,16 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                </React.Fragment>
-              )}
-              {this.state.submitError && (
-                <React.Fragment>
-                  <br />
-                  <span className="alert alert-danger" style={{ padding: '2px' }}>
-                    There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
-                    {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
-                      <>
-                        If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised
-                        by the voting validation service.
-                      </>
-                    )}
-                  </span>
+                  <a
+                    href="#"
+                    style={{ float: 'right' }}
+                    onClick={e => {
+                      e.preventDefault()
+                      return this.scrollToTop()
+                    }}
+                  >
+                    Scroll to top
+                  </a>
                 </React.Fragment>
               )}
             </Panel.Heading>
@@ -285,10 +293,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   onClick={() => this.show('shortlist')}
                   disabled={this.state.show === 'shortlist'}
                 >
-                  My shortlist ({this.state.shortlist.length})
+                  Shortlist ({this.state.shortlist.length})
                 </button>{' '}
                 <button className="btn btn-sm agenda" onClick={() => this.show('votes')} disabled={isVoting}>
-                  View &amp; submit votes ({this.state.votes.length}/
+                  View/submit votes ({this.state.votes.length}/
                   {this.props.minVotes !== this.props.maxVotes
                     ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
                         this.state.votes.length < this.props.maxVotes ? '+' : ''
@@ -335,7 +343,6 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <VotingFilters
             tags={this.state.tags}
             levels={this.state.levels}
-            levelFilters={this.state.levelFilters}
             onTagFilter={tags => {
               this.setState({ tagFilters: tags })
             }}
@@ -472,6 +479,20 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 </React.Fragment>
               )}
             </button>
+            {this.state.submitError && (
+              <React.Fragment>
+                <br />
+                <span className="alert alert-danger" style={{ padding: '2px' }}>
+                  There was a problem submitting your votes; please try again or refresh the page and try again.{' '}
+                  {this.props.ticketNumberHandling === TicketNumberWhileVoting.Required && (
+                    <>
+                      If you just purchased your ticket you may need to wait up to 10 minutes for it to be recognised by
+                      the voting validation service.
+                    </>
+                  )}
+                </span>
+              </React.Fragment>
+            )}
             <p>&nbsp;</p>
           </div>
         )}
