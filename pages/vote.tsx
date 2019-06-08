@@ -91,6 +91,28 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         sessions,
       })
     } else {
+      // Patch up existing new sessions for this conference instance from before we fixed the local storage 'old data' issue
+      if (
+        !localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)) &&
+        localStorage.getItem(StorageKeys.VOTING_ID) &&
+        moment
+          .parseZone(localStorage.getItem(StorageKeys.VOTING_START_TIME))
+          .isAfter(this.props.pageMetadata.conference.VotingOpenFrom)
+      ) {
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID),
+          localStorage.getItem(StorageKeys.VOTING_ID),
+        )
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
+          localStorage.getItem(StorageKeys.VOTING_START_TIME),
+        )
+        localStorage.setItem(
+          storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER),
+          localStorage.getItem(StorageKeys.VOTING_SESSION_ORDER),
+        )
+      }
+
       if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME))) {
         localStorage.setItem(
           storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
