@@ -1,5 +1,5 @@
 import { CurrentDate } from '../components/utils/dateTimeProvider'
-import { Conference, Dates as IDates, SoldOutOptions } from './types'
+import { Conference, Dates as IDates, TicketPurchasingOptions } from './types'
 
 export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
   const now = currentDate.Value
@@ -17,7 +17,9 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     IsInProgress: isInProgress && !isComplete,
     HasNotStarted: !isInProgress && !isComplete,
     RegistrationOpen:
-      now > conference.RegistrationOpenFrom && conference.IsSoldOut === SoldOutOptions.OnSale && !registrationClosed,
+      now > conference.RegistrationOpenFrom &&
+      conference.TicketPurchasingOptions === TicketPurchasingOptions.OnSale &&
+      !registrationClosed,
     RegistrationClosed: registrationClosed,
     AcceptingPresentations:
       now > conference.PresentationSubmissionsOpenFrom && now < conference.PresentationSubmissionsOpenUntil,

@@ -1,5 +1,5 @@
 import React, { StatelessComponent } from 'react'
-import { Action, Conference, Dates, SoldOutOptions } from '../config/types'
+import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
 import ActionButton from './actionButton'
 
 export interface EventDetailsSummaryProps {
@@ -20,12 +20,12 @@ const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
       <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> {dates.Display}
     </h2>
     <ul>
-      {conference.IsSoldOut === SoldOutOptions.SoldOut && (
+      {conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut && (
         <li>
           <strong>SOLD OUT</strong>
         </li>
       )}
-      {conference.IsSoldOut === SoldOutOptions.WaitList && (
+      {conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen && (
         <li>
           <strong>WAITLIST OPEN</strong>
         </li>

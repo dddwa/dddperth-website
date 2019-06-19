@@ -18,7 +18,7 @@ export interface Conference {
   TicketsProviderAccountId: string
   TicketsProviderEventId: string
   TicketsProviderFinancialAssistanceCode: string
-  IsSoldOut: SoldOutOptions
+  TicketPurchasingOptions: TicketPurchasingOptions
   HashTag: string
   SellingPoints: string[]
   Handbook: string | null
@@ -79,9 +79,9 @@ export interface Conference {
   Keynotes: Session[]
 }
 
-export enum SoldOutOptions {
+export enum TicketPurchasingOptions {
   OnSale,
-  WaitList,
+  WaitListOpen,
   SoldOut,
 }
 
