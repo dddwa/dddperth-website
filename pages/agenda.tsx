@@ -78,6 +78,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
           )}
           {dates.AgendaPublished && (
             <CurrentAgenda
+              conference={this.props.pageMetadata.conference}
               sessions={this.props.sessions}
               previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
               sessionsUrl={this.props.pageMetadata.appConfig.getAgendaUrl}
