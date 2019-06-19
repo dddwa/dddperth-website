@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import Conference from './conference'
-import { Dates, FAQ, TicketsProvider } from './types'
+import { Dates, FAQ, SoldOutOptions, TicketsProvider } from './types'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -120,8 +120,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <Fragment>
             Now! Go to <a href="/tickets">the tickets page</a> to register.
           </Fragment>
-        ) : Conference.IsSoldOut ? (
+        ) : Conference.IsSoldOut === SoldOutOptions.SoldOut ? (
           <Fragment>The conference is now sold out.</Fragment>
+        ) : Conference.IsSoldOut === SoldOutOptions.WaitList ? (
+          <Fragment>The conference has an open waitlist for tickets.</Fragment>
         ) : dates.RegistrationClosed ? (
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (

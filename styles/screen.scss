@@ -148,6 +148,10 @@ a.btn {
   background-color: darken($tickets, 10%);
 }
 
+.btn-waitlist {
+  background: $call-content !important;
+}
+
 .btn.agenda {
   background-color: darken($agenda, 5%);
 }

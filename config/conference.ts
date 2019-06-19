@@ -1,14 +1,14 @@
 import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
-import { Conference as IConference, TicketNumberWhileVoting, TicketsProvider } from './types'
+import { Conference as IConference, SoldOutOptions, TicketNumberWhileVoting, TicketsProvider } from './types'
 import venue from './venue'
 
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
 const hideDate = false
-const isSoldOut = false
+const isSoldOut = SoldOutOptions.WaitList
 const date = moment.parseZone('2019-08-03T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
@@ -53,7 +53,7 @@ const importantDates = [
   },
 ]
 
-if (registrationOpenUntil !== null && !isSoldOut) {
+if (registrationOpenUntil !== null && isSoldOut === SoldOutOptions.OnSale) {
   importantDates.push({
     Date: registrationOpenUntil,
     Description: 'Ticket sales close',

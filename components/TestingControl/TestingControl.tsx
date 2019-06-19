@@ -2,7 +2,7 @@ import moment, { Moment } from 'moment'
 import React, { useState } from 'react'
 import From2017 from '../../config/2017'
 import SponsorData from '../../config/sponsors'
-import { Conference } from '../../config/types'
+import { Conference, SoldOutOptions } from '../../config/types'
 import { Button } from '../global/Button/Button'
 import dateTimeProvider, { CurrentDate } from '../utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
@@ -36,7 +36,7 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
     }
 
     conference.Sponsors = SponsorData
-    conference.IsSoldOut = false
+    conference.IsSoldOut = SoldOutOptions.SoldOut
   }
 
   return (
@@ -74,7 +74,17 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
           <StyledButton kind="primary" onClick={() => setDateTo(conference.EndDate)}>
             Conference over
           </StyledButton>
-          <StyledButton kind="inverse" onClick={() => (conference.IsSoldOut = true)}>
+          <StyledButton
+            kind="inverse"
+            onClick={() =>
+              (conference.IsSoldOut =
+                conference.IsSoldOut === SoldOutOptions.OnSale
+                  ? SoldOutOptions.SoldOut
+                  : conference.IsSoldOut === SoldOutOptions.SoldOut
+                  ? SoldOutOptions.WaitList
+                  : SoldOutOptions.OnSale)
+            }
+          >
             Tickets sold out
           </StyledButton>
           <StyledButton kind="inverse" onClick={() => (conference.Sponsors = From2017.Sponsors)}>
