@@ -74,7 +74,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
           {this.props.pageMetadata.conference.IsSoldOut === SoldOutOptions.WaitList && (
             <p className="alert alert-warning">
               Tickets have sold out, but we are asking people to add themselves to the waitlist since it's likely we
-              will release more tickets. Tickets will be released to the waitlist on a first come fisrt served basis so
+              will release more tickets. Tickets will be released to the waitlist on a first-come, first-served basis so
               get your name in quick if you want to attend.
             </p>
           )}
