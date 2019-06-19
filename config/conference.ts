@@ -211,14 +211,15 @@ const Conference: IConference = {
     },
     {
       Id: 'Locknote',
-      Title: 'TBD',
-      Abstract: 'TBD',
+      Title: 'Leadership Guide for the Reluctant Leader',
+      Abstract:
+        "Regardless of the technology you know, regardless of the job title you have, you have amazing potential to impact your workplace, community, and beyond.\r\n\r\nIn this talk, I'll share a few candid stories of my career failures… I mean… learning opportunities. We’ll start by debunking the myth that leadership == management. Next, we’ll talk about some the attributes, behaviors and skills of good leaders. Last, we’ll cover some practical steps and resources to accelerate your journey.\r\n\r\nYou’ll walk away with some essential leadership skills I believe anyone can develop, and a good dose of encouragement to be more awesome!",
       Format: '45 mins',
       Level: 'No experience necessary',
-      Tags: ['TBD'],
+      Tags: ['Soft Skills', 'Leadership'],
       Presenters: [
         {
-          Id: '',
+          Id: 'locknote',
           Name: 'David Neal',
           Bio:
             'David is a family man, software developer, musician, illustrator, and Microsoft MVP living in North Georgia, USA. He is currently a Senior Developer Advocate for Okta. David runs on a high-octane mixture of caffeine and JavaScript, and is made entirely of bacon.',
