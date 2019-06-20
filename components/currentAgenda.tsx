@@ -24,7 +24,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
               <strong className="room">M1</strong>
             </th>
             <th style={{ width: '16%' }}>
-              <strong className="room">M12</strong>
+              <strong className="room">M9</strong>
             </th>
           </tr>
         </thead>
