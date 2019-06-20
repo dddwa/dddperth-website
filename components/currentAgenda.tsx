@@ -83,7 +83,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
             <SessionCell sessionId="ae58057e-2cea-4300-bdb7-f51d57476179" />
             <SessionCell sessionId="8cd14aaa-89cb-4886-9649-ceb0cd4b27d1" />
             <SessionCell sessionId="385e78cf-b12a-466c-9fb8-e29c7fd627fb" />
-            <SessionCell sessionId="11633825-a0cb-4be0-a4ae-fe70d0895b5c" />
+            <SessionCell sessionId="c044309e-e859-4b5c-adad-7534a36284e0" />
             <SessionCell sessionId="b73abc43-7634-40d3-a38b-696bdb844cc0" />
             <SessionCell sessionId="cc740103-612c-4673-b293-97487787f093" />
           </tr>
