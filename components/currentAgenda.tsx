@@ -64,8 +64,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
             <td className="time">9:10</td>
             <SessionCell
               isKeynote={true}
-              sessionId="TBD"
-              session={Conference.Keynotes[0]}
+              sessionId="112b54cc-df00-40fd-ad5e-4b0714329821"
               sponsorName="BHP"
               room="Riverside Theatre"
             />
@@ -102,7 +101,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
             <SessionCell sessionId="f8967843-c437-4a90-9242-fac45c4ea1a6" />
             <SessionCell sessionId="cea40511-0eeb-4ac8-8c1e-098a966f7314" />
             <SessionCell sessionId="643434fc-64d5-49ba-a1d8-848a7570b6fa" />
-            <SessionCell sessionId="6d2b4817-43dc-479b-948f-8fabae00c6c7" />
+            <SessionCell sessionId="df03352d-b177-420d-b66a-b1c174e3e0a3" />
             <SessionCell sessionId="b446c945-6210-4b56-bc78-772347060a5b" />
             <SessionCell sessionId="2fff2f0e-7f55-4a26-bf15-7537a6c3f700" />
           </tr>
@@ -174,7 +173,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
             <SessionCell sessionId="94a2f4b3-bd6e-4eb6-9917-baa3bcb3d41f" />
             <SessionCell sessionId="f548e402-d04d-4318-a8c6-d879b3f11d37" />
             <SessionCell sessionId="00311b92-6c21-47a8-b8d2-af325581d6f9" />
-            <SessionCell sessionId="9de8e0af-9431-4de8-a21e-9a4ad7f97de0" />
+            <SessionCell sessionId="35e1174f-8d50-48db-a410-d53c3c8ddf73" />
           </tr>
 
           <tr className="breadth-row">
@@ -199,8 +198,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
             <td className="time">16:20</td>
             <SessionCell
               isLocknote={true}
-              sessionId="TBD"
-              session={Conference.Keynotes[1]}
+              sessionId="4c019f6f-c312-4bb9-8024-3352f6034d6e"
               sponsorName="YOW! Perth"
               room="Riverside Theatre"
             />
