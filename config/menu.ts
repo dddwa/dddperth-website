@@ -1,4 +1,4 @@
-import { Conference, Dates, MenuItem } from './types'
+import { Conference, Dates, MenuItem, TicketPurchasingOptions } from './types'
 
 export default function Menu(conference: Conference, dates: Dates) {
   const topMenu: MenuItem[] = [
@@ -16,7 +16,7 @@ export default function Menu(conference: Conference, dates: Dates) {
     },
   ]
 
-  if (dates.RegistrationOpen) {
+  if (dates.RegistrationOpen || conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen) {
     topMenu.push({
       href: '/tickets',
       name: 'Tickets',

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Action, Conference, Dates } from '../config/types'
+import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
 import ActionButton from './actionButton'
 import Countdown from './countdown'
 
@@ -51,8 +51,14 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
           <div className="col-xs-12 col-sm-2 col-md-2">
             <p>
               <span>Cost</span>
-              {conference.IsSoldOut && !dates.IsComplete && <>SOLD&nbsp;OUT</>}
-              {(!conference.IsSoldOut || dates.IsComplete) && conference.TicketPrice}
+              {conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut && !dates.IsComplete && (
+                <>SOLD&nbsp;OUT</>
+              )}
+              {conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen && !dates.IsComplete && (
+                <>WAITLIST&nbsp;OPEN</>
+              )}
+              {(conference.TicketPurchasingOptions === TicketPurchasingOptions.OnSale || dates.IsComplete) &&
+                conference.TicketPrice}
             </p>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">

@@ -148,6 +148,10 @@ a.btn {
   background-color: darken($tickets, 10%);
 }
 
+.btn-waitlist {
+  background: $call-content !important;
+}
+
 .btn.agenda {
   background-color: darken($agenda, 5%);
 }
@@ -1339,6 +1343,14 @@ tr td.highlight-session {
 
 .agenda-row td.session-4 {
   width: 24%;
+}
+
+.agenda-row td.session-5 {
+  width: 19%;
+}
+
+.agenda-row td.session-6 {
+  width: 16%;
 }
 
 .agenda-row tbody tr {
