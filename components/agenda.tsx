@@ -8,7 +8,6 @@ import SessionDetails from './sessionDetails'
 
 export interface SessionCellProps {
   sessionId: string
-  session?: Session
   isKeynote?: boolean
   isLocknote?: boolean
   isLunchnote?: boolean
@@ -19,13 +18,11 @@ export interface SessionCellProps {
 
 export interface AgendaProps {
   SessionCell: React.StatelessComponent<SessionCellProps>
-  Conference: Conference
 }
 export interface AgendaParameters {
   numTracks: number
 }
 interface ExternalProps {
-  conference: Conference
   previousConferenceInstances: string[]
   sessionsUrl: string
   sessions?: Session[]
@@ -109,7 +106,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
       return props => {
         const isLoading = getIsLoading()
         const isError = getIsError()
-        const session = !props.session ? getSession(props.sessionId) : props.session
+        const session = getSession(props.sessionId)
 
         return (
           <td
@@ -178,7 +175,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
         <Fragment>
           <p>Tap on a session to see more details...</p>
 
-          <WrappedComponent {...this.props} SessionCell={this.getSessionCell()} Conference={this.props.conference} />
+          <WrappedComponent {...this.props} SessionCell={this.getSessionCell()} />
 
           <Modal show={this.state.showModal} onHide={() => this.hideModal()}>
             {this.state.selectedSession && (
