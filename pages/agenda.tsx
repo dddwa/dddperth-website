@@ -5,10 +5,11 @@ import AllAgendas from '../components/allAgendas'
 import CurrentAgenda from '../components/currentAgenda'
 import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
+import Sponsors from '../components/sponsors'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import { Session } from '../config/types'
+import { Session, SponsorType } from '../config/types'
 import Page from '../layouts/main'
 
 interface AgendaPageProps extends WithPageMetadataProps {
@@ -95,6 +96,13 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               </p>
             </>
           )}
+          <Sponsors
+            show={!this.props.pageMetadata.conference.HideSponsors}
+            hideUpsell={this.props.pageMetadata.conference.HideSponsorshipUpsell}
+            sponsors={this.props.pageMetadata.conference.Sponsors.filter(
+              s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
+            )}
+          />
           <AllAgendas
             conference={this.props.pageMetadata.conference}
             conferenceInstance={this.props.pageMetadata.conference.Instance}
