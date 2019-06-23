@@ -54,10 +54,7 @@ export default ({ conference, dates, primaryAction }: EventDetailsProps) => (
               {conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut && !dates.IsComplete && (
                 <>SOLD&nbsp;OUT</>
               )}
-              {conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen && !dates.IsComplete && (
-                <>WAITLIST&nbsp;OPEN</>
-              )}
-              {(conference.TicketPurchasingOptions === TicketPurchasingOptions.OnSale || dates.IsComplete) &&
+              {(conference.TicketPurchasingOptions !== TicketPurchasingOptions.SoldOut || dates.IsComplete) &&
                 conference.TicketPrice}
             </p>
           </div>

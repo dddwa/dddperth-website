@@ -1,7 +1,7 @@
 import React, { Fragment, StatelessComponent } from 'react'
 import Agenda, { AgendaProps } from './agenda'
 
-const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCell }) => (
+const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
   <Fragment>
     <div style={{ overflow: 'auto' }}>
       <table className="agenda-row table">
@@ -12,16 +12,16 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
               <strong className="room">Theatre</strong>
             </th>
             <th style={{ width: '16%' }}>
-              <strong className="room">RR4</strong>
+              <strong className="room">RR5</strong>
             </th>
             <th style={{ width: '16%' }}>
-              <strong className="room">M3</strong>
+              <strong className="room">M6</strong>
             </th>
             <th style={{ width: '16%' }}>
-              <strong className="room">M2</strong>
+              <strong className="room">M7</strong>
             </th>
             <th style={{ width: '16%' }}>
-              <strong className="room">M1</strong>
+              <strong className="room">M8</strong>
             </th>
             <th style={{ width: '16%' }}>
               <strong className="room">M9</strong>
@@ -214,7 +214,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ Conference, SessionCel
           </tr>
 
           <tr className="breadth-row">
-            <td className="time">17:10</td>
+            <td className="time">17:10 - 19:00</td>
             <td colSpan={6} className="breadth">
               <strong>Afterparty</strong>
               <br />
