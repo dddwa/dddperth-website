@@ -34,7 +34,7 @@ const Sponsors: Sponsor[] = [
   },
   {
     imageUrl: '/static/images/sponsors/readify-kloud.png',
-    name: 'Readify / Kloud',
+    name: 'Readify + Kloud',
     type: SponsorType.Gold,
     url: 'https://readify.net/',
   },
