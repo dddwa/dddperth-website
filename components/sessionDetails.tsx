@@ -35,11 +35,11 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
                   <SafeLink
                     href={
                       'https://twitter.com/' +
-                      p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')
+                      p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
                     }
                     target="_blank"
                   >
-                    @{p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//, '').replace(/\?.+$/, '')}
+                    @{p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
                   </SafeLink>
                   {p.WebsiteUrl ? ' | ' : null}
                 </React.Fragment>
@@ -48,7 +48,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
                 <SafeLink href={p.WebsiteUrl} target="_blank">
                   {p.WebsiteUrl.includes('linkedin.com')
                     ? 'LinkedIn'
-                    : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/, '')}
+                    : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/i, '')}
                 </SafeLink>
               )}
               )
