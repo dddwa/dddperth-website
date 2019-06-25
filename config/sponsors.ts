@@ -116,8 +116,8 @@ const Sponsors: Sponsor[] = [
     url: 'https://www.bhp.com/',
   },
   {
-    imageUrl: '/static/images/sponsors/yow-perth.png',
-    name: 'YOW! Perth',
+    imageUrl: '/static/images/sponsors/yow.png',
+    name: 'YOW! Conferences and Workshops',
     serviceProvided: 'Locknote',
     type: SponsorType.Service,
     url: 'http://west.yowconference.com.au/',
