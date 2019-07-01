@@ -142,6 +142,12 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Standard,
     url: 'https://oz-code.com/',
   },
+  {
+    imageUrl: '/static/images/sponsors/codemaster-institute.png',
+    name: 'Codemaster Institute',
+    type: SponsorType.Standard,
+    url: 'https://www.codemasterinstitute.com/',
+  },
 ]
 
 export default Sponsors
