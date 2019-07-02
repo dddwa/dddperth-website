@@ -46,6 +46,12 @@ const Sponsors: Sponsor[] = [
   },
   // Silver
   {
+    imageUrl: '/static/images/sponsors/acs.png',
+    name: 'ACS',
+    type: SponsorType.Silver,
+    url: 'https://www.acs.org.au/',
+  },
+  {
     imageUrl: '/static/images/sponsors/amristar.png',
     name: 'Amristar',
     type: SponsorType.Silver,
