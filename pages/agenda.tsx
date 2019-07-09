@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
 import React from 'react'
 import AllAgendas from '../components/allAgendas'
-import CurrentAgenda from '../components/currentAgenda'
+import { CurrentAgenda } from '../components/currentAgenda'
 import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Sponsors from '../components/sponsors'
@@ -43,19 +43,18 @@ class AgendaPage extends React.Component<AgendaPageProps> {
 
     return {}
   }
+
   render() {
     const conference = this.props.pageMetadata.conference
     const dates = this.props.pageMetadata.dates
 
     const AfterSessionDetails = (s: Session) => {
       return dates.AcceptingFeedback ? (
-        <>
-          <p className="text-center">
-            <SafeLink className="btn btn-secondary" target="_blank" href={conference.SessionFeedbackLink}>
-              Give feedback
-            </SafeLink>
-          </p>
-        </>
+        <p className="text-center">
+          <SafeLink className="btn btn-secondary" target="_blank" href={conference.SessionFeedbackLink}>
+            Give feedback
+          </SafeLink>
+        </p>
       ) : null
     }
 
@@ -79,22 +78,23 @@ class AgendaPage extends React.Component<AgendaPageProps> {
           )}
           {dates.AgendaPublished && (
             <CurrentAgenda
+              date={Conference.Date}
               sessions={this.props.sessions}
-              previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
+              // previousConferenceInstances={this.props.pageMetadata.conference.PreviousInstances}
               sessionsUrl={this.props.pageMetadata.appConfig.getAgendaUrl}
-              sponsors={this.props.pageMetadata.conference.Sponsors}
-              afterSessionDetails={AfterSessionDetails}
+              // sponsors={this.props.pageMetadata.conference.Sponsors}
+              // afterSessionDetails={AfterSessionDetails}
             />
           )}
           {conference.Handbook && (
-            <>
+            <React.Fragment>
               <h2>Handbook</h2>
               <p>
                 <a className="btn btn-pdf" href={'/static/docs/' + conference.Handbook}>
                   Download handbook (PDF)
                 </a>
               </p>
-            </>
+            </React.Fragment>
           )}
           <Sponsors
             show={!this.props.pageMetadata.conference.HideSponsors}
