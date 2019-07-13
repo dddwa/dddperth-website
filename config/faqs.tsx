@@ -84,6 +84,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer:
       'No! While our name implies we are just about devs, our events are aimed at all professionals in the software industry - developers, testers, designers, analysts, managers, etc.',
   })
+  
+  Faqs.push({
+    Question: 'How is the agenda chosen?',
+    Answer:
+      'DDD Perth is a community driven event with core values of inclusion and democratic engagement.  Proposed sessions are anonymised and voted for by the public, but some curation is inevitably required to produce an agenda that meets our inclusion goals.  We aim to maximise the impact of every vote in the process, and always look to the community first in our decision making.',
+  })
 
   Faqs.push({
     Question: 'Will refreshments be provided?',
