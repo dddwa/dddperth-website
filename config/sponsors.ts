@@ -33,7 +33,7 @@ const Sponsors: Sponsor[] = [
     url: 'https://www.modis.com/en-au/',
   },
   {
-    imageUrl: '/static/images/sponsors/readify-kloud.png',
+    imageUrl: '/static/images/sponsors/readify-kloud.jpg',
     name: 'Readify + Kloud',
     type: SponsorType.Gold,
     url: 'https://readify.net/',
@@ -46,7 +46,7 @@ const Sponsors: Sponsor[] = [
   },
   // Silver
   {
-    imageUrl: '/static/images/sponsors/acs.png',
+    imageUrl: '/static/images/sponsors/acs.jpg',
     name: 'ACS',
     type: SponsorType.Silver,
     url: 'https://www.acs.org.au/',
@@ -58,7 +58,7 @@ const Sponsors: Sponsor[] = [
     url: 'https://amristar.com/',
   },
   {
-    imageUrl: '/static/images/sponsors/elastic.png',
+    imageUrl: '/static/images/sponsors/elastic.jpg',
     name: 'Elastic',
     type: SponsorType.Silver,
     url: 'https://www.elastic.co/',
@@ -70,7 +70,7 @@ const Sponsors: Sponsor[] = [
     url: 'https://www.ibm.com/au-en',
   },
   {
-    imageUrl: '/static/images/sponsors/insight.png',
+    imageUrl: '/static/images/sponsors/insight.jpg',
     name: 'Insight Australia',
     type: SponsorType.Silver,
     url: 'https://au.insight.com/en_AU/home.html',
@@ -94,7 +94,7 @@ const Sponsors: Sponsor[] = [
     url: 'https://octopus.com/',
   },
   {
-    imageUrl: '/static/images/sponsors/verse-group.png',
+    imageUrl: '/static/images/sponsors/verse-group.jpg',
     name: 'Verse Group',
     type: SponsorType.Silver,
     url: 'https://www.versegroup.com.au/',
@@ -122,7 +122,7 @@ const Sponsors: Sponsor[] = [
     url: 'https://www.bhp.com/',
   },
   {
-    imageUrl: '/static/images/sponsors/yow.png',
+    imageUrl: '/static/images/sponsors/yow.jpg',
     name: 'YOW! Conferences and Workshops',
     serviceProvided: 'Locknote',
     type: SponsorType.Service,
