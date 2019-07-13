@@ -98,7 +98,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   })
 
   Faqs.push({
-     Question: 'What about swag?',
+    Question: 'What about swag?',
     Answer:
       'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
   })
