@@ -84,11 +84,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer:
       'No! While our name implies we are just about devs, our events are aimed at all professionals in the software industry - developers, testers, designers, analysts, managers, etc.',
   })
-  
+
   Faqs.push({
     Question: 'How is the agenda chosen?',
     Answer:
-      'DDD Perth is a community driven event with core values of inclusion and democratic engagement.  Proposed sessions are anonymised and voted for by the public, but some curation is inevitably required to produce an agenda that meets our inclusion goals.  We aim to maximise the impact of every vote in the process, and always look to the community first in our decision making.',
+      'DDD Perth is a community driven event with core values of inclusion and democratic engagement. Proposed sessions are anonymised and voted for by the public, but some curation is inevitably required to produce an agenda that meets our inclusion goals. We aim to maximise the impact of every vote in the process, and always look to the community first in our decision making.',
   })
 
   Faqs.push({
@@ -98,7 +98,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   })
 
   Faqs.push({
-    Question: 'What about swag?',
+     Question: 'What about swag?',
     Answer:
       'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
   })
