@@ -86,6 +86,7 @@ const Conference: IConference = {
     "TODO: Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
   GoogleAnalyticsId: 'UA-122340004-2',
   TicketPrice: '$50',
+  HasSwag: false,
   ChildcarePrice: null,
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',

@@ -102,11 +102,13 @@ export default function getFaqs(dates: Dates): FAQ[] {
       'Yes, attendees will receive lunch and snacks throughout the day and we will have a coffee cart operating all day.',
   })
 
-  Faqs.push({
-    Question: 'What about swag?',
-    Answer:
-      'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
-  })
+  if (Conference.HasSwag) {
+    Faqs.push({
+      Question: 'What about swag?',
+      Answer:
+        'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
+    })
+  }
 
   if (Conference.Venue && Conference.Venue.Wifi !== null) {
     Faqs.push({

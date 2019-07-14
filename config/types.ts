@@ -13,6 +13,7 @@ export interface Conference {
   Goal: string
   GoogleAnalyticsId: string
   TicketPrice: string
+  HasSwag: boolean
   ChildcarePrice: string
   TicketsProviderId: TicketsProvider
   TicketsProviderAccountId: string
