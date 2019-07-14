@@ -39,7 +39,7 @@ const Sponsors: Sponsor[] = [
   },
   {
     id: 'readify-kloud',
-    imageUrl: '/static/images/sponsors/readify-kloud.jpg',
+    imageUrl: '/static/images/sponsors/readify-kloud.png',
     name: 'Readify + Kloud',
     type: SponsorType.Gold,
     url: 'https://readify.net/',
@@ -142,7 +142,7 @@ const Sponsors: Sponsor[] = [
   },
   {
     id: 'yow',
-    imageUrl: '/static/images/sponsors/yow.jpg',
+    imageUrl: '/static/images/sponsors/yow.png',
     name: 'YOW! Conferences and Workshops',
     serviceProvided: 'Locknote',
     shortName: 'YOW! Perth',
