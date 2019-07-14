@@ -4,7 +4,7 @@ import SponsorData from '../config/sponsors'
 import { Conference as IConference, TicketNumberWhileVoting, TicketPurchasingOptions, TicketsProvider } from './types'
 import venue from './venue'
 
-const name = 'DDD Perth'
+const name = 'DDD Adelaide'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
 const hideDate = false

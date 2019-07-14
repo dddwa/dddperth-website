@@ -255,71 +255,26 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How can I go to this kind of thing more often?',
     AnswerWithoutParagraph: (
       <Fragment>
-        <p>Perth has a very active software community. Consider attending one of the meetups/conferences such as:</p>
+        <p>Adelaide has a growing, diverse software community. Consider attending one of the meetups/conferences such as:</p>
         <ul>
           <li>
-            <SafeLink href="http://www.meetup.com/PerthDotNet/" target="_blank">
-              Perth .NET
+            <SafeLink href="https://www.meetup.com/en-AU/Adelaide-dotNET/" target="_blank">
+              Adelaide .NET User Group
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Cloud/" target="_blank">
-              Perth MS Cloud Computing User Group
+            <SafeLink href="https://www.meetup.com/en-AU/Front-End-Developers-Adelaide-FEDA/" target="_blank">
+              Front-End Developers Adelaide
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/PerthFP/" target="_blank">
-              Perth Functional Programmers
+            <SafeLink href="https://www.meetup.com/en-AU/Amazon-Web-Services-User-Group-Adelaide/" target="_blank">
+              Amazon Web Services User Group Adelaide
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Agile-Perth/" target="_blank">
-              Agile Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Meetup-Group/" target="_blank">
-              Perth Agile Meetup
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/DevOps-Perth/" target="_blank">
-              DevOps Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Front-End-Web-Developers-Perth/" target="_blank">
-              Front End Web Developers Perth (Fenders)
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Testing/" target="_blank">
-              Perth Agile Testing
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Perth-Code-Dojo/" target="_blank">
-              Perth Code Dojo
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/Perth-mobile-dot-net-developers/" target="_blank">
-              Perth Mobile .NET Developers
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.witwa.org.au/" target="_blank">
-              Women in Technology, WA
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://mixinconf.com/" target="_blank">
-              Mixin conference
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://west.yowconference.com.au/" target="_blank">
-              Yow! West conference
+            <SafeLink href="https://www.meetup.com/en-AU/Adelaide-Azure-User-Group/" target="_blank">
+              Adelaide Azure User Group
             </SafeLink>
           </li>
         </ul>
@@ -339,106 +294,25 @@ export default function getFaqs(dates: Dates): FAQ[] {
     AnswerWithoutParagraph: (
       <Fragment>
         <p>
-          {Conference.Name} is organised by DDD WA Inc. a non-profit organisation set up to create inclusive events for
-          the WA software community. {Conference.Name} {Conference.Instance} is organised by:
+          {Conference.Name} has been organized this year by Andrew Best and David Gardiner, with
+          support from the broader DDD Australia community including Melbourne, Sydney, Brisbane,
+          and Perth. {Conference.Name} {Conference.Instance} has been generously supported by DDD WA Inc. a non-profit organisation set up to create inclusive events for
+          the WA and SA software community. {Conference.Name} {Conference.Instance} is organised by:
         </p>
         <ul>
           <li>
-            <SafeLink href="https://www.linkedin.com/in/rebeccacwaters/" target="_blank">
-              Rebecca Waters
+            <SafeLink href="https://twitter.com/_andrewb" target="_blank">
+              Andrew Best
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/mattyjward" target="_blank">
-              Matt Ward
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/ian_hughes" target="_blank">
-              Ian Hughes
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
-              Rob Moore
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/aidanjmorgan" target="_blank">
-              Aidan Morgan
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/AshleyAitken" target="_blank">
-              Ashley Aitken
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
-              David Schokker
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/kristysachse" target="_blank">
-              Kristy Sachse
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/meliss_houghton" target="_blank">
-              Melissa Houghton
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/deekob" target="_blank">
-              Derek Bingham
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/_vedusha_" target="_blank">
-              Vedusha Chooramun
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/mzaatar" target="_blank">
-              Mo Zaatar
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/al5848" target="_blank">
-              Allen Azemia
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/Caiwrote" target="_blank">
-              Cairo Malet
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/mattclarkdotnet" target="_blank">
-              Matt Clark
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/inaiei" target="_blank">
-              Inaie Ignacio
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/amys_kapers" target="_blank">
-              Amy Kapernick
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/eleusis7" target="_blank">
-              Priyaj Sham Chukoury
+            <SafeLink href="https://twitter.com/davidrgardiner" target="_blank">
+              David Gardiner
             </SafeLink>
           </li>
         </ul>
         <p>
-          <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
-            Meet the team
-          </SafeLink>
-          ! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
+          Furthermore, we have many others who volunteer and assist with organization.
         </p>
       </Fragment>
     ),
