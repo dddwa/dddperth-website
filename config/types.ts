@@ -167,7 +167,9 @@ export enum SponsorType {
 }
 
 export interface Sponsor {
+  id: string
   name: string
+  shortName?: string
   imageUrl: string
   type: SponsorType
   url: string

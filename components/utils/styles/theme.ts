@@ -32,9 +32,13 @@ export const theme = {
     afterpartyRoom: '#dd4876',
   },
   weights: {
+    /** Light: 300 */
     light: 300,
+    /** Regular: 400 */
     regular: 400,
+    /** Semi-bold: 600 */
     semiBold: 600,
+    /** Bold: 700 */
     bold: 700,
   },
   fonts: {

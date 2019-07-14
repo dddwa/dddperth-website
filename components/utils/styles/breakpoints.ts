@@ -16,3 +16,8 @@ const breakpointSizes: Breakpoints = {
 }
 
 export const breakpoint = (size: keyof Breakpoints) => `@media (min-width: ${breakpointSizes[size]}px)`
+
+export const breakpointMax = (size: keyof Breakpoints) => `@media (max-width: ${breakpointSizes[size] - 1}px)`
+
+export const breakpointBetween = (min: keyof Breakpoints, max: keyof Breakpoints) =>
+  `@media (min-width: ${breakpointSizes[min]}px) and (max-width: ${breakpointSizes[max] - 1}px)`
