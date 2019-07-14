@@ -9,23 +9,23 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
-const date = moment.parseZone('2019-08-03T08:00+08:00')
+const date = moment.parseZone('2019-11-30T08:00+10:30')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
-const firstInstance = 2015
-const registrationOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
+const firstInstance = 2019
+const registrationOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
 const registrationOpenUntil = hideDate
   ? null
   : date
-      .clone()
-      .add(-1, 'd')
-      .startOf('day')
-      .add(17, 'h')
-const presentationSubmissionsOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
-const presentationSubmissionsOpenUntil = moment.parseZone('2019-06-02T23:59:59+08:00')
-const votingOpenFrom = moment.parseZone('2019-06-08T17:00:00+08:00')
-const votingOpenUntil = moment.parseZone('2019-06-16T23:59:59+08:00')
-const agendaPublishedFrom = moment.parseZone('2019-06-23T17:00:00+08:00')
+    .clone()
+    .add(-1, 'd')
+    .startOf('day')
+    .add(17, 'h')
+const presentationSubmissionsOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
+const presentationSubmissionsOpenUntil = moment.parseZone('2019-09-04T23:59:59+09:30')
+const votingOpenFrom = moment.parseZone('2019-09-12T17:00:00+09:30')
+const votingOpenUntil = moment.parseZone('2019-09-27T23:59:59+09:30')
+const agendaPublishedFrom = moment.parseZone('2019-10-03T17:00:00+09:30')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = endDate
 const importantDates = [
@@ -76,23 +76,23 @@ const Conference: IConference = {
   PreviousInstance: (currentInstance - 1).toString(),
   PreviousInstances: [...Array(currentInstance - firstInstance).keys()].map((_, i) => (firstInstance + i).toString()),
   Organiser: {
-    Name: 'DDD WA Inc.',
-    Url: 'https://blog.dddperth.com/meet-the-team-35865433cb39',
+    Name: 'DDD Adelaide',
+    Url: '',
     ShirtColour: 'yellow',
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
   Goal:
-    "Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
-  GoogleAnalyticsId: 'UA-60040308-1',
-  TicketPrice: '$60',
-  ChildcarePrice: '$30',
+    "TODO: Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
+  GoogleAnalyticsId: 'UA-122340004-2',
+  TicketPrice: '$50',
+  ChildcarePrice: null,
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',
-  TicketsProviderEventId: '2019',
+  TicketsProviderEventId: '2019 Conference',
   TicketsProviderFinancialAssistanceCode: 'financialassistance',
   TicketPurchasingOptions: ticketPurchasingOptions,
-  HashTag: 'DDDPerth',
+  HashTag: 'DDDAdelaide',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
   SessionizeUrl: 'https://sessionize.com/dddperth2019',
@@ -103,14 +103,14 @@ const Conference: IConference = {
   ContactEmail: 'info@dddperth.com',
   SponsorshipEmail: 'sponsorship@dddperth.com',
   MentoringEmail: 'mentors@dddperth.com',
-  EmergencyContactName: 'Rob Moore',
-  EmergencyContactPhoneNumber: '0400 777 763',
-  MediaOfficerName: 'Rebecca Waters',
+  EmergencyContactName: 'Andrew Best',
+  EmergencyContactPhoneNumber: '0438 080 385',
+  MediaOfficerName: 'TODO: Rebecca Waters',
 
   AnonymousReportFormUrl:
-    'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
+    'TODO: https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
-  AnonymousVoting: true,
+  AnonymousVoting: false,
   PreferentialVoting: true,
   TicketNumberWhileVoting: TicketNumberWhileVoting.Required,
   MinVotes: 6,
@@ -143,16 +143,16 @@ const Conference: IConference = {
 
   Socials: {
     Twitter: {
-      Id: '977876011',
-      Name: 'DDDPerth',
+      Id: '1146206887353786368',
+      Name: 'DDDAdelaide',
     },
-    Facebook: 'DDDPerth',
-    Flickr: 'https://www.flickr.com/photos/135003652@N08/albums',
-    Youtube: 'https://www.youtube.com/channel/UCj4UnNYakbLAh2xTWTjeoAQ',
-    Blog: 'https://blog.dddperth.com/',
+    Facebook: null,
+    Flickr: null,
+    Youtube: null,
+    Blog: null,
     Email: 'info@dddperth.com',
-    MailingList: 'http://eepurl.com/cRvaSf',
-    GitHub: 'dddwa',
+    MailingList: null,
+    GitHub: 'dddadelaide',
   },
 
   ImageStrip: [
@@ -165,22 +165,22 @@ const Conference: IConference = {
 
   ImportantContacts: {
     Police: {
-      Details: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
+      Details: '26 Hindley St, Adelaide SA 5000 ph: (08) 8303 0525',
       MapUrl:
-        'https://www.google.com.au/maps/place/WA+Police/@-31.9539457,115.8571227,15z/data=!4m8!1m2!2m1!1swa+police!3m4!1s0x2a32bad2aad309a9:0x132b875b4c12ce8a!8m2!3d-31.9465398!4d115.852523',
+        'https://goo.gl/maps/JEBuvPXvNL2docGv9',
     },
     CentreAgainstSexualAssault: {
       Details: '1800 806 292',
     },
     EmergencyMedical: {
-      Details: 'Royal Perth Hospital, 197 Wellington St, Perth WA 6000',
+      Details: 'Royal Adelaide Hospital, Port Road, Adelaide SA 5000',
       MapUrl:
-        'https://www.google.com.au/maps/place/Royal+Perth+Hospital/@-31.953946,115.8637156,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bb26d7818b2d:0x31db7aa443eb9c11!8m2!3d-31.953946!4d115.8659043',
+        'https://goo.gl/maps/7muHc6pacGMsC16i7',
     },
     NonEmergencyMedical: {
-      Details: 'Perth Medical Centre, 713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
+      Details: '',
       MapUrl:
-        'https://www.google.com.au/maps/place/Perth+Medical+Centre/@-31.9539771,115.8552714,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bad5d00fb27f:0xa93cc014867a5f8b!8m2!3d-31.9539771!4d115.8574654',
+        '',
     },
   },
 
