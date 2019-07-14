@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
 import React from 'react'
+import authentication from 'react-azure-adb2c'
 import AllAgendas from '../components/allAgendas'
 import { CurrentAgenda } from '../components/currentAgenda'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
@@ -56,6 +57,9 @@ class AgendaPage extends React.Component<AgendaPageProps> {
       >
         <div className="container">
           <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
+
+          <button onClick={() => authentication.run()}>Login</button>
+          {authentication.getAccessToken()}
 
           {!dates.AgendaPublished && (
             <p>
