@@ -6,18 +6,23 @@ import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
+  const hasAfterparty = Conference.Venue.Afterparty !== null;
 
   if (!Conference.HideDate) {
+
+    const afterpartyBlurb = ` followed by the afterparty ${
+      Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
+      }`;
+
     Faqs.push({
       Question: 'When and where is it?',
       Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${
         Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
-      }.
+        }.
           Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
         dates.IsComplete ? 'we finished' : "we'll finish"
-      } at ${Conference.FinishTime} followed by the afterparty${
-        Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
-      }.`,
+        } at ${Conference.FinishTime}${hasAfterparty ? afterpartyBlurb : ''
+        }.`,
     })
   }
 
@@ -25,10 +30,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How much does it cost to attend?',
     Answer: `${
       Conference.TicketPrice
-    } covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
+      } covers your entry, food and coffee all day${hasAfterparty ? ' and access to the afterparty' : ''}! Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
       ${
-        Conference.Name
+      Conference.Name
       } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
@@ -47,22 +52,22 @@ export default function getFaqs(dates: Dates): FAQ[] {
               entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
             </>
           ) : (
-            <>
-              <SafeLink
-                href={
-                  'https://ti.to/' +
-                  Conference.TicketsProviderAccountId +
-                  '/' +
-                  Conference.TicketsProviderEventId +
-                  '/discount/' +
-                  Conference.TicketsProviderFinancialAssistanceCode
-                }
-                target="_blank"
-              >
-                following this link
+              <>
+                <SafeLink
+                  href={
+                    'https://ti.to/' +
+                    Conference.TicketsProviderAccountId +
+                    '/' +
+                    Conference.TicketsProviderEventId +
+                    '/discount/' +
+                    Conference.TicketsProviderFinancialAssistanceCode
+                  }
+                  target="_blank"
+                >
+                  following this link
               </SafeLink>
-            </>
-          )}
+              </>
+            )}
           .
         </p>
         <ul>
@@ -114,7 +119,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Will childcare be available?',
     Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${
       Conference.ChildcarePrice
-    }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+      }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
     Category: 'tickets',
   })
 
@@ -133,11 +138,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
         ) : dates.RegistrationClosed ? (
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
-          <Fragment>
-            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
-            {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+                  <Fragment>
+                    Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
+                    {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
           </Fragment>
-        )}
+                )}
       </Fragment>
     ),
   })
@@ -218,8 +223,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
             . See also the other Social Media accounts at the footer of this page.
           </Fragment>
         ) : (
-          '. Also, see our various social media accounts at the footer of this page.'
-        )}
+            '. Also, see our various social media accounts at the footer of this page.'
+          )}
       </Fragment>
     ),
   })
