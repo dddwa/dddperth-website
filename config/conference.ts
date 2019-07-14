@@ -5,7 +5,7 @@ import { Conference as IConference, TicketNumberWhileVoting, TicketPurchasingOpt
 import venue from './venue'
 
 const name = 'DDD Adelaide'
-const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
+const tagLine = `${name} is an inclusive non-profit conference for the Adelaide software community`
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
