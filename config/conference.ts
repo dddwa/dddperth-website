@@ -101,17 +101,17 @@ const Conference: IConference = {
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
 
-  ContactEmail: 'info@dddperth.com',
-  SponsorshipEmail: 'sponsorship@dddperth.com',
-  MentoringEmail: 'mentors@dddperth.com',
+  ContactEmail: 'info@dddadelaide.com',
+  SponsorshipEmail: 'sponsorship@dddadelaide.com',
+  MentoringEmail: 'mentors@dddadelaide.com',
   EmergencyContactName: 'Andrew Best',
   EmergencyContactPhoneNumber: '0438 080 385',
-  MediaOfficerName: 'TODO: Rebecca Waters',
+  MediaOfficerName: null,
 
   AnonymousReportFormUrl:
     'TODO: https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
-  AnonymousVoting: false,
+  AnonymousVoting: true,
   PreferentialVoting: true,
   TicketNumberWhileVoting: TicketNumberWhileVoting.Required,
   MinVotes: 6,
@@ -151,7 +151,7 @@ const Conference: IConference = {
     Flickr: null,
     Youtube: null,
     Blog: null,
-    Email: 'info@dddperth.com',
+    Email: 'info@dddadelaide.com',
     MailingList: null,
     GitHub: 'dddadelaide',
   },
