@@ -9,7 +9,6 @@ const cellBorder: string = '1px solid #ddd'
 
 export const StyledAgendaRow = styled('section')({
   display: 'grid',
-  // gridTemplateColumns: `${calcRem(90)} repeat(auto-fit, minmax(${calcRem(80)}, 1fr))`,
   gridTemplateColumns: `repeat(2, 1fr)`,
   backgroundColor: rowBackgroundColor,
   border: cellBorder,
@@ -24,7 +23,6 @@ export const StyledAgendaRow = styled('section')({
 
   [breakpointMax('xs')]: {
     '& > section:nth-child(2n+1)': {
-      // backgroundColor: 'pink !important',
       borderRight: 0,
     },
 
