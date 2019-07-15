@@ -46,3 +46,9 @@ If you want to make tweaks to the pages then inspect the files in the `pages` di
 ## Contributing
 
 So you’re thinking about contributing to the project? You are awesome! It’s **massively** appreciated. Before getting started, please take the time to review the [contribution guidelines](CONTRIBUTING.MD) before sending that epic pull request / bug report.
+
+## Adelaide Colour Pallette
+
+- FF6864 - Red
+- FFFD64 - Yellow
+- 749EFF - Blue
