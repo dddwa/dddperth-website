@@ -74,20 +74,6 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             Encouraging submissions from <strong>multiple presenters as well as solo presenters.</strong>
           </li>
           <li>
-            Providing a{' '}
-            <strong>
-              <a className="maillink" href={'mailto:' + conference.MentoringEmail}>
-                free mentoring service
-              </a>
-            </strong>
-            ; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run through
-            any ideas you have or give safe and constructive feedback.
-          </li>
-          <li>
-            There will also be <strong>free speaker training and support</strong> for all speakers, so <strong>first timers, juniors, and
-            everyone else</strong> are all encouraged to submit and will have support!
-          </li>
-          <li>
             Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
             feel comfortable doing it.
           </li>
@@ -109,7 +95,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             </a>{' '}
             and we'll reach out to discuss options.
           </li>
-          <li>You will likely be speaking to an audience of between 50-150 people.</li>
+          <li>You will likely be speaking to an audience of between 50-100 people.</li>
           <li>
             We are not interested in sales/vendor pitch presentations although you are welcome to have a slide or two
             about yourself and your company.
