@@ -17,10 +17,10 @@ const registrationOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
 const registrationOpenUntil = hideDate
   ? null
   : date
-    .clone()
-    .add(-1, 'd')
-    .startOf('day')
-    .add(17, 'h')
+      .clone()
+      .add(-1, 'd')
+      .startOf('day')
+      .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
 const presentationSubmissionsOpenUntil = moment.parseZone('2019-09-04T23:59:59+09:30')
 const votingOpenFrom = moment.parseZone('2019-09-12T17:00:00+09:30')
@@ -53,7 +53,7 @@ const importantDates = [
   },
 ]
 
-if (registrationOpenUntil !== null && ticketPurchasingOptions === TicketPurchasingOptions.OnSale) {
+if (registrationOpenUntil !== null) {
   importantDates.push({
     Date: registrationOpenUntil,
     Description: 'Ticket sales close',
@@ -167,21 +167,18 @@ const Conference: IConference = {
   ImportantContacts: {
     Police: {
       Details: '26 Hindley St, Adelaide SA 5000 ph: (08) 8303 0525',
-      MapUrl:
-        'https://goo.gl/maps/JEBuvPXvNL2docGv9',
+      MapUrl: 'https://goo.gl/maps/JEBuvPXvNL2docGv9',
     },
     CentreAgainstSexualAssault: {
       Details: '1800 806 292',
     },
     EmergencyMedical: {
       Details: 'Royal Adelaide Hospital, Port Road, Adelaide SA 5000',
-      MapUrl:
-        'https://goo.gl/maps/7muHc6pacGMsC16i7',
+      MapUrl: 'https://goo.gl/maps/7muHc6pacGMsC16i7',
     },
     NonEmergencyMedical: {
       Details: '',
-      MapUrl:
-        '',
+      MapUrl: '',
     },
   },
 
