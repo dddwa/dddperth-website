@@ -38,8 +38,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
 
         <p>
           We welcome sessions from any software related topic and from anyone in the software industry (you don't have
-          to be a developer!). Previously we have had a wide range of sessions including{' '}
-          {conference.PreviouslySubmittedTopics}.
+          to be a developer!).
         </p>
 
         <p className="text-center">
@@ -88,12 +87,8 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         <p>Other things to note for presenters:</p>
         <ul>
           <li>
-            Speakers get free entry into the event; flights and accommodation for speakers are not normally covered
-            (outside of keynote speakers), but if that's a limitation that stops you from speaking then please{' '}
-            <a className="maillink" href={'mailto:' + conference.ContactEmail}>
-              let us know
-            </a>{' '}
-            and we'll reach out to discuss options.
+            Speakers get free entry into the event; however flights and accommodation for speakers are not covered
+            (outside of keynote speakers).
           </li>
           <li>You will likely be speaking to an audience of between 50-100 people.</li>
           <li>
