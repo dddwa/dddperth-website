@@ -8,7 +8,7 @@ const name = 'DDD Adelaide'
 const tagLine = `${name} is an inclusive non-profit conference for the Adelaide software community`
 
 const hideDate = false
-const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
+const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
 const date = moment.parseZone('2019-11-30T08:00+10:30')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
