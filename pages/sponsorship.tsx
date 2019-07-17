@@ -55,8 +55,13 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </p>
 
     <p>
-      In 2018 DDD Perth had 470 attendees from 510 sold tickets; this makes us the biggest software conference in
-      Western Australia with a 2019 target of 600 attendees.
+      2019 is the inaugural year of this incarnation of DDD Adelaide. We are aiming for an attendance of 120 for the
+      first year, with our focus on creating a great conference experience for attendees and sponsors.
+    </p>
+
+    <p>
+      Our sister conference, DDD Perth, in 2018 had 470 attendees from 510 sold tickets; making it the biggest software
+      conference in Western Australia with a 2019 target of 600 attendees.
     </p>
 
     <p>
