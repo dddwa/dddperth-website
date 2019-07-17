@@ -82,8 +82,7 @@ const Conference: IConference = {
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
-  Goal:
-    "TODO: Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
+  Goal: 'Our goal is to create an approachable and fun event that brings the Adelaide software community together.',
   GoogleAnalyticsId: 'UA-122340004-2',
   TicketPrice: '$50',
   HasSwag: false,
