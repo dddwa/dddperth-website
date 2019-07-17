@@ -20,11 +20,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <p className="text-center">
       <img src="/static/images/logo.png" alt="DDD Adelaide logo" style={{ width: '250px' }} />
     </p>
-    <p>
-      Furthermore, {props.pageMetadata.conference.Name} aims to both create opportunities for underrepresented
-      minorities, juniors and first-time speakers to present as well as influence the wider software industry to
-      encourage such opportunities more broadly.
-    </p>
     <h2>What do we do with the money we raise?</h2>
     <p>
       DDD Adelaide is run by DDD WA Inc., a non-profit association. All funds raised as part of running DDD Adelaide are
@@ -33,10 +28,10 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <ul>
       <li>Running current, or future, DDD Adelaide events</li>
       <li>
-        Sponsoring events or meetup groups in the SA software industry that align to the purpose and goals of DDD
+        Sponsoring events or meetup groups in the SA and WA software industry that align to the purpose and goals of DDD
         Adelaide
       </li>
-      <li>Other activities that contribute to the SA software industry and align to our purpose and goals</li>
+      <li>Other activities that contribute to the SA and WA software industry and align to our purpose and goals</li>
     </ul>
     <h2>What does DDD stand for?</h2>
     <p>
