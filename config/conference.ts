@@ -112,7 +112,7 @@ const Conference: IConference = {
 
   AnonymousVoting: true,
   PreferentialVoting: true,
-  TicketNumberWhileVoting: TicketNumberWhileVoting.Required,
+  TicketNumberWhileVoting: TicketNumberWhileVoting.Optional,
   MinVotes: 6,
   MaxVotes: 6,
 
