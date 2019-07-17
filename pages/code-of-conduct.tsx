@@ -79,10 +79,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       </li>
     </ul>
 
-    <p>
-      Emails and Twitter direct messages will be monitored by our media officer{' '}
-      {props.pageMetadata.conference.MediaOfficerName} as well as select subset of the organising team.
-    </p>
+    <p>Emails and Twitter direct messages will be monitored by a select subset of the organising team.</p>
 
     <p>
       When taking a personal report, <a href={props.pageMetadata.conference.Organiser.Url}>our staff</a> will ensure you
@@ -122,12 +119,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         <strong>Emergency Medical:</strong>{' '}
         <a href={props.pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
           {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}
-        </a>
-      </li>
-      <li>
-        <strong>Non Emergency Medical:</strong>{' '}
-        <a href={props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
         </a>
       </li>
     </ul>
@@ -195,21 +186,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <a href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</a>.
     </p>
 
-    <h3 id="photo-policy">Photo Policy</h3>
-
-    <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
-
-    <ul>
-      <li>
-        <strong>Black:</strong> fine to photograph
-      </li>
-      <li>
-        <strong>Red:</strong> do not photograph
-      </li>
-    </ul>
-
-    <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
-
     <h2>Attribution</h2>
 
     <p>
@@ -218,9 +194,9 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       work of <a href="https://frameshiftconsulting.com/code-of-conduct-training/">Valerie Aurora</a>, the{' '}
       <a href="https://2018.jsconfau.com/code-of-conduct">JSConf AU Code of Conduct</a>, the{' '}
       <a href="https://www.levelsconf.com/codeofconduct.html">Levels Conference Code of Conduct</a>, and the{' '}
-      <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>
+      <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>.
     </p>
 
-    <p>Last update: 30 Apr 2018</p>
+    <p>Last update: 30 July 2019</p>
   </Page>
 ))
