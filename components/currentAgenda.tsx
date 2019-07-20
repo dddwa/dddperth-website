@@ -104,7 +104,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 10, minute: 25 })} />
-                <AgendaSession room="Riverside Theatre" fullWidth>
+                <AgendaSession room="Riverside Foyer and South Foyer" fullWidth>
                   <StyledTrackHeader>Morning tea</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
