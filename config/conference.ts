@@ -111,7 +111,7 @@ const Conference: IConference = {
     'TODO: https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS26sQVnJFzFLm-6XlxI4bCFURDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNS4u',
 
   AnonymousVoting: true,
-  PreferentialVoting: true,
+  PreferentialVoting: false,
   TicketNumberWhileVoting: TicketNumberWhileVoting.Optional,
   MinVotes: 6,
   MaxVotes: 6,
