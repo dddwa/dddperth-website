@@ -1,6 +1,10 @@
-# DDD Perth Website
+# DDD Adelaide Website
 
-The DDD Perth website is deployed to https://dddperth.com and is built using [Next.js](https://github.com/zeit/next.js/).
+[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/DDD%20Adelaide%20Website-CI)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=3)
+
+The DDD Adelaide website is a fork of the [DDD Perth website](https://github.com/dddwa/dddperth-website).
+
+The DDD Adelaide website is deployed to https://dddadelaide.com and is built using [Next.js](https://github.com/zeit/next.js/).
 
 ## Getting started
 
