@@ -38,8 +38,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
 
         <p>
           We welcome sessions from any software related topic and from anyone in the software industry (you don't have
-          to be a developer!). Previously we have had a wide range of sessions including{' '}
-          {conference.PreviouslySubmittedTopics}.
+          to be a developer!).
         </p>
 
         <p className="text-center">
@@ -74,20 +73,6 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             Encouraging submissions from <strong>multiple presenters as well as solo presenters.</strong>
           </li>
           <li>
-            Providing a{' '}
-            <strong>
-              <a className="maillink" href={'mailto:' + conference.MentoringEmail}>
-                free mentoring service
-              </a>
-            </strong>
-            ; we have a bunch of experienced speakers who are happy to have a confidential chat with you to run through
-            any ideas you have or give safe and constructive feedback.
-          </li>
-          <li>
-            There will also be <strong>free speaker training and support</strong> for all speakers, so <strong>first timers, juniors, and
-            everyone else</strong> are all encouraged to submit and will have support!
-          </li>
-          <li>
             Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
             feel comfortable doing it.
           </li>
@@ -102,14 +87,10 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         <p>Other things to note for presenters:</p>
         <ul>
           <li>
-            Speakers get free entry into the event; flights and accommodation for speakers are not normally covered
-            (outside of keynote speakers), but if that's a limitation that stops you from speaking then please{' '}
-            <a className="maillink" href={'mailto:' + conference.ContactEmail}>
-              let us know
-            </a>{' '}
-            and we'll reach out to discuss options.
+            Speakers get free entry into the event; however flights and accommodation for speakers are not covered
+            (outside of keynote speakers).
           </li>
-          <li>You will likely be speaking to an audience of between 50-150 people.</li>
+          <li>You will likely be speaking to an audience of between 50-100 people.</li>
           <li>
             We are not interested in sales/vendor pitch presentations although you are welcome to have a slide or two
             about yourself and your company.

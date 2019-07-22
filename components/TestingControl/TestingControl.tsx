@@ -1,6 +1,5 @@
 import moment, { Moment } from 'moment'
 import React, { useState } from 'react'
-import From2017 from '../../config/2017'
 import SponsorData from '../../config/sponsors'
 import { Conference, TicketPurchasingOptions } from '../../config/types'
 import { Button } from '../global/Button/Button'
@@ -87,7 +86,7 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
           >
             Tickets sold out
           </StyledButton>
-          <StyledButton kind="inverse" onClick={() => (conference.Sponsors = From2017.Sponsors)}>
+          <StyledButton kind="inverse" onClick={() => (conference.Sponsors = SponsorData)}>
             Add sponsors
           </StyledButton>
           <StyledButton kind="secondary" onClick={resetVote}>

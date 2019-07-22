@@ -9,33 +9,34 @@ interface AllAgendasProps {
   conferenceInstance: string
 }
 
-const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps) => (
-  <Fragment>
-    <h2 className="text-center">All Agendas</h2>
-    <p className="text-center">
-      {conference.PreviousInstances.map((instance, i) => (
-        <Fragment key={instance}>
-          {i !== 0 ? ' | ' : null}
-          {instance === conferenceInstance ? (
-            instance
-          ) : (
-            <Link href={'/agenda/' + instance}>
-              <a>{instance}</a>
-            </Link>
-          )}
-        </Fragment>
-      ))}
-      {dates.AgendaPublished && ' | '}
-      {dates.AgendaPublished &&
-        conferenceInstance !== conference.Instance && (
+const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps) =>
+  conference.PreviousInstances.length === 0 ? null : (
+    <Fragment>
+      <h2 className="text-center">All Agendas</h2>
+      <p className="text-center">
+        {conference.PreviousInstances.map((instance, i) => (
+          <Fragment key={instance}>
+            {i !== 0 ? ' | ' : null}
+            {instance === conferenceInstance ? (
+              instance
+            ) : (
+              <Link href={'/agenda/' + instance}>
+                <a>{instance}</a>
+              </Link>
+            )}
+          </Fragment>
+        ))}
+        {dates.AgendaPublished && ' | '}
+        {dates.AgendaPublished && conferenceInstance !== conference.Instance && (
           <Link href="/agenda">
             <a>{conference.Instance}</a>
           </Link>
         )}
-      {dates.AgendaPublished &&
-        conferenceInstance === conference.Instance && <Fragment>{conference.Instance}</Fragment>}
-    </p>
-  </Fragment>
-)
+        {dates.AgendaPublished && conferenceInstance === conference.Instance && (
+          <Fragment>{conference.Instance}</Fragment>
+        )}
+      </p>
+    </Fragment>
+  )
 
 export default AllAgendas

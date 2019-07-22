@@ -18,19 +18,6 @@ interface AgendaPageProps extends WithPageMetadataProps {
 
 class AgendaPage extends React.Component<AgendaPageProps> {
   static async getInitialProps({ req, res }) {
-    const dates = getConferenceDates(Conference, dateTimeProvider.now())
-    if (!dates.VotingFinished) {
-      if (res) {
-        res.writeHead(302, {
-          Location: '/agenda/' + Conference.PreviousInstance,
-        })
-        res.end()
-        res.finished = true
-      } else {
-        Router.replace('/agenda/' + Conference.PreviousInstance)
-      }
-    }
-
     if (req) {
       const response = await fetch(process.env.GET_AGENDA_URL)
       if (!response.ok) {
@@ -73,8 +60,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             <p>
               The agenda has not yet been finalised; please come back on{' '}
               {conference.AgendaPublishedFrom.format(dates.DateDisplayFormat)}{' '}
-              {conference.AgendaPublishedFrom.format(dates.TimeDisplayFormat)}. In the meantime, check out our previous
-              agendas below.
+              {conference.AgendaPublishedFrom.format(dates.TimeDisplayFormat)}.
             </p>
           )}
           {dates.AgendaPublished && (

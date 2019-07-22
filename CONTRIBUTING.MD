@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-We love your input! DDD Perth is dedicated to providing a harassment-free conference experience for everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion. We do not tolerate harassment of others in any form. By participating in this project, you agree to the DDD Perth [code of conduct](https://dddperth.com/code-of-conduct).
+We love your input! DDD Adelaide is dedicated to providing a harassment-free conference experience for everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion. We do not tolerate harassment of others in any form. By participating in this project, you agree to the DDD Adelaide [code of conduct](https://dddperth.com/code-of-conduct).
 
 ## We Develop with GitHub
 
@@ -13,13 +13,13 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 5.  Make sure your code lints by running `yarn run lint`.
 6.  Go on and issue that pull request!
 
-## Any contributions you make will be under the DDD Perth License
+## Any contributions you make will be under the DDD Adelaide License
 
-In short, when you submit code changes, your submissions are understood to be under the same [DDD Perth License](LICENSE.md) that covers the project.
+In short, when you submit code changes, your submissions are understood to be under the same [DDD Adelaide License](LICENSE.md) that covers the project.
 
-## Report bugs using GitHub's [issues](https://github.com/dddwa/dddperth-website/issues)
+## Report bugs using GitHub's [issues](https://github.com/dddadelaide/dddadelaide-website/issues)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/dddwa/dddperth-website/issues/new); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/dddadelaide/dddadelaide-website/issues/new); it's that easy!
 
 ## Write bug reports with detail and background, and if possible sample code
 

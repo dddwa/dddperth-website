@@ -5,52 +5,42 @@ import { Venue } from './types'
 
 // tslint:disable:object-literal-sort-keys
 const venue: Venue = {
-  Name: 'Perth Convention and Exhibition Centre',
-  Address: '21 Mounts Bay Rd, Perth',
-  Latitude: -31.9565004,
-  Longitude: 115.853,
-  Afterparty: 'TBD',
-  AfterpartyAddress: 'TBD',
-  Wifi: 'PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.',
-  Accommodation: (
-    <Fragment>
-      To get a 10% discount from the best available rate for the nearby 4.5 star Adina Apartment Hotel you can use the
-      special{' '}
-      <SafeLink href="https://gc.synxis.com/rez.aspx?Chain=14687&amp;locale=en-US&amp;promo=PERTHCONV" target="_blank">
-        booking link
-      </SafeLink>
-      . Adina Hotel can be contacted on +61 8 9217 8000 or{' '}
-      <a className="maillink" href="mailto:perth@adinahotels.com.au">
-        perth@adinahotels.com.au
-      </a>
-      .
-    </Fragment>
-  ),
+  Name: 'University of South Australia, City West Campus',
+  Address: 'North Terrace, Adelaide',
+  Latitude: -34.9227889,
+  Longitude: 138.5910019,
+  Afterparty: null,
+  AfterpartyAddress: null,
+  Wifi:
+    'TODO: UniSA has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.',
   Car: (
     <Fragment>
-      PCEC has parking underneath it for{' '}
-      <SafeLink href="https://www.cityofperthparking.com.au/convention-centre" target="_blank">
-        $16.80 for the day
-      </SafeLink>
-      .
+      The nearby Adelaide Convention Centre carpark offers an early bird deal for{' '}
+      <SafeLink
+        href="https://www.adelaidecc.com.au/content/uploads/2018/12/ACC-Public-Car-Parking-Rates-2018-2019.pdf"
+        target="_blank"
+      >
+        $16.00 for the day
+      </SafeLink>{' '}
+      if you enter between 5:30am-9:30am and exit between 2:30pm-6:30pm.
     </Fragment>
   ),
   Train: (
     <Fragment>
-      PCEC is adjoining the Elizabeth Quay Train Station and is a 5 minute walk from it. See{' '}
-      <SafeLink href="http://transperth.wa.gov.au/" target="_blank">
-        Transperth
+      The Adelaide Railway Station is a short (less than 5 minute) walk down the road from the University campus. See{' '}
+      <SafeLink href="http://www.adelaidemetro.com.au/" target="_blank">
+        Adelaide Metro
       </SafeLink>{' '}
       for more details.
     </Fragment>
   ),
   Bus: (
     <Fragment>
-      PCEC is easy to get to via any bus that goes to the Esplanade Busport, which is adjoining the PCEC. See{' '}
-      <SafeLink href="http://transperth.wa.gov.au/" target="_blank">
-        Transperth
+      There are a number of Bus and Tram combinations that will get you right outside of the University campus. Use the{' '}
+      <SafeLink href="https://www.adelaidemetro.com.au/planner/" target="_blank">
+        Adelaide Metro Journey Planner
       </SafeLink>{' '}
-      for more details.
+      to plan your trip in!
     </Fragment>
   ),
 }
