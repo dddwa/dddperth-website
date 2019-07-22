@@ -6,34 +6,32 @@ import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
-  const hasAfterparty = Conference.Venue.Afterparty !== null;
+  const hasAfterparty = Conference.Venue.Afterparty !== null
 
   if (!Conference.HideDate) {
-
     const afterpartyBlurb = ` followed by the afterparty ${
       Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
-      }`;
+    }`
 
     Faqs.push({
       Question: 'When and where is it?',
       Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${
         Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
-        }.
+      }.
           Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
         dates.IsComplete ? 'we finished' : "we'll finish"
-        } at ${Conference.FinishTime}${hasAfterparty ? afterpartyBlurb : ''
-        }.`,
+      } at ${Conference.FinishTime}${hasAfterparty ? afterpartyBlurb : ''}.`,
     })
   }
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${
-      Conference.TicketPrice
-      } covers your entry, food and coffee all day${hasAfterparty ? ' and access to the afterparty' : ''}! Amazing value right!?
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${
+      hasAfterparty ? ' and access to the afterparty' : ''
+    }! Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
       ${
-      Conference.Name
+        Conference.Name
       } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
@@ -44,30 +42,30 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <div>
         <p>
           If you can't afford the ticket price then we have Sponsored (Financial Assistance) tickets available. DDD
-          Adelaide is donating 10 such tickets and we also have an option for people within the community to donate further
-          tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
+          Adelaide is donating 10 such tickets and we also have an option for people within the community to donate
+          further tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
           Financial Assistance tickets by{' '}
           {Conference.TicketsProviderId === TicketsProvider.Eventbrite ? (
             <>
               entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
             </>
           ) : (
-              <>
-                <SafeLink
-                  href={
-                    'https://ti.to/' +
-                    Conference.TicketsProviderAccountId +
-                    '/' +
-                    Conference.TicketsProviderEventId +
-                    '/discount/' +
-                    Conference.TicketsProviderFinancialAssistanceCode
-                  }
-                  target="_blank"
-                >
-                  following this link
+            <>
+              <SafeLink
+                href={
+                  'https://ti.to/' +
+                  Conference.TicketsProviderAccountId +
+                  '/' +
+                  Conference.TicketsProviderEventId +
+                  '/discount/' +
+                  Conference.TicketsProviderFinancialAssistanceCode
+                }
+                target="_blank"
+              >
+                following this link
               </SafeLink>
-              </>
-            )}
+            </>
+          )}
           .
         </p>
         <ul>
@@ -122,7 +120,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
       Question: 'Will childcare be available?',
       Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${
         Conference.ChildcarePrice
-        }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+      }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
       Category: 'tickets',
     })
   }
@@ -142,11 +140,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
         ) : dates.RegistrationClosed ? (
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
-                  <Fragment>
-                    Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
-                    {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+          <Fragment>
+            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
+            {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
           </Fragment>
-                )}
+        )}
       </Fragment>
     ),
   })
@@ -227,8 +225,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
             . See also the other Social Media accounts at the footer of this page.
           </Fragment>
         ) : (
-            '. Also, see our various social media accounts at the footer of this page.'
-          )}
+          '. Also, see our various social media accounts at the footer of this page.'
+        )}
       </Fragment>
     ),
   })
@@ -255,7 +253,9 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How can I go to this kind of thing more often?',
     AnswerWithoutParagraph: (
       <Fragment>
-        <p>Adelaide has a growing, diverse software community. Consider attending one of the meetups/conferences such as:</p>
+        <p>
+          Adelaide has a growing, diverse software community. Consider attending one of the meetups/conferences such as:
+        </p>
         <ul>
           <li>
             <SafeLink href="https://www.meetup.com/en-AU/Adelaide-dotNET/" target="_blank">
@@ -294,10 +294,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
     AnswerWithoutParagraph: (
       <Fragment>
         <p>
-          {Conference.Name} has been organized this year by Andrew Best and David Gardiner, with
-          support from the broader DDD Australia community including Melbourne, Sydney, Brisbane,
-          and Perth. {Conference.Name} {Conference.Instance} has been generously supported by DDD WA Inc. a non-profit organisation set up to create inclusive events for
-          the WA and SA software community. {Conference.Name} {Conference.Instance} is organised by:
+          {Conference.Name} has been organized this year by Andrew Best and David Gardiner, with support from the
+          broader DDD Australia community including Melbourne, Sydney, Brisbane, and Perth. {Conference.Name}{' '}
+          {Conference.Instance} has been generously supported by DDD WA Inc. a non-profit organisation set up to create
+          inclusive events for the WA and SA software community. {Conference.Name} {Conference.Instance} is organised
+          by:
         </p>
         <ul>
           <li>
@@ -311,9 +312,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
         </ul>
-        <p>
-          Furthermore, we have many others who volunteer and assist with organization.
-        </p>
+        <p>Furthermore, we have many others who volunteer and assist with organization.</p>
       </Fragment>
     ),
   })
