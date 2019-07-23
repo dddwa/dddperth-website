@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
