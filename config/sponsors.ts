@@ -73,13 +73,14 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://www.elastic.co/',
   },
-  {
+  /*{
     id: 'ibm',
     imageUrl: '/static/images/sponsors/ibm.png',
     name: 'IBM',
     type: SponsorType.Silver,
     url: 'https://www.ibm.com/au-en',
   },
+  */
   {
     id: 'insight-aus',
     imageUrl: '/static/images/sponsors/insight.jpg',
