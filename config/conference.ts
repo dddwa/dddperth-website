@@ -156,6 +156,8 @@ const Conference: IConference = {
   },
 
   ImageStrip: [
+    { Url: '/static/images/strip/1.jpg', Alternate: 'Tatham Oddie speaking at DDD 2015' },
+    { Url: '/static/images/strip/2.jpg', Alternate: 'Brendan Forster speaking at DDD 2015' },
     { Url: '/static/images/strip/3.jpg', Alternate: 'Visting the readify booth' },
     { Url: '/static/images/strip/4.jpg', Alternate: 'Early morning registration' },
     { Url: '/static/images/strip/5.jpg', Alternate: 'Donna Edwards speaking at DDD 2017' },
