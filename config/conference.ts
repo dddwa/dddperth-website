@@ -82,7 +82,7 @@ const Conference: IConference = {
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
-  Goal: 'Our goal is to create an approachable and fun event that brings the Adelaide software community together.',
+  Goal: 'Our goal is to create a fun, informative event that brings the Adelaide software community together.',
   GoogleAnalyticsId: 'UA-122340004-2',
   TicketPrice: '$50',
   HasSwag: false,
