@@ -294,11 +294,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     AnswerWithoutParagraph: (
       <Fragment>
         <p>
-          {Conference.Name} has been organized this year by Andrew Best and David Gardiner, with support from the
-          broader DDD Australia community including Melbourne, Sydney, Brisbane, and Perth. {Conference.Name}{' '}
+          {Conference.Name} {Conference.Instance} has been organized by Andrew Best and David Gardiner, with support
+          from the broader DDD Australia community including Melbourne, Sydney, Brisbane, and Perth. {Conference.Name}{' '}
           {Conference.Instance} has been generously supported by DDD WA Inc. a non-profit organisation set up to create
-          inclusive events for the WA and SA software community. {Conference.Name} {Conference.Instance} is organised
-          by:
+          inclusive events for the WA and SA software community.
         </p>
         <ul>
           <li>
