@@ -28,7 +28,7 @@ const Sponsors: Sponsor[] = [
     imageUrl: '/static/images/sponsors/microsoft.png',
     name: 'Microsoft',
     type: SponsorType.Gold,
-    url: 'https://www.microsoft.com/',
+    url: 'https://aka.ms/AzureDevDDD19',
   },
   {
     id: 'modis',
