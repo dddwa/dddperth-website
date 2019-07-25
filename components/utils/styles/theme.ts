@@ -4,18 +4,19 @@ import styled, { CreateStyled } from '@emotion/styled-base'
 
 export const theme = {
   colors: {
-    primary: '#008554',
-    primaryDark: '#006c44',
-    secondary: '#da459c',
-    secondaryDark: '#d63091',
+    primary: '#16a5a6',
+    primaryDark: '#3d5567',
+    secondary: '#F08712',
+    secondaryDark: '#F35E29',
     inverse: '#4b4c4e',
     inverseDark: '#3f4041',
-    tertiary: '#2274a5',
-    tertiaryDark: '#1e6590',
+    tertiary: '#BBDEF1',
+    tertiaryDark: '#BBDEF1',
     body: '#292929',
     darkGrey: '#58595b',
+    agenda: '#7BB8DA',
     lightGrey: '#f0f0f4',
-    tickets: '#eac435',
+    tickets: '#efca06',
     linkHoverFg: '#2a7dac',
     linkFocusBg: '#54a6d6',
     // Agenda

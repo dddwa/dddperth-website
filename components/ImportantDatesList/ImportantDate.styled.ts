@@ -15,7 +15,7 @@ function dateBorderColor(theme: Theme, dateType: Types) {
     case 'tickets':
       return theme.colors.tickets
     case 'agenda':
-      return theme.colors.darkGrey
+      return theme.colors.agenda
     case 'conference':
       return theme.colors.primary
     default:
