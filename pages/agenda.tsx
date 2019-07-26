@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
 import React from 'react'
 import AllAgendas from '../components/allAgendas'
@@ -6,6 +5,7 @@ import { CurrentAgenda } from '../components/currentAgenda'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Sponsors from '../components/sponsors'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
+import { fetchSessions } from '../components/utils/useSessions'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import { Session, SponsorType } from '../config/types'
@@ -31,13 +31,8 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     }
 
     if (req) {
-      const response = await fetch(process.env.GET_AGENDA_URL)
-      if (!response.ok) {
-        return {}
-      }
-
-      const body = await response.json()
-      return { sessions: body as Session[] }
+      const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
+      return sessions ? { sessions } : {}
     }
 
     return {}
