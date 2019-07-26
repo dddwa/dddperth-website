@@ -61,7 +61,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>
       Our sister conference, DDD Perth, in 2018 had 470 attendees from 510 sold tickets; making it the biggest software
-      conference in Western Australia with a 2019 target of 600 attendees.
+      conference in Western Australia with a 2019 target of 800 attendees.
     </p>
 
     <p>

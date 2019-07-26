@@ -21,8 +21,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </p>
     <h2>What do we do with the money we raise?</h2>
     <p>
-      DDD Adelaide is run by DDD WA Inc., a non-profit association. All funds raised as part of running DDD Adelaide are
-      used for:
+      DDD Adelaide is supported by DDD WA Inc., a non-profit association. All funds raised as part of running DDD
+      Adelaide are used for:
     </p>
     <ul>
       <li>Running current, or future, DDD Adelaide events</li>
@@ -35,7 +35,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     <h2>What does DDD stand for?</h2>
     <p>
       DDD Adelaide is a part of the Developer! Developer! Developer! series of events, focussed on providing a forum for
-      all people involved in the creation of software in SA to get together and share their experiences and stories.
+      all people involved in the creation of software in South Australia to get together and share their experiences and
+      stories.
     </p>
     <p>DDD was set up with a number of key elements in mind, which hold true for all DDD conferences held worlwide:</p>
     <ul>

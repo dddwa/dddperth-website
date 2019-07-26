@@ -5,14 +5,13 @@ import { Venue } from './types'
 
 // tslint:disable:object-literal-sort-keys
 const venue: Venue = {
-  Name: 'University of South Australia, City West Campus',
-  Address: 'North Terrace, Adelaide',
-  Latitude: -34.9227889,
-  Longitude: 138.5910019,
+  Name: 'MOD., University of South Australia',
+  Address: 'North Terrace, adjacent Morphett Street Bridge, Adelaide',
+  Latitude: -34.9215197,
+  Longitude: 138.5925674,
   Afterparty: null,
   AfterpartyAddress: null,
-  Wifi:
-    'TODO: UniSA has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour.',
+  Wifi: 'MOD has free wifi for all attendees.',
   Car: (
     <Fragment>
       The nearby Adelaide Convention Centre carpark offers an early bird deal for{' '}

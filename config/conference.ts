@@ -9,7 +9,7 @@ const tagLine = `${name} is an inclusive non-profit conference for the Adelaide 
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const date = moment.parseZone('2019-11-30T08:00+10:30')
+const date = moment.parseZone('2019-11-23T08:00+10:30')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2019
@@ -84,7 +84,7 @@ const Conference: IConference = {
   SiteDescription: `${tagLine}.`,
   Goal: 'Our goal is to create a fun, informative event that brings the Adelaide software community together.',
   GoogleAnalyticsId: 'UA-122340004-2',
-  TicketPrice: '$50',
+  TicketPrice: '$55',
   HasSwag: false,
   ChildcarePrice: null,
   TicketsProviderId: TicketsProvider.Tito,

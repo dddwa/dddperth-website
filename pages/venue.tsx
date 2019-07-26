@@ -34,15 +34,15 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
           <p>
             {conference.Name} will be held at {conference.Venue.Name} at{' '}
             <SafeLink
-              href={
-                'https://www.google.com.au/maps/place/' +
-                encodeURIComponent(conference.Venue.Name + ', ' + conference.Venue.Address)
-              }
+              href={'https://www.google.com.au/maps/place/' + encodeURIComponent(conference.Venue.Name)}
               target="_blank"
             >
               {conference.Venue.Address}
             </SafeLink>
-            .
+            . Additional venue information can be found on the{' '}
+            <SafeLink href="https://mod.org.au/visit/getting-here/" target="_blank">
+              MOD. website.
+            </SafeLink>
           </p>
         </div>
         <div id="map" aria-hidden>
