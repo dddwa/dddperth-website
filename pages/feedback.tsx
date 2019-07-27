@@ -18,6 +18,7 @@ import {
 } from '../components/Feedback/Feedback.styled'
 import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
 import { SessionInput } from '../components/Feedback/SessionInput'
+import { Alert } from '../components/global/Alert/Alert'
 import { logEvent, logException } from '../components/global/analytics'
 import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
@@ -40,7 +41,7 @@ interface FeedbackFormState {
 }
 
 enum StorageKeys {
-  FEEDBACK_ID = 'ddd-feedback-id',
+  DEVICE_ID = 'ddd-device-id',
   FEEDBACK_GIVER = 'ddd-feedback-name',
 }
 
@@ -98,7 +99,7 @@ function formReducer(state: FormState, action: 'submitting' | 'submitted' | 'err
 
 const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
   const conference = pageMetadata.conference
-  const [feedbackId, setFeedbackId] = React.useState<string>()
+  const [deviceId, setDeviceId] = React.useState<string>()
   const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
   const { allSessionGroups, ...sessionGroups } = useSessionGroups(
     conference.Date.clone(),
@@ -123,7 +124,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     const headers = { 'Content-Type': 'application/json' }
     try {
       const response = await fetch(pageMetadata.appConfig.feedbackUrl, {
-        body: JSON.stringify({ ...values, feedbackId }),
+        body: JSON.stringify({ ...values, deviceId }),
         headers,
         method: 'POST',
       })
@@ -132,15 +133,15 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
         logException(
           'Error when submitting session feedback',
           new Error(`Got ${response.status} ${response.statusText} when posting session feedback.`),
-          { feedbackId },
+          { deviceId },
         )
         dispatch('error')
       } else {
-        logEvent('feedback', 'submit', { feedbackId, sessionId: values.sessionId })
+        logEvent('feedback', 'submit', { deviceId, sessionId: values.sessionId })
         dispatch('submitted')
       }
     } catch (e) {
-      logException('Error when submitting vote', e, { feedbackId })
+      logException('Error when submitting vote', e, { deviceId })
       dispatch('error')
     }
   }
@@ -154,16 +155,16 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
   })
 
   React.useEffect(() => {
-    if (!feedbackId) {
-      const feedbackUUID = uuid()
+    if (!deviceId) {
+      const deviceUUID = uuid()
       try {
-        localStorage.setItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.FEEDBACK_ID), feedbackUUID)
-        setFeedbackId(localStorage.getItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.FEEDBACK_ID)))
+        localStorage.setItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.DEVICE_ID), deviceUUID)
+        setDeviceId(localStorage.getItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.DEVICE_ID)))
       } catch (err) {
-        setFeedbackId(feedbackUUID)
+        setDeviceId(deviceUUID)
       }
     }
-  }, [feedbackId])
+  }, [deviceId])
 
   return (
     <Page
@@ -177,13 +178,8 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
           {conference.Name} {conference.Instance} Feedback
         </h1>
 
-        {isError && (
-          <div className="alert alert-danger">Sorry, there was an error loading sessions. Please try again later</div>
-        )}
-
-        {!isLoaded && <div className="alert alert-info">Loading sessions</div>}
-
-        {formState.hasSubmitted && <div className="alert alert-success">Feedback received. Thank you</div>}
+        {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
+        {!isLoaded && <Alert kind="info">Loading sessions</Alert>}
 
         {pageMetadata.appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
 
@@ -284,6 +280,11 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 required
               />
             </StyledFormRow>
+            {formState.hasSubmitted && (
+              <Alert kind="success" type="assertive">
+                Feedback received. Thank you
+              </Alert>
+            )}
             <StyledSubmitButton kind="primary" type="submit" disabled={formState.submitInProgress}>
               Submit feedback
             </StyledSubmitButton>
