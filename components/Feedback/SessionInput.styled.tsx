@@ -18,6 +18,10 @@ export const StyledSessionInput = styled('input')(({ theme }) => ({
   position: 'absolute',
   opacity: 0,
 
+  '&:focus + label': {
+    borderColor: theme.colors.primary,
+  },
+
   '&:checked + label': {
     borderColor: theme.colors.secondary,
     fontWeight: theme.weights.semiBold,

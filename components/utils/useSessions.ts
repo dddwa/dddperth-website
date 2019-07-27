@@ -65,7 +65,7 @@ export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
 
   return {
     isError: state.isError,
-    isLoading: state.isLoaded,
+    isLoaded: state.isLoaded,
     sessions: state.sessions,
   }
 }

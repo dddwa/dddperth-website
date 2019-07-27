@@ -5,6 +5,7 @@ import { calcRem } from '../utils/styles/calcRem'
 import styled from '../utils/styles/theme'
 
 export const StyledForm = styled('form')(({ theme }) => ({
+  marginBottom: calcRem(30),
   backgroundColor: theme.colors.lightGrey,
 }))
 
@@ -65,4 +66,9 @@ export const StyledSubmitButton = styled(Button)({
   display: 'block',
   width: '100%',
   cursor: 'pointer',
+})
+
+export const StyledSummary = styled('summary')({
+  cursor: 'pointer',
+  fontSize: calcRem(20),
 })

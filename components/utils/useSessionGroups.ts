@@ -122,6 +122,7 @@ export function useSessionGroups(
 ): SessionGroups {
   const allSessionGroups: SessionGroup[] = React.useMemo(() => createSessionGroups(conferenceDate, sessions), [
     conferenceDate.toString(),
+    sessions.length,
   ])
   const isConferenceDay = dateTimeProvider.now().Value.isBetween(conferenceDate, conferenceEndDate)
 

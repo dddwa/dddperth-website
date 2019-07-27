@@ -1,6 +1,7 @@
+import moment, { Moment } from 'moment'
 import { NextSFC } from 'next'
 import Router from 'next/router'
-import React from 'react'
+import React, { useReducer } from 'react'
 import uuid from 'uuid/v1'
 import {
   StyledForm,
@@ -11,11 +12,13 @@ import {
   StyledSessionList,
   StyledSmall,
   StyledSubmitButton,
-  StyledTextInput,
+  StyledSummary,
   StyledTextArea,
+  StyledTextInput,
 } from '../components/Feedback/Feedback.styled'
 import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
 import { SessionInput } from '../components/Feedback/SessionInput'
+import { logEvent, logException } from '../components/global/analytics'
 import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
@@ -53,32 +56,93 @@ function getLocalStoredName(instance: string): string {
   }
 }
 
+interface FormState {
+  submitInProgress: boolean
+  hasSubmitted: boolean
+  submitError: boolean
+  lastSubmit?: Moment
+}
+
+function formReducer(state: FormState, action: 'submitting' | 'submitted' | 'error' | 'reset') {
+  switch (action) {
+    case 'submitted':
+      return {
+        hasSubmitted: true,
+        lastSubmit: moment(),
+        submitError: false,
+        submitInProgress: false,
+      }
+    case 'submitting':
+      return {
+        submitInProgress: true,
+        ...state,
+      }
+    case 'error':
+      return {
+        hasSubmitted: false,
+        lastSubmit: undefined,
+        submitError: true,
+        submitInProgress: false,
+      }
+    case 'reset':
+      return {
+        hasSubmitted: false,
+        lastSubmit: undefined,
+        submitError: false,
+        submitInProgress: false,
+      }
+    default:
+      return state
+  }
+}
+
 const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
   const conference = pageMetadata.conference
   const [feedbackId, setFeedbackId] = React.useState<string>()
-  const { sessions, isError, isLoading } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
+  const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
   const { allSessionGroups, ...sessionGroups } = useSessionGroups(
     conference.Date.clone(),
     conference.EndDate.clone(),
     sessions,
   )
+  const [formState, dispatch] = useReducer(formReducer, {
+    hasSubmitted: false,
+    lastSubmit: undefined,
+    submitError: false,
+    submitInProgress: false,
+  })
 
-  const formSubmitHandler = () => {
-    console.log('submit')
-
+  const formSubmitHandler = async () => {
+    dispatch('submitting')
     try {
       localStorage.setItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.FEEDBACK_GIVER), values.name)
     } catch (err) {
       // well, we tried
     }
 
-    const result = {
-      ...values,
-      feedbackId,
-    }
+    const headers = { 'Content-Type': 'application/json' }
+    try {
+      const response = await fetch(pageMetadata.appConfig.feedbackUrl, {
+        body: JSON.stringify({ ...values, feedbackId }),
+        headers,
+        method: 'POST',
+      })
 
-    console.log(result)
-    // submit to endpoint
+      if (!response.ok) {
+        logException(
+          'Error when submitting session feedback',
+          new Error(`Got ${response.status} ${response.statusText} when posting session feedback.`),
+          { feedbackId },
+        )
+        dispatch('error')
+      } else {
+        logEvent('feedback', 'submit', { feedbackId, sessionId: values.sessionId })
+        dispatch('submitted')
+      }
+    } catch (e) {
+      logException('Error when submitting vote', e, { feedbackId })
+      dispatch('error')
+    }
   }
 
   const { handleChange, handleSubmit, values } = useForm<FeedbackFormState>(formSubmitHandler, {
@@ -117,9 +181,13 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
           <div className="alert alert-danger">Sorry, there was an error loading sessions. Please try again later</div>
         )}
 
+        {!isLoaded && <div className="alert alert-info">Loading sessions</div>}
+
+        {formState.hasSubmitted && <div className="alert alert-success">Feedback received. Thank you</div>}
+
         {pageMetadata.appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
 
-        {!isError && (
+        {!isError && isLoaded && (
           <StyledForm onSubmit={handleSubmit}>
             <StyledFormRow>
               <StyledLabel htmlFor="input-name">Your name</StyledLabel>
@@ -132,8 +200,8 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 value={values.name}
               />
             </StyledFormRow>
-            {isLoading && <small>Loading sessions</small>}
-            {sessions && sessionGroups.previousSessionGroup && (
+            {!isLoaded && <small>Loading sessions</small>}
+            {sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0 && (
               <StyledFormRow>
                 <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
                 <StyledSessionList>
@@ -148,9 +216,9 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                   ))}
                 </StyledSessionList>
 
-                {sessionGroups.pastSessionGroups && (
+                {sessionGroups.pastSessionGroups.length > 0 && (
                   <details>
-                    <summary>Previous sessions</summary>
+                    <StyledSummary>More sessions</StyledSummary>
                     <StyledSessionList>
                       {sessionGroups.pastSessionGroups.map(sessionGroup =>
                         sessionGroup.sessions.map(session => (
@@ -216,7 +284,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 required
               />
             </StyledFormRow>
-            <StyledSubmitButton kind="primary" type="submit">
+            <StyledSubmitButton kind="primary" type="submit" disabled={formState.submitInProgress}>
               Submit feedback
             </StyledSubmitButton>
           </StyledForm>
@@ -228,9 +296,6 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
 
 Feedback.getInitialProps = async ({ res, req }) => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
-  // DEBUG - Hope I don't check this in but I can't get here otherwise...
-  dates.AcceptingFeedback = true
-  // END DEBUG
   if (!dates.AcceptingFeedback) {
     if (res) {
       res.writeHead(302, {
