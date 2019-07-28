@@ -11,7 +11,7 @@ const venue: Venue = {
   Longitude: 138.5925674,
   Afterparty: null,
   AfterpartyAddress: null,
-  Wifi: 'MOD has free wifi for all attendees.',
+  Wifi: 'MOD. has free wifi for all attendees.',
   Car: (
     <Fragment>
       The nearby Adelaide Convention Centre carpark offers an early bird deal for{' '}
@@ -26,7 +26,7 @@ const venue: Venue = {
   ),
   Train: (
     <Fragment>
-      The Adelaide Railway Station is a short (less than 5 minute) walk down the road from the University campus. See{' '}
+      The Adelaide Railway Station is a short (less than 5 minute) walk down the road from the MOD. See{' '}
       <SafeLink href="http://www.adelaidemetro.com.au/" target="_blank">
         Adelaide Metro
       </SafeLink>{' '}
@@ -35,7 +35,7 @@ const venue: Venue = {
   ),
   Bus: (
     <Fragment>
-      There are a number of Bus and Tram combinations that will get you right outside of the University campus. Use the{' '}
+      There are a number of Bus and Tram combinations that will get you right outside of the MOD. Use the{' '}
       <SafeLink href="https://www.adelaidemetro.com.au/planner/" target="_blank">
         Adelaide Metro Journey Planner
       </SafeLink>{' '}
