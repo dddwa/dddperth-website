@@ -1,4 +1,3 @@
-import moment, { Moment } from 'moment'
 import { NextSFC } from 'next'
 import Router from 'next/router'
 import React, { useReducer } from 'react'
@@ -16,14 +15,17 @@ import {
   StyledTextArea,
   StyledTextInput,
 } from '../components/Feedback/Feedback.styled'
+import { postFeedback } from '../components/Feedback/FeedbackFetch'
 import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
+import { defaultFormState, formReducer } from '../components/Feedback/FormReducers'
 import { SessionInput } from '../components/Feedback/SessionInput'
 import { Alert } from '../components/global/Alert/Alert'
 import { logEvent, logException } from '../components/global/analytics'
 import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
-import { storageKey } from '../components/utils/storageKey'
+import { getLocalStoredName, storageKey, StorageKeys } from '../components/utils/storageKey'
+import { useDeviceId } from '../components/utils/useDeviceId'
 import { useForm } from '../components/utils/useForm'
 import { useSessionGroups } from '../components/utils/useSessionGroups'
 import { fetchSessions, useSessions } from '../components/utils/useSessions'
@@ -40,66 +42,13 @@ interface FeedbackFormState {
   improvementIdeas: string | undefined
 }
 
-enum StorageKeys {
-  DEVICE_ID = 'ddd-device-id',
-  FEEDBACK_GIVER = 'ddd-feedback-name',
-}
-
 interface FeedbackMetadataProps extends WithPageMetadataProps {
   ssrSessions?: Session[]
 }
 
-function getLocalStoredName(instance: string): string {
-  try {
-    return localStorage.getItem(storageKey<StorageKeys>(instance, StorageKeys.FEEDBACK_GIVER))
-  } catch (err) {
-    return ''
-  }
-}
-
-interface FormState {
-  submitInProgress: boolean
-  hasSubmitted: boolean
-  submitError: boolean
-  lastSubmit?: Moment
-}
-
-function formReducer(state: FormState, action: 'submitting' | 'submitted' | 'error' | 'reset') {
-  switch (action) {
-    case 'submitted':
-      return {
-        hasSubmitted: true,
-        lastSubmit: moment(),
-        submitError: false,
-        submitInProgress: false,
-      }
-    case 'submitting':
-      return {
-        submitInProgress: true,
-        ...state,
-      }
-    case 'error':
-      return {
-        hasSubmitted: false,
-        lastSubmit: undefined,
-        submitError: true,
-        submitInProgress: false,
-      }
-    case 'reset':
-      return {
-        hasSubmitted: false,
-        lastSubmit: undefined,
-        submitError: false,
-        submitInProgress: false,
-      }
-    default:
-      return state
-  }
-}
-
 const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
   const conference = pageMetadata.conference
-  const [deviceId, setDeviceId] = React.useState<string>()
+  const { deviceId } = useDeviceId(conference.Instance)
   const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
   const { allSessionGroups, ...sessionGroups } = useSessionGroups(
     conference.Date.clone(),
@@ -107,12 +56,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     sessions,
     conference.SessionGroups,
   )
-  const [formState, dispatch] = useReducer(formReducer, {
-    hasSubmitted: false,
-    lastSubmit: undefined,
-    submitError: false,
-    submitInProgress: false,
-  })
+  const [formState, dispatch] = useReducer(formReducer, defaultFormState)
   const hasPreviousSessions =
     sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0
   const showForm = sessions && isLoaded && !isError && hasPreviousSessions
@@ -125,29 +69,24 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
       // well, we tried
     }
 
-    const headers = { 'Content-Type': 'application/json' }
     try {
-      const response = await fetch(pageMetadata.appConfig.feedbackUrl, {
-        body: JSON.stringify({ ...values, deviceId }),
-        headers,
-        method: 'POST',
+      // tslint:disable: object-literal-sort-keys
+      await postFeedback<FeedbackFormState>({
+        deviceId,
+        feedbackUrl: pageMetadata.appConfig.feedbackUrl,
+        values,
+        formName: 'Session feedback',
       })
-
-      if (!response.ok) {
-        logException(
-          'Error when submitting session feedback',
-          new Error(`Got ${response.status} ${response.statusText} when posting session feedback.`),
-          { deviceId },
-        )
-        dispatch('error')
-      } else {
-        logEvent('feedback', 'submit', { deviceId, sessionId: values.sessionId })
-        dispatch('submitted')
-        resetForm()
-        setTimeout(() => dispatch('reset'), 3000 /* 3 seconds */)
-      }
+        .then(() => {
+          dispatch('submitted')
+          resetForm()
+          setTimeout(() => dispatch('reset'), 3000 /* 3 seconds */)
+        })
+        .catch(() => {
+          dispatch('error')
+        })
     } catch (e) {
-      logException('Error when submitting vote', e, { deviceId })
+      logException('Error when submitting conference feedback', e, { deviceId })
       dispatch('error')
     }
   }
@@ -159,18 +98,6 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     rating: '0',
     sessionId: undefined,
   })
-
-  React.useEffect(() => {
-    if (!deviceId) {
-      const deviceUUID = uuid()
-      try {
-        localStorage.setItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.DEVICE_ID), deviceUUID)
-        setDeviceId(localStorage.getItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.DEVICE_ID)))
-      } catch (err) {
-        setDeviceId(deviceUUID)
-      }
-    }
-  }, [deviceId])
 
   return (
     <Page
