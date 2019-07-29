@@ -43,6 +43,13 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
             <SafeLink href="https://mod.org.au/visit/getting-here/" target="_blank">
               MOD. website.
             </SafeLink>
+            This venue has been kindly provided by{' '}
+            <SafeLink
+              href="https://www.unisa.edu.au/IT-Engineering-and-the-Environment/Information-Technology-and-Mathematical-Sciences/"
+              target="_blank"
+            >
+              The University of South Australia's School of Information Technology and Mathematical Sciences
+            </SafeLink>
           </p>
         </div>
         <div id="map" aria-hidden>
