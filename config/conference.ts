@@ -130,7 +130,7 @@ const Conference: IConference = {
   FeedbackOpenFrom: feedbackOpenFrom,
   FeedbackOpenUntil: feedbackOpenUntil,
 
-  ConferenceFeedbackLink: null,
+  ConferenceFeedbackLink: '/conference-feedback',
   SessionFeedbackLink: '/feedback',
 
   HideDate: hideDate,
