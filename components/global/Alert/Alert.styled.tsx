@@ -2,7 +2,6 @@
 import Alert from '@reach/alert'
 import { calcRem } from '../../utils/styles/calcRem'
 import styled, { Theme } from '../../utils/styles/theme'
-import isPropValid from '@emotion/is-prop-valid'
 
 export type Kind = 'info' | 'success' | 'error' | 'warning'
 
@@ -18,21 +17,18 @@ function stylesFromKind(kind: StyledAlertProps['kind'], theme: Theme) {
         borderColor: theme.colors.alerts.error.border,
         color: theme.colors.alerts.error.color,
       }
-      break
     case 'success':
       return {
         backgroundColor: theme.colors.alerts.success.background,
         borderColor: theme.colors.alerts.success.border,
         color: theme.colors.alerts.success.color,
       }
-      break
     case 'warning':
       return {
         backgroundColor: theme.colors.alerts.warning.background,
         borderColor: theme.colors.alerts.warning.border,
         color: theme.colors.alerts.warning.color,
       }
-      break
     default:
       return {
         backgroundColor: theme.colors.alerts.info.background,

@@ -105,6 +105,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     conference.Date.clone(),
     conference.EndDate.clone(),
     sessions,
+    conference.SessionGroups,
   )
   const [formState, dispatch] = useReducer(formReducer, {
     hasSubmitted: false,
@@ -112,6 +113,9 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     submitError: false,
     submitInProgress: false,
   })
+  const hasPreviousSessions =
+    sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0
+  const showForm = sessions && isLoaded && !isError && hasPreviousSessions
 
   const formSubmitHandler = async () => {
     dispatch('submitting')
@@ -139,6 +143,8 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
       } else {
         logEvent('feedback', 'submit', { deviceId, sessionId: values.sessionId })
         dispatch('submitted')
+        resetForm()
+        setTimeout(() => dispatch('reset'), 3000 /* 3 seconds */)
       }
     } catch (e) {
       logException('Error when submitting vote', e, { deviceId })
@@ -146,7 +152,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     }
   }
 
-  const { handleChange, handleSubmit, values } = useForm<FeedbackFormState>(formSubmitHandler, {
+  const { handleChange, handleSubmit, values, resetForm } = useForm<FeedbackFormState>(formSubmitHandler, {
     improvementIdeas: '',
     likes: '',
     name: getLocalStoredName(conference.Instance),
@@ -180,10 +186,15 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
 
         {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
         {!isLoaded && <Alert kind="info">Loading sessions</Alert>}
+        {!isError && !hasPreviousSessions && isLoaded && (
+          <Alert kind="info">
+            We would love your feedback, please come back after the first sessions have finished.
+          </Alert>
+        )}
 
         {pageMetadata.appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
 
-        {!isError && isLoaded && (
+        {showForm && (
           <StyledForm onSubmit={handleSubmit}>
             <StyledFormRow>
               <StyledLabel htmlFor="input-name">Your name</StyledLabel>
@@ -196,42 +207,35 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 value={values.name}
               />
             </StyledFormRow>
-            {!isLoaded && <small>Loading sessions</small>}
-            {sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0 && (
-              <StyledFormRow>
-                <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
-                <StyledSessionList>
-                  {sessionGroups.previousSessionGroup.sessions.map(session => (
-                    <li key={session.Id}>
-                      <SessionInput
-                        session={session}
-                        checked={values.sessionId === session.Id}
-                        onChange={handleChange}
-                      />
-                    </li>
-                  ))}
-                </StyledSessionList>
+            <StyledFormRow>
+              <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
+              <StyledSessionList>
+                {sessionGroups.previousSessionGroup.sessions.map(session => (
+                  <li key={session.Id}>
+                    <SessionInput session={session} checked={values.sessionId === session.Id} onChange={handleChange} />
+                  </li>
+                ))}
+              </StyledSessionList>
 
-                {sessionGroups.pastSessionGroups.length > 0 && (
-                  <details>
-                    <StyledSummary>More sessions</StyledSummary>
-                    <StyledSessionList>
-                      {sessionGroups.pastSessionGroups.map(sessionGroup =>
-                        sessionGroup.sessions.map(session => (
-                          <li key={session.Id}>
-                            <SessionInput
-                              session={session}
-                              checked={values.sessionId === session.Id}
-                              onChange={handleChange}
-                            />
-                          </li>
-                        )),
-                      )}
-                    </StyledSessionList>
-                  </details>
-                )}
-              </StyledFormRow>
-            )}
+              {sessionGroups.pastSessionGroups && sessionGroups.pastSessionGroups.length > 0 && (
+                <details>
+                  <StyledSummary>More sessions</StyledSummary>
+                  <StyledSessionList>
+                    {sessionGroups.pastSessionGroups.map(sessionGroup =>
+                      sessionGroup.sessions.map(session => (
+                        <li key={session.Id}>
+                          <SessionInput
+                            session={session}
+                            checked={values.sessionId === session.Id}
+                            onChange={handleChange}
+                          />
+                        </li>
+                      )),
+                    )}
+                  </StyledSessionList>
+                </details>
+              )}
+            </StyledFormRow>
             <StyledFormRow>
               <StyledHeadingLabel>How would you rate the talk?</StyledHeadingLabel>
               <StyledRatingInput
@@ -243,7 +247,9 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="negative">😞</label>
+              <label htmlFor="negative" aria-label="Poor">
+                😞
+              </label>
               <StyledRatingInput
                 type="radio"
                 name="rating"
@@ -253,7 +259,9 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="neutral">🙂</label>
+              <label htmlFor="neutral" aria-label="Average">
+                🙂
+              </label>
               <StyledRatingInput
                 type="radio"
                 name="rating"
@@ -263,7 +271,9 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="positive">😃</label>
+              <label htmlFor="positive" aria-label="Great">
+                😃
+              </label>
             </StyledFormRow>
             <StyledFormRow>
               <StyledLabel htmlFor="input-likes">What did you like about the talk?</StyledLabel>

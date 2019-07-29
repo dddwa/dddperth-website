@@ -15,9 +15,14 @@ export function useForm<T>(callback: () => void, initialState: T) {
     setValues(prevValues => ({ ...prevValues, [event.target.name]: event.target.value }))
   }
 
+  const resetForm = () => {
+    setValues(initialState)
+  }
+
   return {
     handleChange,
     handleSubmit,
+    resetForm,
     values,
   }
 }
