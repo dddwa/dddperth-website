@@ -1,4 +1,5 @@
 import { Moment } from 'moment'
+import { SessionGroupWithIds } from '../components/utils/useSessionGroups'
 
 export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'conference'
 
@@ -77,6 +78,7 @@ export interface Conference {
   Sponsors: Sponsor[]
 
   Keynotes: Session[]
+  SessionGroups: SessionGroupWithIds[]
 }
 
 export enum TicketPurchasingOptions {

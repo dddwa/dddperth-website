@@ -1,78 +1,257 @@
-import Link from 'next/link'
+import { NextSFC } from 'next'
 import Router from 'next/router'
-import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
+import React, { useReducer } from 'react'
+import uuid from 'uuid/v1'
+import {
+  StyledForm,
+  StyledFormRow,
+  StyledHeadingLabel,
+  StyledLabel,
+  StyledRatingInput,
+  StyledSessionList,
+  StyledSmall,
+  StyledSubmitButton,
+  StyledSummary,
+  StyledTextArea,
+  StyledTextInput,
+} from '../components/Feedback/Feedback.styled'
+import { postFeedback } from '../components/Feedback/FeedbackFetch'
+import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
+import { defaultFormState, formReducer } from '../components/Feedback/FormReducers'
+import { SessionInput } from '../components/Feedback/SessionInput'
+import { Alert } from '../components/global/Alert/Alert'
+import { logEvent, logException } from '../components/global/analytics'
+import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
+import { getLocalStoredName, storageKey, StorageKeys } from '../components/utils/storageKey'
+import { useDeviceId } from '../components/utils/useDeviceId'
+import { useForm } from '../components/utils/useForm'
+import { useSessionGroups } from '../components/utils/useSessionGroups'
+import { fetchSessions, useSessions } from '../components/utils/useSessions'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import Page from '../layouts/withSidebar'
+import { Session } from '../config/types'
+import Page from '../layouts/main'
 
-class FeedbackPage extends React.Component<WithPageMetadataProps> {
-  static getInitialProps({ res }) {
-    const dates = getConferenceDates(Conference, dateTimeProvider.now())
-    if (!dates.AcceptingFeedback) {
-      if (res) {
-        res.writeHead(302, {
-          Location: '/',
-        })
-        res.end()
-        res.finished = true
-      } else {
-        Router.replace('/')
-      }
-    }
-    return {}
-  }
-  render() {
-    const conference = this.props.pageMetadata.conference
-    return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
-        title="Feedback"
-        hideBanner={true}
-        description={conference.Name + ' feedback.'}
-      >
-        <h1>Feedback</h1>
-
-        <p>
-          Feedback is a critical part of how we improve as a conference and a big focus of the{' '}
-          {conference.Organiser.Name} committee is continuous improvement of the conference year-on-year. As a
-          conference with a purpose of giving opportunities to speakers that wouldn't normally get to present, including
-          people that are new or relatively inexperienced in speaking, it's also extremely important that we give a safe
-          way for our speakers to get tangible feedback about their presentations so they can improve.
-        </p>
-        <p>
-          In order to be eligible for our amazing prize draw you must complete feedback about the conference itself as
-          well as at least 4 of the sessions you see during the day. Please make sure that you:
-        </p>
-        <ul>
-          <li>
-            Include your full name when giving feedback so that we can differentiate you from others in the prize draw
-            (don't worry, we anonymise the feedback when passing it on to organisers or speakers)
-          </li>
-          <li>
-            Be sure to be consistent in how you write your name across feedback instances so we know it's the same you
-            each time
-          </li>
-          <li>
-            Be respectful and give feedback that is constructive and meets our{' '}
-            <Link href="/code-of-conduct">
-              <a>code of conduct</a>
-            </Link>
-          </li>
-          <p className="text-center">
-            <SafeLink href={conference.ConferenceFeedbackLink} target="_blank" className="btn btn-primary">
-              Give conference feedback
-            </SafeLink>{' '}
-            <SafeLink href={conference.SessionFeedbackLink} target="_blank" className="btn btn-secondary">
-              Give session feedback
-            </SafeLink>
-          </p>
-        </ul>
-      </Page>
-    )
-  }
+interface FeedbackFormState {
+  name: string | undefined
+  sessionId: string | undefined
+  rating: string | undefined
+  likes: string | undefined
+  improvementIdeas: string | undefined
 }
 
-export default withPageMetadata(FeedbackPage)
+interface FeedbackMetadataProps extends WithPageMetadataProps {
+  ssrSessions?: Session[]
+}
+
+const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
+  const conference = pageMetadata.conference
+  const { deviceId } = useDeviceId(conference.Instance)
+  const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
+  const { allSessionGroups, ...sessionGroups } = useSessionGroups(
+    conference.Date.clone(),
+    conference.EndDate.clone(),
+    sessions,
+    conference.SessionGroups,
+  )
+  const [formState, dispatch] = useReducer(formReducer, defaultFormState)
+  const hasPreviousSessions =
+    sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0
+  const showForm = sessions && isLoaded && !isError && hasPreviousSessions
+
+  const formSubmitHandler = async () => {
+    dispatch('submitting')
+    try {
+      localStorage.setItem(storageKey<StorageKeys>(conference.Instance, StorageKeys.FEEDBACK_GIVER), values.name)
+    } catch (err) {
+      // well, we tried
+    }
+
+    try {
+      // tslint:disable: object-literal-sort-keys
+      await postFeedback<FeedbackFormState>({
+        deviceId,
+        feedbackUrl: pageMetadata.appConfig.feedbackUrl,
+        values,
+        formName: 'Session feedback',
+      })
+        .then(() => {
+          dispatch('submitted')
+          resetForm()
+          setTimeout(() => dispatch('reset'), 3000 /* 3 seconds */)
+        })
+        .catch(() => {
+          dispatch('error')
+        })
+    } catch (e) {
+      logException('Error when submitting conference feedback', e, { deviceId })
+      dispatch('error')
+    }
+  }
+
+  const { handleChange, handleSubmit, values, resetForm } = useForm<FeedbackFormState>(formSubmitHandler, {
+    improvementIdeas: '',
+    likes: '',
+    name: getLocalStoredName(conference.Instance),
+    rating: '0',
+    sessionId: undefined,
+  })
+
+  return (
+    <Page
+      pageMetadata={pageMetadata}
+      title="Feedback"
+      hideBanner={true}
+      description={`${conference.Name} ${conference.Instance} feedback.`}
+    >
+      <StyledContainer>
+        <h1>
+          {conference.Name} {conference.Instance} Feedback
+        </h1>
+
+        {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
+        {!isLoaded && <Alert kind="info">Loading sessions</Alert>}
+        {!isError && !hasPreviousSessions && isLoaded && (
+          <Alert kind="info">
+            We would love your feedback, please come back after the first sessions have finished.
+          </Alert>
+        )}
+
+        {pageMetadata.appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
+
+        {showForm && (
+          <StyledForm onSubmit={handleSubmit}>
+            <StyledFormRow>
+              <StyledLabel htmlFor="input-name">Your name</StyledLabel>
+              <StyledTextInput
+                id="input-name"
+                name="name"
+                type="text"
+                onChange={handleChange}
+                required
+                value={values.name}
+              />
+            </StyledFormRow>
+            <StyledFormRow>
+              <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
+              <StyledSessionList>
+                {sessionGroups.previousSessionGroup.sessions.map(session => (
+                  <li key={session.Id}>
+                    <SessionInput session={session} checked={values.sessionId === session.Id} onChange={handleChange} />
+                  </li>
+                ))}
+              </StyledSessionList>
+
+              {sessionGroups.pastSessionGroups && sessionGroups.pastSessionGroups.length > 0 && (
+                <details>
+                  <StyledSummary>More sessions</StyledSummary>
+                  <StyledSessionList>
+                    {sessionGroups.pastSessionGroups.map(sessionGroup =>
+                      sessionGroup.sessions.map(session => (
+                        <li key={session.Id}>
+                          <SessionInput
+                            session={session}
+                            checked={values.sessionId === session.Id}
+                            onChange={handleChange}
+                          />
+                        </li>
+                      )),
+                    )}
+                  </StyledSessionList>
+                </details>
+              )}
+            </StyledFormRow>
+            <StyledFormRow>
+              <StyledHeadingLabel>How would you rate the talk?</StyledHeadingLabel>
+              <StyledRatingInput
+                type="radio"
+                name="rating"
+                value="-1"
+                id="negative"
+                checked={values.rating === '-1'}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="negative" aria-label="Poor">
+                😞
+              </label>
+              <StyledRatingInput
+                type="radio"
+                name="rating"
+                value="0"
+                id="neutral"
+                checked={values.rating === '0'}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="neutral" aria-label="Average">
+                🙂
+              </label>
+              <StyledRatingInput
+                type="radio"
+                name="rating"
+                value="1"
+                id="positive"
+                checked={values.rating === '1'}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="positive" aria-label="Great">
+                😃
+              </label>
+            </StyledFormRow>
+            <StyledFormRow>
+              <StyledLabel htmlFor="input-likes">What did you like about the talk?</StyledLabel>
+              <StyledTextArea id="input-likes" name="likes" value={values.likes} onChange={handleChange} required />
+            </StyledFormRow>
+            <StyledFormRow>
+              <StyledLabel htmlFor="input-ideas">Do you have any ideas for improvement for the speaker?</StyledLabel>
+              <StyledSmall>Please be respectful of the speaker - positivity over negativity is appreciated</StyledSmall>
+              <StyledTextArea
+                id="input-ideas"
+                name="improvementIdeas"
+                value={values.improvementIdeas}
+                onChange={handleChange}
+                required
+              />
+            </StyledFormRow>
+            {formState.hasSubmitted && (
+              <Alert kind="success" type="assertive">
+                Feedback received. Thank you
+              </Alert>
+            )}
+            <StyledSubmitButton kind="primary" type="submit" disabled={formState.submitInProgress}>
+              Submit feedback
+            </StyledSubmitButton>
+          </StyledForm>
+        )}
+      </StyledContainer>
+    </Page>
+  )
+}
+
+Feedback.getInitialProps = async ({ res, req }) => {
+  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+  if (!dates.AcceptingFeedback) {
+    if (res) {
+      res.writeHead(302, {
+        Location: '/',
+      })
+      res.end()
+      res.finished = true
+    } else {
+      Router.replace('/')
+    }
+  }
+
+  if (req) {
+    const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
+    return (sessions ? { ssrSessions: sessions } : {}) as FeedbackMetadataProps
+  }
+
+  return {} as FeedbackMetadataProps
+}
+
+export default withPageMetadata(Feedback)

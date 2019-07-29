@@ -30,6 +30,28 @@ export const theme = {
     keynoteRoom: '#01b6ad',
     locknoteRoom: '#01b6ad',
     afterpartyRoom: '#dd4876',
+    alerts: {
+      error: {
+        background: '#f2dede',
+        border: '#ebccd1',
+        color: '#a94442',
+      },
+      warning: {
+        background: '#fcf8e3',
+        border: '#faebcc',
+        color: '#8a6d3b',
+      },
+      success: {
+        background: '#dff0d8',
+        border: '#d6e9c6',
+        color: '#3c763d',
+      },
+      info: {
+        background: '#d9edf7',
+        border: '#bce8f1',
+        color: '#31708f',
+      },
+    },
   },
   weights: {
     /** Light: 300 */

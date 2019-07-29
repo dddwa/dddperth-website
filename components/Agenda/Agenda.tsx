@@ -1,7 +1,8 @@
 import '@reach/dialog/styles.css'
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Session, Sponsor } from '../../config/types'
 import { SafeLink } from '../global/safeLink'
+import { useSessions } from '../utils/useSessions'
 import { StyledCenteredParagraph, StyledSponsorLogo } from './Agenda.styled'
 import { SessionDetails } from './SessionDetails'
 import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from './SessionDetails.styled'
@@ -17,8 +18,7 @@ interface AgendaProps {
 }
 
 export const Agenda: React.FC<AgendaProps> = props => {
-  const [sessions, setSessions] = useState(props.sessions)
-  const [isError, setIsError] = useState(false)
+  const { isError, sessions } = useSessions(props.sessionsUrl, props.sessions)
   const [showModal, setShowModal] = useState(false)
   const [selectedSession, setSelectedSession] = useState<Session | undefined>()
   const [sessionSponsor, setSessionSponsor] = useState<Sponsor | undefined>()
@@ -28,29 +28,6 @@ export const Agenda: React.FC<AgendaProps> = props => {
     setSessionSponsor(sponsor)
     setShowModal(true)
   }
-
-  useEffect(() => {
-    if (sessions.length === 0) {
-      fetch(props.sessionsUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw response.statusText
-          }
-          return response.json()
-        })
-        .then(body => {
-          setSessions(body)
-          setIsError(false)
-        })
-        .catch(error => {
-          setIsError(true)
-          if (console) {
-            // tslint:disable-next-line: no-console
-            console.error('Error loading sessions', error)
-          }
-        })
-    }
-  }, [])
 
   if (isError) {
     return <div className="alert alert-danger">Error loading sessions</div>
