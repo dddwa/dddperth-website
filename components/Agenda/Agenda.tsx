@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Session, Sponsor } from '../../config/types'
 import { SafeLink } from '../global/safeLink'
+import { SessionGroup, useSessionGroups } from '../utils/useSessionGroups'
 import { useSessions } from '../utils/useSessions'
 import { StyledCenteredParagraph, StyledSponsorLogo } from './Agenda.styled'
 import { SessionDetails } from './SessionDetails'
@@ -13,11 +14,12 @@ interface AgendaProps {
   sessionsUrl: string
   acceptingFeedback: boolean
   feedbackLink?: string
-  render: (sessions: Session[], onSelect: onSelectCallback) => React.ReactElement
+  render: (sessions: Session[], nextSessionGroup: SessionGroup, onSelect: onSelectCallback) => React.ReactElement
 }
 
 export const Agenda: React.FC<AgendaProps> = props => {
   const { isError, sessions } = useSessions(props.sessionsUrl, props.sessions)
+  const { nextSessionGroup } = useSessionGroups(sessions)
   const [showModal, setShowModal] = useState(false)
   const [selectedSession, setSelectedSession] = useState<Session | undefined>()
   const [sessionSponsor, setSessionSponsor] = useState<Sponsor | undefined>()
@@ -34,7 +36,7 @@ export const Agenda: React.FC<AgendaProps> = props => {
 
   return (
     <React.Fragment>
-      {props.render(sessions, onSelectHandler)}
+      {props.render(sessions, nextSessionGroup, onSelectHandler)}
 
       <StyledDialogOverlay isOpen={showModal} onDismiss={() => setShowModal(false)}>
         <StyledDialogContent>

@@ -51,12 +51,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
   const conference = pageMetadata.conference
   const { deviceId } = useDeviceId(conference.Instance)
   const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
-  const { allSessionGroups, ...sessionGroups } = useSessionGroups(
-    conference.Date.clone(),
-    conference.EndDate.clone(),
-    sessions,
-    conference.SessionGroups,
-  )
+  const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)
   const hasPreviousSessions =
     sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0

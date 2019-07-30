@@ -11,6 +11,7 @@ import {
   StyledAgendaRowList,
   StyledFeedbackActions,
   StyledTrackHeader,
+  StyledUpNext,
 } from './Agenda/Agenda.styled'
 import { AgendaProvider } from './Agenda/AgendaContext'
 import { AgendaSession } from './Agenda/AgendaSession'
@@ -57,7 +58,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
         sessionsUrl={sessionsUrl}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}
-        render={(agendaSessions, onSelect) => {
+        render={(agendaSessions, nextSessionGroup, onSelect) => {
           return (
             <AgendaProvider
               onSelect={onSelect}
@@ -65,6 +66,22 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               sponsors={sponsors}
               rooms={['Theatre', 'RR5', 'M6', 'M7', 'M8', 'M9']}
             >
+              {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
+                <StyledUpNext>
+                  <h2>Up next</h2>
+                  <StyledAgendaRow>
+                    <AgendaTime time={nextSessionGroup.timeStart.clone()} />
+                    {nextSessionGroup.sessions.map(session => (
+                      <AgendaSession
+                        key={session.Id}
+                        sessionId={session.Id}
+                        fullWidth={nextSessionGroup.sessions.length === 1}
+                      />
+                    ))}
+                  </StyledAgendaRow>
+                </StyledUpNext>
+              )}
+
               <StyledAgendaRowList>
                 <li>Time</li>
                 <li>Theatre</li>

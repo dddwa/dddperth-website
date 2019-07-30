@@ -1,5 +1,7 @@
 import { Moment } from 'moment'
 import React from 'react'
+import Conference from '../../config/conference'
+import getConferenceDates from '../../config/dates'
 import { Session } from '../../config/types'
 import dateTimeProvider from './dateTimeProvider'
 
@@ -35,22 +37,18 @@ function getSessionById(sessions: Session[], ids: SessionId[]) {
 
 // so manual - ideally there would be a better way to achieve this or expand it to handle the agenda too
 // e.g. on the agenda page show next sessions up top then the whole list
-export function useSessionGroups(
-  conferenceDate: Moment,
-  conferenceEndDate: Moment,
-  sessions: Session[],
-  sessionGroupsWithIds: SessionGroupWithIds[],
-): SessionGroups {
+export function useSessionGroups(sessions: Session[]): SessionGroups {
   const allSessionGroups: SessionGroup[] = React.useMemo(
     () =>
-      sessionGroupsWithIds.map(sessionGroup => ({
+      Conference.SessionGroups.map(sessionGroup => ({
         ...sessionGroup,
         sessions: getSessionById(sessions, sessionGroup.sessions),
         type: 'Sessions',
       })),
-    [conferenceDate.toString(), sessions.length],
+    [Conference.Date.toString(), sessions.length],
   )
-  const isConferenceDay = dateTimeProvider.now().Value.isBetween(conferenceDate, conferenceEndDate)
+
+  const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
 
   let pastSessionsIndex: number = -1
   let previousSessionIndex: number = -1
@@ -64,7 +62,7 @@ export function useSessionGroups(
     const isNextSession = dateTimeProvider.now().Value.isBefore(session.timeStart)
     const isAfterSession = dateTimeProvider.now().Value.isAfter(session.timeEnd)
 
-    if (!isConferenceDay) {
+    if (!IsInProgress) {
       break
     }
 
@@ -98,7 +96,14 @@ export function useSessionGroups(
       ...(nextSessionIndex !== -1 ? { nextSessionGroup: allSessionGroups[nextSessionIndex] } : {}),
       ...(futureSessionIndex !== -1 ? { futureSessionGroups: allSessionGroups.slice(futureSessionIndex) } : {}),
     }),
-    [pastSessionsIndex, previousSessionIndex, nextSessionIndex, currentSessionIndex, futureSessionIndex],
+    [
+      pastSessionsIndex,
+      previousSessionIndex,
+      nextSessionIndex,
+      currentSessionIndex,
+      futureSessionIndex,
+      sessions.length,
+    ],
   )
 
   return {

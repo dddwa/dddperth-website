@@ -66,6 +66,7 @@ export interface Conference {
   HideSponsorshipUpsell: boolean
   HideVenue: boolean
   HideAfterpartyVenue: boolean
+  ShowNextSessions: boolean
 
   Socials: Socials
 
