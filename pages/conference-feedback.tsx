@@ -7,6 +7,7 @@ import {
   StyledHeadingLabel,
   StyledLabel,
   StyledRatingInput,
+  StyledSmall,
   StyledSubmitButton,
   StyledTextArea,
   StyledTextInput,
@@ -72,7 +73,7 @@ const ConferenceFeedback: NextSFC<WithPageMetadataProps> = ({ pageMetadata }) =>
     improvementIdeas: '',
     likes: '',
     name: getLocalStoredName(conference.Instance),
-    rating: '0',
+    rating: '',
     isConferenceFeedback: true,
   })
 
@@ -91,6 +92,10 @@ const ConferenceFeedback: NextSFC<WithPageMetadataProps> = ({ pageMetadata }) =>
         <StyledForm onSubmit={handleSubmit}>
           <StyledFormRow>
             <StyledLabel htmlFor="input-name">Your name</StyledLabel>
+            <StyledSmall>
+              Be sure to enter your name the same each time so that we can track that you answered all of the feedback
+              forms and be entered into the prize draw.
+            </StyledSmall>
             <StyledTextInput
               id="input-name"
               name="name"

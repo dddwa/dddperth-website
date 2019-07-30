@@ -17,6 +17,11 @@ export const StyledSessionList = styled('ul')({
   marginBottom: calcRem(30),
 })
 
+export const StyledSessionTimeframe = styled('li')(({ theme }) => ({
+  marginTop: calcRem(10),
+  fontWeight: theme.weights.semiBold,
+}))
+
 export const StyledTextInput = styled('input')(({ theme }) => ({
   // competing with Bootstrap - don't judge me
   padding: `${calcRem(20)} !important`,

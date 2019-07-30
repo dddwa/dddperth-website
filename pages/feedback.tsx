@@ -1,7 +1,6 @@
 import { NextSFC } from 'next'
 import Router from 'next/router'
-import React, { useReducer } from 'react'
-import uuid from 'uuid/v1'
+import React, { Fragment, useReducer } from 'react'
 import {
   StyledForm,
   StyledFormRow,
@@ -9,6 +8,7 @@ import {
   StyledLabel,
   StyledRatingInput,
   StyledSessionList,
+  StyledSessionTimeframe,
   StyledSmall,
   StyledSubmitButton,
   StyledSummary,
@@ -86,7 +86,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
           dispatch('error')
         })
     } catch (e) {
-      logException('Error when submitting conference feedback', e, { deviceId })
+      logException('Error when submitting session feedback', e, { deviceId })
       dispatch('error')
     }
   }
@@ -95,7 +95,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     improvementIdeas: '',
     likes: '',
     name: getLocalStoredName(conference.Instance),
-    rating: '0',
+    rating: '',
     sessionId: undefined,
   })
 
@@ -104,11 +104,11 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
       pageMetadata={pageMetadata}
       title="Feedback"
       hideBanner={true}
-      description={`${conference.Name} ${conference.Instance} feedback.`}
+      description={`${conference.Name} ${conference.Instance} session feedback.`}
     >
       <StyledContainer>
         <h1>
-          {conference.Name} {conference.Instance} Feedback
+          {conference.Name} {conference.Instance} session feedback
         </h1>
 
         {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
@@ -125,6 +125,10 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
           <StyledForm onSubmit={handleSubmit}>
             <StyledFormRow>
               <StyledLabel htmlFor="input-name">Your name</StyledLabel>
+              <StyledSmall>
+                Be sure to enter your name the same each time so that we can track that you answered all of the feedback
+                forms and be entered into the prize draw.
+              </StyledSmall>
               <StyledTextInput
                 id="input-name"
                 name="name"
@@ -148,17 +152,24 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
                 <details>
                   <StyledSummary>More sessions</StyledSummary>
                   <StyledSessionList>
-                    {sessionGroups.pastSessionGroups.map(sessionGroup =>
-                      sessionGroup.sessions.map(session => (
-                        <li key={session.Id}>
-                          <SessionInput
-                            session={session}
-                            checked={values.sessionId === session.Id}
-                            onChange={handleChange}
-                          />
-                        </li>
-                      )),
-                    )}
+                    {sessionGroups.pastSessionGroups.map(sessionGroup => (
+                      <Fragment>
+                        <StyledSessionTimeframe key={sessionGroup.timeStart.valueOf()}>
+                          <time>{sessionGroup.timeStart.format('hh:mm')}</time>
+                          {' - '}
+                          <time>{sessionGroup.timeEnd.format('hh:mm')}</time>
+                        </StyledSessionTimeframe>
+                        {sessionGroup.sessions.map(session => (
+                          <li key={session.Id}>
+                            <SessionInput
+                              session={session}
+                              checked={values.sessionId === session.Id}
+                              onChange={handleChange}
+                            />
+                          </li>
+                        ))}
+                      </Fragment>
+                    ))}
                   </StyledSessionList>
                 </details>
               )}
