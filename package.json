@@ -20,7 +20,6 @@
     "@emotion/styled": "^10.0.10",
     "@reach/alert": "^0.1.5",
     "@reach/dialog": "^0.2.9",
-    "@zeit/next-css": "^1.0.1",
     "applicationinsights": "^1.2.0",
     "emotion-theming": "^10.0.10",
     "express": "^4.16.4",

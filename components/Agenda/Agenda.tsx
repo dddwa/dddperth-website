@@ -1,4 +1,3 @@
-import '@reach/dialog/styles.css'
 import React, { Fragment, useState } from 'react'
 import { Session, Sponsor } from '../../config/types'
 import { SafeLink } from '../global/safeLink'
