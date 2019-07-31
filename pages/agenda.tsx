@@ -13,10 +13,11 @@ import Page from '../layouts/main'
 
 interface AgendaPageProps extends WithPageMetadataProps {
   sessions?: Session[]
+  sessionId?: string
 }
 
 class AgendaPage extends React.Component<AgendaPageProps> {
-  static async getInitialProps({ req, res }) {
+  static async getInitialProps({ req, res, query }) {
     const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.VotingFinished) {
       if (res) {
@@ -32,7 +33,10 @@ class AgendaPage extends React.Component<AgendaPageProps> {
 
     if (req) {
       const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
-      return sessions ? { sessions } : {}
+      const sessionId = query && query.sessionId ? query.sessionId : ''
+      const result = { sessionId }
+
+      return sessions ? { sessions, ...result } : result
     }
 
     return {}
@@ -68,6 +72,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               sponsors={this.props.pageMetadata.conference.Sponsors}
               acceptingFeedback={dates.AcceptingFeedback}
               feedbackLink={conference.SessionFeedbackLink}
+              selectedSessionId={this.props.sessionId}
             />
           )}
           {conference.Handbook && (

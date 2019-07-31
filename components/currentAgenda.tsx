@@ -26,6 +26,7 @@ interface CurrentAgendaProps {
   sponsors: Sponsor[]
   acceptingFeedback: boolean
   feedbackLink?: string
+  selectedSessionId?: string
 }
 
 export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
@@ -35,6 +36,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
   sponsors,
   acceptingFeedback,
   feedbackLink,
+  selectedSessionId,
 }) => {
   const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
 
@@ -58,6 +60,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
         sessionsUrl={sessionsUrl}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}
+        selectedSessionId={selectedSessionId}
         render={(agendaSessions, nextSessionGroup, onSelect) => {
           return (
             <AgendaProvider
