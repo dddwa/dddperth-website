@@ -1,4 +1,5 @@
 import { NextSFC } from 'next'
+import Link from 'next/link'
 import Router from 'next/router'
 import React, { Fragment, useReducer } from 'react'
 import {
@@ -20,7 +21,7 @@ import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
 import { defaultFormState, formReducer } from '../components/Feedback/FormReducers'
 import { SessionInput } from '../components/Feedback/SessionInput'
 import { Alert } from '../components/global/Alert/Alert'
-import { logEvent, logException } from '../components/global/analytics'
+import { logException } from '../components/global/analytics'
 import { StyledContainer } from '../components/global/Container/Container.styled'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
@@ -110,6 +111,12 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
         <h1>
           {conference.Name} {conference.Instance} session feedback
         </h1>
+        <p>
+          If you would like to leave feedback about the conference please use{' '}
+          <Link href={conference.ConferenceFeedbackLink}>
+            <a>the conference feedback page</a>
+          </Link>
+        </p>
 
         {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
         {!isLoaded && <Alert kind="info">Loading sessions</Alert>}
@@ -125,10 +132,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
           <StyledForm onSubmit={handleSubmit}>
             <StyledFormRow>
               <StyledLabel htmlFor="input-name">Your name</StyledLabel>
-              <StyledSmall>
-                Be sure to enter your name the same each time so that we can track that you answered all of the feedback
-                forms and be entered into the prize draw.
-              </StyledSmall>
+              <StyledSmall>Please use your full name in case you're a winner during the prize draw.</StyledSmall>
               <StyledTextInput
                 id="input-name"
                 name="name"
@@ -150,7 +154,7 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
 
               {sessionGroups.pastSessionGroups && sessionGroups.pastSessionGroups.length > 0 && (
                 <details>
-                  <StyledSummary>More sessions</StyledSummary>
+                  <StyledSummary>Previous sessions</StyledSummary>
                   <StyledSessionList>
                     {sessionGroups.pastSessionGroups.map(sessionGroup => (
                       <Fragment>
