@@ -13,6 +13,7 @@ interface AgendaSessionProps {
   sessionId?: string
   children?: React.ReactNode
   room?: number | string
+  alwaysShowRoom?: boolean
   sponsorId?: string
   fullWidth?: boolean
   isKeynote?: boolean
@@ -24,6 +25,7 @@ export const AgendaSession: React.FC<AgendaSessionProps> = ({
   sessionId,
   children,
   room,
+  alwaysShowRoom,
   sponsorId,
   fullWidth,
   isKeynote,
@@ -51,14 +53,14 @@ export const AgendaSession: React.FC<AgendaSessionProps> = ({
             <StyledAgendaTitle isKeynote={isKeynote}>{session.Title}</StyledAgendaTitle>
           )}
           {sponsor && <StyledSponsor>Sponsored by: {sponsor.shortName || sponsor.name}</StyledSponsor>}
-          {typeof room !== 'undefined' && <StyledRoom showOnMobile={!isKeynote}>{getRoom(room)}</StyledRoom>}
+          {typeof room !== 'undefined' && <StyledRoom showOnMobile={!alwaysShowRoom}>{getRoom(room)}</StyledRoom>}
         </StyledAgendaButton>
       )}
       {children && (
         <Fragment>
           {children}
           {typeof room !== 'undefined' && (
-            <StyledRoom showOnMobile={session !== false && !isKeynote}>{getRoom(room)}</StyledRoom>
+            <StyledRoom showOnMobile={session !== false && !alwaysShowRoom}>{getRoom(room)}</StyledRoom>
           )}
         </Fragment>
       )}

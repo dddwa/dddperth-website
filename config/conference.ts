@@ -234,6 +234,8 @@ const Conference: IConference = {
     },
   ],
 
+  RoomNames: ['Theatre', 'RR5', 'M6', 'M7', 'M8', 'M9'],
+
   SessionGroups: [
     {
       sessions: ['112b54cc-df00-40fd-ad5e-4b0714329821'],

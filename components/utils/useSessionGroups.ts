@@ -32,7 +32,20 @@ interface SessionGroups {
 }
 
 function getSessionById(sessions: Session[], ids: SessionId[]) {
-  return sessions.filter(session => ids.includes(session.Id))
+  return sessions
+    .filter(session => ids.includes(session.Id))
+    .sort((sessionA, sessionB) => {
+      const aIndex = ids.indexOf(sessionA.Id)
+      const bIndex = ids.indexOf(sessionB.Id)
+
+      if (aIndex < bIndex) {
+        return -1
+      } else if (aIndex > bIndex) {
+        return 1
+      } else {
+        return 0
+      }
+    })
 }
 
 // so manual - ideally there would be a better way to achieve this or expand it to handle the agenda too

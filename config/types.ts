@@ -79,6 +79,9 @@ export interface Conference {
   Sponsors: Sponsor[]
 
   Keynotes: Session[]
+
+  RoomNames: string[]
+
   SessionGroups: SessionGroupWithIds[]
 }
 
