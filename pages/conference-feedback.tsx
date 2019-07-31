@@ -1,4 +1,5 @@
 import { NextSFC } from 'next'
+import Link from 'next/link'
 import Router from 'next/router'
 import React, { useReducer } from 'react'
 import {
@@ -88,14 +89,17 @@ const ConferenceFeedback: NextSFC<WithPageMetadataProps> = ({ pageMetadata }) =>
         <h1>
           {conference.Name} {conference.Instance} feedback
         </h1>
+        <p>
+          If you would like to leave feedback for a session please use{' '}
+          <Link href={conference.SessionFeedbackLink}>
+            <a>the session feedback page</a>
+          </Link>
+        </p>
 
         <StyledForm onSubmit={handleSubmit}>
           <StyledFormRow>
             <StyledLabel htmlFor="input-name">Your name</StyledLabel>
-            <StyledSmall>
-              Be sure to enter your name the same each time so that we can track that you answered all of the feedback
-              forms and be entered into the prize draw.
-            </StyledSmall>
+            <StyledSmall>Please use your full name in case you're a winner during the prize draw.</StyledSmall>
             <StyledTextInput
               id="input-name"
               name="name"

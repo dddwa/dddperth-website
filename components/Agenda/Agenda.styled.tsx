@@ -100,3 +100,14 @@ export const StyledCenteredParagraph = styled('p')({
 export const StyledSponsorLogo = styled('img')({
   width: 200,
 })
+
+export const StyledFeedbackActions = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginBottom: calcRem(10),
+
+  '& > *:not(:last-child)': {
+    marginRight: calcRem(10),
+  },
+})
