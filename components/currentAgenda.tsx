@@ -1,7 +1,6 @@
 import { Moment } from 'moment'
 import React, { Fragment } from 'react'
 import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
 import { Session, Sponsor } from '../config/types'
 import ActionButton from './actionButton'
 import { Agenda } from './Agenda/Agenda'
@@ -17,7 +16,6 @@ import { AgendaProvider } from './Agenda/AgendaContext'
 import { AgendaSession } from './Agenda/AgendaSession'
 import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 import { AgendaTime } from './Agenda/AgendaTime'
-import dateTimeProvider from './utils/dateTimeProvider'
 
 interface CurrentAgendaProps {
   date: Moment
@@ -38,13 +36,11 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
   feedbackLink,
   selectedSessionId,
 }) => {
-  const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
-
   return (
     <Fragment>
       <p>Tap on a session to see more details&hellip;</p>
 
-      {IsInProgress && (
+      {acceptingFeedback && (
         <StyledFeedbackActions>
           <ActionButton
             action={{ Title: 'Conference Feedback', Url: Conference.ConferenceFeedbackLink, Category: 'conference' }}
