@@ -138,6 +138,7 @@ const Conference: IConference = {
   HideSponsorshipUpsell: true,
   HideVenue: venue === null,
   HideAfterpartyVenue: venue === null || venue.Afterparty === null,
+  ShowNextSessions: true,
 
   Venue: venue,
 
@@ -232,6 +233,8 @@ const Conference: IConference = {
       ],
     },
   ],
+
+  RoomNames: ['Theatre', 'RR5', 'M6', 'M7', 'M8', 'M9'],
 
   SessionGroups: [
     {

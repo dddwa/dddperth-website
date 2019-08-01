@@ -11,6 +11,7 @@ import {
   StyledAgendaRowList,
   StyledFeedbackActions,
   StyledTrackHeader,
+  StyledUpNext,
 } from './Agenda/Agenda.styled'
 import { AgendaProvider } from './Agenda/AgendaContext'
 import { AgendaSession } from './Agenda/AgendaSession'
@@ -57,14 +58,32 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
         sessionsUrl={sessionsUrl}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}
-        render={(agendaSessions, onSelect) => {
+        render={(agendaSessions, nextSessionGroup, onSelect) => {
           return (
             <AgendaProvider
               onSelect={onSelect}
               sessions={agendaSessions}
               sponsors={sponsors}
-              rooms={['Theatre', 'RR5', 'M6', 'M7', 'M8', 'M9']}
+              rooms={Conference.RoomNames}
             >
+              {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
+                <StyledUpNext>
+                  <h2>Up next</h2>
+                  <StyledAgendaRow>
+                    <AgendaTime time={nextSessionGroup.timeStart.clone()} />
+                    {nextSessionGroup.sessions.map((session, index) => (
+                      <AgendaSession
+                        key={session.Id}
+                        sessionId={session.Id}
+                        fullWidth={nextSessionGroup.sessions.length === 1}
+                        room={index}
+                        alwaysShowRoom={true}
+                      />
+                    ))}
+                  </StyledAgendaRow>
+                </StyledUpNext>
+              )}
+
               <StyledAgendaRowList>
                 <li>Time</li>
                 <li>Theatre</li>
@@ -76,7 +95,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRowList>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone()} />
-                <AgendaSession room="Riverside Foyer (Level 2)" fullWidth>
+                <AgendaSession room="Riverside Foyer (Level 2)" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Registration</StyledTrackHeader>
                   <StyledAddress>
                     Perth Convention and Exhibition Centre
@@ -87,13 +106,13 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ minutes: 45 })} />
-                <AgendaSession room="Riverside Theatre" fullWidth>
+                <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome and housekeeping</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set('hour', 9)} />
-                <AgendaSession room="Riverside Theatre" fullWidth>
+                <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome to country</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
@@ -108,6 +127,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   )}
                   fullWidth
                   isKeynote
+                  alwaysShowRoom
                 />
               </StyledAgendaRow>
               <StyledAgendaRow>
@@ -127,7 +147,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 10, minute: 25 })} />
-                <AgendaSession room="Riverside Foyer and South Foyer" fullWidth>
+                <AgendaSession room="Riverside Foyer and South Foyer" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Morning tea</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
@@ -172,7 +192,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 13, minute: 5 })} />
-                <AgendaSession room="Riverside Foyer and South Foyer" fullWidth>
+                <AgendaSession room="Riverside Foyer and South Foyer" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Lunch</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
@@ -202,13 +222,13 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 15, minute: 20 })} />
-                <AgendaSession room="Riverside Foyer and South Foyer" fullWidth>
+                <AgendaSession room="Riverside Foyer and South Foyer" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Afternoon tea</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 15, minute: 50 })} />
-                <AgendaSession room="Riverside Theatre" fullWidth>
+                <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Prize Draw</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
@@ -221,11 +241,12 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   renderPresenters={presenters => <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>}
                   fullWidth
                   isKeynote
+                  alwaysShowRoom
                 />
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={date.clone().set({ hour: 17, minute: 5 })} />
-                <AgendaSession room="Riverside Theatre" fullWidth>
+                <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Thank yous and wrap up</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
@@ -234,7 +255,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   time={date.clone().set({ hour: 17, minute: 10 })}
                   endTime={date.clone().set({ hour: 19, minute: 0 })}
                 />
-                <AgendaSession room="Riverside Foyer and South Foyer" fullWidth>
+                <AgendaSession room="Riverside Foyer and South Foyer" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Afterparty</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>

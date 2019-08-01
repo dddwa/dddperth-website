@@ -111,3 +111,15 @@ export const StyledFeedbackActions = styled('div')({
     marginRight: calcRem(10),
   },
 })
+export const StyledUpNext = styled('div')(({ theme }) => ({
+  marginBottom: calcRem(20),
+
+  '& > h2': {
+    padding: calcRem(10),
+    margin: 0,
+    backgroundColor: theme.colors.inverse,
+    color: '#fff',
+    fontSize: calcRem(20),
+  },
+}))
+StyledUpNext.displayName = 'StyledUpNext'
