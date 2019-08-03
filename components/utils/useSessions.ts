@@ -37,7 +37,7 @@ function useSessionReducer(state: SessionState, action: SessionAction): SessionS
 export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
   const [state, dispatch] = React.useReducer(useSessionReducer, {
     isError: false,
-    isLoaded: false,
+    isLoaded: sessions.length > 0,
     sessions,
   })
 
