@@ -89,6 +89,10 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
           </li>
           <li>You will likely be speaking to an audience of between 50-100 people.</li>
           <li>
+            Your talking slot will be for 45 minutes. You will need to ensure you have at least 35 minutes of content,
+            with 5-10 minutes optionally left for questions at the end.
+          </li>
+          <li>
             We are not interested in sales/vendor pitch presentations although you are welcome to have a slide or two
             about yourself and your company.
           </li>
