@@ -54,7 +54,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <SafeLink href="https://dddmelbourne.com/" target="_blank">
         <img src="/static/images/logo-dddmelbourne-2019.jpg" alt="DDD Melbourne logo" style={{ height: '125px' }} />
       </SafeLink>{' '}
-      <SafeLink href="http://dddsydney.com.au/" target="_blank">
+      <SafeLink href="http://next.dddsydney.com.au/" target="_blank">
         <img src="/static/images/logo-dddsydney-2019.png" alt="DDD Sydney logo" style={{ height: '125px' }} />
       </SafeLink>{' '}
       <SafeLink href="http://dddbrisbane.com/" target="_blank">
