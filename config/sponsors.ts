@@ -3,16 +3,16 @@ import { Sponsor, SponsorType } from './types'
 const Sponsors: Sponsor[] = [
   // Gold
   {
+    imageUrl: '/static/images/sponsors/purple.png',
+    name: 'Telstra Purple',
+    type: SponsorType.Gold,
+    url: 'https://www.telstra.com.au/business-enterprise/services/telstra-purple/',
+  },
+  {
     imageUrl: '/static/images/sponsors/unisa.png',
     name: 'University of South Australia',
     type: SponsorType.Gold,
     url: 'https://www.unisa.edu.au/',
-  },
-  {
-    imageUrl: '/static/images/sponsors/readify.png',
-    name: 'Readify',
-    type: SponsorType.Gold,
-    url: 'https://readify.net/',
   },
   {
     imageUrl: '/static/images/sponsors/aws.png',
