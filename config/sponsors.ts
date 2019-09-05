@@ -14,6 +14,18 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Gold,
     url: 'https://readify.net/',
   },
+  {
+    imageUrl: '/static/images/sponsors/aws.png',
+    name: 'AWS',
+    type: SponsorType.Gold,
+    url: 'https://aws.amazon.com/',
+  },
+  {
+    imageUrl: '/static/images/sponsors/comunet.png',
+    name: 'Comunet',
+    type: SponsorType.Gold,
+    url: 'https://comunet.com.au/',
+  },
   // Services
   // {
   //   imageUrl: '/static/images/sponsors/vgw.png',
