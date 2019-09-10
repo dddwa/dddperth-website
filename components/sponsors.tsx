@@ -61,10 +61,13 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
             {sponsors
               .filter(s => s.type === SponsorType.Service)
               .map(s => (
-                <SafeLink href={s.url} target="_blank" key={s.name} title={s.name}>
-                  <small>{s.serviceProvided} by:</small>
-                  <img src={s.imageUrl} alt={s.name} />
-                </SafeLink>
+                <div key={s.name}>
+                  <span>{s.serviceProvided} by:</span>
+                  <br />
+                  <SafeLink href={s.url} target="_blank" key={s.name} title={s.name}>
+                    <img src={s.imageUrl} alt={s.name} />
+                  </SafeLink>
+                </div>
               ))}
           </Fragment>
         )}

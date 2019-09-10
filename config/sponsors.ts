@@ -26,6 +26,13 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Gold,
     url: 'https://comunet.com.au/',
   },
+  {
+    imageUrl: '/static/images/sponsors/encode.png',
+    name: 'Encode Talent',
+    serviceProvided: 'Coffee Cart',
+    type: SponsorType.Service,
+    url: 'https://www.encodetalent.com.au/',
+  },
   // Services
   // {
   //   imageUrl: '/static/images/sponsors/vgw.png',
