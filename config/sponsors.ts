@@ -62,13 +62,13 @@ const Sponsors: Sponsor[] = [
   //   type: SponsorType.Service,
   //   url: 'https://www.bhp.com/',
   // },
-  // {
-  //   imageUrl: '/static/images/sponsors/yow.jpg',
-  //   name: 'YOW! Conferences and Workshops',
-  //   serviceProvided: 'Locknote',
-  //   type: SponsorType.Service,
-  //   url: 'http://west.yowconference.com.au/',
-  // },
+  {
+    imageUrl: '/static/images/sponsors/yow.png',
+    name: 'YOW! Conferences and Workshops',
+    serviceProvided: '',
+    type: SponsorType.Community,
+    url: 'https://yowconference.com/',
+  },
   // {
   //   imageUrl: '/static/images/sponsors/livehire.png',
   //   name: 'LiveHire',

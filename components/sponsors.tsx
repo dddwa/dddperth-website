@@ -9,6 +9,11 @@ interface SponsorsProps {
   hideUpsell?: boolean
 }
 
+const serviceProviderStyle = {
+  display: 'block',
+  marginBottom: 20,
+}
+
 const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsell }) =>
   show && sponsors.length ? (
     <Fragment>
@@ -52,22 +57,17 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
           </Fragment>
         )}
 
+        <br />
+
         {sponsors.find(s => s.type === SponsorType.Service) && (
           <Fragment>
-            <br />
-            <br />
-            <br />
-            <br />
             {sponsors
               .filter(s => s.type === SponsorType.Service)
               .map(s => (
-                <div key={s.name}>
-                  <span>{s.serviceProvided} by:</span>
-                  <br />
-                  <SafeLink href={s.url} target="_blank" key={s.name} title={s.name}>
-                    <img src={s.imageUrl} alt={s.name} />
-                  </SafeLink>
-                </div>
+                <SafeLink href={s.url} target="_blank" key={s.name} title={s.name} style={serviceProviderStyle}>
+                  <small>{s.serviceProvided} by:</small>
+                  <img src={s.imageUrl} alt={s.name} />
+                </SafeLink>
               ))}
           </Fragment>
         )}
