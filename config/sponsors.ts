@@ -33,6 +33,13 @@ const Sponsors: Sponsor[] = [
     type: SponsorType.Service,
     url: 'https://www.encodetalent.com.au/',
   },
+  {
+    imageUrl: '/static/images/sponsors/octopus-deploy.png',
+    name: 'Octopus Deploy',
+    serviceProvided: 'Major Prize',
+    type: SponsorType.Service,
+    url: 'https://www.octopus.com/',
+  },
   // Services
   // {
   //   imageUrl: '/static/images/sponsors/vgw.png',
