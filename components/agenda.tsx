@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
-import { Conference, Session, Sponsor } from '../config/types'
+import { Session, Sponsor } from '../config/types'
 import { SafeLink } from './global/safeLink'
 import SessionDetails from './sessionDetails'
 
@@ -95,13 +95,13 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
     }
 
     getSessionCell(): React.StatelessComponent<SessionCellProps> {
+      const that = this
       const numTracks = externalProps.numTracks
       const getIsLoading = () => this.state.isLoading
       const getIsError = () => this.state.isError
       const getSession = (sessionId: string) =>
         this.state.sessions ? this.state.sessions.find(s => s.Id === sessionId) : null
       const onClick = this.selectSession
-      const that = this
 
       return props => {
         const isLoading = getIsLoading()
@@ -137,20 +137,36 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
                 <em>Error loading this session</em>
               </Fragment>
             )}
-            {isLoading === false && isError === false && session && (
+            {isLoading === false && isError === false && (
               <Fragment>
-                <strong>
-                  {props.isKeynote
-                    ? 'KEYNOTE - '
-                    : props.isLocknote
-                    ? 'LOCKNOTE - '
-                    : props.isLunchnote
-                    ? 'LUNCHNOTE - '
-                    : null}
-                  {session.Presenters.map(p => p.Name).join(', ')}
-                </strong>
-                <br />
-                <em>{session.Title}</em>
+                {session && (
+                  <div>
+                    <strong>
+                      {props.isKeynote
+                        ? 'KEYNOTE - '
+                        : props.isLocknote
+                        ? 'LOCKNOTE - '
+                        : props.isLunchnote
+                        ? 'LUNCHNOTE - '
+                        : null}
+                      {session.Presenters.map(p => p.Name).join(', ')}
+                    </strong>
+                    <br />
+                    <em>{session.Title}</em>
+                  </div>
+                )}
+                {!session && (
+                  <strong>
+                    {props.isKeynote
+                      ? 'KEYNOTE - '
+                      : props.isLocknote
+                      ? 'LOCKNOTE - '
+                      : props.isLunchnote
+                      ? 'LUNCHNOTE - '
+                      : null}
+                    TBA
+                  </strong>
+                )}
                 {props.sponsorName && (
                   <Fragment>
                     <br />

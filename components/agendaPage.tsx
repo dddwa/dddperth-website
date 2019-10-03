@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import React from 'react'
 import { Session, Sponsor } from '../config/types'
 import Page from '../layouts/main'
-import Agenda, { AgendaProps } from './agenda'
+import Agenda from './agenda'
 import AllAgendas from './allAgendas'
 
 import { WithPageMetadataProps } from './global/withPageMetadata'
