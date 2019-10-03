@@ -26,7 +26,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
               <br />
               North Terrace, adjacent Morphett Street Bridge, Adelaide
               <br />
-              <small className="room">UniSA - Level 8</small>
+              <small className="room">Level 8 - Foyer</small>
             </td>
           </tr>
 
