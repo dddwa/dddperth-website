@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
@@ -22,7 +23,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       sponsors because we attract people that don't normally go to software conferences. This occurs as a natural result
       of our core principles:
     </p>
-    <ul>
+    <StyledList>
       <li>
         Making the ticket price as low as possible ({props.pageMetadata.conference.TicketPrice}); people don't need to
         request PD budget from their employer to attend and it's accessible to most people regardless of financial
@@ -41,7 +42,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         Focussing on creating a safe and inclusive environment where everyone is welcome; encourages a diverse set of
         attendees and attracts repeat visitors and an expanding presence year on year via a growing network
       </li>
-    </ul>
+    </StyledList>
     <p>
       <Link href="/about">
         <a className="btn btn-secondary">Find out more about {props.pageMetadata.conference.Name}</a>

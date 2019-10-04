@@ -58,6 +58,7 @@ export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
   display: 'none',
   margin: 0,
   backgroundColor: theme.colors.inverse,
+  listStyle: 'none',
 
   li: {
     backgroundColor: theme.colors.secondary,
@@ -65,10 +66,6 @@ export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
     fontSize: calcRem(20),
     fontWeight: theme.weights.bold,
     textAlign: 'center',
-  },
-
-  'li::before': {
-    content: 'none',
   },
 
   [breakpoint('sm')]: {

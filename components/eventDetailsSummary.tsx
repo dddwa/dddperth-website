@@ -1,6 +1,7 @@
 import React, { StatelessComponent } from 'react'
 import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
 import ActionButton from './actionButton'
+import { StyledList } from './global/text'
 
 export interface EventDetailsSummaryProps {
   conference: Conference
@@ -17,9 +18,9 @@ const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
 }) => (
   <div className="event-details">
     <h2>
-      <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> {dates.Display}
+      <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> <time>{dates.Display}</time>
     </h2>
-    <ul>
+    <StyledList>
       {conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut && (
         <li>
           <strong>SOLD OUT</strong>
@@ -34,7 +35,7 @@ const EventDetailsSummary: StatelessComponent<EventDetailsSummaryProps> = ({
         <li key={i}>{point}</li>
       ))}
       <li>Only {conference.TicketPrice}</li>
-    </ul>
+    </StyledList>
     {pagePath !== primaryAction.Url && <ActionButton action={primaryAction} />}
   </div>
 )

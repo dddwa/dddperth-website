@@ -4,6 +4,7 @@ import Router from 'next/router'
 import React from 'react'
 import uuid from 'uuid/v1'
 import { logEvent, logException } from '../components/global/analytics'
+import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Voting from '../components/voting'
@@ -237,7 +238,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                 sessions submitted! We've implemented the following features to assist you to manage voting across such
                 a large number of sessions:
               </p>
-              <ul>
+              <StyledList>
                 <li>
                   Any actions you take on this page (e.g. vote, shortlist) will be saved to this device/browser -{' '}
                   <strong>you can do the voting over a number of sittings</strong> and don't need to worry about trying
@@ -294,7 +295,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     to maximise the impact of your votes.
                   </li>
                 )}
-              </ul>
+              </StyledList>
             </div>
           </div>
 
