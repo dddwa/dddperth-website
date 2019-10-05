@@ -1,14 +1,15 @@
 import Link from 'next/link'
-import React, { StatelessComponent } from 'react'
+import React from 'react'
 import { MenuItem } from '../../../config/types'
 import { SafeLink } from '../safeLink'
+import { StyledFooterNav } from './Footer.styled'
 
 interface FooterNavArgs {
   menu: MenuItem[]
 }
 
-const FooterNav: StatelessComponent<FooterNavArgs> = ({ menu }) => (
-  <nav className="foot-nav">
+export const FooterNav: React.FC<FooterNavArgs> = ({ menu }) => (
+  <StyledFooterNav>
     <ul>
       {menu.map(item => (
         <li key={item.href}>
@@ -30,7 +31,6 @@ const FooterNav: StatelessComponent<FooterNavArgs> = ({ menu }) => (
         </li>
       ))}
     </ul>
-  </nav>
+  </StyledFooterNav>
 )
-
-export default FooterNav
+FooterNav.displayName = 'FooterNav'

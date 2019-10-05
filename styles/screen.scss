@@ -461,75 +461,6 @@ section.sponsors.standard {
   padding: 26px 0;
 }
 
-// Footer
-footer {
-  color: #fff;
-  background: darken($primary-color, 10%);
-  padding: 0 0 30px 0;
-  nav.foot-nav {
-    text-align: center;
-    padding: 20px 0;
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      list-style: none outside;
-    }
-    a {
-      color: #fff;
-      font-weight: 600;
-    }
-    a:hover {
-      color: #ddd;
-    }
-  }
-  ul.social {
-    text-align: center;
-    margin: 0;
-    padding: 0 0 40px 0;
-    li {
-      list-style: none outside;
-      display: inline-block;
-      margin: 0 2px;
-      padding: 0;
-    }
-    a {
-      display: block;
-      width: 43px;
-      height: 42px;
-      line-height: 42px;
-      color: #fff;
-      font-size: 20px;
-      background-color: $primary-color;
-      background-repeat: no-repeat;
-      @include transition(0.2s);
-      @include border-radius(50%);
-      &,
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
-    a:hover {
-      background-color: darken($primary-color, 3%);
-    }
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  footer {
-    ul.social {
-      a {
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        font-size: 16px;
-      }
-    }
-  }
-}
-
 // What Now? CTA's
 .what-now {
   .btn {
@@ -1604,20 +1535,6 @@ tr td.highlight-session {
     height: 200px;
   }
 
-  // Footer
-  footer {
-    padding-bottom: 40px;
-    nav.foot-nav {
-      padding: 30px 0;
-      text-align: center;
-      li {
-        display: inline-block;
-        margin: 0;
-        padding: 0 20px;
-      }
-    }
-  }
-
   // Next Event
   .event-details {
     padding: 30px 0;
@@ -1812,14 +1729,6 @@ tr td.highlight-session {
     height: 250px;
   }
 
-  // Footer
-  footer {
-    padding-bottom: 50px;
-    nav.foot-nav {
-      padding: 35px 0;
-    }
-  }
-
   // Next Event
   .event-details {
     padding: 40px 0;
@@ -1967,14 +1876,6 @@ tr td.highlight-session {
   // Strip of Photos
   section.image-strip {
     height: 300px;
-  }
-
-  // Footer
-  footer {
-    padding-bottom: 60px;
-    nav.foot-nav {
-      padding: 40px 0;
-    }
   }
 
   // Countdown
@@ -2140,13 +2041,6 @@ tr td.highlight-session {
   // Strip of Photos
   section.image-strip {
     height: 370px;
-  }
-
-  // Footer
-  footer {
-    nav.foot-nav {
-      padding: 45px 0;
-    }
   }
 
   // DDD By Night

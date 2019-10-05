@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Conference, MenuItem, Socials } from '../../../config/types'
 import { StyledContainer } from '../Container/Container.styled'
-import SocialLinks from '../socialLinks'
-import { StyledFooterCopyright } from './Footer.styled'
-import FooterNav from './footerNav'
+import { SocialLinks } from '../socialLinks'
+import { StyledFooter, StyledFooterCopyright } from './Footer.styled'
+import { FooterNav } from './footerNav'
 
 interface FooterArgs {
   menu: MenuItem[]
@@ -12,7 +12,7 @@ interface FooterArgs {
 }
 
 export const Footer: FC<FooterArgs> = ({ menu, socials, conference }) => (
-  <footer>
+  <StyledFooter>
     <StyledContainer>
       <FooterNav menu={menu} />
       <SocialLinks socials={socials} />
@@ -20,5 +20,5 @@ export const Footer: FC<FooterArgs> = ({ menu, socials, conference }) => (
         Copyright &copy; {new Date().getFullYear()} {conference.Organiser.Name}
       </StyledFooterCopyright>
     </StyledContainer>
-  </footer>
+  </StyledFooter>
 )

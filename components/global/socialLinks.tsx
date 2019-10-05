@@ -1,13 +1,14 @@
-import React, { StatelessComponent } from 'react'
+import React from 'react'
 import { Socials } from '../../config/types'
+import { StyledSocialList } from './Footer/Footer.styled'
 import { SafeLink } from './safeLink'
 
 interface SocialLinksArgs {
   socials: Socials
 }
 
-const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
-  <ul className="social">
+export const SocialLinks: React.FC<SocialLinksArgs> = ({ socials }) => (
+  <StyledSocialList>
     {socials.Twitter.Name && (
       <li>
         <SafeLink
@@ -115,7 +116,6 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
         />
       </li>
     )}
-  </ul>
+  </StyledSocialList>
 )
-
-export default SocialLinks
+SocialLinks.displayName = 'SocialLinks'
