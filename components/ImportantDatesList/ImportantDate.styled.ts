@@ -36,6 +36,7 @@ export const StyledImportantDateList = styled('ul')<LayoutProp>(({ layout }) => 
 
 interface StyledImportantDateProps {
   dateType: Types
+  isFinished?: boolean
 }
 
 const ImportantDateBorderWidth = 7
@@ -110,9 +111,9 @@ export const StyledImportantDate = styled('li', {
 
 export const StyledImportantDateInline = styled('li', {
   shouldForwardProp: isPropValid,
-})<StyledImportantDateProps>(({ theme, dateType }) => ({
+})<StyledImportantDateProps>(({ theme, dateType, isFinished }) => ({
   position: 'relative',
-  padding: calcRem(10, 4, 10, 15),
+  padding: calcRem(10, isFinished ? 40 : 4, 10, 15),
   marginBottom: calcRem(10),
   backgroundColor: '#f0f0f0',
   borderWidth: 0,
@@ -123,6 +124,7 @@ export const StyledImportantDateInline = styled('li', {
     content: 'none',
   },
 }))
+StyledImportantDateInline.displayName = 'StyledImportantDateInline'
 
 interface StyledImportantDateContentProps {
   isFinished?: boolean
@@ -132,12 +134,14 @@ export const StyledImportantDateContent = styled('div', {
 })<StyledImportantDateContentProps>(({ isFinished }) => ({
   opacity: isFinished && 0.3,
 }))
+StyledImportantDateContent.displayName = 'StyledImportantDateContent'
 
 export const StyledImportantDateTitle = styled('h3')({
   margin: 0,
   fontSize: calcRem(14),
   fontWeight: 400,
 })
+StyledImportantDateTitle.displayName = 'StyledImportantDateTitle'
 
 export const StyledImportantDay = styled('span')({
   display: 'block',
@@ -152,6 +156,7 @@ export const StyledImportantDay = styled('span')({
     fontSize: calcRem(24),
   },
 })
+StyledImportantDay.displayName = 'StyledImportantDay'
 
 export const StyledImportantDateMonthDay = styled('span')({
   display: 'block',
@@ -160,12 +165,14 @@ export const StyledImportantDateMonthDay = styled('span')({
   fontWeight: 700,
   lineHeight: 1,
 })
+StyledImportantDateMonthDay.displayName = 'StyledImportantDateMonthDay'
 
 export const StyledImportantDateTime = styled('span')({
   display: 'block',
   margin: 0,
   fontWeight: 700,
 })
+StyledImportantDateTime.displayName = 'StyledImportantDateTime'
 
 export const StyledDoneIcon = styled('span')(({ theme }) => ({
   position: 'absolute',
@@ -214,6 +221,7 @@ export const StyledDoneIcon = styled('span')(({ theme }) => ({
     lineHeight: '40px',
   },
 }))
+StyledDoneIcon.displayName = 'StyledDoneIcon'
 
 export const StyledDoneIconInline = styled('span')(({ theme }) => ({
   position: 'absolute',
@@ -234,6 +242,7 @@ export const StyledDoneIconInline = styled('span')(({ theme }) => ({
     fontSize: 20,
   },
 }))
+StyledDoneIconInline.displayName = 'StyledDoneIconInline'
 
 export const StyledInlineDate = styled('p')({
   margin: 0,
@@ -248,6 +257,7 @@ export const StyledInlineDate = styled('p')({
     fontSize: calcRem(16),
   },
 })
+StyledInlineDate.displayName = 'StyledInlineDate'
 
 export const StyledInlineTimeDescription = styled('p')({
   margin: calcRem(2, 0, 0),
@@ -261,11 +271,13 @@ export const StyledInlineTimeDescription = styled('p')({
     fontSize: calcRem(16),
   },
 })
+StyledInlineTimeDescription.displayName = 'StyledInlineTimeDescription'
 
-// Remove once BootStrap is
+// TODO: Remove once BootStrap is
 export const StyledAbbr = styled('abbr')({
   '&[title]': {
     textDecoration: 'none',
     borderBottom: 0,
   },
 })
+StyledAbbr.displayName = 'StyledAbbr'
