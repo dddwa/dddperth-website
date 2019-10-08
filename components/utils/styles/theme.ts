@@ -4,7 +4,10 @@ import styled, { CreateStyled } from '@emotion/styled-base'
 
 export const theme = {
   colors: {
+    white: '#fff',
+    black: '#000',
     primary: '#008554',
+    primary150: '#003924',
     primaryDark: '#006c44',
     secondary: '#da459c',
     secondaryDark: '#d63091',
