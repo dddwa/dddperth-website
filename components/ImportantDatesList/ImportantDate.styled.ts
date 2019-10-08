@@ -28,6 +28,7 @@ interface LayoutProp {
 }
 
 export const StyledImportantDateList = styled('ul')<LayoutProp>(({ layout }) => ({
+  listStyle: 'none',
   ...conditionalStyles(layout === 'calendar', {
     display: 'flex',
     flexWrap: 'wrap',
@@ -118,10 +119,6 @@ export const StyledImportantDateInline = styled('li', {
   borderWidth: 0,
   borderRight: `${ImportantDateBorderWidth}px solid ${dateBorderColor(theme, dateType)}`,
   textAlign: 'left',
-
-  '&::before': {
-    content: 'none',
-  },
 }))
 
 interface StyledImportantDateContentProps {

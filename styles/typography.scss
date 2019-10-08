@@ -67,26 +67,6 @@ p + ol {
   margin: -10px 0 10px 0;
 }
 
-ul,
-ol {
-  li {
-    margin: 0;
-    padding: 0;
-    list-style: none outside;
-  }
-  li:before {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    width: 7px;
-    height: 7px;
-    background: $primary-color;
-    margin: 0 13px 0 0;
-    position: relative;
-    top: -1px;
-  }
-}
-
 .preserve-whitespace {
   white-space: pre-wrap;
 }

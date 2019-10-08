@@ -10,10 +10,6 @@ export const StyledTagCloudList = styled('ul')({
   padding: 0,
   margin: 0,
   listStyleType: 'none',
-
-  'li:before': {
-    content: 'normal',
-  },
 })
 
 export const StyledTagCloudInput = styled('input')(({ theme }) => ({

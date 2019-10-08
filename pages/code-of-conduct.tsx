@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Page from '../layouts/withSidebar'
 
@@ -28,7 +29,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>Harassment includes, but is not limited to:</p>
 
-    <ul>
+    <StyledList>
       <li>
         Verbal or written comments that reinforce social structures of domination related to gender, gender identity and
         expression, sexual orientation, disability, physical appearance, body size, race, age, religion
@@ -40,7 +41,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Inappropriate physical contact</li>
       <li>Unwelcome sexual attention</li>
       <li>Advocating for, or encouraging, any of the above behaviour</li>
-    </ul>
+    </StyledList>
 
     <h2>Need Help?</h2>
 
@@ -56,7 +57,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>You can make a personal report by:</p>
 
-    <ul>
+    <StyledList>
       <li>
         Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded
         t-shirts and organiser name tags
@@ -77,7 +78,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           {props.pageMetadata.conference.Socials.Email}
         </a>
       </li>
-    </ul>
+    </StyledList>
 
     <p>
       Emails and Twitter direct messages will be monitored by our media officer{' '}
@@ -107,7 +108,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <h3>Important contact numbers</h3>
 
-    <ul>
+    <StyledList>
       <li>
         <strong>Police:</strong>{' '}
         <a href={props.pageMetadata.conference.ImportantContacts.Police.MapUrl}>
@@ -130,13 +131,13 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
         </a>
       </li>
-    </ul>
+    </StyledList>
 
     <h2>Enforcement</h2>
 
     <p>Participants asked to stop any harassing behaviour are expected to:</p>
 
-    <ul>
+    <StyledList>
       <li>
         Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
         question
@@ -144,7 +145,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Not be dismissive of the complainant</li>
       <li>Understand any advice given on how to act in the future</li>
       <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
-    </ul>
+    </StyledList>
 
     <p>
       If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the
@@ -199,14 +200,14 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
 
     <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
 
-    <ul>
+    <StyledList>
       <li>
         <strong>Black:</strong> fine to photograph
       </li>
       <li>
         <strong>Red:</strong> do not photograph
       </li>
-    </ul>
+    </StyledList>
 
     <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
 

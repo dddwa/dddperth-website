@@ -9,7 +9,7 @@ interface FeedbackTimeTestingProps {
 export const FeedbackTimeTesting: React.FC<FeedbackTimeTestingProps> = ({ sessionGroups }) => (
   <Alert kind="warning">
     <p>Testing component. Times are start/end of session groups</p>
-    <ul>
+    <ul style={{ listStyle: 'none' }}>
       {sessionGroups.map(sessionGroup => (
         <li key={sessionGroup.timeStart.valueOf()}>
           <button type="button" onClick={() => dateTimeProvider.setDateTo(sessionGroup.timeStart)}>

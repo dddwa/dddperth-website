@@ -476,9 +476,6 @@ footer {
     li {
       list-style: none outside;
     }
-    li:before {
-      display: none;
-    }
     a {
       color: #fff;
       font-weight: 600;
@@ -496,9 +493,6 @@ footer {
       display: inline-block;
       margin: 0 2px;
       padding: 0;
-    }
-    li:before {
-      display: none;
     }
     a {
       display: block;

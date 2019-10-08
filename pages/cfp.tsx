@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
 import { SafeLink } from '../components/global/safeLink'
+import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
@@ -49,7 +50,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         </p>
 
         <p>We want to encourage people that wouldn't normally speak at conferences to give it a go! We do this by:</p>
-        <ul>
+        <StyledList>
           <li>
             Having an enforced{' '}
             <Link href="/code-of-conduct">
@@ -84,14 +85,15 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             any ideas you have or give safe and constructive feedback.
           </li>
           <li>
-            There will also be <strong>free speaker training and support</strong> for all speakers, so <strong>first timers, juniors, and
-            everyone else</strong> are all encouraged to submit and will have support!
+            There will also be <strong>free speaker training and support</strong> for all speakers, so{' '}
+            <strong>first timers, juniors, and everyone else</strong> are all encouraged to submit and will have
+            support!
           </li>
           <li>
             Allowing speakers to opt out of question &amp; answer time at the end of their presentation if they don't
             feel comfortable doing it.
           </li>
-        </ul>
+        </StyledList>
 
         <p>
           This year we are using Sessionize to track submissions - this provides a great experience for speakers since
@@ -100,7 +102,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         </p>
 
         <p>Other things to note for presenters:</p>
-        <ul>
+        <StyledList>
           <li>
             Speakers get free entry into the event; flights and accommodation for speakers are not normally covered
             (outside of keynote speakers), but if that's a limitation that stops you from speaking then please{' '}
@@ -127,7 +129,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             </a>{' '}
             and we'll get right back to you :)
           </li>
-        </ul>
+        </StyledList>
 
         <p className="text-center">
           <SafeLink className="btn content" target="_blank" href={conference.SessionizeUrl}>
