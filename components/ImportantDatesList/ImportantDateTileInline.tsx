@@ -15,7 +15,7 @@ interface ImportantDateTileInlineProps {
 }
 
 export const ImportantDateTileInline: React.FC<ImportantDateTileInlineProps> = ({ importantDate, isFinished }) => (
-  <StyledImportantDateInline dateType={importantDate.Type}>
+  <StyledImportantDateInline isFinished={isFinished} dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
         <StyledInlineDate>{importantDate.Date.format('dddd MMM D')}</StyledInlineDate>
