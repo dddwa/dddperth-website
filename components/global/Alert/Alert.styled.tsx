@@ -1,4 +1,3 @@
-// tslint:disable: object-literal-sort-keys
 import Alert from '@reach/alert'
 import { calcRem } from '../../utils/styles/calcRem'
 import styled, { Theme } from '../../utils/styles/theme'

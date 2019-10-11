@@ -8,6 +8,7 @@ interface PostFeedbackParams<T> {
 }
 
 export async function postFeedback<T>({ formName, feedbackUrl, values, deviceId }: PostFeedbackParams<T>) {
+  // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     const response = await fetch(feedbackUrl, {
       body: JSON.stringify({ ...values, deviceId }),

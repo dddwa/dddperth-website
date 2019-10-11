@@ -1,5 +1,3 @@
-// tslint:disable: object-literal-sort-keys
-
 export const zIndex = {
   votingPanel: 200,
   testingControl: 100,

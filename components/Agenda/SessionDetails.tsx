@@ -46,11 +46,11 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
                     <SafeLink
                       href={
                         'https://twitter.com/' +
-                        presenter.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
+                        presenter.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
                       }
                       target="_blank"
                     >
-                      @{presenter.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
+                      @{presenter.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
                     </SafeLink>
                   </li>
                 )}
@@ -59,7 +59,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
                     <SafeLink href={presenter.WebsiteUrl} target="_blank">
                       {presenter.WebsiteUrl.includes('linkedin.com')
                         ? 'LinkedIn'
-                        : presenter.WebsiteUrl.replace(/https?\:\/\/(www\.)?/i, '')}
+                        : presenter.WebsiteUrl.replace(/https?:\/\/(www\.)?/i, '')}
                     </SafeLink>
                   </li>
                 )}

@@ -1,5 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
 import { calcRem } from '../utils/styles/calcRem'
 import styled, { Theme } from '../utils/styles/theme'
 import { BadgeType } from './Badge'

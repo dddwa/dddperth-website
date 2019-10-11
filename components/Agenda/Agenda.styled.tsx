@@ -1,11 +1,9 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
 import { breakpoint, breakpointBetween, breakpointMax } from '../utils/styles/breakpoints'
 import { calcRem } from '../utils/styles/calcRem'
 import styled from '../utils/styles/theme'
 
-const rowBackgroundColor: string = '#f9f9f9'
-const cellBorder: string = '1px solid #ddd'
+const rowBackgroundColor = '#f9f9f9'
+const cellBorder = '1px solid #ddd'
 
 export const StyledAgendaRow = styled('section')({
   display: 'grid',

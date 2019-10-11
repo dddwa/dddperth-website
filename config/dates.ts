@@ -8,7 +8,6 @@ export default function getConferenceDates(conference: Conference, currentDate: 
   const dateDisplayFormat = 'dddd Do MMMM YYYY'
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil
 
-  // tslint:disable:object-literal-sort-keys
   return {
     Display: conference.HideDate ? 'TBA' : `${conference.Date.format(dateDisplayFormat)}`,
     DateDisplayFormat: dateDisplayFormat,

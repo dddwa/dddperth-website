@@ -4,6 +4,7 @@ import { ImportantDatesList } from '../components/ImportantDatesList/importantDa
 import getConferenceActions from '../config/actions'
 import Main, { MainProps } from './main'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface WithSidebarProps extends MainProps {}
 
 const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetadata, ...props }, context) => (

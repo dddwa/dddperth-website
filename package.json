@@ -11,8 +11,8 @@
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
-    "format-code": "prettier --print-width 120 --no-semi --single-quote --trailing-comma all \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" --write",
-    "lint": "yarn tslint --config tslint.json \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" "
+    "format-code": "prettier \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" --write",
+    "lint": "eslint --ext .ts,.tsx ."
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -51,12 +51,18 @@
     "@types/react-ga": "^2.3.0",
     "@types/styled-jsx": "^2.2.1",
     "@types/uuid": "^3.4.5",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "cross-env": "^5.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-wanews": "^2.0.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
     "node-sass": "^4.11.0",
-    "tslint": "^5.13.1",
     "typescript": "^3.3.3333"
   }
 }

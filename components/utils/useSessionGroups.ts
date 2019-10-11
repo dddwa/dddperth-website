@@ -58,16 +58,18 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
         sessions: getSessionById(sessions, sessionGroup.sessions),
         type: 'Sessions',
       })),
+    // Using the session length as the dependency - there was a reason at the time
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [Conference.Date.toString(), sessions.length],
   )
 
   const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
 
-  let pastSessionsIndex: number = -1
-  let previousSessionIndex: number = -1
-  let nextSessionIndex: number = -1
-  let currentSessionIndex: number = -1
-  let futureSessionIndex: number = -1
+  let pastSessionsIndex = -1
+  let previousSessionIndex = -1
+  let nextSessionIndex = -1
+  let currentSessionIndex = -1
+  let futureSessionIndex = -1
 
   for (let i = 0; i < allSessionGroups.length; i++) {
     const session = allSessionGroups[i]
@@ -109,6 +111,8 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
       ...(nextSessionIndex !== -1 ? { nextSessionGroup: allSessionGroups[nextSessionIndex] } : {}),
       ...(futureSessionIndex !== -1 ? { futureSessionGroups: allSessionGroups.slice(futureSessionIndex) } : {}),
     }),
+    // TODO: Investigate allSessionGroups as dep
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       pastSessionsIndex,
       previousSessionIndex,
