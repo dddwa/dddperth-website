@@ -38,7 +38,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       all people involved in the creation of software in South Australia to get together and share their experiences and
       stories.
     </p>
-    <p>DDD was set up with a number of key elements in mind, which hold true for all DDD conferences held worlwide:</p>
+    <p>DDD was set up with a number of key elements in mind, which hold true for all DDD conferences held worldwide:</p>
     <ul>
       <li>It is free / low cost</li>
       <li>It is on a Saturday</li>
