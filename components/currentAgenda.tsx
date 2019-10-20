@@ -150,7 +150,12 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
 
           <tr className="breadth-row">
             <td className="time">17:00</td>
-            <SessionCell isLocknote={true} sessionId="" sponsorName="AWS" room="Level 8 - Conference Room One" />
+            <SessionCell
+              isLocknote={true}
+              sessionId="187de1d4-070f-42b1-a3e6-2eb5f0d19d81"
+              sponsorName="AWS"
+              room="Level 8 - Conference Room One"
+            />
           </tr>
 
           <tr className="breadth-row">
