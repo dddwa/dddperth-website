@@ -97,7 +97,7 @@ const CurrentAgenda: StatelessComponent<AgendaProps> = ({ SessionCell }) => (
           <tr>
             <td className="time">13:20</td>
             <SessionCell sessionId="3aef4b8a-2a4f-4cb8-9f6d-8cad761e659f" />
-            <SessionCell sessionId="3c84952b-ed48-4607-acd4-2470a9ce9367" />
+            <SessionCell sessionId="abfaae45-5d6d-4226-a937-f49fe4e3cb87" />
           </tr>
 
           <tr className="breadth-row">
