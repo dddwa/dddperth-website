@@ -91,6 +91,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(
 
     componentDidMount() {
       if (!this.props.sessions) {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const that = this
         fetch(externalProps.sessionsUrl)
           .then(response => {
@@ -103,7 +104,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(
           .catch(error => {
             that.setState({ isError: true, isLoading: false })
             if (console) {
-              // tslint:disable-next-line:no-console
+              // eslint-disable-next-line no-console
               console.error('Error loading sessions', error)
             }
           })
@@ -128,6 +129,7 @@ const dddAgendaPage = <TOriginalProps extends {}>(
       const getSession = (sessionId: string) =>
         this.state.sessions ? this.state.sessions.find(s => s.SessionId === sessionId) : null
       const onClick = this.selectSession
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const that = this
 
       return props => {

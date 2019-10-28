@@ -11,9 +11,7 @@ import dateTimeProvider from './dateTimeProvider'
 interface CountdownTimerArgs {
   countdownTo: Moment
   interval: number
-  // tslint:disable-next-line:ban-types
   tickCallback?: Function
-  // tslint:disable-next-line:ban-types
   completeCallback?: Function
 }
 
@@ -63,7 +61,6 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
       this.tick()
     }
 
-    // tslint:disable-next-line:variable-name
     componentWillReceiveProps(_newProps: CountdownTimerArgs) {
       if (this.state.timeoutId) {
         clearTimeout(this.state.timeoutId)
@@ -116,7 +113,6 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
       const destination = now.add(duration)
       return {
         seconds: Math.floor(totalSecsLeft % 60),
-        // tslint:disable-next-line:object-literal-sort-keys
         minutes: Math.floor(totalSecsLeft / 60) % 60,
         hours: Math.floor(totalSecsLeft / 60 / 60) % 24,
         days: Math.floor(totalSecsLeft / 60 / 60 / 24) % 7,
@@ -137,7 +133,6 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
       Y: 'years',
       m: 'months',
       n: 'daysToMonth',
-      // tslint:disable-next-line:object-literal-sort-keys
       d: 'daysToWeek',
       w: 'weeks',
       W: 'weeksToMonth',
@@ -158,7 +153,7 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
       let plural = 's'
       let singular = ''
       if (format) {
-        const formats = format.replace(/(:|;|\s)/gi, '').split(/\,/)
+        const formats = format.replace(/(:|;|\s)/gi, '').split(/,/)
         if (formats.length === 1) {
           plural = format[0]
         } else {
@@ -175,6 +170,7 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
     }
     // Time string formatter
     private strftime(duration: Duration) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const that = this
       const offsets = this.getOffsetsFor(duration)
 

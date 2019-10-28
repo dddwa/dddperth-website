@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import React from 'react'
 import { Fragment } from 'react'
 import { Modal } from 'react-bootstrap'
-import { Conference, Session, Sponsor } from '../config/types'
+import { Session, Sponsor } from '../config/types'
 import { SafeLink } from './global/safeLink'
 import SessionDetails from './sessionDetails'
 
@@ -63,6 +63,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
 
     componentDidMount() {
       if (!this.props.sessions) {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const that = this
         fetch(this.props.sessionsUrl)
           .then(response => {
@@ -75,7 +76,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
           .catch(error => {
             that.setState({ isError: true, isLoading: false })
             if (console) {
-              // tslint:disable-next-line:no-console
+              // eslint-disable-next-line no-console
               console.error('Error loading sessions', error)
             }
           })
@@ -101,6 +102,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
       const getSession = (sessionId: string) =>
         this.state.sessions ? this.state.sessions.find(s => s.Id === sessionId) : null
       const onClick = this.selectSession
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const that = this
 
       return props => {
@@ -120,7 +122,7 @@ const agenda = (WrappedComponent: React.ComponentType<AgendaProps>, externalProp
             onClick={() =>
               onClick.bind(that)(
                 session,
-                !!props.sponsorName ? that.props.sponsors.find(s => s.name === props.sponsorName) : undefined,
+                props.sponsorName ? that.props.sponsors.find(s => s.name === props.sponsorName) : undefined,
               )
             }
           >

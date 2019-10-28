@@ -6,6 +6,7 @@ import dateTimeProvider, { CurrentDate } from './utils/dateTimeProvider'
 export interface WithCurrentDateProps {
   currentDate: CurrentDate
 }
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ExternalProps {}
 
 interface WithCurrentDateState {

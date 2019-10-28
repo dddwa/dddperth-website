@@ -1,5 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
 import isPropValid from '@emotion/is-prop-valid'
 import { Types } from '../../config/types'
 import { breakpoint } from '../utils/styles/breakpoints'

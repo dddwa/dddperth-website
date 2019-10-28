@@ -21,7 +21,7 @@ export function useDeviceId(instance: string) {
         setDeviceId(deviceUUID)
       }
     }
-  }, [deviceId])
+  }, [deviceId, instance])
 
   return {
     deviceId,

@@ -8,7 +8,6 @@ interface Breakpoints {
 
 const breakpointSizes: Breakpoints = {
   xs: 480,
-  // tslint:disable-next-line:object-literal-sort-keys
   sm: 768,
   md: 992,
   lg: 1200,

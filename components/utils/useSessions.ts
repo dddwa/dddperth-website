@@ -56,11 +56,13 @@ export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
         .catch(error => {
           dispatch({ type: 'error' })
           if (console) {
-            // tslint:disable-next-line: no-console
+            // eslint-disable-next-line no-console
             console.error('Error loading sessions', error)
           }
         })
     }
+    // TODO: Review the deps array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return {

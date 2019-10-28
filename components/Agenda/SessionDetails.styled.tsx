@@ -1,5 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
 import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
 import { breakpoint, breakpointMax } from '../utils/styles/breakpoints'
 import { calcRem } from '../utils/styles/calcRem'

@@ -69,7 +69,6 @@ if (!hideDate) {
   })
 }
 
-// tslint:disable:object-literal-sort-keys
 const Conference: IConference = {
   Name: name,
   Instance: currentInstance.toString(),

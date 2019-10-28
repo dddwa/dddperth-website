@@ -1,4 +1,3 @@
-// tslint:disable:object-literal-sort-keys
 import React, { Fragment } from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import { StyledList } from '../components/global/text'

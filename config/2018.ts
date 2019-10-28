@@ -12,7 +12,6 @@ interface From2018 {
 
 const From2018: From2018 = {
   YouTubePlaylistUrl: 'https://www.youtube.com/watch?v=A02tSBP7CCw&list=PLkLJSte3oodSP0RvXqylgI16BO5eojS19',
-  // tslint:disable-next-line:object-literal-sort-keys
   YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/MDrrZucJtJo',
   YouTubeLunchnoteEmbedUrl: 'https://www.youtube.com/embed/NCj0xNu8f8s',
   YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/Vb8ebpzoioQ',

@@ -1,7 +1,5 @@
 import styled, { CreateStyled } from '@emotion/styled-base'
 
-/* tslint:disable object-literal-sort-keys */
-
 export const theme = {
   colors: {
     primary: '#008554',

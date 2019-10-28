@@ -66,7 +66,6 @@ const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions })
     }
 
     try {
-      // tslint:disable: object-literal-sort-keys
       await postFeedback<FeedbackFormState>({
         deviceId,
         feedbackUrl: pageMetadata.appConfig.feedbackUrl,

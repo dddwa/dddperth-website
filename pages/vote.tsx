@@ -59,6 +59,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
       .then(response => {
@@ -72,13 +73,13 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       })
       .catch(error => {
         logException('Error when getting sessions', error, {
-          voteId: !!localStorage
+          voteId: localStorage
             ? localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))
             : null,
         })
         that.setState({ isError: true, isLoading: false })
         if (console) {
-          // tslint:disable-next-line:no-console
+          // eslint-disable-next-line no-console
           console.error('Error loading sessions', error)
         }
       })

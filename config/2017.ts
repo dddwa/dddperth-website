@@ -11,7 +11,6 @@ interface From2017 {
 
 const From2017: From2017 = {
   YouTubePlaylistUrl: 'https://www.youtube.com/watch?v=tlA_4-dnDyk&list=PLkLJSte3oodQ_7JG0iRdZS7P4TdlFSzYy',
-  // tslint:disable-next-line:object-literal-sort-keys
   YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/tlA_4-dnDyk',
   YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/zMReShyytQA',
   FlickrAlbumUrl: 'https://www.flickr.com/photos/135003652@N08/albums/72157686384858370',
