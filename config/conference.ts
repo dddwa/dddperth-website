@@ -17,10 +17,10 @@ const registrationOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
 const registrationOpenUntil = hideDate
   ? null
   : date
-      .clone()
-      .add(-1, 'd')
-      .startOf('day')
-      .add(17, 'h')
+    .clone()
+    .add(-1, 'd')
+    .startOf('day')
+    .add(17, 'h')
 const presentationSubmissionsOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
 const presentationSubmissionsOpenUntil = moment.parseZone('2019-09-04T23:59:59+09:30')
 const votingOpenFrom = moment.parseZone('2019-09-08T08:00:00+09:30')
@@ -78,7 +78,7 @@ const Conference: IConference = {
   Organiser: {
     Name: 'DDD Adelaide',
     Url: '',
-    ShirtColour: 'yellow',
+    ShirtColour: 'royal blue',
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
@@ -130,8 +130,8 @@ const Conference: IConference = {
   FeedbackOpenFrom: feedbackOpenFrom,
   FeedbackOpenUntil: feedbackOpenUntil,
 
-  ConferenceFeedbackLink: null,
-  SessionFeedbackLink: null,
+  ConferenceFeedbackLink: 'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS5CUxBFyke5HsTZBZ9S8S6lUMDNGQU9HWTNaTFNDSTI5RUlBVE9WQlJXRy4u',
+  SessionFeedbackLink: 'https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS5CUxBFyke5HsTZBZ9S8S6lUMzVVUUJCU1VDREhLVE9NSjhJQkE2VjU5QS4u',
 
   HideDate: hideDate,
   HideSponsors: false,

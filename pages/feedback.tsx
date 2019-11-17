@@ -42,19 +42,8 @@ class FeedbackPage extends React.Component<WithPageMetadataProps> {
           people that are new or relatively inexperienced in speaking, it's also extremely important that we give a safe
           way for our speakers to get tangible feedback about their presentations so they can improve.
         </p>
-        <p>
-          In order to be eligible for our amazing prize draw you must complete feedback about the conference itself as
-          well as at least 4 of the sessions you see during the day. Please make sure that you:
-        </p>
+        <p>Please make sure that you:</p>
         <ul>
-          <li>
-            Include your full name when giving feedback so that we can differentiate you from others in the prize draw
-            (don't worry, we anonymise the feedback when passing it on to organisers or speakers)
-          </li>
-          <li>
-            Be sure to be consistent in how you write your name across feedback instances so we know it's the same you
-            each time
-          </li>
           <li>
             Be respectful and give feedback that is constructive and meets our{' '}
             <Link href="/code-of-conduct">
