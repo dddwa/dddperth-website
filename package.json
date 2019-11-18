@@ -52,7 +52,7 @@
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "cross-env": "^5.2.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "tslint": "^5.13.1",
     "typescript": "^3.3.3333"
   }
