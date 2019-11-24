@@ -27,7 +27,11 @@ const votingOpenFrom = moment.parseZone('2019-09-08T08:00:00+09:30')
 const votingOpenUntil = moment.parseZone('2019-09-27T23:59:59+09:30')
 const agendaPublishedFrom = moment.parseZone('2019-10-04T15:00:00+09:30')
 const feedbackOpenFrom = date.clone()
-const feedbackOpenUntil = endDate
+const feedbackOpenUntil = date
+  .clone()
+  .add(7, 'd')
+  .startOf('day')
+  .add(17, 'h')
 const importantDates = [
   {
     Date: presentationSubmissionsOpenFrom,
