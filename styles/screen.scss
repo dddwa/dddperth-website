@@ -222,84 +222,6 @@ h4.modal-title {
   line-height: 1.8;
 }
 
-// Main Nav
-nav.main {
-  background: darken($primary-color, 15%);
-  color: #fff;
-  margin-bottom: 0;
-  border: 0;
-  @include border-radius(0);
-
-  .container > .navbar-collapse {
-    margin-left: 0;
-    margin-right: 0;
-    border: 0;
-  }
-  .navbar-header {
-    button {
-      border: 0;
-      .icon-bar {
-        background-color: #fff;
-        @include opacity(0.55);
-      }
-      &.collapsed .icon-bar {
-        @include opacity(1);
-      }
-      &:focus {
-        background-color: transparent;
-        .icon-bar {
-          background-color: #fff;
-        }
-      }
-      &:hover {
-        background-color: #ddd;
-        .icon-bar {
-          background-color: #000;
-        }
-      }
-    }
-  }
-
-  ul {
-    float: none;
-    li {
-      float: none;
-
-      &:before {
-        display: none;
-      }
-      a {
-        display: block;
-        padding: 0;
-        color: #fff !important;
-        background-color: transparent !important;
-        font-weight: $bold;
-        line-height: 42px;
-        text-decoration: none;
-        &:hover,
-        &:focus {
-          text-decoration: underline;
-        }
-      }
-      a:after {
-        content: '\f0da';
-        font-family: 'FontAwesome';
-        @include opacity(0.3);
-        display: inline-block;
-        margin: 0 0 0 10px;
-        font-size: 120%;
-        vertical-align: middle;
-        position: relative;
-        top: -1px;
-        float: right;
-      }
-    }
-    li.active {
-      background: $primary-color;
-    }
-  }
-}
-
 // Header
 header {
   position: relative;
@@ -1539,25 +1461,6 @@ tr td.highlight-session {
     line-height: 100px;
   }
 
-  // Main Nav
-  nav.main {
-    ul {
-      text-align: center;
-      li {
-        display: inline-block;
-        a {
-          line-height: 52px;
-          font-size: 14px;
-          border: 0;
-          padding: 0 15px;
-        }
-        a:after {
-          display: none;
-        }
-      }
-    }
-  }
-
   // Intro
   .intro {
     .container {
@@ -1764,18 +1667,6 @@ tr td.highlight-session {
     line-height: 134px;
   }
 
-  // Main Nav
-  nav.main {
-    ul {
-      li {
-        a {
-          font-size: 16px;
-          padding: 0 20px;
-        }
-      }
-    }
-  }
-
   // Countdown
   .timer {
     margin: 40px 0;
@@ -1937,18 +1828,6 @@ tr td.highlight-session {
     font-size: 40px;
   }
 
-  // Main Nav
-  nav.main {
-    ul {
-      li {
-        a {
-          font-size: 17px;
-          padding: 0 28px;
-        }
-      }
-    }
-  }
-
   // Fader
   .fader {
     height: 398px;
@@ -2080,18 +1959,6 @@ tr td.highlight-session {
   .btn:after {
     margin: 0 0 0 20px;
     font-size: 20px;
-  }
-
-  // Main Nav
-  nav.main {
-    ul {
-      li {
-        a {
-          font-size: 18px;
-          padding: 0 30px;
-        }
-      }
-    }
   }
 
   // Header
