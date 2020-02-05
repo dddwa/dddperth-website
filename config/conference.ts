@@ -9,7 +9,7 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
-const date = moment.parseZone('2019-08-03T08:00+08:00')
+const date = moment.parseZone('2020-08-01T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2015
