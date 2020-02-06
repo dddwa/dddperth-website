@@ -1,3 +1,5 @@
+[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/DDD%20Perth%20Website-CI)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=1)
+
 # DDD Perth Website
 
 The DDD Perth website is deployed to https://dddperth.com and is built using [Next.js](https://github.com/zeit/next.js/).
