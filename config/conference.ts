@@ -25,7 +25,9 @@ const presentationSubmissionsOpenFrom = moment.parseZone('2019-04-30T08:00:00+08
 const presentationSubmissionsOpenUntil = moment.parseZone('2019-06-02T23:59:59+08:00')
 const votingOpenFrom = moment.parseZone('2019-06-08T17:00:00+08:00')
 const votingOpenUntil = moment.parseZone('2019-06-16T23:59:59+08:00')
-const agendaPublishedFrom = moment.parseZone('2019-06-23T17:00:00+08:00')
+// This is not the date for 2020 - using it to hide the agenda for now.
+// TODO: Update to actual date when known
+const agendaPublishedFrom = moment.parseZone('2020-06-23T17:00:00+08:00')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = endDate
 const importantDates = [
@@ -93,8 +95,8 @@ const Conference: IConference = {
   TicketPurchasingOptions: ticketPurchasingOptions,
   HashTag: 'DDDPerth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
-  Handbook: 'handbook2019.pdf',
-  SessionizeUrl: 'https://sessionize.com/dddperth2019',
+  Handbook: null,
+  SessionizeUrl: null,
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
@@ -129,12 +131,12 @@ const Conference: IConference = {
   FeedbackOpenFrom: feedbackOpenFrom,
   FeedbackOpenUntil: feedbackOpenUntil,
 
-  ConferenceFeedbackLink: '/conference-feedback',
-  SessionFeedbackLink: '/feedback',
+  ConferenceFeedbackLink: null,
+  SessionFeedbackLink: null,
 
   HideDate: hideDate,
-  HideSponsors: false,
-  HideSponsorshipUpsell: true,
+  HideSponsors: true,
+  HideSponsorshipUpsell: false,
   HideVenue: venue === null,
   HideAfterpartyVenue: venue === null || venue.Afterparty === null,
   ShowNextSessions: true,
@@ -188,50 +190,7 @@ const Conference: IConference = {
 
   Sponsors: SponsorData,
 
-  Keynotes: [
-    {
-      Id: 'Keynote',
-      Title: 'AI for Earth: Using machine learning to monitor, model, and manage natural resources',
-      Abstract:
-        'The AI for Earth program applies machine learning and data science to hard challenges in agriculture, water, climate, and biodiversity.  In this talk, we will discuss how the AI for Earth team, Microsoft Research, and AI for Earth grant recipients are using machine learning to enable precision agriculture, to predict outbreaks of disease, to detect poachers in real time, and to classify animals for conservation. Finally, we will briefly provide details on the AI for Earth grant program to obtain resources for everyone to work on these challenges.',
-      Format: '45 mins',
-      Level: 'No experience necessary',
-      Tags: ['Data & Analytics', 'Machine Learning'],
-      Presenters: [
-        {
-          Id: '',
-          Name: 'Jennifer Marsman',
-          Bio:
-            'Jennifer Marsman is the Principal Software Engineer of Microsoft’s “AI for Earth” group, where she uses data science, machine learning, and artificial intelligence to aid with clean water, agriculture, biodiversity, and climate change. Jennifer is a frequent speaker at software development conferences around the world. Since 2016, Jennifer was recognized as one of the “top 100 most influential individuals in artificial intelligence and machine learning” by Onalytica, reaching the #2 slot in 2018. She has been featured in Bloomberg for her work using EEG and machine learning to perform lie detection. In 2009, Jennifer was chosen as "Techie whose innovation will have the biggest impact" by X-OLOGY for her work with GiveCamps, a weekend-long event where developers code for charity. She has also received many honors from Microsoft, including the “Best in Role” award for Technical Evangelism, Central Region Top Contributor Award, Heartland District Top Contributor Award, DPE Community Evangelist Award, CPE Champion Award, MSUS Diversity & Inclusion Award, Gold Club, and Platinum Club. Prior to becoming a Developer Evangelist, Jennifer was a software developer in Microsoft’s Natural Interactive Services division. In this role, she earned two patents for her work in search and data mining algorithms. Jennifer has also held positions with Ford Motor Company, National Instruments, and Soar Technology. Jennifer holds a Bachelor’s Degree in Computer Engineering and Master’s Degree in Computer Science and Engineering from the University of Michigan in Ann Arbor. Her graduate work specialized in artificial intelligence and computational theory.',
-          Tagline: 'Principal Engineer & speaker on the AI for Earth team at Microsoft',
-          ProfilePhotoUrl: '/static/images/keynotes/jennifer.jpg',
-          TwitterHandle: 'jennifermarsman',
-          WebsiteUrl: 'https://blogs.msdn.microsoft.com/jennifer/',
-        },
-      ],
-    },
-    {
-      Id: 'Locknote',
-      Title: 'You. Are. Awesome.',
-      Abstract:
-        'You may not realize it, but you are awesome. You have the power to change the world. Regardless of your job title or amount of experience, I firmly believe you have amazing potential to impact the people around you in powerful and meaningful ways. My goal is to help you realize the awesomeness you already possess and be encouraged to unleash it!',
-      Format: '45 mins',
-      Level: 'No experience necessary',
-      Tags: ['Soft Skills', 'Leadership', 'Teams'],
-      Presenters: [
-        {
-          Id: 'locknote',
-          Name: 'David Neal',
-          Bio:
-            'David is a family man, software developer, musician, illustrator, and Microsoft MVP living in North Georgia, USA. He is currently a Senior Developer Advocate for Okta. David runs on a high-octane mixture of caffeine and JavaScript, and is made entirely of bacon.',
-          Tagline: 'Senior Developer Advocate at Okta, Keynote at NDC Oslo 2019',
-          ProfilePhotoUrl: '/static/images/keynotes/david.jpg',
-          TwitterHandle: 'reverentgeek',
-          WebsiteUrl: 'https://reverentgeek.com/',
-        },
-      ],
-    },
-  ],
+  Keynotes: [],
 
   RoomNames: ['Theatre', 'RR5', 'M6', 'M7', 'M8', 'M9'],
 
