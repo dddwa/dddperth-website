@@ -7,6 +7,7 @@ import { Nav } from '../components/global/Nav/Nav'
 import { PageMetadata } from '../components/global/withPageMetadata'
 import { TestingControl } from '../components/TestingControl/TestingControl'
 import Menu from '../config/menu'
+import { SkipToContent } from '../components/SkipToContent/SkipToContent'
 
 export interface MainProps {
   isHome?: boolean
@@ -47,9 +48,7 @@ class Main extends React.Component<MainProps> {
           dates={metadata.dates}
         />
         <div>
-          <a className="skip-to-content" href="#content">
-            Skip to content
-          </a>
+          <SkipToContent />
           <Nav pagePath={metadata.pagePath} menu={Menu(metadata.conference, metadata.dates).Top} />
           <Header
             isHome={this.props.isHome}
