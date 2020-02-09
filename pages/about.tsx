@@ -64,8 +64,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <SafeLink href="https://blog.dddperth.com/meet-the-team-35865433cb39" target="_blank">
         since 2018 it has been run by DDD WA Inc.
       </SafeLink>
-      . We are now in our fifth year, which we think is worth celebrating!{' '}
-      <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
+      .{' '}
+      <SafeLink href="https://blog.dddperth.com/ddd-perth-is-back-for-2020-c0082c372517" target="_blank">
         Meet this year's team.
       </SafeLink>
     </p>
@@ -93,6 +93,11 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>
         <Link href="/agenda/2018">
           <a>4 August 2018 @ Perth Convention and Exhibition Centre - 470 attendees (510 tickets sold)</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/agenda/2019">
+          <a>4 August 2019 @ Perth Convention and Exhibition Centre - 835 attendees</a>
         </Link>
       </li>
     </StyledList>
