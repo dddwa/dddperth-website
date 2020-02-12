@@ -1,10 +1,10 @@
-import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
+import { DialogContent, DialogOverlay } from '@reach/dialog'
 import { breakpoint, breakpointMax } from '../utils/styles/breakpoints'
 import { calcRem } from '../utils/styles/calcRem'
 import styled from '../utils/styles/theme'
 import { zIndex } from '../utils/styles/zindex'
 
-export const StyledDialogOverlay = styled(DialogOverlay)<DialogOverlayProps>({
+export const StyledDialogOverlay = styled(DialogOverlay)({
   position: 'fixed',
   top: 0,
   right: 0,
