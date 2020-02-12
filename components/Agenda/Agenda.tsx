@@ -75,13 +75,13 @@ export const Agenda: React.FC<AgendaProps> = props => {
   }, [sessions, props.selectedSessionId])
 
   const onSelectHandler = (session: Session, sponsor: Sponsor) => {
-    const url = `/agenda?sessionId=${session.Id}`
+    const url = `${Router.pathname}?sessionId=${session.Id}`
     Router.push(url, url, { shallow: true })
     dispatch({ type: 'selected', session, sponsor })
   }
 
   const onDismissHandler = () => {
-    Router.replace(`/agenda`)
+    Router.replace(`${Router.pathname}`)
     dispatch({ type: 'dismiss' })
   }
 
