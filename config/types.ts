@@ -1,7 +1,7 @@
 import { Moment } from 'moment'
 import { SessionGroupWithIds } from '../components/utils/useSessionGroups'
 
-export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'conference'
+export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
 
 export interface Conference {
   Name: string

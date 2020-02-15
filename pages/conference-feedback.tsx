@@ -1,4 +1,3 @@
-import { NextSFC } from 'next'
 import Link from 'next/link'
 import Router from 'next/router'
 import React, { useReducer } from 'react'
@@ -26,6 +25,7 @@ import { useForm } from '../components/utils/useForm'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import Page from '../layouts/main'
+import { NextPage } from 'next'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -35,7 +35,7 @@ interface FeedbackFormState {
   isConferenceFeedback: boolean
 }
 
-const ConferenceFeedback: NextSFC<WithPageMetadataProps> = ({ pageMetadata }) => {
+const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const conference = pageMetadata.conference
   const { deviceId } = useDeviceId(conference.Instance)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)

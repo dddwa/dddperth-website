@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import { Session, Sponsor } from '../../config/types'
 import { SafeLink } from '../global/safeLink'
 import { SessionGroup, useSessionGroups } from '../utils/useSessionGroups'

@@ -39,7 +39,7 @@ export const withCurrentDate = <TOriginalProps extends {}>(
     }
 
     componentDidMount() {
-      this.timerId = setInterval(() => this.tick(), (window.appConfig.testingMode ? 1000 : 60000) as any)
+      this.timerId = window.setInterval(() => this.tick(), (window.appConfig.testingMode ? 1000 : 60000) as any)
     }
 
     componentWillUnmount() {

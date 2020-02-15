@@ -2,8 +2,8 @@ import { Session } from '../../config/types'
 import { WithPageMetadataProps } from '../global/withPageMetadata'
 import AllAgendas from '../allAgendas'
 import Page from '../../layouts/main'
-import { NextSFC } from 'next'
 import React from 'react'
+import { NextPage } from 'next'
 
 export interface AgendaPageParameters {
   conferenceInstance: string
@@ -21,7 +21,7 @@ export const agendaPage = (
   WrappedComponent: React.ComponentType<{ sessions: Session[] }>,
   externalProps: AgendaPageParameters,
 ) => {
-  const PageWithAgenda: NextSFC<PageWithAgendaProps> = ({ pageMetadata, sessions }) => {
+  const PageWithAgenda: NextPage<PageWithAgendaProps> = ({ pageMetadata, sessions }) => {
     const conference = pageMetadata.conference
     const dates = pageMetadata.dates
 

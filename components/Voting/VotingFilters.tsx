@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import ReactResponsiveSelect from 'react-responsive-select/dist/ReactResponsiveSelect'
 import { logEvent } from '../global/analytics'
 import { StyledTagCloudInput, StyledTagCloudLabel, StyledTagCloudList } from './VotingFilters.styled'
 

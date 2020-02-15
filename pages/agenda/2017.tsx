@@ -227,4 +227,4 @@ class Agenda2017 extends React.Component<AgendaPageProps> {
   }
 }
 
-export default withPageMetadata(dddAgendaPage(Agenda2017, Agenda2017.getAgendaPageParams()))
+export default withPageMetadata(dddAgendaPage<AgendaPageProps>(Agenda2017, Agenda2017.getAgendaPageParams()))
