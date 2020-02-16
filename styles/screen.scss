@@ -1,7 +1,6 @@
 @import 'mixins.scss';
 @import 'colours-and-fonts.scss';
 @import 'typography.scss';
-@import 'slick.scss';
 @import 'forms.scss';
 @import 'tito.scss';
 
@@ -186,8 +185,6 @@ a.btn {
 }
 
 // Sprite
-.slick-vertical .slick-next,
-.slick-vertical .slick-prev,
 .blog-list-post .blog-date:before,
 .blog-list-post .blog-date:after {
   background-image: url('/static/images/sprite.png') !important;
@@ -575,36 +572,6 @@ section.full-width {
       }
     }
   }
-}
-
-.slick-vertical .slick-slide {
-  border-left: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-}
-
-.slick-vertical .slick-next,
-.slick-vertical .slick-prev {
-  border: 0;
-  width: 31px;
-  height: 42px;
-  text-align: center;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-color: transparent;
-  position: absolute;
-  bottom: -45px;
-  left: 50%;
-  margin-left: -15px;
-  z-index: 999;
-}
-.slick-vertical .slick-prev {
-  background-position: -104px -42px;
-  @include transform(translateX(-50%));
-}
-.slick-vertical .slick-next {
-  background-position: -135px -42px;
-  @include transform(translateX(50%));
 }
 
 // Agenda
