@@ -1,4 +1,3 @@
-import { NextSFC } from 'next'
 import Link from 'next/link'
 import Router from 'next/router'
 import React, { Fragment, useReducer } from 'react'
@@ -34,6 +33,7 @@ import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import { Session } from '../config/types'
 import Page from '../layouts/main'
+import { NextPage } from 'next'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -47,7 +47,7 @@ interface FeedbackMetadataProps extends WithPageMetadataProps {
   ssrSessions?: Session[]
 }
 
-const Feedback: NextSFC<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
+const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
   const conference = pageMetadata.conference
   const { deviceId } = useDeviceId(conference.Instance)
   const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)

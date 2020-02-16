@@ -1,7 +1,13 @@
 import moment from 'moment'
 import { orderBy } from '../components/utils/arraySort'
 import SponsorData from '../config/sponsors'
-import { Conference as IConference, TicketNumberWhileVoting, TicketPurchasingOptions, TicketsProvider } from './types'
+import {
+  Conference as IConference,
+  TicketNumberWhileVoting,
+  TicketPurchasingOptions,
+  TicketsProvider,
+  ImportantDate,
+} from './types'
 import venue from './venue'
 
 const name = 'DDD Perth'
@@ -30,7 +36,7 @@ const votingOpenUntil = moment.parseZone('2019-06-16T23:59:59+08:00')
 const agendaPublishedFrom = moment.parseZone('2020-06-23T17:00:00+08:00')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = endDate
-const importantDates = [
+const importantDates: ImportantDate[] = [
   {
     Date: presentationSubmissionsOpenFrom,
     Description: 'Call for presentations open',
@@ -55,7 +61,7 @@ const importantDates = [
   },
 ]
 
-if (registrationOpenUntil !== null && ticketPurchasingOptions === TicketPurchasingOptions.OnSale) {
+if (registrationOpenUntil !== null && Number(ticketPurchasingOptions) === Number(TicketPurchasingOptions.OnSale)) {
   importantDates.push({
     Date: registrationOpenUntil,
     Description: 'Ticket sales close',

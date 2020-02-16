@@ -90,10 +90,10 @@ export const countdownTimer = (WrappedComponent: React.ComponentType<InjectedArg
 
       if (!countdownComplete) {
         this.setState({
-          timeoutId: setTimeout(() => this.tick(), Math.min(
-            this.props.interval,
-            timeRemaining.duration.asMilliseconds(),
-          ) as any),
+          timeoutId: window.setTimeout(
+            () => this.tick(),
+            Math.min(this.props.interval, timeRemaining.duration.asMilliseconds()) as any,
+          ),
         })
       } else {
         if (this.props.completeCallback) {

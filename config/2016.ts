@@ -18,6 +18,7 @@ const From2016: From2016 = {
   Sponsors: [
     // Platinum
     {
+      id: 'bankwest',
       imageUrl: '/static/images/sponsors/bankwest.png',
       name: 'Bankwest',
       type: SponsorType.Platinum,
@@ -25,12 +26,14 @@ const From2016: From2016 = {
     },
     // Gold
     {
+      id: 'gooroo',
       imageUrl: '/static/images/sponsors/gooroo.png',
       name: 'Gooroo',
       type: SponsorType.Gold,
       url: 'https://gooroo.io/',
     },
     {
+      id: 'microsoft',
       imageUrl: '/static/images/sponsors/microsoft.png',
       name: 'Microsoft',
       type: SponsorType.Gold,

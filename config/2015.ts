@@ -12,6 +12,7 @@ const From2015: From2015 = {
   Sponsors: [
     // Platinum
     {
+      id: 'bankwest',
       imageUrl: '/static/images/sponsors/bankwest.png',
       name: 'Bankwest',
       type: SponsorType.Platinum,
@@ -19,12 +20,14 @@ const From2015: From2015 = {
     },
     // Gold
     {
+      id: 'readify',
       imageUrl: '/static/images/sponsors/readify.png',
       name: 'Readify',
       type: SponsorType.Gold,
       url: 'https://readify.net/',
     },
     {
+      id: 'gooroo',
       imageUrl: '/static/images/sponsors/gooroo.png',
       name: 'Gooroo',
       type: SponsorType.Gold,

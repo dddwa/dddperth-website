@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import withPageMetadata, { WithPageMetadataProps } from '../../components/global/withPageMetadata'
+import withPageMetadata from '../../components/global/withPageMetadata'
 import { AgendaPageParameters, agendaPage } from '../../components/Agenda/AgendaPage'
 import { From2019 } from '../../config/2019'
 import { Agenda } from '../../components/Agenda/Agenda'

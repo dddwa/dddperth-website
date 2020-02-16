@@ -15,7 +15,13 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["dom", "es2015", "es2016"]
+    "lib": ["dom", "es2015", "es2016"],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "exclude": ["./deploy/**"]
+  "exclude": ["./deploy/**", "next.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
