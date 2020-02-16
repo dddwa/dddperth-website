@@ -12,17 +12,6 @@
       "command": "yarn",
       "problemMatcher": "$tsc",
       "args": ["tsc"]
-    },
-    {
-      "type": "npm",
-      "script": "build",
-      "group": "build"
-    },
-    {
-      "label": "Start dev server",
-      "type": "npm",
-      "script": "dev",
-      "problemMatcher": []
     }
   ]
 }
