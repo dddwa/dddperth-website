@@ -20,7 +20,7 @@ import Sponsors from '../../components/sponsors'
 const agendaParams: AgendaPageParameters = {
   conferenceInstance: '2019',
   numTracks: 6,
-  sessionsUrl: '/static/agenda/2019.json',
+  sessionsUrl: '/static/agenda/2019_archive.json',
 }
 
 const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ sessions }) => {

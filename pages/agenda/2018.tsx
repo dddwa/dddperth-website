@@ -12,7 +12,7 @@ class Agenda2018 extends React.Component<AgendaPageProps> {
     return {
       conferenceInstance: '2018',
       numTracks: 4,
-      sessionsUrl: '/static/agenda/2018.json',
+      sessionsUrl: '/static/agenda/2018_archive.json',
       sponsors: [],
     }
   }
