@@ -4,14 +4,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "command": "yarn",
-      "problemMatcher": "$tsc",
-      "args": ["tsc"]
+      "type": "npm",
+      "script": "build",
+      "group": "build"
+    },
+    {
+      "label": "Start dev server",
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": []
     }
   ]
 }
