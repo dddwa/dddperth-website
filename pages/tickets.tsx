@@ -1,5 +1,5 @@
 import Error from 'next/error'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { isNullOrUndefined } from 'util'
 import { FaqList } from '../components/FAQList/FaqList'
 import { StyledContainer } from '../components/global/Container/Container.styled'
@@ -10,6 +10,7 @@ import getConferenceDates from '../config/dates'
 import getFaqs from '../config/faqs'
 import { TicketPurchasingOptions, TicketsProvider } from '../config/types'
 import Page from '../layouts/main'
+import { Tito } from '../components/global/Tito/Tito'
 
 class TicketPage extends React.Component<WithPageMetadataProps> {
   static getInitialProps({ res }) {
@@ -48,7 +49,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
       return <Error statusCode={404} />
     }
 
-    let ticketFrame: any
+    let ticketFrame: ReactElement
 
     if (conference.TicketsProviderId === TicketsProvider.Eventbrite) {
       ticketFrame = (
@@ -61,9 +62,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
         />
       )
     } else if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      ticketFrame = React.createElement('tito-widget', {
-        event: `${conference.TicketsProviderAccountId}/${conference.TicketsProviderEventId}`,
-      })
+      ticketFrame = <Tito accountId={conference.TicketsProviderAccountId} eventId={conference.TicketsProviderEventId} />
     }
 
     return (
