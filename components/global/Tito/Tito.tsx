@@ -1,11 +1,15 @@
 import React from 'react'
 import { TitoStyledWrapper } from './Tito.styled'
-import Conference from '../../../config/conference'
 
-export const Tito: React.FC = () => (
+interface TitoProps {
+  accountId: string
+  eventId: string
+}
+
+export const Tito: React.FC<TitoProps> = ({ accountId, eventId }) => (
   <TitoStyledWrapper>
     {React.createElement('tito-widget', {
-      event: `${Conference.TicketsProviderAccountId}/${Conference.TicketsProviderEventId}`,
+      event: `${accountId}/${eventId}`,
     })}
   </TitoStyledWrapper>
 )

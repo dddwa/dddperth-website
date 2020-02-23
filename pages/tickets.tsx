@@ -62,7 +62,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
         />
       )
     } else if (conference.TicketsProviderId === TicketsProvider.Tito) {
-      ticketFrame = <Tito />
+      ticketFrame = <Tito accountId={conference.TicketsProviderAccountId} eventId={conference.TicketsProviderEventId} />
     }
 
     return (
