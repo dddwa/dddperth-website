@@ -11,8 +11,8 @@ interface From2019 {
 
 export const From2019: From2019 = {
   YouTubePlaylistUrl: 'https://www.youtube.com/watch?v=rDzlITb-Ro8&list=PLkLJSte3oodR5ibzOgr7LsGsVXPdP70kE',
-  YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/watch?v=rDzlITb-Ro8',
-  YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/watch?v=Im-PgWfRyF8',
+  YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/rDzlITb-Ro8',
+  YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/Im-PgWfRyF8',
   FlickrAlbumUrl: 'https://www.flickr.com/photos/135003652@N08/albums/72157711972856726',
   HandbookUrl: '/static/docs/handbook2019.pdf',
   Sponsors: [

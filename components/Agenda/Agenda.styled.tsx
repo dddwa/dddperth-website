@@ -5,7 +5,11 @@ import styled from '../utils/styles/theme'
 const rowBackgroundColor = '#f9f9f9'
 const cellBorder = '1px solid #ddd'
 
-export const StyledAgendaRow = styled('section')({
+interface StyledAgendaRowProps {
+  tracks?: number
+}
+
+export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks = 6 }) => ({
   display: 'grid',
   gridTemplateColumns: `repeat(2, 1fr)`,
   backgroundColor: rowBackgroundColor,
@@ -24,23 +28,23 @@ export const StyledAgendaRow = styled('section')({
       borderRight: 0,
     },
 
-    '& > section:nth-last-child(n+3)': {
+    [`& > section:nth-last-child(n+${Math.floor(tracks / 2)})`]: {
       borderBottom: cellBorder,
     },
   },
 
   [breakpointBetween('xs', 'sm')]: {
-    '& > section:nth-child(3n+1)': {
+    [`& > section:nth-child(${Math.floor(tracks / 2)}n+1)`]: {
       borderRight: 0,
     },
 
-    '& > section:nth-last-child(n+4)': {
+    [`& > section:nth-last-child(n+${Math.floor(tracks / 2) + 1})`]: {
       borderBottom: cellBorder,
     },
   },
 
   [breakpoint('xs')]: {
-    gridTemplateColumns: `repeat(3, 1fr)`,
+    gridTemplateColumns: `repeat(${Math.floor(tracks / 2)}, 1fr)`,
   },
 
   [breakpoint('sm')]: {
@@ -49,7 +53,7 @@ export const StyledAgendaRow = styled('section')({
       borderRight: cellBorder,
     },
   },
-})
+}))
 StyledAgendaRow.displayName = 'StyledAgendaRow'
 
 export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
