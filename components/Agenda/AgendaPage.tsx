@@ -36,7 +36,7 @@ export const agendaPage = (
 
           <WrappedComponent sessions={sessions} />
 
-          <AllAgendas conference={conference} dates={dates} conferenceInstance="2019" />
+          <AllAgendas conference={conference} dates={dates} conferenceInstance={externalProps.conferenceInstance} />
         </div>
       </Page>
     )

@@ -16,6 +16,8 @@ import { StyledAgendaPresenter } from '../../components/Agenda/AgendaSession.sty
 import { Session, SponsorType } from '../../config/types'
 import moment from 'moment'
 import Sponsors from '../../components/sponsors'
+import ResponsiveVideo from '../../components/responsiveVideo'
+import { SafeLink } from '../../components/global/safeLink'
 
 const agendaParams: AgendaPageParameters = {
   conferenceInstance: '2019',
@@ -223,8 +225,22 @@ const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
       <h2>Handbook</h2>
       <p>
         <a className="btn btn-pdf" href={From2019.HandbookUrl}>
-          Download handbook (PDF)
+          Download 2019 handbook (PDF)
         </a>
+      </p>
+      <h2>Media</h2>
+      <div className="text-center">
+        <ResponsiveVideo src={From2019.YouTubeKeynoteEmbedUrl} />
+        <ResponsiveVideo src={From2019.YouTubeLocknoteEmbedUrl} />
+      </div>
+      <p>
+        <SafeLink href={From2019.YouTubePlaylistUrl} target="_blank">
+          YouTube Playlist
+        </SafeLink>{' '}
+        |{' '}
+        <SafeLink href={From2019.FlickrAlbumUrl} target="_blank">
+          Flickr Album
+        </SafeLink>
       </p>
       <Sponsors
         show={true}

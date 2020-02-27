@@ -104,12 +104,19 @@ const From2018: From2018 = {
       url: 'https://mechanicalrock.io/',
     },
     {
-      id: 'yow-perth',
+      id: 'yow-perth-keynote',
       imageUrl: '/static/images/sponsors/yow-perth.png',
       name: 'YOW! Perth',
       serviceProvided: 'Keynote',
       type: SponsorType.Service,
       url: 'http://west.yowconference.com.au/',
+    },
+    {
+      id: 'bankwest',
+      imageUrl: '/static/images/sponsors/bankwest.png',
+      name: 'Bankwest',
+      type: SponsorType.Standard,
+      url: 'https://www.bankwest.com.au/',
     },
     // Standard
     {
