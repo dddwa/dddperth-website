@@ -4,6 +4,7 @@ import AllAgendas from '../allAgendas'
 import Page from '../../layouts/main'
 import React from 'react'
 import { NextPage } from 'next'
+import { mapSessions } from '../utils/mapSession'
 
 export interface AgendaPageParameters {
   conferenceInstance: string
@@ -54,7 +55,13 @@ export const agendaPage = (
         return {} as PageWithAgendaProps
       }
 
-      const body = await response.json()
+      let body = await response.json()
+
+      if (body[0].SessionId) {
+        // Old session structure mapped to new session structure
+        body = mapSessions(body)
+      }
+
       return { sessions: body } as PageWithAgendaProps
     }
 
