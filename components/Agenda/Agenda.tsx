@@ -15,6 +15,8 @@ interface AgendaProps {
   sessionsUrl: string
   acceptingFeedback: boolean
   feedbackLink?: string
+  hideTags?: boolean
+  hideLevel?: boolean
   render: (sessions: Session[], nextSessionGroup: SessionGroup, onSelect: onSelectCallback) => React.ReactElement
 }
 
@@ -102,8 +104,8 @@ export const Agenda: React.FC<AgendaProps> = props => {
             session={sessionState.selectedSession}
             showPresenters={true}
             showBio={true}
-            hideTags={false}
-            hideLevelAndFormat={false}
+            hideTags={props.hideTags}
+            hideLevelAndFormat={props.hideLevel}
           />
 
           {props.acceptingFeedback && (

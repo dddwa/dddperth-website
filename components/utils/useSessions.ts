@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import React from 'react'
 import { Session } from '../../config/types'
+import { mapSessions } from './mapSession'
 
 interface SessionState {
   sessions?: Session[]
@@ -51,7 +52,12 @@ export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
           return response.json()
         })
         .then(body => {
-          dispatch({ type: 'loaded', sessions: body })
+          let sessions = body
+          if (sessions[0].SessionId) {
+            // Map old session structure to new session structure
+            sessions = mapSessions(sessions)
+          }
+          dispatch({ type: 'loaded', sessions })
         })
         .catch(error => {
           dispatch({ type: 'error' })
@@ -78,6 +84,10 @@ export async function fetchSessions(sessionsAPI: string) {
     return false
   }
 
-  const body = await response.json()
+  let body = await response.json()
+  if (body[0].SessionId) {
+    // Map old session structure to new session structure
+    body = mapSessions(body)
+  }
   return body as Session[]
 }
