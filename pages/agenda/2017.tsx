@@ -10,7 +10,6 @@ import Sponsors from '../../components/sponsors'
 import moment from 'moment'
 import { Agenda } from '../../components/Agenda/Agenda'
 import { AgendaProvider } from '../../components/Agenda/AgendaContext'
-import { From2019 } from '../../config/2019'
 import {
   StyledAgendaRowList,
   StyledAgendaRow,
@@ -44,7 +43,7 @@ const Agenda2017: React.FC<AgendaPageProps & { sessions: Session[] }> = ({ sessi
             <AgendaProvider
               onSelect={onSelect}
               sessions={agendaSessions}
-              sponsors={From2019.Sponsors}
+              sponsors={From2017.Sponsors}
               rooms={['RR5', 'M6', 'RR4']}
             >
               <p>Tap on a session to see more details...</p>
