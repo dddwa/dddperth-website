@@ -43,6 +43,7 @@ const Agenda2018: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
               sponsors={From2018.Sponsors}
               rooms={['RR4', 'M3', 'M2', 'M1']}
             >
+              <p>Tap on a session to see more details...</p>
               <StyledAgendaRowList>
                 <li>Time</li>
                 <li>RR4</li>
