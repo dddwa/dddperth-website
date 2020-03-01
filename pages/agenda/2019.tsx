@@ -26,7 +26,7 @@ const agendaParams: AgendaPageParameters = {
 }
 
 const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ sessions }) => {
-  const date = moment.parseZone('2019-06-23T08:00:00+08:00')
+  const date = moment.parseZone('2019-08-03T08:00+08:00')
 
   return (
     <Fragment>
