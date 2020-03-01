@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { AgendaPageParameters, AgendaPageProps } from '../../components/dddAgendaPage'
 import { SafeLink } from '../../components/global/safeLink'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import ResponsiveVideo from '../../components/responsiveVideo'
@@ -7,7 +6,7 @@ import Sponsors from '../../components/sponsors'
 import From2016 from '../../config/2016'
 import { SponsorType, Session } from '../../config/types'
 import moment from 'moment'
-import { agendaPage } from '../../components/Agenda/AgendaPage'
+import { AgendaPageParameters, agendaPage } from '../../components/Agenda/AgendaPage'
 import { Agenda } from '../../components/Agenda/Agenda'
 import { AgendaProvider } from '../../components/Agenda/AgendaContext'
 import {
@@ -26,7 +25,7 @@ const agendaParams: AgendaPageParameters = {
   sessionsUrl: '/static/agenda/2016.json',
 }
 
-const Agenda2016: React.FC<AgendaPageProps & { sessions: Session[] }> = ({ sessions }) => {
+const Agenda2016: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ sessions }) => {
   const date = moment.parseZone('2016-08-27T08:30:00+08:00')
 
   return (
