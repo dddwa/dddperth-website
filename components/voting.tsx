@@ -1,7 +1,6 @@
 import moment from 'moment'
 import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
-import { Panel } from 'react-bootstrap'
 import { getSessionId, logException } from '../components/global/analytics'
 import '../components/utils/arrayExtensions'
 import { SessionPanel } from '../components/Voting/sessionPanel'
@@ -224,17 +223,20 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       .filter(
         s =>
           this.state.show !== 'all' ||
-          (this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t))),
+          this.state.tagFilters.length === 0 ||
+          this.state.tagFilters.some(t => s.Tags.includes(t)),
       )
       .filter(
         s =>
           this.state.show !== 'all' ||
-          (this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l)),
+          this.state.levelFilters.length === 0 ||
+          this.state.levelFilters.some(l => s.Level === l),
       )
       .filter(
         s =>
           this.state.show !== 'all' ||
-          (this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f)),
+          this.state.formatFilters.length === 0 ||
+          this.state.formatFilters.some(f => s.Format === f),
       )
       .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
       .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
@@ -258,8 +260,22 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       <React.Fragment>
         <div ref={this.votingTopRef} />
         <StyledVotingPanel>
-          <Panel className="voting-control form-inline">
-            <Panel.Heading>
+          <div
+            className="voting-control form-inline"
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 4,
+              border: '1px solid #ddd',
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: '#f5f5f5',
+                color: '#333',
+                padding: 15,
+                borderBottom: '1px solid #ddd',
+              }}
+            >
               {this.state.submitted && (
                 <p className="alert alert-success">
                   You've submitted your vote for this year :) Thanks! &lt;3 {this.props.conferenceName} team
@@ -280,8 +296,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   </a>
                 </React.Fragment>
               )}
-            </Panel.Heading>
-            <Panel.Body>
+            </div>
+            <div
+              style={{
+                padding: 15,
+              }}
+            >
               <em>View:</em>{' '}
               <div className="btn-group" role="group">
                 <button
@@ -308,8 +328,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   )
                 </button>
               </div>
-            </Panel.Body>
-          </Panel>
+            </div>
+          </div>
         </StyledVotingPanel>
         <h2>
           {this.state.show === 'all'
