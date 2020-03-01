@@ -83,7 +83,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   <StyledTrackHeader>Morning tea</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
-              <StyledAgendaRow>
+              <StyledAgendaRow tracks={agendaParams.numTracks}>
                 <AgendaTime time={date.clone().set({ hour: 10, minutes: 20 })} />
                 <AgendaSession room={0} sessionId="1d419392-76d0-44e3-904c-a5bec3cfc551" />
                 <AgendaSession room={1} sessionId="799ef773-81c2-4c58-b942-64a1152cbf2e" />
@@ -94,7 +94,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   <StyledTrackHeader>Changeover</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
-              <StyledAgendaRow>
+              <StyledAgendaRow tracks={agendaParams.numTracks}>
                 <AgendaTime time={date.clone().set({ hour: 11, minutes: 10 })} />
                 <AgendaSession room={0} sessionId="fc7289f8-575d-4d65-992b-51d1ee218334" />
                 <AgendaSession room={1} sessionId="3a6d6a60-74b5-4dea-93b5-985f91f340f3" />
@@ -105,7 +105,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   <StyledTrackHeader>Lunch</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
-              <StyledAgendaRow>
+              <StyledAgendaRow tracks={agendaParams.numTracks}>
                 <AgendaTime time={date.clone().set({ hour: 12, minutes: 55 })} />
                 <AgendaSession room={0} sessionId="3cce7ebd-b91e-40e5-aa86-4dc9830a7e84" />
                 <AgendaSession room={1} sessionId="5a2911ec-207d-45ca-a6fa-11892bb92bbd" />
@@ -116,7 +116,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   <StyledTrackHeader>Changeover</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
-              <StyledAgendaRow>
+              <StyledAgendaRow tracks={agendaParams.numTracks}>
                 <AgendaTime time={date.clone().set({ hour: 13, minutes: 45 })} />
                 <AgendaSession room={0} sessionId="674f1340-94a4-43b2-b8ec-0a93f7b80060" />
                 <AgendaSession room={1} sessionId="44d4e2ec-108c-4142-a7ce-4bf75480f30d" />
@@ -127,7 +127,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   <StyledTrackHeader>Afternoon tea</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
-              <StyledAgendaRow>
+              <StyledAgendaRow tracks={agendaParams.numTracks}>
                 <AgendaTime time={date.clone().set({ hour: 14, minutes: 50 })} />
                 <AgendaSession room={0} sessionId="d07b5bd2-32f9-4e61-8232-5bcf3572d111" />
                 <AgendaSession room={1} sessionId="2e79c7bf-0a42-4fa2-b9c2-96963648377f" />
