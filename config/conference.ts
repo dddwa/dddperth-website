@@ -19,7 +19,7 @@ const date = moment.parseZone('2020-08-01T08:00+08:00')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2015
-const registrationOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
+const registrationOpenFrom = moment.parseZone('2020-04-30T08:00:00+08:00')
 const registrationOpenUntil = hideDate
   ? null
   : date
@@ -27,13 +27,11 @@ const registrationOpenUntil = hideDate
       .add(-1, 'd')
       .startOf('day')
       .add(17, 'h')
-const presentationSubmissionsOpenFrom = moment.parseZone('2019-04-30T08:00:00+08:00')
-const presentationSubmissionsOpenUntil = moment.parseZone('2019-06-02T23:59:59+08:00')
-const votingOpenFrom = moment.parseZone('2019-06-08T17:00:00+08:00')
-const votingOpenUntil = moment.parseZone('2019-06-16T23:59:59+08:00')
-// This is not the date for 2020 - using it to hide the agenda for now.
-// TODO: Update to actual date when known
-const agendaPublishedFrom = moment.parseZone('2020-06-23T17:00:00+08:00')
+const presentationSubmissionsOpenFrom = moment.parseZone('2020-04-24T08:00:00+08:00')
+const presentationSubmissionsOpenUntil = moment.parseZone('2020-05-31T23:59:59+08:00')
+const votingOpenFrom = moment.parseZone('2020-06-05T17:00:00+08:00')
+const votingOpenUntil = moment.parseZone('2020-06-14T23:59:59+08:00')
+const agendaPublishedFrom = moment.parseZone('2020-07-17T17:00:00+08:00')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
