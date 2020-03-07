@@ -153,6 +153,8 @@ const Conference: IConference = {
     Email: 'info@dddperth.com',
     MailingList: 'http://eepurl.com/cRvaSf',
     GitHub: 'dddwa',
+    Instagram: 'dddperth',
+    Linkedin: 'ddd-wa-inc',
   },
 
   ImageStrip: [

@@ -149,6 +149,7 @@ export interface Socials {
   Blog?: string
   Email?: string
   MailingList?: string
+  Linkedin?: string
 }
 
 export interface ImportantContacts {

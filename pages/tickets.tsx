@@ -9,8 +9,8 @@ import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import getFaqs from '../config/faqs'
 import { TicketPurchasingOptions, TicketsProvider } from '../config/types'
-import Page from '../layouts/main'
 import { Tito } from '../components/global/Tito/Tito'
+import { Main } from '../layouts/main'
 
 class TicketPage extends React.Component<WithPageMetadataProps> {
   static getInitialProps({ res }) {
@@ -66,7 +66,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
     }
 
     return (
-      <Page
+      <Main
         pageMetadata={this.props.pageMetadata}
         title="Tickets"
         description={`Purchase tickets for ${conference.Name}`}
@@ -83,7 +83,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
           <FaqList faqs={faqs.filter(f => f.Category === 'tickets')} />
           {ticketFrame}
         </StyledContainer>
-      </Page>
+      </Main>
     )
   }
 }
