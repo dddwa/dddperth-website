@@ -9,7 +9,7 @@ import { fetchSessions } from '../components/utils/useSessions'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import { Session, SponsorType } from '../config/types'
-import Page from '../layouts/main'
+import { Main } from '../layouts/main'
 
 interface AgendaPageProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -47,12 +47,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     const dates = this.props.pageMetadata.dates
 
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
-        title="Agenda"
-        hideBanner={true}
-        description={conference.Name + ' agenda.'}
-      >
+      <Main pageMetadata={this.props.pageMetadata} title="Agenda" description={conference.Name + ' agenda.'}>
         <div className="container">
           <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
 
@@ -98,7 +93,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             dates={this.props.pageMetadata.dates}
           />
         </div>
-      </Page>
+      </Main>
     )
   }
 }

@@ -4,7 +4,7 @@ import React from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
 import Conference from '../config/conference'
-import Page from '../layouts/main'
+import { Main } from '../layouts/main'
 
 class VenuePage extends React.Component<WithPageMetadataProps> {
   static getInitialProps({ res }) {
@@ -23,12 +23,7 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
       return <Error statusCode={404} />
     }
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
-        title="Venue"
-        description={'About the ' + conference.Name + ' venue.'}
-        hideBanner={true}
-      >
+      <Main pageMetadata={this.props.pageMetadata} title="Venue" description={`About the ${conference.Name} venue.`}>
         <div className="container">
           <h1>Venue</h1>
           <p>
@@ -131,7 +126,7 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
             )}
           </div>
         </section>
-      </Page>
+      </Main>
     )
   }
 }

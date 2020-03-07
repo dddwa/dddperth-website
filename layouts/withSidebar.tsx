@@ -2,7 +2,7 @@ import { StatelessComponent } from 'react'
 import EventDetailsSummary from '../components/eventDetailsSummary'
 import { ImportantDatesList } from '../components/ImportantDatesList/importantDatesList'
 import getConferenceActions from '../config/actions'
-import Main, { MainProps } from './main'
+import { Main, MainProps } from './main'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface WithSidebarProps extends MainProps {}
