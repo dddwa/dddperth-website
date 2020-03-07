@@ -48,7 +48,6 @@
     "@types/uuid": "^3.4.5",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "@zeit/next-sass": "^1.0.1",
     "cross-env": "^5.2.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.1",
