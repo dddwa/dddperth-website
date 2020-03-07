@@ -1,7 +1,7 @@
 import { Session } from '../../config/types'
 import { WithPageMetadataProps } from '../global/withPageMetadata'
 import AllAgendas from '../allAgendas'
-import Page from '../../layouts/main'
+import { Main } from '../../layouts/main'
 import React from 'react'
 import { NextPage } from 'next'
 import { mapSessions } from '../utils/mapSession'
@@ -27,7 +27,7 @@ export const agendaPage = (
     const dates = pageMetadata.dates
 
     return (
-      <Page
+      <Main
         title={`${externalProps.conferenceInstance} Agenda`}
         description={`The agenda for ${conference.Name} ${externalProps.conferenceInstance}.`}
         pageMetadata={pageMetadata}
@@ -39,7 +39,7 @@ export const agendaPage = (
 
           <AllAgendas conference={conference} dates={dates} conferenceInstance={externalProps.conferenceInstance} />
         </div>
-      </Page>
+      </Main>
     )
   }
 
