@@ -32,7 +32,7 @@ import { fetchSessions, useSessions } from '../components/utils/useSessions'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import { Session } from '../config/types'
-import Page from '../layouts/main'
+import { Main } from '../layouts/main'
 import { NextPage } from 'next'
 
 interface FeedbackFormState {
@@ -95,10 +95,9 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
   })
 
   return (
-    <Page
+    <Main
       pageMetadata={pageMetadata}
       title="Feedback"
-      hideBanner={true}
       description={`${conference.Name} ${conference.Instance} session feedback.`}
     >
       <StyledContainer>
@@ -237,7 +236,7 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
           </StyledForm>
         )}
       </StyledContainer>
-    </Page>
+    </Main>
   )
 }
 

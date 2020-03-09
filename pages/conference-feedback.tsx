@@ -24,7 +24,7 @@ import { useDeviceId } from '../components/utils/useDeviceId'
 import { useForm } from '../components/utils/useForm'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import Page from '../layouts/main'
+import { Main } from '../layouts/main'
 import { NextPage } from 'next'
 
 interface FeedbackFormState {
@@ -78,10 +78,9 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
   })
 
   return (
-    <Page
+    <Main
       pageMetadata={pageMetadata}
       title="Conference Feedback"
-      hideBanner={true}
       description={`${conference.Name} ${conference.Instance} feedback`}
     >
       <StyledContainer>
@@ -171,7 +170,7 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
           </StyledSubmitButton>
         </StyledForm>
       </StyledContainer>
-    </Page>
+    </Main>
   )
 }
 
