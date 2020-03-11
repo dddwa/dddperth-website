@@ -1,42 +1,30 @@
-import { StatelessComponent } from 'react'
+import React from 'react'
 import EventDetailsSummary from '../components/eventDetailsSummary'
 import { ImportantDatesList } from '../components/ImportantDatesList/importantDatesList'
 import getConferenceActions from '../config/actions'
-import { Main, MainProps } from './main'
+import { TemplateProps, Template } from './template'
+import { StyledSidebarContainer } from './Layouts.styled'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface WithSidebarProps extends MainProps {}
+interface PageWithSidebarProps extends TemplateProps {}
 
-const WithSidebar: StatelessComponent<WithSidebarProps> = ({ children, pageMetadata, ...props }, context) => (
-  <Main pageMetadata={pageMetadata} {...props}>
-    <section className="right-sidebar">
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12 col-sm-7 col-md-7 col-lg-8 left-col">{children}</div>
-          <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4 right-col">
-            <div className="inner">
-              <EventDetailsSummary
-                conference={pageMetadata.conference}
-                dates={pageMetadata.dates}
-                primaryAction={
-                  getConferenceActions(pageMetadata.conference, pageMetadata.dates).filter(
-                    a => a.Url !== pageMetadata.pagePath,
-                  )[0]
-                }
-                pagePath={context.pagePath}
-              />
-              <h2>Important Dates</h2>
-              <ImportantDatesList
-                layout="inline"
-                conference={pageMetadata.conference}
-                currentDate={pageMetadata.currentDate}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </Main>
-)
-
-export default WithSidebar
+export const PageWithSidebar: React.FC<PageWithSidebarProps> = ({ children, metadata, title, description, image }) => {
+  return (
+    <Template title={title} description={description} image={image} metadata={metadata}>
+      <StyledSidebarContainer>
+        <main>{children}</main>
+        <aside>
+          <EventDetailsSummary
+            conference={metadata.conference}
+            dates={metadata.dates}
+            primaryAction={
+              getConferenceActions(metadata.conference, metadata.dates).filter(a => a.Url !== metadata.pagePath)[0]
+            }
+          />
+          <h2>Important Dates</h2>
+          <ImportantDatesList layout="inline" conference={metadata.conference} currentDate={metadata.currentDate} />
+        </aside>
+      </StyledSidebarContainer>
+    </Template>
+  )
+}

@@ -96,7 +96,7 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
 
   return (
     <Main
-      pageMetadata={pageMetadata}
+      metadata={pageMetadata}
       title="Feedback"
       description={`${conference.Name} ${conference.Instance} session feedback.`}
     >

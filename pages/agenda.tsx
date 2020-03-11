@@ -47,7 +47,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     const dates = this.props.pageMetadata.dates
 
     return (
-      <Main pageMetadata={this.props.pageMetadata} title="Agenda" description={conference.Name + ' agenda.'}>
+      <Main metadata={this.props.pageMetadata} title="Agenda" description={conference.Name + ' agenda.'}>
         <div className="container">
           <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
 
