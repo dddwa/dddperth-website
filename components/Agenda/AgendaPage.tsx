@@ -30,7 +30,7 @@ export const agendaPage = (
       <Main
         title={`${externalProps.conferenceInstance} Agenda`}
         description={`The agenda for ${conference.Name} ${externalProps.conferenceInstance}.`}
-        pageMetadata={pageMetadata}
+        metadata={pageMetadata}
       >
         <div className="container">
           <h1>{externalProps.conferenceInstance} Agenda</h1>

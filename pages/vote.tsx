@@ -182,7 +182,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
 
     return (
       <Main
-        pageMetadata={this.props.pageMetadata}
+        metadata={this.props.pageMetadata}
         title="Vote"
         description={`${this.props.pageMetadata.conference.Name} voting page.`}
       >

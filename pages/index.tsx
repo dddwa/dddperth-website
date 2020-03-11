@@ -27,7 +27,7 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
     const dates = this.props.pageMetadata.dates
     const actions = getConferenceActions(conference, dates)
     return (
-      <Main pageMetadata={this.props.pageMetadata} title="Home">
+      <Main metadata={this.props.pageMetadata} title="Home">
         <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} />
         <ImportantDates conference={conference} actions={actions} currentDate={this.props.pageMetadata.currentDate} />
         <Keynotes conference={conference} />

@@ -7,7 +7,7 @@ import withPageMetadata, { WithPageMetadataProps } from '../components/global/wi
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
-import Page from '../layouts/withSidebar'
+import { PageWithSidebar } from '../layouts/withSidebar'
 
 class CFPPage extends React.Component<WithPageMetadataProps> {
   static getInitialProps({ res }) {
@@ -29,8 +29,8 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
     const dates = this.props.pageMetadata.dates
     const conference = this.props.pageMetadata.conference
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
+      <PageWithSidebar
+        metadata={this.props.pageMetadata}
         title="Call For Presentations (CFP)"
         description={conference.Name + ' Call For Presentations (CFP) page.'}
       >
@@ -143,7 +143,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
             Edit your session(s) via Sessionize
           </SafeLink>
         </p>
-      </Page>
+      </PageWithSidebar>
     )
   }
 }

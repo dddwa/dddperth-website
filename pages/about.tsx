@@ -3,10 +3,14 @@ import React from 'react'
 import { SafeLink } from '../components/global/safeLink'
 import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Page from '../layouts/withSidebar'
+import { PageWithSidebar } from '../layouts/withSidebar'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page pageMetadata={props.pageMetadata} title="About" description="The goal and history of DDD Perth and DDD WA Inc.">
+  <PageWithSidebar
+    metadata={props.pageMetadata}
+    title="About"
+    description="The goal and history of DDD Perth and DDD WA Inc."
+  >
     <h1>About DDD Perth</h1>
     <p>
       {props.pageMetadata.conference.TagLine}. {props.pageMetadata.conference.Goal} We do this by:
@@ -129,5 +133,5 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         <img src="/static/images/logo-dddbrisbane-2019.jpg" alt="DDD Brisbane logo" style={{ height: '125px' }} />
       </SafeLink>
     </p>
-  </Page>
+  </PageWithSidebar>
 ))
