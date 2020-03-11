@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Page from '../layouts/withSidebar'
+import { PageWithSidebar } from '../layouts/withSidebar'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page
-    pageMetadata={props.pageMetadata}
+  <PageWithSidebar
+    metadata={props.pageMetadata}
     title="Code of Conduct"
     description={'Code of Conduct for ' + props.pageMetadata.conference.Name + '.'}
   >
@@ -223,5 +223,5 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </p>
 
     <p>Last update: 30 Apr 2018</p>
-  </Page>
+  </PageWithSidebar>
 ))
