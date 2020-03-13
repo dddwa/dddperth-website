@@ -2,10 +2,14 @@ import Link from 'next/link'
 import React from 'react'
 import { StyledList } from '../components/global/text'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Page from '../layouts/withSidebar'
+import { PageWithSidebar } from '../layouts/withSidebar'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page pageMetadata={props.pageMetadata} title="Sponsorship" description="Sponsorship opportunities for DDD Perth.">
+  <PageWithSidebar
+    metadata={props.pageMetadata}
+    title="Sponsorship"
+    description="Sponsorship opportunities for DDD Perth."
+  >
     <h1>Sponsorship</h1>
 
     <p>
@@ -78,5 +82,5 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
         Explore sponsorship opportunities
       </a>
     </p>
-  </Page>
+  </PageWithSidebar>
 ))

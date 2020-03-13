@@ -23,7 +23,7 @@ class VenuePage extends React.Component<WithPageMetadataProps> {
       return <Error statusCode={404} />
     }
     return (
-      <Main pageMetadata={this.props.pageMetadata} title="Venue" description={`About the ${conference.Name} venue.`}>
+      <Main metadata={this.props.pageMetadata} title="Venue" description={`About the ${conference.Name} venue.`}>
         <div className="container">
           <h1>Venue</h1>
           <p>

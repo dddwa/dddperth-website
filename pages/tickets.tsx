@@ -66,11 +66,7 @@ class TicketPage extends React.Component<WithPageMetadataProps> {
     }
 
     return (
-      <Main
-        pageMetadata={this.props.pageMetadata}
-        title="Tickets"
-        description={`Purchase tickets for ${conference.Name}`}
-      >
+      <Main metadata={this.props.pageMetadata} title="Tickets" description={`Purchase tickets for ${conference.Name}`}>
         <StyledContainer>
           <h1>Tickets</h1>
           {this.props.pageMetadata.conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen && (

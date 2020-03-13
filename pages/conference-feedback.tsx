@@ -79,7 +79,7 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
 
   return (
     <Main
-      pageMetadata={pageMetadata}
+      metadata={pageMetadata}
       title="Conference Feedback"
       description={`${conference.Name} ${conference.Instance} feedback`}
     >
