@@ -12,7 +12,7 @@ export const PageWithSidebar: React.FC<PageWithSidebarProps> = ({ children, meta
   return (
     <Template title={title} description={description} image={image} metadata={metadata}>
       <StyledSidebarContainer>
-        <main>{children}</main>
+        <main id="content">{children}</main>
         <aside>
           <EventDetailsSummary
             conference={metadata.conference}

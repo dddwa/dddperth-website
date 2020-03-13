@@ -7,6 +7,6 @@ interface MainProps extends TemplateProps {}
 
 export const Main: React.FC<MainProps> = ({ title, description, image, metadata, children }) => (
   <Template title={title} description={description} image={image} metadata={metadata}>
-    <StyledMain>{children}</StyledMain>
+    <StyledMain id="content">{children}</StyledMain>
   </Template>
 )
