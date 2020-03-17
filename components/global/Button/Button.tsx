@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyledButton, StyledLinkButton } from './Button.styled'
+import { StyledButton, StyledLinkButton, StyledButtonAnchor } from './Button.styled'
 
 export type ButtonKinds = 'primary' | 'secondary' | 'tertiary' | 'inverse' | 'link'
-export type Size = 'small' | 'normal'
+export type Size = 'small' | 'normal' | 'lg'
 
 export interface ButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -18,3 +18,20 @@ export const Button: React.FC<ButtonProps> = props => {
     </Component>
   )
 }
+
+interface ButtonAnchorProps
+  extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+  kind: ButtonKinds
+  size?: Size
+}
+
+export const ButtonAnchor: React.FC<ButtonAnchorProps> = ({
+  children,
+  kind = 'secondary',
+  size = 'normal',
+  ...props
+}) => (
+  <StyledButtonAnchor kind={kind} size={size} {...props}>
+    {children}
+  </StyledButtonAnchor>
+)
