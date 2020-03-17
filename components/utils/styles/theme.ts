@@ -6,8 +6,10 @@ export const theme = {
     black: '#000',
     grey800: '#4E5052',
     grey300: '#E6EAEA',
+    grey400: '#bec1c0',
     grey100: '#F4F7F6',
     dddpink: '#D2438E',
+    dddpink600: '#be2373',
     ///////////////////////////
     primary: '#008554',
     primary150: '#003924',
