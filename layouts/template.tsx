@@ -8,6 +8,7 @@ import { TestingControl } from '../components/TestingControl/TestingControl'
 import { Header } from '../components/global/Header/Header'
 import { Nav } from '../components/global/Nav/Nav'
 import Menu from '../config/menu'
+import { ActionBar } from '../components/ActionBar/ActionBar'
 
 export interface TemplateProps {
   metadata: PageMetadata
@@ -33,6 +34,7 @@ export const Template: React.FC<TemplateProps> = ({ metadata, children, title, d
       <Header metadata={metadata} />
       <Nav menu={Menu(metadata.conference, metadata.dates).Top} />
     </NavigationProvider>
+    <ActionBar metadata={metadata} />
     {children}
     <Footer
       menu={Menu(metadata.conference, metadata.dates).Footer}
