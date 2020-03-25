@@ -17,32 +17,32 @@ export interface TemplateProps {
   image?: string
 }
 
-export const Template: React.FC<TemplateProps> = ({ metadata, children, title, description, image }) => (
-  <Fragment>
-    <Meta
-      pageUrl={metadata.pageUrl}
-      pageTitle={title}
-      instrumentationKey={metadata.appConfig.instrumentationKey}
-      pageDescription={description}
-      pageImage={image}
-      conference={metadata.conference}
-      dates={metadata.dates}
-      googleAnalyticsId={metadata.conference.GoogleAnalyticsId}
-    />
-    <SkipToContent />
-    <NavigationProvider>
-      <Header metadata={metadata} />
-      <Nav menu={Menu(metadata.conference, metadata.dates).Top} />
-    </NavigationProvider>
-    <ActionBar metadata={metadata} />
-    {children}
-    <Footer
-      menu={Menu(metadata.conference, metadata.dates).Footer}
-      socials={metadata.conference.Socials}
-      conference={metadata.conference}
-    />
-    {metadata.appConfig.testingMode && (
-      <TestingControl currentDate={metadata.currentDate} conference={metadata.conference} />
-    )}
-  </Fragment>
-)
+export const Template: React.FC<TemplateProps> = ({ metadata, children, title, description, image }) => {
+  const menu = Menu(metadata.conference, metadata.dates)
+
+  return (
+    <Fragment>
+      <Meta
+        pageUrl={metadata.pageUrl}
+        pageTitle={title}
+        instrumentationKey={metadata.appConfig.instrumentationKey}
+        pageDescription={description}
+        pageImage={image}
+        conference={metadata.conference}
+        dates={metadata.dates}
+        googleAnalyticsId={metadata.conference.GoogleAnalyticsId}
+      />
+      <SkipToContent />
+      <NavigationProvider>
+        <Header metadata={metadata} />
+        <Nav menu={menu.Top} />
+      </NavigationProvider>
+      <ActionBar metadata={metadata} />
+      {children}
+      <Footer menu={menu.Footer} socials={metadata.conference.Socials} conference={metadata.conference} />
+      {metadata.appConfig.testingMode && (
+        <TestingControl currentDate={metadata.currentDate} conference={metadata.conference} />
+      )}
+    </Fragment>
+  )
+}
