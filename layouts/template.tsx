@@ -9,15 +9,17 @@ import { Header } from '../components/global/Header/Header'
 import { Nav } from '../components/global/Nav/Nav'
 import Menu from '../config/menu'
 import { ActionBar } from '../components/ActionBar/ActionBar'
+import { Hero } from '../components/Hero/hero'
 
 export interface TemplateProps {
   metadata: PageMetadata
   title: string
   description?: string
   image?: string
+  showHero?: boolean
 }
 
-export const Template: React.FC<TemplateProps> = ({ metadata, children, title, description, image }) => {
+export const Template: React.FC<TemplateProps> = ({ metadata, children, title, description, image, showHero }) => {
   const menu = Menu(metadata.conference, metadata.dates)
 
   return (
@@ -38,6 +40,7 @@ export const Template: React.FC<TemplateProps> = ({ metadata, children, title, d
         <Nav menu={menu.Top} />
       </NavigationProvider>
       <ActionBar metadata={metadata} />
+      {showHero && <Hero />}
       {children}
       <Footer menu={menu.Footer} socials={metadata.conference.Socials} conference={metadata.conference} />
       {metadata.appConfig.testingMode && (

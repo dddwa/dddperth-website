@@ -17,7 +17,7 @@ export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const imageStrip = React.useRef(arrayShuffle(conference.ImageStrip))
 
   return (
-    <Main metadata={pageMetadata} title="Home">
+    <Main metadata={pageMetadata} title="Home" showHero={true}>
       <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} />
       <ImportantDates conference={conference} actions={actions} currentDate={pageMetadata.currentDate} />
       <Keynotes conference={conference} />
