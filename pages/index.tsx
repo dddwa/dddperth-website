@@ -32,7 +32,7 @@ class Index extends React.Component<IndexProps & WithPageMetadataProps> {
       <Page pageMetadata={this.props.pageMetadata} isHome={true} title="Home">
         <div className="container">
           <Alert kind="info">
-            <p>The DDD Perth Committee has regretfully postponed the 2019 conference to 2020.</p>
+            <p>The DDD Perth Committee has regretfully postponed the 2020 conference to 2021.</p>
             <p>
               The safety of all participants, from sponsors to speakers to attendees to volunteers, is our priority, and
               we will continue to find ways to connect and support the wider Perth community at this challenging time.
