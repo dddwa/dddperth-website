@@ -1,35 +1,31 @@
-import React, { StatelessComponent } from 'react'
-import { Socials } from '../../config/types'
-import { SafeLink } from './safeLink'
+import React from 'react'
+import { Socials } from '../../../config/types'
+import { SafeLink } from '../safeLink'
+import { StyledSocialLinks, StyledSocialLink } from './Footer.styled'
+import { FacebookIcon } from '../Icons/Facebook'
+import { InstagramIcon } from '../Icons/Instagram'
+import { TwitterIcon } from '../Icons/Twitter'
 
 interface SocialLinksArgs {
   socials: Socials
 }
 
-const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
-  <ul className="social">
+export const SocialLinks: React.FC<SocialLinksArgs> = ({ socials }) => (
+  <StyledSocialLinks>
     {socials.Twitter.Name && (
       <li>
-        <SafeLink
-          className="fa fa-twitter"
-          rel="noopener nofollow"
-          href={`https://twitter.com/${socials.Twitter.Name}`}
-          title="Twitter, will open in a new window"
-          aria-label="Twitter, will open in a new window"
-          target="_blank"
-        />
+        <StyledSocialLink href={`https://twitter.com/${socials.Twitter.Name}`} target="_blank" rel="noopener nofollow">
+          <TwitterIcon />
+          <span>Twitter, opens in new window</span>
+        </StyledSocialLink>
       </li>
     )}
     {socials.Facebook && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-facebook"
-          href={`https://facebook.com/${socials.Facebook}`}
-          title="Facebook, will open in a new window"
-          aria-label="Facebook, will open in a new window"
-          target="_blank"
-        />
+        <StyledSocialLink href={`https://facebook.com/${socials.Facebook}`} target="_blank" rel="noopener nofollow">
+          <FacebookIcon />
+          <span>Facebook, will open in a new window</span>
+        </StyledSocialLink>
       </li>
     )}
     {socials.GitHub && (
@@ -46,14 +42,14 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
     )}
     {socials.Instagram && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-instagram"
+        <StyledSocialLink
           href={`https://www.instagram.com/${socials.Instagram}`}
-          title="Instagram, will open in a new window"
-          aria-label="Instagram, will open in a new window"
           target="_blank"
-        />
+          rel="noopener nofollow"
+        >
+          <InstagramIcon />
+          <span>Instagram, opens in new window</span>
+        </StyledSocialLink>
       </li>
     )}
     {socials.Flickr && (
@@ -115,7 +111,5 @@ const SocialLinks: StatelessComponent<SocialLinksArgs> = ({ socials }) => (
         />
       </li>
     )}
-  </ul>
+  </StyledSocialLinks>
 )
-
-export default SocialLinks
