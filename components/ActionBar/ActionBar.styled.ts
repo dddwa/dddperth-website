@@ -17,7 +17,6 @@ export const StyledActionBarContainer = styled('div')(({ theme }) => ({
     display: 'none',
     flexGrow: 1,
     textAlign: 'center',
-    color: theme.colors.grey800,
 
     [breakpoint('lg')]: {
       display: 'block',

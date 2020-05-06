@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { SafeLink } from '../../components/global/safeLink'
 import withPageMetadata from '../../components/global/withPageMetadata'
-import Sponsors from '../../components/sponsors'
+import { Sponsors } from '../../components/Sponsors/sponsors'
 import From2015 from '../../config/2015'
 import { SponsorType, Session } from '../../config/types'
 import moment from 'moment'
@@ -70,7 +70,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                 <AgendaTime time={date.clone().set({ hour: 9, minutes: 15 })} />
                 <AgendaSession
                   sessionId="599fc187-2f4a-49d0-8531-2634467fb8f0"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -142,7 +142,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                 <AgendaTime time={date.clone().set({ hour: 16, minutes: 15 })} />
                 <AgendaSession
                   sessionId="4ccb057b-c3d1-472a-8ad9-83b9f1e17c14"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Locknote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -188,7 +188,7 @@ const Agenda2015: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
       <Sponsors
         show={true}
         hideUpsell={true}
-        sponsors={From2015.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
+        sponsors={From2015.Sponsors.filter((s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
       />
     </Fragment>
   )

@@ -3,7 +3,7 @@ import React from 'react'
 import AllAgendas from '../components/allAgendas'
 import { CurrentAgenda } from '../components/currentAgenda'
 import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Sponsors from '../components/sponsors'
+import { Sponsors } from '../components/Sponsors/sponsors'
 import dateTimeProvider from '../components/utils/dateTimeProvider'
 import { fetchSessions } from '../components/utils/useSessions'
 import Conference from '../config/conference'
@@ -84,7 +84,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             show={!this.props.pageMetadata.conference.HideSponsors}
             hideUpsell={this.props.pageMetadata.conference.HideSponsorshipUpsell}
             sponsors={this.props.pageMetadata.conference.Sponsors.filter(
-              s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
+              (s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
             )}
           />
           <AllAgendas

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { SafeLink } from '../../components/global/safeLink'
 import withPageMetadata from '../../components/global/withPageMetadata'
 import ResponsiveVideo from '../../components/responsiveVideo'
-import Sponsors from '../../components/sponsors'
+import { Sponsors } from '../../components/Sponsors/sponsors'
 import From2016 from '../../config/2016'
 import { SponsorType, Session } from '../../config/types'
 import moment from 'moment'
@@ -73,7 +73,7 @@ const Agenda2016: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                 <AgendaTime time={date.clone().set({ hour: 9, minutes: 15 })} />
                 <AgendaSession
                   sessionId="aa9f3fc0-8d47-404d-ba3e-2e5e058a00be"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -161,7 +161,7 @@ const Agenda2016: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                 <AgendaTime time={date.clone().set({ hour: 16, minutes: 10 })} />
                 <AgendaSession
                   sessionId="82988c58-8d9c-4518-a4f7-94cf7739299d"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Locknote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -213,7 +213,7 @@ const Agenda2016: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
       <Sponsors
         show={true}
         hideUpsell={true}
-        sponsors={From2016.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
+        sponsors={From2016.Sponsors.filter((s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
       />
     </Fragment>
   )

@@ -16,7 +16,6 @@ export const StyledFooter = styled('footer')(({ theme }) => ({
   },
 
   backgroundColor: theme.colors.grey100,
-  color: theme.colors.grey800,
 }))
 StyledFooter.displayName = 'StyledFooter'
 
