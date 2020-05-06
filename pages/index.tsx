@@ -4,7 +4,7 @@ import withPageMetadata, { WithPageMetadataProps } from '../components/global/wi
 import ImageStrip from '../components/imageStrip'
 import ImportantDates from '../components/importantDates'
 import Keynotes from '../components/Keynotes'
-import Sponsors from '../components/sponsors'
+import { Sponsors } from '../components/Sponsors/sponsors'
 import arrayShuffle from '../components/utils/arrayShuffle'
 import getConferenceActions from '../config/actions'
 import { Main } from '../layouts/main'
@@ -22,13 +22,11 @@ export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
       <ImportantDates conference={conference} actions={actions} currentDate={pageMetadata.currentDate} />
       <Keynotes conference={conference} />
       <ImageStrip images={imageStrip.current} />
-      <div>
-        <Sponsors
-          show={!conference.HideSponsors}
-          sponsors={conference.Sponsors}
-          hideUpsell={conference.HideSponsorshipUpsell}
-        />
-      </div>
+      <Sponsors
+        show={!conference.HideSponsors}
+        sponsors={conference.Sponsors}
+        hideUpsell={conference.HideSponsorshipUpsell}
+      />
     </Main>
   )
 }
