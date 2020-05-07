@@ -15,7 +15,7 @@ import { AgendaSession } from '../../components/Agenda/AgendaSession'
 import { StyledAgendaPresenter } from '../../components/Agenda/AgendaSession.styled'
 import { Session, SponsorType } from '../../config/types'
 import moment from 'moment'
-import Sponsors from '../../components/sponsors'
+import { Sponsors } from '../../components/Sponsors/sponsors'
 import ResponsiveVideo from '../../components/responsiveVideo'
 import { SafeLink } from '../../components/global/safeLink'
 
@@ -82,7 +82,7 @@ const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   sessionId="112b54cc-df00-40fd-ad5e-4b0714329821"
                   sponsorId="bhp"
                   room="Riverside Theatre"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -198,7 +198,9 @@ const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   sessionId="4c019f6f-c312-4bb9-8024-3352f6034d6e"
                   sponsorId="yow"
                   room="Riverside Theatre"
-                  renderPresenters={presenters => <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>}
+                  renderPresenters={(presenters) => (
+                    <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>
+                  )}
                   fullWidth
                   isKeynote
                   alwaysShowRoom
@@ -246,7 +248,7 @@ const Agenda2019: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
       <Sponsors
         show={true}
         hideUpsell={true}
-        sponsors={From2019.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
+        sponsors={From2019.Sponsors.filter((s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
       />
     </Fragment>
   )

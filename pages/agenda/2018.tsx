@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { AgendaPageParameters, agendaPage } from '../../components/Agenda/AgendaPage'
 import withPageMetadata from '../../components/global/withPageMetadata'
-import Sponsors from '../../components/sponsors'
+import { Sponsors } from '../../components/Sponsors/sponsors'
 import From2018 from '../../config/2018'
 import { SponsorType, Session } from '../../config/types'
 import moment from 'moment'
@@ -80,7 +80,7 @@ const Agenda2018: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   sessionId="c79f149d-4e7b-4202-ba30-13cbb1df1b33"
                   sponsorId="yow-perth-keynote"
                   room="VGW Ballroom 2"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -152,7 +152,7 @@ const Agenda2018: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   sessionId="26c62196-0d96-4e52-b4ba-7896ddf2ff04"
                   sponsorId="bankwest"
                   room="VGW Ballroom 2"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Lunchnote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -204,7 +204,7 @@ const Agenda2018: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
                   sessionId="264b7669-8127-41a3-9f6b-87511a879cf1"
                   sponsorId="yow-perth-keynote"
                   room="VGW Ballroom 2"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Locknote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -255,7 +255,7 @@ const Agenda2018: React.FC<AgendaPageParameters & { sessions: Session[] }> = ({ 
       <Sponsors
         show={true}
         hideUpsell={true}
-        sponsors={From2018.Sponsors.filter(s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
+        sponsors={From2018.Sponsors.filter((s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum)}
       />
     </Fragment>
   )
