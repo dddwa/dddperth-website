@@ -68,7 +68,7 @@ export const Meta: React.FC<MetaArgs> = ({
       <link rel="canonical" href={pageUrl} />
       <meta property="og:url" content={pageUrl} />
 
-      <link href="https://fonts.googleapis.com/css?family=Hind:400,500&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Hind:400,500,700&display=swap" rel="stylesheet" />
 
       {instrumentationKey && (
         <script

@@ -137,6 +137,7 @@ export interface Dates {
   VotingFinished: boolean
   AgendaPublished: boolean
   AcceptingFeedback: boolean
+  DisplayFormatted: (format: string) => string
 }
 
 export interface Socials {

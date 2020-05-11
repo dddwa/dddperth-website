@@ -10,6 +10,7 @@ export default function getConferenceDates(conference: Conference, currentDate: 
 
   return {
     Display: conference.HideDate ? 'TBA' : `${conference.Date.format(dateDisplayFormat)}`,
+    DisplayFormatted: (dateFormat: string) => (conference.HideDate ? 'TBA' : `${conference.Date.format(dateFormat)}`),
     DateDisplayFormat: dateDisplayFormat,
     TimeDisplayFormat: 'h:mma',
     IsComplete: isComplete,
