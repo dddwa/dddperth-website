@@ -40,7 +40,7 @@ export const Template: React.FC<TemplateProps> = ({ metadata, children, title, d
         <Nav menu={menu.Top} />
       </NavigationProvider>
       <ActionBar metadata={metadata} />
-      {showHero && <Hero />}
+      {showHero && <Hero conference={metadata.conference} dates={metadata.dates} />}
       {children}
       <Footer menu={menu.Footer} socials={metadata.conference.Socials} conference={metadata.conference} />
       {metadata.appConfig.testingMode && (
