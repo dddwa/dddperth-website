@@ -13,19 +13,23 @@ export const ActionBar: React.FC<ActionBarProps> = ({ metadata }) => {
 
   return (
     <StyledActionBarContainer>
-      <div>
-        <p>DDD Perth is an inclusive conference for the Perth tech community.</p>
+      <p>DDD Perth is an inclusive conference for the Perth tech community.</p>
+      <ul>
         {secondaryAction && (
-          <ButtonAnchor href={secondaryAction.Url} kind="secondary" size="lg">
-            {secondaryAction.Title}
-          </ButtonAnchor>
+          <li>
+            <ButtonAnchor href={secondaryAction.Url} kind="secondary" size="lg">
+              {secondaryAction.Title}
+            </ButtonAnchor>
+          </li>
         )}
         {primaryAction && (
-          <ButtonAnchor href={primaryAction.Url} kind="primary" size="lg">
-            {primaryAction.Title}
-          </ButtonAnchor>
+          <li>
+            <ButtonAnchor href={primaryAction.Url} kind="primary" size="lg">
+              {primaryAction.Title}
+            </ButtonAnchor>
+          </li>
         )}
-      </div>
+      </ul>
     </StyledActionBarContainer>
   )
 }
