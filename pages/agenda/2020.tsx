@@ -1,10 +1,10 @@
 import React from 'react'
 import withPageMetadata, { WithPageMetadataProps } from '../../components/global/withPageMetadata'
-import Page from '../../layouts/withSidebar'
+import { PageWithSidebar } from '../../layouts/withSidebar'
 import AllAgendas from '../../components/allAgendas'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page pageMetadata={props.pageMetadata} title="2020 Conference" description="DDDPerth Conference 2020">
+  <PageWithSidebar metadata={props.pageMetadata} title="2020 Conference" description="DDDPerth Conference 2020">
     <h1>DDD Perth 2020</h1>
     <p>The DDD Perth Committee has regretfully postponed the 2020 conference to 2021.</p>
     <p>
@@ -24,5 +24,5 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       conferenceInstance={'2020'}
       dates={props.pageMetadata.dates}
     />
-  </Page>
+  </PageWithSidebar>
 ))
