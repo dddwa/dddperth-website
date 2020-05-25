@@ -1,10 +1,15 @@
 import React from 'react'
 import { Socials } from '../../../config/types'
-import { SafeLink } from '../safeLink'
 import { StyledSocialLinks, StyledSocialLink } from './Footer.styled'
 import { FacebookIcon } from '../Icons/Facebook'
 import { InstagramIcon } from '../Icons/Instagram'
 import { TwitterIcon } from '../Icons/Twitter'
+import { LinkedinIcon } from '../Icons/Linkedin'
+import { FlickrIcon } from '../Icons/Flickr'
+import { MediumIcon } from '../Icons/Medium'
+import { YouTubeIcon } from '../Icons/Youtube'
+import { GitHubIcon } from '../Icons/GitHub'
+import { EmailIcon } from '../Icons/Email'
 
 interface SocialLinksArgs {
   socials: Socials
@@ -28,18 +33,6 @@ export const SocialLinks: React.FC<SocialLinksArgs> = ({ socials }) => (
         </StyledSocialLink>
       </li>
     )}
-    {socials.GitHub && (
-      <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-github"
-          href={`https://github.com/${socials.GitHub}`}
-          title="GitHub, will open in a new window"
-          aria-label="GitHub, will open in a new window"
-          target="_blank"
-        />
-      </li>
-    )}
     {socials.Instagram && (
       <li>
         <StyledSocialLink
@@ -52,63 +45,56 @@ export const SocialLinks: React.FC<SocialLinksArgs> = ({ socials }) => (
         </StyledSocialLink>
       </li>
     )}
-    {socials.Flickr && (
+    {socials.Linkedin && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-flickr"
-          href={socials.Flickr}
-          title="Flickr, will open in a new window"
-          aria-label="Flickr, will open in a new window"
+        <StyledSocialLink
+          href={`https://www.linkedin.com/company/${socials.Linkedin}`}
           target="_blank"
-        />
+          rel="noopener nofollow"
+        >
+          <LinkedinIcon />
+          <span>LinkedIn, will open in a new window</span>
+        </StyledSocialLink>
       </li>
     )}
-    {socials.Youtube && (
+    {socials.Flickr && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-youtube"
-          href={socials.Youtube}
-          title="YouTube, will open in a new window"
-          aria-label="YouTube, will open in a new window"
-          target="_blank"
-        />
+        <StyledSocialLink href={socials.Flickr} target="_blank" rel="noopener nofollow">
+          <FlickrIcon />
+          <span>Flickr, opens in new window</span>
+        </StyledSocialLink>
       </li>
     )}
     {socials.Blog && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-pencil"
-          href={socials.Blog}
-          title="Blog, will open in a new window"
-          aria-label="Blog, will open in a new window"
-          target="_blank"
-        />
+        <StyledSocialLink href={socials.Blog} target="_blank" rel="noopener nofollow">
+          <MediumIcon />
+          <span>Blog, will open in a new window</span>
+        </StyledSocialLink>
+      </li>
+    )}
+    {socials.Youtube && (
+      <li>
+        <StyledSocialLink href={socials.Youtube} target="_blank" rel="noopener nofollow">
+          <YouTubeIcon />
+          <span>YouTube, opens in new window</span>
+        </StyledSocialLink>
+      </li>
+    )}
+    {socials.GitHub && (
+      <li>
+        <StyledSocialLink href={`https://github.com/${socials.GitHub}`} target="_blank" rel="noopener nofollow">
+          <GitHubIcon />
+          <span>GitHub, will open in a new window</span>
+        </StyledSocialLink>
       </li>
     )}
     {socials.Email && (
       <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-envelope"
-          href={`mailto:${socials.Email}`}
-          title="Email, will open in system default mail app"
-          aria-label="Email, will open in system default mail app"
-        />
-      </li>
-    )}
-    {socials.MailingList && (
-      <li>
-        <SafeLink
-          rel="noopener nofollow"
-          className="fa fa-envelope-o"
-          href={socials.MailingList}
-          title="Mailing List, will open in a new window"
-          aria-label="Mailing List, will open in a new window"
-          target="_blank"
-        />
+        <StyledSocialLink href={`mailto:${socials.Email}`} target="_blank" rel="noopener nofollow">
+          <EmailIcon />
+          <span>Email, will open in system default mail app</span>
+        </StyledSocialLink>
       </li>
     )}
   </StyledSocialLinks>

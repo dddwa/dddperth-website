@@ -42,7 +42,7 @@ export const Template: React.FC<TemplateProps> = ({ metadata, children, title, d
       <ActionBar metadata={metadata} />
       {showHero && <Hero conference={metadata.conference} dates={metadata.dates} />}
       {children}
-      <Footer menu={menu.Footer} socials={metadata.conference.Socials} conference={metadata.conference} />
+      <Footer socials={metadata.conference.Socials} conference={metadata.conference} />
       {metadata.appConfig.testingMode && (
         <TestingControl currentDate={metadata.currentDate} conference={metadata.conference} />
       )}
