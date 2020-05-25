@@ -78,6 +78,7 @@ export const theme = {
     defaultSize: 16,
     sizeSm: 14,
     sizeLg: 18,
+    lineHeight: 1.4,
   },
   metrics: {
     /** xs: 4 */

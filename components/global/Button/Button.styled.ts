@@ -34,6 +34,7 @@ function getButtonStylesForKind(kind: ButtonKinds, theme: Theme): CSSObject {
 
         '&:hover, &:focus': {
           backgroundColor: theme.colors.dddpink600,
+          color: theme.colors.white,
         },
 
         '&:focus': {

@@ -1,9 +1,8 @@
 import React from 'react'
-import EventDetailsSummary from '../components/eventDetailsSummary'
 import { ImportantDatesList } from '../components/ImportantDatesList/importantDatesList'
 import getConferenceActions from '../config/actions'
 import { TemplateProps, Template } from './template'
-import { StyledSidebarContainer } from './Layouts.styled'
+import { StyledSidebarContainer, StyledEventDetailsSummary } from './Layouts.styled'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PageWithSidebarProps extends TemplateProps {}
@@ -14,11 +13,11 @@ export const PageWithSidebar: React.FC<PageWithSidebarProps> = ({ children, meta
       <StyledSidebarContainer>
         <main id="content">{children}</main>
         <aside>
-          <EventDetailsSummary
+          <StyledEventDetailsSummary
             conference={metadata.conference}
             dates={metadata.dates}
             primaryAction={
-              getConferenceActions(metadata.conference, metadata.dates).filter(a => a.Url !== metadata.pagePath)[0]
+              getConferenceActions(metadata.conference, metadata.dates).filter((a) => a.Url !== metadata.pagePath)[0]
             }
           />
           <h2>Important Dates</h2>

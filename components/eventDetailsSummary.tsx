@@ -1,6 +1,6 @@
 import React from 'react'
 import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
-import ActionButton from './actionButton'
+import { ActionButton } from './actionButton'
 import { StyledList } from './global/text'
 import { useRouter } from 'next/router'
 
@@ -8,15 +8,22 @@ export interface EventDetailsSummaryProps {
   conference: Conference
   primaryAction: Action
   dates: Dates
+  className?: string
 }
 
-export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({ conference, primaryAction, dates }) => {
+export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({
+  conference,
+  primaryAction,
+  dates,
+  className,
+}) => {
   const { pathname } = useRouter()
 
   return (
-    <div className="event-details">
+    <div className={className}>
       <h2>
-        <span>{!dates.IsComplete ? 'Next event' : 'Previous event'}</span> <time>{dates.Display}</time>
+        <small style={{ display: 'block' }}>{!dates.IsComplete ? 'Next event' : 'Previous event'}</small>{' '}
+        <time>{dates.Display}</time>
       </h2>
       <StyledList>
         {conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut && (
@@ -34,9 +41,11 @@ export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({ confer
         ))}
         <li>Only {conference.TicketPrice}</li>
       </StyledList>
-      {pathname !== primaryAction.Url && <ActionButton action={primaryAction} />}
+      {pathname !== primaryAction.Url && (
+        <div style={{ textAlign: 'center' }}>
+          <ActionButton action={primaryAction} />
+        </div>
+      )}
     </div>
   )
 }
-
-export default EventDetailsSummary
