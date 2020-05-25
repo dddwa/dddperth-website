@@ -1,6 +1,6 @@
 import React from 'react'
 import { Action, Conference } from '../config/types'
-import ActionButton from './actionButton'
+import { ActionButton } from './actionButton'
 import { ImportantDatesList } from './ImportantDatesList/importantDatesList'
 import { CurrentDate } from './utils/dateTimeProvider'
 

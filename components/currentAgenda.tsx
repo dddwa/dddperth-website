@@ -2,7 +2,7 @@ import { Moment } from 'moment'
 import React, { Fragment } from 'react'
 import Conference from '../config/conference'
 import { Session, Sponsor } from '../config/types'
-import ActionButton from './actionButton'
+import { ActionButton } from './actionButton'
 import { Agenda } from './Agenda/Agenda'
 import {
   StyledAddress,
@@ -121,7 +121,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   sessionId="112b54cc-df00-40fd-ad5e-4b0714329821"
                   sponsorId="bhp"
                   room="Riverside Theatre"
-                  renderPresenters={presenters => (
+                  renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
                   )}
                   fullWidth
@@ -237,7 +237,9 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   sessionId="4c019f6f-c312-4bb9-8024-3352f6034d6e"
                   sponsorId="yow"
                   room="Riverside Theatre"
-                  renderPresenters={presenters => <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>}
+                  renderPresenters={(presenters) => (
+                    <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>
+                  )}
                   fullWidth
                   isKeynote
                   alwaysShowRoom
