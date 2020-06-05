@@ -31,6 +31,7 @@ function getButtonStylesForKind(kind: ButtonKinds, theme: Theme): CSSObject {
       return {
         backgroundColor: theme.colors.dddpink,
         color: theme.colors.white,
+        fill: 'currentColor',
 
         '&:hover, &:focus': {
           backgroundColor: theme.colors.dddpink600,
@@ -64,11 +65,13 @@ interface StyledButtonAnchorProps {
 export const StyledButtonAnchor = styled('a', { shouldForwardProp: shouldStyledButtonForwardProps })<
   StyledButtonAnchorProps
 >(({ theme, kind, size }) => ({
-  display: 'inline-block',
+  display: 'inline-flex',
+  alignItems: 'center',
   padding: calcRem(theme.metrics.md, theme.metrics.lg),
   fontWeight: theme.weights.medium,
   border: 0,
   cursor: 'pointer',
+  lineHeight: 1,
   outline: 0,
   textDecoration: 'none',
   textTransform: 'uppercase',
@@ -82,6 +85,16 @@ export const StyledButtonAnchor = styled('a', { shouldForwardProp: shouldStyledB
   '&[disabled]': {
     opacity: 0.65,
     pointerEvents: 'none',
+  },
+
+  '& > *:not(:first-child)': {
+    marginLeft: calcRem(theme.metrics.md),
+  },
+
+  '& > svg': {
+    width: calcRem(theme.metrics.lg),
+    height: calcRem(theme.metrics.lg),
+    fill: 'currentcolor',
   },
 }))
 
