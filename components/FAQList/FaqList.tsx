@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { FAQ } from '../../config/types'
 import { FaqDetail } from './FaqDetail'
 
@@ -7,9 +7,9 @@ interface FaqListProps {
 }
 
 export const FaqList: React.FC<FaqListProps> = ({ faqs }) => (
-  <Fragment>
+  <div>
     {faqs.map((faq, i) => (
       <FaqDetail key={i} faq={faq} />
     ))}
-  </Fragment>
+  </div>
 )
