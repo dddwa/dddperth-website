@@ -10,7 +10,7 @@ export const StyledFooter = styled('footer')(({ theme }) => ({
   gridTemplateColumns: 'minmax(1rem, 1fr) minmax(0, 120ch) minmax(1rem, 1fr)',
   gridGap: calcRem(theme.metrics.md),
   padding: calcRem(80, 0, 0),
-  marginTop: calcRem(theme.metrics.xl),
+  marginTop: 'auto',
 
   '& > *': {
     gridColumn: 2,

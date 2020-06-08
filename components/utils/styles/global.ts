@@ -7,6 +7,12 @@ export const globalCSS = css`
     color: ${theme.colors.grey800};
   }
 
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
   a {
     color: ${theme.colors.grey800};
     transition: color 0.3s linear;

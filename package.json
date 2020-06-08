@@ -32,6 +32,7 @@
     "react-beautiful-dnd": "^12.2.0",
     "react-dom": "^16.13.1",
     "react-ga": "^2.4.1",
+    "use-script": "^2.0.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
