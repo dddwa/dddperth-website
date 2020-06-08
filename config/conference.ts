@@ -167,12 +167,14 @@ const Conference: IConference = {
 
   ImportantContacts: {
     Police: {
-      Details: '2 Fitzgerald St, Northbridge WA 6003 ph: (08) 9422 7111',
+      Details: '2 Fitzgerald St, Northbridge WA 6003',
+      Phone: '(08) 9422 7111',
       MapUrl:
         'https://www.google.com.au/maps/place/WA+Police/@-31.9539457,115.8571227,15z/data=!4m8!1m2!2m1!1swa+police!3m4!1s0x2a32bad2aad309a9:0x132b875b4c12ce8a!8m2!3d-31.9465398!4d115.852523',
     },
     CentreAgainstSexualAssault: {
-      Details: '1800 806 292',
+      Details: '24 hour line',
+      Phone: '1800 806 292',
     },
     EmergencyMedical: {
       Details: 'Royal Perth Hospital, 197 Wellington St, Perth WA 6000',
@@ -180,7 +182,8 @@ const Conference: IConference = {
         'https://www.google.com.au/maps/place/Royal+Perth+Hospital/@-31.953946,115.8637156,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bb26d7818b2d:0x31db7aa443eb9c11!8m2!3d-31.953946!4d115.8659043',
     },
     NonEmergencyMedical: {
-      Details: 'Perth Medical Centre, 713 Hay St, Perth WA 6000 ph: (08) 9481 4342',
+      Details: 'Perth Medical Centre, 713 Hay St, Perth WA 6000',
+      Phone: '(08) 9481 4342',
       MapUrl:
         'https://www.google.com.au/maps/place/Perth+Medical+Centre/@-31.9539771,115.8552714,17z/data=!3m1!4b1!4m5!3m4!1s0x2a32bad5d00fb27f:0xa93cc014867a5f8b!8m2!3d-31.9539771!4d115.8574654',
     },

@@ -162,6 +162,7 @@ export interface ImportantContacts {
 
 export interface Contact {
   Details: string
+  Phone?: string
   MapUrl?: string
 }
 
