@@ -14,6 +14,7 @@ export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks
   gridTemplateColumns: `repeat(2, 1fr)`,
   backgroundColor: rowBackgroundColor,
   border: cellBorder,
+  textAlign: 'center',
 
   '&:not(:first-child)': {
     borderTop: 0,
@@ -57,14 +58,17 @@ export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks
 StyledAgendaRow.displayName = 'StyledAgendaRow'
 
 export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
+  position: 'sticky',
+  top: 100,
   display: 'none',
   margin: 0,
-  backgroundColor: theme.colors.inverse,
+  backgroundColor: theme.colors.grey300,
   listStyle: 'none',
 
   li: {
+    padding: calcRem(theme.metrics.md),
     backgroundColor: theme.colors.secondary,
-    color: '#fff',
+    color: theme.colors.white,
     fontSize: calcRem(20),
     fontWeight: theme.weights.bold,
     textAlign: 'center',
@@ -73,7 +77,7 @@ export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
   [breakpoint('sm')]: {
     display: 'grid',
     gridTemplateColumns: `${calcRem(90)} repeat(auto-fit, minmax(${calcRem(80)}, 1fr))`,
-    gridGap: calcRem(10),
+    gridGap: calcRem(1),
     padding: calcRem(8),
   },
 }))
@@ -122,3 +126,16 @@ export const StyledUpNext = styled('div')(({ theme }) => ({
   },
 }))
 StyledUpNext.displayName = 'StyledUpNext'
+
+export const StyledAgendaContainer = styled('div')(({ theme }) => ({
+  position: 'relative',
+  marginBottom: calcRem(theme.metrics.xl),
+}))
+StyledAgendaContainer.displayName = 'StyledAgendaContainer'
+
+export const StyledVideoContainer = styled('div')(({ theme }) => ({
+  display: 'grid',
+  gap: calcRem(theme.metrics.md),
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+  marginBottom: calcRem(theme.metrics.md),
+}))
