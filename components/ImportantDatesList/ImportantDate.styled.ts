@@ -43,68 +43,27 @@ const ImportantDateBorderWidth = 7
 export const StyledImportantDate = styled('li', {
   shouldForwardProp: isPropValid,
 })<StyledImportantDateProps>(({ theme, dateType }) => ({
-  position: 'relative',
   flexGrow: 0,
   flexShrink: 0,
   flexBasis: '100%',
-  // IE11
-  maxWidth: '100%',
   margin: '0 1% 0',
-  marginTop: calcRem(30),
-  padding: calcRem(20, 20, 10),
+  marginTop: calcRem(theme.metrics.md),
+  padding: calcRem(theme.metrics.md, theme.metrics.md, theme.metrics.sm),
   backgroundColor: '#f0f0f0',
   borderWidth: 0,
   borderBottom: `${ImportantDateBorderWidth}px solid ${dateBorderColor(theme, dateType)}`,
   textAlign: 'left',
 
-  '&::before, &::after': {
-    position: 'absolute',
-    width: 20,
-    height: 28,
-    top: -18,
-    backgroundColor: 'inherit',
-    border: '2px solid #FFF',
-    borderRadius: 10,
-    content: "' '",
-  },
-
-  '&::before': {
-    left: 27,
-  },
-
-  '&::after': {
-    right: 27,
-  },
-
   [breakpoint('xs')]: {
     flexBasis: '48%',
-    // IE11
-    maxWidth: '48%',
   },
 
   [breakpoint('sm')]: {
     flexBasis: '31%',
-    // IE11
-    maxWidth: '31%',
-  },
-
-  [breakpoint('md')]: {
-    padding: calcRem(40, 20, 22),
-    marginTop: calcRem(53),
-
-    '&::before, &::after': {
-      width: 40,
-      height: 58,
-      top: -38,
-      borderRadius: 20,
-      borderWidth: 5,
-    },
   },
 
   [breakpoint('lg')]: {
     flexBasis: '23%',
-    // IE11
-    maxWidth: '23%',
   },
 }))
 
