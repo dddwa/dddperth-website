@@ -1,7 +1,7 @@
-import styled from '../utils/styles/theme'
-import { calcRem } from '../utils/styles/calcRem'
-import { SponsorType } from '../../config/types'
-import { SafeLink } from '../global/safeLink'
+import styled from 'components/utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { SponsorType } from 'config/types'
+import { SafeLink } from 'components/global/safeLink'
 
 export const StyledSponsorsContainer = styled('section')(({ theme }) => ({
   display: 'flex',

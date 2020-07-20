@@ -1,6 +1,7 @@
-import Link from 'next/link'
-import Router from 'next/router'
 import React, { Fragment, useReducer } from 'react'
+import { NextPage } from 'next'
+import Router from 'next/router'
+import Link from 'next/link'
 import {
   StyledForm,
   StyledFormRow,
@@ -14,26 +15,25 @@ import {
   StyledSummary,
   StyledTextArea,
   StyledTextInput,
-} from '../components/Feedback/Feedback.styled'
-import { postFeedback } from '../components/Feedback/FeedbackFetch'
-import { FeedbackTimeTesting } from '../components/Feedback/FeedbackTimeTesting'
-import { defaultFormState, formReducer } from '../components/Feedback/FormReducers'
-import { SessionInput } from '../components/Feedback/SessionInput'
-import { Alert } from '../components/global/Alert/Alert'
-import { logException } from '../components/global/analytics'
-import { StyledContainer } from '../components/global/Container/Container.styled'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import { getLocalStoredName, storageKey, StorageKeys } from '../components/utils/storageKey'
-import { useDeviceId } from '../components/utils/useDeviceId'
-import { useForm } from '../components/utils/useForm'
-import { useSessionGroups } from '../components/utils/useSessionGroups'
-import { fetchSessions, useSessions } from '../components/utils/useSessions'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { Session } from '../config/types'
-import { Main } from '../layouts/main'
-import { NextPage } from 'next'
+} from 'components/Feedback/Feedback.styled'
+import { postFeedback } from 'components/Feedback/FeedbackFetch'
+import { FeedbackTimeTesting } from 'components/Feedback/FeedbackTimeTesting'
+import { defaultFormState, formReducer } from 'components/Feedback/FormReducers'
+import { SessionInput } from 'components/Feedback/SessionInput'
+import { Alert } from 'components/global/Alert/Alert'
+import { logException } from 'components/global/analytics'
+import { StyledContainer } from 'components/global/Container/Container.styled'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/storageKey'
+import { useDeviceId } from 'components/utils/useDeviceId'
+import { useForm } from 'components/utils/useForm'
+import { useSessionGroups } from 'components/utils/useSessionGroups'
+import { fetchSessions, useSessions } from 'components/utils/useSessions'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Session } from 'config/types'
+import { Main } from 'layouts/main'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -138,7 +138,7 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
             <StyledFormRow>
               <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
               <StyledSessionList>
-                {sessionGroups.previousSessionGroup.sessions.map(session => (
+                {sessionGroups.previousSessionGroup.sessions.map((session) => (
                   <li key={session.Id}>
                     <SessionInput session={session} checked={values.sessionId === session.Id} onChange={handleChange} />
                   </li>
@@ -149,14 +149,14 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
                 <details>
                   <StyledSummary>Previous sessions</StyledSummary>
                   <StyledSessionList>
-                    {sessionGroups.pastSessionGroups.map(sessionGroup => (
+                    {sessionGroups.pastSessionGroups.map((sessionGroup) => (
                       <Fragment>
                         <StyledSessionTimeframe key={sessionGroup.timeStart.valueOf()}>
                           <time>{sessionGroup.timeStart.format('hh:mm')}</time>
                           {' - '}
                           <time>{sessionGroup.timeEnd.format('hh:mm')}</time>
                         </StyledSessionTimeframe>
-                        {sessionGroup.sessions.map(session => (
+                        {sessionGroup.sessions.map((session) => (
                           <li key={session.Id}>
                             <SessionInput
                               session={session}

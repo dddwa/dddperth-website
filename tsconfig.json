@@ -20,7 +20,8 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": "."
   },
   "exclude": ["./deploy/**", "next.config.js"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

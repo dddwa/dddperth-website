@@ -1,7 +1,7 @@
-import styled from '../components/utils/styles/theme'
-import { calcRem } from '../components/utils/styles/calcRem'
-import { breakpoint } from '../components/utils/styles/breakpoints'
-import { EventDetailsSummary } from '../components/eventDetailsSummary'
+import styled from 'components/utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { EventDetailsSummary } from 'components/eventDetailsSummary'
 
 export const StyledMain = styled('main')(({ theme }) => ({
   display: 'grid',

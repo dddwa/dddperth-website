@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { logEvent } from '../global/analytics'
+import { logEvent } from 'components/global/analytics'
 import { StyledTagCloudInput, StyledTagCloudLabel, StyledTagCloudList } from './VotingFilters.styled'
 
 interface VotingFiltersProps {
@@ -20,7 +20,7 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTa
       </p>
       <fieldset ref={tagCloudRef} className="tag-cloud">
         <StyledTagCloudList>
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <li key={tag}>
               <StyledTagCloudInput
                 type="checkbox"
@@ -30,7 +30,7 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTa
                 onChange={() => {
                   const filteredTags = Array.from<HTMLInputElement>(
                     tagCloudRef.current.querySelectorAll('input:checked'),
-                  ).map(input => input.value)
+                  ).map((input) => input.value)
 
                   if (filteredTags.length > 0) {
                     logEvent('voting', 'tagFilter', { filter: filteredTags.join(',') })
@@ -49,7 +49,7 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTa
       </p>
       <fieldset ref={filterCloudRef} className="tag-cloud">
         <StyledTagCloudList>
-          {levels.map(level => (
+          {levels.map((level) => (
             <li key={level}>
               <StyledTagCloudInput
                 type="checkbox"
@@ -59,7 +59,7 @@ export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTa
                 onChange={() => {
                   const filteredTags = Array.from<HTMLInputElement>(
                     filterCloudRef.current.querySelectorAll('input:checked'),
-                  ).map(input => input.value)
+                  ).map((input) => input.value)
 
                   if (filteredTags.length > 0) {
                     logEvent('voting', 'levelFilter', { filter: filteredTags.join(',') })

@@ -1,8 +1,8 @@
-import styled from '../../../utils/styles/theme'
-import { calcRem } from '../../../utils/styles/calcRem'
-import { SafeLink } from '../../safeLink'
-import { srOnly } from '../../../utils/styles/accessibility'
-import { breakpoint } from '../../../utils/styles/breakpoints'
+import styled from 'components/utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { SafeLink } from 'components/global/safeLink'
+import { srOnly } from 'components/utils/styles/accessibility'
+import { breakpoint } from 'components/utils/styles/breakpoints'
 
 export const StyledSocialList = styled('ul')(({ theme }) => ({
   display: 'none',

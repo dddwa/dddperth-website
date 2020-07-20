@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import { Button } from '../global/Button/Button'
-import { breakpoint } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import { zIndex } from '../utils/styles/zindex'
+import { Button } from 'components/global/Button/Button'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { zIndex } from 'components/utils/styles/zindex'
 
 export const StyledTestingControl = styled.div`
   position: fixed;

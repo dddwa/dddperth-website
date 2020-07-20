@@ -1,7 +1,7 @@
-import styled from '../../utils/styles/theme'
-import { calcRem } from '../../utils/styles/calcRem'
-import { breakpoint } from '../../utils/styles/breakpoints'
-import { zIndex } from '../../utils/styles/zindex'
+import styled from 'components/utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { zIndex } from 'components/utils/styles/zindex'
 
 export const StyledHeader = styled('header')(({ theme }) => ({
   position: 'sticky',

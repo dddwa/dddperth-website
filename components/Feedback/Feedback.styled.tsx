@@ -1,6 +1,6 @@
-import { Button } from '../global/Button/Button'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
+import { Button } from 'components/global/Button/Button'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 export const StyledForm = styled('form')(({ theme }) => ({
   marginBottom: calcRem(30),

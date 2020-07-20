@@ -1,6 +1,6 @@
-import styled from '../utils/styles/theme'
-import { breakpoint } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
 
 export const StyledHero = styled('section')(({ theme }) => ({
   position: 'relative',

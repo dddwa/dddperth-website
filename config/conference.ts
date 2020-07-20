@@ -1,6 +1,6 @@
 import moment from 'moment'
-import { orderBy } from '../components/utils/arraySort'
-import SponsorData from '../config/sponsors'
+import { orderBy } from 'components/utils/arraySort'
+import SponsorData from 'config/sponsors'
 import {
   Conference as IConference,
   TicketNumberWhileVoting,
@@ -156,14 +156,6 @@ const Conference: IConference = {
     Instagram: 'dddperth',
     Linkedin: 'ddd-wa-inc',
   },
-
-  ImageStrip: [
-    { Url: '/static/images/strip/1.jpg', Alternate: 'Kris Howard delivering her 2017 locknote' },
-    { Url: '/static/images/strip/2.jpg', Alternate: 'Our 2017 speakers' },
-    { Url: '/static/images/strip/3.jpg', Alternate: 'Visting the readify booth' },
-    { Url: '/static/images/strip/4.jpg', Alternate: 'Early morning registration' },
-    { Url: '/static/images/strip/5.jpg', Alternate: 'Donna Edwards speaking at DDD 2017' },
-  ],
 
   ImportantContacts: {
     Police: {

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
-import { StyledList, StyledPara } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import { PageWithSidebar } from '../layouts/withSidebar'
-import { calcRem } from '../components/utils/styles/calcRem'
-import styled from '../components/utils/styles/theme'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledList, StyledPara } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 const StyledLogoWrapper = styled('div')<{ logoMaxWidth?: number }>(({ theme, logoMaxWidth = 250 }) => ({
   display: 'flex',

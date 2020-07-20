@@ -1,8 +1,8 @@
 import { Moment } from 'moment'
 import React from 'react'
-import Conference from '../../config/conference'
-import getConferenceDates from '../../config/dates'
-import { Session } from '../../config/types'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Session } from 'config/types'
 import dateTimeProvider from './dateTimeProvider'
 
 type SessionId = string // UUID
@@ -33,7 +33,7 @@ interface SessionGroups {
 
 function getSessionById(sessions: Session[], ids: SessionId[]) {
   return sessions
-    .filter(session => ids.includes(session.Id))
+    .filter((session) => ids.includes(session.Id))
     .sort((sessionA, sessionB) => {
       const aIndex = ids.indexOf(sessionA.Id)
       const bIndex = ids.indexOf(sessionB.Id)
@@ -53,7 +53,7 @@ function getSessionById(sessions: Session[], ids: SessionId[]) {
 export function useSessionGroups(sessions: Session[]): SessionGroups {
   const allSessionGroups: SessionGroup[] = React.useMemo(
     () =>
-      Conference.SessionGroups.map(sessionGroup => ({
+      Conference.SessionGroups.map((sessionGroup) => ({
         ...sessionGroup,
         sessions: getSessionById(sessions, sessionGroup.sessions),
         type: 'Sessions',

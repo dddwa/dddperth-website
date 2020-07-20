@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import { Conference } from '../../config/types'
-import { CurrentDate } from '../utils/dateTimeProvider'
-import isPast from '../utils/isPast'
+import { Conference } from 'config/types'
+import { CurrentDate } from 'components/utils/dateTimeProvider'
+import isPast from 'components/utils/isPast'
 import { StyledImportantDateList } from './ImportantDate.styled'
 import { ImportantDateTile, ImportantDateTileTBA } from './ImportantDateTile'
 import { ImportantDateTileInline, ImportantDateTileInlineTBA } from './ImportantDateTileInline'
-import { StyledPara } from '../global/text'
+import { StyledPara } from 'components/global/text'
 
 export type ImportantDateListLayouts = 'inline' | 'calendar'
 

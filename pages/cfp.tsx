@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import Router from 'next/router'
 import React from 'react'
-import { StyledList, StyledPara } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { PageWithSidebar } from '../layouts/withSidebar'
 import { NextPage } from 'next'
-import { ButtonAnchor } from '../components/global/Button/Button'
+import Router from 'next/router'
+import Link from 'next/link'
+import { StyledList, StyledPara } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import { ButtonAnchor } from 'components/global/Button/Button'
 
 const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const dates = pageMetadata.dates

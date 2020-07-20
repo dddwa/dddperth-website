@@ -1,6 +1,6 @@
 import React from 'react'
-import { Session, Sponsor } from '../../config/types'
-import { onSelectCallback } from './Agenda'
+import { Session, Sponsor } from 'config/types'
+import { onSelectCallback } from 'components/Agenda/Agenda'
 
 interface AgendaContextProps {
   onSelect: onSelectCallback
@@ -21,9 +21,9 @@ const AgendaContext = React.createContext<AgendaContextProps | undefined>(undefi
 export const AgendaProvider: React.FC<AgendaProviderProps> = ({ children, onSelect, sessions, sponsors, rooms }) => (
   <AgendaContext.Provider
     value={{
-      getRoom: roomId => (typeof roomId === 'string' ? roomId : rooms[roomId]),
-      getSession: id => sessions.find(session => session.Id === id),
-      getSponsor: id => sponsors.find(sponsor => sponsor.id === id),
+      getRoom: (roomId) => (typeof roomId === 'string' ? roomId : rooms[roomId]),
+      getSession: (id) => sessions.find((session) => session.Id === id),
+      getSponsor: (id) => sponsors.find((sponsor) => sponsor.id === id),
       onSelect,
     }}
   >

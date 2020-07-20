@@ -1,6 +1,6 @@
 import React from 'react'
-import { Session } from '../../config/types'
-import { Button } from '../global/Button/Button'
+import { Session } from 'config/types'
+import { Button } from 'components/global/Button/Button'
 import SessionDetails from '../sessionDetails'
 import {
   StyledBadge,
@@ -67,7 +67,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
             <Button
               kind="secondary"
               size="small"
-              onClick={_ => {
+              onClick={(_) => {
                 toggleShortlist()
               }}
             >
@@ -77,7 +77,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
           <Button
             kind="primary"
             size="small"
-            onClick={_ => {
+            onClick={(_) => {
               toggleVote()
             }}
             disabled={isVotingDisabled && !isVotedFor}

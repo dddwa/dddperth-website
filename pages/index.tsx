@@ -1,12 +1,12 @@
 import React from 'react'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import ImportantDates from '../components/importantDates'
-import Keynotes from '../components/Keynotes'
-import { Sponsors } from '../components/Sponsors/sponsors'
-import getConferenceActions from '../config/actions'
-import { Main } from '../layouts/main'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import ImportantDates from 'components/importantDates'
+import Keynotes from 'components/Keynotes'
+import { Sponsors } from 'components/Sponsors/sponsors'
+import getConferenceActions from 'config/actions'
+import { Main } from 'layouts/main'
 import { NextPage } from 'next'
-import { StyledPara } from '../components/global/text'
+import { StyledPara } from 'components/global/text'
 
 export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const conference = pageMetadata.conference

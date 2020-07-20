@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { SafeLink } from '../components/global/safeLink'
-import { StyledList } from '../components/global/text'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledList } from 'components/global/text'
 import Conference from './conference'
 import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
 

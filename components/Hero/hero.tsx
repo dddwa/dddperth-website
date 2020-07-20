@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledHero, StyledCredit, StyledConferenceDetails } from './Hero.styled'
-import { SafeLink } from '../global/safeLink'
-import { Conference, Dates } from '../../config/types'
+import { SafeLink } from 'components/global/safeLink'
+import { Conference, Dates } from 'config/types'
 
 interface HeroProps {
   conference: Conference

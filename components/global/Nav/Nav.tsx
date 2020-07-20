@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import React from 'react'
-import { MenuItem } from '../../../config/types'
-import { StyledNav, StyledNavLink, StyledNavList } from './Nav.styled'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { MenuItem } from 'config/types'
+import { StyledNav, StyledNavLink, StyledNavList } from './Nav.styled'
 import { useNavigationState, useNavigationDispatch } from './Nav.context'
 
 export type NavStatus = 'open' | 'opening' | 'closed' | 'closing'
@@ -88,15 +88,17 @@ export const Nav: React.FC<NavProps> = ({ menu }) => {
   return (
     <StyledNav status={status} ref={containerRef}>
       <StyledNavList id={id} aria-expanded={status === 'open'} ref={navRef} tabIndex={-1}>
-        {menu.map(item => (
+        {/* TODO: Need new window icon */}
+        {/* {item.external && <i className="fa fa-external-link" aria-label="will open in a new window" />} */}
+        {menu.map((item) => (
           <li key={item.href}>
-            <Link href={item.href} passHref>
-              <StyledNavLink active={isFirstBranchMatched(pathname, item.href)}>
-                {item.name}
-                {/* TODO: Need new window icon */}
-                {/* {item.external && <i className="fa fa-external-link" aria-label="will open in a new window" />} */}
-              </StyledNavLink>
-            </Link>
+            {item.href.indexOf('http') !== -1 ? (
+              <StyledNavLink active={isFirstBranchMatched(pathname, item.href)}>{item.name}</StyledNavLink>
+            ) : (
+              <Link href={item.href} passHref>
+                <StyledNavLink active={isFirstBranchMatched(pathname, item.href)}>{item.name}</StyledNavLink>
+              </Link>
+            )}
           </li>
         ))}
       </StyledNavList>

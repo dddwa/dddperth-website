@@ -1,5 +1,5 @@
 import { Moment } from 'moment'
-import { SessionGroupWithIds } from '../components/utils/useSessionGroups'
+import { SessionGroupWithIds } from 'components/utils/useSessionGroups'
 
 export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
 
@@ -69,8 +69,6 @@ export interface Conference {
   ShowNextSessions: boolean
 
   Socials: Socials
-
-  ImageStrip: Image[]
 
   ImportantContacts: ImportantContacts
 

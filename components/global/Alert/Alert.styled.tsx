@@ -1,6 +1,6 @@
 import Alert from '@reach/alert'
-import { calcRem } from '../../utils/styles/calcRem'
-import styled, { Theme } from '../../utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled, { Theme } from 'components/utils/styles/theme'
 
 export type Kind = 'info' | 'success' | 'error' | 'warning'
 
@@ -38,7 +38,7 @@ function stylesFromKind(kind: StyledAlertProps['kind'], theme: Theme) {
 }
 
 export const StyledAlert = styled(Alert, {
-  shouldForwardProp: prop => prop !== 'kind',
+  shouldForwardProp: (prop) => prop !== 'kind',
 })<StyledAlertProps>(({ kind, theme }) => ({
   padding: calcRem(15),
   margin: calcRem(0, 0, 20),

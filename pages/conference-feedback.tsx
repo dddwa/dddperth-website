@@ -1,6 +1,7 @@
+import React, { useReducer } from 'react'
+import { NextPage } from 'next'
 import Link from 'next/link'
 import Router from 'next/router'
-import React, { useReducer } from 'react'
 import {
   StyledForm,
   StyledFormRow,
@@ -11,21 +12,20 @@ import {
   StyledSubmitButton,
   StyledTextArea,
   StyledTextInput,
-} from '../components/Feedback/Feedback.styled'
-import { postFeedback } from '../components/Feedback/FeedbackFetch'
-import { defaultFormState, formReducer } from '../components/Feedback/FormReducers'
-import { Alert } from '../components/global/Alert/Alert'
-import { logException } from '../components/global/analytics'
-import { StyledContainer } from '../components/global/Container/Container.styled'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import { getLocalStoredName, storageKey, StorageKeys } from '../components/utils/storageKey'
-import { useDeviceId } from '../components/utils/useDeviceId'
-import { useForm } from '../components/utils/useForm'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { Main } from '../layouts/main'
-import { NextPage } from 'next'
+} from 'components/Feedback/Feedback.styled'
+import { postFeedback } from 'components/Feedback/FeedbackFetch'
+import { defaultFormState, formReducer } from 'components/Feedback/FormReducers'
+import { Alert } from 'components/global/Alert/Alert'
+import { logException } from 'components/global/analytics'
+import { StyledContainer } from 'components/global/Container/Container.styled'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/storageKey'
+import { useDeviceId } from 'components/utils/useDeviceId'
+import { useForm } from 'components/utils/useForm'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Main } from 'layouts/main'
 
 interface FeedbackFormState {
   name: string | undefined

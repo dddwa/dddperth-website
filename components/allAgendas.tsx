@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { Fragment } from 'react'
-import { Conference, Dates } from '../config/types'
+import { Conference, Dates } from 'config/types'
 
 interface AllAgendasProps {
   dates: Dates
@@ -26,14 +26,14 @@ const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps) 
         </Fragment>
       ))}
       {dates.AgendaPublished && ' | '}
-      {dates.AgendaPublished &&
-        conferenceInstance !== conference.Instance && (
-          <Link href="/agenda">
-            <a>{conference.Instance}</a>
-          </Link>
-        )}
-      {dates.AgendaPublished &&
-        conferenceInstance === conference.Instance && <Fragment>{conference.Instance}</Fragment>}
+      {dates.AgendaPublished && conferenceInstance !== conference.Instance && (
+        <Link href="/agenda">
+          <a>{conference.Instance}</a>
+        </Link>
+      )}
+      {dates.AgendaPublished && conferenceInstance === conference.Instance && (
+        <Fragment>{conference.Instance}</Fragment>
+      )}
     </p>
   </Fragment>
 )

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Conference, Socials } from '../../../config/types'
+import { Conference, Socials } from 'config/types'
 import { SocialLinks } from './socialLinks'
 import { StyledFooter, StyledFooterContainer, StyledArrowIcon, StyledTopAnchor } from './Footer.styled'
 

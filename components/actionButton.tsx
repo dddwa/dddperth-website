@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { Action } from '../config/types'
-import { ButtonAnchor } from './global/Button/Button'
+import { Action } from 'config/types'
+import { ButtonAnchor } from 'components/global/Button/Button'
 
 interface ActionButtonProps {
   action: Action

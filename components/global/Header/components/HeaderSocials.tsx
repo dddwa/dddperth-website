@@ -1,10 +1,10 @@
 import React from 'react'
-import { Socials } from '../../../../config/types'
+import { Socials } from 'config/types'
 import { StyledSocialList, StyledSafeLink } from './HeaderSocials.styled'
-import { FacebookIcon } from '../../Icons/Facebook'
-import { InstagramIcon } from '../../Icons/Instagram'
-import { TwitterIcon } from '../../Icons/Twitter'
-import { LinkedinIcon } from '../../Icons/Linkedin'
+import { FacebookIcon } from 'components/global/Icons/Facebook'
+import { InstagramIcon } from 'components/global/Icons/Instagram'
+import { TwitterIcon } from 'components/global/Icons/Twitter'
+import { LinkedinIcon } from 'components/global/Icons/Linkedin'
 
 interface HeaderSocialsProps {
   socials: Socials

@@ -1,5 +1,5 @@
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 export const StyledTagCloudList = styled('ul')({
   display: 'flex',

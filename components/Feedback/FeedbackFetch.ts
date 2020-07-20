@@ -1,4 +1,4 @@
-import { logEvent, logException } from '../global/analytics'
+import { logEvent, logException } from 'components/global/analytics'
 
 interface PostFeedbackParams<T> {
   formName: string

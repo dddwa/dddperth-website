@@ -1,4 +1,4 @@
-import { Session } from '../../config/types'
+import { Session } from 'config/types'
 import uuid from 'uuid'
 
 export interface SessionV1 {
@@ -14,7 +14,7 @@ export interface SessionV1 {
 }
 
 export function mapSessions(sessions: SessionV1[]): Session[] {
-  return sessions.map(oldSession => {
+  return sessions.map((oldSession) => {
     const mappedSession: Session = {
       Id: oldSession.SessionId,
       Title: oldSession.SessionTitle,

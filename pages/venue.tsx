@@ -1,11 +1,11 @@
-import Error from 'next/error'
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Conference from '../config/conference'
-import { Main } from '../layouts/main'
 import { NextPage } from 'next'
-import { StyledPara } from '../components/global/text'
+import Error from 'next/error'
+import { SafeLink } from 'components/global/safeLink'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import Conference from 'config/conference'
+import { Main } from 'layouts/main'
+import { StyledPara } from 'components/global/text'
 
 const VenuePage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const conference = pageMetadata.conference

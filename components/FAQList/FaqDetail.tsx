@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { FAQ } from '../../config/types'
+import { FAQ } from 'config/types'
 import { StyledDetails, StyledDetailsBody, StyledSummary } from './FaqDetail.styled'
-import { StyledPara } from '../global/text'
+import { StyledPara } from 'components/global/text'
 
 export interface FaqDetailProps {
   faq: FAQ

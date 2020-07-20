@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { Session } from '../../config/types'
-import { Badge } from '../Badge/Badge'
-import { SafeLink } from '../global/safeLink'
+import { Session } from 'config/types'
+import { Badge } from 'components/Badge/Badge'
+import { SafeLink } from 'components/global/safeLink'
 import {
   StyledBioFigure,
   StyledBioName,

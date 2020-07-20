@@ -3,15 +3,15 @@ import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
 import uuid from 'uuid/v1'
-import { logEvent, logException } from '../components/global/analytics'
-import { StyledList } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import Voting from '../components/voting'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { Conference as Conf, Session, TicketNumberWhileVoting } from '../config/types'
-import { Main } from '../layouts/main'
+import { logEvent, logException } from 'components/global/analytics'
+import { StyledList } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import Voting from 'components/voting'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Conference as Conf, Session, TicketNumberWhileVoting } from 'config/types'
+import { Main } from 'layouts/main'
 
 interface VoteProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -62,16 +62,16 @@ class VotePage extends React.Component<VoteProps, VoteState> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw response.statusText
         }
         return response.json()
       })
-      .then(body => {
+      .then((body) => {
         this.setSessions(body as Session[])
       })
-      .catch(error => {
+      .catch((error) => {
         logException('Error when getting sessions', error, {
           voteId: localStorage
             ? localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))
@@ -159,9 +159,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         // if previous ordering data has been persisted then apply this and override API response ordering
         const orderingsArray = JSON.parse(orderings)
         const ordered = orderingsArray
-          .map(id => sessions.find(s => s.Id === id))
-          .filter(s => s)
-          .concat(sessions.filter(s => !orderingsArray.find(id => id === s.Id)))
+          .map((id) => sessions.find((s) => s.Id === id))
+          .filter((s) => s)
+          .concat(sessions.filter((s) => !orderingsArray.find((id) => id === s.Id)))
 
         const ids = JSON.stringify(ordered.map(({ Id }) => Id))
         localStorage.setItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER), ids)

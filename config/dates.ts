@@ -1,4 +1,4 @@
-import { CurrentDate } from '../components/utils/dateTimeProvider'
+import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { Conference, Dates as IDates, TicketPurchasingOptions } from './types'
 
 export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
