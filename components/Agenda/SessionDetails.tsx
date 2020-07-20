@@ -32,11 +32,12 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
     <Fragment>
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>
       {showPresenters &&
-        session.Presenters.map(presenter => (
+        session.Presenters.map((presenter) => (
           <StyledBioFigure key={presenter.Name.replace(/\s/g, '-')}>
             <StyledBioProfile
               src={presenter.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
               alt={`${presenter.Name} profile photo`}
+              loading="lazy"
             />
             <StyledBioName>{presenter.Name}</StyledBioName>
             {(presenter.TwitterHandle || presenter.WebsiteUrl) && (
@@ -83,7 +84,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
           )}
           {!hideTags &&
             session.Tags &&
-            session.Tags.map(tag => (
+            session.Tags.map((tag) => (
               <li key={tag}>
                 <Badge type={hideLevelAndFormat ? 'secondary' : 'info'}>{tag}</Badge>
               </li>
@@ -92,7 +93,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
       )}
 
       {showBio &&
-        session.Presenters.map(presenter => (
+        session.Presenters.map((presenter) => (
           <div key={`bio-${presenter.Name.replace(/ /g, '-')}`}>
             {session.Presenters.length > 1 && <StyledSpeakerBioHeader>{presenter.Name}</StyledSpeakerBioHeader>}
             <StyledPreWrappedParagraph>{presenter.Bio}</StyledPreWrappedParagraph>

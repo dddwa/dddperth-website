@@ -137,6 +137,7 @@ export interface Dates {
   VotingFinished: boolean
   AgendaPublished: boolean
   AcceptingFeedback: boolean
+  DisplayFormatted: (format: string) => string
 }
 
 export interface Socials {
@@ -149,6 +150,7 @@ export interface Socials {
   Blog?: string
   Email?: string
   MailingList?: string
+  Linkedin?: string
 }
 
 export interface ImportantContacts {
@@ -160,6 +162,7 @@ export interface ImportantContacts {
 
 export interface Contact {
   Details: string
+  Phone?: string
   MapUrl?: string
 }
 

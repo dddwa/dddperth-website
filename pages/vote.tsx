@@ -11,7 +11,7 @@ import Voting from '../components/voting'
 import Conference from '../config/conference'
 import getConferenceDates from '../config/dates'
 import { Conference as Conf, Session, TicketNumberWhileVoting } from '../config/types'
-import Page from '../layouts/main'
+import { Main } from '../layouts/main'
 
 interface VoteProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -181,11 +181,10 @@ class VotePage extends React.Component<VoteProps, VoteState> {
     const isLoadingComplete = !(this.state.isLoading || this.state.isError)
 
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
+      <Main
+        metadata={this.props.pageMetadata}
         title="Vote"
-        hideBanner={true}
-        description={this.props.pageMetadata.conference.Name + ' voting page.'}
+        description={`${this.props.pageMetadata.conference.Name} voting page.`}
       >
         <div className="container">
           <h1>Voting</h1>
@@ -346,7 +345,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             />
           )}
         </div>
-      </Page>
+      </Main>
     )
   }
 }

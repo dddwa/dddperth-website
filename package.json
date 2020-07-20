@@ -23,7 +23,6 @@
     "applicationinsights": "^1.2.0",
     "emotion-theming": "^10.0.10",
     "express": "^4.16.4",
-    "google-map-react": "^1.1.5",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.24.0",
     "next": "^9.3.4",
@@ -32,11 +31,11 @@
     "react-beautiful-dnd": "^12.2.0",
     "react-dom": "^16.13.1",
     "react-ga": "^2.4.1",
+    "use-script": "^2.0.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.3.4",
-    "@types/google-map-react": "^1.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/moment": "^2.13.0",
     "@types/node": "^13.7.1",
@@ -48,7 +47,6 @@
     "@types/uuid": "^3.4.5",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "@zeit/next-sass": "^1.0.1",
     "cross-env": "^5.2.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.1",
