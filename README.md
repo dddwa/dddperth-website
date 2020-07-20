@@ -6,7 +6,7 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
 
 ## Getting started
 
-- Checkout repository on your machine - ensure you have Node.js and Yarn installed
+- Checkout repository on your machine - ensure you have [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) installed
 - Run `yarn` in the repository root (to restore npm packages)
 - Run `yarn run dev` to start a local dev environment that watches for changes and supports Hot Module Replacement / Hot Reloading
 - Use Visual Studio Code as the prefered dev environment - breakpoint debugging should work and you should be able to run the "Start Dev Webserver" task to get it to run the dev environment
@@ -32,16 +32,16 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
   - `/layouts` - Page layouts
   - `/pages` - The pages themselves, these turn into URLs as per Next.js convention
   - `/static` - Static assets
-  - `/styles` - Stylesheets
 
 ## Re-purposing for another conference
 
 To re-purpose for another conference:
 
 1.  Update the files in the `config` directory
-2.  Update `$primaryColour` in `styles/colours-and-fonts.scss` (and other styles as you desire)
-3.  Update the images in the `static` directory and sub directories
-4.  Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
+2.  The theme of the site is handled in theme.ts and uses an 8px margin system
+3.  Components are styled using Emotion js styled components. Update styles within the component
+4.  Update the images in the `public` directory and sub directories
+5.  Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
 
