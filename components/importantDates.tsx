@@ -1,10 +1,10 @@
 import React from 'react'
-import { Action, Conference } from '../config/types'
-import { ActionButton } from './actionButton'
-import { ImportantDatesList } from './ImportantDatesList/importantDatesList'
-import { CurrentDate } from './utils/dateTimeProvider'
-import { calcRem } from './utils/styles/calcRem'
-import { theme } from './utils/styles/theme'
+import { Action, Conference } from 'config/types'
+import { ActionButton } from 'components/actionButton'
+import { ImportantDatesList } from 'components/ImportantDatesList/importantDatesList'
+import { CurrentDate } from 'components/utils/dateTimeProvider'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { theme } from 'components/utils/styles/theme'
 
 export interface ImportantDatesProps {
   conference: Conference

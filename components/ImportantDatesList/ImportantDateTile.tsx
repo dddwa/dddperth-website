@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImportantDate, Types } from '../../config/types'
+import { ImportantDate, Types } from 'config/types'
 import {
   StyledAbbr,
   StyledDoneIcon,

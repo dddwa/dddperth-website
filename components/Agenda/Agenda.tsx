@@ -1,12 +1,12 @@
 import Router from 'next/router'
 import React, { Fragment } from 'react'
-import { Session, Sponsor } from '../../config/types'
-import { SafeLink } from '../global/safeLink'
-import { SessionGroup, useSessionGroups } from '../utils/useSessionGroups'
-import { useSessions } from '../utils/useSessions'
-import { StyledCenteredParagraph, StyledSponsorLogo } from './Agenda.styled'
-import { SessionDetails } from './SessionDetails'
-import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from './SessionDetails.styled'
+import { Session, Sponsor } from 'config/types'
+import { SafeLink } from 'components/global/safeLink'
+import { SessionGroup, useSessionGroups } from 'components/utils/useSessionGroups'
+import { useSessions } from 'components/utils/useSessions'
+import { StyledCenteredParagraph, StyledSponsorLogo } from 'components/Agenda/Agenda.styled'
+import { SessionDetails } from 'components/Agenda/SessionDetails'
+import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from 'components/Agenda/SessionDetails.styled'
 export type onSelectCallback = (session: Session, sponsor: Sponsor) => void
 
 interface AgendaProps {
@@ -55,7 +55,7 @@ function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaStat
   }
 }
 
-export const Agenda: React.FC<AgendaProps> = props => {
+export const Agenda: React.FC<AgendaProps> = (props) => {
   const { isError, sessions } = useSessions(props.sessionsUrl, props.sessions)
   const { nextSessionGroup } = useSessionGroups(sessions)
   const [sessionState, dispatch] = React.useReducer(agendaReducer, { showModal: false })
@@ -66,7 +66,7 @@ export const Agenda: React.FC<AgendaProps> = props => {
     }
 
     if (props.selectedSessionId) {
-      const foundSession = sessions.find(session => session.Id === props.selectedSessionId)
+      const foundSession = sessions.find((session) => session.Id === props.selectedSessionId)
       if (foundSession) {
         dispatch({
           session: foundSession,

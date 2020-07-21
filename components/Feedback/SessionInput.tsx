@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Session } from '../../config/types'
+import { Session } from 'config/types'
 import { StyledSessionInput, StyledSessionLabel } from './SessionInput.styled'
 
 interface SessionInputProps {
@@ -22,7 +22,7 @@ export const SessionInput: React.FC<SessionInputProps> = ({ session, checked, on
         required
       />
       <StyledSessionLabel htmlFor={inputId}>
-        {session.Title} - {session.Presenters.map(presenter => presenter.Name).join(', ')}
+        {session.Title} - {session.Presenters.map((presenter) => presenter.Name).join(', ')}
       </StyledSessionLabel>
     </Fragment>
   )

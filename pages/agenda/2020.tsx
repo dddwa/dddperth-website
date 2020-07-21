@@ -1,8 +1,8 @@
 import React from 'react'
-import withPageMetadata, { WithPageMetadataProps } from '../../components/global/withPageMetadata'
-import { PageWithSidebar } from '../../layouts/withSidebar'
-import AllAgendas from '../../components/allAgendas'
-import { StyledPara } from '../../components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import AllAgendas from 'components/allAgendas'
+import { StyledPara } from 'components/global/text'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
   <PageWithSidebar metadata={props.pageMetadata} title="2020 Conference" description="DDDPerth Conference 2020">

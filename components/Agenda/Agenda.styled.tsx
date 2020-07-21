@@ -1,6 +1,6 @@
-import { breakpoint, breakpointBetween, breakpointMax } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
+import { breakpoint, breakpointBetween, breakpointMax } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 const rowBackgroundColor = '#f9f9f9'
 const cellBorder = '1px solid #ddd'

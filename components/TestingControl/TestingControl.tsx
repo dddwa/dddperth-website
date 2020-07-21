@@ -1,10 +1,10 @@
 import moment, { Moment } from 'moment'
 import React, { useState } from 'react'
-import From2017 from '../../config/2017'
-import SponsorData from '../../config/sponsors'
-import { Conference, TicketPurchasingOptions } from '../../config/types'
-import { Button } from '../global/Button/Button'
-import dateTimeProvider, { CurrentDate } from '../utils/dateTimeProvider'
+import From2017 from 'config/2017'
+import SponsorData from 'config/sponsors'
+import { Conference, TicketPurchasingOptions } from 'config/types'
+import { Button } from 'components/global/Button/Button'
+import dateTimeProvider, { CurrentDate } from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
 
 interface TestingControlProps {

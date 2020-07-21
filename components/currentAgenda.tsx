@@ -1,9 +1,9 @@
 import { Moment } from 'moment'
 import React, { Fragment } from 'react'
-import Conference from '../config/conference'
-import { Session, Sponsor } from '../config/types'
-import { ActionButton } from './actionButton'
-import { Agenda } from './Agenda/Agenda'
+import Conference from 'config/conference'
+import { Session, Sponsor } from 'config/types'
+import { ActionButton } from 'components/actionButton'
+import { Agenda } from 'components/Agenda/Agenda'
 import {
   StyledAddress,
   StyledAgendaRow,
@@ -11,11 +11,11 @@ import {
   StyledFeedbackActions,
   StyledTrackHeader,
   StyledUpNext,
-} from './Agenda/Agenda.styled'
-import { AgendaProvider } from './Agenda/AgendaContext'
-import { AgendaSession } from './Agenda/AgendaSession'
-import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
-import { AgendaTime } from './Agenda/AgendaTime'
+} from 'components/Agenda/Agenda.styled'
+import { AgendaProvider } from 'components/Agenda/AgendaContext'
+import { AgendaSession } from 'components/Agenda/AgendaSession'
+import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
+import { AgendaTime } from 'components/Agenda/AgendaTime'
 
 interface CurrentAgendaProps {
   date: Moment

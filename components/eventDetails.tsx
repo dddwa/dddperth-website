@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
-import { ActionButton } from './actionButton'
-import Countdown from './countdown'
+import { Action, Conference, Dates, TicketPurchasingOptions } from 'config/types'
+import { ActionButton } from 'components/actionButton'
+import Countdown from 'components/countdown'
 
 export interface EventDetailsProps {
   conference: Conference

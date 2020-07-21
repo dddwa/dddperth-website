@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
+import { SafeLink } from 'components/global/safeLink'
 import { Venue } from './types'
 
 const venue: Venue = {

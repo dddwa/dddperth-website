@@ -1,8 +1,8 @@
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
-import { StyledList } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import { PageWithSidebar } from '../layouts/withSidebar'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledList } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
   <PageWithSidebar

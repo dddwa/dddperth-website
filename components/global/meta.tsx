@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
-import * as analytics from '../../components/global/analytics'
-import { Conference, Dates } from '../../config/types'
+import * as analytics from 'components/global/analytics'
+import { Conference, Dates } from 'config/types'
 
 interface MetaArgs {
   instrumentationKey: string | null

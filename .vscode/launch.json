@@ -21,6 +21,7 @@
       "type": "node",
       "request": "attach",
       "name": "Next: Node (attach)",
+      "skipFiles": ["<node_internals>/**"],
       "port": 9229
     }
   ],

@@ -1,6 +1,6 @@
-import styled from '../../../utils/styles/theme'
-import { calcRem } from '../../../utils/styles/calcRem'
-import { breakpoint } from '../../../utils/styles/breakpoints'
+import styled from 'components/utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { breakpoint } from 'components/utils/styles/breakpoints'
 
 interface StyledToggleProps {
   active: boolean

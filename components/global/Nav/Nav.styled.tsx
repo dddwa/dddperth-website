@@ -1,7 +1,7 @@
-import { calcRem } from '../../utils/styles/calcRem'
-import styled from '../../utils/styles/theme'
-import { zIndex } from '../../utils/styles/zindex'
-import { breakpoint } from '../../utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
+import { zIndex } from 'components/utils/styles/zindex'
+import { breakpoint } from 'components/utils/styles/breakpoints'
 import { NavStatus } from './Nav'
 
 interface StyleNavProps {

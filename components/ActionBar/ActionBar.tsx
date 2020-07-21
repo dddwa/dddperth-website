@@ -1,8 +1,8 @@
 import React from 'react'
-import { ButtonAnchor } from '../global/Button/Button'
-import { PageMetadata } from '../global/withPageMetadata'
+import { ButtonAnchor } from 'components/global/Button/Button'
+import { PageMetadata } from 'components/global/withPageMetadata'
 import { StyledActionBarContainer } from './ActionBar.styled'
-import getConferenceActions from '../../config/actions'
+import getConferenceActions from 'config/actions'
 
 interface ActionBarProps {
   metadata: PageMetadata

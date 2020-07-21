@@ -1,8 +1,8 @@
-import { calcRem } from '../../utils/styles/calcRem'
-import styled, { Theme } from '../../utils/styles/theme'
-import { ButtonKinds, Size } from './Button'
 import { CSSObject } from '@emotion/core'
-import { conditionalStyles } from '../../utils/styles/conditionalStyles'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled, { Theme } from 'components/utils/styles/theme'
+import { conditionalStyles } from 'components/utils/styles/conditionalStyles'
+import { ButtonKinds, Size } from './Button'
 
 function shouldStyledButtonForwardProps(prop: string) {
   return !['size', 'kind'].includes(prop)

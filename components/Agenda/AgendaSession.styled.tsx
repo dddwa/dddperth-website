@@ -1,7 +1,7 @@
-import { breakpoint, breakpointMax } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
-import { zIndex } from '../utils/styles/zindex'
+import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
+import { zIndex } from 'components/utils/styles/zindex'
 
 interface StyledSectionProps {
   fullWidth?: boolean

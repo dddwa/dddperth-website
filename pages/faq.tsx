@@ -1,10 +1,10 @@
 import React from 'react'
-import { FaqList } from '../components/FAQList/FaqList'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import getFaqs from '../config/faqs'
-import { PageWithSidebar } from '../layouts/withSidebar'
+import { FaqList } from 'components/FAQList/FaqList'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import getFaqs from 'config/faqs'
+import { PageWithSidebar } from 'layouts/withSidebar'
 
-const FaqPage: React.StatelessComponent<WithPageMetadataProps> = props => (
+const FaqPage: React.StatelessComponent<WithPageMetadataProps> = (props) => (
   <PageWithSidebar
     metadata={props.pageMetadata}
     title="FAQs"

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { StyledList, StyledPara } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import { PageWithSidebar } from '../layouts/withSidebar'
 import { NextPage } from 'next'
-import { SafeLink } from '../components/global/safeLink'
+import { StyledList, StyledPara } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import { SafeLink } from 'components/global/safeLink'
 
 const CodeOfConduct: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => (
   <PageWithSidebar

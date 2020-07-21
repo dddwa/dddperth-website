@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import withPageMetadata from '../../components/global/withPageMetadata'
-import { AgendaPageParameters, agendaPage } from '../../components/Agenda/AgendaPage'
-import { From2019 } from '../../config/2019'
-import { Agenda } from '../../components/Agenda/Agenda'
-import { AgendaProvider } from '../../components/Agenda/AgendaContext'
+import withPageMetadata from 'components/global/withPageMetadata'
+import { AgendaPageParameters, agendaPage } from 'components/Agenda/AgendaPage'
+import { From2019 } from 'config/2019'
+import { Agenda } from 'components/Agenda/Agenda'
+import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import {
   StyledAgendaRowList,
   StyledAgendaRow,
@@ -11,17 +11,17 @@ import {
   StyledAddress,
   StyledAgendaContainer,
   StyledVideoContainer,
-} from '../../components/Agenda/Agenda.styled'
-import { AgendaTime } from '../../components/Agenda/AgendaTime'
-import { AgendaSession } from '../../components/Agenda/AgendaSession'
-import { StyledAgendaPresenter } from '../../components/Agenda/AgendaSession.styled'
-import { Session, SponsorType } from '../../config/types'
+} from 'components/Agenda/Agenda.styled'
+import { AgendaTime } from 'components/Agenda/AgendaTime'
+import { AgendaSession } from 'components/Agenda/AgendaSession'
+import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
+import { Session, SponsorType } from 'config/types'
 import moment from 'moment'
-import { Sponsors } from '../../components/Sponsors/sponsors'
-import ResponsiveVideo from '../../components/responsiveVideo'
-import { SafeLink } from '../../components/global/safeLink'
-import { StyledPara } from '../../components/global/text'
-import { ButtonAnchor } from '../../components/global/Button/Button'
+import { Sponsors } from 'components/Sponsors/sponsors'
+import ResponsiveVideo from 'components/responsiveVideo'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledPara } from 'components/global/text'
+import { ButtonAnchor } from 'components/global/Button/Button'
 
 const agendaParams: AgendaPageParameters = {
   conferenceInstance: '2019',

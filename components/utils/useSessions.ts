@@ -1,6 +1,5 @@
-import fetch from 'isomorphic-fetch'
 import React from 'react'
-import { Session } from '../../config/types'
+import { Session } from 'config/types'
 import { mapSessions } from './mapSession'
 
 interface SessionState {
@@ -45,13 +44,13 @@ export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
   React.useEffect(() => {
     if (state.sessions.length === 0) {
       fetch(sessionsAPI)
-        .then(response => {
+        .then((response) => {
           if (!response.ok) {
             throw response.statusText
           }
           return response.json()
         })
-        .then(body => {
+        .then((body) => {
           let sessions = body
           if (sessions[0].SessionId) {
             // Map old session structure to new session structure
@@ -59,7 +58,7 @@ export function useSessions(sessionsAPI: string, sessions: Session[] = []) {
           }
           dispatch({ type: 'loaded', sessions })
         })
-        .catch(error => {
+        .catch((error) => {
           dispatch({ type: 'error' })
           if (console) {
             // eslint-disable-next-line no-console

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Action, Conference, Dates, TicketPurchasingOptions } from '../config/types'
-import { ActionButton } from './actionButton'
-import { StyledList } from './global/text'
+import { Action, Conference, Dates, TicketPurchasingOptions } from 'config/types'
+import { ActionButton } from 'components/actionButton'
+import { StyledList } from 'components/global/text'
 import { useRouter } from 'next/router'
 
 export interface EventDetailsSummaryProps {

@@ -1,10 +1,10 @@
-import { Session } from '../../config/types'
-import { WithPageMetadataProps } from '../global/withPageMetadata'
-import AllAgendas from '../allAgendas'
-import { Main } from '../../layouts/main'
+import { Session } from 'config/types'
+import { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import AllAgendas from 'components/allAgendas'
+import { Main } from 'layouts/main'
 import React from 'react'
 import { NextPage } from 'next'
-import { mapSessions } from '../utils/mapSession'
+import { mapSessions } from 'components/utils/mapSession'
 
 export interface AgendaPageParameters {
   conferenceInstance: string

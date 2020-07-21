@@ -1,10 +1,10 @@
 import React from 'react'
-import { PageMetadata } from '../withPageMetadata'
+import { PageMetadata } from 'components/global/withPageMetadata'
 import { StyledHeader, StyledAnchor } from './Header.styled'
 import Link from 'next/link'
-import { DDDLogo } from '../Icons/DDDLogo'
+import { DDDLogo } from 'components/global/Icons/DDDLogo'
 import { HeaderSocials } from './components/HeaderSocials'
-import { NavToggle } from '../Nav/components/NavToggle'
+import { NavToggle } from 'components/global/Nav/components/NavToggle'
 
 interface HeaderProps {
   metadata: PageMetadata

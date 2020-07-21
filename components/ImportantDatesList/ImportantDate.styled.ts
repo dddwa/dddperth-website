@@ -1,9 +1,9 @@
 import isPropValid from '@emotion/is-prop-valid'
-import { Types } from '../../config/types'
-import { breakpoint } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import { conditionalStyles } from '../utils/styles/conditionalStyles'
-import styled, { Theme } from '../utils/styles/theme'
+import { Types } from 'config/types'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { conditionalStyles } from 'components/utils/styles/conditionalStyles'
+import styled, { Theme } from 'components/utils/styles/theme'
 import { ImportantDateListLayouts } from './importantDatesList'
 
 function dateBorderColor(theme: Theme, dateType: Types) {

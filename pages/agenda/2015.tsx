@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { SafeLink } from '../../components/global/safeLink'
-import withPageMetadata from '../../components/global/withPageMetadata'
-import { Sponsors } from '../../components/Sponsors/sponsors'
-import From2015 from '../../config/2015'
-import { SponsorType, Session } from '../../config/types'
+import { SafeLink } from 'components/global/safeLink'
+import withPageMetadata from 'components/global/withPageMetadata'
+import { Sponsors } from 'components/Sponsors/sponsors'
+import From2015 from 'config/2015'
+import { SponsorType, Session } from 'config/types'
 import moment from 'moment'
 import {
   StyledAgendaRowList,
@@ -11,15 +11,15 @@ import {
   StyledTrackHeader,
   StyledAddress,
   StyledAgendaContainer,
-} from '../../components/Agenda/Agenda.styled'
-import { Agenda } from '../../components/Agenda/Agenda'
-import { AgendaProvider } from '../../components/Agenda/AgendaContext'
-import { AgendaPageParameters, agendaPage } from '../../components/Agenda/AgendaPage'
-import { AgendaTime } from '../../components/Agenda/AgendaTime'
-import { AgendaSession } from '../../components/Agenda/AgendaSession'
-import { StyledAgendaPresenter } from '../../components/Agenda/AgendaSession.styled'
-import { StyledPara } from '../../components/global/text'
-import { ButtonAnchor } from '../../components/global/Button/Button'
+} from 'components/Agenda/Agenda.styled'
+import { Agenda } from 'components/Agenda/Agenda'
+import { AgendaProvider } from 'components/Agenda/AgendaContext'
+import { AgendaPageParameters, agendaPage } from 'components/Agenda/AgendaPage'
+import { AgendaTime } from 'components/Agenda/AgendaTime'
+import { AgendaSession } from 'components/Agenda/AgendaSession'
+import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
+import { StyledPara } from 'components/global/text'
+import { ButtonAnchor } from 'components/global/Button/Button'
 
 const agendaParams: AgendaPageParameters = {
   conferenceInstance: '2015',

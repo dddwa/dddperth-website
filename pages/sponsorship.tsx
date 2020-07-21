@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledList, StyledPara } from '../components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import { PageWithSidebar } from '../layouts/withSidebar'
-import { ButtonAnchor } from '../components/global/Button/Button'
-import { EmailIcon } from '../components/global/Icons/Email'
+import { StyledList, StyledPara } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import { ButtonAnchor } from 'components/global/Button/Button'
+import { EmailIcon } from 'components/global/Icons/Email'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
   <PageWithSidebar
