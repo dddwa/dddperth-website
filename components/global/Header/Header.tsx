@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ metadata }) => (
   <StyledHeader>
     <NavToggle />
     <Link passHref={true} href="/">
-      <StyledAnchor>
+      <StyledAnchor aria-label="DDD Perth">
         <DDDLogo />
       </StyledAnchor>
     </Link>
