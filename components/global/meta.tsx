@@ -67,6 +67,9 @@ export const Meta: React.FC<MetaArgs> = ({
       <meta property="og:site_name" content={conference.Name} />
       <link rel="canonical" href={pageUrl} />
       <meta property="og:url" content={pageUrl} />
+      <link rel="preconnect" href="https://www.google-analytics.com"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+      <link rel="preconnect" href="https://az416426.vo.msecnd.net"></link>
 
       <link href="https://fonts.googleapis.com/css?family=Hind:400,500,700&display=swap" rel="stylesheet" />
 
