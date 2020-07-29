@@ -8,6 +8,7 @@ import {
   StyledInlineDate,
   StyledInlineTimeDescription,
 } from './ImportantDate.styled'
+import { format } from 'date-fns'
 
 interface ImportantDateTileInlineProps {
   importantDate: ImportantDate
@@ -18,9 +19,9 @@ export const ImportantDateTileInline: React.FC<ImportantDateTileInlineProps> = (
   <StyledImportantDateInline isFinished={isFinished} dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledInlineDate>{importantDate.Date.format('dddd MMM D')}</StyledInlineDate>
+        <StyledInlineDate>{format(importantDate.Date, 'dddd MMM D')}</StyledInlineDate>
         <StyledInlineTimeDescription>
-          {importantDate.Date.format('hh:mma')} - {importantDate.Description}
+          {format(importantDate.Date, 'hh:mma')} - {importantDate.Description}
         </StyledInlineTimeDescription>
       </time>
     </StyledImportantDateContent>

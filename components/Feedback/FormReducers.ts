@@ -1,10 +1,8 @@
-import moment, { Moment } from 'moment'
-
 interface FormState {
   submitInProgress: boolean
   hasSubmitted: boolean
   submitError: boolean
-  lastSubmit?: Moment
+  lastSubmit?: Date
 }
 
 export const defaultFormState: FormState = {
@@ -19,7 +17,7 @@ export function formReducer(state: FormState, action: 'submitting' | 'submitted'
     case 'submitted':
       return {
         hasSubmitted: true,
-        lastSubmit: moment(),
+        lastSubmit: new Date(),
         submitError: false,
         submitInProgress: false,
       }

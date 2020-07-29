@@ -10,6 +10,7 @@ import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Session, SponsorType } from 'config/types'
 import { Main } from 'layouts/main'
+import { format } from 'date-fns'
 
 interface AgendaPageProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -54,8 +55,8 @@ class AgendaPage extends React.Component<AgendaPageProps> {
           {!dates.AgendaPublished && (
             <p>
               The agenda has not yet been finalised; please come back on{' '}
-              {conference.AgendaPublishedFrom.format(dates.DateDisplayFormat)}{' '}
-              {conference.AgendaPublishedFrom.format(dates.TimeDisplayFormat)}. In the meantime, check out our previous
+              {format(conference.AgendaPublishedFrom, dates.DateDisplayFormat)}{' '}
+              {format(conference.AgendaPublishedFrom, dates.TimeDisplayFormat)}. In the meantime, check out our previous
               agendas below.
             </p>
           )}

@@ -1,5 +1,6 @@
 import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { Conference, Dates as IDates, TicketPurchasingOptions } from './types'
+import { format } from 'date-fns'
 
 export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
   const now = currentDate.Value
@@ -9,8 +10,8 @@ export default function getConferenceDates(conference: Conference, currentDate: 
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil
 
   return {
-    Display: conference.HideDate ? 'TBA' : `${conference.Date.format(dateDisplayFormat)}`,
-    DisplayFormatted: (dateFormat: string) => (conference.HideDate ? 'TBA' : `${conference.Date.format(dateFormat)}`),
+    Display: conference.HideDate ? 'TBA' : `${format(conference.Date, dateDisplayFormat)}`,
+    DisplayFormatted: (dateFormat: string) => (conference.HideDate ? 'TBA' : `${format(conference.Date, dateFormat)}`),
     DateDisplayFormat: dateDisplayFormat,
     TimeDisplayFormat: 'h:mma',
     IsComplete: isComplete,

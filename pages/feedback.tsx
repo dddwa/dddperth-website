@@ -34,6 +34,7 @@ import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Session } from 'config/types'
 import { Main } from 'layouts/main'
+import { format } from 'date-fns'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -152,9 +153,13 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
                     {sessionGroups.pastSessionGroups.map((sessionGroup) => (
                       <Fragment>
                         <StyledSessionTimeframe key={sessionGroup.timeStart.valueOf()}>
-                          <time>{sessionGroup.timeStart.format('hh:mm')}</time>
+                          <time dateTime={sessionGroup.timeStart.toISOString()}>
+                            {format(sessionGroup.timeStart, 'hh:mm')}
+                          </time>
                           {' - '}
-                          <time>{sessionGroup.timeEnd.format('hh:mm')}</time>
+                          <time dateTime={sessionGroup.timeEnd.toISOString()}>
+                            {format(sessionGroup.timeEnd, 'hh:mm')}
+                          </time>
                         </StyledSessionTimeframe>
                         {sessionGroup.sessions.map((session) => (
                           <li key={session.Id}>

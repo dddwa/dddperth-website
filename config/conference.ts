@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { orderBy } from 'components/utils/arraySort'
 import SponsorData from 'config/sponsors'
 import {
@@ -9,24 +8,26 @@ import {
   ImportantDate,
 } from './types'
 import venue from './venue'
+import { zonedTimeToUtc } from 'date-fns-tz'
+import { add, sub, set, toDate } from 'date-fns'
 
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
 const hideDate = true
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const date = moment.parseZone('2021-08-14T08:00+08:00')
-const endDate = date.clone().add(12, 'h')
-const currentInstance = parseInt(date.format('YYYY'), 10)
+const date = zonedTimeToUtc('2021-08-14T08:00', '+08:00')
+const endDate = add(date, { hours: 12 })
+const currentInstance = date.getFullYear()
 const firstInstance = 2015
-const registrationOpenFrom = moment.parseZone('2021-04-30T08:00:00+08:00')
-const registrationOpenUntil = hideDate ? null : date.clone().add(-1, 'd').startOf('day').add(17, 'h')
-const presentationSubmissionsOpenFrom = moment.parseZone('2021-04-24T08:00:00+08:00')
-const presentationSubmissionsOpenUntil = moment.parseZone('2021-05-31T23:59:59+08:00')
-const votingOpenFrom = moment.parseZone('2021-06-05T17:00:00+08:00')
-const votingOpenUntil = moment.parseZone('2021-06-14T23:59:59+08:00')
-const agendaPublishedFrom = moment.parseZone('2021-07-17T17:00:00+08:00')
-const feedbackOpenFrom = date.clone()
+const registrationOpenFrom = zonedTimeToUtc('2021-04-30T08:00:00', '+08:00')
+const registrationOpenUntil = hideDate ? null : set(sub(date, { days: 1 }), { hours: 17 }) // date.clone().add(-1, 'd').startOf('day').add(17, 'h')
+const presentationSubmissionsOpenFrom = zonedTimeToUtc('2021-04-24T08:00:00', '+08:00')
+const presentationSubmissionsOpenUntil = zonedTimeToUtc('2021-05-31T23:59:59', '+08:00')
+const votingOpenFrom = zonedTimeToUtc('2021-06-05T17:00:00', '+08:00')
+const votingOpenUntil = zonedTimeToUtc('2021-06-14T23:59:59', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2021-07-17T17:00:00', '+08:00')
+const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
   {
@@ -192,8 +193,8 @@ const Conference: IConference = {
   SessionGroups: [
     {
       sessions: ['112b54cc-df00-40fd-ad5e-4b0714329821'],
-      timeEnd: date.clone().set({ hour: 9, minutes: 55 }),
-      timeStart: date.clone().set({ hour: 9, minutes: 10 }),
+      timeEnd: set(date, { hours: 9, minutes: 55 }),
+      timeStart: set(date, { hours: 9, minutes: 10 }),
       type: 'SessionIds',
     },
     {
@@ -205,8 +206,8 @@ const Conference: IConference = {
         'b73abc43-7634-40d3-a38b-696bdb844cc0',
         'cc740103-612c-4673-b293-97487787f093',
       ],
-      timeEnd: date.clone().set({ hour: 10, minute: 25 }),
-      timeStart: date.clone().set({ hour: 10, minutes: 5 }),
+      timeEnd: set(date, { hours: 10, minutes: 25 }),
+      timeStart: set(date, { hours: 10, minutes: 5 }),
       type: 'SessionIds',
     },
     {
@@ -218,8 +219,8 @@ const Conference: IConference = {
         'b446c945-6210-4b56-bc78-772347060a5b',
         '2fff2f0e-7f55-4a26-bf15-7537a6c3f700',
       ],
-      timeEnd: date.clone().set({ hour: 11, minute: 40 }),
-      timeStart: date.clone().set({ hour: 10, minute: 55 }),
+      timeEnd: set(date, { hours: 11, minutes: 40 }),
+      timeStart: set(date, { hours: 10, minutes: 55 }),
       type: 'SessionIds',
     },
     {
@@ -231,8 +232,8 @@ const Conference: IConference = {
         'f3a57e6c-0325-4898-bffd-2d3040f5dee9',
         'adbcf783-1ab2-456b-ba41-1041f139e3f2',
       ],
-      timeEnd: date.clone().set({ hour: 12, minute: 10 }),
-      timeStart: date.clone().set({ hour: 11, minute: 50 }),
+      timeEnd: set(date, { hours: 12, minutes: 10 }),
+      timeStart: set(date, { hours: 11, minutes: 50 }),
       type: 'SessionIds',
     },
     {
@@ -244,8 +245,8 @@ const Conference: IConference = {
         'fd0518e0-a52c-44dd-84fb-61ce59c3cdb5',
         '70537fd7-4e49-4100-97ee-ce79c71545d6',
       ],
-      timeEnd: date.clone().set({ hour: 13, minute: 5 }),
-      timeStart: date.clone().set({ hour: 12, minute: 20 }),
+      timeEnd: set(date, { hours: 13, minutes: 5 }),
+      timeStart: set(date, { hours: 12, minutes: 20 }),
       type: 'SessionIds',
     },
     {
@@ -257,8 +258,8 @@ const Conference: IConference = {
         'fa861d2a-9597-4a98-8510-fc0dc0b400e6',
         '83b6a640-935b-4e5e-b251-81c3d69c0129',
       ],
-      timeEnd: date.clone().set({ hour: 14, minute: 25 }),
-      timeStart: date.clone().set({ hour: 14, minute: 5 }),
+      timeEnd: set(date, { hours: 14, minutes: 25 }),
+      timeStart: set(date, { hours: 14, minutes: 5 }),
       type: 'SessionIds',
     },
     {
@@ -270,14 +271,14 @@ const Conference: IConference = {
         '00311b92-6c21-47a8-b8d2-af325581d6f9',
         '35e1174f-8d50-48db-a410-d53c3c8ddf73',
       ],
-      timeEnd: date.clone().set({ hour: 15, minute: 20 }),
-      timeStart: date.clone().set({ hour: 14, minute: 35 }),
+      timeEnd: set(date, { hours: 15, minutes: 20 }),
+      timeStart: set(date, { hours: 14, minutes: 35 }),
       type: 'SessionIds',
     },
     {
       sessions: ['4c019f6f-c312-4bb9-8024-3352f6034d6e'],
-      timeEnd: date.clone().set({ hour: 17, minute: 5 }),
-      timeStart: date.clone().set({ hour: 16, minute: 20 }),
+      timeEnd: set(date, { hours: 17, minutes: 5 }),
+      timeStart: set(date, { hours: 16, minutes: 20 }),
       type: 'SessionIds',
     },
   ],

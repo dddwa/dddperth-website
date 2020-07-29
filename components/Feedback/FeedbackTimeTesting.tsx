@@ -2,6 +2,7 @@ import React from 'react'
 import { Alert } from 'components/global/Alert/Alert'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { SessionGroup } from 'components/utils/useSessionGroups'
+import { format } from 'date-fns'
 interface FeedbackTimeTestingProps {
   sessionGroups: SessionGroup[]
 }
@@ -13,10 +14,10 @@ export const FeedbackTimeTesting: React.FC<FeedbackTimeTestingProps> = ({ sessio
       {sessionGroups.map((sessionGroup) => (
         <li key={sessionGroup.timeStart.valueOf()}>
           <button type="button" onClick={() => dateTimeProvider.setDateTo(sessionGroup.timeStart)}>
-            Start: {sessionGroup.timeStart.format('h:mma')}
+            Start: {format(sessionGroup.timeStart, 'h:mma')}
           </button>
           <button type="button" onClick={() => dateTimeProvider.setDateTo(sessionGroup.timeEnd)}>
-            End: {sessionGroup.timeEnd.format('h:mma')}
+            End: {format(sessionGroup.timeEnd, 'h:mma')}
           </button>
         </li>
       ))}

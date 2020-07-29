@@ -1,4 +1,3 @@
-import { Moment } from 'moment'
 import { SessionGroupWithIds } from 'components/utils/useSessionGroups'
 
 export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
@@ -44,19 +43,19 @@ export interface Conference {
   MinVotes: number
   MaxVotes: number
 
-  Date: Moment
-  EndDate: Moment
+  Date: Date
+  EndDate: Date
   DoorsOpenTime: string
   FinishTime: string
-  RegistrationOpenFrom: Moment
-  RegistrationOpenUntil: Moment | null
-  PresentationSubmissionsOpenFrom: Moment
-  PresentationSubmissionsOpenUntil: Moment
-  VotingOpenFrom: Moment
-  VotingOpenUntil: Moment
-  AgendaPublishedFrom: Moment
-  FeedbackOpenFrom: Moment
-  FeedbackOpenUntil: Moment
+  RegistrationOpenFrom: Date
+  RegistrationOpenUntil: Date | null
+  PresentationSubmissionsOpenFrom: Date
+  PresentationSubmissionsOpenUntil: Date
+  VotingOpenFrom: Date
+  VotingOpenUntil: Date
+  AgendaPublishedFrom: Date
+  FeedbackOpenFrom: Date
+  FeedbackOpenUntil: Date
 
   ConferenceFeedbackLink: string
   SessionFeedbackLink: string
@@ -117,7 +116,7 @@ export interface Venue {
 
 export interface ImportantDate {
   Description: string
-  Date: Moment
+  Date: Date
   Type: Types
 }
 

@@ -1,19 +1,19 @@
-import moment, { Moment } from 'moment'
+import { add } from 'date-fns'
 
 export interface CurrentDate {
-  Value: Moment
+  Value: Date
 }
 
 export default {
-  setDateTo(date: Moment): void {
+  setDateTo(date: Date): void {
     this.now = () => {
       return {
-        Value: date.clone().add(1, 'minute'),
+        Value: add(date, { minutes: 1 }),
       }
     }
   },
 
   now(): CurrentDate {
-    return { Value: moment(new Date()) }
+    return { Value: new Date() }
   },
 }

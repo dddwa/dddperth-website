@@ -1,20 +1,20 @@
-import { Moment } from 'moment'
 import React, { Fragment } from 'react'
+import { format, formatISO } from 'date-fns'
 import { StyledAgendaTime } from './Agendatime.styled'
 
 interface AgendaTimeProps {
-  time: Moment
-  endTime?: Moment
-  format?: string
+  time: Date
+  endTime?: Date
+  dateFormat?: string
 }
 
-export const AgendaTime: React.FC<AgendaTimeProps> = ({ time, endTime, format = 'HH:mm' }) => (
+export const AgendaTime: React.FC<AgendaTimeProps> = ({ time, endTime, dateFormat = 'HH:mm' }) => (
   <StyledAgendaTime>
-    <time dateTime={time.toISOString()}>{time.format(format)}</time>
+    <time dateTime={formatISO(time)}>{format(time, dateFormat)}</time>
     {endTime && (
       <Fragment>
         {' - '}
-        <time dateTime={endTime.toISOString()}>{endTime.format(format)}</time>
+        <time dateTime={formatISO(endTime)}>{format(endTime, dateFormat)}</time>
       </Fragment>
     )}
   </StyledAgendaTime>
