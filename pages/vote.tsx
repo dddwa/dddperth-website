@@ -1,4 +1,3 @@
-import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
@@ -12,6 +11,8 @@ import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Conference as Conf, Session, TicketNumberWhileVoting } from 'config/types'
 import { Main } from 'layouts/main'
+import { zonedTimeToUtc } from 'date-fns-tz'
+import { isAfter, format } from 'date-fns'
 
 interface VoteProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -97,9 +98,10 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       if (
         !localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)) &&
         localStorage.getItem(StorageKeys.VOTING_ID) &&
-        moment
-          .parseZone(localStorage.getItem(StorageKeys.VOTING_START_TIME))
-          .isAfter(this.props.pageMetadata.conference.VotingOpenFrom)
+        isAfter(
+          zonedTimeToUtc(localStorage.getItem(StorageKeys.VOTING_START_TIME), '+08:00'),
+          this.props.pageMetadata.conference.VotingOpenFrom,
+        )
       ) {
         localStorage.setItem(
           storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID),
@@ -118,7 +120,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME))) {
         localStorage.setItem(
           storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
-          moment().toISOString(),
+          new Date().toISOString(),
         )
       }
       if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))) {
@@ -221,7 +223,8 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     <span>{minVotes}</span>
                   )}{' '}
                   sessions and you have until{' '}
-                  {this.props.pageMetadata.conference.VotingOpenUntil.format(
+                  {format(
+                    this.props.pageMetadata.conference.VotingOpenUntil,
                     this.props.pageMetadata.dates.TimeDisplayFormat +
                       ' ' +
                       this.props.pageMetadata.dates.DateDisplayFormat,

@@ -1,15 +1,15 @@
-import { Moment } from 'moment'
 import React from 'react'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Session } from 'config/types'
 import dateTimeProvider from './dateTimeProvider'
+import { isWithinInterval, isBefore, isAfter } from 'date-fns'
 
 type SessionId = string // UUID
 
 export interface SessionGroupBase {
-  timeStart: Moment
-  timeEnd: Moment
+  timeStart: Date
+  timeEnd: Date
 }
 
 export interface SessionGroup extends SessionGroupBase {
@@ -73,9 +73,12 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
 
   for (let i = 0; i < allSessionGroups.length; i++) {
     const session = allSessionGroups[i]
-    const isCurrentSession = dateTimeProvider.now().Value.isBetween(session.timeStart, session.timeEnd)
-    const isNextSession = dateTimeProvider.now().Value.isBefore(session.timeStart)
-    const isAfterSession = dateTimeProvider.now().Value.isAfter(session.timeEnd)
+    const isCurrentSession = isWithinInterval(dateTimeProvider.now().Value, {
+      start: session.timeStart,
+      end: session.timeEnd,
+    })
+    const isNextSession = isBefore(dateTimeProvider.now().Value, session.timeStart)
+    const isAfterSession = isAfter(dateTimeProvider.now().Value, session.timeEnd)
 
     if (!IsInProgress) {
       break

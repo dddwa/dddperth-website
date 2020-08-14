@@ -15,7 +15,6 @@ export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
 
   return (
     <Main metadata={pageMetadata} title="Home" showHero={true}>
-      {/* <EventDetails conference={conference} dates={dates} primaryAction={actions[0]} /> */}
       <section>
         <h2>DDD Perth 2020</h2>
         <StyledPara>The DDD Perth Committee has regretfully postponed the 2020 conference to 2021.</StyledPara>

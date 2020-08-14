@@ -9,6 +9,7 @@ import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { ButtonAnchor } from 'components/global/Button/Button'
+import { format } from 'date-fns'
 
 const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const dates = pageMetadata.dates
@@ -100,7 +101,7 @@ const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
         <li>You will probably have internet access, but you should have a backup plan in case it's unavailable.</li>
         <li>
           We will open voting at{' '}
-          {conference.VotingOpenFrom.format(dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat)}; if your
+          {format(conference.VotingOpenFrom, dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat)}; if your
           presentation gets voted in and you agree to present then this is a serious commitment.
         </li>
         <li>

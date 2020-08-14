@@ -1,4 +1,3 @@
-import moment from 'moment'
 import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
 import { getSessionId, logException } from 'components/global/analytics'
@@ -8,6 +7,8 @@ import { Session, TicketNumberWhileVoting, TicketsProvider } from 'config/types'
 import { logEvent } from 'components/global/analytics'
 import { StyledVotingPanel } from 'components/Voting/Voting.styled'
 import { VotingFilters } from 'components/Voting/VotingFilters'
+import { differenceInMinutes } from 'date-fns'
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
@@ -207,7 +208,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           'voting',
           'submit',
           { startTime: this.props.startTime, id: this.props.voteId },
-          { votingDurationInMins: moment().diff(moment.parseZone(this.props.startTime), 'minutes') },
+          { votingDurationInMins: differenceInMinutes(new Date(), zonedTimeToUtc(this.props.startTime, '+08:00')) },
         )
         this.setState({ submitInProgress: false, submitted: true }, () =>
           this.writeToStorage(storageKey(this.props, StorageKeys.SUBMITTED), 'true'),

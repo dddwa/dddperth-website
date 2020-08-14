@@ -3,6 +3,7 @@ import { SafeLink } from 'components/global/safeLink'
 import { StyledList } from 'components/global/text'
 import Conference from './conference'
 import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
+import { format } from 'date-fns'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -128,8 +129,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
           <Fragment>
-            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
-            {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+            Registration opens on {format(Conference.RegistrationOpenFrom, dates.DateDisplayFormat)} at{' '}
+            {format(Conference.RegistrationOpenFrom, dates.TimeDisplayFormat)}.
           </Fragment>
         )}
       </Fragment>
@@ -141,8 +142,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Payments can be made with credit card using Tito via our tickets page when registrations are open. Companies
-        that want to buy bulk tickets (> 10) can{' '}
-        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+        that want to buy bulk tickets (&gt; 10) can{' '}
+        <a className="maillink" href={`mailto:${Conference.ContactEmail}`}>
           contact us
         </a>{' '}
         to pay by invoice (EFT or credit card).

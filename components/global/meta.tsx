@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import * as analytics from 'components/global/analytics'
 import { Conference, Dates } from 'config/types'
+import { format } from 'date-fns'
 
 interface MetaArgs {
   instrumentationKey: string | null
@@ -22,7 +23,7 @@ declare global {
 
 const getTitle = (title: string, conference: Conference, dates: Dates) =>
   `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${
-    !conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('Do MMMM YYYY')}` : ''
+    !conference.HideDate && !dates.IsComplete ? ` | ${format(conference.Date, 'do MMMM yyyy')}` : ''
   }`
 
 export const Meta: React.FC<MetaArgs> = ({
