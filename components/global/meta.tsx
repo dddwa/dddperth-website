@@ -23,7 +23,7 @@ declare global {
 
 const getTitle = (title: string, conference: Conference, dates: Dates) =>
   `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${
-    !conference.HideDate && !dates.IsComplete ? ` | ${format(conference.Date, 'Do MMMM YYYY')}` : ''
+    !conference.HideDate && !dates.IsComplete ? ` | ${format(conference.Date, 'do MMMM yyyy')}` : ''
   }`
 
 export const Meta: React.FC<MetaArgs> = ({

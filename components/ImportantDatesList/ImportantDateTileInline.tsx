@@ -19,7 +19,7 @@ export const ImportantDateTileInline: React.FC<ImportantDateTileInlineProps> = (
   <StyledImportantDateInline isFinished={isFinished} dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledInlineDate>{format(importantDate.Date, 'dddd MMM D')}</StyledInlineDate>
+        <StyledInlineDate>{format(importantDate.Date, 'iiii MMM d')}</StyledInlineDate>
         <StyledInlineTimeDescription>
           {format(importantDate.Date, 'hh:mma')} - {importantDate.Description}
         </StyledInlineTimeDescription>

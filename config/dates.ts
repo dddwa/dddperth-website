@@ -6,7 +6,7 @@ export default function getConferenceDates(conference: Conference, currentDate: 
   const now = currentDate.Value
   const isComplete = now > conference.EndDate
   const isInProgress = now > conference.Date
-  const dateDisplayFormat = 'dddd Do MMMM YYYY'
+  const dateDisplayFormat = 'iiii do MMMM yyyy'
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil
 
   return {
