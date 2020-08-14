@@ -85,6 +85,25 @@ export const Nav: React.FC<NavProps> = ({ menu }) => {
     }
   }, [expanded])
 
+  React.useEffect(() => {
+    function documentClickHandler(evt: MouseEvent | TouchEvent) {
+      if (containerRef.current && evt.target instanceof Node && !containerRef.current.contains(evt.target)) {
+        dispatch('close')
+        setStatus('closing')
+      }
+    }
+
+    if (expanded) {
+      document.addEventListener('click', documentClickHandler)
+      document.addEventListener('touchstart', documentClickHandler)
+    }
+
+    return () => {
+      document.removeEventListener('click', documentClickHandler)
+      document.removeEventListener('touchstart', documentClickHandler)
+    }
+  }, [expanded, dispatch])
+
   return (
     <StyledNav status={status} ref={containerRef}>
       <StyledNavList id={id} aria-expanded={status === 'open'} ref={navRef} tabIndex={-1}>
