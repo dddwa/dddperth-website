@@ -22,7 +22,7 @@ StyledNav.displayName = 'StyledNav'
 export const StyledNavList = styled('ul')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  width: '64vw',
+  width: '40vw',
   height: '100vh',
   minWidth: 280,
   padding: calcRem(0, theme.metrics.md),
