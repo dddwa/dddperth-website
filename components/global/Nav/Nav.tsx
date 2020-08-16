@@ -112,9 +112,11 @@ export const Nav: React.FC<NavProps> = ({ menu }) => {
         {menu.map((item) => (
           <li key={item.href}>
             {item.href.indexOf('http') !== -1 ? (
-              <StyledNavLink active={isFirstBranchMatched(pathname, item.href)}>{item.name}</StyledNavLink>
+              <StyledNavLink href={item.href} active={isFirstBranchMatched(pathname, item.href)}>
+                {item.name}
+              </StyledNavLink>
             ) : (
-              <Link href={item.href} passHref>
+              <Link href={item.href} passHref={true}>
                 <StyledNavLink active={isFirstBranchMatched(pathname, item.href)}>{item.name}</StyledNavLink>
               </Link>
             )}
