@@ -32,8 +32,11 @@ const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference
               {conference.TagLine}
               {!conference.HideDate && !dates.IsComplete && ' & will be held on ' + dates.Display}.<br />
               <br />
-              [There will not be a DDD Adelaide 2020](https://www.andrew-best.com/posts/ddd-adelaide-2020/). We very
-              much hope to host the next event in late 2021!
+              <a href="https://www.andrew-best.com/posts/ddd-adelaide-2020/" target="_blank">
+                There will not be a DDD Adelaide 2020.
+              </a>{' '}
+              We very much hope to host the next event in late 2021!
+              <br />
               <br />
               {conference.Goal} See our{' '}
               <Link href="/code-of-conduct">
