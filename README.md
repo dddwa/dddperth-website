@@ -6,7 +6,7 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
 
 ## Getting started
 
-- Checkout repository on your machine - ensure you have [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) installed
+- Checkout repository on your machine - ensure you have [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) installed first
 - Run `yarn` in the repository root (to restore npm packages)
 - Run `yarn run dev` to start a local dev environment that watches for changes and supports Hot Module Replacement / Hot Reloading
 - Use Visual Studio Code as the prefered dev environment - breakpoint debugging should work and you should be able to run the "Start Dev Webserver" task to get it to run the dev environment
