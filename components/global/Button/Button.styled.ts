@@ -1,123 +1,12 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
-import { breakpoint } from '../../utils/styles/breakpoints'
-import { calcRem } from '../../utils/styles/calcRem'
-import styled, { Theme } from '../../utils/styles/theme'
+import { CSSObject } from '@emotion/core'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled, { Theme } from 'components/utils/styles/theme'
+import { conditionalStyles } from 'components/utils/styles/conditionalStyles'
 import { ButtonKinds, Size } from './Button'
 
-function buttonState(color: string, dark: string, focus: string) {
-  return {
-    // conflicting with prettier
-    backgroundColor: color,
-    '&:hover': {
-      backgroundColor: dark,
-    },
-    '&:focus': {
-      outline: 0,
-      boxShadow: `0 0 0 3px ${focus}`,
-    },
-  }
-}
-
-function buttonKindStyles(kind: ButtonKinds, theme: Theme) {
-  switch (kind) {
-    case 'inverse':
-      return buttonState(theme.colors.inverse, theme.colors.inverseDark, theme.colors.linkFocusBg)
-    case 'primary':
-      return buttonState(theme.colors.primary, theme.colors.primaryDark, theme.colors.linkFocusBg)
-    case 'tertiary':
-      return buttonState(theme.colors.tertiary, theme.colors.tertiaryDark, theme.colors.linkFocusBg)
-    case 'secondary':
-    default:
-      return buttonState(theme.colors.secondary, theme.colors.secondaryDark, theme.colors.linkFocusBg)
-  }
-}
-
-export interface StyledButtonProps {
-  kind: ButtonKinds
-  size?: Size
-}
-
 function shouldStyledButtonForwardProps(prop: string) {
-  return prop !== 'kind' && prop !== 'size'
+  return !['size', 'kind'].includes(prop)
 }
-
-export const StyledButton = styled('button', {
-  shouldForwardProp: shouldStyledButtonForwardProps,
-})<StyledButtonProps>(({ theme, kind, size }) => ({
-  ...buttonKindStyles(kind, theme),
-  cursor: 'pointer',
-  display: 'block',
-  margin: 0,
-  padding: size === 'small' ? calcRem(5, 10) : calcRem(6, 12),
-  color: '#fff',
-  border: 'none',
-  fontSize: calcRem(14),
-  fontWeight: theme.weights.bold,
-  lineHeight: size === 'small' ? 1.1 : 1.4,
-  textAlign: 'center',
-  textShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
-  verticalAlign: 'middle',
-  userSelect: 'none',
-
-  '&[disabled]': {
-    opacity: 0.65,
-    cursor: 'not-allowed',
-  },
-
-  '&:after': {
-    position: 'relative',
-    display: 'inline-block',
-    top: -1,
-    maxWidth: calcRem(20),
-    margin: `0 0 0 ${calcRem(10)}`,
-    content: "'\f0da'",
-    fontFamily: 'FontAwesome',
-    color: '#000',
-    fontSize: calcRem(16),
-    opacity: 0.3,
-    verticalAlign: 'middle',
-  },
-
-  [breakpoint('xs')]: {
-    padding: size === 'small' ? calcRem(5, 10) : calcRem(6, 15, 5),
-  },
-
-  [breakpoint('sm')]: {
-    padding: size === 'small' ? calcRem(5, 10) : calcRem(7, 16, 6),
-    fontSize: size === 'small' ? calcRem(13) : calcRem(15),
-
-    '&:after': {
-      margin: `0 0 0 ${calcRem(17)}`,
-      fontSize: calcRem(19),
-    },
-  },
-
-  [breakpoint('md')]: {
-    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(8, 20, 7),
-    fontSize: size === 'small' ? calcRem(14) : calcRem(16),
-  },
-
-  [breakpoint('lg')]: {
-    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(10, 23, 8),
-    fontSize: size === 'small' ? calcRem(15) : calcRem(17),
-
-    '&:after': {
-      margin: `0 0 0 ${calcRem(20)}`,
-      fontSize: calcRem(20),
-    },
-  },
-
-  [breakpoint('xl')]: {
-    padding: size === 'small' ? calcRem(7, 10, 5) : calcRem(12, 25, 10),
-    fontSize: size === 'small' ? calcRem(16) : calcRem(18),
-
-    '&:after': {
-      margin: `0 0 0 ${calcRem(20)}`,
-      fontSize: calcRem(20),
-    },
-  },
-}))
 
 export const StyledLinkButton = styled('button', {
   shouldForwardProp: shouldStyledButtonForwardProps,
@@ -128,12 +17,85 @@ export const StyledLinkButton = styled('button', {
   textDecoration: 'underline',
   background: 'transparent',
   border: 'none',
-  color: theme.colors.primary,
+  color: theme.colors.dddpink,
   cursor: 'pointer',
-  '&:hover': {
-    color: theme.colors.linkHoverFg,
-  },
-  '&:focus': {
-    color: theme.colors.linkFocusBg,
+
+  '&:hoverm &:focus': {
+    color: theme.colors.dddpink600,
   },
 }))
+
+function getButtonStylesForKind(kind: ButtonKinds, theme: Theme): CSSObject {
+  switch (kind) {
+    case 'primary':
+      return {
+        backgroundColor: theme.colors.dddpink,
+        color: theme.colors.white,
+        fill: 'currentColor',
+
+        '&:hover, &:focus': {
+          backgroundColor: theme.colors.dddpink600,
+          color: theme.colors.white,
+        },
+
+        '&:focus': {
+          boxShadow: `0 0 0 ${calcRem(theme.metrics.xs)} ${theme.colors.dddpink}`,
+        },
+      }
+    default:
+      return {
+        backgroundColor: theme.colors.grey300,
+        color: theme.colors.dddpink,
+        '&:hover, &:focus': {
+          backgroundColor: theme.colors.grey400,
+        },
+
+        '&:focus': {
+          boxShadow: `0 0 0 ${calcRem(theme.metrics.xs)} ${theme.colors.grey300}`,
+        },
+      }
+  }
+}
+
+interface StyledButtonAnchorProps {
+  kind: ButtonKinds
+  size?: Size
+}
+
+export const StyledButtonAnchor = styled('a', { shouldForwardProp: shouldStyledButtonForwardProps })<
+  StyledButtonAnchorProps
+>(({ theme, kind, size }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  padding: calcRem(theme.metrics.md, theme.metrics.lg),
+  fontWeight: theme.weights.medium,
+  border: 0,
+  cursor: 'pointer',
+  lineHeight: 1,
+  outline: 0,
+  textDecoration: 'none',
+  textTransform: 'uppercase',
+  transition: 'background-color 0.2s linear',
+  ...getButtonStylesForKind(kind, theme),
+
+  ...conditionalStyles(size === 'lg', {
+    padding: calcRem(theme.metrics.lg, theme.metrics.xl),
+  }),
+
+  '&[disabled]': {
+    opacity: 0.65,
+    pointerEvents: 'none',
+  },
+
+  '& > *:not(:first-child)': {
+    marginLeft: calcRem(theme.metrics.md),
+  },
+
+  '& > svg': {
+    width: calcRem(theme.metrics.lg),
+    height: calcRem(theme.metrics.lg),
+    fill: 'currentcolor',
+  },
+}))
+
+export const StyledButton = StyledButtonAnchor.withComponent('button')

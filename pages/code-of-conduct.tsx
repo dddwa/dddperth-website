@@ -1,34 +1,36 @@
-import React from 'react'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Page from '../layouts/withSidebar'
+import React, { Fragment } from 'react'
+import { NextPage } from 'next'
+import { StyledList, StyledPara } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
+import { SafeLink } from 'components/global/safeLink'
 
-export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page
-    pageMetadata={props.pageMetadata}
+const CodeOfConduct: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => (
+  <PageWithSidebar
+    metadata={pageMetadata}
     title="Code of Conduct"
-    description={'Code of Conduct for ' + props.pageMetadata.conference.Name + '.'}
+    description={`Code of Conduct for ${pageMetadata.conference.Name}.`}
   >
     <h1>Code of Conduct</h1>
 
     <h2>Purpose</h2>
-    <p>
-      {props.pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for
-      everyone, regardless of but not limited to: gender, gender identity and expression, sexual orientation,
-      disability, physical appearance, body size, race, age or religion. We do not tolerate harassment of conference
-      participants in any form. Sexual language and imagery is not appropriate anywhere. This applies to conference
-      talks also.
-    </p>
+    <StyledPara>
+      {pageMetadata.conference.Name} is dedicated to providing a harassment-free conference experience for everyone,
+      regardless of but not limited to: gender, gender identity and expression, sexual orientation, disability, physical
+      appearance, body size, race, age or religion. We do not tolerate harassment of conference participants in any
+      form. Sexual language and imagery is not appropriate anywhere. This applies to conference talks also.
+    </StyledPara>
 
-    <p>
+    <StyledPara>
       Conference participants or anyone interacting with the event violating these rules may be sanctioned or expelled
       from the conference without a refund at the discretion of the conference organisers.
-    </p>
+    </StyledPara>
 
     <h2>Anti-harassment</h2>
 
-    <p>Harassment includes, but is not limited to:</p>
+    <StyledPara>Harassment includes, but is not limited to:</StyledPara>
 
-    <ul>
+    <StyledList>
       <li>
         Verbal or written comments that reinforce social structures of domination related to gender, gender identity and
         expression, sexual orientation, disability, physical appearance, body size, race, age, religion
@@ -40,187 +42,228 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       <li>Inappropriate physical contact</li>
       <li>Unwelcome sexual attention</li>
       <li>Advocating for, or encouraging, any of the above behaviour</li>
-    </ul>
+    </StyledList>
 
     <h2>Need Help?</h2>
 
-    <p>
+    <StyledPara>
       If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Conference
-      staff can be identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded t-shirts and
-      organiser name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone.
-      We want you to be happy at our event. People like you make our event a better place. You can make a report either
-      personally or anonymously.
-    </p>
+      staff can be identified by {pageMetadata.conference.Organiser.ShirtColour} event branded t-shirts and organiser
+      name tags. Harassment and other Code of Conduct violations reduce the value of our event for everyone. We want you
+      to be happy at our event. People like you make our event a better place. You can make a report either personally
+      or anonymously.
+    </StyledPara>
 
     <h3>Personal report</h3>
 
-    <p>You can make a personal report by:</p>
+    <StyledPara>You can make a personal report by:</StyledPara>
 
-    <ul>
+    <StyledList>
       <li>
-        Contacting a staff member, identified by {props.pageMetadata.conference.Organiser.ShirtColour} event branded
-        t-shirts and organiser name tags
+        Contacting a staff member, identified by {pageMetadata.conference.Organiser.ShirtColour} event branded t-shirts
+        and organiser name tags
       </li>
       <li>
-        <a
-          href={`https://twitter.com/messages/compose?recipient_id=${props.pageMetadata.conference.Socials.Twitter.Id}`}
+        <SafeLink
+          href={`https://twitter.com/messages/compose?recipient_id=${pageMetadata.conference.Socials.Twitter.Id}`}
         >
-          Sending a direct message to our Twitter account: {props.pageMetadata.conference.Socials.Twitter.Name}
-        </a>
+          Sending a direct message to our Twitter account: {pageMetadata.conference.Socials.Twitter.Name}
+        </SafeLink>
       </li>
       <li>
         Emailing us:{' '}
-        <a
-          className="maillink"
-          href={`mailto:${props.pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}
-        >
-          {props.pageMetadata.conference.Socials.Email}
+        <a href={`mailto:${pageMetadata.conference.Socials.Email}?subject=Code%20of%20Conduct%20Violation`}>
+          {pageMetadata.conference.Socials.Email}
         </a>
       </li>
-    </ul>
+    </StyledList>
 
-    <p>
+    <StyledPara>
       Emails and Twitter direct messages will be monitored by our media officer{' '}
-      {props.pageMetadata.conference.MediaOfficerName} as well as select subset of the organising team.
-    </p>
+      {pageMetadata.conference.MediaOfficerName} as well as select subset of the organising team.
+    </StyledPara>
 
-    <p>
-      When taking a personal report, <a href={props.pageMetadata.conference.Organiser.Url}>our staff</a> will ensure you
-      are safe and cannot be overheard. They may involve other event staff to ensure your report is managed properly.
-      Once safe, we'll ask you to tell us about what happened. This can be upsetting, but we'll handle it as
-      respectfully as possible, and you can bring someone to support you. You won't be asked to confront anyone and we
-      won't tell anyone who you are.
-    </p>
+    <StyledPara>
+      When taking a personal report, <a href={pageMetadata.conference.Organiser.Url}>our staff</a> will ensure you are
+      safe and cannot be overheard. They may involve other event staff to ensure your report is managed properly. Once
+      safe, we'll ask you to tell us about what happened. This can be upsetting, but we'll handle it as respectfully as
+      possible, and you can bring someone to support you. You won't be asked to confront anyone and we won't tell anyone
+      who you are.
+    </StyledPara>
 
-    <p>
+    <StyledPara>
       Our team will be happy to help you contact hotel/venue security, local law enforcement, local support services,
       provide escorts, or otherwise assist you to feel safe for the duration of the event. We value your attendance.
-    </p>
+    </StyledPara>
 
     <h3>Anonymous report</h3>
 
-    <p>
-      You can <a href={props.pageMetadata.conference.AnonymousReportFormUrl}>make an anonymous report here</a>. We can't
+    <StyledPara>
+      You can <a href={pageMetadata.conference.AnonymousReportFormUrl}>make an anonymous report here</a>. We can't
       follow up an anonymous report with you directly, but we will fully investigate it and take whatever action is
       necessary to prevent a recurrence.
-    </p>
+    </StyledPara>
 
     <h3>Important contact numbers</h3>
 
-    <ul>
+    <StyledList>
       <li>
         <strong>Police:</strong>{' '}
-        <a href={props.pageMetadata.conference.ImportantContacts.Police.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.Police.Details}
-        </a>
+        <SafeLink href={pageMetadata.conference.ImportantContacts.Police.MapUrl}>
+          {pageMetadata.conference.ImportantContacts.Police.Details}
+        </SafeLink>
+        {pageMetadata.conference.ImportantContacts.Police.Phone && (
+          <Fragment>
+            {' '}
+            <strong>Phone:</strong>{' '}
+            <a href={`tel:${pageMetadata.conference.ImportantContacts.Police.Phone}`}>
+              {pageMetadata.conference.ImportantContacts.Police.Phone}
+            </a>
+          </Fragment>
+        )}
       </li>
       <li>
-        <strong>Centre Against Sexual Assault 24 hour line:</strong>{' '}
-        {props.pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Details}
+        <strong>Centre Against Sexual Assault:</strong>{' '}
+        {pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Details}
+        {pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Phone && (
+          <Fragment>
+            {' '}
+            <strong>Phone:</strong>{' '}
+            <a href={`tel:${pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Phone}`}>
+              {pageMetadata.conference.ImportantContacts.CentreAgainstSexualAssault.Phone}
+            </a>
+          </Fragment>
+        )}
       </li>
       <li>
         <strong>Emergency Medical:</strong>{' '}
-        <a href={props.pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}
+        <a href={pageMetadata.conference.ImportantContacts.EmergencyMedical.MapUrl}>
+          {pageMetadata.conference.ImportantContacts.EmergencyMedical.Details}
         </a>
+        {pageMetadata.conference.ImportantContacts.EmergencyMedical.Phone && (
+          <Fragment>
+            {' '}
+            <strong>Phone:</strong>{' '}
+            <a href={`tel:${pageMetadata.conference.ImportantContacts.EmergencyMedical.Phone}`}>
+              {pageMetadata.conference.ImportantContacts.EmergencyMedical.Phone}
+            </a>
+          </Fragment>
+        )}
       </li>
       <li>
         <strong>Non Emergency Medical:</strong>{' '}
-        <a href={props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
-          {props.pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
+        <a href={pageMetadata.conference.ImportantContacts.NonEmergencyMedical.MapUrl}>
+          {pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Details}
         </a>
+        {pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Phone && (
+          <Fragment>
+            {' '}
+            <strong>Phone:</strong>{' '}
+            <a href={`tel:${pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Phone}`}>
+              {pageMetadata.conference.ImportantContacts.NonEmergencyMedical.Phone}
+            </a>
+          </Fragment>
+        )}
       </li>
-    </ul>
+    </StyledList>
 
     <h2>Enforcement</h2>
 
-    <p>Participants asked to stop any harassing behaviour are expected to:</p>
+    <StyledPara>Participants asked to stop any harassing behaviour are expected to:</StyledPara>
 
-    <ul>
+    <StyledList>
       <li>
         Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
         question
       </li>
       <li>Not be dismissive of the complainant</li>
       <li>Understand any advice given on how to act in the future</li>
-      <li>Comply with the directions of the {props.pageMetadata.conference.Name} organisers</li>
-    </ul>
+      <li>Comply with the directions of the {pageMetadata.conference.Name} organisers</li>
+    </StyledList>
 
-    <p>
+    <StyledPara>
       If a participant engages in harassing behaviour, event organisers retain the right to take any actions to keep the
       event a welcoming environment for all participants. This includes warning the offender or expulsion from the
       conference with no refund.
-    </p>
+    </StyledPara>
 
-    <p>
+    <StyledPara>
       Event organisers may take action to redress anything designed to, or with the clear impact of, disrupting the
       event or making the environment hostile for any participants.{' '}
       <strong>
         We expect participants to follow these rules at all event venues, event-related social activities as well as
         social media.
       </strong>
-    </p>
+    </StyledPara>
 
     <h2>Inclusivity</h2>
 
-    <p>
+    <StyledPara>
       In our commitment to a harassment-free and inclusive environment we strongly believe it's important to pay
       attention to harmful language patterns.
-    </p>
+    </StyledPara>
 
     <h3>Ableism</h3>
 
-    <p>
+    <StyledPara>
       Words like "crazy", "dumb", "insane" or "lame" are examples of <strong>ableist language</strong>, devaluating
       people who have physical or mental disabilities. Its appearance often stems not from any intentional desire to
       offend, but from our innate sense of what it means to be normal. These words can be avoided by using more fitting,
       clearer descriptions of what we intend to communicate.
-    </p>
+    </StyledPara>
 
-    <p>
+    <StyledPara>
       To find out more about ableism and replacement terms please read{' '}
-      <a href="https://www.autistichoya.com/p/ableist-words-and-terms-to-avoid.html">this guide</a>.
-    </p>
+      <SafeLink href="https://www.autistichoya.com/p/ableist-words-and-terms-to-avoid.html">this guide</SafeLink>.
+    </StyledPara>
 
     <h3>Sexism</h3>
 
-    <p>
+    <StyledPara>
       Using gendered terms like "dude" or "guys" to address a mixed-gendered group of people contributes to furthering
       exclusion of underrepresented individuals. We strongly advise avoiding gendered pronouns as well as gendered
       terms.
-    </p>
+    </StyledPara>
 
-    <p>
+    <StyledPara>
       For more information please familiarise yourself with{' '}
-      <a href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</a>.
-    </p>
+      <SafeLink href="http://geekfeminism.wikia.com/wiki/Nonsexist_language">Geek Feminism wiki guide</SafeLink>.
+    </StyledPara>
 
     <h3 id="photo-policy">Photo Policy</h3>
 
-    <p>We will have colored lanyards for attendees to indicate their comfort level with being photographed:</p>
+    <StyledPara>
+      We will have colored lanyards for attendees to indicate their comfort level with being photographed:
+    </StyledPara>
 
-    <ul>
+    <StyledList>
       <li>
         <strong>Black:</strong> fine to photograph
       </li>
       <li>
         <strong>Red:</strong> do not photograph
       </li>
-    </ul>
+    </StyledList>
 
-    <p>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</p>
+    <StyledPara>In case of any doubt, please ask before taking photographs of attendees, speakers or staff.</StyledPara>
 
     <h2>Attribution</h2>
 
-    <p>
+    <StyledPara>
       This Code of Conduct was based on{' '}
-      <a href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy">The Geek Feminism wiki</a>, the
-      work of <a href="https://frameshiftconsulting.com/code-of-conduct-training/">Valerie Aurora</a>, the{' '}
-      <a href="https://2018.jsconfau.com/code-of-conduct">JSConf AU Code of Conduct</a>, the{' '}
-      <a href="https://www.levelsconf.com/codeofconduct.html">Levels Conference Code of Conduct</a>, and the{' '}
-      <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>
-    </p>
+      <SafeLink href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Policy">
+        The Geek Feminism wiki
+      </SafeLink>
+      , the work of{' '}
+      <SafeLink href="https://frameshiftconsulting.com/code-of-conduct-training/">Valerie Aurora</SafeLink>, the JSConf
+      AU Code of Conduct, the{' '}
+      <SafeLink href="https://www.levelsconf.com/codeofconduct.html">Levels Conference Code of Conduct</SafeLink>, and
+      the <SafeLink href="http://confcodeofconduct.com/">Conference Code of Conduct</SafeLink>
+    </StyledPara>
 
-    <p>Last update: 30 Apr 2018</p>
-  </Page>
-))
+    <StyledPara>Last update: June 7, 2020</StyledPara>
+  </PageWithSidebar>
+)
+CodeOfConduct.displayName = 'CodeOfConduct'
+
+export default withPageMetadata(CodeOfConduct)

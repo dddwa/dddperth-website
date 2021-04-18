@@ -1,56 +1,91 @@
-import '@reach/dialog/styles.css'
-import React, { Fragment, useEffect, useState } from 'react'
-import { Session, Sponsor } from '../../config/types'
-import { SafeLink } from '../global/safeLink'
-import { StyledCenteredParagraph, StyledSponsorLogo } from './Agenda.styled'
-import { SessionDetails } from './SessionDetails'
-import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from './SessionDetails.styled'
-
+import Router from 'next/router'
+import React, { Fragment } from 'react'
+import { Session, Sponsor } from 'config/types'
+import { SafeLink } from 'components/global/safeLink'
+import { SessionGroup, useSessionGroups } from 'components/utils/useSessionGroups'
+import { useSessions } from 'components/utils/useSessions'
+import { StyledCenteredParagraph, StyledSponsorLogo } from 'components/Agenda/Agenda.styled'
+import { SessionDetails } from 'components/Agenda/SessionDetails'
+import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from 'components/Agenda/SessionDetails.styled'
 export type onSelectCallback = (session: Session, sponsor: Sponsor) => void
 
 interface AgendaProps {
   sessions: Session[]
+  selectedSessionId: string
   sessionsUrl: string
   acceptingFeedback: boolean
   feedbackLink?: string
-  render: (sessions: Session[], onSelect: onSelectCallback) => React.ReactElement
+  hideTags?: boolean
+  hideLevel?: boolean
+  render: (sessions: Session[], nextSessionGroup: SessionGroup, onSelect: onSelectCallback) => React.ReactElement
 }
 
-export const Agenda: React.FC<AgendaProps> = props => {
-  const [sessions, setSessions] = useState(props.sessions)
-  const [isError, setIsError] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-  const [selectedSession, setSelectedSession] = useState<Session | undefined>()
-  const [sessionSponsor, setSessionSponsor] = useState<Sponsor | undefined>()
+interface AgendaActionSelect {
+  type: 'selected'
+  session: Session
+  sponsor?: Sponsor
+}
+
+interface AgendaActionDismiss {
+  type: 'dismiss'
+}
+
+type AllAgendaActions = AgendaActionSelect | AgendaActionDismiss
+
+interface AgendaState {
+  showModal: boolean
+  selectedSession?: Session
+  sessionSponsor?: Sponsor
+}
+
+function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaState {
+  switch (action.type) {
+    case 'selected':
+      return {
+        selectedSession: action.session,
+        sessionSponsor: action.sponsor,
+        showModal: true,
+      }
+    case 'dismiss':
+      return {
+        showModal: false,
+      }
+    default:
+      return state
+  }
+}
+
+export const Agenda: React.FC<AgendaProps> = (props) => {
+  const { isError, sessions } = useSessions(props.sessionsUrl, props.sessions)
+  const { nextSessionGroup } = useSessionGroups(sessions)
+  const [sessionState, dispatch] = React.useReducer(agendaReducer, { showModal: false })
+
+  React.useEffect(() => {
+    if (!sessions || sessions.length <= 0) {
+      return
+    }
+
+    if (props.selectedSessionId) {
+      const foundSession = sessions.find((session) => session.Id === props.selectedSessionId)
+      if (foundSession) {
+        dispatch({
+          session: foundSession,
+          type: 'selected',
+        })
+      }
+    }
+  }, [sessions, props.selectedSessionId])
 
   const onSelectHandler = (session: Session, sponsor: Sponsor) => {
-    setSelectedSession(session)
-    setSessionSponsor(sponsor)
-    setShowModal(true)
+    const url = `${Router.pathname}?sessionId=${session.Id}`
+    Router.push(url, url, { shallow: true })
+    dispatch({ type: 'selected', session, sponsor })
   }
 
-  useEffect(() => {
-    if (sessions.length === 0) {
-      fetch(props.sessionsUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw response.statusText
-          }
-          return response.json()
-        })
-        .then(body => {
-          setSessions(body)
-          setIsError(false)
-        })
-        .catch(error => {
-          setIsError(true)
-          if (console) {
-            // tslint:disable-next-line: no-console
-            console.error('Error loading sessions', error)
-          }
-        })
-    }
-  }, [])
+  const onDismissHandler = () => {
+    Router.replace(`${Router.pathname}`)
+    dispatch({ type: 'dismiss' })
+  }
 
   if (isError) {
     return <div className="alert alert-danger">Error loading sessions</div>
@@ -58,24 +93,19 @@ export const Agenda: React.FC<AgendaProps> = props => {
 
   return (
     <React.Fragment>
-      {props.render(sessions, onSelectHandler)}
+      {props.render(sessions, nextSessionGroup, onSelectHandler)}
 
-      <StyledDialogOverlay isOpen={showModal} onDismiss={() => setShowModal(false)}>
+      <StyledDialogOverlay isOpen={sessionState.showModal} onDismiss={onDismissHandler}>
         <StyledDialogContent>
-          <StyledCloseButton
-            type="button"
-            className="close-button"
-            onClick={() => setShowModal(false)}
-            aria-label="Close"
-          >
+          <StyledCloseButton type="button" className="close-button" onClick={onDismissHandler} aria-label="Close">
             <span aria-hidden>×</span>
           </StyledCloseButton>
           <SessionDetails
-            session={selectedSession}
+            session={sessionState.selectedSession}
             showPresenters={true}
             showBio={true}
-            hideTags={false}
-            hideLevelAndFormat={false}
+            hideTags={props.hideTags}
+            hideLevelAndFormat={props.hideLevel}
           />
 
           {props.acceptingFeedback && (
@@ -86,13 +116,20 @@ export const Agenda: React.FC<AgendaProps> = props => {
             </StyledCenteredParagraph>
           )}
 
-          {sessionSponsor && (
+          {sessionState.sessionSponsor && (
             <Fragment>
               <hr />
               <StyledCenteredParagraph>
                 Sponsored by:
-                <SafeLink href={sessionSponsor.url} target="_blank" title={sessionSponsor.name}>
-                  <StyledSponsorLogo src={sessionSponsor.imageUrl} alt={sessionSponsor.name} />
+                <SafeLink
+                  href={sessionState.sessionSponsor.url}
+                  target="_blank"
+                  title={sessionState.sessionSponsor.name}
+                >
+                  <StyledSponsorLogo
+                    src={sessionState.sessionSponsor.imageUrl}
+                    alt={sessionState.sessionSponsor.name}
+                  />
                 </SafeLink>
               </StyledCenteredParagraph>
             </Fragment>

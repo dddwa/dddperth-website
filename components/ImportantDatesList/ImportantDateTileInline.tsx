@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImportantDate, Types } from '../../config/types'
+import { ImportantDate, Types } from 'config/types'
 import {
   StyledAbbr,
   StyledDoneIconInline,
@@ -8,6 +8,7 @@ import {
   StyledInlineDate,
   StyledInlineTimeDescription,
 } from './ImportantDate.styled'
+import { format } from 'date-fns'
 
 interface ImportantDateTileInlineProps {
   importantDate: ImportantDate
@@ -15,12 +16,12 @@ interface ImportantDateTileInlineProps {
 }
 
 export const ImportantDateTileInline: React.FC<ImportantDateTileInlineProps> = ({ importantDate, isFinished }) => (
-  <StyledImportantDateInline dateType={importantDate.Type}>
+  <StyledImportantDateInline isFinished={isFinished} dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledInlineDate>{importantDate.Date.format('dddd MMM D')}</StyledInlineDate>
+        <StyledInlineDate>{format(importantDate.Date, 'iiii MMM d')}</StyledInlineDate>
         <StyledInlineTimeDescription>
-          {importantDate.Date.format('hh:mma')} - {importantDate.Description}
+          {format(importantDate.Date, 'hh:mma')} - {importantDate.Description}
         </StyledInlineTimeDescription>
       </time>
     </StyledImportantDateContent>

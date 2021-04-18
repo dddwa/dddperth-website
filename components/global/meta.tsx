@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import React, { Fragment, StatelessComponent } from 'react'
-import { Conference, Dates } from '../../config/types'
-import '../../styles/screen.scss'
+import React from 'react'
+import * as analytics from 'components/global/analytics'
+import { Conference, Dates } from 'config/types'
+import { format } from 'date-fns'
 
 interface MetaArgs {
   instrumentationKey: string | null
@@ -11,14 +12,21 @@ interface MetaArgs {
   pageImage?: string
   conference: Conference
   dates: Dates
+  googleAnalyticsId: string
+}
+
+declare global {
+  interface Window {
+    GA_INITIALIZED: boolean
+  }
 }
 
 const getTitle = (title: string, conference: Conference, dates: Dates) =>
   `${title !== 'Home' ? title + ' - ' : ''}${conference.Name}${
-    !conference.HideDate && !dates.IsComplete ? ` | ${conference.Date.format('Do MMMM YYYY')}` : ''
+    !conference.HideDate && !dates.IsComplete ? ` | ${format(conference.Date, 'do MMMM yyyy')}` : ''
   }`
 
-const Meta: StatelessComponent<MetaArgs> = ({
+export const Meta: React.FC<MetaArgs> = ({
   pageUrl,
   pageTitle,
   instrumentationKey,
@@ -26,8 +34,17 @@ const Meta: StatelessComponent<MetaArgs> = ({
   pageImage,
   conference,
   dates,
-}) => (
-  <Fragment>
+  googleAnalyticsId,
+}) => {
+  React.useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      analytics.init(googleAnalyticsId)
+      window.GA_INITIALIZED = true
+    }
+    analytics.logPageView()
+  }, [googleAnalyticsId])
+
+  return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
@@ -51,22 +68,12 @@ const Meta: StatelessComponent<MetaArgs> = ({
       <meta property="og:site_name" content={conference.Name} />
       <link rel="canonical" href={pageUrl} />
       <meta property="og:url" content={pageUrl} />
-      <link
-        rel="stylesheet"
-        href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="stylesheet"
-        href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossOrigin="anonymous"
-      />
-      <link rel="stylesheet" href="https://unpkg.com/react-bootstrap-typeahead/css/Typeahead.css" />
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:700" />
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Overpass+Mono:700" />
+      <link rel="preconnect" href="https://www.google-analytics.com"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+      <link rel="preconnect" href="https://az416426.vo.msecnd.net"></link>
+
+      <link href="https://fonts.googleapis.com/css?family=Hind:400,500,700&display=swap" rel="stylesheet" />
+
       {instrumentationKey && (
         <script
           type="text/javascript"
@@ -83,7 +90,5 @@ const Meta: StatelessComponent<MetaArgs> = ({
         />
       )}
     </Head>
-  </Fragment>
-)
-
-export default Meta
+  )
+}

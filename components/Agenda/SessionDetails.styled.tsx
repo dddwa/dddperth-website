@@ -1,13 +1,18 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
-import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
-import { breakpoint, breakpointMax } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
-import { zIndex } from '../utils/styles/zindex'
+import { DialogContent, DialogOverlay } from '@reach/dialog'
+import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
+import { zIndex } from 'components/utils/styles/zindex'
 
-export const StyledDialogOverlay = styled(DialogOverlay)<DialogOverlayProps>({
+export const StyledDialogOverlay = styled(DialogOverlay)({
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  overflow: 'auto',
   zIndex: zIndex.agendaOverlay,
+  background: `hsla(0, 0%, 0%, 0.33)`,
 })
 StyledDialogOverlay.displayName = 'StyledDialogOverlay'
 
@@ -16,6 +21,8 @@ export const StyledDialogContent = styled(DialogContent)({
   width: '90vw',
   padding: calcRem(15),
   margin: '5vh auto',
+  backgroundColor: '#fff',
+  outline: 'none',
 
   [breakpoint('md')]: {
     width: '50vw',

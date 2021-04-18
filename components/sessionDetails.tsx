@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { Session } from '../config/types'
-import { SafeLink } from './global/safeLink'
+import { Session } from 'config/types'
+import { SafeLink } from 'components/global/safeLink'
 
 interface SessionProps {
   session: Session
@@ -19,7 +19,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
 }) => (
   <Fragment>
     {showPresenter &&
-      session.Presenters.map(p => (
+      session.Presenters.map((p) => (
         <p key={p.Name.replace(/ /g, '-')}>
           <img
             src={p.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
@@ -35,11 +35,11 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
                   <SafeLink
                     href={
                       'https://twitter.com/' +
-                      p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
+                      p.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
                     }
                     target="_blank"
                   >
-                    @{p.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
+                    @{p.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
                   </SafeLink>
                   {p.WebsiteUrl ? ' | ' : null}
                 </React.Fragment>
@@ -48,7 +48,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
                 <SafeLink href={p.WebsiteUrl} target="_blank">
                   {p.WebsiteUrl.includes('linkedin.com')
                     ? 'LinkedIn'
-                    : p.WebsiteUrl.replace(/https?\:\/\/(www\.)?/i, '')}
+                    : p.WebsiteUrl.replace(/https?:\/\/(www\.)?/i, '')}
                 </SafeLink>
               )}
               )
@@ -67,14 +67,14 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
         </Fragment>
       )}
       {!hideTags &&
-        (session.Tags || []).map(tag => (
+        (session.Tags || []).map((tag) => (
           <React.Fragment key={tag}>
             <span className={'badge ' + (hideLevelAndFormat ? 'badge-secondary' : 'badge-info')}>{tag}</span>{' '}
           </React.Fragment>
         ))}
     </p>
     {showBio &&
-      session.Presenters.map(p => (
+      session.Presenters.map((p) => (
         <p key={`bio-${p.Name.replace(/ /g, '-')}`} className="preserve-whitespace">
           {session.Presenters.length > 1 && (
             <Fragment>

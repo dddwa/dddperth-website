@@ -1,22 +1,24 @@
-import fetch from 'isomorphic-fetch'
 import Router from 'next/router'
 import React from 'react'
-import AllAgendas from '../components/allAgendas'
-import { CurrentAgenda } from '../components/currentAgenda'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Sponsors from '../components/sponsors'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { Session, SponsorType } from '../config/types'
-import Page from '../layouts/main'
+import AllAgendas from 'components/allAgendas'
+import { CurrentAgenda } from 'components/currentAgenda'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { Sponsors } from 'components/Sponsors/sponsors'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import { fetchSessions } from 'components/utils/useSessions'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Session, SponsorType } from 'config/types'
+import { Main } from 'layouts/main'
+import { format } from 'date-fns'
 
 interface AgendaPageProps extends WithPageMetadataProps {
   sessions?: Session[]
+  sessionId?: string
 }
 
 class AgendaPage extends React.Component<AgendaPageProps> {
-  static async getInitialProps({ req, res }) {
+  static async getInitialProps({ req, res, query }) {
     const dates = getConferenceDates(Conference, dateTimeProvider.now())
     if (!dates.VotingFinished) {
       if (res) {
@@ -31,13 +33,11 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     }
 
     if (req) {
-      const response = await fetch(process.env.GET_AGENDA_URL)
-      if (!response.ok) {
-        return {}
-      }
+      const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
+      const sessionId = query && query.sessionId ? query.sessionId : ''
+      const result = { sessionId }
 
-      const body = await response.json()
-      return { sessions: body as Session[] }
+      return sessions ? { sessions, ...result } : result
     }
 
     return {}
@@ -48,20 +48,15 @@ class AgendaPage extends React.Component<AgendaPageProps> {
     const dates = this.props.pageMetadata.dates
 
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
-        title="Agenda"
-        hideBanner={true}
-        description={conference.Name + ' agenda.'}
-      >
+      <Main metadata={this.props.pageMetadata} title="Agenda" description={conference.Name + ' agenda.'}>
         <div className="container">
           <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
 
           {!dates.AgendaPublished && (
             <p>
               The agenda has not yet been finalised; please come back on{' '}
-              {conference.AgendaPublishedFrom.format(dates.DateDisplayFormat)}{' '}
-              {conference.AgendaPublishedFrom.format(dates.TimeDisplayFormat)}. In the meantime, check out our previous
+              {format(conference.AgendaPublishedFrom, dates.DateDisplayFormat)}{' '}
+              {format(conference.AgendaPublishedFrom, dates.TimeDisplayFormat)}. In the meantime, check out our previous
               agendas below.
             </p>
           )}
@@ -73,6 +68,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
               sponsors={this.props.pageMetadata.conference.Sponsors}
               acceptingFeedback={dates.AcceptingFeedback}
               feedbackLink={conference.SessionFeedbackLink}
+              selectedSessionId={this.props.sessionId}
             />
           )}
           {conference.Handbook && (
@@ -89,7 +85,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             show={!this.props.pageMetadata.conference.HideSponsors}
             hideUpsell={this.props.pageMetadata.conference.HideSponsorshipUpsell}
             sponsors={this.props.pageMetadata.conference.Sponsors.filter(
-              s => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
+              (s) => s.type === SponsorType.Gold || s.type === SponsorType.Platinum,
             )}
           />
           <AllAgendas
@@ -98,7 +94,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
             dates={this.props.pageMetadata.dates}
           />
         </div>
-      </Page>
+      </Main>
     )
   }
 }

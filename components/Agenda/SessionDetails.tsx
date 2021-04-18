@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { Session } from '../../config/types'
-import { Badge } from '../Badge/Badge'
-import { SafeLink } from '../global/safeLink'
+import { Session } from 'config/types'
+import { Badge } from 'components/Badge/Badge'
+import { SafeLink } from 'components/global/safeLink'
 import {
   StyledBioFigure,
   StyledBioName,
@@ -32,11 +32,12 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
     <Fragment>
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>
       {showPresenters &&
-        session.Presenters.map(presenter => (
+        session.Presenters.map((presenter) => (
           <StyledBioFigure key={presenter.Name.replace(/\s/g, '-')}>
             <StyledBioProfile
               src={presenter.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
               alt={`${presenter.Name} profile photo`}
+              loading="lazy"
             />
             <StyledBioName>{presenter.Name}</StyledBioName>
             {(presenter.TwitterHandle || presenter.WebsiteUrl) && (
@@ -46,11 +47,11 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
                     <SafeLink
                       href={
                         'https://twitter.com/' +
-                        presenter.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
+                        presenter.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')
                       }
                       target="_blank"
                     >
-                      @{presenter.TwitterHandle.replace(/https?\:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
+                      @{presenter.TwitterHandle.replace(/https?:\/\/(www\.)?twitter.com\//i, '').replace(/\?.+$/, '')}
                     </SafeLink>
                   </li>
                 )}
@@ -59,7 +60,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
                     <SafeLink href={presenter.WebsiteUrl} target="_blank">
                       {presenter.WebsiteUrl.includes('linkedin.com')
                         ? 'LinkedIn'
-                        : presenter.WebsiteUrl.replace(/https?\:\/\/(www\.)?/i, '')}
+                        : presenter.WebsiteUrl.replace(/https?:\/\/(www\.)?/i, '')}
                     </SafeLink>
                   </li>
                 )}
@@ -83,7 +84,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
           )}
           {!hideTags &&
             session.Tags &&
-            session.Tags.map(tag => (
+            session.Tags.map((tag) => (
               <li key={tag}>
                 <Badge type={hideLevelAndFormat ? 'secondary' : 'info'}>{tag}</Badge>
               </li>
@@ -92,7 +93,7 @@ export const SessionDetails: React.FC<SessionDetailsProps> = ({
       )}
 
       {showBio &&
-        session.Presenters.map(presenter => (
+        session.Presenters.map((presenter) => (
           <div key={`bio-${presenter.Name.replace(/ /g, '-')}`}>
             {session.Presenters.length > 1 && <StyledSpeakerBioHeader>{presenter.Name}</StyledSpeakerBioHeader>}
             <StyledPreWrappedParagraph>{presenter.Bio}</StyledPreWrappedParagraph>

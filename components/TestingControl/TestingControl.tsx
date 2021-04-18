@@ -1,11 +1,11 @@
-import moment, { Moment } from 'moment'
 import React, { useState } from 'react'
-import From2017 from '../../config/2017'
-import SponsorData from '../../config/sponsors'
-import { Conference, TicketPurchasingOptions } from '../../config/types'
-import { Button } from '../global/Button/Button'
-import dateTimeProvider, { CurrentDate } from '../utils/dateTimeProvider'
+import From2017 from 'config/2017'
+import SponsorData from 'config/sponsors'
+import { Conference, TicketPurchasingOptions } from 'config/types'
+import { Button } from 'components/global/Button/Button'
+import dateTimeProvider, { CurrentDate } from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
+import { add, sub, format } from 'date-fns'
 
 interface TestingControlProps {
   currentDate: CurrentDate
@@ -15,10 +15,10 @@ interface TestingControlProps {
 export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, conference }) => {
   const [show, setShow] = useState(false)
 
-  const setDateTo = (date: Moment) => {
+  const setDateTo = (date: Date) => {
     dateTimeProvider.now = () => {
       return {
-        Value: date.clone().add(1, 'minute'),
+        Value: add(date, { minutes: 1 }),
       }
     }
   }
@@ -31,7 +31,7 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
   const reset = () => {
     dateTimeProvider.now = () => {
       return {
-        Value: moment(new Date()),
+        Value: new Date(),
       }
     }
 
@@ -52,7 +52,7 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
         <StyledTestingPanel>
           <StyledButton
             kind="primary"
-            onClick={() => setDateTo(conference.PresentationSubmissionsOpenFrom.clone().add(-1, 'd'))}
+            onClick={() => setDateTo(sub(conference.PresentationSubmissionsOpenFrom, { days: 1 }))}
           >
             Pre-CFP
           </StyledButton>
@@ -96,8 +96,8 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
           <StyledButton kind="secondary" onClick={reset}>
             Reset
           </StyledButton>
-          <p className="text-center">
-            Now: <code>{currentDate.Value.format('DD/MM/YYYY h:mma')}</code>
+          <p>
+            Now: <code>{format(currentDate.Value, 'dd/MM/yyyy h:mma')}</code>
           </p>
         </StyledTestingPanel>
       )}

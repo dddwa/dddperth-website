@@ -1,8 +1,9 @@
-// tslint:disable:object-literal-sort-keys
 import React, { Fragment } from 'react'
-import { SafeLink } from '../components/global/safeLink'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledList } from 'components/global/text'
 import Conference from './conference'
 import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
+import { format } from 'date-fns'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -23,13 +24,9 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${
-      Conference.TicketPrice
-    } covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
-      ${
-        Conference.Name
-      } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
+      ${Conference.Name} is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
 
@@ -65,7 +62,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
           )}
           .
         </p>
-        <ul>
+        <StyledList>
           <li>Already attended a conference in the past? That's ok.</li>
           <li>Already received a sponsored ticket in the past? Still ok.</li>
           <li>
@@ -73,7 +70,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
           </li>
           <li>Don't want to take money away from someone else? Really, it’s ok, everyone says that!</li>
           <li>Don't feel like you deserve this? That’s also ok: you do.</li>
-        </ul>
+        </StyledList>
       </div>
     ),
     Category: 'tickets',
@@ -112,9 +109,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Will childcare be available?',
-    Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${
-      Conference.ChildcarePrice
-    }. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+    Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${Conference.ChildcarePrice}. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
     Category: 'tickets',
   })
 
@@ -134,8 +129,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
           <Fragment>
-            Registration opens on {Conference.RegistrationOpenFrom.format(dates.DateDisplayFormat)} at{' '}
-            {Conference.RegistrationOpenFrom.format(dates.TimeDisplayFormat)}.
+            Registration opens on {format(Conference.RegistrationOpenFrom, dates.DateDisplayFormat)} at{' '}
+            {format(Conference.RegistrationOpenFrom, dates.TimeDisplayFormat)}.
           </Fragment>
         )}
       </Fragment>
@@ -147,8 +142,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Payments can be made with credit card using Tito via our tickets page when registrations are open. Companies
-        that want to buy bulk tickets (> 10) can{' '}
-        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+        that want to buy bulk tickets (&gt; 10) can{' '}
+        <a className="maillink" href={`mailto:${Conference.ContactEmail}`}>
           contact us
         </a>{' '}
         to pay by invoice (EFT or credit card).
@@ -247,7 +242,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     AnswerWithoutParagraph: (
       <Fragment>
         <p>Perth has a very active software community. Consider attending one of the meetups/conferences such as:</p>
-        <ul>
+        <StyledList>
           <li>
             <SafeLink href="http://www.meetup.com/PerthDotNet/" target="_blank">
               Perth .NET
@@ -313,7 +308,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
               Yow! West conference
             </SafeLink>
           </li>
-        </ul>
+        </StyledList>
         <p>
           Furthermore, you can see an up to date list of Australian conferences at{' '}
           <SafeLink href="https://github.com/readify/devevents" target="_blank">
@@ -333,7 +328,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
           {Conference.Name} is organised by DDD WA Inc. a non-profit organisation set up to create inclusive events for
           the WA software community. {Conference.Name} {Conference.Instance} is organised by:
         </p>
-        <ul>
+        <StyledList>
           <li>
             <SafeLink href="https://www.linkedin.com/in/rebeccacwaters/" target="_blank">
               Rebecca Waters
@@ -424,7 +419,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
               Priyaj Sham Chukoury
             </SafeLink>
           </li>
-        </ul>
+        </StyledList>
         <p>
           <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
             Meet the team

@@ -1,16 +1,17 @@
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import Page from '../layouts/withSidebar'
+import { SafeLink } from 'components/global/safeLink'
+import { StyledList } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import { PageWithSidebar } from 'layouts/withSidebar'
 
 export default withPageMetadata((props: WithPageMetadataProps) => (
-  <Page
-    pageMetadata={props.pageMetadata}
+  <PageWithSidebar
+    metadata={props.pageMetadata}
     title="Contact Us"
-    description={'How to contact ' + props.pageMetadata.conference.Name + '.'}
+    description={`How to contact ${props.pageMetadata.conference.Name}.`}
   >
     <h1>Contact Us</h1>
-    <ul>
+    <StyledList>
       <li>
         <strong>General enquiries:</strong>{' '}
         <a className="maillink" href={'mailto:' + props.pageMetadata.conference.ContactEmail}>
@@ -37,15 +38,15 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
           ' on ' +
           props.pageMetadata.conference.EmergencyContactPhoneNumber}
       </li>
-    </ul>
+    </StyledList>
     <h2>DDD WA Inc.</h2>
-    <ul>
+    <StyledList>
       <li>
         <strong>ABN:</strong> 61 201 381 758
       </li>
       <li>
         <strong>Postal Address:</strong> PO Box 7550, Perth WA 6000
       </li>
-    </ul>
-  </Page>
+    </StyledList>
+  </PageWithSidebar>
 ))

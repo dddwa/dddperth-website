@@ -1,7 +1,5 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
-import { calcRem } from '../utils/styles/calcRem'
-import styled, { Theme } from '../utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled, { Theme } from 'components/utils/styles/theme'
 import { BadgeType } from './Badge'
 
 function badgeColor(type: BadgeType, theme: Theme) {

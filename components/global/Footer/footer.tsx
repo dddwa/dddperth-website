@@ -1,24 +1,23 @@
 import React, { FC } from 'react'
-import { Conference, MenuItem, Socials } from '../../../config/types'
-import { StyledContainer } from '../Container/Container.styled'
-import SocialLinks from '../socialLinks'
-import { StyledFooterCopyright } from './Footer.styled'
-import FooterNav from './footerNav'
+import { Conference, Socials } from 'config/types'
+import { SocialLinks } from './socialLinks'
+import { StyledFooter, StyledFooterContainer, StyledArrowIcon, StyledTopAnchor } from './Footer.styled'
 
 interface FooterArgs {
-  menu: MenuItem[]
   socials: Socials
   conference: Conference
 }
 
-export const Footer: FC<FooterArgs> = ({ menu, socials, conference }) => (
-  <footer>
-    <StyledContainer>
-      <FooterNav menu={menu} />
-      <SocialLinks socials={socials} />
-      <StyledFooterCopyright>
+export const Footer: FC<FooterArgs> = ({ socials, conference }) => (
+  <StyledFooter>
+    <SocialLinks socials={socials} />
+    <StyledFooterContainer>
+      <StyledTopAnchor href="#">
+        <span>Pop to the top</span> <StyledArrowIcon />
+      </StyledTopAnchor>
+      <p>
         Copyright &copy; {new Date().getFullYear()} {conference.Organiser.Name}
-      </StyledFooterCopyright>
-    </StyledContainer>
-  </footer>
+      </p>
+    </StyledFooterContainer>
+  </StyledFooter>
 )

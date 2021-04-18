@@ -1,8 +1,8 @@
-// tslint:disable: object-literal-sort-keys
-
 export const zIndex = {
+  testingControl: 400,
+  flyoutnav: 300,
+  stickyHeader: 300,
   votingPanel: 200,
-  testingControl: 100,
   agendaOverlay: 20,
   agendaItem: 10,
 }

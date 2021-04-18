@@ -1,14 +1,15 @@
 import React from 'react'
-import Conference from '../../config/conference'
-import getConferenceDates from '../../config/dates'
-import { Conference as IConference, Dates } from '../../config/types'
-import { CurrentDate } from '../utils/dateTimeProvider'
-import * as url from '../utils/full-url'
-import { withCurrentDate, WithCurrentDateProps } from '../withCurrentDate'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Conference as IConference, Dates } from 'config/types'
+import { CurrentDate } from 'components/utils/dateTimeProvider'
+import * as url from 'components/utils/full-url'
+import { withCurrentDate, WithCurrentDateProps } from 'components/withCurrentDate'
 
 // https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple
 
 export interface AppConfig {
+  feedbackUrl: string
   getAgendaUrl: string
   getSubmissionsUrl: string
   instrumentationKey: string
@@ -58,6 +59,7 @@ const withPageMetadata = <TOriginalProps extends {}>(
 
       const appConfig = context.req
         ? {
+            feedbackUrl: process.env.SUBMIT_FEEDBACK_URL,
             getAgendaUrl: process.env.GET_AGENDA_URL,
             getSubmissionsUrl: process.env.GET_SUBMISSIONS_URL,
             instrumentationKey: process.env.APPINSIGHTS_INSTRUMENTATIONKEY,

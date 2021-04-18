@@ -64,7 +64,6 @@ export default function Menu(conference: Conference, dates: Dates) {
 
   return {
     Top: topMenu,
-    // tslint:disable-next-line:object-literal-sort-keys
     Footer: [
       {
         href: '/about',

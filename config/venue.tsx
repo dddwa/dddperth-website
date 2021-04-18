@@ -1,11 +1,10 @@
 import { Fragment } from 'react'
 import React from 'react'
-import { SafeLink } from '../components/global/safeLink'
+import { SafeLink } from 'components/global/safeLink'
 import { Venue } from './types'
 
-// tslint:disable:object-literal-sort-keys
 const venue: Venue = {
-  Name: 'Perth Convention and Exhibition Centre',
+  Name: 'Perth Convention Centre',
   Address: '21 Mounts Bay Rd, Perth',
   Latitude: -31.9565004,
   Longitude: 115.853,

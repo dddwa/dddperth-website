@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import { breakpoint } from '../../utils/styles/breakpoints'
-import { calcRem } from '../../utils/styles/calcRem'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
 
+/* @deprecated */
 export const StyledContainer = styled.div`
   padding-left: ${calcRem(15)};
   padding-right: ${calcRem(15)};

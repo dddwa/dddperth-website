@@ -1,8 +1,6 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
-import { breakpoint } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
+import { breakpoint } from 'components/utils/styles/breakpoints'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 export const StyledAgendaTime = styled('div')(({ theme }) => ({
   gridColumn: `1 / -1`,

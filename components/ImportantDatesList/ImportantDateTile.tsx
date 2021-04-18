@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImportantDate, Types } from '../../config/types'
+import { ImportantDate, Types } from 'config/types'
 import {
   StyledAbbr,
   StyledDoneIcon,
@@ -10,6 +10,7 @@ import {
   StyledImportantDateTitle,
   StyledImportantDay,
 } from './ImportantDate.styled'
+import format from 'date-fns/format'
 
 interface ImportantDateProps {
   importantDate: ImportantDate
@@ -20,9 +21,9 @@ export const ImportantDateTile: React.FC<ImportantDateProps> = ({ importantDate,
   <StyledImportantDate dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledImportantDay>{importantDate.Date.format('dddd ')}</StyledImportantDay>
-        <StyledImportantDateMonthDay>{importantDate.Date.format('MMM D ')}</StyledImportantDateMonthDay>
-        <StyledImportantDateTime>{importantDate.Date.format('hh:mma')}</StyledImportantDateTime>
+        <StyledImportantDay>{format(importantDate.Date, 'EEEE')}</StyledImportantDay>
+        <StyledImportantDateMonthDay>{format(importantDate.Date, 'MMM d ')}</StyledImportantDateMonthDay>
+        <StyledImportantDateTime>{format(importantDate.Date, 'hh:mma')}</StyledImportantDateTime>
       </time>
       <StyledImportantDateTitle>{importantDate.Description}</StyledImportantDateTitle>
     </StyledImportantDateContent>

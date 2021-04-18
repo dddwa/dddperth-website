@@ -1,16 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
-import { StatelessComponent } from 'react'
-import { Action } from '../config/types'
+import { Action } from 'config/types'
+import { ButtonAnchor } from 'components/global/Button/Button'
 
 interface ActionButtonProps {
   action: Action
 }
 
-const ActionButton: StatelessComponent<ActionButtonProps> = ({ action }) => (
+export const ActionButton: React.FC<ActionButtonProps> = ({ action }) => (
   <Link href={action.Url}>
-    <a className={'btn ' + action.Category}>{action.Title}</a>
+    <ButtonAnchor kind="primary">{action.Title}</ButtonAnchor>
   </Link>
 )
-
-export default ActionButton
+ActionButton.displayName = 'ActionButton'

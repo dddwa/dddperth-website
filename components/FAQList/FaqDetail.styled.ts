@@ -1,8 +1,5 @@
-/* tslint:disable:object-literal-sort-keys */
-/* tslint:disable:object-literal-key-quotes */
-import { breakpoint } from '../utils/styles/breakpoints'
-import { calcRem } from '../utils/styles/calcRem'
-import styled from '../utils/styles/theme'
+import { calcRem } from 'components/utils/styles/calcRem'
+import styled from 'components/utils/styles/theme'
 
 export const StyledDetails = styled('details')(({ theme }) => ({
   marginBottom: calcRem(10),
@@ -48,30 +45,14 @@ export const StyledSummary = styled('summary')(({ theme }) => ({
   },
 }))
 
-export const StyledDetailsBody = styled('div')({
-  padding: calcRem(10, 15),
+export const StyledDetailsBody = styled('div')(({ theme }) => ({
+  padding: calcRem(theme.metrics.md),
 
   p: {
-    margin: calcRem(10, 0),
-
-    '&:first-child': {
-      marginTop: 0,
-    },
-
-    [breakpoint('sm')]: {
-      margin: calcRem(15, 0),
-    },
-
-    [breakpoint('md')]: {
-      margin: calcRem(18, 0),
-    },
-
-    [breakpoint('lg')]: {
-      margin: calcRem(23, 0),
-    },
-
-    [breakpoint('xl')]: {
-      margin: calcRem(30, 0),
-    },
+    marginBottom: calcRem(theme.metrics.md),
   },
-})
+
+  '& > *:last-child': {
+    marginBottom: 0,
+  },
+}))

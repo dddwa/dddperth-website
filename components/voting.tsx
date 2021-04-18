@@ -1,14 +1,14 @@
-import moment from 'moment'
 import React from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
-import { Panel } from 'react-bootstrap'
-import { getSessionId, logException } from '../components/global/analytics'
-import '../components/utils/arrayExtensions'
-import { SessionPanel } from '../components/Voting/sessionPanel'
-import { Session, TicketNumberWhileVoting, TicketsProvider } from '../config/types'
-import { logEvent } from './global/analytics'
-import { StyledVotingPanel } from './Voting/Voting.styled'
-import { VotingFilters } from './Voting/VotingFilters'
+import { getSessionId, logException } from 'components/global/analytics'
+import 'components/utils/arrayExtensions'
+import { SessionPanel } from 'components/Voting/sessionPanel'
+import { Session, TicketNumberWhileVoting, TicketsProvider } from 'config/types'
+import { logEvent } from 'components/global/analytics'
+import { StyledVotingPanel } from 'components/Voting/Voting.styled'
+import { VotingFilters } from 'components/Voting/VotingFilters'
+import { differenceInMinutes } from 'date-fns'
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 type SessionId = Session['Id']
 type Views = 'all' | 'shortlist' | 'votes'
@@ -66,12 +66,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     this.setState({
       formatFilters: [],
       formats: this.props.sessions
-        .map(s => s.Format)
+        .map((s) => s.Format)
         .unique()
         .sort(),
       levelFilters: [],
       levels: this.props.sessions
-        .map(s => s.Level)
+        .map((s) => s.Level)
         .unique()
         .sort(),
       shortlist: [],
@@ -81,7 +81,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       submitted: false,
       tagFilters: [],
       tags: this.props.sessions
-        .selectMany(s => s.Tags)
+        .selectMany((s) => s.Tags)
         .unique()
         .sort(),
       votes: [],
@@ -179,7 +179,9 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
   async submit() {
     const vote = {
       Id: this.props.voteId,
-      Indices: this.state.votes.map(id => this.props.sessions.indexOf(this.props.sessions.find(s => s.Id === id)) + 1),
+      Indices: this.state.votes.map(
+        (id) => this.props.sessions.indexOf(this.props.sessions.find((s) => s.Id === id)) + 1,
+      ),
       SessionIds: this.state.votes,
       TicketNumber: this.state.ticketNumber,
       VoterSessionId: getSessionId(),
@@ -206,7 +208,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           'voting',
           'submit',
           { startTime: this.props.startTime, id: this.props.voteId },
-          { votingDurationInMins: moment().diff(moment.parseZone(this.props.startTime), 'minutes') },
+          { votingDurationInMins: differenceInMinutes(new Date(), zonedTimeToUtc(this.props.startTime, '+08:00')) },
         )
         this.setState({ submitInProgress: false, submitted: true }, () =>
           this.writeToStorage(storageKey(this.props, StorageKeys.SUBMITTED), 'true'),
@@ -222,22 +224,25 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
     const isVoting = this.state.show === 'votes'
     const visibleSessions = (this.props.sessions || [])
       .filter(
-        s =>
+        (s) =>
           this.state.show !== 'all' ||
-          (this.state.tagFilters.length === 0 || this.state.tagFilters.some(t => s.Tags.includes(t))),
+          this.state.tagFilters.length === 0 ||
+          this.state.tagFilters.some((t) => s.Tags.includes(t)),
       )
       .filter(
-        s =>
+        (s) =>
           this.state.show !== 'all' ||
-          (this.state.levelFilters.length === 0 || this.state.levelFilters.some(l => s.Level === l)),
+          this.state.levelFilters.length === 0 ||
+          this.state.levelFilters.some((l) => s.Level === l),
       )
       .filter(
-        s =>
+        (s) =>
           this.state.show !== 'all' ||
-          (this.state.formatFilters.length === 0 || this.state.formatFilters.some(f => s.Format === f)),
+          this.state.formatFilters.length === 0 ||
+          this.state.formatFilters.some((f) => s.Format === f),
       )
-      .filter(s => this.state.show !== 'shortlist' || this.isInShortlist(s))
-      .filter(s => this.state.show !== 'votes' || this.isVotedFor(s))
+      .filter((s) => this.state.show !== 'shortlist' || this.isInShortlist(s))
+      .filter((s) => this.state.show !== 'votes' || this.isVotedFor(s))
       .sort((a, b) => {
         if (!isVoting) {
           return 0
@@ -258,8 +263,22 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       <React.Fragment>
         <div ref={this.votingTopRef} />
         <StyledVotingPanel>
-          <Panel className="voting-control form-inline">
-            <Panel.Heading>
+          <div
+            className="voting-control form-inline"
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 4,
+              border: '1px solid #ddd',
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: '#f5f5f5',
+                color: '#333',
+                padding: 15,
+                borderBottom: '1px solid #ddd',
+              }}
+            >
               {this.state.submitted && (
                 <p className="alert alert-success">
                   You've submitted your vote for this year :) Thanks! &lt;3 {this.props.conferenceName} team
@@ -271,7 +290,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   <a
                     href="#"
                     style={{ float: 'right' }}
-                    onClick={e => {
+                    onClick={(e) => {
                       e.preventDefault()
                       return this.scrollToTop()
                     }}
@@ -280,8 +299,12 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   </a>
                 </React.Fragment>
               )}
-            </Panel.Heading>
-            <Panel.Body>
+            </div>
+            <div
+              style={{
+                padding: 15,
+              }}
+            >
               <em>View:</em>{' '}
               <div className="btn-group" role="group">
                 <button
@@ -308,8 +331,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                   )
                 </button>
               </div>
-            </Panel.Body>
-          </Panel>
+            </div>
+          </div>
         </StyledVotingPanel>
         <h2>
           {this.state.show === 'all'
@@ -346,10 +369,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           <VotingFilters
             tags={this.state.tags}
             levels={this.state.levels}
-            onTagFilter={tags => {
+            onTagFilter={(tags) => {
               this.setState({ tagFilters: tags })
             }}
-            onLevelsFilter={levels => {
+            onLevelsFilter={(levels) => {
               this.setState({ levelFilters: levels })
             }}
           />
@@ -361,7 +384,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           }}
         >
           <Droppable droppableId="voteDroppable">
-            {provider => (
+            {(provider) => (
               <div ref={provider.innerRef} {...provider.droppableProps}>
                 <div id="voting-interface">
                   <ul className="talk-list">
@@ -373,7 +396,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                           index={i}
                           isDragDisabled={!isVoting || !this.props.preferentialVoting}
                         >
-                          {dragProvider => (
+                          {(dragProvider) => (
                             <div
                               {...dragProvider.draggableProps}
                               {...dragProvider.dragHandleProps}
@@ -449,7 +472,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 <input
                   type="text"
                   className="form-control input-sm"
-                  onChange={e => this.setState({ ticketNumber: e.target.value })}
+                  onChange={(e) => this.setState({ ticketNumber: e.target.value })}
                   value={this.state.ticketNumber}
                   placeholder={
                     this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional

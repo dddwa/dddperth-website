@@ -1,9 +1,10 @@
 import React from 'react'
-import { Action, Conference } from '../config/types'
-import ActionButton from './actionButton'
-import { StyledContainer } from './global/Container/Container.styled'
-import { ImportantDatesList } from './ImportantDatesList/importantDatesList'
-import { CurrentDate } from './utils/dateTimeProvider'
+import { Action, Conference } from 'config/types'
+import { ActionButton } from 'components/actionButton'
+import { ImportantDatesList } from 'components/ImportantDatesList/importantDatesList'
+import { CurrentDate } from 'components/utils/dateTimeProvider'
+import { calcRem } from 'components/utils/styles/calcRem'
+import { theme } from 'components/utils/styles/theme'
 
 export interface ImportantDatesProps {
   conference: Conference
@@ -12,18 +13,16 @@ export interface ImportantDatesProps {
 }
 
 export default ({ conference, actions, currentDate }: ImportantDatesProps) => (
-  <section className="important-dates">
-    <StyledContainer>
-      <h2>Important Dates</h2>
+  <section>
+    <h2>Important Dates</h2>
 
-      <ImportantDatesList conference={conference} currentDate={currentDate} />
+    <ImportantDatesList conference={conference} currentDate={currentDate} />
 
-      <div className="what-now">
-        <h2>What now?</h2>
-        {actions.map(a => (
-          <ActionButton action={a} key={a.Title} />
-        ))}
-      </div>
-    </StyledContainer>
+    <div style={{ marginTop: calcRem(theme.metrics.sm) }}>
+      <h2>What now?</h2>
+      {actions.map((a) => (
+        <ActionButton action={a} key={a.Title} />
+      ))}
+    </div>
   </section>
 )

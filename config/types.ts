@@ -1,6 +1,6 @@
-import { Moment } from 'moment'
+import { SessionGroupWithIds } from 'components/utils/useSessionGroups'
 
-export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'conference'
+export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
 
 export interface Conference {
   Name: string
@@ -43,19 +43,19 @@ export interface Conference {
   MinVotes: number
   MaxVotes: number
 
-  Date: Moment
-  EndDate: Moment
+  Date: Date
+  EndDate: Date
   DoorsOpenTime: string
   FinishTime: string
-  RegistrationOpenFrom: Moment
-  RegistrationOpenUntil: Moment | null
-  PresentationSubmissionsOpenFrom: Moment
-  PresentationSubmissionsOpenUntil: Moment
-  VotingOpenFrom: Moment
-  VotingOpenUntil: Moment
-  AgendaPublishedFrom: Moment
-  FeedbackOpenFrom: Moment
-  FeedbackOpenUntil: Moment
+  RegistrationOpenFrom: Date
+  RegistrationOpenUntil: Date | null
+  PresentationSubmissionsOpenFrom: Date
+  PresentationSubmissionsOpenUntil: Date
+  VotingOpenFrom: Date
+  VotingOpenUntil: Date
+  AgendaPublishedFrom: Date
+  FeedbackOpenFrom: Date
+  FeedbackOpenUntil: Date
 
   ConferenceFeedbackLink: string
   SessionFeedbackLink: string
@@ -65,10 +65,9 @@ export interface Conference {
   HideSponsorshipUpsell: boolean
   HideVenue: boolean
   HideAfterpartyVenue: boolean
+  ShowNextSessions: boolean
 
   Socials: Socials
-
-  ImageStrip: Image[]
 
   ImportantContacts: ImportantContacts
 
@@ -77,6 +76,10 @@ export interface Conference {
   Sponsors: Sponsor[]
 
   Keynotes: Session[]
+
+  RoomNames: string[]
+
+  SessionGroups: SessionGroupWithIds[]
 }
 
 export enum TicketPurchasingOptions {
@@ -113,7 +116,7 @@ export interface Venue {
 
 export interface ImportantDate {
   Description: string
-  Date: Moment
+  Date: Date
   Type: Types
 }
 
@@ -131,6 +134,7 @@ export interface Dates {
   VotingFinished: boolean
   AgendaPublished: boolean
   AcceptingFeedback: boolean
+  DisplayFormatted: (format: string) => string
 }
 
 export interface Socials {
@@ -143,6 +147,7 @@ export interface Socials {
   Blog?: string
   Email?: string
   MailingList?: string
+  Linkedin?: string
 }
 
 export interface ImportantContacts {
@@ -154,6 +159,7 @@ export interface ImportantContacts {
 
 export interface Contact {
   Details: string
+  Phone?: string
   MapUrl?: string
 }
 

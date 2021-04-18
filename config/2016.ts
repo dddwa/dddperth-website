@@ -11,7 +11,6 @@ interface From2016 {
 
 const From2016: From2016 = {
   YouTubePlaylistUrl: 'https://www.youtube.com/watch?v=E55ts7kffHc&list=PLkLJSte3oodROGrLanQPm2KrVZEA0NlTl',
-  // tslint:disable-next-line:object-literal-sort-keys
   YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/E55ts7kffHc',
   YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/GFF9PlL5KPk',
   FlickrAlbumUrl: 'https://www.flickr.com/photos/135003652@N08/albums/72157669907469743',
@@ -19,6 +18,7 @@ const From2016: From2016 = {
   Sponsors: [
     // Platinum
     {
+      id: 'bankwest',
       imageUrl: '/static/images/sponsors/bankwest.png',
       name: 'Bankwest',
       type: SponsorType.Platinum,
@@ -26,12 +26,14 @@ const From2016: From2016 = {
     },
     // Gold
     {
+      id: 'gooroo',
       imageUrl: '/static/images/sponsors/gooroo.png',
       name: 'Gooroo',
       type: SponsorType.Gold,
       url: 'https://gooroo.io/',
     },
     {
+      id: 'microsoft',
       imageUrl: '/static/images/sponsors/microsoft.png',
       name: 'Microsoft',
       type: SponsorType.Gold,

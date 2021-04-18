@@ -1,16 +1,18 @@
-import moment from 'moment'
 import Link from 'next/link'
 import Router from 'next/router'
 import React from 'react'
 import uuid from 'uuid/v1'
-import { logEvent, logException } from '../components/global/analytics'
-import withPageMetadata, { WithPageMetadataProps } from '../components/global/withPageMetadata'
-import dateTimeProvider from '../components/utils/dateTimeProvider'
-import Voting from '../components/voting'
-import Conference from '../config/conference'
-import getConferenceDates from '../config/dates'
-import { Conference as Conf, Session, TicketNumberWhileVoting } from '../config/types'
-import Page from '../layouts/main'
+import { logEvent, logException } from 'components/global/analytics'
+import { StyledList } from 'components/global/text'
+import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import Voting from 'components/voting'
+import Conference from 'config/conference'
+import getConferenceDates from 'config/dates'
+import { Conference as Conf, Session, TicketNumberWhileVoting } from 'config/types'
+import { Main } from 'layouts/main'
+import { zonedTimeToUtc } from 'date-fns-tz'
+import { isAfter, format } from 'date-fns'
 
 interface VoteProps extends WithPageMetadataProps {
   sessions?: Session[]
@@ -58,26 +60,27 @@ class VotePage extends React.Component<VoteProps, VoteState> {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this
     fetch(this.props.pageMetadata.appConfig.getSubmissionsUrl)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw response.statusText
         }
         return response.json()
       })
-      .then(body => {
+      .then((body) => {
         this.setSessions(body as Session[])
       })
-      .catch(error => {
+      .catch((error) => {
         logException('Error when getting sessions', error, {
-          voteId: !!localStorage
+          voteId: localStorage
             ? localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))
             : null,
         })
         that.setState({ isError: true, isLoading: false })
         if (console) {
-          // tslint:disable-next-line:no-console
+          // eslint-disable-next-line no-console
           console.error('Error loading sessions', error)
         }
       })
@@ -95,9 +98,10 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       if (
         !localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID)) &&
         localStorage.getItem(StorageKeys.VOTING_ID) &&
-        moment
-          .parseZone(localStorage.getItem(StorageKeys.VOTING_START_TIME))
-          .isAfter(this.props.pageMetadata.conference.VotingOpenFrom)
+        isAfter(
+          zonedTimeToUtc(localStorage.getItem(StorageKeys.VOTING_START_TIME), '+08:00'),
+          this.props.pageMetadata.conference.VotingOpenFrom,
+        )
       ) {
         localStorage.setItem(
           storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID),
@@ -116,7 +120,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
       if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME))) {
         localStorage.setItem(
           storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_START_TIME),
-          moment().toISOString(),
+          new Date().toISOString(),
         )
       }
       if (!localStorage.getItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_ID))) {
@@ -157,9 +161,9 @@ class VotePage extends React.Component<VoteProps, VoteState> {
         // if previous ordering data has been persisted then apply this and override API response ordering
         const orderingsArray = JSON.parse(orderings)
         const ordered = orderingsArray
-          .map(id => sessions.find(s => s.Id === id))
-          .filter(s => s)
-          .concat(sessions.filter(s => !orderingsArray.find(id => id === s.Id)))
+          .map((id) => sessions.find((s) => s.Id === id))
+          .filter((s) => s)
+          .concat(sessions.filter((s) => !orderingsArray.find((id) => id === s.Id)))
 
         const ids = JSON.stringify(ordered.map(({ Id }) => Id))
         localStorage.setItem(storageKey(this.props.pageMetadata.conference, StorageKeys.VOTING_SESSION_ORDER), ids)
@@ -179,11 +183,10 @@ class VotePage extends React.Component<VoteProps, VoteState> {
     const isLoadingComplete = !(this.state.isLoading || this.state.isError)
 
     return (
-      <Page
-        pageMetadata={this.props.pageMetadata}
+      <Main
+        metadata={this.props.pageMetadata}
         title="Vote"
-        hideBanner={true}
-        description={this.props.pageMetadata.conference.Name + ' voting page.'}
+        description={`${this.props.pageMetadata.conference.Name} voting page.`}
       >
         <div className="container">
           <h1>Voting</h1>
@@ -220,7 +223,8 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     <span>{minVotes}</span>
                   )}{' '}
                   sessions and you have until{' '}
-                  {this.props.pageMetadata.conference.VotingOpenUntil.format(
+                  {format(
+                    this.props.pageMetadata.conference.VotingOpenUntil,
                     this.props.pageMetadata.dates.TimeDisplayFormat +
                       ' ' +
                       this.props.pageMetadata.dates.DateDisplayFormat,
@@ -237,7 +241,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                 sessions submitted! We've implemented the following features to assist you to manage voting across such
                 a large number of sessions:
               </p>
-              <ul>
+              <StyledList>
                 <li>
                   Any actions you take on this page (e.g. vote, shortlist) will be saved to this device/browser -{' '}
                   <strong>you can do the voting over a number of sittings</strong> and don't need to worry about trying
@@ -294,7 +298,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     to maximise the impact of your votes.
                   </li>
                 )}
-              </ul>
+              </StyledList>
             </div>
           </div>
 
@@ -344,7 +348,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             />
           )}
         </div>
-      </Page>
+      </Main>
     )
   }
 }

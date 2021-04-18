@@ -1,7 +1,7 @@
 import React from 'react'
-import { Conference } from '../config/types'
-import { SafeLink } from './global/safeLink'
-import SessionDetails from './sessionDetails'
+import { Conference } from 'config/types'
+import { SafeLink } from 'components/global/safeLink'
+import SessionDetails from 'components/sessionDetails'
 
 export interface KeynotesProps {
   conference: Conference
@@ -13,7 +13,7 @@ export default ({ conference }: KeynotesProps) => (
       <section className="grey">
         <div className="container">
           <h2>Keynote speakers</h2>
-          {conference.Keynotes.map(keynote => (
+          {conference.Keynotes.map((keynote) => (
             <article id={keynote.Id} className="keynote" key={keynote.Title.replace(/ /g, '-')}>
               <h3>{keynote.Title}</h3>
               <img src={keynote.Presenters[0].ProfilePhotoUrl} alt={keynote.Presenters[0].Name} />
