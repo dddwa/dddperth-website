@@ -16,20 +16,17 @@ export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   return (
     <Main metadata={pageMetadata} title="Home" showHero={true}>
       <section>
-        <h2>DDD Perth 2020</h2>
-        <StyledPara>The DDD Perth Committee has regretfully postponed the 2020 conference to 2021.</StyledPara>
+        <h2>DDD Perth 2021</h2>
         <StyledPara>
-          The safety of all participants, from sponsors to speakers to attendees to volunteers, is our priority, and we
-          will continue to find ways to connect and support the wider Perth community at this challenging time.
+          DDD Perth is Perth's largest community run conference for the tech community. Our goal is to create an
+          approachable event that appeals to the whole community, especially people that don't normally get to attend or
+          speak at conferences.
         </StyledPara>
         <StyledPara>
-          If you have any concerns that you feel DDD Perth can help with, we encourage you to contact us via the
-          website.
+          The conference is run on a Saturday, and strives to be inclusive of everyone in the Perth tech community.
+          Check out the agenda and talks from previous years, or hear more about how we do what we do on our blog.
         </StyledPara>
-        <StyledPara>
-          The Australian Department of Health recommends that everyone should practise good hygiene to protect against
-          infections.
-        </StyledPara>
+        <StyledPara>We hope to see you in 2021!</StyledPara>
       </section>
       <ImportantDates conference={conference} actions={actions} currentDate={pageMetadata.currentDate} />
       <Keynotes conference={conference} />
