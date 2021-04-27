@@ -47,6 +47,12 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </StyledList>
     <StyledPara>
       <ButtonAnchor kind="secondary" href="/about">
+        Read DDD Perth [code of conduct](https://dddperth.com/code-of-conduct)
+      </ButtonAnchor>
+    </StyledPara>
+
+    <StyledPara>
+      <ButtonAnchor kind="secondary" href="/about">
         Find out more about {props.pageMetadata.conference.Name}
       </ButtonAnchor>
     </StyledPara>
@@ -55,11 +61,6 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       {props.pageMetadata.conference.Name} is a not-for-profit community event with a low ticket price for attendees
       (much lower than the per-person cost) and the only way we can run it is via generous corporate sponsorship. Thanks
       to all our sponsors new and old - we can't do this without you!
-    </StyledPara>
-
-    <StyledPara>
-      In 2018 DDD Perth had 470 attendees from 510 sold tickets; this makes us the biggest software conference in
-      Western Australia with a 2019 target of 600 attendees.
     </StyledPara>
 
     <StyledPara>
