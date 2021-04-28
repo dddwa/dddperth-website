@@ -46,8 +46,8 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
       </li>
     </StyledList>
     <StyledPara>
-      <ButtonAnchor kind="secondary" href="/about">
-        Read DDD Perth [code of conduct](https://dddperth.com/code-of-conduct)
+      <ButtonAnchor kind="secondary" href="/code-of-conduct">
+        Read DDD Perth Code of Conduct
       </ButtonAnchor>
     </StyledPara>
 
