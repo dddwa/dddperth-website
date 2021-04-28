@@ -12,7 +12,7 @@ export interface ImportantDatesProps {
   currentDate: CurrentDate
 }
 
-export default ({ conference, actions, currentDate }: ImportantDatesProps) => (
+const ImportantDates = ({ conference, actions, currentDate }: ImportantDatesProps) => (
   <section>
     <h2>Important Dates</h2>
 
@@ -26,3 +26,5 @@ export default ({ conference, actions, currentDate }: ImportantDatesProps) => (
     </div>
   </section>
 )
+
+export default ImportantDates
