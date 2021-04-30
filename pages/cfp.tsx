@@ -88,11 +88,7 @@ const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
 
       <StyledPara>Other things to note for presenters:</StyledPara>
       <StyledList>
-        <li>
-          Speakers get free entry into the event; flights and accommodation for speakers are not normally covered
-          (outside of keynote speakers), but if that's a limitation that stops you from speaking then please{' '}
-          <a href={`mailto:${conference.ContactEmail}`}>let us know</a> and we'll reach out to discuss options.
-        </li>
+        <li>Speakers get free entry into the event</li>
         <li>You will likely be speaking to an audience of between 50-150 people.</li>
         <li>
           We are not interested in sales/vendor pitch presentations although you are welcome to have a slide or two
