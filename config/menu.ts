@@ -14,6 +14,10 @@ export default function Menu(conference: Conference, dates: Dates) {
       href: '/sponsorship',
       name: 'Sponsorship',
     },
+    {
+      href: 'http://localhost:3000/code-of-conduct',
+      name: 'Code of Conduct',
+    }
   ]
 
   if (dates.RegistrationOpen || conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen) {
