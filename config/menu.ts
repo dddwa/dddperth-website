@@ -15,7 +15,7 @@ export default function Menu(conference: Conference, dates: Dates) {
       name: 'Sponsorship',
     },
     {
-      href: 'http://localhost:3000/code-of-conduct',
+      href: '/code-of-conduct',
       name: 'Code of Conduct',
     }
   ]
