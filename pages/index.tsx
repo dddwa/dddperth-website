@@ -20,10 +20,14 @@ export const Index: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
         <StyledPara>
           DDD Perth is Perth's largest community run conference for the tech community. Our goal is to create an
           approachable event that appeals to the whole community, especially people that don't normally get to attend or
-          speak at conferences.
+          speak at conferences. The conference is run on a Saturday, and strives to be inclusive of everyone in the
+          Perth tech community.
         </StyledPara>
         <StyledPara>
-          The conference is run on a Saturday, and strives to be inclusive of everyone in the Perth tech community.
+          In 2021, we are committed to hosting our conference for you. We hope it's in person, but if it's not, we'll be
+          bringing you the same amazing speakers online.
+        </StyledPara>
+        <StyledPara>
           Check out the agenda and talks from previous years, or hear more about how we do what we do on our blog.
         </StyledPara>
         <StyledPara>We hope to see you in 2021!</StyledPara>
