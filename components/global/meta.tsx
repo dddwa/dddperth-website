@@ -59,8 +59,8 @@ export const Meta: React.FC<MetaArgs> = ({
       <meta property="og:description" content={pageDescription || conference.SiteDescription} />
       <meta name="twitter:description" content={(pageDescription || conference.SiteDescription).substring(0, 200)} />
       <meta name="author" content={conference.Organiser.Name} />
-      <meta property="og:image" content={pageImage || '/static/images/logo-2019.png'} />
-      <meta property="twitter:image" content={pageImage || '/static/images/logo-2019.png'} />
+      <meta property="og:image" content={pageImage || '/static/images/logo-2021.png'} />
+      <meta property="twitter:image" content={pageImage || '/static/images/logo-2021.png'} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={conference.Name} />
       <meta name="twitter:creator" content={conference.Organiser.Name} />
