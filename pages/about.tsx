@@ -41,7 +41,7 @@ export default withPageMetadata((props: WithPageMetadataProps) => (
     </StyledList>
     <StyledLogoWrapper>
       <img src="/static/images/logo.png" alt="DDD Perth logo" loading="lazy" />
-      <img src="/static/images/logo-2020.png" alt="DDD Perth 2020 logo" loading="lazy" />
+      <img src="/static/images/logo-2021.png" alt="DDD Perth 2021 logo" loading="lazy" />
     </StyledLogoWrapper>
     <StyledPara>
       Furthermore, {props.pageMetadata.conference.Name} aims to both create opportunities for underrepresented
