@@ -133,8 +133,8 @@ const Conference: IConference = {
   SessionFeedbackLink: null,
 
   HideDate: hideDate,
-  HideSponsors: true,
-  HideSponsorshipUpsell: false,
+  HideSponsors: false,
+  HideSponsorshipUpsell: true,
   HideVenue: venue === null,
   HideAfterpartyVenue: venue === null || venue.Afterparty === null,
   ShowNextSessions: true,
