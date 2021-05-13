@@ -44,21 +44,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
               entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
             </>
           ) : (
-            <>
-              <SafeLink
-                href={
-                  'https://ti.to/' +
-                  Conference.TicketsProviderAccountId +
-                  '/' +
-                  Conference.TicketsProviderEventId +
-                  '/discount/' +
-                  Conference.TicketsProviderFinancialAssistanceCode
-                }
-                target="_blank"
-              >
-                following this link
-              </SafeLink>
-            </>
+            <>selecting the Financial Assistance ticket</>
           )}
           .
         </p>
@@ -109,7 +95,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Will childcare be available?',
-    Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${Conference.ChildcarePrice}. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+    Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference and is ${Conference.ChildcarePrice}. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
     Category: 'tickets',
   })
 
@@ -139,16 +125,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Can I pay by cheque, invoice, cash, Coinye West?',
-    Answer: (
-      <Fragment>
-        Payments can be made with credit card using Tito via our tickets page when registrations are open. Companies
-        that want to buy bulk tickets (&gt; 10) can{' '}
-        <a className="maillink" href={`mailto:${Conference.ContactEmail}`}>
-          contact us
-        </a>{' '}
-        to pay by invoice (EFT or credit card).
-      </Fragment>
-    ),
+    Answer: 'Payments can be made with credit card using Tito via our tickets page when registrations are open.',
     Category: 'tickets',
   })
 
@@ -335,10 +312,16 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
+            <SafeLink href="https://twitter.com/amys_kapers" target="_blank">
+              Amy Kapernick
+            </SafeLink>
+          </li>
+          <li>
             <SafeLink href="https://twitter.com/mattyjward" target="_blank">
               Matt Ward
             </SafeLink>
           </li>
+          <li>Sarah McGeough</li>
           <li>
             <SafeLink href="https://twitter.com/ian_hughes" target="_blank">
               Ian Hughes
@@ -355,11 +338,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/AshleyAitken" target="_blank">
-              Ashley Aitken
-            </SafeLink>
-          </li>
-          <li>
             <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
               David Schokker
             </SafeLink>
@@ -367,16 +345,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <li>
             <SafeLink href="https://twitter.com/kristysachse" target="_blank">
               Kristy Sachse
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/meliss_houghton" target="_blank">
-              Melissa Houghton
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/deekob" target="_blank">
-              Derek Bingham
             </SafeLink>
           </li>
           <li>
@@ -400,32 +368,24 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/mattclarkdotnet" target="_blank">
-              Matt Clark
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/inaiei" target="_blank">
-              Inaie Ignacio
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/amys_kapers" target="_blank">
-              Amy Kapernick
-            </SafeLink>
-          </li>
-          <li>
             <SafeLink href="https://twitter.com/eleusis7" target="_blank">
               Priyaj Sham Chukoury
             </SafeLink>
           </li>
+          <li>Nehal Ghuman</li>
+          <li>
+            <SafeLink href="https://twitter.com/robdcrowley" target="_blank">
+              Rob Crowley
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/antonjb" target="_blank">
+              Anton Ball
+            </SafeLink>
+          </li>
+          <li>Deanne Blom</li>
         </StyledList>
-        <p>
-          <SafeLink href="https://blog.dddperth.com/meet-the-2019-ddd-perth-team-d45cec7f5539" target="_blank">
-            Meet the team
-          </SafeLink>
-          ! Furthermore, we have many others who volunteer and have assisted with organisation in the past.
-        </p>
+        <p>Furthermore, we have many others who volunteer and have assisted with organisation in the past</p>
       </Fragment>
     ),
   })

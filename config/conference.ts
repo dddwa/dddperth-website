@@ -82,11 +82,10 @@ const Conference: IConference = {
   },
   TagLine: tagLine,
   SiteDescription: `${tagLine}.`,
-  Goal:
-    "Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
+  Goal: "Our goal is to create an approachable event that appeals to the whole community, especially people that don't normally get to attend or speak at conferences.",
   GoogleAnalyticsId: 'UA-60040308-1',
   TicketPrice: '$60',
-  ChildcarePrice: '$30',
+  ChildcarePrice: 'free',
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',
   TicketsProviderEventId: '2021',
