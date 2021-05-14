@@ -66,7 +66,7 @@ export const Sponsors: React.FC<SponsorsProps> = ({ sponsors, show, hideUpsell }
       <StyledSponsorsContainer>
         {platinumSponsors.length > 0 && (
           <Fragment>
-            <h2>Platinum Partner{platinumSponsors.length > 1 && 's'}</h2>
+            <h2>Platinum Sponsors</h2>
             {platinumSponsors.map((sponsor) => (
               <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
                 <StyledSponsorLogo
