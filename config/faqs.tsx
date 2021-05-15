@@ -16,17 +16,25 @@ export default function getFaqs(dates: Dates): FAQ[] {
       }.
           Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
         dates.IsComplete ? 'we finished' : "we'll finish"
-      } at ${Conference.FinishTime} followed by the afterparty${
-        Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
+      } at ${Conference.FinishTime} ${
+        Conference.HasAfterParty
+          ? 'followed by the afterparty' + Conference.HideAfterpartyVenue
+            ? ''
+            : ' at ' + Conference.Venue.Afterparty
+          : ''
       }.`,
     })
   }
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day and access to the afterparty! Amazing value right!?
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${
+      Conference.HasAfterParty ? ' and access to the afterparty!' : '!'
+    }  Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
-      ${Conference.Name} is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
+      ${
+        Conference.Name
+      } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
 
