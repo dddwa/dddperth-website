@@ -611,6 +611,13 @@ available-typed-arrays@^1.0.2:
   dependencies:
     array-filter "^1.0.0"
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 babel-plugin-emotion@^10.0.27:
   version "10.0.27"
   resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-10.0.27.tgz#59001cf5de847c1d61f2079cd906a90a00d3184f"
@@ -956,6 +963,19 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
+
+configcat-common@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/configcat-common/-/configcat-common-4.4.2.tgz#12740536e3fe965f09d10b954e53d960f553b247"
+  integrity sha512-QTNZ0vz/PAyJ5r/EBThybKSexy+SYOMqcA5qdv97JUuk67kX8gtAibtSrlcOxYOThBiF+YJaAeiKSk/43+StVQ==
+
+configcat-js-ssr@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/configcat-js-ssr/-/configcat-js-ssr-3.4.3.tgz#1613f2c4b27270da3c5a42ce07601b687d6ec0e3"
+  integrity sha512-CJmX4xT1sH6cF0hT5ORbx7jfr5IHRe+sATDB5JcoKs3YxWVyJfkNdywBglrCfGD88MHnu/a24idrHoe7zTvfkQ==
+  dependencies:
+    axios "^0.21.1"
+    configcat-common "^4.4.2"
 
 console-browserify@^1.1.0:
   version "1.2.0"
@@ -1687,6 +1707,11 @@ focus-lock@^0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.6.6.tgz#98119a755a38cfdbeda0280eaa77e307eee850c7"
   integrity sha512-Dx69IXGCq1qsUExWuG+5wkiMqVM/zGx/reXSJSLogECwp3x6KeNQZ+NAetgxEFpnC41rD8U3+jRCW68+LNzdtw==
+
+follow-redirects@^1.10.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.0.tgz#f5d260f95c5f8c105894491feee5dc8993b402fe"
+  integrity sha512-0vRwd7RKQBTt+mgu87mtYeofLFZpTas2S9zY+jIeuLJMNvudIgF52nr19q40HOwH5RrhWIPuj9puybzSJiRrVg==
 
 foreach@^2.0.5:
   version "2.0.5"

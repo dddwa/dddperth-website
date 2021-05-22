@@ -21,6 +21,7 @@
     "@reach/alert": "^0.8.2",
     "@reach/dialog": "^0.8.2",
     "applicationinsights": "^1.2.0",
+    "configcat-js-ssr": "^3.4.3",
     "date-fns": "^2.15.0",
     "date-fns-tz": "^1.0.10",
     "emotion-theming": "^10.0.10",

@@ -12,6 +12,7 @@ import { Main } from 'layouts/main'
 import { NextPage } from 'next'
 import { Eventbrite } from 'components/Tickets/Eventbrite'
 import { StyledPara } from 'components/global/text'
+import { getFlagClient } from 'services/featureFlag'
 
 export const TicketPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   const conference = pageMetadata.conference
@@ -50,6 +51,11 @@ export const TicketPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =>
 }
 
 TicketPage.getInitialProps = async ({ res }) => {
+  const client = getFlagClient()
+  const flagValue = await client.getValueAsync('ticketSalesOpen', false)
+
+  console.log({ flagValue })
+
   if (
     !getConferenceDates(Conference, dateTimeProvider.now()).RegistrationOpen &&
     Conference.TicketPurchasingOptions !== TicketPurchasingOptions.WaitListOpen &&
