@@ -133,6 +133,22 @@ const serviceSponsors: Sponsor[] = [
   },
 ]
 
-const Sponsors: Sponsor[] = [...platinumSponsors, ...goldSponsors, ...silverSponsors, ...serviceSponsors]
+const communityPartners: Sponsor[] = [
+  {
+    id: '2021-shecodes',
+    imageUrl: '/static/images/sponsors/2021-shecodes.png',
+    name: 'She Codes',
+    type: SponsorType.Community,
+    url: 'https://shecodes.com.au/',
+  },
+]
+
+const Sponsors: Sponsor[] = [
+  ...platinumSponsors,
+  ...goldSponsors,
+  ...silverSponsors,
+  ...serviceSponsors,
+  ...communityPartners,
+]
 
 export default Sponsors
