@@ -114,6 +114,7 @@ const Conference: IConference = {
   TicketNumberWhileVoting: TicketNumberWhileVoting.Required,
   MinVotes: 6,
   MaxVotes: 6,
+  WaitingListCanVoteWithEmail: true,
 
   Date: date,
   EndDate: endDate,

@@ -42,6 +42,7 @@ export interface Conference {
   TicketNumberWhileVoting: TicketNumberWhileVoting
   MinVotes: number
   MaxVotes: number
+  WaitingListCanVoteWithEmail: boolean
 
   Date: Date
   EndDate: Date
@@ -99,7 +100,6 @@ export enum TicketNumberWhileVoting {
   Required,
   Optional,
 }
-
 export interface Venue {
   Name: string
   Address: string

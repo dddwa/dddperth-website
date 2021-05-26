@@ -43,6 +43,7 @@ interface VotingProps {
   anonymousVoting: boolean
   preferentialVoting: boolean
   ticketNumberHandling: TicketNumberWhileVoting
+  waitingListCanVoteWithEmail: boolean
   sessions: Session[]
   submitVoteUrl: string
   maxVotes: number
@@ -61,6 +62,7 @@ const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
   return result
 }
 
+const VotingWithOptionalTicketMessage = 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
@@ -97,6 +99,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
     })
     this.votingTopRef = React.createRef()
+    console.log(this.props.waitingListCanVoteWithEmail);
   }
 
   toggleExpandAll() {
@@ -324,9 +327,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 <button className="btn btn-sm agenda" onClick={() => this.show('votes')} disabled={isVoting}>
                   View/submit votes ({this.state.votes.length}/
                   {this.props.minVotes !== this.props.maxVotes
-                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
-                        this.state.votes.length < this.props.maxVotes ? '+' : ''
-                      }`
+                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${this.state.votes.length < this.props.maxVotes ? '+' : ''
+                    }`
                     : this.props.minVotes}
                   )
                 </button>
@@ -338,11 +340,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
           {this.state.show === 'all'
             ? 'All sessions'
             : this.state.show === 'shortlist'
-            ? 'My shortlist'
-            : 'View and submit votes'}{' '}
-          <small>{`(showing ${visibleSessions.length}${
-            this.state.show === 'all' ? '/' + this.props.sessions.length : ''
-          } session(s))`}</small>{' '}
+              ? 'My shortlist'
+              : 'View and submit votes'}{' '}
+          <small>{`(showing ${visibleSessions.length}${this.state.show === 'all' ? '/' + this.props.sessions.length : ''
+            } session(s))`}</small>{' '}
           {visibleSessions.length !== 0 && (
             <button type="button" className="btn btn-sm btn-secondary" onClick={() => this.toggleExpandAll()}>
               {this.state.expandAll ? 'Hide all session details' : 'Show all session details'}
@@ -446,9 +447,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 />
               </p>
             )}
+
             {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
               <label>
-                Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
+                Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}{this.props.waitingListCanVoteWithEmail && 'or your waiting list email'}
                 <em>
                   {' '}
                   <span
@@ -456,14 +458,14 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                     style={{ cursor: 'pointer', fontSize: '20px' }}
                     title={
                       this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
-                        ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
-                        : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+                        ? VotingWithOptionalTicketMessage
+                        : `To submit a vote you must supply your ${this.props.waitingListCanVoteWithEmail ? 'either' : ''} ticket # from your ticket confirmation email when getting an attendee ticket${this.props.waitingListCanVoteWithEmail ? 'or your email address that you registered with the waiting list.' : ''}.`
                     }
                     onClick={() =>
                       alert(
                         this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
-                          ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
-                          : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                          ? VotingWithOptionalTicketMessage
+                          : `To submit a vote you must supply your ${this.props.waitingListCanVoteWithEmail ? 'either' : ''} ticket # from your ticket confirmation email when getting an attendee ticket${this.props.waitingListCanVoteWithEmail ? 'or your email address that you registered with the waiting list.' : ''}.`
                       )
                     }
                   />
@@ -497,9 +499,8 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                 <React.Fragment>
                   Submit <span className="remove-when-small">votes</span> ({this.state.votes.length}/
                   {this.props.minVotes !== this.props.maxVotes
-                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${
-                        this.state.votes.length < this.props.maxVotes ? '+' : ''
-                      }`
+                    ? `${Math.max(this.props.minVotes, this.state.votes.length)}${this.state.votes.length < this.props.maxVotes ? '+' : ''
+                    }`
                     : this.props.minVotes}
                   )
                 </React.Fragment>

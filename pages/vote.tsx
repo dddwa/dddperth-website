@@ -130,6 +130,7 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
           ticketsProvider={conference.TicketsProviderId}
           preferentialVoting={conference.PreferentialVoting}
           ticketNumberHandling={conference.TicketNumberWhileVoting}
+          waitingListCanVoteWithEmail={conference.WaitingListCanVoteWithEmail}
         />
       )}
     </Main>
