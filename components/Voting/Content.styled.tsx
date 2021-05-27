@@ -1,6 +1,7 @@
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 import styled from 'components/utils/styles/theme'
+import Link from 'next/link'
 
 export const StyledHeader = styled('div')(({ theme }) => ({
   display: 'grid',
