@@ -16,7 +16,11 @@ import {
   SyledIllustrationContainer,
   StyledColumnLayout,
   HeadingBody,
+  ButtonStack,
+  MoreInfoButton,
+  StartVoteButton,
 } from './Content.styled'
+
 interface VoteContentProps {
   conference: Conference
   dates: Dates
@@ -64,6 +68,13 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
             to submit your votes. <strong>Each person should only lodge one set of votes</strong>; we have a number of
             mechanisms in place to detect fraudulent votes.
           </Text>
+
+          <ButtonStack>
+            <MoreInfoButton href="#moreinfo">More Info</MoreInfoButton>
+            <Link href="/vote/voting">
+              <StartVoteButton>Start Voting</StartVoteButton>
+            </Link>
+          </ButtonStack>
         </StyledHeaderContent>
         <StyledHeaderIllustration>
           <SpeakerBubble>
@@ -86,7 +97,7 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
         </StyledHeaderIllustration>
       </StyledHeader>
 
-      <StyledColumnLayout>
+      <StyledColumnLayout id="moreinfo">
         <div>
           <HeadingBody>Getting the most out of voting</HeadingBody>
           <p>
