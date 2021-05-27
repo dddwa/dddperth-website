@@ -1,13 +1,13 @@
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 import styled from 'components/utils/styles/theme'
-import Link from 'next/link'
 
 export const StyledHeader = styled('div')(({ theme }) => ({
   display: 'grid',
   gridColumn: '1 / -1',
   gridTemplateColumns: 'minmax(1rem, 1fr) minmax(10px, 60ch) minmax(10px, 60ch) 1fr minmax(1rem, 1fr)',
   paddingBlockStart: calcRem(70),
+  paddingBlockEnd: calcRem(theme.metrics.xl),
   marginBlockStart: calcRem(-theme.metrics.xl),
   marginBlockEnd: calcRem(60),
   gap: '1rem',

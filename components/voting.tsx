@@ -5,7 +5,7 @@ import 'components/utils/arrayExtensions'
 import { SessionPanel } from 'components/Voting/sessionPanel'
 import { Session, TicketNumberWhileVoting, TicketsProvider } from 'config/types'
 import { logEvent } from 'components/global/analytics'
-import { StyledVotingPanel } from 'components/Voting/Voting.styled'
+import { StyledVotingPanel, StyledVoteHeader } from 'components/Voting/Voting.styled'
 import { VotingFilters } from 'components/Voting/VotingFilters'
 import { differenceInMinutes } from 'date-fns'
 import { zonedTimeToUtc } from 'date-fns-tz'
@@ -274,14 +274,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               border: '1px solid #ddd',
             }}
           >
-            <div
-              style={{
-                backgroundColor: '#f5f5f5',
-                color: '#333',
-                padding: 15,
-                borderBottom: '1px solid #ddd',
-              }}
-            >
+            <StyledVoteHeader>
               {this.state.submitted && (
                 <p className="alert alert-success">
                   You've submitted your vote for this year :) Thanks! &lt;3 {this.props.conferenceName} team
@@ -290,19 +283,10 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <a
-                    href="#"
-                    style={{ float: 'right' }}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      return this.scrollToTop()
-                    }}
-                  >
-                    Scroll to top
-                  </a>
+                  <a href="#">Go to filters</a>
                 </React.Fragment>
               )}
-            </div>
+            </StyledVoteHeader>
             <div
               style={{
                 padding: 15,
