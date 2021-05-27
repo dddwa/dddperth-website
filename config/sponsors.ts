@@ -105,13 +105,13 @@ const silverSponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://www.familyzone.com/',
   },
-  {
-    id: '2021-ndc',
-    imageUrl: '/static/images/sponsors/ndc-sydney.png',
-    name: 'NDC',
-    type: SponsorType.Silver,
-    url: 'http://ndcsydney.com/',
-  },
+  // {
+  //   id: '2021-ndc',
+  //   imageUrl: '/static/images/sponsors/ndc-sydney.png',
+  //   name: 'NDC',
+  //   type: SponsorType.Silver,
+  //   url: 'http://ndcsydney.com/',
+  // },
 ]
 
 const serviceSponsors: Sponsor[] = [
