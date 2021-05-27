@@ -43,6 +43,7 @@ interface VotingProps {
   anonymousVoting: boolean
   preferentialVoting: boolean
   ticketNumberHandling: TicketNumberWhileVoting
+  waitingListCanVoteWithEmail: boolean
   sessions: Session[]
   submitVoteUrl: string
   maxVotes: number
@@ -61,6 +62,8 @@ const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
   return result
 }
 
+const VotingWithOptionalTicketMessage =
+  'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
   componentWillMount() {
     this.setState({
@@ -449,6 +452,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
             {this.props.ticketNumberHandling !== TicketNumberWhileVoting.None && (
               <label>
                 Ticket {this.props.ticketsProvider === TicketsProvider.Eventbrite && 'order'} #{' '}
+                {this.props.waitingListCanVoteWithEmail && 'or your waiting list email'}
                 <em>
                   {' '}
                   <span
@@ -456,14 +460,26 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
                     style={{ cursor: 'pointer', fontSize: '20px' }}
                     title={
                       this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
-                        ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
-                        : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+                        ? VotingWithOptionalTicketMessage
+                        : `To submit a vote you must supply ${
+                            this.props.waitingListCanVoteWithEmail ? 'either' : ''
+                          } your ticket # from your ticket confirmation email when getting an attendee ticket${
+                            this.props.waitingListCanVoteWithEmail
+                              ? ' or your email address that you registered with the waiting list.'
+                              : ''
+                          }.`
                     }
                     onClick={() =>
                       alert(
                         this.props.ticketNumberHandling === TicketNumberWhileVoting.Optional
-                          ? 'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
-                          : 'To submit a vote you must supply your ticket # from your ticket confirmation email when getting an attendee ticket.',
+                          ? VotingWithOptionalTicketMessage
+                          : `To submit a vote you must supply ${
+                              this.props.waitingListCanVoteWithEmail ? 'either' : ''
+                            } your ticket # from your ticket confirmation email when getting an attendee ticket${
+                              this.props.waitingListCanVoteWithEmail
+                                ? ' or your email address that you registered with the waiting list.'
+                                : ''
+                            }.`,
                       )
                     }
                   />

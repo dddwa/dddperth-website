@@ -42,6 +42,7 @@ export interface Conference {
   TicketNumberWhileVoting: TicketNumberWhileVoting
   MinVotes: number
   MaxVotes: number
+  WaitingListCanVoteWithEmail: boolean
 
   Date: Date
   EndDate: Date
