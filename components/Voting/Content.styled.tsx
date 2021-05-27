@@ -7,6 +7,7 @@ export const StyledHeader = styled('div')(({ theme }) => ({
   gridColumn: '1 / -1',
   gridTemplateColumns: 'minmax(1rem, 1fr) minmax(10px, 60ch) minmax(10px, 60ch) 1fr minmax(1rem, 1fr)',
   paddingBlockStart: calcRem(70),
+  paddingBlockEnd: calcRem(theme.metrics.xl),
   marginBlockStart: calcRem(-theme.metrics.xl),
   marginBlockEnd: calcRem(60),
   gap: '1rem',
