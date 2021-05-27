@@ -17,6 +17,7 @@ export const StyledColumnLayout = styled('div')(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
   gap: calcRem(theme.metrics.xxl),
+  scrollMarginBlockStart: '2rem',
 
   p: {
     marginBlockEnd: calcRem(theme.metrics.lg),
@@ -125,5 +126,40 @@ export const SpeakerCaption = styled('figcaption')(({ theme }) => ({
 
   [breakpoint('xl')]: {
     fontSize: calcRem(theme.fonts.defaultSize),
+  },
+}))
+
+export const ButtonStack = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'nowrap',
+  gap: calcRem(theme.metrics.lg),
+}))
+
+export const MoreInfoButton = styled('a')(({ theme }) => ({
+  padding: calcRem(theme.metrics.md),
+  color: theme.colors.white,
+  background: 'transparent',
+  border: `1px solid ${theme.colors.white}`,
+  textDecoration: 'none',
+  textTransform: 'uppercase',
+
+  '&:hover, &:focus': {
+    backgroundColor: theme.colors.white,
+    color: theme.colors.dddpink,
+  },
+}))
+
+export const StartVoteButton = styled('a')(({ theme }) => ({
+  padding: calcRem(theme.metrics.md),
+  color: theme.colors.black,
+  background: '#F6E337',
+  border: `1px solid #F6E337`,
+  textDecoration: 'none',
+  cursor: 'pointer',
+  textTransform: 'uppercase',
+
+  '&:hover, &:focus': {
+    backgroundColor: theme.colors.black,
+    color: '#F6E337',
   },
 }))

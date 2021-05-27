@@ -10,7 +10,6 @@ import getConferenceDates from 'config/dates'
 import { Conference as Conf, Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { NextPage } from 'next'
-import { VoteContent } from 'components/Voting/Content'
 import { Alert } from 'components/global/Alert/Alert'
 
 interface VoteProps extends WithPageMetadataProps {
@@ -103,8 +102,6 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
 
   return (
     <Main metadata={pageMetadata} title="Vote" description={`${conference.Name} voting page.`}>
-      <VoteContent conference={conference} dates={pageMetadata.dates} submissionCount={sessions.length} />
-
       {pageState === 'loading' && (
         <Alert kind="info">
           <p>Loading sessions...</p>
