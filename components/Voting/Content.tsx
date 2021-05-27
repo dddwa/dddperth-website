@@ -1,9 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Conference, Dates, TicketNumberWhileVoting } from 'config/types'
 import { StyledList } from 'components/global/text'
 import { format } from 'date-fns'
-
+import {
+  StyledHeader,
+  StyledHeaderContent,
+  StyledHeaderIllustration,
+  Heading,
+  Text,
+  SpeakerBubble,
+  SpeakerBubbleTitle,
+  SpeakerCaption,
+  SyledIllustrationContainer,
+  StyledColumnLayout,
+  HeadingBody,
+} from './Content.styled'
 interface VoteContentProps {
   conference: Conference
   dates: Dates
@@ -12,28 +25,28 @@ interface VoteContentProps {
 
 export function VoteContent({ conference, dates, submissionCount }: VoteContentProps) {
   return (
-    <div className="container">
-      <h1>Voting</h1>
+    <>
+      <StyledHeader>
+        <StyledHeaderContent>
+          <Heading>Voting</Heading>
 
-      <div className="row">
-        <div className="col-md-4">
-          <p>
+          <Text>
             One of the{' '}
             <Link href="/about">
               <a>core tenets of {conference.Name}</a>
             </Link>{' '}
             is that the agenda is democratically selected. Session voting is the main mechanism that we employ to
             achieve that. This means that you (collectively) have the power to decide on the agenda on the day.
-          </p>
+          </Text>
 
           {conference.AnonymousVoting && (
-            <p>
+            <Text>
               In order to remove unconscious bias we implement anonymous session voting. This means that you will not
               see the details of the presenters and will need to vote based on the content (title, abstract, tags).
-            </p>
+            </Text>
           )}
 
-          <p>
+          <Text>
             This year we have a combination of 20 minute and 45 minutes sessions (or sessions that are designated as
             being able to be both). You can optionally filter the sessions by tag, format and level to assist you to
             create a shortlist. You will be required to vote for{' '}
@@ -50,10 +63,32 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
             </strong>{' '}
             to submit your votes. <strong>Each person should only lodge one set of votes</strong>; we have a number of
             mechanisms in place to detect fraudulent votes.
-          </p>
-        </div>
-        <div className="col-md-8" style={{ backgroundColor: '#f5f5f5', padding: '0 20px' }}>
-          <h2 style={{ marginTop: '30px' }}>Getting the most out of voting</h2>
+          </Text>
+        </StyledHeaderContent>
+        <StyledHeaderIllustration>
+          <SpeakerBubble>
+            <SpeakerBubbleTitle>
+              You.
+              <br />
+              Are.
+              <br />
+              Awesome.
+            </SpeakerBubbleTitle>{' '}
+            <SpeakerCaption>
+              David Neal. 2019
+              <br />
+              DDDPerth Speaker
+            </SpeakerCaption>
+          </SpeakerBubble>
+          <SyledIllustrationContainer>
+            <Image src="/illustrations/david_neal.png" width={543} height={875} alt="" loading="lazy" />
+          </SyledIllustrationContainer>
+        </StyledHeaderIllustration>
+      </StyledHeader>
+
+      <StyledColumnLayout>
+        <div>
+          <HeadingBody>Getting the most out of voting</HeadingBody>
           <p>
             This year we had {submissionCount ? submissionCount : '...'} sessions submitted! We've implemented the
             following features to assist you to manage voting across such a large number of sessions:
@@ -116,29 +151,31 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
             )}
           </StyledList>
         </div>
-      </div>
 
-      <hr />
-
-      <p className="alert alert-warning">
-        <strong>Please note:</strong> Our expectation of the community, <strong>and you as a voter</strong>, is that you
-        will only vote once and you will vote for a set of talks that make up <em>your</em> perfect agenda regardless of
-        your friends' talks.
-        <br />
-        <br />
-        If you know who submitted any of the sessions we ask that you do not discuss it with anyone or post it on social
-        media so we can retain a level playing field for all submitters through anonymity. We definitely want you to
-        post and talk about the conference and encourage others to vote though so spread the word.
-        <br />
-        <br /> If we follow this approach as a community then we can be fair to all the submitters who have put time,
-        effort and courage into crafting the amazing session proposals below. If you have any questions please{' '}
-        <a href={'mailto:' + conference.ContactEmail}>contact us</a>.
-        <br />
-        <br />
-        Thanks!
-        <br />
-        &lt;3 {conference.Name} team
-      </p>
-    </div>
+        <div>
+          <HeadingBody>Please note:</HeadingBody>
+          <p>
+            Our expectation of the community, <strong>and you as a voter</strong>, is that you will only vote once and
+            you will vote for a set of talks that make up <em>your</em> perfect agenda regardless of your friends'
+            talks.
+          </p>
+          <p>
+            If you know who submitted any of the sessions we ask that you do not discuss it with anyone or post it on
+            social media so we can retain a level playing field for all submitters through anonymity. We definitely want
+            you to post and talk about the conference and encourage others to vote though so spread the word.
+          </p>
+          <p>
+            If we follow this approach as a community then we can be fair to all the submitters who have put time,
+            effort and courage into crafting the amazing session proposals below. If you have any questions please{' '}
+            <a href={'mailto:' + conference.ContactEmail}>contact us</a>.
+          </p>
+          <p>
+            Thanks!
+            <br />
+            &lt;3 {conference.Name} team
+          </p>
+        </div>
+      </StyledColumnLayout>
+    </>
   )
 }
