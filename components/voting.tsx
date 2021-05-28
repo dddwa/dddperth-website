@@ -264,7 +264,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
 
     return (
       <React.Fragment>
-        <div ref={this.votingTopRef} />
+        <div id="top" ref={this.votingTopRef} />
         <StyledVotingPanel>
           <div
             className="voting-control form-inline"
@@ -283,7 +283,7 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
               {!this.state.submitted && (
                 <React.Fragment>
                   <h3>Vote</h3>
-                  <a href="#">Go to filters</a>
+                  <a href="#top">Top of page</a>
                 </React.Fragment>
               )}
             </StyledVoteHeader>
