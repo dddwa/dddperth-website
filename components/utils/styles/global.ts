@@ -2,6 +2,9 @@ import { css } from '@emotion/core'
 import { theme } from './theme'
 
 export const globalCSS = css`
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     font-family: ${theme.fonts.main};
     color: ${theme.colors.grey800};
