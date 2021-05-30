@@ -51,9 +51,8 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
           )}
 
           <Text>
-            This year we have a combination of 20 minute and 45 minutes sessions (or sessions that are designated as
-            being able to be both). You can optionally filter the sessions by tag, format and level to assist you to
-            create a shortlist. You will be required to vote for{' '}
+            This year we have a combination of 20 minute and 45 minutes sessions. You can optionally filter the sessions
+            by tag, format and level to assist you to create a shortlist. You will be required to vote for{' '}
             <strong>
               {conference.MinVotes !== conference.MaxVotes ? (
                 <span>
