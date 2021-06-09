@@ -84,7 +84,7 @@ export async function fetchSessions(sessionsAPI: string) {
   }
 
   let body = await response.json()
-  if (body[0].SessionId) {
+  if (body.length > 0 && body[0].SessionId) {
     // Map old session structure to new session structure
     body = mapSessions(body)
   }
