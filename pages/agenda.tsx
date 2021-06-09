@@ -32,7 +32,7 @@ class AgendaPage extends React.Component<AgendaPageProps> {
       }
     }
 
-    if (req) {
+    if (req && dates.AgendaPublished) {
       const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
       const sessionId = query && query.sessionId ? query.sessionId : ''
       const result = { sessionId }
