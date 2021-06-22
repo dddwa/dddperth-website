@@ -105,13 +105,34 @@ const silverSponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://www.familyzone.com/',
   },
-  // {
-  //   id: '2021-ndc',
-  //   imageUrl: '/static/images/sponsors/ndc-sydney.png',
-  //   name: 'NDC',
-  //   type: SponsorType.Silver,
-  //   url: 'http://ndcsydney.com/',
-  // },
+  {
+    id: '2021-ndc',
+    imageUrl: '/static/images/sponsors/ndc-sydney.png',
+    name: 'NDC',
+    type: SponsorType.Silver,
+    url: 'https://ndcsydney.com',
+  },
+  {
+    id: '2021-confluent',
+    imageUrl: '/static/images/sponsors/2021-confluent.png',
+    name: 'Confluent',
+    type: SponsorType.Silver,
+    url: 'https://www.confluent.io',
+  },
+  {
+    id: '2021-auth0',
+    imageUrl: '/static/images/sponsors/2021-auth0.png',
+    name: 'Auth0',
+    type: SponsorType.Silver,
+    url: 'https://auth0.com',
+  },
+  {
+    id: '2021-versent',
+    imageUrl: '/static/images/sponsors/2021-versent.png',
+    name: 'Versent',
+    type: SponsorType.Silver,
+    url: 'https://versent.com.au',
+  },
 ]
 
 const serviceSponsors: Sponsor[] = [
@@ -124,12 +145,28 @@ const serviceSponsors: Sponsor[] = [
     url: 'https://www.planittesting.com/',
   },
   {
+    id: '2021-bankwest',
+    imageUrl: '/static/images/sponsors/2021-bankwest.png',
+    name: 'Bankwest',
+    serviceProvided: 'Childcare',
+    type: SponsorType.Service,
+    url: 'https://www.bankwest.com.au',
+  },
+  {
     id: '2021-elastic',
     imageUrl: '/static/images/sponsors/2021-elastic.png',
     name: 'elastic',
     serviceProvided: 'Coffee Cart',
     type: SponsorType.Service,
     url: 'https://www.elastic.co',
+  },
+  {
+    id: '2021-auth0-quiet',
+    imageUrl: '/static/images/sponsors/2021-auth0.png',
+    name: 'Auth0',
+    serviceProvided: 'Quiet Room',
+    type: SponsorType.Service,
+    url: 'https://auth0.com',
   },
 ]
 
