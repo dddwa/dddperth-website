@@ -197,7 +197,10 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 <AgendaSession room={0} sessionId="0a75760c-a5f0-4ce2-b942-e3cff923182e" />
                 <AgendaSession room={1} sessionId="ca8d113d-38c6-4042-a006-03f2add9ead4" />
                 <AgendaSession room={2} sessionId="3cc93f61-ef21-4a8a-ac91-645c1bca3f16" />
-                <AgendaSession room={3} sessionId="182edb85-cf37-4fa6-b6ce-587edbf9d4fe" />
+                {/* <AgendaSession room={3} sessionId="182edb85-cf37-4fa6-b6ce-587edbf9d4fe" /> */}
+                <AgendaSession room={3}>
+                  <StyledTrackHeader>TBD</StyledTrackHeader>
+                </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 14, minutes: 35 })} />
