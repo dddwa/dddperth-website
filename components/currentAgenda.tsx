@@ -13,7 +13,6 @@ import {
 } from 'components/Agenda/Agenda.styled'
 import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
-import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { set } from 'date-fns'
 
