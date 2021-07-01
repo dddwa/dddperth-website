@@ -189,7 +189,7 @@ const Conference: IConference = {
 
   Keynotes: [],
 
-  RoomNames: ['Theatre', 'M6', 'M7', 'M8'],
+  RoomNames: ['Riverside Theatre', 'M6', 'M7', 'M8'],
 
   SessionGroups: [
     {
