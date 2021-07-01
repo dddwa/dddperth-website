@@ -9,7 +9,7 @@ interface StyledAgendaRowProps {
   tracks?: number
 }
 
-export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks = 6 }) => ({
+export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks = 4 }) => ({
   display: 'grid',
   gridTemplateColumns: `repeat(2, 1fr)`,
   backgroundColor: rowBackgroundColor,

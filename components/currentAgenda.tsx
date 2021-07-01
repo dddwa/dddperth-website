@@ -15,6 +15,7 @@ import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { set } from 'date-fns'
+import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 
 interface CurrentAgendaProps {
   date: Date
@@ -37,7 +38,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
 }) => {
   return (
     <Fragment>
-      <p>Tap on a session to see more details&hellip;</p>
+      <p>Select a session to see more details&hellip;</p>
 
       {acceptingFeedback && (
         <StyledFeedbackActions>
@@ -84,7 +85,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
 
               <StyledAgendaRowList>
                 <li>Time</li>
-                <li>Theatre</li>
+                <li>Riverside Theatre</li>
                 <li>M6</li>
                 <li>M7</li>
                 <li>M8</li>
@@ -101,27 +102,27 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { minutes: 35 })} />
+                <AgendaTime time={set(date, { hours: 8, minutes: 35 })} />
                 <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome and housekeeping</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { minutes: 50 })} />
+                <AgendaTime time={set(date, { hours: 8, minutes: 50 })} />
                 <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome to Country</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { hours: 9 })} />
+                <AgendaTime time={set(date, { hours: 9, minutes: 0 })} />
                 <AgendaSession fullWidth>
                   <StyledTrackHeader>Changeover</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 9, minutes: 10 })} />
-                {/* <AgendaSession
-                  sessionId="620775e4-6179-4637-80c4-f59027d3c54b"
+                <AgendaSession
+                  sessionId="cb61437f-cf04-474f-ab1d-d479de96980b"
                   room="Riverside Theatre"
                   renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
@@ -129,10 +130,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   fullWidth
                   isKeynote
                   alwaysShowRoom
-                /> */}
-                <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
-                  <StyledTrackHeader>Keynote</StyledTrackHeader>
-                </AgendaSession>
+                />
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 9, minutes: 40 })} />
@@ -197,10 +195,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 <AgendaSession room={0} sessionId="0a75760c-a5f0-4ce2-b942-e3cff923182e" />
                 <AgendaSession room={1} sessionId="ca8d113d-38c6-4042-a006-03f2add9ead4" />
                 <AgendaSession room={2} sessionId="3cc93f61-ef21-4a8a-ac91-645c1bca3f16" />
-                {/* <AgendaSession room={3} sessionId="182edb85-cf37-4fa6-b6ce-587edbf9d4fe" /> */}
-                <AgendaSession room={3}>
-                  <StyledTrackHeader>TBD</StyledTrackHeader>
-                </AgendaSession>
+                <AgendaSession room={3} sessionId="ccb62c37-bd08-4512-b365-e2e3c5958b4f" />
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 14, minutes: 35 })} />
@@ -222,15 +217,15 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { hours: 16 })} />
+                <AgendaTime time={set(date, { hours: 16, minutes: 0 })} />
                 <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Prize Draw</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 16, minutes: 30 })} />
-                {/* <AgendaSession
-                  sessionId="4c019f6f-c312-4bb9-8024-3352f6034d6e"
+                <AgendaSession
+                  sessionId="b8f3d83d-9802-41db-882d-ac57d7fca62a"
                   sponsorId="yow"
                   room="Riverside Theatre"
                   renderPresenters={(presenters) => (
@@ -239,13 +234,10 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                   fullWidth
                   isKeynote
                   alwaysShowRoom
-                /> */}
-                <AgendaSession room={0} alwaysShowRoom fullWidth>
-                  <StyledTrackHeader>Locknote</StyledTrackHeader>
-                </AgendaSession>
+                />
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { hours: 17 })} />
+                <AgendaTime time={set(date, { hours: 17, minutes: 0 })} />
                 <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Thank yous and wrap up</StyledTrackHeader>
                 </AgendaSession>
