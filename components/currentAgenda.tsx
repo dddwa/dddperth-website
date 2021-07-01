@@ -195,7 +195,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 <AgendaSession room={0} sessionId="0a75760c-a5f0-4ce2-b942-e3cff923182e" />
                 <AgendaSession room={1} sessionId="ca8d113d-38c6-4042-a006-03f2add9ead4" />
                 <AgendaSession room={2} sessionId="3cc93f61-ef21-4a8a-ac91-645c1bca3f16" />
-                <AgendaSession room={3} sessionId="ccb62c37-bd08-4512-b365-e2e3c5958b4f" />
+                <AgendaSession room={3} sessionId="270889cf-405a-4422-ac97-c4e9bc1f7d8c" />
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 14, minutes: 35 })} />
