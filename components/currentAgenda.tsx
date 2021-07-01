@@ -122,7 +122,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 9, minutes: 10 })} />
                 <AgendaSession
-                  sessionId="cb61437f-cf04-474f-ab1d-d479de96980b"
+                  sessionId="46cde2ca-8b44-4ff5-9b82-ad3c41a2b329"
                   room={0}
                   renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
@@ -225,8 +225,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 16, minutes: 30 })} />
                 <AgendaSession
-                  sessionId="b8f3d83d-9802-41db-882d-ac57d7fca62a"
-                  sponsorId="yow"
+                  sessionId="0b404590-9503-42ac-9e66-bf49adc4496f"
                   room={0}
                   renderPresenters={(presenters) => (
                     <StyledAgendaPresenter>Locknote: {presenters}</StyledAgendaPresenter>
