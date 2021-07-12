@@ -60,6 +60,13 @@ const goldSponsors: Sponsor[] = [
     type: SponsorType.Gold,
     url: 'https://aws.amazon.com/',
   },
+  {
+    id: '2021-microsoft',
+    imageUrl: '/static/images/sponsors/microsoft.png',
+    name: 'Microsoft',
+    type: SponsorType.Gold,
+    url: 'https://www.microsoft.com/en-au/',
+  },
 ]
 
 const silverSponsors: Sponsor[] = [
