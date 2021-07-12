@@ -102,13 +102,13 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { hours: 8, minutes: 25 })} />
+                <AgendaTime time={set(date, { hours: 8, minutes: 45 })} />
                 <AgendaSession room={0} alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome and housekeeping</StyledTrackHeader>
                 </AgendaSession>
               </StyledAgendaRow>
               <StyledAgendaRow>
-                <AgendaTime time={set(date, { hours: 8, minutes: 40 })} />
+                <AgendaTime time={set(date, { hours: 9, minutes: 0 })} />
                 <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
                   <StyledTrackHeader>Welcome to Country</StyledTrackHeader>
                 </AgendaSession>
