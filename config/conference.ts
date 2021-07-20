@@ -15,7 +15,7 @@ const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
 const hideDate = false
-const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
+const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
 const date = zonedTimeToUtc('2021-08-14T08:00', '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
