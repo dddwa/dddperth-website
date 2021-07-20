@@ -80,12 +80,9 @@ const withPageMetadata = <TOriginalProps extends {}>(
       super(props)
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.pagePath = this.props.pagePath || window.location.pathname
       this.pageUrl = this.props.pageUrl || url.getUrlFromWindow(window)
-    }
-
-    componentDidMount() {
       window.appConfig = this.props.appConfig
     }
 

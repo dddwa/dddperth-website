@@ -65,7 +65,7 @@ const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
 const VotingWithOptionalTicketMessage =
   'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       formatFilters: [],
       formats: this.props.sessions
