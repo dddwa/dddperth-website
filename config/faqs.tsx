@@ -398,5 +398,120 @@ export default function getFaqs(dates: Dates): FAQ[] {
     ),
   })
 
+  Faqs.push({
+    Question: 'Can I wear a face mask?',
+    Answer: `Absolutely, we support any attendees who choose to wear a face mask on the day of the conference.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Will you have sanitiser available at the conference?',
+    Answer: `Yes! We'll have sanitising processes in place for all attendees on the day, and this includes providing hand sanitiser. However, we also encourage everyone to bring their own personal supply too, just in case!`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Why can’t I go to the talk I want?',
+    AnswerWithoutParagraph: (
+      <Fragment>
+      <p>As part of our COVID restrictions, we have capacity limits in place for all of our speaker rooms which will be enforced at the door. This means that once a room is full, we can’t let anyone else in. If there’s a talk you’re desperate to see, we recommend getting to the room as early as you can to avoid disappointment and please be kind to those on the door, we guarantee they don’t enjoy having to turn people away.</p>
+      <p>If you do miss something due to capacity limits, keep an eye out after the conference – we’ll be releasing recordings of all the talks so you’ll have the opportunity to catch up on anything you missed!)</p>
+      </Fragment>
+    ),
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'I don’t feel well, can I still come to the conference?',
+    Answer: (
+      <Fragment>We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow the WA government instructions regarding COVID testing. If you miss the conference due to illness, feel free to pass your ticket along through Tito so it doesn’t go to waste. If you’re not able to pass it along, please email{' '}
+      <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+        {Conference.ContactEmail}
+      </a>{' '}and we’ll issue a refund for your ticket.  And never fear, we’ll be releasing recordings of all the talks so you can watch them back later once you’re recovered!</Fragment>
+    ),
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'How will the online conference differ from the in-person conference?',
+    Answer: (
+      <Fragment>
+        <p>If we move to an online conference, there will be some obvious differences – you’ll be logging in to conference via an online platform rather than joining us in person at the PCEC, and we’ll be making some tweaks to the agenda based on our speakers’ availability for the online conference.</p>
+        <p>Outside of that, we’ve done our best to recreate the DDD Perth <em>vibe</em> as best we can, so you can expect:</p>
+        <StyledList>
+          <li>High quality, pre-recorded talks from our speakers (no awkward “you’re on mute” moments)</li>
+          <li>Live Q&amp;A with our speakers during their talks</li>
+          <li>Breaks between talks so you’re not stuck in back to back sessions</li>
+          <li>Live welcomes and prize draws from the DDD Perth committee.</li>
+        </StyledList>
+      </Fragment>
+    ),
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Why will the conference move online?',
+    Answer: `We love our community and part of that means putting safety first.  The DDD Perth team are monitoring the COVID situation closely and will make the decision to move online if restrictions in the Perth metropolitan area will have a detrimental impact on our speakers and attendees.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'When will we find out if the conference is going online?',
+    Answer: `Unfortunately, we can’t commit to a specific timeframe. We’re closely monitoring the COVID situation and aim to give attendees as much notice as possible if we move online, but we’ve all seen how rapidly the situation can change! We’ll will let the community know as soon as a decision is made - this could be anywhere from 2 weeks before the conference to the night before. We ask all attendees to keep on top of the WA Government COVID advice and check their emails regularly, especially the day and night before the conference and in the morning on August 14th before leaving the house to join us.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'How do I access the online conference?',
+    Answer: `You’ll receive a link to access our online platform before the start of the conference. You’ll need a web browser to access the link but you won’t need to download any special software.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'What if I can’t attend the online conference?',
+    Answer: `If you’re not able to attend the online conference, you’ll still get the chance to see our wonderful speakers! We’ll be releasing recordings of the talks online so you can watch them back later.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Can I get a refund if the conference moves online?',
+    Answer: (
+      <Fragment>Unfortunately, we’re not able to offer refunds in the case that we move online. Our committee has put a lot of effort into creating an online conference experience that’s as close to the DDD Perth <em>vibe</em> as we could get, so we hope you’ll join us online.</Fragment>
+    ),
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'I’m on the waitlist, can I come to the online conference?',
+    Answer: `Yes! The upside of going online is we don’t have the same capacity restrictions as in-person. If we make the decision to move online, we’ll re-open ticket sales and advise the waitlist, so anyone who missed out can purchase a ticket to join us and our speakers online.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Will talks be recorded for the online conference, or will they be live?',
+    Answer: (
+      <Fragment>To minimise the potential for <em>technical problems</em>, we are pre-recording our speakers to be broadcast as part of the online conference. We will still have our speakers available for live Q&amp;A while their talks are broadcast, so you’ll have the opportunity to ask questions and pick their brains on their talk topic while their talk is on.</Fragment>
+    ),
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Will the speakers be available for questions?',
+    Answer: `Yes! Our speakers will be answering questions and sharing their thoughts during their talks, so you can interact with them live while watching their talks.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Will talks be available online after the conference?',
+    Answer: `Yes! Whether we go ahead in person or online, we’ll be releasing recordings of the talks so you can catch up on anything you may have missed on the day. One of the perks of preparing for a potential online conference is we’ll have high quality recordings ready to go, so no dodgy audio or bad lighting to contend with.`,
+    Category: 'covid'
+  })
+
+  Faqs.push({
+    Question: 'Will the Code of Conduct still apply to the online conference?',
+    Answer: `Absolutely. Our peacekeepers will be monitoring the online conference just as they would in-person and our online platform has technical protections in place that will assist us to enforce the Code of Conduct if needed.`,
+    Category: 'covid'
+  })
+
   return Faqs
 }
