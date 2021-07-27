@@ -77,30 +77,22 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .map((s) => s.Level)
         .unique()
         .sort(),
-      shortlist: [],
       show: 'all',
       submitError: false,
       submitInProgress: false,
-      submitted: false,
       tagFilters: [],
       tags: this.props.sessions
         .selectMany((s) => s.Tags)
         .unique()
         .sort(),
-      votes: [],
-    })
-  }
-
-  votingTopRef: any
-
-  componentDidMount() {
-    this.setState({
       shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
       submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
     })
     this.votingTopRef = React.createRef()
   }
+
+  votingTopRef: any
 
   toggleExpandAll() {
     this.setState({ expandAll: !this.state.expandAll })
