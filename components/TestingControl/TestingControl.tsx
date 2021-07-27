@@ -15,25 +15,13 @@ interface TestingControlProps {
 export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, conference }) => {
   const [show, setShow] = useState(false)
 
-  const setDateTo = (date: Date) => {
-    dateTimeProvider.now = () => {
-      return {
-        Value: add(date, { minutes: 1 }),
-      }
-    }
-  }
-
   const resetVote = () => {
     localStorage.removeItem('ddd-voting-submitted')
     localStorage.removeItem('ddd-voting-id')
   }
 
   const reset = () => {
-    dateTimeProvider.now = () => {
-      return {
-        Value: new Date(),
-      }
-    }
+    dateTimeProvider.reset();
 
     conference.Sponsors = SponsorData
     conference.TicketPurchasingOptions = TicketPurchasingOptions.SoldOut
@@ -52,26 +40,26 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
         <StyledTestingPanel>
           <StyledButton
             kind="primary"
-            onClick={() => setDateTo(sub(conference.PresentationSubmissionsOpenFrom, { days: 1 }))}
+            onClick={() => dateTimeProvider.setDateTo(sub(conference.PresentationSubmissionsOpenFrom, { days: 1 }))}
           >
             Pre-CFP
           </StyledButton>
-          <StyledButton kind="secondary" onClick={() => setDateTo(conference.PresentationSubmissionsOpenFrom)}>
+          <StyledButton kind="secondary" onClick={() => dateTimeProvider.setDateTo(conference.PresentationSubmissionsOpenFrom)}>
             CFP open
           </StyledButton>
-          <StyledButton kind="tertiary" onClick={() => setDateTo(conference.VotingOpenFrom)}>
+          <StyledButton kind="tertiary" onClick={() => dateTimeProvider.setDateTo(conference.VotingOpenFrom)}>
             Voting open
           </StyledButton>
-          <StyledButton kind="tertiary" onClick={() => setDateTo(conference.VotingOpenUntil)}>
+          <StyledButton kind="tertiary" onClick={() => dateTimeProvider.setDateTo(conference.VotingOpenUntil)}>
             Voting closed
           </StyledButton>
-          <StyledButton kind="inverse" onClick={() => setDateTo(conference.AgendaPublishedFrom)}>
+          <StyledButton kind="inverse" onClick={() => dateTimeProvider.setDateTo(conference.AgendaPublishedFrom)}>
             Agenda published
           </StyledButton>
-          <StyledButton kind="primary" onClick={() => setDateTo(conference.Date)}>
+          <StyledButton kind="primary" onClick={() => dateTimeProvider.setDateTo(conference.Date)}>
             On the day
           </StyledButton>
-          <StyledButton kind="primary" onClick={() => setDateTo(conference.EndDate)}>
+          <StyledButton kind="primary" onClick={() => dateTimeProvider.setDateTo(conference.EndDate)}>
             Conference over
           </StyledButton>
           <StyledButton
