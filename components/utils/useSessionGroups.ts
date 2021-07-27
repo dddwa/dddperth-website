@@ -63,56 +63,48 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
     [Conference.Date.toString(), sessions.length],
   )
 
-  const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
-
-  let pastSessionsIndex = -1
-  let previousSessionIndex = -1
-  let nextSessionIndex = -1
   let currentSessionIndex = -1
-  let futureSessionIndex = -1
+  let previousSessionIndex = -1;
 
-  for (let i = 0; i < allSessionGroups.length; i++) {
-    const session = allSessionGroups[i]
-    const isCurrentSession = isWithinInterval(dateTimeProvider.now().Value, {
-      start: session.timeStart,
-      end: session.timeEnd,
-    })
-    const isNextSession = isBefore(dateTimeProvider.now().Value, session.timeStart)
-    const isAfterSession = isAfter(dateTimeProvider.now().Value, session.timeEnd)
+  // Once we are past the end of the last session group there are no next or future sessions
+  if (isAfter(dateTimeProvider.now().Value, allSessionGroups[allSessionGroups.length - 1].timeEnd)) {
+    currentSessionIndex = allSessionGroups.length
+  // Once we are past the first session group we start showing times
+  } else if (isAfter(dateTimeProvider.now().Value, allSessionGroups[0].timeEnd)) {
+    currentSessionIndex = allSessionGroups.findIndex(g => isWithinInterval(dateTimeProvider.now().Value, {
+      start: g.timeStart,
+      end: g.timeEnd,
+    }));
+  }
+  // If we aren't currently in a session, calculate the session that just finished
+  if (currentSessionIndex === -1) {
+    const finishedSessionGroups = allSessionGroups.filter(g => isAfter(dateTimeProvider.now().Value, g.timeEnd));
+    previousSessionIndex = finishedSessionGroups.length - 1;
+  }
 
-    if (!IsInProgress) {
-      break
-    }
-
-    if (isCurrentSession) {
-      pastSessionsIndex = i - 2 >= 0 ? i - 1 : -1
-      previousSessionIndex = i - 1 >= 0 ? i - 1 : -1
-      currentSessionIndex = i
-      nextSessionIndex = i + 1 < allSessionGroups.length ? i + 1 : -1
-      futureSessionIndex = i + 2 < allSessionGroups.length ? i + 2 : -1
-      break
-    } else if (isNextSession) {
-      pastSessionsIndex = i - 2 >= 0 ? i - 1 : -1
-      previousSessionIndex = i - 1 >= 0 ? i - 1 : -1
-      currentSessionIndex = -1
-      nextSessionIndex = i
-      futureSessionIndex = i + 1 < allSessionGroups.length ? i + 1 : -1
-      break
-    } else if (i === allSessionGroups.length - 1 && isAfterSession) {
-      // after the last talk
-      pastSessionsIndex = i - 1
-      previousSessionIndex = i
-      break
-    }
+  // Calculate all of the indexes based on the ones we just calculated
+  previousSessionIndex = currentSessionIndex === -1 ? previousSessionIndex : currentSessionIndex - 1;
+  const pastSessionsIndex = previousSessionIndex - 1;
+  let nextSessionIndex = currentSessionIndex === -1 ? previousSessionIndex + 1 : currentSessionIndex + 1;
+  let futureSessionIndex = nextSessionIndex + 1;
+  // Protect the indexes from growing past the bounds of the number of session groups
+  if (currentSessionIndex >= allSessionGroups.length) {
+    currentSessionIndex = -1;
+  }
+  if (nextSessionIndex >= allSessionGroups.length) {
+    nextSessionIndex = -1;
+  }
+  if (futureSessionIndex >= allSessionGroups.length) {
+    futureSessionIndex = -1;
   }
 
   const calculatedSessionGroups = React.useMemo<Omit<SessionGroups, 'allSessionGroups'>>(
     () => ({
-      ...(pastSessionsIndex !== -1 ? { pastSessionGroups: allSessionGroups.slice(0, pastSessionsIndex) } : {}),
-      ...(previousSessionIndex !== -1 ? { previousSessionGroup: allSessionGroups[previousSessionIndex] } : {}),
-      ...(currentSessionIndex !== -1 ? { currentSessionGroup: allSessionGroups[currentSessionIndex] } : {}),
-      ...(nextSessionIndex !== -1 ? { nextSessionGroup: allSessionGroups[nextSessionIndex] } : {}),
-      ...(futureSessionIndex !== -1 ? { futureSessionGroups: allSessionGroups.slice(futureSessionIndex) } : {}),
+      ...(pastSessionsIndex >= 0 ? { pastSessionGroups: allSessionGroups.slice(0, pastSessionsIndex + 1) } : {}),
+      ...(previousSessionIndex >= 0 ? { previousSessionGroup: allSessionGroups[previousSessionIndex] } : {}),
+      ...(currentSessionIndex >= 0 ? { currentSessionGroup: allSessionGroups[currentSessionIndex] } : {}),
+      ...(nextSessionIndex >= 0 ? { nextSessionGroup: allSessionGroups[nextSessionIndex] } : {}),
+      ...(futureSessionIndex >= 0 ? { futureSessionGroups: allSessionGroups.slice(futureSessionIndex) } : {}),
     }),
     // TODO: Investigate allSessionGroups as dep
     // eslint-disable-next-line react-hooks/exhaustive-deps
