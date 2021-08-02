@@ -13,6 +13,14 @@ export default {
     }
   },
 
+  reset(): void {
+    this.now = () => {
+      return {
+        Value: new Date(),
+      }
+    }
+  },
+
   now(): CurrentDate {
     return { Value: new Date() }
   },

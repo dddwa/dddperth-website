@@ -9,6 +9,13 @@
       "webRoot": "${workspaceRoot}"
     },
     {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "Next: Edge",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Next: Node",
