@@ -5,7 +5,7 @@ import { Conference, TicketPurchasingOptions } from 'config/types'
 import { Button } from 'components/global/Button/Button'
 import dateTimeProvider, { CurrentDate } from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
-import { add, sub, format } from 'date-fns'
+import { sub, format } from 'date-fns'
 
 interface TestingControlProps {
   currentDate: CurrentDate
@@ -21,7 +21,7 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
   }
 
   const reset = () => {
-    dateTimeProvider.reset();
+    dateTimeProvider.reset()
 
     conference.Sponsors = SponsorData
     conference.TicketPurchasingOptions = TicketPurchasingOptions.SoldOut
@@ -44,7 +44,10 @@ export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, con
           >
             Pre-CFP
           </StyledButton>
-          <StyledButton kind="secondary" onClick={() => dateTimeProvider.setDateTo(conference.PresentationSubmissionsOpenFrom)}>
+          <StyledButton
+            kind="secondary"
+            onClick={() => dateTimeProvider.setDateTo(conference.PresentationSubmissionsOpenFrom)}
+          >
             CFP open
           </StyledButton>
           <StyledButton kind="tertiary" onClick={() => dateTimeProvider.setDateTo(conference.VotingOpenFrom)}>

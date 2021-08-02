@@ -3,7 +3,7 @@ import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Session } from 'config/types'
 import dateTimeProvider from './dateTimeProvider'
-import { isWithinInterval, isBefore, isAfter } from 'date-fns'
+import { isWithinInterval, isAfter } from 'date-fns'
 
 type SessionId = string // UUID
 
@@ -62,40 +62,43 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [Conference.Date.toString(), sessions.length],
   )
+  const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
 
   let currentSessionIndex = -1
-  let previousSessionIndex = -1;
+  let previousSessionIndex = -1
 
   // Once we are past the end of the last session group there are no next or future sessions
   if (isAfter(dateTimeProvider.now().Value, allSessionGroups[allSessionGroups.length - 1].timeEnd)) {
     currentSessionIndex = allSessionGroups.length
-  // Once we are past the first session group we start showing times
+    // Once we are past the first session group we start showing times
   } else if (isAfter(dateTimeProvider.now().Value, allSessionGroups[0].timeEnd)) {
-    currentSessionIndex = allSessionGroups.findIndex(g => isWithinInterval(dateTimeProvider.now().Value, {
-      start: g.timeStart,
-      end: g.timeEnd,
-    }));
+    currentSessionIndex = allSessionGroups.findIndex((g) =>
+      isWithinInterval(dateTimeProvider.now().Value, {
+        start: g.timeStart,
+        end: g.timeEnd,
+      }),
+    )
   }
   // If we aren't currently in a session, calculate the session that just finished
   if (currentSessionIndex === -1) {
-    const finishedSessionGroups = allSessionGroups.filter(g => isAfter(dateTimeProvider.now().Value, g.timeEnd));
-    previousSessionIndex = finishedSessionGroups.length - 1;
+    const finishedSessionGroups = allSessionGroups.filter((g) => isAfter(dateTimeProvider.now().Value, g.timeEnd))
+    previousSessionIndex = finishedSessionGroups.length - 1
   }
 
   // Calculate all of the indexes based on the ones we just calculated
-  previousSessionIndex = currentSessionIndex === -1 ? previousSessionIndex : currentSessionIndex - 1;
-  const pastSessionsIndex = previousSessionIndex - 1;
-  let nextSessionIndex = currentSessionIndex === -1 ? previousSessionIndex + 1 : currentSessionIndex + 1;
-  let futureSessionIndex = nextSessionIndex + 1;
+  previousSessionIndex = currentSessionIndex === -1 ? previousSessionIndex : currentSessionIndex - 1
+  const pastSessionsIndex = previousSessionIndex - 1
+  let nextSessionIndex = currentSessionIndex === -1 ? previousSessionIndex + 1 : currentSessionIndex + 1
+  let futureSessionIndex = nextSessionIndex + 1
   // Protect the indexes from growing past the bounds of the number of session groups
   if (currentSessionIndex >= allSessionGroups.length) {
-    currentSessionIndex = -1;
+    currentSessionIndex = -1
   }
   if (nextSessionIndex >= allSessionGroups.length) {
-    nextSessionIndex = -1;
+    nextSessionIndex = -1
   }
   if (futureSessionIndex >= allSessionGroups.length) {
-    futureSessionIndex = -1;
+    futureSessionIndex = -1
   }
 
   const calculatedSessionGroups = React.useMemo<Omit<SessionGroups, 'allSessionGroups'>>(
@@ -117,6 +120,12 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
       sessions.length,
     ],
   )
+
+  if (!IsInProgress) {
+    return {
+      allSessionGroups,
+    }
+  }
 
   return {
     ...calculatedSessionGroups,
