@@ -140,6 +140,13 @@ const silverSponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://versent.com.au',
   },
+  {
+    id: '2021-twilio',
+    imageUrl: '/static/images/sponsors/2021-twilio.png',
+    name: 'Twilio',
+    type: SponsorType.Silver,
+    url: 'https://www.twilio.com',
+  },
 ]
 
 const serviceSponsors: Sponsor[] = [
