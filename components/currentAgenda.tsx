@@ -176,7 +176,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 <AgendaSession room={0} sessionId="774715b2-dd53-48fc-a144-80df9325eea9" />
                 <AgendaSession room={1} sessionId="a1765cb1-a194-470d-8654-213e44afe5ba" />
                 <AgendaSession room={2} sessionId="b555388f-5f27-42cb-9a01-266bfcc69464" />
-                <AgendaSession room={3} sessionId="c1ded90b-4f4a-4cf3-a7e2-3aa0f103d842" />
+                <AgendaSession room={3} sessionId="63183d8b-2e1e-4675-9316-5278a63f8ab7" />
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 13, minutes: 15 })} />
@@ -201,7 +201,7 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
                 <AgendaTime time={set(date, { hours: 14, minutes: 45 })} />
                 <AgendaSession room={0} sessionId="ed54a247-f530-4057-8000-04fd82d08be1" />
                 <AgendaSession room={1} sessionId="83cc08fb-f422-42b3-bb7b-300e75cd1728" />
-                <AgendaSession room={2} sessionId="93b8cf68-0f80-4077-89de-dd539446718f" />
+                <AgendaSession room={2} sessionId="cc7b2e63-3eca-4c0a-8205-117e5a53dfc5" />
                 <AgendaSession room={3} sessionId="620775e4-6179-4637-80c4-f59027d3c54b" />
               </StyledAgendaRow>
               <StyledAgendaRow>
