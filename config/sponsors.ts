@@ -114,7 +114,7 @@ const silverSponsors: Sponsor[] = [
   },
   {
     id: '2021-ndc',
-    imageUrl: '/static/images/sponsors/ndc-sydney.png',
+    imageUrl: '/static/images/sponsors/2021-ndc.png',
     name: 'NDC',
     type: SponsorType.Silver,
     url: 'https://ndcsydney.com',
