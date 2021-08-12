@@ -44,6 +44,7 @@ export interface Conference {
   MaxVotes: number
   WaitingListCanVoteWithEmail: boolean
 
+  StaticDate: Date
   Date: Date
   EndDate: Date
   DoorsOpenTime: string
