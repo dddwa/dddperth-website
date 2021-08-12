@@ -16,7 +16,8 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
-const date = zonedTimeToUtc('2021-08-14T08:00', '+08:00')
+const staticDate = '2021-08-14T08:00'
+const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
@@ -116,6 +117,7 @@ const Conference: IConference = {
   MaxVotes: 6,
   WaitingListCanVoteWithEmail: true,
 
+  StaticDate: new Date(staticDate),
   Date: date,
   EndDate: endDate,
   DoorsOpenTime: '8:10am',
@@ -203,7 +205,7 @@ const Conference: IConference = {
         '616cf974-4922-4fe4-8b2a-23bff247f4ce',
         'dec643ab-4886-4ac5-8f2c-452f945174ae',
         '18c9f6a2-2655-4242-8535-cf61c1605cb9',
-        'c06c0dd2-224e-4137-abbd-6fe25177a7b0'
+        'c06c0dd2-224e-4137-abbd-6fe25177a7b0',
       ],
       timeStart: set(date, { hours: 9, minutes: 50 }),
       timeEnd: set(date, { hours: 10, minutes: 35 }),
@@ -214,7 +216,7 @@ const Conference: IConference = {
         'ea671390-b7db-4b36-80c9-07b28973142f',
         'cf16b808-ac70-463a-90cc-512b68042962',
         '97b4e034-985f-4cc7-bbe2-a1cb22d611a9',
-        '3560629c-36cd-4dd7-91cf-7d3f00dba047'
+        '3560629c-36cd-4dd7-91cf-7d3f00dba047',
       ],
       timeStart: set(date, { hours: 11, minutes: 5 }),
       timeEnd: set(date, { hours: 11, minutes: 50 }),
@@ -225,7 +227,7 @@ const Conference: IConference = {
         'c04dc773-feaa-4c07-8aab-7e7598e58c48',
         '443bd0ee-bef3-4fe7-aa95-8b08782e248e',
         '1a67c372-f559-4713-8937-9d67646e23f7',
-        '798f295f-a38e-49cf-98ad-a3bf4b513b7a'
+        '798f295f-a38e-49cf-98ad-a3bf4b513b7a',
       ],
       timeStart: set(date, { hours: 12, minutes: 0 }),
       timeEnd: set(date, { hours: 12, minutes: 20 }),
@@ -236,7 +238,7 @@ const Conference: IConference = {
         '774715b2-dd53-48fc-a144-80df9325eea9',
         'a1765cb1-a194-470d-8654-213e44afe5ba',
         'b555388f-5f27-42cb-9a01-266bfcc69464',
-        'c1ded90b-4f4a-4cf3-a7e2-3aa0f103d842'
+        'c1ded90b-4f4a-4cf3-a7e2-3aa0f103d842',
       ],
       timeStart: set(date, { hours: 12, minutes: 30 }),
       timeEnd: set(date, { hours: 13, minutes: 15 }),
@@ -247,7 +249,7 @@ const Conference: IConference = {
         '0a75760c-a5f0-4ce2-b942-e3cff923182e',
         'ca8d113d-38c6-4042-a006-03f2add9ead4',
         '3cc93f61-ef21-4a8a-ac91-645c1bca3f16',
-        '270889cf-405a-4422-ac97-c4e9bc1f7d8c'
+        '270889cf-405a-4422-ac97-c4e9bc1f7d8c',
       ],
       timeStart: set(date, { hours: 14, minutes: 15 }),
       timeEnd: set(date, { hours: 14, minutes: 35 }),
@@ -258,7 +260,7 @@ const Conference: IConference = {
         'ed54a247-f530-4057-8000-04fd82d08be1',
         '83cc08fb-f422-42b3-bb7b-300e75cd1728',
         '93b8cf68-0f80-4077-89de-dd539446718f',
-        '620775e4-6179-4637-80c4-f59027d3c54b'
+        '620775e4-6179-4637-80c4-f59027d3c54b',
       ],
       timeStart: set(date, { hours: 14, minutes: 45 }),
       timeEnd: set(date, { hours: 15, minutes: 30 }),
