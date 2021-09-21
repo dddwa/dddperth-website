@@ -20,7 +20,6 @@ import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 interface CurrentAgendaProps {
   date: Date
   sessions?: Session[]
-  sessionsUrl: string
   sponsors: Sponsor[]
   acceptingFeedback: boolean
   feedbackLink?: string
@@ -30,7 +29,6 @@ interface CurrentAgendaProps {
 export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
   date,
   sessions = [],
-  sessionsUrl,
   sponsors,
   acceptingFeedback,
   feedbackLink,
@@ -53,7 +51,6 @@ export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
 
       <Agenda
         sessions={sessions}
-        sessionsUrl={sessionsUrl}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}
         selectedSessionId={selectedSessionId}

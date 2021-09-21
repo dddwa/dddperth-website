@@ -1,58 +1,41 @@
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
-import { NextPage } from 'next'
-import Router from 'next/router'
+import { GetServerSideProps, NextPage } from 'next'
 import { Main } from 'layouts/main'
 import { Session } from 'config/types'
 import React from 'react'
 import { VoteContent } from 'components/Voting/Content'
+import { useConfig } from 'Context/Config'
 
-const VotePage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
-  const { conference } = pageMetadata
-  const [sessions, setSessions] = React.useState<Session[]>([])
+type VotePageProps = {
+  sessions: Session[]
+}
 
-  React.useEffect(() => {
-    async function fetchSessions() {
-      try {
-        const resp = await fetch(pageMetadata.appConfig.getSubmissionsUrl)
-        if (!resp.ok) {
-          throw resp.statusText
-        }
-
-        const data: Session[] = await resp.json()
-
-        setSessions(data)
-      } catch (err) {
-        // oh no... doesn't really matter let's help the page not crash hey
-      }
-    }
-
-    fetchSessions()
-  }, [pageMetadata.appConfig.getSubmissionsUrl, conference])
+const VotePage: NextPage<VotePageProps> = ({ sessions }) => {
+  const { conference, dates } = useConfig()
 
   return (
-    <Main metadata={pageMetadata} title="Vote" description={`${conference.Name} voting page.`}>
-      <VoteContent conference={conference} dates={pageMetadata.dates} submissionCount={sessions.length} />
+    <Main title="Vote" description={`${conference.Name} voting page.`}>
+      <VoteContent conference={conference} dates={dates} submissionCount={sessions.length} />
     </Main>
   )
 }
 
-VotePage.getInitialProps = ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
   if (!dates.VotingOpen) {
-    if (res) {
-      res.writeHead(302, {
-        Location: '/',
-      })
-      res.end()
-      res.finished = true
-    } else {
-      Router.replace('/')
-    }
+    return { notFound: true }
   }
-  return {} as WithPageMetadataProps
+
+  const resp = await fetch(process.env.NEXT_PUBLIC_GET_SUBMISSIONS_URL)
+  const sessions = await resp.json()
+
+  if (!resp.ok) {
+    return { props: { sessions: [] } }
+  }
+
+  return { props: { sessions } }
 }
 
-export default withPageMetadata(VotePage)
+export default VotePage

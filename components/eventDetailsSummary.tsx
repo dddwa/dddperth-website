@@ -1,22 +1,17 @@
 import React from 'react'
-import { Action, Conference, Dates, TicketPurchasingOptions } from 'config/types'
+import { Action, TicketPurchasingOptions } from 'config/types'
 import { ActionButton } from 'components/actionButton'
 import { StyledList } from 'components/global/text'
 import { useRouter } from 'next/router'
+import { useConfig } from 'Context/Config'
 
 export interface EventDetailsSummaryProps {
-  conference: Conference
   primaryAction: Action
-  dates: Dates
   className?: string
 }
 
-export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({
-  conference,
-  primaryAction,
-  dates,
-  className,
-}) => {
+export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({ primaryAction, className }) => {
+  const { conference, dates } = useConfig()
   const { pathname } = useRouter()
 
   return (

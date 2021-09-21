@@ -1,15 +1,12 @@
 import React from 'react'
 import { ButtonAnchor } from 'components/global/Button/Button'
-import { PageMetadata } from 'components/global/withPageMetadata'
 import { StyledActionBarContainer } from './ActionBar.styled'
 import getConferenceActions from 'config/actions'
+import { useConfig } from 'Context/Config'
 
-interface ActionBarProps {
-  metadata: PageMetadata
-}
-
-export const ActionBar: React.FC<ActionBarProps> = ({ metadata }) => {
-  const [primaryAction, secondaryAction] = getConferenceActions(metadata.conference, metadata.dates)
+export const ActionBar = () => {
+  const { conference, dates } = useConfig()
+  const [primaryAction, secondaryAction] = getConferenceActions(conference, dates)
 
   return (
     <StyledActionBarContainer>

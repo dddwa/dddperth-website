@@ -1,18 +1,18 @@
 import React from 'react'
 import { FaqList } from 'components/FAQList/FaqList'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import getFaqs from 'config/faqs'
 import { PageWithSidebar } from 'layouts/withSidebar'
+import { useConfig } from 'Context/Config'
 
-const FaqPage: React.StatelessComponent<WithPageMetadataProps> = (props) => (
-  <PageWithSidebar
-    metadata={props.pageMetadata}
-    title="FAQs"
-    description={`Frequently asked questions for the ${props.pageMetadata.conference.Name} conference.`}
-  >
-    <h1>FAQs</h1>
-    <FaqList faqs={getFaqs(props.pageMetadata.dates)} />
-  </PageWithSidebar>
-)
+const FaqPage = () => {
+  const { conference, dates } = useConfig()
 
-export default withPageMetadata(FaqPage)
+  return (
+    <PageWithSidebar title="FAQs" description={`Frequently asked questions for the ${conference.Name} conference.`}>
+      <h1>FAQs</h1>
+      <FaqList faqs={getFaqs(dates)} />
+    </PageWithSidebar>
+  )
+}
+
+export default FaqPage

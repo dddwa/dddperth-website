@@ -3,25 +3,23 @@ import { ImportantDatesList } from 'components/ImportantDatesList/importantDates
 import getConferenceActions from 'config/actions'
 import { TemplateProps, Template } from './template'
 import { StyledSidebarContainer, StyledEventDetailsSummary } from './Layouts.styled'
+import { useConfig } from 'Context/Config'
+import { useRouter } from 'next/router'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PageWithSidebarProps extends TemplateProps {}
+export const PageWithSidebar = ({ children, title, description, image }: TemplateProps) => {
+  const { conference, dates, currentDate } = useConfig()
+  const { pathname } = useRouter()
 
-export const PageWithSidebar: React.FC<PageWithSidebarProps> = ({ children, metadata, title, description, image }) => {
   return (
-    <Template title={title} description={description} image={image} metadata={metadata}>
+    <Template title={title} description={description} image={image}>
       <StyledSidebarContainer>
         <main id="content">{children}</main>
         <aside>
           <StyledEventDetailsSummary
-            conference={metadata.conference}
-            dates={metadata.dates}
-            primaryAction={
-              getConferenceActions(metadata.conference, metadata.dates).filter((a) => a.Url !== metadata.pagePath)[0]
-            }
+            primaryAction={getConferenceActions(conference, dates).filter((a) => a.Url !== pathname)[0]}
           />
           <h2>Important Dates</h2>
-          <ImportantDatesList layout="inline" conference={metadata.conference} currentDate={metadata.currentDate} />
+          <ImportantDatesList layout="inline" conference={conference} currentDate={currentDate} />
         </aside>
       </StyledSidebarContainer>
     </Template>
