@@ -33,7 +33,7 @@ export const AgendaProvider: React.FC<AgendaProviderProps> = ({ children, onSele
   )
 }
 
-export function useAgendaContext() {
+export function useAgendaContext(): AgendaContextProps {
   const context = React.useContext(AgendaContext)
   if (context === undefined) {
     throw new Error('useAgendaContext must be used within an AgendaProvider')

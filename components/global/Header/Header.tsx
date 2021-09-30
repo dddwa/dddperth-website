@@ -6,7 +6,7 @@ import { HeaderSocials } from './components/HeaderSocials'
 import { NavToggle } from 'components/global/Nav/components/NavToggle'
 import { useConfig } from 'Context/Config'
 
-export const Header = () => {
+export const Header = (): JSX.Element => {
   const { conference } = useConfig()
 
   return (

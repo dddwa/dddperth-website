@@ -3,7 +3,7 @@ import { useConfig } from 'Context/Config'
 import { SocialLinks } from './socialLinks'
 import { StyledFooter, StyledFooterContainer, StyledArrowIcon, StyledTopAnchor } from './Footer.styled'
 
-export const Footer = () => {
+export const Footer = (): JSX.Element => {
   const { conference } = useConfig()
 
   return (

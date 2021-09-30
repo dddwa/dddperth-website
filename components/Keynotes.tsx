@@ -7,7 +7,7 @@ export interface KeynotesProps {
   conference: Conference
 }
 
-const Keynotes = ({ conference }: KeynotesProps) => (
+const Keynotes = ({ conference }: KeynotesProps): JSX.Element => (
   <React.Fragment>
     {conference.Keynotes.length > 0 && (
       <section className="grey">

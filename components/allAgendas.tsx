@@ -9,7 +9,7 @@ interface AllAgendasProps {
   conferenceInstance: string
 }
 
-const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps) => (
+const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps): JSX.Element => (
   <Fragment>
     <h2 className="text-center">All Agendas</h2>
     <p className="text-center">

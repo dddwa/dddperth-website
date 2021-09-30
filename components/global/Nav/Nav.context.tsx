@@ -30,7 +30,7 @@ const NavigationProvider: React.FC = ({ children }) => {
   )
 }
 
-function useNavigationState() {
+function useNavigationState(): State {
   const context = useContext(NavigationContext)
   if (context === undefined) {
     throw new Error('useNavigationState must be used within NavigationContext.Provider')
@@ -38,7 +38,7 @@ function useNavigationState() {
   return context
 }
 
-function useNavigationDispatch() {
+function useNavigationDispatch(): NavigationDispatch {
   const context = useContext(NavigationDispatchContext)
   if (context === undefined) {
     throw new Error('useNavigationState must be used within NavigationDispatchContext.Provider')

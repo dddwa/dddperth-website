@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Conference as IConference, Dates } from 'config/types'
 import Conference from 'config/conference'
 import dateTimeProvider, { CurrentDate } from 'components/utils/dateTimeProvider'
@@ -23,7 +23,7 @@ interface ConfigState {
 
 const ConfigContext = React.createContext<ConfigState | undefined>(undefined)
 
-const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
+const ConfigProvider = ({ children }: { children: React.ReactNode }): ReactElement => {
   const [currentDate, setCurrentDate] = React.useState(dateTimeProvider.now())
 
   React.useEffect(() => {
@@ -59,7 +59,7 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-const useConfig = () => {
+const useConfig = (): ConfigState => {
   const config = React.useContext(ConfigContext)
 
   if (!config) {

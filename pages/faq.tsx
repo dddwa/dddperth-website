@@ -4,7 +4,7 @@ import getFaqs from 'config/faqs'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { useConfig } from 'Context/Config'
 
-const FaqPage = () => {
+const FaqPage = (): JSX.Element => {
   const { conference, dates } = useConfig()
 
   return (

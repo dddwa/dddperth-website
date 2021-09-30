@@ -1,6 +1,6 @@
 import { Conference, Dates, MenuItem, TicketPurchasingOptions } from './types'
 
-export default function Menu(conference: Conference, dates: Dates) {
+export default function Menu(conference: Conference, dates: Dates): { Top: MenuItem[]; Footer: MenuItem[] } {
   const topMenu: MenuItem[] = [
     {
       href: '/',
@@ -17,7 +17,7 @@ export default function Menu(conference: Conference, dates: Dates) {
     {
       href: '/code-of-conduct',
       name: 'Code of Conduct',
-    }
+    },
   ]
 
   if (dates.RegistrationOpen || conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen) {

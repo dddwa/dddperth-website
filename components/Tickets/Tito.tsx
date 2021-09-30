@@ -9,7 +9,6 @@ interface TitoProps {
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace TitoWidget {
-  // eslint-disable-next-line @typescript-eslint/camelcase
   let build_widgets: boolean
   function buildWidgets(): void
 }

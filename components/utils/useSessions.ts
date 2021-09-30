@@ -1,7 +1,7 @@
 import { Session } from 'config/types'
 import { mapSessions } from './mapSession'
 
-export async function fetchSessions(sessionsAPI: string) {
+export async function fetchSessions(sessionsAPI: string): Promise<false | Session[]> {
   const response = await fetch(sessionsAPI)
   if (!response.ok) {
     return false

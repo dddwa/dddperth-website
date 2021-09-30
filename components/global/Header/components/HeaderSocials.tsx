@@ -6,7 +6,7 @@ import { TwitterIcon } from 'components/global/Icons/Twitter'
 import { LinkedinIcon } from 'components/global/Icons/Linkedin'
 import { useConfig } from 'Context/Config'
 
-export const HeaderSocials = () => {
+export const HeaderSocials = (): JSX.Element => {
   const {
     conference: { Socials: socials },
   } = useConfig()

@@ -4,7 +4,7 @@ import { SafeLink } from 'components/global/safeLink'
 import { formatISO } from 'date-fns'
 import { useConfig } from 'Context/Config'
 
-export const Hero = () => {
+export const Hero = (): JSX.Element => {
   const { conference, dates } = useConfig()
   const venue = !conference.HideVenue ? conference.Venue.Name : false
   const date = !conference.HideDate && !dates.IsComplete ? dates.DisplayFormatted('do MMMM yyyy') : false

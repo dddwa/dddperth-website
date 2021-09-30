@@ -4,7 +4,7 @@ import { StyledActionBarContainer } from './ActionBar.styled'
 import getConferenceActions from 'config/actions'
 import { useConfig } from 'Context/Config'
 
-export const ActionBar = () => {
+export const ActionBar = (): JSX.Element => {
   const { conference, dates } = useConfig()
   const [primaryAction, secondaryAction] = getConferenceActions(conference, dates)
 
