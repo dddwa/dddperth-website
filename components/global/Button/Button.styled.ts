@@ -62,9 +62,9 @@ interface StyledButtonAnchorProps {
   size?: Size
 }
 
-export const StyledButtonAnchor = styled('a', { shouldForwardProp: shouldStyledButtonForwardProps })<
-  StyledButtonAnchorProps
->(({ theme, kind, size }) => ({
+export const StyledButtonAnchor = styled('a', {
+  shouldForwardProp: shouldStyledButtonForwardProps,
+})<StyledButtonAnchorProps>(({ theme, kind, size }) => ({
   display: 'inline-flex',
   alignItems: 'center',
   padding: calcRem(theme.metrics.md, theme.metrics.lg),

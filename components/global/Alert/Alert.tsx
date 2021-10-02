@@ -7,4 +7,4 @@ interface AlertProps {
   type?: 'assertive' | 'polite'
 }
 
-export const Alert: React.FC<AlertProps> = props => <StyledAlert {...props} />
+export const Alert: React.FC<AlertProps> = (props) => <StyledAlert {...props} />

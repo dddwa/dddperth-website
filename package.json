@@ -61,8 +61,7 @@
   "lint-staged": {
     "*.{ts,tsx}": "eslint --cache --fix",
     "**/*.+(js|json|ts|tsx)": [
-      "yarn format-code",
-      "git add"
+      "yarn format-code"
     ]
   }
 }
