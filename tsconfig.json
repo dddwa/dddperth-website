@@ -23,6 +23,6 @@
     "isolatedModules": true,
     "baseUrl": "."
   },
-  "exclude": ["./deploy/**", "next.config.js"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "./deploy/**", "next.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./jest-setup.ts"]
 }

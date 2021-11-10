@@ -45,6 +45,25 @@ To re-purpose for another conference:
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
 
+## Tests
+
+### Run tests
+
+- Use the command `yarn test`
+
+### Watch tests
+
+- Run the command `yarn test:watch`
+
+### VScode debug
+
+- In VSCode run `Debug Jest Tests` to run all tests in debug
+- Alternatively run `Debug Jest Current File` to debug the current file
+
+### Node debug
+
+- Run `yarn test:debug` and attach to the node inspector with your preferred method
+
 ## Contributing
 
 So you’re thinking about contributing to the project? You are awesome! It’s **massively** appreciated. Before getting started, please take the time to review the [contribution guidelines](CONTRIBUTING.MD) before sending that epic pull request / bug report.
