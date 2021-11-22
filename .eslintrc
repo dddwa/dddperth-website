@@ -23,5 +23,11 @@
     "@typescript-eslint/array-type": [1, { "default": "array-simple" }],
     "@typescript-eslint/no-unused-vars": 0,
     "no-console": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+    }
+  ]
 }
