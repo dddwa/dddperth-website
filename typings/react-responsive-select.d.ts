@@ -4,7 +4,7 @@ declare module 'react-responsive-select/dist/ReactResponsiveSelect' {
   export interface ReactResponsiveSelectProps {
     name: string
     options: ReactResponsiveSelectOption[]
-    onSubmit?: Function
+    onSubmit?: () => void
     onChange?: (changes: OnChangeArgs) => void
     caretIcon?: JSX.Element
     selectedValue?: string

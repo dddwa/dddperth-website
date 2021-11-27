@@ -8,7 +8,7 @@ import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTesting
 import { sub, format } from 'date-fns'
 import { useConfig } from 'Context/Config'
 
-export const TestingControl = () => {
+export const TestingControl = (): JSX.Element => {
   const { conference, currentDate } = useConfig()
   const [show, setShow] = useState(false)
 

@@ -6,7 +6,7 @@ import { StyledSidebarContainer, StyledEventDetailsSummary } from './Layouts.sty
 import { useConfig } from 'Context/Config'
 import { useRouter } from 'next/router'
 
-export const PageWithSidebar = ({ children, title, description, image }: TemplateProps) => {
+export const PageWithSidebar = ({ children, title, description, image }: TemplateProps): JSX.Element => {
   const { conference, dates, currentDate } = useConfig()
   const { pathname } = useRouter()
 

@@ -12,7 +12,10 @@
     "start": "next start",
     "analyze": "cross-env ANALYZE=true yarn build",
     "format-code": "prettier \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" --write",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "check-types": "tsc",
+    "validate": "npm run lint && npm run check-types && npm run build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -44,13 +47,21 @@
     "@types/react-ga": "^2.3.0",
     "@types/styled-jsx": "^2.2.1",
     "@types/uuid": "^3.4.5",
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.3.3",
-    "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.4.1",
-    "eslint-config-wanews": "^2.2.0",
-    "eslint-plugin-react": "^7.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": ">=10",
+    "prettier": "^2.4.1",
     "typescript": "^3.7.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "**/*.+(js|json|ts|tsx)": [
+      "yarn format-code"
+    ]
   }
 }

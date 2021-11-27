@@ -10,7 +10,7 @@ export interface ButtonProps
   size?: Size
 }
 
-export const Button: React.FC<ButtonProps> = props => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const Component = props.kind !== 'link' ? StyledButton : StyledLinkButton
   return (
     <Component type="button" {...props}>

@@ -27,7 +27,7 @@ interface VoteContentProps {
   submissionCount?: number
 }
 
-export function VoteContent({ conference, dates, submissionCount }: VoteContentProps) {
+export function VoteContent({ conference, dates, submissionCount }: VoteContentProps): JSX.Element {
   return (
     <>
       <StyledHeader>

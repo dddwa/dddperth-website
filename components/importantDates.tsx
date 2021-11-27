@@ -12,7 +12,7 @@ export interface ImportantDatesProps {
   currentDate: CurrentDate
 }
 
-const ImportantDates = ({ conference, actions, currentDate }: ImportantDatesProps) => (
+const ImportantDates = ({ conference, actions, currentDate }: ImportantDatesProps): JSX.Element => (
   <section>
     <h2>Important Dates</h2>
 

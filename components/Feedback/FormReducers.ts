@@ -12,7 +12,7 @@ export const defaultFormState: FormState = {
   submitInProgress: false,
 }
 
-export function formReducer(state: FormState, action: 'submitting' | 'submitted' | 'error' | 'reset') {
+export function formReducer(state: FormState, action: 'submitting' | 'submitted' | 'error' | 'reset'): FormState {
   switch (action) {
     case 'submitted':
       return {

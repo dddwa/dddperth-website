@@ -1,1 +1,3 @@
-export const conditionalStyles = (condition: boolean, styles: object) => (condition ? styles : {})
+import { CSSObject } from '@emotion/serialize'
+
+export const conditionalStyles = (condition: boolean, styles: CSSObject): CSSObject => (condition ? styles : {})

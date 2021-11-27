@@ -19,7 +19,7 @@ export interface TemplateProps {
   children?: React.ReactNode
 }
 
-export const Template = ({ children, title, description, image, showHero }: TemplateProps) => {
+export const Template = ({ children, title, description, image, showHero }: TemplateProps): JSX.Element => {
   const { conference, appConfig, dates } = useConfig()
   const menu = Menu(conference, dates)
 

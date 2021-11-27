@@ -3,7 +3,7 @@ export enum StorageKeys {
   FEEDBACK_GIVER = 'ddd-feedback-name',
 }
 
-export function storageKey<T>(instance: string, key: T) {
+export function storageKey<T>(instance: string, key: T): string {
   return `${key}-${instance}`
 }
 

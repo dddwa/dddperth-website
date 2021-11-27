@@ -6,17 +6,17 @@ declare global {
   }
 }
 
-export const init = (googleAnalyticsId: string) => {
+export const init = (googleAnalyticsId: string): void => {
   ReactGA.initialize(googleAnalyticsId)
 }
 
-export const getSessionId = () => {
+export const getSessionId = (): string | null => {
   return window.appInsights && window.appInsights && window.appInsights.context && window.appInsights.context.user
     ? window.appInsights.context.user.id
     : null
 }
 
-export const logPageView = () => {
+export const logPageView = (): void => {
   ReactGA.set({ page: window.location.pathname })
   ReactGA.pageview(window.location.pathname)
   if (window.appInsights) {
@@ -24,7 +24,8 @@ export const logPageView = () => {
   }
 }
 
-export const logEvent = (category: string, action: string, data: any, measurements?: any) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const logEvent = (category: string, action: string, data: any, measurements?: any): void => {
   if (category && action && logEvent) {
     if (window.appInsights && window.appInsights.trackEvent) {
       window.appInsights.trackEvent(
@@ -40,7 +41,8 @@ export const logEvent = (category: string, action: string, data: any, measuremen
   }
 }
 
-export const logException = (description: string, exception: Error, data: any) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const logException = (description: string, exception: Error, data: any): void => {
   if (description) {
     ReactGA.exception({ description, exception: exception.toString() })
     if (window.appInsights && window.appInsights.trackException) {

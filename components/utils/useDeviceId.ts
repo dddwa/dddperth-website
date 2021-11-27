@@ -2,7 +2,7 @@ import React from 'react'
 import uuid from 'uuid'
 import { storageKey, StorageKeys } from './storageKey'
 
-export function useDeviceId(instance: string) {
+export function useDeviceId(instance: string): { deviceId: string } {
   const [deviceId, setDeviceId] = React.useState<string>(() => {
     try {
       return localStorage.getItem(storageKey<StorageKeys>(instance, StorageKeys.DEVICE_ID))

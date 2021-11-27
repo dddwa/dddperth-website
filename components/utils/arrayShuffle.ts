@@ -1,4 +1,4 @@
-export default function arrayShuffle<T>(input: T[]) {
+export default function arrayShuffle<T>(input: T[]): T[] {
   const output = [...input]
 
   for (let i = input.length - 1; i >= 0; i--) {
