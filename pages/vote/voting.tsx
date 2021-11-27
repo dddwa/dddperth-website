@@ -1,18 +1,17 @@
-import Router from 'next/router'
 import React from 'react'
 import uuid from 'uuid/v1'
 import { logEvent, logException } from 'components/global/analytics'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Voting from 'components/voting'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Conference as Conf, Session } from 'config/types'
 import { Main } from 'layouts/main'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { Alert } from 'components/global/Alert/Alert'
+import { useConfig } from 'Context/Config'
 
-interface VoteProps extends WithPageMetadataProps {
+interface VoteProps {
   sessions?: Session[]
 }
 
@@ -24,8 +23,9 @@ enum StorageKeys {
 
 const storageKey = (conference: Conf, key: StorageKeys) => `${key}-${conference.Instance}`
 
-const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
-  const conference = pageMetadata.conference
+const VotePage: NextPage<VoteProps> = () => {
+  const { conference, appConfig } = useConfig()
+
   const [pageState, setPageState] = React.useState<'loading' | 'error' | 'ready'>('loading')
   const [sessions, setSessions] = React.useState<Session[]>([])
   const [startTime, setStartTime] = React.useState<string | undefined>()
@@ -35,7 +35,7 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
     async function fetchSessions() {
       try {
         const sessionOrderKey = storageKey(conference, StorageKeys.VOTING_SESSION_ORDER)
-        const resp = await fetch(pageMetadata.appConfig.getSubmissionsUrl)
+        const resp = await fetch(appConfig.getSubmissionsUrl)
         if (!resp.ok) {
           throw resp.statusText
         }
@@ -66,7 +66,7 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
     }
 
     fetchSessions()
-  }, [pageMetadata.appConfig.getSubmissionsUrl, conference])
+  }, [appConfig.getSubmissionsUrl, conference])
 
   React.useEffect(() => {
     if (sessions.length <= 0 || !localStorage) {
@@ -101,7 +101,7 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
   }, [sessions, conference])
 
   return (
-    <Main metadata={pageMetadata} title="Vote" description={`${conference.Name} voting page.`}>
+    <Main title="Vote" description={`${conference.Name} voting page.`}>
       {pageState === 'loading' && (
         <Alert kind="info">
           <p>Loading sessions...</p>
@@ -121,7 +121,7 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
           minVotes={conference.MinVotes}
           maxVotes={conference.MaxVotes}
           anonymousVoting={conference.AnonymousVoting}
-          submitVoteUrl={pageMetadata.appConfig.submitVoteUrl}
+          submitVoteUrl={appConfig.submitVoteUrl}
           conferenceInstance={conference.Instance}
           conferenceName={conference.Name}
           ticketsProvider={conference.TicketsProviderId}
@@ -134,20 +134,11 @@ const VotePage: NextPage<VoteProps> = ({ pageMetadata }) => {
   )
 }
 
-VotePage.getInitialProps = ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
   if (!dates.VotingOpen) {
-    if (res) {
-      res.writeHead(302, {
-        Location: '/',
-      })
-      res.end()
-      res.finished = true
-    } else {
-      Router.replace('/')
-    }
+    return { notFound: true }
   }
-  return {} as VoteProps
 }
 
-export default withPageMetadata(VotePage)
+export default VotePage

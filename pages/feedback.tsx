@@ -1,6 +1,5 @@
 import React, { Fragment, useReducer } from 'react'
-import { NextPage } from 'next'
-import Router from 'next/router'
+import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import {
   StyledForm,
@@ -23,18 +22,18 @@ import { SessionInput } from 'components/Feedback/SessionInput'
 import { Alert } from 'components/global/Alert/Alert'
 import { logException } from 'components/global/analytics'
 import { StyledContainer } from 'components/global/Container/Container.styled'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/storageKey'
 import { useDeviceId } from 'components/utils/useDeviceId'
 import { useForm } from 'components/utils/useForm'
 import { useSessionGroups } from 'components/utils/useSessionGroups'
-import { fetchSessions, useSessions } from 'components/utils/useSessions'
+import { fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { format } from 'date-fns'
+import { useConfig } from 'Context/Config'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -44,19 +43,18 @@ interface FeedbackFormState {
   improvementIdeas: string | undefined
 }
 
-interface FeedbackMetadataProps extends WithPageMetadataProps {
-  ssrSessions?: Session[]
+interface FeedbackProps {
+  sessions: Session[]
 }
 
-const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }) => {
-  const conference = pageMetadata.conference
+const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
+  const { conference, appConfig } = useConfig()
   const { deviceId } = useDeviceId(conference.Instance)
-  const { sessions, isError, isLoaded } = useSessions(pageMetadata.appConfig.getAgendaUrl, ssrSessions)
   const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)
   const hasPreviousSessions =
     sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0
-  const showForm = sessions && isLoaded && !isError && hasPreviousSessions
+  const showForm = sessions && hasPreviousSessions
 
   const formSubmitHandler = async () => {
     dispatch('submitting')
@@ -69,7 +67,7 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
     try {
       await postFeedback<FeedbackFormState>({
         deviceId,
-        feedbackUrl: pageMetadata.appConfig.feedbackUrl,
+        feedbackUrl: appConfig.feedbackUrl,
         values,
         formName: 'Session feedback',
       })
@@ -96,11 +94,7 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
   })
 
   return (
-    <Main
-      metadata={pageMetadata}
-      title="Feedback"
-      description={`${conference.Name} ${conference.Instance} session feedback.`}
-    >
+    <Main title="Feedback" description={`${conference.Name} ${conference.Instance} session feedback.`}>
       <StyledContainer>
         <h1>
           {conference.Name} {conference.Instance} session feedback
@@ -112,15 +106,16 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
           </Link>
         </p>
 
-        {isError && <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>}
-        {!isLoaded && <Alert kind="info">Loading sessions</Alert>}
-        {!isError && !hasPreviousSessions && isLoaded && (
+        {sessions.length === 0 && (
+          <Alert kind="error">Sorry, there was an error loading sessions. Please try again later</Alert>
+        )}
+        {sessions.length > 0 && !hasPreviousSessions && (
           <Alert kind="info">
             We would love your feedback, please come back after the first sessions have finished.
           </Alert>
         )}
 
-        {pageMetadata.appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
+        {appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
 
         {showForm && (
           <StyledForm onSubmit={handleSubmit}>
@@ -245,26 +240,20 @@ const Feedback: NextPage<FeedbackMetadataProps> = ({ pageMetadata, ssrSessions }
   )
 }
 
-Feedback.getInitialProps = async ({ res, req }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
+
   if (!dates.AcceptingFeedback) {
-    if (res) {
-      res.writeHead(302, {
-        Location: '/',
-      })
-      res.end()
-      res.finished = true
-    } else {
-      Router.replace('/')
-    }
+    return { redirect: { destination: '/', permanent: false } }
   }
 
-  if (req) {
-    const sessions = await fetchSessions(process.env.GET_AGENDA_URL)
-    return (sessions ? { ssrSessions: sessions } : {}) as FeedbackMetadataProps
-  }
+  const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
 
-  return {} as FeedbackMetadataProps
+  return {
+    props: {
+      sessions: sessions ? sessions : [],
+    },
+  }
 }
 
-export default withPageMetadata(Feedback)
+export default Feedback

@@ -35,7 +35,7 @@ export const AgendaSession: React.FC<AgendaSessionProps> = ({
   const { onSelect, getSession, getSponsor, getRoom } = useAgendaContext()
   const session = sessionId ? getSession(sessionId) : false
   const sponsor = sponsorId ? getSponsor(sponsorId) : undefined
-  const presenters = session ? session.Presenters.map(p => p.Name).join(', ') : ''
+  const presenters = session ? session.Presenters.map((p) => p.Name).join(', ') : ''
 
   return (
     <StyledSection fullWidth={fullWidth} session={session !== false}>

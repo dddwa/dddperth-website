@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
 import From2017 from 'config/2017'
 import SponsorData from 'config/sponsors'
-import { Conference, TicketPurchasingOptions } from 'config/types'
+import { TicketPurchasingOptions } from 'config/types'
 import { Button } from 'components/global/Button/Button'
-import dateTimeProvider, { CurrentDate } from 'components/utils/dateTimeProvider'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
 import { sub, format } from 'date-fns'
+import { useConfig } from 'Context/Config'
 
-interface TestingControlProps {
-  currentDate: CurrentDate
-  conference: Conference
-}
-
-export const TestingControl: React.FC<TestingControlProps> = ({ currentDate, conference }) => {
+export const TestingControl = () => {
+  const { conference, currentDate } = useConfig()
   const [show, setShow] = useState(false)
 
   const resetVote = () => {

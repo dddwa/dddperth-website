@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
-import Router from 'next/router'
 import {
   StyledForm,
   StyledFormRow,
@@ -18,7 +17,6 @@ import { defaultFormState, formReducer } from 'components/Feedback/FormReducers'
 import { Alert } from 'components/global/Alert/Alert'
 import { logException } from 'components/global/analytics'
 import { StyledContainer } from 'components/global/Container/Container.styled'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/storageKey'
 import { useDeviceId } from 'components/utils/useDeviceId'
@@ -26,6 +24,7 @@ import { useForm } from 'components/utils/useForm'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { Main } from 'layouts/main'
+import { useConfig } from 'Context/Config'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -35,8 +34,8 @@ interface FeedbackFormState {
   isConferenceFeedback: boolean
 }
 
-const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
-  const conference = pageMetadata.conference
+const ConferenceFeedback: NextPage = () => {
+  const { conference, appConfig } = useConfig()
   const { deviceId } = useDeviceId(conference.Instance)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)
 
@@ -51,7 +50,7 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
     try {
       await postFeedback<FeedbackFormState>({
         deviceId,
-        feedbackUrl: pageMetadata.appConfig.feedbackUrl,
+        feedbackUrl: appConfig.feedbackUrl,
         values,
         formName: 'Conference feedback',
       })
@@ -78,11 +77,7 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
   })
 
   return (
-    <Main
-      metadata={pageMetadata}
-      title="Conference Feedback"
-      description={`${conference.Name} ${conference.Instance} feedback`}
-    >
+    <Main title="Conference Feedback" description={`${conference.Name} ${conference.Instance} feedback`}>
       <StyledContainer>
         <h1>
           {conference.Name} {conference.Instance} feedback
@@ -174,21 +169,16 @@ const ConferenceFeedback: NextPage<WithPageMetadataProps> = ({ pageMetadata }) =
   )
 }
 
-ConferenceFeedback.getInitialProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
+
   if (!dates.AcceptingFeedback) {
-    if (res) {
-      res.writeHead(302, {
-        Location: '/',
-      })
-      res.end()
-      res.finished = true
-    } else {
-      Router.replace('/')
-    }
+    return { redirect: { destination: '/', permanent: false } }
   }
 
-  return {} as WithPageMetadataProps
+  return {
+    props: {},
+  }
 }
 
-export default withPageMetadata(ConferenceFeedback)
+export default ConferenceFeedback

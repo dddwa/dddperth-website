@@ -18,18 +18,20 @@ interface AgendaProviderProps extends Pick<AgendaContextProps, 'onSelect'> {
 
 const AgendaContext = React.createContext<AgendaContextProps | undefined>(undefined)
 
-export const AgendaProvider: React.FC<AgendaProviderProps> = ({ children, onSelect, sessions, sponsors, rooms }) => (
-  <AgendaContext.Provider
-    value={{
-      getRoom: (roomId) => (typeof roomId === 'string' ? roomId : rooms[roomId]),
-      getSession: (id) => sessions.find((session) => session.Id === id),
-      getSponsor: (id) => sponsors.find((sponsor) => sponsor.id === id),
-      onSelect,
-    }}
-  >
-    {children}
-  </AgendaContext.Provider>
-)
+export const AgendaProvider: React.FC<AgendaProviderProps> = ({ children, onSelect, sessions, sponsors, rooms }) => {
+  return (
+    <AgendaContext.Provider
+      value={{
+        getRoom: (roomId) => (typeof roomId === 'string' ? roomId : rooms[roomId]),
+        getSession: (id) => sessions.find((session) => session.Id === id),
+        getSponsor: (id) => sponsors.find((sponsor) => sponsor.id === id),
+        onSelect,
+      }}
+    >
+      {children}
+    </AgendaContext.Provider>
+  )
+}
 
 export function useAgendaContext() {
   const context = React.useContext(AgendaContext)

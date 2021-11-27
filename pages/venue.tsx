@@ -1,21 +1,16 @@
 import React from 'react'
-import { NextPage } from 'next'
-import Error from 'next/error'
+import { NextPage, GetServerSideProps } from 'next'
 import { SafeLink } from 'components/global/safeLink'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
-import Conference from 'config/conference'
 import { Main } from 'layouts/main'
 import { StyledPara } from 'components/global/text'
+import { useConfig } from 'Context/Config'
+import Conference from 'config/conference'
 
-const VenuePage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
-  const conference = pageMetadata.conference
-
-  if (conference.HideVenue) {
-    return <Error statusCode={404} />
-  }
+const VenuePage: NextPage = () => {
+  const { conference } = useConfig()
 
   return (
-    <Main metadata={pageMetadata} title="Venue" description={`About the ${conference.Name} venue.`} showHero={true}>
+    <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={true}>
       <h1>Venue</h1>
       <StyledPara>
         {conference.Name} will be held at {conference.Venue.Name} at{' '}
@@ -67,11 +62,11 @@ const VenuePage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   )
 }
 
-VenuePage.getInitialProps = ({ res }) => {
-  if (Conference.HideVenue && res) {
-    res.statusCode = 404
+export const getServerSideProps: GetServerSideProps = async () => {
+  if (Conference.HideVenue) {
+    return { notFound: true }
   }
-  return {} as WithPageMetadataProps
+  return { props: {} }
 }
 
-export default withPageMetadata(VenuePage)
+export default VenuePage

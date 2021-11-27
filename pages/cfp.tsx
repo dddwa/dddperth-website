@@ -1,23 +1,20 @@
 import React from 'react'
-import { NextPage } from 'next'
-import Router from 'next/router'
+import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import { StyledList, StyledPara } from 'components/global/text'
-import withPageMetadata, { WithPageMetadataProps } from 'components/global/withPageMetadata'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { format } from 'date-fns'
+import { useConfig } from 'Context/Config'
 
-const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
-  const dates = pageMetadata.dates
-  const conference = pageMetadata.conference
+const CFPPage: NextPage = () => {
+  const { conference, dates } = useConfig()
 
   return (
     <PageWithSidebar
-      metadata={pageMetadata}
       title="Call For Presentations (CFP)"
       description={conference.Name + ' Call For Presentations (CFP) page.'}
     >
@@ -122,20 +119,16 @@ const CFPPage: NextPage<WithPageMetadataProps> = ({ pageMetadata }) => {
   )
 }
 
-CFPPage.getInitialProps = ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const dates = getConferenceDates(Conference, dateTimeProvider.now())
+
   if (!dates.AcceptingPresentations) {
-    if (res) {
-      res.writeHead(302, {
-        Location: '/',
-      })
-      res.end()
-      res.finished = true
-    } else {
-      Router.replace('/')
-    }
+    return { redirect: { destination: '/', permanent: false } }
   }
-  return {} as WithPageMetadataProps
+
+  return {
+    props: {},
+  }
 }
 
-export default withPageMetadata(CFPPage)
+export default CFPPage

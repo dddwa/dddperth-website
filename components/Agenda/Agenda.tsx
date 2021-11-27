@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import { Session, Sponsor } from 'config/types'
 import { SafeLink } from 'components/global/safeLink'
 import { SessionGroup, useSessionGroups } from 'components/utils/useSessionGroups'
-import { useSessions } from 'components/utils/useSessions'
 import { StyledCenteredParagraph, StyledSponsorLogo } from 'components/Agenda/Agenda.styled'
 import { SessionDetails } from 'components/Agenda/SessionDetails'
 import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from 'components/Agenda/SessionDetails.styled'
@@ -12,7 +11,6 @@ export type onSelectCallback = (session: Session, sponsor: Sponsor) => void
 interface AgendaProps {
   sessions: Session[]
   selectedSessionId: string
-  sessionsUrl: string
   acceptingFeedback: boolean
   feedbackLink?: string
   hideTags?: boolean
@@ -55,8 +53,7 @@ function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaStat
   }
 }
 
-export const Agenda: React.FC<AgendaProps> = (props) => {
-  const { isError, sessions } = useSessions(props.sessionsUrl, props.sessions)
+export const Agenda: React.FC<AgendaProps> = ({ sessions, ...props }) => {
   const { nextSessionGroup } = useSessionGroups(sessions)
   const [sessionState, dispatch] = React.useReducer(agendaReducer, { showModal: false })
 
@@ -87,7 +84,7 @@ export const Agenda: React.FC<AgendaProps> = (props) => {
     dispatch({ type: 'dismiss' })
   }
 
-  if (isError) {
+  if (sessions.length === 0) {
     return <div className="alert alert-danger">Error loading sessions</div>
   }
 
