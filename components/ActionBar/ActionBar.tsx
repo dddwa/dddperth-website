@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { StyledActionBarContainer } from './ActionBar.styled'
 import getConferenceActions from 'config/actions'
@@ -14,16 +15,20 @@ export const ActionBar = (): JSX.Element => {
       <ul>
         {secondaryAction && (
           <li>
-            <ButtonAnchor href={secondaryAction.Url} kind="secondary" size="lg">
-              {secondaryAction.Title}
-            </ButtonAnchor>
+            <Link href={secondaryAction.Url}>
+              <ButtonAnchor kind="secondary" size="lg">
+                {secondaryAction.Title}
+              </ButtonAnchor>
+            </Link>
           </li>
         )}
         {primaryAction && (
           <li>
-            <ButtonAnchor href={primaryAction.Url} kind="primary" size="lg">
-              {primaryAction.Title}
-            </ButtonAnchor>
+            <Link href={primaryAction.Url}>
+              <ButtonAnchor kind="primary" size="lg">
+                {primaryAction.Title}
+              </ButtonAnchor>
+            </Link>
           </li>
         )}
       </ul>
