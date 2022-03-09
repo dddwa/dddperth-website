@@ -1,6 +1,7 @@
-import { CSSObject } from '@emotion/core'
+import { CSSObject } from '@emotion/react'
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled, { Theme } from 'components/utils/styles/theme'
+import { DDDTheme } from 'components/utils/styles/theme'
 import { conditionalStyles } from 'components/utils/styles/conditionalStyles'
 import { ButtonKinds, Size } from './Button'
 
@@ -25,7 +26,7 @@ export const StyledLinkButton = styled('button', {
   },
 }))
 
-function getButtonStylesForKind(kind: ButtonKinds, theme: Theme): CSSObject {
+function getButtonStylesForKind(kind: ButtonKinds, theme: DDDTheme): CSSObject {
   switch (kind) {
     case 'primary':
       return {

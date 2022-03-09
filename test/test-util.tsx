@@ -1,6 +1,6 @@
 import React from 'react'
 import { render as rtlRender, RenderResult } from '@testing-library/react'
-import { ThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@emotion/react'
 import { theme } from 'components/utils/styles/theme'
 import { ConfigProvider } from 'Context/Config'
 

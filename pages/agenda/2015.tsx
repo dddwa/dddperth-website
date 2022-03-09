@@ -16,7 +16,7 @@ import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { set } from 'date-fns'
@@ -59,7 +59,7 @@ const Agenda2015: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
                 sponsors={From2015.Sponsors}
                 rooms={['Main Room', 'Side Room']}
               >
-                <StyledPara>Tap on a session to see more details...</StyledPara>
+                <Text>Tap on a session to see more details...</Text>
                 <StyledAgendaContainer>
                   <StyledAgendaRowList>
                     <li>Time</li>
@@ -188,20 +188,20 @@ const Agenda2015: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
         />
 
         <h2>Handbook</h2>
-        <StyledPara>
+        <Text>
           <ButtonAnchor kind="primary" href={From2015.HandbookUrl}>
             Download 2015 Handbook (PDF)
           </ButtonAnchor>
-        </StyledPara>
+        </Text>
         <h2>Media</h2>
-        <StyledPara>
+        <Text>
           <img src="/static/images/2015.jpg" alt="Picture from 2015 conference registration" loading="lazy" />
-        </StyledPara>
-        <StyledPara>
+        </Text>
+        <Text>
           <SafeLink href={From2015.FlickrAlbumUrl} target="_blank">
             Flickr Album
           </SafeLink>
-        </StyledPara>
+        </Text>
         <Sponsors
           show={true}
           hideUpsell={true}

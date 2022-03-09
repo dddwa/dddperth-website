@@ -1,6 +1,6 @@
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 
 export const StyledHeader = styled('div')(({ theme }) => ({
   display: 'grid',

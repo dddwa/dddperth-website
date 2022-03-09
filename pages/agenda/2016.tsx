@@ -18,7 +18,7 @@ import {
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { set } from 'date-fns'
@@ -61,7 +61,7 @@ const Agenda2016: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
                 sponsors={From2016.Sponsors}
                 rooms={['Main Room', 'Side Room 1', 'Side Room 2']}
               >
-                <StyledPara>Tap on a session to see more details...</StyledPara>
+                <Text>Tap on a session to see more details...</Text>
                 <StyledAgendaContainer>
                   <StyledAgendaRowList>
                     <li>Time</li>
@@ -215,11 +215,11 @@ const Agenda2016: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
         />
 
         <h2>Handbook</h2>
-        <StyledPara>
+        <Text>
           <ButtonAnchor kind="primary" href={From2016.HandbookUrl}>
             Download 2015 Handbook (PDF)
           </ButtonAnchor>
-        </StyledPara>
+        </Text>
 
         <h2>Media</h2>
         <StyledVideoContainer>
@@ -227,7 +227,7 @@ const Agenda2016: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
           <ResponsiveVideo src={From2016.YouTubeLocknoteEmbedUrl} />
         </StyledVideoContainer>
 
-        <StyledPara>
+        <Text>
           <SafeLink href={From2016.YouTubePlaylistUrl} target="_blank">
             YouTube Playlist
           </SafeLink>{' '}
@@ -235,7 +235,7 @@ const Agenda2016: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
           <SafeLink href={From2016.FlickrAlbumUrl} target="_blank">
             Flickr Album
           </SafeLink>
-        </StyledPara>
+        </Text>
 
         <Sponsors
           show={true}

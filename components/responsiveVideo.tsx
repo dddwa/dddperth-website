@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from './utils/styles/theme'
+import styled from '@emotion/styled'
 
 interface ResponsiveVideoArg {
   src: string

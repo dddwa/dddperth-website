@@ -1,4 +1,4 @@
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { EventDetailsSummary } from 'components/eventDetailsSummary'

@@ -4,7 +4,7 @@ import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { StyledImportantDateList } from './ImportantDate.styled'
 import { ImportantDateTile, ImportantDateTileTBA } from './ImportantDateTile'
 import { ImportantDateTileInline, ImportantDateTileInlineTBA } from './ImportantDateTileInline'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { isAfter, format, isBefore } from 'date-fns'
 
 export type ImportantDateListLayouts = 'inline' | 'calendar'
@@ -25,9 +25,9 @@ export const ImportantDatesList: React.FC<ImportantDatesListProps> = ({
   return (
     <Fragment>
       {conference.ImportantDates[0].Date.getTimezoneOffset() !== currentDate.Value.getTimezoneOffset() && (
-        <StyledPara>
+        <Text>
           <em>Note: All dates in {format(conference.ImportantDates[0].Date, 'XX')}.</em>
-        </StyledPara>
+        </Text>
       )}
 
       <StyledImportantDateList layout={layout}>

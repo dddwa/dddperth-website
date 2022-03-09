@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import AllAgendas from 'components/allAgendas'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 
@@ -11,10 +11,10 @@ const Agenda2020: NextPage = () => {
   return (
     <PageWithSidebar title="2020 Conference" description="DDDPerth Conference 2020">
       <h1>DDD Perth 2020</h1>
-      <StyledPara>
+      <Text>
         DDD Perth 2020 did not happen. The safety of all participants, from sponsors to speakers to attendees to
         volunteers, is our priority and we felt we could better serve our community by postponing the event.
-      </StyledPara>
+      </Text>
 
       <AllAgendas conference={conference} conferenceInstance="2020" dates={dates} />
     </PageWithSidebar>

@@ -13,7 +13,6 @@ export const HeaderSocials = (): JSX.Element => {
 
   return (
     <StyledSocialList>
-      <li>foo</li>
       {socials.Facebook && (
         <li>
           <StyledSafeLink href={`https://facebook.com/${socials.Facebook}`} target="_blank" rel="noopener nofollow">

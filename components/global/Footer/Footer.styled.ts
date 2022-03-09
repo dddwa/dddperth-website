@@ -1,4 +1,4 @@
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
 import { SafeLink } from 'components/global/safeLink'
 import { srOnly } from 'components/utils/styles/accessibility'

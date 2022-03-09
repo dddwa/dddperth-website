@@ -1,12 +1,13 @@
+import styled from '@emotion/styled'
 import isPropValid from '@emotion/is-prop-valid'
 import { Types } from 'config/types'
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 import { conditionalStyles } from 'components/utils/styles/conditionalStyles'
-import styled, { Theme } from 'components/utils/styles/theme'
+import { DDDTheme } from 'components/utils/styles/theme'
 import { ImportantDateListLayouts } from './importantDatesList'
 
-function dateBorderColor(theme: Theme, dateType: Types) {
+function dateBorderColor(theme: DDDTheme, dateType: Types) {
   switch (dateType) {
     case 'voting':
       return theme.colors.tertiary

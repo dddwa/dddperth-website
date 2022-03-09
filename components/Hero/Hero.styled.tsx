@@ -1,4 +1,4 @@
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 

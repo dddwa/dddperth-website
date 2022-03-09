@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledList, StyledPara } from 'components/global/text'
+import { StyledList, Text } from 'components/global/text'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { EmailIcon } from 'components/global/Icons/Email'
@@ -13,17 +13,17 @@ const Sponsorship: NextPage = () => {
     <PageWithSidebar title="Sponsorship" description="Sponsorship opportunities for DDD Perth.">
       <h1>Sponsorship</h1>
 
-      <StyledPara>
+      <Text>
         <ButtonAnchor kind="primary" href={`mailto:${conference.SponsorshipEmail}`}>
           <span>Explore sponsorship opportunities</span>
           <EmailIcon />
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         {conference.TagLine}. {conference.Name} provides a unique opportunity to sponsors because we attract people that
         don't normally go to software conferences. This occurs as a natural result of our core principles:
-      </StyledPara>
+      </Text>
       <StyledList>
         <li>
           Making the ticket price as low as possible ({conference.TicketPrice}); people don't need to request PD budget
@@ -43,36 +43,36 @@ const Sponsorship: NextPage = () => {
           attendees and attracts repeat visitors and an expanding presence year on year via a growing network
         </li>
       </StyledList>
-      <StyledPara>
+      <Text>
         <ButtonAnchor kind="secondary" href="/code-of-conduct">
           Read DDD Perth Code of Conduct
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         <ButtonAnchor kind="secondary" href="/about">
           Find out more about {conference.Name}
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         {conference.Name} is a not-for-profit community event with a low ticket price for attendees (much lower than the
         per-person cost) and the only way we can run it is via generous corporate sponsorship. Thanks to all our
         sponsors new and old - we can't do this without you!
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         We have a sponsorship prospectus that will be provided on request that explains detailed benefits and impact of
         sponsorship and the difference between the various levels; if you would like a copy{' '}
         <a href={'mailto:' + conference.SponsorshipEmail}>please contact us</a>!
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         <ButtonAnchor kind="primary" href={`mailto:${conference.SponsorshipEmail}`}>
           <span>Explore sponsorship opportunities</span>
           <EmailIcon />
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
     </PageWithSidebar>
   )
 }

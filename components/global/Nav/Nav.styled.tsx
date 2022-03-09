@@ -1,5 +1,5 @@
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { zIndex } from 'components/utils/styles/zindex'
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { NavStatus } from './Nav'

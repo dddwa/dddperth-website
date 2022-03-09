@@ -1,6 +1,7 @@
+import styled from '@emotion/styled'
 import Alert from '@reach/alert'
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled, { Theme } from 'components/utils/styles/theme'
+import { DDDTheme } from 'components/utils/styles/theme'
 
 export type Kind = 'info' | 'success' | 'error' | 'warning'
 
@@ -8,7 +9,7 @@ interface StyledAlertProps {
   kind: Kind
 }
 
-function stylesFromKind(kind: StyledAlertProps['kind'], theme: Theme) {
+function stylesFromKind(kind: StyledAlertProps['kind'], theme: DDDTheme) {
   switch (kind) {
     case 'error':
       return {

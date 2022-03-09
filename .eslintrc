@@ -10,7 +10,7 @@
   "env": {
     "browser": true
   },
-  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "@emotion/eslint-plugin"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -22,7 +22,8 @@
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/array-type": [1, { "default": "array-simple" }],
     "@typescript-eslint/no-unused-vars": 0,
-    "no-console": "warn"
+    "no-console": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "overrides": [
     {

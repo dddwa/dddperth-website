@@ -1,4 +1,4 @@
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
 import { SponsorType } from 'config/types'
 import { SafeLink } from 'components/global/safeLink'
