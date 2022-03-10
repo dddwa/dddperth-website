@@ -14,20 +14,20 @@ import { add, sub, set, toDate } from 'date-fns'
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
-const hideDate = false
+const hideDate = true
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
-const staticDate = '2021-08-14T08:00'
+const staticDate = '2022-08-14T08:00'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
-const registrationOpenFrom = zonedTimeToUtc('2021-05-14T08:00:00', '+08:00')
+const registrationOpenFrom = zonedTimeToUtc('2022-05-14T08:00:00', '+08:00')
 const registrationOpenUntil = hideDate ? null : set(sub(date, { days: 1 }), { hours: 17 }) // date.clone().add(-1, 'd').startOf('day').add(17, 'h')
-const presentationSubmissionsOpenFrom = zonedTimeToUtc('2021-04-19T08:00:00', '+08:00')
-const presentationSubmissionsOpenUntil = zonedTimeToUtc('2021-05-16T23:59:59', '+08:00')
-const votingOpenFrom = zonedTimeToUtc('2021-05-28T17:00:00', '+08:00')
-const votingOpenUntil = zonedTimeToUtc('2021-06-07T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2021-06-30T17:00:00', '+08:00')
+const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-19T08:00:00', '+08:00')
+const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-16T23:59:59', '+08:00')
+const votingOpenFrom = zonedTimeToUtc('2022-05-28T17:00:00', '+08:00')
+const votingOpenUntil = zonedTimeToUtc('2022-06-07T23:59:59', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2022-06-30T17:00:00', '+08:00')
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
@@ -89,13 +89,13 @@ const Conference: IConference = {
   ChildcarePrice: 'free',
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',
-  TicketsProviderEventId: '2021',
+  TicketsProviderEventId: '2022',
   TicketsProviderFinancialAssistanceCode: 'financialassistance',
   TicketPurchasingOptions: ticketPurchasingOptions,
   HashTag: 'DDDPerth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
-  SessionizeUrl: 'https://sessionize.com/ddd-perth-2021',
+  SessionizeUrl: 'https://sessionize.com/ddd-perth-2022',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
