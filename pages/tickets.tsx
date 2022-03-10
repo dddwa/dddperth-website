@@ -10,7 +10,7 @@ import { TicketPurchasingOptions, TicketsProvider } from 'config/types'
 import { Tito } from 'components/Tickets/Tito'
 import { Main } from 'layouts/main'
 import { Eventbrite } from 'components/Tickets/Eventbrite'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { useConfig } from 'Context/Config'
 
 const TicketPage: NextPage = () => {
@@ -26,11 +26,11 @@ const TicketPage: NextPage = () => {
       <h1>Tickets</h1>
 
       {conference.TicketPurchasingOptions === TicketPurchasingOptions.WaitListOpen && (
-        <StyledPara>
+        <Text>
           Tickets have sold out, but we are asking people to add themselves to the waitlist since it's likely we will
           release more tickets. Tickets will be released to the waitlist on a first-come, first-served basis so get your
           name in quick if you want to attend.
-        </StyledPara>
+        </Text>
       )}
 
       <FaqList faqs={faqs.filter((f) => f.Category === 'tickets')} />

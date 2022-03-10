@@ -1,5 +1,6 @@
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
+import React from 'react'
 
 export const StyledList = styled('ul')(({ theme }) => ({
   paddingLeft: calcRem(theme.metrics.md),
@@ -20,7 +21,7 @@ StyledList.displayName = 'StyledList'
 export const StyledOrderedList = StyledList.withComponent('ol')
 StyledOrderedList.displayName = 'StyledOrderedList'
 
-export const StyledPara = styled('p')(({ theme }) => ({
+const StyledPara = styled('p')(({ theme }) => ({
   marginBottom: calcRem(theme.metrics.lg),
   color: theme.colors.body,
   fontSize: calcRem(theme.fonts.defaultSize),
@@ -29,3 +30,17 @@ export const StyledPara = styled('p')(({ theme }) => ({
   wordBreak: 'break-word',
 }))
 StyledPara.displayName = 'StyledPara'
+
+type TextProps = {
+  children: React.ReactNode
+  textAlign?: 'left' | 'center' | 'right'
+  tag?: React.ElementType<any>
+}
+
+export function Text({ children, textAlign, tag = 'p' }: TextProps): JSX.Element {
+  return (
+    <StyledPara as={tag} style={{ textAlign }}>
+      {children}
+    </StyledPara>
+  )
+}

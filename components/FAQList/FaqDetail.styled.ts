@@ -1,5 +1,5 @@
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 
 export const StyledDetails = styled('details')(({ theme }) => ({
   marginBottom: calcRem(10),

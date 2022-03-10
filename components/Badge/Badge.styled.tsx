@@ -1,8 +1,9 @@
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled, { Theme } from 'components/utils/styles/theme'
+import { DDDTheme } from 'components/utils/styles/theme'
 import { BadgeType } from './Badge'
 
-function badgeColor(type: BadgeType, theme: Theme) {
+function badgeColor(type: BadgeType, theme: DDDTheme) {
   switch (type) {
     case 'primary':
       return theme.colors.primary

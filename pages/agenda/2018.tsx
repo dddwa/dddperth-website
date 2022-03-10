@@ -20,7 +20,7 @@ import {
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { StyledAgendaPresenter } from 'components/Agenda/AgendaSession.styled'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { Main } from 'layouts/main'
 import { useConfig } from 'Context/Config'
@@ -59,7 +59,7 @@ const Agenda2018: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance,
                 sponsors={From2018.Sponsors}
                 rooms={['RR4', 'M3', 'M2', 'M1']}
               >
-                <StyledPara>Tap on a session to see more details...</StyledPara>
+                <Text>Tap on a session to see more details...</Text>
                 <StyledAgendaContainer>
                   <StyledAgendaRowList>
                     <li>Time</li>
@@ -248,11 +248,11 @@ const Agenda2018: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance,
         />
 
         <h2>Handbook</h2>
-        <StyledPara>
+        <Text>
           <ButtonAnchor kind="primary" href={From2018.HandbookUrl}>
             Download 2018 handbook (PDF)
           </ButtonAnchor>
-        </StyledPara>
+        </Text>
 
         <h2>Media</h2>
         <StyledVideoContainer>
@@ -261,7 +261,7 @@ const Agenda2018: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance,
           <ResponsiveVideo src={From2018.YouTubeLocknoteEmbedUrl} />
         </StyledVideoContainer>
 
-        <StyledPara>
+        <Text>
           <SafeLink href={From2018.YouTubePlaylistUrl} target="_blank">
             YouTube Playlist
           </SafeLink>{' '}
@@ -269,7 +269,7 @@ const Agenda2018: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance,
           <SafeLink href={From2018.FlickrAlbumUrl} target="_blank">
             Flickr Album
           </SafeLink>
-        </StyledPara>
+        </Text>
         <Sponsors
           show={true}
           hideUpsell={true}

@@ -1,4 +1,4 @@
-import styled, { CreateStyled } from '@emotion/styled-base'
+import '@emotion/react'
 
 export const theme = {
   colors: {
@@ -96,6 +96,9 @@ export const theme = {
   },
 }
 
-export type Theme = typeof theme
+export type DDDTheme = typeof theme
 
-export default styled as CreateStyled<Theme>
+declare module '@emotion/react' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface Theme extends DDDTheme {}
+}

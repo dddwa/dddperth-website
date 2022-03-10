@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 // https://hankchizljaw.com/wrote/a-modern-css-reset/
 

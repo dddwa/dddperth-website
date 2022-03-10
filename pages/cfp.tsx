@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
-import { StyledList, StyledPara } from 'components/global/text'
+import { StyledList, Text } from 'components/global/text'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
@@ -20,21 +20,21 @@ const CFPPage: NextPage = () => {
     >
       <h1>Call For Presentations (CFP)</h1>
 
-      <StyledPara>
+      <Text>
         We welcome sessions from any software related topic and from anyone in the software industry (you don't have to
         be a developer!). Previously we have had a wide range of sessions including{' '}
         {conference.PreviouslySubmittedTopics}.
-      </StyledPara>
+      </Text>
 
-      <StyledPara style={{ textAlign: 'center' }}>
+      <Text textAlign="center">
         <ButtonAnchor kind="primary" href={conference.SessionizeUrl} target="_blank" rel="noopener">
           Submit a session via Sessionize
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
 
-      <StyledPara>
+      <Text>
         We want to encourage people that wouldn't normally speak at conferences to give it a go! We do this by:
-      </StyledPara>
+      </Text>
       <StyledList>
         <li>
           Having an enforced{' '}
@@ -77,13 +77,13 @@ const CFPPage: NextPage = () => {
         </li>
       </StyledList>
 
-      <StyledPara>
+      <Text>
         This year we are using Sessionize to track submissions - this provides a great experience for speakers since you
         can resubmit talks submitted to other conferences that use Sessionize (e.g. NDC Sydney and the other DDD
         conferences in Australia) and you can update your profile and session information at any time.
-      </StyledPara>
+      </Text>
 
-      <StyledPara>Other things to note for presenters:</StyledPara>
+      <Text>Other things to note for presenters:</Text>
       <StyledList>
         <li>Speakers get free entry into the event</li>
         <li>You will likely be speaking to an audience of between 50-150 people.</li>
@@ -103,18 +103,18 @@ const CFPPage: NextPage = () => {
         </li>
       </StyledList>
 
-      <StyledPara style={{ textAlign: 'center' }}>
+      <Text textAlign="center">
         <ButtonAnchor href={conference.SessionizeUrl} kind="primary" target="_blank" rel="noopener">
           Submit a session via Sessionize
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
 
       <h2>Already submitted, but want to edit?</h2>
-      <StyledPara style={{ textAlign: 'center' }}>
+      <Text textAlign="center">
         <ButtonAnchor kind="secondary" target="_blank" href={conference.SessionizeEditUrl} rel="noopener">
           Edit your session(s) via Sessionize
         </ButtonAnchor>
-      </StyledPara>
+      </Text>
     </PageWithSidebar>
   )
 }

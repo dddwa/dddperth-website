@@ -1,7 +1,7 @@
 import { DialogContent, DialogOverlay } from '@reach/dialog'
 import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { zIndex } from 'components/utils/styles/zindex'
 
 export const StyledDialogOverlay = styled(DialogOverlay)({

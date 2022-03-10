@@ -1,4 +1,4 @@
-import styled from 'components/utils/styles/theme'
+import styled from '@emotion/styled'
 import { calcRem } from 'components/utils/styles/calcRem'
 export const StyledSkipAnchor = styled('a')(({ theme }) => ({
   position: 'absolute',
