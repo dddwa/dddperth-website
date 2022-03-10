@@ -18,7 +18,7 @@ import { Session, SponsorType } from 'config/types'
 import { Sponsors } from 'components/Sponsors/sponsors'
 import ResponsiveVideo from 'components/responsiveVideo'
 import { SafeLink } from 'components/global/safeLink'
-import { StyledPara } from 'components/global/text'
+import { Text } from 'components/global/text'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { set } from 'date-fns'
@@ -58,7 +58,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
                 sponsors={From2021.Sponsors}
                 rooms={['Riverside Theatre', 'M6', 'M7', 'M8']}
               >
-                <StyledPara>Tap on a session to see more details...</StyledPara>
+                <Text>Tap on a session to see more details...</Text>
                 <StyledAgendaContainer>
                   <StyledAgendaRowList>
                     <li>Time</li>
@@ -219,11 +219,11 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
         />
 
         <h2>Handbook</h2>
-        <StyledPara>
+        <Text>
           <ButtonAnchor kind="primary" href={From2021.HandbookUrl}>
             Download 2021 handbook (PDF)
           </ButtonAnchor>
-        </StyledPara>
+        </Text>
 
         <h2>Media</h2>
         <StyledVideoContainer>
@@ -231,7 +231,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
           <ResponsiveVideo src={From2021.YouTubeLocknoteEmbedUrl} />
         </StyledVideoContainer>
 
-        <StyledPara>
+        <Text>
           <SafeLink href={From2021.YouTubePlaylistUrl} target="_blank">
             YouTube Playlist
           </SafeLink>{' '}
@@ -239,7 +239,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
           <SafeLink href={From2021.FlickrAlbumUrl} target="_blank">
             Flickr Album
           </SafeLink>
-        </StyledPara>
+        </Text>
 
         <Sponsors
           show={true}
