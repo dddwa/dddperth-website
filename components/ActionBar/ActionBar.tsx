@@ -15,7 +15,7 @@ export const ActionBar = (): JSX.Element => {
       <ul>
         {secondaryAction && (
           <li>
-            <Link href={secondaryAction.Url}>
+            <Link href={secondaryAction.Url} passHref>
               <ButtonAnchor kind="secondary" size="lg">
                 {secondaryAction.Title}
               </ButtonAnchor>
@@ -24,7 +24,7 @@ export const ActionBar = (): JSX.Element => {
         )}
         {primaryAction && (
           <li>
-            <Link href={primaryAction.Url}>
+            <Link href={primaryAction.Url} passHref>
               <ButtonAnchor kind="primary" size="lg">
                 {primaryAction.Title}
               </ButtonAnchor>

@@ -25,6 +25,7 @@ function CustomApp({ Component, pageProps }: AppProps): JSX.Element {
       </CacheProvider>
       {process.env.NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY ? (
         <Script
+          id="appInsightsScript"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `

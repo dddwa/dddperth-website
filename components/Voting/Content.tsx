@@ -70,7 +70,7 @@ export function VoteContent({ conference, dates, submissionCount }: VoteContentP
 
           <ButtonStack>
             <MoreInfoButton href="#moreinfo">More Info</MoreInfoButton>
-            <Link href="/vote/voting">
+            <Link href="/vote/voting" passHref>
               <StartVoteButton>Start Voting</StartVoteButton>
             </Link>
           </ButtonStack>

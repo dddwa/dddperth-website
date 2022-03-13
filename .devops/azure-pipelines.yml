@@ -1,0 +1,26 @@
+pool:
+  vmImage: windows-latest
+
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  autoCancel: true
+
+stages:
+  - template: templates/makerx-build-nextjs-app.yml
+    parameters:
+      workingDirectory:
+      infrastructureDirectory: Infrastructure
+      appArtifactName: app
+      infrastructureArtifactName: infrastructure
+
+  - template: templates/makerx-deploy-azure-webapp.yml
+    parameters:
+      workingDirectory: app
+      infrastructureDirectory: infrastructure
+      serviceConnection: Azure
+      environment: Dev
+      environmentVariablesVariableGroup: dddperth-website-dev

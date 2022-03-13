@@ -16,6 +16,7 @@ const Keynotes = ({ conference }: KeynotesProps): JSX.Element => (
           {conference.Keynotes.map((keynote) => (
             <article id={keynote.Id} className="keynote" key={keynote.Title.replace(/ /g, '-')}>
               <h3>{keynote.Title}</h3>
+              {/* eslint-disable-next-line @next/next/no-img-element*/}
               <img src={keynote.Presenters[0].ProfilePhotoUrl} alt={keynote.Presenters[0].Name} />
               <h4>
                 {keynote.Presenters[0].Name}

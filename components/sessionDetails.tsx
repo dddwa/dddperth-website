@@ -21,6 +21,7 @@ const SessionDetails: React.StatelessComponent<SessionProps> = ({
     {showPresenter &&
       session.Presenters.map((p) => (
         <p key={p.Name.replace(/ /g, '-')}>
+          {/* eslint-disable-next-line @next/next/no-img-element*/}
           <img
             src={p.ProfilePhotoUrl || '/static/images/profile-image-blank.jpg'}
             alt={p.Name + ' profile photo'}

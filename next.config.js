@@ -4,4 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   poweredByHeader: false,
+  experimental: {
+    outputStandalone: process.env.STANDALONE_BUILD === 'true',
+  },
 })

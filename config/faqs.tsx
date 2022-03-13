@@ -4,6 +4,7 @@ import { StyledList } from 'components/global/text'
 import Conference from './conference'
 import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
 import { format } from 'date-fns'
+import Link from 'next/link'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -113,7 +114,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <Fragment>
         {dates.RegistrationOpen ? (
           <Fragment>
-            Now! Go to <a href="/tickets">the tickets page</a> to register.
+            Now! Go to <Link href="/tickets">the tickets page</Link> to register.
           </Fragment>
         ) : Conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut ? (
           <Fragment>The conference is now sold out.</Fragment>
@@ -161,7 +162,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Media personnel authorised by {Conference.Name} will be in attendance. These media personnel will respect the
-        photo policy as defined in the <a href="/code-of-conduct#photo-policy">Code of Conduct</a>.
+        photo policy as defined in the <Link href="/code-of-conduct#photo-policy">Code of Conduct</Link>.
       </Fragment>
     ),
   })
