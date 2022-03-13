@@ -70,6 +70,10 @@ stages:
             displayName: Audit npm dependencies
             workingDirectory: $(sourceDirectory)
 
+          - script: npm run lint
+            displayName: npm run lint
+            workingDirectory: $(sourceDirectory)
+
           - script: npm run build
             displayName: npm run build
             workingDirectory: $(sourceDirectory)
