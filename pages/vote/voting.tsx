@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid/v1'
+import { v4 as uuid } from 'uuid'
 import { logEvent, logException } from 'components/global/analytics'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Voting from 'components/voting'

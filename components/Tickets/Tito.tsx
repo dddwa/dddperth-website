@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { TitoStyledWrapper } from './Tito.styled'
-import { useScript } from 'use-script'
+import Script from 'next/script'
 
 interface TitoProps {
   accountId: string
@@ -20,14 +20,11 @@ export const Tito = ({ accountId, eventId }: TitoProps) => {
     if (!loading && typeof TitoWidget !== 'undefined') {
       TitoWidget.buildWidgets()
     }
-  }, [loading])
-
-  if (loading || error) {
-    return null
   }
 
   return (
     <Fragment>
+      <Script id="tito-script" src="https://js.tito.io/v1" strategy="afterInteractive" onLoad={titoOnLoadHandler} />
       <TitoStyledWrapper>
         {React.createElement('tito-widget', {
           event: `${accountId}/${eventId}`,

@@ -1,5 +1,5 @@
 import { Session } from 'config/types'
-import uuid from 'uuid'
+import { v4 } from 'uuid'
 
 export interface SessionV1 {
   SessionId: string
@@ -24,7 +24,7 @@ export function mapSessions(sessions: SessionV1[]): Session[] {
       Tags: [],
       Presenters: [
         {
-          Id: uuid.v1(),
+          Id: v4(),
           Bio: oldSession.PresenterBio,
           Name: oldSession.PresenterName,
           ProfilePhotoUrl: '',

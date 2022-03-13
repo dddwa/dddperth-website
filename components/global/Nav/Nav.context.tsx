@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import uuid from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 type State = { expanded: boolean; id: string }
 type NavigationAction = 'toggle' | 'open' | 'close'
