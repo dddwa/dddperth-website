@@ -17,10 +17,10 @@ stages:
       appArtifactName: app
       infrastructureArtifactName: infrastructure
 
-  - template: templates/makerx-deploy-azure-webapp.yml
-    parameters:
-      workingDirectory: app
-      infrastructureDirectory: infrastructure
-      serviceConnection: Azure
-      environment: Dev
-      environmentVariablesVariableGroup: dddperth-website-dev
+  # - template: templates/makerx-deploy-azure-webapp.yml
+  #   parameters:
+  #     workingDirectory: app
+  #     infrastructureDirectory: infrastructure
+  #     serviceConnection: Azure
+  #     environment: Dev
+  #     environmentVariablesVariableGroup: dddperth-website-dev
