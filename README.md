@@ -6,19 +6,19 @@ The DDD Perth website is deployed to https://dddperth.com and is built using [Ne
 
 ## Getting started
 
-- Checkout repository on your machine - ensure you have [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) installed
-- Run `yarn` in the repository root (to restore npm packages)
-- Run `yarn run dev` to start a local dev environment that watches for changes and supports Hot Module Replacement / Hot Reloading
+- Checkout repository on your machine - ensure you have [Node.js](https://nodejs.org/) installed
+- Run `npm install` in the repository root (to restore npm packages)
+- Run `npm run dev` to start a local dev environment that watches for changes and supports Hot Module Replacement / Hot Reloading
 - Use Visual Studio Code as the preferred dev environment - breakpoint debugging should work and you should be able to run the "Start Dev Webserver" task to get it to run the dev environment
 - Note: `package.json` has some URLs defined in the `dev` task that reference the [backend API](https://github.com/dddwa/ddd-backend)
 
 ## Building the code for prod release
 
 - Checkout code
-- Run `yarn`
-- Run `yarn build`
+- Run `npm`
+- Run `npm run build`
 - Grab the `.next` directory and deploy to the destination
-- Run `yarn` in the deploy folder and deploy all files from there alongside the `.next` directory (the web.config file is targeted towards Azure Web Apps)
+- Run `npm` in the deploy folder and deploy all files from there alongside the `.next` directory (the web.config file is targeted towards Azure Web Apps)
 
 ## Code organisation
 
@@ -49,11 +49,11 @@ If you want to make tweaks to the pages then inspect the files in the `pages` di
 
 ### Run tests
 
-- Use the command `yarn test`
+- Use the command `npm test`
 
 ### Watch tests
 
-- Run the command `yarn test:watch`
+- Run the command `npm run test:watch`
 
 ### VScode debug
 
@@ -62,7 +62,7 @@ If you want to make tweaks to the pages then inspect the files in the `pages` di
 
 ### Node debug
 
-- Run `yarn test:debug` and attach to the node inspector with your preferred method
+- Run `npm run test:debug` and attach to the node inspector with your preferred method
 
 ## Contributing
 

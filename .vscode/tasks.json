@@ -9,7 +9,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "command": "yarn",
+      "command": "npm",
       "problemMatcher": "$tsc",
       "args": ["tsc"]
     },
