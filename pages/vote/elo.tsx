@@ -1,20 +1,30 @@
-import { Session } from 'config/types'
+import { Button } from 'components/global/Button/Button'
+import { EloVote } from 'components/Voting/Elo'
+import { EloSession, Session } from 'config/types'
+import { useConfig } from 'Context/Config'
+import { Main } from 'layouts/main'
 import { useEffect, useState } from 'react'
 
+type SessionPair = {
+  SubmissionA: EloSession
+  SubmissionB: EloSession
+}
+
 type EloProps = {
-  sessions: [Session, Session]
+  sessions: SessionPair
 }
 
 async function fetchPair() {
-  const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/eloPair`)
+  const resp = await fetch(process.env.NEXT_PUBLIC_ELO_PAIR)
   const data = await resp.json()
 
   return data
 }
 
-export default function Elo({ sessions }: EloProps) {
-  const [sessionPair, setSessionPair] = useState<[Session, Session]>(sessions)
-  const [nextPair, setNextPair] = useState<[Session, Session] | []>([])
+export default function Elo({ sessions }: EloProps): JSX.Element {
+  const { conference } = useConfig()
+  const [sessionPair, setSessionPair] = useState<SessionPair>(sessions)
+  const [nextPair, setNextPair] = useState<SessionPair | undefined>(undefined)
 
   useEffect(() => {
     async function getPair() {
@@ -22,12 +32,12 @@ export default function Elo({ sessions }: EloProps) {
       setNextPair(data)
     }
 
-    if (nextPair.length === 0) {
+    if (typeof nextPair === 'undefined') {
       getPair()
     }
   }, [nextPair])
 
-  function onChoiceClick(session?: Session) {
+  function sessionChoiceHandler(session?: Session) {
     if (session) {
       fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/eloVote`, {
         method: 'POST',
@@ -35,43 +45,32 @@ export default function Elo({ sessions }: EloProps) {
       })
     }
 
-    if (nextPair.length === 2) {
+    if (typeof nextPair !== 'undefined') {
       setSessionPair(nextPair)
-      setNextPair([])
+      setNextPair(undefined)
     }
   }
 
   return (
-    <div>
-      <h1>Elo vote</h1>
-      <SessionChoice session={sessionPair[0]} onChoice={onChoiceClick} />
-      <SessionChoice session={sessionPair[1]} onChoice={onChoiceClick} />
+    <Main title="Vote" description={`${conference.Name} voting page.`}>
+      <EloVote
+        sessionA={sessionPair.SubmissionA}
+        sessionB={sessionPair.SubmissionB}
+        onSessionChoice={sessionChoiceHandler}
+      />
 
-      <button
-        type="button"
-        onClick={() => {
-          onChoiceClick()
-        }}
-      >
-        Neither
-      </button>
-    </div>
-  )
-}
-
-function SessionChoice({ session, onChoice }: { session: Session; onChoice: (session: Session) => void }) {
-  function onVoteClick() {
-    onChoice(session)
-  }
-
-  return (
-    <div>
-      <h3>{session.Title}</h3>
-      <div>{session.Abstract}</div>
-      <button type="button" onClick={onVoteClick}>
-        Vote
-      </button>
-    </div>
+      <div>
+        <Button
+          kind="tertiary"
+          type="button"
+          onClick={() => {
+            sessionChoiceHandler()
+          }}
+        >
+          Neither
+        </Button>
+      </div>
+    </Main>
   )
 }
 

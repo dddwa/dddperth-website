@@ -230,6 +230,8 @@ export interface Session {
   Tags: string[]
 }
 
+export type EloSession = Pick<Session, 'Id' | 'Title' | 'Abstract'>
+
 export interface Presenter {
   Id: string
   Name: string
