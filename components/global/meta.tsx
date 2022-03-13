@@ -20,11 +20,7 @@ declare global {
 const getTitle = (title: string, date: Date, name: string, showDate: boolean) =>
   `${title !== 'Home' ? title + ' - ' : ''}${name}${showDate ? ` | ${format(date, 'do MMMM yyyy')}` : ''}`
 
-export const Meta: React.FC<MetaArgs> = ({
-  pageTitle,
-  pageDescription,
-  pageImage = '/static/images/logo-2021.png',
-}) => {
+export const Meta = ({ pageTitle, pageDescription, pageImage = '/static/images/logo-2021.png' }: MetaArgs) => {
   const { conference, appConfig, dates } = useConfig()
   const { pathname } = useRouter()
   const [title, setTitle] = React.useState('')

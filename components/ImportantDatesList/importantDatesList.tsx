@@ -15,11 +15,7 @@ export interface ImportantDatesListProps {
   layout?: ImportantDateListLayouts
 }
 
-export const ImportantDatesList: React.FC<ImportantDatesListProps> = ({
-  conference,
-  currentDate,
-  layout = 'calendar',
-}) => {
+export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar' }: ImportantDatesListProps) => {
   const hasConferenceFinished = isAfter(currentDate.Value, conference.EndDate)
 
   return (

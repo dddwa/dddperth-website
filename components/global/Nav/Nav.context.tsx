@@ -19,7 +19,7 @@ function navigationReducer(state: State, action: NavigationAction) {
   }
 }
 
-const NavigationProvider: React.FC = ({ children }) => {
+const NavigationProvider = ({ children }) => {
   const componentId = React.useRef(`nav-${uuid()}`)
   const [state, dispatch] = React.useReducer(navigationReducer, { expanded: false, id: componentId.current })
 

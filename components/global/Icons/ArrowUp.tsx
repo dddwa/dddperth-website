@@ -5,7 +5,7 @@ interface ArrowUpIconProps {
   title?: string
 }
 
-export const ArrowUpIcon: React.FC<ArrowUpIconProps> = ({ title = 'Arrow Up Icon', className }) => (
+export const ArrowUpIcon = ({ title = 'Arrow Up Icon', className }: ArrowUpIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={className}

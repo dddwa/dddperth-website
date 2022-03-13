@@ -6,7 +6,7 @@ interface FaqListProps {
   faqs: FAQ[]
 }
 
-export const FaqList: React.FC<FaqListProps> = ({ faqs }) => (
+export const FaqList = ({ faqs }: FaqListProps) => (
   <div>
     {faqs.map((faq, i) => (
       <FaqDetail key={i} faq={faq} />

@@ -21,7 +21,7 @@ interface AgendaSessionProps {
   renderPresenters?: (presenters: string) => React.ReactNode
 }
 
-export const AgendaSession: React.FC<AgendaSessionProps> = ({
+export const AgendaSession = ({
   sessionId,
   children,
   room,
@@ -31,7 +31,7 @@ export const AgendaSession: React.FC<AgendaSessionProps> = ({
   isKeynote,
   renderTitle,
   renderPresenters,
-}) => {
+}: AgendaSessionProps) => {
   const { onSelect, getSession, getSponsor, getRoom } = useAgendaContext()
   const session = sessionId ? getSession(sessionId) : false
   const sponsor = sponsorId ? getSponsor(sponsorId) : undefined

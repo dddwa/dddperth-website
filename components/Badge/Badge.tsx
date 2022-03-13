@@ -8,4 +8,4 @@ interface BadgeProps {
   children: ReactNode
 }
 
-export const Badge: React.FC<BadgeProps> = ({ type, children }) => <StyledBadge type={type}>{children}</StyledBadge>
+export const Badge = ({ type, children }: BadgeProps) => <StyledBadge type={type}>{children}</StyledBadge>

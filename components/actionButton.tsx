@@ -7,7 +7,7 @@ interface ActionButtonProps {
   action: Action
 }
 
-export const ActionButton: React.FC<ActionButtonProps> = ({ action }) => (
+export const ActionButton = ({ action }: ActionButtonProps) => (
   <Link href={action.Url}>
     <ButtonAnchor kind="primary">{action.Title}</ButtonAnchor>
   </Link>

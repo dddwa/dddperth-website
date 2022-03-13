@@ -26,14 +26,14 @@ interface CurrentAgendaProps {
   selectedSessionId?: string
 }
 
-export const CurrentAgenda: React.FC<CurrentAgendaProps> = ({
+export const CurrentAgenda = ({
   date,
   sessions = [],
   sponsors,
   acceptingFeedback,
   feedbackLink,
   selectedSessionId,
-}) => {
+}: CurrentAgendaProps) => {
   return (
     <Fragment>
       <p>Select a session to see more details&hellip;</p>

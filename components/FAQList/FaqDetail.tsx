@@ -7,7 +7,7 @@ export interface FaqDetailProps {
   faq: FAQ
 }
 
-export const FaqDetail: React.FC<FaqDetailProps> = ({ faq }) => (
+export const FaqDetail = ({ faq }: FaqDetailProps) => (
   <StyledDetails>
     <StyledSummary>
       <span>{faq.Question}</span>

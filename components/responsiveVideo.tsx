@@ -24,7 +24,7 @@ const StyledResponsiveVideo = styled('div')({
   },
 })
 
-const ResponsiveVideo: React.FC<ResponsiveVideoArg> = ({ src, title = 'YouTube Video Player' }) => (
+const ResponsiveVideo = ({ src, title = 'YouTube Video Player' }: ResponsiveVideoArg) => (
   <StyledResponsiveVideo>
     <iframe title={title} src={src} frameBorder="0" allowFullScreen />
   </StyledResponsiveVideo>

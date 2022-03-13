@@ -8,7 +8,7 @@ interface AgendaTimeProps {
   dateFormat?: string
 }
 
-export const AgendaTime: React.FC<AgendaTimeProps> = ({ time, endTime, dateFormat = 'HH:mm' }) => (
+export const AgendaTime = ({ time, endTime, dateFormat = 'HH:mm' }: AgendaTimeProps) => (
   <StyledAgendaTime>
     <time dateTime={formatISO(time)}>{format(time, dateFormat)}</time>
     {endTime && (

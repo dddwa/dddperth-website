@@ -4,7 +4,7 @@ interface EventbriteProps {
   eventId: string
 }
 
-export const Eventbrite: React.FC<EventbriteProps> = ({ eventId }) => (
+export const Eventbrite = ({ eventId }: EventbriteProps) => (
   <iframe
     src={`//eventbrite.com.au/tickets-external?ref=etckt&eid=${eventId}`}
     style={{ border: 0 }}

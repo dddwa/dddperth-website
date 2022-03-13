@@ -15,7 +15,7 @@ interface SocialLinksArgs {
   socials: Socials
 }
 
-export const SocialLinks: React.FC<SocialLinksArgs> = ({ socials }) => (
+export const SocialLinks = ({ socials }: SocialLinksArgs) => (
   <StyledSocialLinks>
     {socials.Twitter.Name && (
       <li>

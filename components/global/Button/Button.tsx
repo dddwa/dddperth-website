@@ -10,7 +10,7 @@ export interface ButtonProps
   size?: Size
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button = (props: ButtonProps) => {
   const Component = props.kind !== 'link' ? StyledButton : StyledLinkButton
   return (
     <Component type="button" {...props}>
@@ -25,12 +25,7 @@ interface ButtonAnchorProps
   size?: Size
 }
 
-export const ButtonAnchor: React.FC<ButtonAnchorProps> = ({
-  children,
-  kind = 'secondary',
-  size = 'normal',
-  ...props
-}) => (
+export const ButtonAnchor = ({ children, kind = 'secondary', size = 'normal', ...props }: ButtonAnchorProps) => (
   <StyledButtonAnchor kind={kind} size={size} {...props}>
     {children}
   </StyledButtonAnchor>

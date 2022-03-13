@@ -5,6 +5,6 @@ interface SkipToContentProps {
   anchor?: string
 }
 
-export const SkipToContent: React.FC<SkipToContentProps> = ({ anchor = 'content' }) => (
+export const SkipToContent = ({ anchor = 'content' }: SkipToContentProps) => (
   <StyledSkipAnchor href={`#${anchor}`}>Skip to content</StyledSkipAnchor>
 )

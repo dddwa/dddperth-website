@@ -13,9 +13,11 @@ declare namespace TitoWidget {
   function buildWidgets(): void
 }
 
-export const Tito: React.FC<TitoProps> = ({ accountId, eventId }) => {
-  function titoOnLoadHandler() {
-    if (typeof TitoWidget !== 'undefined') {
+export const Tito = ({ accountId, eventId }: TitoProps) => {
+  const { error, loading } = useScript({ src: 'https://js.tito.io/v1', async: true })
+
+  React.useEffect(() => {
+    if (!loading && typeof TitoWidget !== 'undefined') {
       TitoWidget.buildWidgets()
     }
   }

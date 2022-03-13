@@ -18,7 +18,7 @@ interface AgendaProviderProps extends Pick<AgendaContextProps, 'onSelect'> {
 
 const AgendaContext = React.createContext<AgendaContextProps | undefined>(undefined)
 
-export const AgendaProvider: React.FC<AgendaProviderProps> = ({ children, onSelect, sessions, sponsors, rooms }) => {
+export const AgendaProvider = ({ children, onSelect, sessions, sponsors, rooms }: AgendaProviderProps) => {
   return (
     <AgendaContext.Provider
       value={{
