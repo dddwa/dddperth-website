@@ -93,3 +93,4 @@ stages:
             inputs:
               artifactName: ${{ parameters.infrastructureArtifactName }}
               targetPath: $(infrastructureDirectory)
+            condition: and(succeeded(), ne("${{ parameters.infrastructureArtifactName }}", ""))
