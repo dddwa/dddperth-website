@@ -53,7 +53,7 @@ function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaStat
   }
 }
 
-export const Agenda: React.FC<AgendaProps> = ({ sessions, ...props }) => {
+export const Agenda = ({ sessions, ...props }: AgendaProps) => {
   const { nextSessionGroup } = useSessionGroups(sessions)
   const [sessionState, dispatch] = React.useReducer(agendaReducer, { showModal: false })
 

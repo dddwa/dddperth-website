@@ -17,7 +17,7 @@ interface ImportantDateProps {
   isFinished?: boolean
 }
 
-export const ImportantDateTile: React.FC<ImportantDateProps> = ({ importantDate, isFinished }) => (
+export const ImportantDateTile = ({ importantDate, isFinished }: ImportantDateProps) => (
   <StyledImportantDate dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
@@ -36,7 +36,7 @@ interface ImportantDateTileTBAProps {
   type?: Types
 }
 
-export const ImportantDateTileTBA: React.FC<ImportantDateTileTBAProps> = ({ description, type }) => (
+export const ImportantDateTileTBA = ({ description, type }: ImportantDateTileTBAProps) => (
   <StyledImportantDate dateType={type}>
     <StyledImportantDateContent>
       <StyledImportantDay>

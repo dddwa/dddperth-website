@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledToggle } from './NavToggle.styled'
 import { useNavigationState, useNavigationDispatch } from '../Nav.context'
 
-export const NavToggle: React.FC = () => {
+export const NavToggle = () => {
   const { id, expanded } = useNavigationState()
   const dispatch = useNavigationDispatch()
 

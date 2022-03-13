@@ -21,7 +21,7 @@ function isFocusableElement(element: Element): element is HTMLElement {
   return 'focus' in element
 }
 
-export const Nav: React.FC<NavProps> = ({ menu }) => {
+export const Nav = ({ menu }: NavProps) => {
   const dispatch = useNavigationDispatch()
   const containerRef = React.useRef<HTMLDivElement>()
   const navRef = React.useRef<HTMLUListElement>()

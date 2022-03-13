@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const SafeLink: React.FC<
-  React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
-> = (props) => (
+export const SafeLink = (
+  props: React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+) => (
   <a rel="noopener" {...props}>
     {props.children}
   </a>

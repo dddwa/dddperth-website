@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DDDLogo: React.FC = () => (
+export const DDDLogo = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 365.339 63.253" role="img">
     <title>DDD Perth</title>
     <path

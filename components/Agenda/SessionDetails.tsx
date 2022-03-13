@@ -21,13 +21,13 @@ interface SessionDetailsProps {
   showBio: boolean
 }
 
-export const SessionDetails: React.FC<SessionDetailsProps> = ({
+export const SessionDetails = ({
   session,
   showPresenters,
   hideTags = false,
   hideLevelAndFormat = false,
   showBio,
-}) => {
+}: SessionDetailsProps) => {
   return (
     <Fragment>
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>

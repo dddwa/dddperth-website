@@ -7,7 +7,7 @@ interface FeedbackTimeTestingProps {
   sessionGroups: SessionGroup[]
 }
 
-export const FeedbackTimeTesting: React.FC<FeedbackTimeTestingProps> = ({ sessionGroups }) => (
+export const FeedbackTimeTesting = ({ sessionGroups }: FeedbackTimeTestingProps) => (
   <Alert kind="warning">
     <p>Testing component. Times are start/end of session groups</p>
     <ul style={{ listStyle: 'none' }}>

@@ -9,7 +9,7 @@ interface SponsorsProps {
   hideUpsell?: boolean
 }
 
-export const Sponsors: React.FC<SponsorsProps> = ({ sponsors, show, hideUpsell }) => {
+export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
   const showSponsors = show && sponsors.length > 0
 
   if (!showSponsors) {

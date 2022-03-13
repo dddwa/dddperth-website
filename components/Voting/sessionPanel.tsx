@@ -28,7 +28,7 @@ interface SessionPanelProps {
   toggleShortlist: () => void
 }
 
-export const SessionPanel: React.FC<SessionPanelProps> = ({
+export const SessionPanel = ({
   session: s,
   anonymousVoting,
   isVoting,
@@ -41,7 +41,7 @@ export const SessionPanel: React.FC<SessionPanelProps> = ({
   preferentialVoting,
   toggleVote,
   toggleShortlist,
-}) => {
+}: SessionPanelProps) => {
   return (
     <StyledPanel key={s.Id}>
       {isVotedFor && !isVoting && <StyledIcon className="fa fa-check" aria-label="Voted" role="status" title="Voted" />}

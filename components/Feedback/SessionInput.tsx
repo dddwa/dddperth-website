@@ -8,7 +8,7 @@ interface SessionInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const SessionInput: React.FC<SessionInputProps> = ({ session, checked, onChange }) => {
+export const SessionInput = ({ session, checked, onChange }: SessionInputProps) => {
   const inputId = `input-session-${session.Id}`
   return (
     <Fragment>

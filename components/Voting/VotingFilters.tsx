@@ -9,7 +9,7 @@ interface VotingFiltersProps {
   onLevelsFilter: (levels: string[]) => void
 }
 
-export const VotingFilters: React.FC<VotingFiltersProps> = ({ tags, levels, onTagFilter, onLevelsFilter }) => {
+export const VotingFilters = ({ tags, levels, onTagFilter, onLevelsFilter }: VotingFiltersProps) => {
   const tagCloudRef = useRef<HTMLFieldSetElement | null>(null)
   const filterCloudRef = useRef<HTMLFieldSetElement | null>(null)
 

@@ -10,7 +10,7 @@ export interface EventDetailsSummaryProps {
   className?: string
 }
 
-export const EventDetailsSummary: React.FC<EventDetailsSummaryProps> = ({ primaryAction, className }) => {
+export const EventDetailsSummary = ({ primaryAction, className }: EventDetailsSummaryProps) => {
   const { conference, dates } = useConfig()
   const { pathname } = useRouter()
 
