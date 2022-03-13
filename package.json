@@ -10,11 +10,11 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "analyze": "cross-env ANALYZE=true yarn build",
+    "analyze": "cross-env ANALYZE=true npm run build",
     "format-code": "prettier \"pages/**/*.*\" \"components/**/*.*\" \"layouts/**/*.*\" \"config/**/*.*\" --write",
     "lint": "eslint --ext .ts,.tsx .",
     "check-types": "tsc",
-    "validate": "yarn run lint && yarn test && yarn run check-types && yarn run build",
+    "validate": "npm run lint && npm test && npm run check-types && npm run build",
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -75,7 +75,7 @@
   "lint-staged": {
     "*.{ts,tsx}": "eslint --cache --fix",
     "**/*.+(js|json|ts|tsx)": [
-      "yarn format-code",
+      "npm run format-code",
       "jest --findRelatedTests"
     ]
   }
