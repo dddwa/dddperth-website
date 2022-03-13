@@ -96,4 +96,4 @@ stages:
             inputs:
               artifactName: ${{ parameters.infrastructureArtifactName }}
               targetPath: $(infrastructureDirectory)
-            condition: and(succeeded(), ne("${{ parameters.infrastructureArtifactName }}", ""))
+            condition: and(succeeded(), gt(length('${{ parameters.infrastructureArtifactName }}'), 0))
