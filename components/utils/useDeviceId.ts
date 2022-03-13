@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuid } from 'uuid'
 import { storageKey, StorageKeys } from './storageKey'
 
 export function useDeviceId(instance: string): { deviceId: string } {
