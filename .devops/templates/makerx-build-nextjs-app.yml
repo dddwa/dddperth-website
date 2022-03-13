@@ -1,12 +1,15 @@
 parameters:
-  - name: workingDirectory
-    type: string
-  - name: infrastructureDirectory
-    type: string
   - name: appArtifactName
     type: string
+  - name: workingDirectory
+    type: string
+    default: ''
+  - name: infrastructureDirectory
+    type: string
+    default: ''
   - name: infrastructureArtifactName
     type: string
+    default: ''
 
 stages:
   - stage: ci
