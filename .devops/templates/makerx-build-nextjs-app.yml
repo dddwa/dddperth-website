@@ -60,6 +60,10 @@ stages:
             inputs:
               versionSpec: 16.x
 
+          - script: npm cache verify
+            displayName: npm cache verify
+            workingDirectory: $(sourceDirectory)
+
           - script: npm ci
             displayName: npm ci
             workingDirectory: $(sourceDirectory)
