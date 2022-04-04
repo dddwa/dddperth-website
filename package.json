@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf build .next public/_next",
-    "build:standalone": "npm run clean && dotenv -v STANDALONE_BUILD=true next build && cd .next && copyfiles \"static/**/*\" ../public/_next && cd standalone && npm install --prefix ./ next",
+    "build:standalone": "npm run clean && dotenv -v STANDALONE_BUILD=true next build && cd deploy && copyfiles *.* ../.next/standalone && cd ../.next && copyfiles \"static/**/*\" ../public/_next && rimraf standalone/package.json && cd standalone && npm install --prefix ./ next@12.1.0",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
@@ -36,9 +36,9 @@
     "express": "^4.16.4",
     "next": "^12.1.0",
     "react": "^17.0.2",
-    "react-beautiful-dnd": "^13.1.0",
+    "react-beautiful-dnd": "^12.2.0",
     "react-dom": "^17.0.2",
-    "react-ga": "^3.3.0",
+    "react-ga": "^2.4.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -53,6 +53,7 @@
     "@types/node": "^17.0.21",
     "@types/react": "17.0.40",
     "@types/react-beautiful-dnd": "^13.1.2",
+    "@types/react-ga": "^2.3.0",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",

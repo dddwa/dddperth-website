@@ -4,6 +4,11 @@ parameters:
   - name: workingDirectory
     type: string
     default: ''
+  - name: buildCommand
+    default: build
+  - name: buildDirectory
+    type: string
+    default: ''
 
 stages:
   - stage: ci
@@ -67,8 +72,8 @@ stages:
             displayName: npm run lint
             workingDirectory: $(sourceDirectory)
 
-          - script: npm run build
-            displayName: npm run build
+          - script: npm run ${{ parameters.buildCommand }}
+            displayName: npm run ${{ parameters.buildCommand }}
             workingDirectory: $(sourceDirectory)
 
           - pwsh: |
@@ -81,6 +86,12 @@ stages:
           - script: 7z a -tzip -mx=5 $(Build.ArtifactStagingDirectory)/app/App.zip .next public next.config.js package.json package-lock.json node_modules .env
             displayName: 'Package App'
             workingDirectory: $(sourceDirectory)
+            condition: and(succeeded(), eq('', '${{ parameters.buildDirectory }}'))
+
+          - script: 7z a -tzip -mx=5 $(Build.ArtifactStagingDirectory)/app/App.zip ${{ parameters.buildDirectory }}
+            displayName: 'Package App'
+            workingDirectory: $(sourceDirectory)
+            condition: and(succeeded(), ne('', '${{ parameters.buildDirectory }}'))
 
           - task: PublishPipelineArtifact@1
             displayName: Publish app artifacts

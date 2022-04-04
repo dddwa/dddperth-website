@@ -13,6 +13,8 @@ stages:
   - template: templates/makerx-build-nextjs-app.yml
     parameters:
       appArtifactName: app
+      buildCommand: build:standalone
+      buildDirectory: .next/standalone
 
   - template: templates/makerx-deploy-azure-webapp.yml
     parameters:

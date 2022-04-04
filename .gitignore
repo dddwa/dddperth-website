@@ -7,3 +7,4 @@ tmp.json
 .eslintcache
 coverage
 *.tsbuildinfo
+public/_next
