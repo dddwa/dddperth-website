@@ -22,3 +22,12 @@ stages:
       webAppName: dddperth-website-test
       webAppResourceGroup: dddperth-website
       environmentVariablesVariableGroup: dddperth-website-test
+
+  - template: templates/makerx-deploy-azure-webapp.yml
+    parameters:
+      serviceConnection: Azure
+      appArtifactPath: app/App.zip
+      environment: Prod
+      webAppName: dddperth-website
+      webAppResourceGroup: dddperth-website
+      environmentVariablesVariableGroup: dddperth-website-prod
