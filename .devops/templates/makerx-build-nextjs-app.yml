@@ -87,7 +87,9 @@ stages:
             displayName: 'Build StoryBook'
             workingDirectory: $(sourceDirectory)
 
-          - script: 7z a -tzip -mx=5 $(Build.ArtifactStagingDirectory)/app/App.zip .next public next.config.js package.json package-lock.json node_modules .env
+          - script:
+              npm prune --production
+              7z a -tzip -mx=5 $(Build.ArtifactStagingDirectory)/app/App.zip .next public next.config.js package.json package-lock.json node_modules .env ./deploy/*.*
             displayName: 'Package App'
             workingDirectory: $(sourceDirectory)
             condition: and(succeeded(), eq('', '${{ parameters.buildDirectory }}'))
