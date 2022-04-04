@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf build .next public/_next",
-    "build:standalone": "npm run clean && dotenv -v STANDALONE_BUILD=true next build && cd deploy && copyfiles *.* ../.next/standalone && cd ../.next && copyfiles \"static/**/*\" ../public/_next && rimraf standalone/package.json && cd standalone && npm install --prefix ./ next@12.1.0 applicationinsights@1.2.0",
+    "build:standalone": "npm run clean && dotenv -v STANDALONE_BUILD=true next build && cd deploy && copyfiles *.* ../.next/standalone && cd ../.next && copyfiles \"static/**/*\" ../public/_next && rimraf standalone/package.json && cd standalone && npm install --prefix ./ next@12.1.0 applicationinsights@1.2.0 express",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
