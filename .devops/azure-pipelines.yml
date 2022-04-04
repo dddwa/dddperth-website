@@ -6,6 +6,9 @@ trigger:
 pr:
   autoCancel: true
 
+pool:
+  vmImage: windows-latest
+
 stages:
   - template: templates/makerx-build-nextjs-app.yml
     parameters:

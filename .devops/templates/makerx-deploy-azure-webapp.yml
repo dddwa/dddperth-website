@@ -24,8 +24,6 @@ stages:
         variables:
           - group: ${{ parameters.environmentVariablesVariableGroup }}
             # Environment variables to swap out at deploy time
-        pool:
-          vmImage: windows-latest
         strategy:
           runOnce:
             deploy:
