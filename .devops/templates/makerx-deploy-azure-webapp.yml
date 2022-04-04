@@ -53,6 +53,7 @@ stages:
                   inputs:
                     targetFiles: |
                       $(Pipeline.Workspace)/package/.env
+                      $(Pipeline.Workspace)/package/.env.*
                       $(Pipeline.Workspace)/package/.next/**/*.js
                       $(Pipeline.Workspace)/package/.next/**/*.html
                       $(Pipeline.Workspace)/package/public/**/*.js
