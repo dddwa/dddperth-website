@@ -17,6 +17,8 @@ stages:
         displayName: Build and test app
         variables:
           NPM_CONFIG_CACHE: $(sourceDirectory)/.npm
+        pool:
+          vmImage: windows-latest
         steps:
           - pwsh: |
               $localEnv = (Get-Content $(sourceDirectory)/.env.local)
