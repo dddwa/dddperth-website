@@ -4,12 +4,6 @@ parameters:
   - name: workingDirectory
     type: string
     default: ''
-  - name: infrastructureDirectory
-    type: string
-    default: ''
-  - name: infrastructureArtifactName
-    type: string
-    default: ''
 
 stages:
   - stage: ci
@@ -17,7 +11,6 @@ stages:
     dependsOn: []
     variables:
       sourceDirectory: $(Build.SourcesDirectory)/${{ parameters.workingDirectory }}
-      infrastructureDirectory: $(Build.SourcesDirectory)/${{ parameters.infrastructureDirectory }}
       NEXT_PUBLIC_BUILD_ID: '$(Build.SourceVersion)'
     jobs:
       - job: buildApp
@@ -94,10 +87,3 @@ stages:
             inputs:
               artifactName: ${{ parameters.appArtifactName }}
               targetPath: $(Build.ArtifactStagingDirectory)/app
-
-          - task: PublishPipelineArtifact@1
-            displayName: Publish infrastructure artifacts
-            inputs:
-              artifactName: ${{ parameters.infrastructureArtifactName }}
-              targetPath: $(infrastructureDirectory)
-            condition: and(succeeded(), gt(length('${{ parameters.infrastructureArtifactName }}'), 0))
