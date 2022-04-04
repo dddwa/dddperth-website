@@ -8,7 +8,7 @@ interface ActionButtonProps {
 }
 
 export const ActionButton = ({ action }: ActionButtonProps) => (
-  <Link href={action.Url}>
+  <Link href={action.Url} passHref>
     <ButtonAnchor kind="primary">{action.Title}</ButtonAnchor>
   </Link>
 )

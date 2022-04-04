@@ -1,4 +1,4 @@
-[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/DDD%20Perth%20Website-CI)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=1)
+[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/dddwa.dddperth-website?branchName=main)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=4)
 
 # DDD Perth Website
 
@@ -44,6 +44,10 @@ To re-purpose for another conference:
 5.  Update `pages/about.tsx`, `pages/sponsorship.tsx`, `pages/cfp.tsx` and `pages/agenda/*.tsx` with content specific to your conference
 
 If you want to make tweaks to the pages then inspect the files in the `pages` directory and modify from there.
+
+## CI / CD
+
+We use Azure DevOps for CI / CD. This is controlled via [.devops/azure-pipelines.yml](.devops/azure-pipelines.yml).
 
 ## Tests
 

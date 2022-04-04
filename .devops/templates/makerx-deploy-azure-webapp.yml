@@ -1,0 +1,87 @@
+parameters:
+  - name: serviceConnection
+    type: string
+  - name: appArtifactPath
+    type: string
+  - name: environment
+    type: string
+  - name: webAppName
+    type: string
+  - name: webAppResourceGroup
+    type: string
+  - name: environmentVariablesVariableGroup
+    type: string
+    default: ''
+
+stages:
+  - stage: 'Deploy${{ parameters.environment }}'
+    displayName: 'Deploy ${{ parameters.environment }}'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - deployment: deploy
+        displayName: Deploy App
+        environment: ${{ parameters.environment }}
+        variables:
+          - group: ${{ parameters.environmentVariablesVariableGroup }}
+            # Environment variables to swap out at deploy time
+        pool:
+          vmImage: windows-latest
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: ExtractFiles@1
+                  displayName: Extract package for config transform
+                  inputs:
+                    archiveFilePatterns: '$(Pipeline.Workspace)/${{ parameters.appArtifactPath }}'
+                    destinationFolder: $(Pipeline.Workspace)/package
+
+                - pwsh: |
+                    if (-not (Test-Path "$(Pipeline.Workspace)/package/.env")) {
+                      Write-Host "No .env file found in the package; generating one from the "
+                      $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f "user",$env:SYSTEM_ACCESSTOKEN)))
+                      $headers = @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+                      $variables = $(Invoke-RestMethod -Headers $headers "$(System.CollectionUri)$(System.TeamProject)/_apis/distributedtask/variablegroups?groupName=${{  parameters.environmentVariablesVariableGroup  }}&api-version=6.0-preview.2").value[0].variables
+                      ($variables.PSObject.Properties | ? {$_.Name -ceq $_.Name.ToUpper()} | % { '{0}=#{{{0}}}#' -f $_.Name }) | Out-String | Out-File -FilePath $(Pipeline.Workspace)/package/.env
+                      Write-Host (Get-Content -Raw "$(Pipeline.Workspace)/package/.env")
+                    }
+                  env:
+                    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+                  displayName: Get AppSettings variable names from Library
+                  condition: ne('${{ parameters.environmentVariablesVariableGroup }}', '')
+
+                - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+                  displayName: Replace tokens
+                  inputs:
+                    targetFiles: |
+                      $(Pipeline.Workspace)/package/.env
+                      $(Pipeline.Workspace)/package/.next/**/*.js
+                      $(Pipeline.Workspace)/package/.next/**/*.html
+                      $(Pipeline.Workspace)/package/public/**/*.js
+                    verbosity: detailed
+
+                - task: ArchiveFiles@2
+                  displayName: Repackage after config tranform
+                  inputs:
+                    rootFolderOrFile: $(Pipeline.Workspace)/package
+                    includeRootFolder: false
+                    archiveType: zip
+                    archiveFile: $(Pipeline.Workspace)/App.zip
+                    replaceExistingArchive: true
+
+                - pwsh: |
+                    if ("${{parameters.Environment}}" -imatch "prod") {
+                      7z d $(Pipeline.Workspace)/App.zip public/storybook
+                    }
+                  displayName: 'Remove StoryBook on production'
+
+                - task: AzureRmWebAppDeployment@4
+                  name: DeployWebApp
+                  displayName: Deploy Web App
+                  inputs:
+                    ConnectionType: AzureRM
+                    azureSubscription: '${{ parameters.serviceConnection }}'
+                    appType: webApp
+                    WebAppName: '${{ parameters.webAppName }}'
+                    ResourceGroupName: '${{ parameters.webAppResourceGroup }}'
+                    Package: $(Pipeline.Workspace)/App.zip

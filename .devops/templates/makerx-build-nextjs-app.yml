@@ -1,0 +1,91 @@
+parameters:
+  - name: appArtifactName
+    type: string
+  - name: workingDirectory
+    type: string
+    default: ''
+
+stages:
+  - stage: ci
+    displayName: Continuous Integration
+    dependsOn: []
+    variables:
+      sourceDirectory: $(Build.SourcesDirectory)/${{ parameters.workingDirectory }}
+      NEXT_PUBLIC_BUILD_ID: '$(Build.SourceVersion)'
+    jobs:
+      - job: buildApp
+        displayName: Build and test app
+        variables:
+          NPM_CONFIG_CACHE: $(sourceDirectory)/.npm
+        pool:
+          vmImage: windows-latest
+        steps:
+          - pwsh: |
+              $localEnv = (Get-Content $(sourceDirectory)/.env.local)
+              if (Test-Path -Path "$(sourceDirectory)/.env.development.sample") {
+                $localEnv = $localEnv + (Get-Content $(sourceDirectory)/.env.development.sample)
+              }
+              $serverVars = ($localEnv | where { !$_.startsWith('NEXT_PUBLIC') }) `
+                -replace '([A-Z0-9_]+)=(.*)', '$1=#{$1}#'
+              $clientVars = ($localEnv | where { $_.startsWith('NEXT_PUBLIC') }) `
+                -replace '([A-Z0-9_]+)=(.*)', '$1=#{$1}#' `
+                -replace '#{NEXT_PUBLIC_', '#{'
+
+              if ($serverVars.count -gt 0) {
+                $serverVars.Trim() | Out-File $(sourceDirectory)/.env
+                Get-Content $(sourceDirectory)/.env
+              } else {
+                Write-Output "" | Out-File $(sourceDirectory)/.env
+              }
+
+              # The .env.production file gets used by Next.js below (npm run build) so the replacement tokens get placed into the .next folder for replacement at deployment time
+              if ($clientVars.count -gt 0) {
+                $clientVars.Trim() | Out-File $(sourceDirectory)/.env.production
+                Get-Content $(sourceDirectory)/.env.production
+              }
+
+              Remove-Item $(sourceDirectory)/.env.local -Force
+            displayName: 'Enable config transformations'
+
+          - task: Cache@2
+            displayName: Cache .npm
+            inputs:
+              key: npm | $(Agent.OS) | $(sourceDirectory)/package-lock.json
+              path: $(NPM_CONFIG_CACHE)
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: 16.x
+
+          - script: npm ci
+            displayName: npm ci
+            workingDirectory: $(sourceDirectory)
+
+          - script: npx auditjs@latest ossi
+            displayName: Audit npm dependencies
+            workingDirectory: $(sourceDirectory)
+
+          - script: npm run lint
+            displayName: npm run lint
+            workingDirectory: $(sourceDirectory)
+
+          - script: npm run build
+            displayName: npm run build
+            workingDirectory: $(sourceDirectory)
+
+          - pwsh: |
+              if (Test-Path -Path ".storybook") {
+                npm run build-storybook
+              }
+            displayName: 'Build StoryBook'
+            workingDirectory: $(sourceDirectory)
+
+          - script: 7z a -tzip -mx=5 $(Build.ArtifactStagingDirectory)/app/App.zip .next public next.config.js package.json package-lock.json node_modules .env
+            displayName: 'Package App'
+            workingDirectory: $(sourceDirectory)
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish app artifacts
+            inputs:
+              artifactName: ${{ parameters.appArtifactName }}
+              targetPath: $(Build.ArtifactStagingDirectory)/app

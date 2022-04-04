@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  autoCancel: true
+
+stages:
+  - template: templates/makerx-build-nextjs-app.yml
+    parameters:
+      appArtifactName: app
+
+  - template: templates/makerx-deploy-azure-webapp.yml
+    parameters:
+      serviceConnection: Azure
+      appArtifactPath: app/App.zip
+      environment: Test
+      webAppName: dddperth-website-test
+      webAppResourceGroup: dddperth-website
+      environmentVariablesVariableGroup: dddperth-website-test
+
+  - template: templates/makerx-deploy-azure-webapp.yml
+    parameters:
+      serviceConnection: Azure
+      appArtifactPath: app/App.zip
+      environment: Prod
+      webAppName: dddperth-website
+      webAppResourceGroup: dddperth-website
+      environmentVariablesVariableGroup: dddperth-website-prod

@@ -65,9 +65,12 @@ const reorder = (list: SessionId[], startIndex: number, endIndex: number) => {
 
 const VotingWithOptionalTicketMessage =
   'Your vote will have a higher weighting if you optionally supply your ticket # from your ticket confirmation email when getting an attendee ticket.'
+
 export default class Voting extends React.PureComponent<VotingProps, VotingState> {
-  componentDidMount() {
-    this.setState({
+  constructor(props: VotingProps) {
+    super(props)
+
+    this.state = {
       formatFilters: [],
       formats: this.props.sessions
         .map((s) => s.Format)
@@ -86,6 +89,16 @@ export default class Voting extends React.PureComponent<VotingProps, VotingState
         .selectMany((s) => s.Tags)
         .unique()
         .sort(),
+      shortlist: [],
+      submitted: false,
+      votes: [],
+      expandAll: false,
+      ticketNumber: '',
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
       shortlist: this.readFromStorage(storageKey(this.props, StorageKeys.SHORTLIST)),
       submitted: this.readFromStorage(storageKey(this.props, StorageKeys.SUBMITTED)) === 'true',
       votes: this.readFromStorage(storageKey(this.props, StorageKeys.VOTES)),
