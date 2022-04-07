@@ -1,9 +1,14 @@
 import { Button } from 'components/global/Button/Button'
 import { EloVote } from 'components/Voting/Elo'
-import { EloSession, Session } from 'config/types'
+import { EloSession } from 'config/types'
 import { useConfig } from 'Context/Config'
 import { Main } from 'layouts/main'
 import { useEffect, useState } from 'react'
+import { getSessionId } from 'components/global/analytics'
+import getConferenceDates from 'config/dates'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
+import Conference from 'config/conference'
+import { logEvent, logException } from 'components/global/analytics'
 
 type SessionPair = {
   SubmissionA: EloSession
@@ -19,6 +24,31 @@ async function fetchPair() {
   const data = await resp.json()
 
   return data
+}
+
+async function postPair(winningSessionId: string, losingSessionId: string, isDraw: boolean) {
+  const headers = {
+    'Content-Type': 'application/json',
+  }
+
+  const body = {
+    WinnerSessionId: winningSessionId,
+    LoserSessionId: losingSessionId,
+    IsDraw: isDraw,
+    VoterSessionId: getSessionId(),
+  }
+
+  try {
+    fetch(`${process.env.NEXT_PUBLIC_ELO_VOTE}`, {
+      method: 'POST',
+      redirect: 'follow',
+      headers,
+      body: JSON.stringify(body),
+    })
+    logEvent('voting', 'elo', { sessionId: body.VoterSessionId })
+  } catch (e) {
+    logException('Error submitting vote', e, { sessionId: body.VoterSessionId })
+  }
 }
 
 export default function Elo({ sessions }: EloProps): JSX.Element {
@@ -37,13 +67,8 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
     }
   }, [nextPair])
 
-  function sessionChoiceHandler(session?: Session) {
-    if (session) {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/eloVote`, {
-        method: 'POST',
-        body: JSON.stringify(session),
-      })
-    }
+  async function sessionChoiceHandler(winningSession: EloSession, losingSession: EloSession, isDraw = false) {
+    await postPair(winningSession.Id, losingSession.Id, isDraw)
 
     if (typeof nextPair !== 'undefined') {
       setSessionPair(nextPair)
@@ -64,7 +89,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
           kind="tertiary"
           type="button"
           onClick={() => {
-            sessionChoiceHandler()
+            sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
           }}
         >
           Neither
@@ -75,6 +100,11 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
 }
 
 export async function getServerSideProps() {
+  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+  if (!dates.VotingOpen) {
+    return { notFound: true }
+  }
+
   const data = await fetchPair()
 
   return {

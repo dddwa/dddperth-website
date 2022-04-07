@@ -5,18 +5,30 @@ import { StyledEloVoteContainer } from './EloVote.styled'
 type EloVoteProps = {
   sessionA: EloSession
   sessionB: EloSession
-  onSessionChoice: (session: EloSession) => void
+  onSessionChoice: (winningSession: EloSession, losingSession: EloSession) => void
 }
 
 export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): JSX.Element {
-  function sessionChoiceHandler(session) {
-    onSessionChoice(session)
+  function sessionChoiceHandler(session: EloSession['Id']) {
+    const winner = session === sessionA.Id ? sessionA : sessionB
+    const loser = session === sessionA.Id ? sessionB : sessionA
+    onSessionChoice(winner, loser)
   }
 
   return (
     <StyledEloVoteContainer>
-      <EloChoice session={sessionA} onChoice={sessionChoiceHandler} />
-      <EloChoice session={sessionB} onChoice={sessionChoiceHandler} />
+      <EloChoice
+        session={sessionA}
+        onChoice={() => {
+          sessionChoiceHandler(sessionA.Id)
+        }}
+      />
+      <EloChoice
+        session={sessionB}
+        onChoice={() => {
+          sessionChoiceHandler(sessionB.Id)
+        }}
+      />
     </StyledEloVoteContainer>
   )
 }
