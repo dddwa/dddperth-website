@@ -14,20 +14,20 @@ import { add, sub, set, toDate } from 'date-fns'
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 
-const hideDate = true
+const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.WaitListOpen
-const staticDate = '2022-08-14T08:00'
+const staticDate = '2022-09-10T08:00'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
 const registrationOpenFrom = zonedTimeToUtc('2022-05-14T08:00:00', '+08:00')
 const registrationOpenUntil = hideDate ? null : set(sub(date, { days: 1 }), { hours: 17 }) // date.clone().add(-1, 'd').startOf('day').add(17, 'h')
-const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-19T08:00:00', '+08:00')
-const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-16T23:59:59', '+08:00')
-const votingOpenFrom = zonedTimeToUtc('2022-05-28T17:00:00', '+08:00')
-const votingOpenUntil = zonedTimeToUtc('2022-06-07T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2022-06-30T17:00:00', '+08:00')
+const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-11T08:00:00', '+08:00')
+const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-13T23:59:59', '+08:00')
+const votingOpenFrom = zonedTimeToUtc('2022-05-27T17:00:00', '+08:00')
+const votingOpenUntil = zonedTimeToUtc('2022-06-10T23:59:59', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2022-07-07T17:00:00', '+08:00')
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
