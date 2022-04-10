@@ -26,13 +26,8 @@ export const Index: NextPage = () => {
           Perth tech community.
         </Text>
         <Text>
-          In 2021, we are committed to hosting our conference for you. We hope it's in person, but if it's not, we'll be
-          bringing you the same amazing speakers online.
-        </Text>
-        <Text>
           Check out the agenda and talks from previous years, or hear more about how we do what we do on our blog.
         </Text>
-        <Text>We hope to see you in 2021!</Text>
       </section>
       <ImportantDates conference={conference} actions={actions} currentDate={currentDate} />
       <Keynotes conference={conference} />
