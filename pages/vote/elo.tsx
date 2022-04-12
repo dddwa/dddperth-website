@@ -100,9 +100,14 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
 }
 
 export async function getServerSideProps() {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
-  if (!dates.VotingOpen) {
-    return { notFound: true }
+  // TODO: remove after testing elo voting
+  const eloVoteEnabledForTesting = process.env.NEXT_PUBLIC_ELO_ENABLE_TESTING ?? false
+
+  if (!eloVoteEnabledForTesting) {
+    const dates = getConferenceDates(Conference, dateTimeProvider.now())
+    if (!dates.VotingOpen) {
+      return { notFound: true }
+    }
   }
 
   const data = await fetchPair()
