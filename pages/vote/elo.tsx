@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import { Button } from 'components/global/Button/Button'
 import { EloVote } from 'components/Voting/Elo'
 import { EloSession } from 'config/types'
@@ -5,10 +6,8 @@ import { useConfig } from 'Context/Config'
 import { Main } from 'layouts/main'
 import { useEffect, useState } from 'react'
 import { getSessionId } from 'components/global/analytics'
-import getConferenceDates from 'config/dates'
-import dateTimeProvider from 'components/utils/dateTimeProvider'
-import Conference from 'config/conference'
 import { logEvent, logException } from 'components/global/analytics'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 type SessionPair = {
   SubmissionA: EloSession
@@ -99,8 +98,9 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
   )
 }
 
-export async function getServerSideProps() {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { dates } = getCommonServerSideProps(context)
+
   if (!dates.VotingOpen) {
     return { notFound: true }
   }

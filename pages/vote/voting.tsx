@@ -1,15 +1,13 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { logEvent, logException } from 'components/global/analytics'
-import dateTimeProvider from 'components/utils/dateTimeProvider'
 import Voting from 'components/voting'
-import Conference from 'config/conference'
-import getConferenceDates from 'config/dates'
 import { Conference as Conf, Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { GetServerSideProps, NextPage } from 'next'
 import { Alert } from 'components/global/Alert/Alert'
 import { useConfig } from 'Context/Config'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 interface VoteProps {
   sessions?: Session[]
@@ -134,8 +132,9 @@ const VotePage: NextPage<VoteProps> = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { dates } = getCommonServerSideProps(context)
+
   if (!dates.VotingOpen) {
     return { notFound: true }
   }

@@ -2,15 +2,14 @@ import React from 'react'
 import AllAgendas from 'components/allAgendas'
 import { CurrentAgenda } from 'components/currentAgenda'
 import { Sponsors } from 'components/Sponsors/sponsors'
-import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
-import getConferenceDates from 'config/dates'
 import { Session, SponsorType } from 'config/types'
 import { Main } from 'layouts/main'
 import { format } from 'date-fns'
 import { GetServerSideProps, NextPage } from 'next'
 import { useConfig } from 'Context/Config'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 interface AgendaPageProps {
   sessions?: Session[]
@@ -65,7 +64,7 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+  const { dates } = getCommonServerSideProps(context)
 
   if (!dates.VotingFinished) {
     return { redirect: { destination: `/agenda/${Conference.PreviousInstance}`, permanent: false } }

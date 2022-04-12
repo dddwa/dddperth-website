@@ -2,13 +2,11 @@ import React from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import { StyledList, Text } from 'components/global/text'
-import dateTimeProvider from 'components/utils/dateTimeProvider'
-import Conference from 'config/conference'
-import getConferenceDates from 'config/dates'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { ButtonAnchor } from 'components/global/Button/Button'
 import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 const CFPPage: NextPage = () => {
   const { conference, dates } = useConfig()
@@ -119,8 +117,8 @@ const CFPPage: NextPage = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { dates } = getCommonServerSideProps(context)
 
   if (!dates.AcceptingPresentations) {
     return { redirect: { destination: '/', permanent: false } }

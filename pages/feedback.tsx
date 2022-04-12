@@ -22,18 +22,16 @@ import { SessionInput } from 'components/Feedback/SessionInput'
 import { Alert } from 'components/global/Alert/Alert'
 import { logException } from 'components/global/analytics'
 import { StyledContainer } from 'components/global/Container/Container.styled'
-import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/storageKey'
 import { useDeviceId } from 'components/utils/useDeviceId'
 import { useForm } from 'components/utils/useForm'
 import { useSessionGroups } from 'components/utils/useSessionGroups'
 import { fetchSessions } from 'components/utils/useSessions'
-import Conference from 'config/conference'
-import getConferenceDates from 'config/dates'
 import { Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -240,8 +238,8 @@ const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { dates } = getCommonServerSideProps(context)
 
   if (!dates.AcceptingFeedback) {
     return { redirect: { destination: '/', permanent: false } }
