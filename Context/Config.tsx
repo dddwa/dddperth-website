@@ -11,7 +11,7 @@ interface AppConfig {
   getSubmissionsUrl: string
   instrumentationKey: string
   submitVoteUrl: string
-  testingMode: boolean
+  testingMode: () => boolean
 }
 
 interface ConfigState {
@@ -47,7 +47,7 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }): ReactEleme
           getSubmissionsUrl: process.env.NEXT_PUBLIC_GET_SUBMISSIONS_URL,
           instrumentationKey: process.env.NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY,
           submitVoteUrl: process.env.NEXT_PUBLIC_SUBMIT_VOTE_URL,
-          testingMode: process.env.NEXT_PUBLIC_TESTING_MODE === 'true',
+          testingMode: () => testingModeEnv === 'true',
         },
         currentDate,
         dates: getConferenceDates(Conference, currentDate),
@@ -58,6 +58,12 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }): ReactEleme
     </ConfigContext.Provider>
   )
 }
+
+// If we don't split up the `process.env.NEXT_PUBLIC_TESTING_MODE === 'true'` comparison
+// it is optimised away before env substitution in the pipeline.
+// The env subst expects `'#{TESTING_MODE}#' === 'true'`, but it was already reduced to `!1` (i.e. false) at build time.
+// Also, if this const is above the ConfigProvider it's optimised away
+const testingModeEnv = process.env.NEXT_PUBLIC_TESTING_MODE
 
 const useConfig = (): ConfigState => {
   const config = React.useContext(ConfigContext)
