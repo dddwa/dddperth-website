@@ -1,12 +1,10 @@
-import dateTimeProvider from 'components/utils/dateTimeProvider'
-import Conference from 'config/conference'
-import getConferenceDates from 'config/dates'
 import { GetServerSideProps, NextPage } from 'next'
 import { Main } from 'layouts/main'
 import { Session } from 'config/types'
 import React from 'react'
 import { VoteContent } from 'components/Voting/Content'
 import { useConfig } from 'Context/Config'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 
 type VotePageProps = {
   sessions: Session[]
@@ -22,8 +20,9 @@ const VotePage: NextPage<VotePageProps> = ({ sessions }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const dates = getConferenceDates(Conference, dateTimeProvider.now())
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { dates } = getCommonServerSideProps(context)
+
   if (!dates.VotingOpen) {
     return { notFound: true }
   }

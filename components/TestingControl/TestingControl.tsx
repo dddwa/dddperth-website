@@ -7,10 +7,16 @@ import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
 import { sub, format } from 'date-fns'
 import { useConfig } from 'Context/Config'
+import Cookies from 'js-cookie'
+import { TestingControlCookie } from './TestingControlConsts'
 
 export const TestingControl = (): JSX.Element => {
   const { conference, currentDate } = useConfig()
   const [show, setShow] = useState(false)
+
+  function storeTime(dateOverride: Date) {
+    Cookies.set(TestingControlCookie, dateOverride.toISOString())
+  }
 
   const resetVote = () => {
     localStorage.removeItem('ddd-voting-submitted')
@@ -19,6 +25,7 @@ export const TestingControl = (): JSX.Element => {
 
   const reset = () => {
     dateTimeProvider.reset()
+    Cookies.remove(TestingControlCookie)
 
     conference.Sponsors = SponsorData
     conference.TicketPurchasingOptions = TicketPurchasingOptions.SoldOut
@@ -37,29 +44,28 @@ export const TestingControl = (): JSX.Element => {
         <StyledTestingPanel>
           <StyledButton
             kind="primary"
-            onClick={() => dateTimeProvider.setDateTo(sub(conference.PresentationSubmissionsOpenFrom, { days: 1 }))}
+            onClick={() => {
+              storeTime(sub(conference.PresentationSubmissionsOpenFrom, { days: 1 }))
+            }}
           >
             Pre-CFP
           </StyledButton>
-          <StyledButton
-            kind="secondary"
-            onClick={() => dateTimeProvider.setDateTo(conference.PresentationSubmissionsOpenFrom)}
-          >
+          <StyledButton kind="secondary" onClick={() => storeTime(conference.PresentationSubmissionsOpenFrom)}>
             CFP open
           </StyledButton>
-          <StyledButton kind="tertiary" onClick={() => dateTimeProvider.setDateTo(conference.VotingOpenFrom)}>
+          <StyledButton kind="tertiary" onClick={() => storeTime(conference.VotingOpenFrom)}>
             Voting open
           </StyledButton>
-          <StyledButton kind="tertiary" onClick={() => dateTimeProvider.setDateTo(conference.VotingOpenUntil)}>
+          <StyledButton kind="tertiary" onClick={() => storeTime(conference.VotingOpenUntil)}>
             Voting closed
           </StyledButton>
-          <StyledButton kind="inverse" onClick={() => dateTimeProvider.setDateTo(conference.AgendaPublishedFrom)}>
+          <StyledButton kind="inverse" onClick={() => storeTime(conference.AgendaPublishedFrom)}>
             Agenda published
           </StyledButton>
-          <StyledButton kind="primary" onClick={() => dateTimeProvider.setDateTo(conference.Date)}>
+          <StyledButton kind="primary" onClick={() => storeTime(conference.Date)}>
             On the day
           </StyledButton>
-          <StyledButton kind="primary" onClick={() => dateTimeProvider.setDateTo(conference.EndDate)}>
+          <StyledButton kind="primary" onClick={() => storeTime(conference.EndDate)}>
             Conference over
           </StyledButton>
           <StyledButton
