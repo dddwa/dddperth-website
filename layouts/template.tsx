@@ -35,7 +35,7 @@ export const Template = ({ children, title, description, image, showHero }: Temp
       {showHero && <Hero />}
       {children}
       <Footer />
-      {appConfig.testingMode && <TestingControl />}
+      {appConfig.testingMode() && <TestingControl />}
     </Fragment>
   )
 }

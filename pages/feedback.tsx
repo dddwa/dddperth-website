@@ -115,7 +115,7 @@ const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
           </Alert>
         )}
 
-        {appConfig.testingMode && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
+        {appConfig.testingMode() && <FeedbackTimeTesting sessionGroups={allSessionGroups} />}
 
         {showForm && (
           <StyledForm onSubmit={handleSubmit}>
