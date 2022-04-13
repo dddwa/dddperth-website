@@ -1,6 +1,11 @@
-import { Button } from 'components/global/Button/Button'
 import { EloSession } from 'config/types'
-import { StyledEloVoteContainer } from './EloVote.styled'
+import {
+  StyledVoteButton,
+  StyledEloVoteContainer,
+  StyledEloChoice,
+  StyledSessionTitle,
+  StyledSessionAbstract,
+} from './EloVote.styled'
 
 type EloVoteProps = {
   sessionA: EloSession
@@ -25,6 +30,7 @@ export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): 
       />
       <EloChoice
         session={sessionB}
+        variant="secondary"
         onChoice={() => {
           sessionChoiceHandler(sessionB.Id)
         }}
@@ -35,21 +41,22 @@ export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): 
 
 type EloChoiceProps = {
   session: EloSession
+  variant?: 'primary' | 'secondary'
   onChoice: (session: EloSession) => void
 }
 
-function EloChoice({ session, onChoice }: EloChoiceProps) {
+function EloChoice({ session, variant = 'primary', onChoice }: EloChoiceProps) {
   function onVoteClick() {
     onChoice(session)
   }
 
   return (
-    <div>
-      <h3>{session.Title}</h3>
-      <div>{session.Abstract}</div>
-      <Button kind="primary" type="button" onClick={onVoteClick}>
-        Vote
-      </Button>
-    </div>
+    <StyledEloChoice variant={variant}>
+      <StyledSessionTitle>{session.Title}</StyledSessionTitle>
+      <StyledSessionAbstract>{session.Abstract}</StyledSessionAbstract>
+      <StyledVoteButton kind={variant} type="button" onClick={onVoteClick}>
+        Pick Me
+      </StyledVoteButton>
+    </StyledEloChoice>
   )
 }
