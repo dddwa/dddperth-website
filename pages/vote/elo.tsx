@@ -8,6 +8,7 @@ import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { StyledDrawButton } from 'components/Voting/EloVote.styled'
+import { PRIVACY_ACCEPTED } from './VoteConst'
 
 type SessionPair = {
   SubmissionA: EloSession
@@ -98,9 +99,19 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { dates } = getCommonServerSideProps(context)
+  const isPrivacyAccepted = Boolean(context.req.cookies[PRIVACY_ACCEPTED])
 
   if (!dates.VotingOpen) {
     return { notFound: true }
+  }
+
+  if (!isPrivacyAccepted) {
+    return {
+      redirect: {
+        destination: '/vote',
+        permanent: false,
+      },
+    }
   }
 
   const data = await fetchPair()
