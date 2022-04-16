@@ -8,7 +8,7 @@ import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { StyledDrawButton } from 'components/Voting/EloVote.styled'
-import { PRIVACY_ACCEPTED } from './VoteConst'
+import { PRIVACY_ACCEPTED } from 'components/Voting//VoteConst'
 
 type SessionPair = {
   SubmissionA: EloSession

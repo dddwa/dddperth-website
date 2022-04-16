@@ -4,9 +4,9 @@ import { GetServerSideProps } from 'next'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { Text } from 'components/global/text'
 import { useRouter } from 'next/router'
-import { PRIVACY_ACCEPTED } from './VoteConst'
+import { PRIVACY_ACCEPTED } from '../../components/Voting/VoteConst'
 import Cookies from 'js-cookie'
-import { StyledButton, StyledHeader, StyledIntro, StyledLandingContainer } from './landing.styled'
+import { StyledButton, StyledHeader, StyledIntro, StyledLandingContainer } from '../../components/Voting/landing.styled'
 
 type VoteLandingProps = {
   instance: string
