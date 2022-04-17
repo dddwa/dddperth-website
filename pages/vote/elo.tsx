@@ -3,7 +3,7 @@ import { EloVote } from 'components/Voting/Elo'
 import { EloSession } from 'config/types'
 import { useConfig } from 'Context/Config'
 import { Main } from 'layouts/main'
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
@@ -55,6 +55,9 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
   const [sessionPair, setSessionPair] = useState<SessionPair>(sessions)
   const [nextPair, setNextPair] = useState<SessionPair | undefined>(undefined)
 
+  // this is effectively a "force update" to fetch another pair
+  const [next, getNext] = useReducer((x) => x + 1, 0)
+
   useEffect(() => {
     async function getPair() {
       const data = await fetchPair()
@@ -64,7 +67,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
     if (typeof nextPair === 'undefined') {
       getPair()
     }
-  }, [nextPair])
+  }, [next, nextPair])
 
   async function sessionChoiceHandler(winningSession: EloSession, losingSession: EloSession, isDraw = false) {
     await postPair(winningSession.Id, losingSession.Id, isDraw)
@@ -72,6 +75,10 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
     if (typeof nextPair !== 'undefined') {
       setSessionPair(nextPair)
       setNextPair(undefined)
+    } else {
+      // nextPair was undefined (e.g. because it failed to fetch)
+      // so force it to fetch another
+      getNext()
     }
   }
 
