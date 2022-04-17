@@ -23,12 +23,14 @@ export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): 
   return (
     <StyledEloVoteContainer>
       <EloChoice
+        key={sessionA.Id}
         session={sessionA}
         onChoice={() => {
           sessionChoiceHandler(sessionA.Id)
         }}
       />
       <EloChoice
+        key={sessionB.Id}
         session={sessionB}
         variant="secondary"
         onChoice={() => {
