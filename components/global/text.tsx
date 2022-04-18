@@ -34,12 +34,13 @@ StyledPara.displayName = 'StyledPara'
 type TextProps = {
   children: React.ReactNode
   textAlign?: 'left' | 'center' | 'right'
+  className?: string
   tag?: React.ElementType<any>
 }
 
-export function Text({ children, textAlign, tag = 'p' }: TextProps): JSX.Element {
+export function Text({ children, textAlign, tag = 'p', className }: TextProps): JSX.Element {
   return (
-    <StyledPara as={tag} style={{ textAlign }}>
+    <StyledPara className={className} as={tag} style={{ textAlign }}>
       {children}
     </StyledPara>
   )

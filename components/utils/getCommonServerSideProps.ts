@@ -16,5 +16,6 @@ export function getCommonServerSideProps(context: GetServerSidePropsContext<Pars
 
   return {
     dates,
+    conference: Conference,
   }
 }
