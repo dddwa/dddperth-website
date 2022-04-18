@@ -7,12 +7,16 @@ import { useRouter } from 'next/router'
 import { PRIVACY_ACCEPTED } from '../../components/Voting/VoteConst'
 import Cookies from 'js-cookie'
 import { StyledButton, StyledHeader, StyledIntro, StyledLandingContainer } from '../../components/Voting/landing.styled'
+import { format } from 'date-fns'
 
 type VoteLandingProps = {
   instance: string
+  votingFinished: string
 }
 
-export default function VoteLanding({ instance }: VoteLandingProps): JSX.Element {
+const BUTTON_LABEL = 'Start Voting!'
+
+export default function VoteLanding({ instance, votingFinished }: VoteLandingProps): JSX.Element {
   const { conference } = useConfig()
   const router = useRouter()
 
@@ -29,18 +33,19 @@ export default function VoteLanding({ instance }: VoteLandingProps): JSX.Element
         <Text>
           You'll be presented with a couple of talk options. Have a read of the abstract and simply select the talk
           which sounds the best to you based on your interests. We'll keep showing you talks based on what you select,
-          and possibly throw some surve calls at you to keep things interesting.
+          and possibly throw some curve calls at you to keep things interesting.
         </Text>
         <Text>You can vote for as many or as little talks as you'd like. Every vote counts.</Text>
-        <Text>You'll be able to continuously vote through the voting period. Voting closes on X date.</Text>
+        <Text>You'll be able to continuously vote through the voting period. Voting closes on {votingFinished}.</Text>
         <Text>Happy Voting!</Text>
 
         <Text>
-          By selecting 'Start voting' I have read and accepted the <a href="/privacy">DDDPerth Privacy statement</a>.
+          By selecting <em>'{BUTTON_LABEL}'</em> I have read and accepted the{' '}
+          <a href="/privacy">DDDPerth Privacy statement</a>.
         </Text>
 
         <StyledButton kind="primary" onClick={onClickHandler}>
-          Start Voting!
+          {BUTTON_LABEL}
         </StyledButton>
       </StyledLandingContainer>
     </Main>
@@ -49,7 +54,7 @@ export default function VoteLanding({ instance }: VoteLandingProps): JSX.Element
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { dates, conference } = getCommonServerSideProps(context)
-  const isPrivacyAccepted = Boolean(context.req.cookies[PRIVACY_ACCEPTED])
+  const isPrivacyAccepted = context.req.cookies[PRIVACY_ACCEPTED] === 'true'
 
   if (!dates.VotingOpen) {
     return { notFound: true }
@@ -67,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       instance: conference.Instance,
+      votingFinished: format(conference.VotingOpenUntil, dates.DateDisplayFormat),
     },
   }
 }
