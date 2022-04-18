@@ -6,10 +6,14 @@ import { calcRem } from 'components/utils/styles/calcRem'
 export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: `repeat(2, minmax(${calcRem(80)}, 1fr))`,
+  gridTemplateRows: '100%',
+  gridColumn: '1 / -1',
   gap: theme.metrics.md,
   inlineSize: '100%',
   maxInlineSize: calcRem(965),
   maxBlockSize: '60vh',
+  paddingInlineStart: calcRem(theme.metrics.sm),
+  paddingInlineEnd: calcRem(theme.metrics.sm),
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
 
@@ -33,7 +37,6 @@ export const StyledEloChoice = styled('div')<StyledEloChoiceProps>(({ theme, var
   borderBlockStartWidth: 8,
   borderBlockStartStyle: 'solid',
   borderColor: variant === 'primary' ? theme.colors.primary : theme.colors.secondary,
-  overflow: 'hidden',
 
   [breakpoint('md')]: {
     padding: calcRem(theme.metrics.lg),
