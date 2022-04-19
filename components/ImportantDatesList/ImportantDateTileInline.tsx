@@ -2,7 +2,6 @@ import React from 'react'
 import { ImportantDate, Types } from 'config/types'
 import {
   StyledAbbr,
-  StyledDoneIconInline,
   StyledImportantDateContent,
   StyledImportantDateInline,
   StyledInlineDate,
@@ -25,7 +24,6 @@ export const ImportantDateTileInline = ({ importantDate, isFinished }: Important
         </StyledInlineTimeDescription>
       </time>
     </StyledImportantDateContent>
-    {isFinished && <StyledDoneIconInline />}
   </StyledImportantDateInline>
 )
 
