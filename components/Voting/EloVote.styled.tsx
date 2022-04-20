@@ -61,6 +61,9 @@ export const StyledSessionAbstract = styled('div')(({ theme }) => ({
   color: '#333',
   overflow: 'hidden',
   overflowY: 'auto',
+  '& p:not(:last-child)': {
+    marginBlockEnd: calcRem(theme.metrics.sm),
+  },
 }))
 
 type StyledVoteButtonProps = {
