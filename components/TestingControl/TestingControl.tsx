@@ -15,6 +15,7 @@ export const TestingControl = (): JSX.Element => {
   const [show, setShow] = useState(false)
 
   function storeTime(dateOverride: Date) {
+    dateTimeProvider.setDateTo(dateOverride)
     Cookies.set(TestingControlCookie, dateOverride.toISOString())
   }
 
