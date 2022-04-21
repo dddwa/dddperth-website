@@ -1,3 +1,4 @@
+import { Text } from 'components/global/text'
 import { EloSession } from 'config/types'
 import { useMemo } from 'react'
 import {
@@ -61,7 +62,7 @@ function EloChoice({ session, variant = 'primary', onChoice }: EloChoiceProps) {
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>
       <StyledSessionAbstract>
         {paragraphs.map((para) => (
-          <p key={para}>{para}</p>
+          <Text key={para}>{para}</Text>
         ))}
       </StyledSessionAbstract>
       <StyledVoteButton kind={variant} type="button" onClick={onVoteClick}>
