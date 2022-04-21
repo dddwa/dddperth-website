@@ -1,4 +1,6 @@
+import { Text } from 'components/global/text'
 import { EloSession } from 'config/types'
+import { useMemo } from 'react'
 import {
   StyledVoteButton,
   StyledEloVoteContainer,
@@ -52,10 +54,17 @@ function EloChoice({ session, variant = 'primary', onChoice }: EloChoiceProps) {
     onChoice(session)
   }
 
+  const abstract = session.Abstract
+  const paragraphs = useMemo(() => abstract.split('\n').filter((para) => !!para), [abstract])
+
   return (
     <StyledEloChoice variant={variant}>
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>
-      <StyledSessionAbstract>{session.Abstract}</StyledSessionAbstract>
+      <StyledSessionAbstract>
+        {paragraphs.map((para) => (
+          <Text key={para}>{para}</Text>
+        ))}
+      </StyledSessionAbstract>
       <StyledVoteButton kind={variant} type="button" onClick={onVoteClick}>
         Pick Me
       </StyledVoteButton>

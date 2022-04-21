@@ -58,7 +58,6 @@ export const StyledSessionTitle = styled('h3')(({ theme }) => ({
 export const StyledSessionAbstract = styled('div')(({ theme }) => ({
   flex: 1,
   marginBlockEnd: calcRem(theme.metrics.md),
-  color: '#333',
   overflow: 'hidden',
   overflowY: 'auto',
 }))

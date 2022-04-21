@@ -94,7 +94,7 @@ export const theme = {
     /** xxl: 40 */
     xxl: 40,
   },
-}
+} as const
 
 export type DDDTheme = typeof theme
 
