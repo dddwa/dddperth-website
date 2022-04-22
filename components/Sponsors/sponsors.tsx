@@ -61,6 +61,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
     }
   }
 
+  const alt = (name: string) => `${name}, opens in a new window`
+
   return (
     <Fragment>
       <StyledSponsorsContainer>
@@ -68,11 +70,11 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
           <Fragment>
             <h2>Platinum Sponsors</h2>
             {platinumSponsors.map((sponsor) => (
-              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
+              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
                 <StyledSponsorLogo
                   level={SponsorType.Platinum}
                   src={sponsor.imageUrl}
-                  alt={sponsor.name}
+                  alt={alt(sponsor.name)}
                   loading="lazy"
                 />
               </StyledSponsorLink>
@@ -84,8 +86,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
           <Fragment>
             <h2>Gold Sponsors</h2>
             {goldSponsors.map((sponsor) => (
-              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
-                <StyledSponsorLogo src={sponsor.imageUrl} alt={sponsor.name} loading="lazy" />
+              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
+                <StyledSponsorLogo src={sponsor.imageUrl} alt={alt(sponsor.name)} loading="lazy" />
               </StyledSponsorLink>
             ))}
           </Fragment>
@@ -95,8 +97,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
           <Fragment>
             <h2>Silver Sponsors</h2>
             {silverSponsors.map((sponsor) => (
-              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
-                <StyledSponsorLogo src={sponsor.imageUrl} alt={sponsor.name} loading="lazy" />
+              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
+                <StyledSponsorLogo src={sponsor.imageUrl} alt={alt(sponsor.name)} loading="lazy" />
               </StyledSponsorLink>
             ))}
           </Fragment>
@@ -107,8 +109,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
             {serviceSponsors.map((sponsor) => (
               <div key={sponsor.id}>
                 <h2>{sponsor.serviceProvided} by:</h2>
-                <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
-                  <StyledSponsorLogo src={sponsor.imageUrl} alt={sponsor.name} loading="lazy" />
+                <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
+                  <StyledSponsorLogo src={sponsor.imageUrl} alt={alt(sponsor.name)} loading="lazy" />
                 </StyledSponsorLink>
               </div>
             ))}
@@ -119,8 +121,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
           <Fragment>
             <h2>Community Partners</h2>
             {communitySponsors.map((sponsor) => (
-              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
-                <StyledSponsorLogo src={sponsor.imageUrl} alt={sponsor.name} loading="lazy" />
+              <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
+                <StyledSponsorLogo src={sponsor.imageUrl} alt={alt(sponsor.name)} loading="lazy" />
               </StyledSponsorLink>
             ))}
           </Fragment>
@@ -141,8 +143,8 @@ export const Sponsors = ({ sponsors, show, hideUpsell }: SponsorsProps) => {
         <StyledSponsorsContainer>
           <h2>Prize Sponsors</h2>
           {standardSponsors.map((sponsor) => (
-            <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name} title={sponsor.name}>
-              <StyledSponsorLogo src={sponsor.imageUrl} alt={sponsor.name} loading="lazy" />
+            <StyledSponsorLink href={sponsor.url} target="_blank" key={sponsor.name}>
+              <StyledSponsorLogo src={sponsor.imageUrl} alt={alt(sponsor.name)} loading="lazy" />
             </StyledSponsorLink>
           ))}
         </StyledSponsorsContainer>
