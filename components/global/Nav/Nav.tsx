@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { VisuallyHidden } from '@reach/visually-hidden'
 import { MenuItem } from 'config/types'
 import { StyledNav, StyledNavLink, StyledNavList } from './Nav.styled'
 import { useNavigationState, useNavigationDispatch } from './Nav.context'
@@ -114,6 +115,7 @@ export const Nav = ({ menu }: NavProps) => {
             {item.href.indexOf('http') !== -1 ? (
               <StyledNavLink href={item.href} active={isFirstBranchMatched(pathname, item.href)}>
                 {item.name}
+                {item.srOnly ? <VisuallyHidden>{item.srOnly}</VisuallyHidden> : null}
               </StyledNavLink>
             ) : (
               <Link href={item.href} passHref={true}>
