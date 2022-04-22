@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import From2017 from 'config/2017'
 import SponsorData from 'config/sponsors'
 import { TicketPurchasingOptions } from 'config/types'
 import { Button } from 'components/global/Button/Button'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
-import { sub, format } from 'date-fns'
+import { sub, format, isValid } from 'date-fns'
 import { useConfig } from 'Context/Config'
 import Cookies from 'js-cookie'
 import { TestingControlCookie } from './TestingControlConsts'
@@ -13,6 +13,19 @@ import { TestingControlCookie } from './TestingControlConsts'
 export const TestingControl = (): JSX.Element => {
   const { conference, currentDate } = useConfig()
   const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const initialValueOfCookie = Cookies.get(TestingControlCookie)
+    if (!initialValueOfCookie) return
+
+    const initialDate = new Date(initialValueOfCookie)
+    if (!isValid(initialDate)) {
+      Cookies.remove(TestingControlCookie)
+      return
+    }
+
+    dateTimeProvider.setDateTo(initialDate)
+  }, [])
 
   function storeTime(dateOverride: Date) {
     dateTimeProvider.setDateTo(dateOverride)
