@@ -20,7 +20,9 @@
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch"
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run"
   },
   "dependencies": {
     "@emotion/eslint-plugin": "^11.7.0",

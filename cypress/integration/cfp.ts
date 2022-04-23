@@ -1,13 +1,21 @@
-describe('anonymous calculator;', () => {
-  it('can make calculations', () => {
-    // cy.clock()
-    const now = new Date('2021-04-19T08:00:00').getTime()
+describe('CFP Integration tests', () => {
+  it('Correctly handles the date', () => {
+    cy.visit('/')
+    cy.setConference('preCfp')
+    cy.openMenu()
 
-    // cy.clock(now)
-    // cy.wait('trying', { timeout: 10000 })
-    // cy.wait(10000)
-    cy
-      .visit('/')
-      .pause()
+    // Asset that we're unable to access the CFP
+    cy.findByRole('link', { name: 'CFP' }).should('not.exist')
+    cy.visit('/cfp')
+    cy.url().should('eq', 'http://localhost:3000/')
+
+    // Open the CFP
+    cy.setConference('cfpOpen')
+    cy.openMenu()
+
+    // Asset that we're able to access the CFP
+    cy.findByRole('link', { name: 'CFP' }).should('exist')
+    cy.visit('/cfp')
+    cy.url().should('eq', 'http://localhost:3000/cfp')
   })
 })
