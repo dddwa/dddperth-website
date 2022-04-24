@@ -24,6 +24,6 @@
     "baseUrl": ".",
     "incremental": true
   },
-  "exclude": ["node_modules", "./deploy/**", "next.config.js"],
+  "exclude": ["node_modules", "./deploy/**", "next.config.js", "cypress"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
