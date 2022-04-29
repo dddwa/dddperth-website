@@ -47,10 +47,10 @@ export const StyledSessionTitle = styled('h3')(({ theme }) => ({
   display: '-webkit-box',
   marginBlockEnd: theme.metrics.md,
   color: '#333',
-  fontSize: calcRem(20),
-  lineHeight: 1.1,
+  fontSize: calcRem(18),
+  lineHeight: 1.2,
   fontWeight: theme.weights.bold,
-  WebkitLineClamp: 3,
+  WebkitLineClamp: 5,
   WebkitBoxOrient: 'vertical',
   overflow: 'hidden',
 }))
