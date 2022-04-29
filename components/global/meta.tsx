@@ -4,6 +4,8 @@ import * as analytics from 'components/global/analytics'
 import { format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useConfig } from 'Context/Config'
+import getConferenceDates from 'config/dates'
+import dateTimeProvider from 'components/utils/dateTimeProvider'
 
 interface MetaArgs {
   pageTitle: string
@@ -20,10 +22,15 @@ declare global {
 const getTitle = (title: string, date: Date, name: string, showDate: boolean) =>
   `${title !== 'Home' ? title + ' - ' : ''}${name}${showDate ? ` | ${format(date, 'do MMMM yyyy')}` : ''}`
 
-export const Meta = ({ pageTitle, pageDescription, pageImage = '/static/images/logo.png' }: MetaArgs) => {
+export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
   const { conference, appConfig, dates } = useConfig()
   const { pathname } = useRouter()
   const [title, setTitle] = React.useState('')
+  const conferenceDates = getConferenceDates(conference, dateTimeProvider.now())
+  const ogImage =
+    pageImage || conference.Instance !== '2022' || conferenceDates.IsComplete
+      ? '/static/images/logo.png'
+      : '/static/images/logo-2022-og.jpg'
 
   React.useEffect(() => {
     setTitle(getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete))
@@ -52,8 +59,8 @@ export const Meta = ({ pageTitle, pageDescription, pageImage = '/static/images/l
       <meta property="og:description" content={pageDescription || conference.SiteDescription} />
       <meta name="twitter:description" content={(pageDescription || conference.SiteDescription).substring(0, 200)} />
       <meta name="author" content={conference.Organiser.Name} />
-      <meta property="og:image" content={pageImage} />
-      <meta property="twitter:image" content={pageImage} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="twitter:image" content={ogImage} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={conference.Name} />
       <meta name="twitter:creator" content={conference.Organiser.Name} />
