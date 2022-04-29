@@ -7,6 +7,8 @@ import {
   StyledEloChoice,
   StyledSessionTitle,
   StyledSessionAbstract,
+  StyledEloTagList,
+  StyledEloTag,
 } from './EloVote.styled'
 
 type EloVoteProps = {
@@ -60,6 +62,13 @@ function EloChoice({ session, variant = 'primary', onChoice }: EloChoiceProps) {
   return (
     <StyledEloChoice variant={variant}>
       <StyledSessionTitle>{session.Title}</StyledSessionTitle>
+      {session.Tags.length > 0 ? (
+        <StyledEloTagList>
+          {session.Tags.map((tag) => (
+            <StyledEloTag key={tag}>{tag}</StyledEloTag>
+          ))}
+        </StyledEloTagList>
+      ) : null}
       <StyledSessionAbstract>
         {paragraphs.map((para) => (
           <Text key={para}>{para}</Text>

@@ -88,3 +88,20 @@ export const StyledDrawButton = styled(Button)(({ theme }) => ({
   fontSize: theme.fonts.defaultSize,
   fontWeight: theme.weights.bold,
 }))
+
+export const StyledEloTagList = styled('ul')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  gap: calcRem(theme.metrics.xs),
+  marginBlockEnd: calcRem(theme.metrics.md),
+}))
+
+export const StyledEloTag = styled('li')(({ theme }) => ({
+  padding: calcRem(theme.metrics.xs, theme.metrics.md),
+  fontSize: theme.fonts.sizeSm,
+  lineHeight: 1,
+  backgroundColor: theme.colors.inverse,
+  borderRadius: 9999,
+  color: theme.colors.white,
+}))
