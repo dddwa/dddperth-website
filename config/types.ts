@@ -230,7 +230,7 @@ export interface Session {
   Tags: string[]
 }
 
-export type EloSession = Pick<Session, 'Id' | 'Title' | 'Abstract'>
+export type EloSession = Pick<Session, 'Id' | 'Title' | 'Abstract' | 'Tags'>
 
 export interface Presenter {
   Id: string
