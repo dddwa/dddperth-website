@@ -17,9 +17,17 @@ export interface TemplateProps {
   image?: string
   showHero?: boolean
   children?: React.ReactNode
+  showActionBar?: boolean
 }
 
-export const Template = ({ children, title, description, image, showHero }: TemplateProps): JSX.Element => {
+export const Template = ({
+  children,
+  title,
+  description,
+  image,
+  showHero,
+  showActionBar = true,
+}: TemplateProps): JSX.Element => {
   const { conference, appConfig, dates } = useConfig()
   const menu = Menu(conference, dates)
 
@@ -31,7 +39,7 @@ export const Template = ({ children, title, description, image, showHero }: Temp
         <Header />
         <Nav menu={menu.Top} />
       </NavigationProvider>
-      <ActionBar />
+      {showActionBar && <ActionBar />}
       {showHero && <Hero />}
       {children}
       <Footer />
