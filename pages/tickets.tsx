@@ -1,4 +1,3 @@
-import Error from 'next/error'
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
 import { FaqList } from 'components/FAQList/FaqList'
@@ -15,10 +14,6 @@ import { getCommonServerSideProps } from 'components/utils/getCommonServerSidePr
 const TicketPage: NextPage = () => {
   const { conference, dates } = useConfig()
   const faqs = getFaqs(dates)
-
-  if (!dates.RegistrationOpen && conference.TicketPurchasingOptions !== TicketPurchasingOptions.WaitListOpen) {
-    return <Error statusCode={404} />
-  }
 
   return (
     <Main title="Tickets" description={`Purchase tickets for ${conference.Name}`}>
