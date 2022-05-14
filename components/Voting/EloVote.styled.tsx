@@ -5,20 +5,25 @@ import { calcRem } from 'components/utils/styles/calcRem'
 
 export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: `repeat(2, minmax(${calcRem(80)}, 1fr))`,
-  gridTemplateRows: '100%',
+  gridTemplateColumns: `repeat(1, minmax(${calcRem(80)}, 1fr))`,
   gridColumn: '1 / -1',
   gap: theme.metrics.md,
   inlineSize: '100%',
   maxInlineSize: calcRem(965),
-  maxBlockSize: '60vh',
+  /*maxBlockSize: '60vh',*/
   paddingInlineStart: calcRem(theme.metrics.sm),
   paddingInlineEnd: calcRem(theme.metrics.sm),
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
+  overflowY: 'auto',
+  maxHeight: '75vh',
 
   [breakpoint('md')]: {
     gap: theme.metrics.lg,
+  },
+  [breakpoint('sm')]: {
+    gridTemplateColumns: `repeat(2, minmax(${calcRem(80)}, 1fr))`,
+    maxHeight: 'none',
   },
 }))
 
@@ -63,19 +68,30 @@ export const StyledSessionAbstract = styled('div')(({ theme }) => ({
 }))
 
 type StyledVoteButtonProps = {
-  kind: 'primary' | 'secondary'
+  kind: 'primary' | 'secondary' | 'tertiary'
 }
+
+export const StyledEloButtonContainer = styled('div')(() => ({
+  display: 'flex',
+  flexFlow: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+}))
 
 export const StyledVoteButton = styled(Button)<StyledVoteButtonProps>(({ theme, kind }) => ({
   alignSelf: 'center',
-  textTransform: 'uppercase',
-  borderRadius: calcRem(4),
+  //textTransform: 'uppercase',
+  borderRadius: `${kind == 'primary' ? calcRem(4) : 0} ${kind == 'secondary' ? calcRem(4) : 0}  ${
+    kind == 'secondary' ? calcRem(4) : 0
+  } ${kind == 'primary' ? calcRem(4) : 0}`,
   boxShadow: '2px 2px 0 0 rgba(0, 0, 0, 0.15)',
-  backgroundColor: kind === 'primary' ? theme.colors.primary : theme.colors.secondary,
+  backgroundColor: theme.colors[kind],
   color: theme.colors.white,
 
   '&:hover, &:focus': {
-    backgroundColor: kind === 'primary' ? theme.colors.primaryDark : theme.colors.secondaryDark,
+    // This is a bit of a hack, I'm sure there's a better way to do this but I want to just get this done so people better at NextJS
+    // can review it.
+    backgroundColor: theme.colors[kind + 'Dark'],
   },
 
   '&:focus': {
