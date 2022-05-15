@@ -15,7 +15,7 @@ export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
   overflowY: 'auto',
-  maxBlockSize: '75vh',
+  maxBlockSize: '65vh',
 
   [breakpoint('md')]: {
     gap: theme.metrics.lg,
