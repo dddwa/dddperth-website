@@ -7,7 +7,7 @@ import { useEffect, useReducer, useState } from 'react'
 import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
-import { StyledDrawButton } from 'components/Voting/EloVote.styled'
+import { StyledEloButtonContainer, StyledVoteButton } from 'components/Voting/EloVote.styled'
 import { PRIVACY_ACCEPTED } from 'components/Voting//VoteConst'
 
 type SessionPair = {
@@ -86,20 +86,47 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
   return (
     <Main title="Vote" description={`${conference.Name} voting page.`} showActionBar={false}>
       <EloVote
+        key={sessionPair.SubmissionA.Id + sessionPair.SubmissionB.Id}
         sessionA={sessionPair.SubmissionA}
         sessionB={sessionPair.SubmissionB}
         onSessionChoice={sessionChoiceHandler}
       />
 
-      <StyledDrawButton
-        kind="link"
-        type="button"
-        onClick={() => {
-          sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
-        }}
-      >
-        It's a Draw!
-      </StyledDrawButton>
+      <StyledEloButtonContainer>
+        <StyledVoteButton
+          kind="primary"
+          position="left"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
+            sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, false)
+          }}
+        >
+          Option 1
+        </StyledVoteButton>
+        <StyledVoteButton
+          kind="tertiary"
+          position="centre"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
+            sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
+          }}
+        >
+          It's a Draw!
+        </StyledVoteButton>
+        <StyledVoteButton
+          kind="secondary"
+          position="right"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
+            sessionChoiceHandler(sessionPair.SubmissionB, sessionPair.SubmissionA, false)
+          }}
+        >
+          Option 2
+        </StyledVoteButton>
+      </StyledEloButtonContainer>
     </Main>
   )
 }
