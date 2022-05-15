@@ -440,8 +440,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
-        the WA government instructions regarding COVID testing. We will also be livestreaming the conference, so you should be
-        able to tune in from home, if you're up to it. And never fear, we’ll be releasing recordings of all the talks so you
+        the WA government instructions regarding COVID testing. And never fear, we’ll be releasing recordings of all the talks so you
         can watch them back later once you’re recovered!
       </Fragment>
     ),
