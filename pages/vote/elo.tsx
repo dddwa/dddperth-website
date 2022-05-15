@@ -86,6 +86,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
   return (
     <Main title="Vote" description={`${conference.Name} voting page.`} showActionBar={false}>
       <EloVote
+        key={sessionPair.SubmissionA.Id + sessionPair.SubmissionB.Id}
         sessionA={sessionPair.SubmissionA}
         sessionB={sessionPair.SubmissionB}
         onSessionChoice={sessionChoiceHandler}
