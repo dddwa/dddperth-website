@@ -92,7 +92,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'What about swag?',
     Answer:
-      'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
+      'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We will have a small number of bags on offer if you need, but it is a good idea to bring your own bag.',
   })
 
   if (Conference.Venue && Conference.Venue.Wifi !== null) {
@@ -104,7 +104,13 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'Will childcare be available?',
-    Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference and is ${Conference.ChildcarePrice}. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+    Answer: (
+      <Fragment>
+        <p>Yes! Childcare is available for the duration of the main conference and is free. You will be required to provide food for your child for the day if they are under 12. If you would like to book your child in then click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.</p>
+        <p>In addition to childcare, we have an all day coding workshop for ages 12+, in collaboration with SheCodes. All children 12+ years of age are welcome to attend. If you would like to book your child in then click the Workshop link after purchasing your ticket. We will update this FAQ if we reach capacity.</p>
+        <p>DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference. Please ensure all attendees are registered.</p>
+      </Fragment>
+    ),
     Category: 'tickets',
   })
 
@@ -330,35 +336,9 @@ export default function getFaqs(dates: Dates): FAQ[] {
               Matt Ward
             </SafeLink>
           </li>
-          <li>Sarah McGeough</li>
-          <li>
-            <SafeLink href="https://twitter.com/ian_hughes" target="_blank">
-              Ian Hughes
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
-              Rob Moore
-            </SafeLink>
-          </li>
           <li>
             <SafeLink href="https://twitter.com/aidanjmorgan" target="_blank">
               Aidan Morgan
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
-              David Schokker
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/kristysachse" target="_blank">
-              Kristy Sachse
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/_vedusha_" target="_blank">
-              Vedusha Chooramun
             </SafeLink>
           </li>
           <li>
@@ -367,24 +347,21 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/al5848" target="_blank">
-              Allen Azemia
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/Caiwrote" target="_blank">
-              Cairo Malet
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/eleusis7" target="_blank">
-              Priyaj Sham Chukoury
-            </SafeLink>
-          </li>
-          <li>Nehal Ghuman</li>
-          <li>
             <SafeLink href="https://twitter.com/robdcrowley" target="_blank">
               Rob Crowley
+            </SafeLink>
+          </li>
+          <li>Ming Johanson</li>
+          <li>Rob Chard</li>
+          <li>Alex Colville</li>
+          <li>
+            <SafeLink href="https://twitter.com/eleusis7" target="_blank">
+              Sham Chukoury
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
+              Rob Moore
             </SafeLink>
           </li>
           <li>
@@ -392,7 +369,35 @@ export default function getFaqs(dates: Dates): FAQ[] {
               Anton Ball
             </SafeLink>
           </li>
-          <li>Deanne Blom</li>
+          <li>
+            <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
+              David Schokker
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://twitter.com/Caiwrote" target="_blank">
+              Cairo Malet
+            </SafeLink>
+          </li>
+          <li>Nehal Ghuman</li>
+          <li>Sarah McGeough</li>
+          <li>
+            <SafeLink href="https://twitter.com/meacod" target="_blank">
+              David Meacock
+            </SafeLink>
+          </li>
+          <li>Jamlek Ngaya</li>
+          <li>Ellie Salimi</li>
+          <li>Jett Soderlund-Jackson</li>
+          <li>Meng Dunmow</li>
+          <li>Marina de la Fuente</li>
+          <li>Carla Marinescu</li>
+          <li>
+            <SafeLink href="https://twitter.com/al5848" target="_blank">
+              Allen Azemia
+            </SafeLink>
+          </li>
+          <li>Andrew Logan</li>
         </StyledList>
         <p>Furthermore, we have many others who volunteer and have assisted with organisation in the past</p>
       </Fragment>
@@ -402,13 +407,13 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'Can I wear a face mask?',
     Answer: `Absolutely, we support any attendees who choose to wear a face mask on the day of the conference.`,
-    Category: 'covid',
+    Category: 'health',
   })
 
   Faqs.push({
     Question: 'Will you have sanitiser available at the conference?',
     Answer: `Yes! We'll have sanitising processes in place for all attendees on the day, and this includes providing hand sanitiser. However, we also encourage everyone to bring their own personal supply too, just in case!`,
-    Category: 'covid',
+    Category: 'health',
   })
 
   Faqs.push({
@@ -423,11 +428,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
         </p>
         <p>
           If you do miss something due to capacity limits, keep an eye out after the conference – we’ll be releasing
-          recordings of all the talks so you’ll have the opportunity to catch up on anything you missed!)
+          recordings of all the talks so you’ll have the opportunity to catch up on anything you missed!
         </p>
       </Fragment>
     ),
-    Category: 'covid',
+    Category: 'health',
   })
 
   Faqs.push({
@@ -435,16 +440,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
-        the WA government instructions regarding COVID testing. If you miss the conference due to illness, feel free to
-        pass your ticket along through Tito so it doesn’t go to waste. If you’re not able to pass it along, please email{' '}
-        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
-          {Conference.ContactEmail}
-        </a>{' '}
-        and we’ll issue a refund for your ticket. And never fear, we’ll be releasing recordings of all the talks so you
+        the WA government instructions regarding COVID testing. We will also be livestreaming the conference, so you should be
+        able to tune in from home, if you're up to it. And never fear, we’ll be releasing recordings of all the talks so you
         can watch them back later once you’re recovered!
       </Fragment>
     ),
-    Category: 'covid',
+    Category: 'health',
   })
 
   Faqs.push({
@@ -452,96 +453,45 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         <p>
-          If we move to an online conference, there will be some obvious differences – you’ll be logging in to
-          conference via an online platform rather than joining us in person at the PCEC, and we’ll be making some
-          tweaks to the agenda based on our speakers’ availability for the online conference.
+          We intend on hosting an in-person conference, while at the same time making the talks accessible online via high quality livestreams. This
+          should make it easier for those who can't make it to the venue on the day, for one reason or another. While we'll do our best
+          to recreate the DDD Perth <em>vibe</em> as best as we can via the streams, there are some parts of the in-person experience that may be missing.
         </p>
-        <p>
-          Outside of that, we’ve done our best to recreate the DDD Perth <em>vibe</em> as best we can, so you can
-          expect:
-        </p>
+        <p>What you can expect from the online experience:</p>
         <StyledList>
-          <li>High quality, pre-recorded talks from our speakers (no awkward “you’re on mute” moments)</li>
-          <li>Live Q&amp;A with our speakers during their talks</li>
+          <li>High quality, livestreamed talks from our speakers</li>
           <li>Breaks between talks so you’re not stuck in back to back sessions</li>
-          <li>Live welcomes and prize draws from the DDD Perth committee.</li>
+          <li>Live welcomes and prize draws from the DDD Perth committee</li>
+          <li>Participation with attendees and speakers - online or offline - via the #DDDPerth hashtag</li>
+        </StyledList>
+        <p>What you might not see online:</p>
+        <StyledList>
+          <li>Sponsor booths and swag, along with networking opportunities and sponsor prizes</li>
+          <li>Networking opportunities with fellow attendees and speakers, over a catered lunch, tea or coffee</li>
+          <li>The ability to ask speakers questions live at the end of their talks</li>
+          <li>Selfies at the media wall!</li>
         </StyledList>
       </Fragment>
     ),
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'Why will the conference move online?',
-    Answer: `We love our community and part of that means putting safety first.  The DDD Perth team are monitoring the COVID situation closely and will make the decision to move online if restrictions in the Perth metropolitan area will have a detrimental impact on our speakers and attendees.`,
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'When will we find out if the conference is going online?',
-    Answer: `Unfortunately, we can’t commit to a specific timeframe. We’re closely monitoring the COVID situation and aim to give attendees as much notice as possible if we move online, but we’ve all seen how rapidly the situation can change! We’ll will let the community know as soon as a decision is made - this could be anywhere from 2 weeks before the conference to the night before. We ask all attendees to keep on top of the WA Government COVID advice and check their emails regularly, especially the day and night before the conference and in the morning on August 14th before leaving the house to join us.`,
-    Category: 'covid',
+    Category: 'online',
   })
 
   Faqs.push({
     Question: 'How do I access the online conference?',
     Answer: `You’ll receive a link to access our online platform before the start of the conference. You’ll need a web browser to access the link but you won’t need to download any special software.`,
-    Category: 'covid',
+    Category: 'online',
   })
 
   Faqs.push({
     Question: 'What if I can’t attend the online conference?',
     Answer: `If you’re not able to attend the online conference, you’ll still get the chance to see our wonderful speakers! We’ll be releasing recordings of the talks online so you can watch them back later.`,
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'Can I get a refund if the conference moves online?',
-    Answer: (
-      <Fragment>
-        Unfortunately, we’re not able to offer refunds in the case that we move online. Our committee has put a lot of
-        effort into creating an online conference experience that’s as close to the DDD Perth <em>vibe</em> as we could
-        get, so we hope you’ll join us online.
-      </Fragment>
-    ),
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'I’m on the waitlist, can I come to the online conference?',
-    Answer: `Yes! The upside of going online is we don’t have the same capacity restrictions as in-person. If we make the decision to move online, we’ll re-open ticket sales and advise the waitlist, so anyone who missed out can purchase a ticket to join us and our speakers online.`,
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'Will talks be recorded for the online conference, or will they be live?',
-    Answer: (
-      <Fragment>
-        To minimise the potential for <em>technical problems</em>, we are pre-recording our speakers to be broadcast as
-        part of the online conference. We will still have our speakers available for live Q&amp;A while their talks are
-        broadcast, so you’ll have the opportunity to ask questions and pick their brains on their talk topic while their
-        talk is on.
-      </Fragment>
-    ),
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'Will the speakers be available for questions?',
-    Answer: `Yes! Our speakers will be answering questions and sharing their thoughts during their talks, so you can interact with them live while watching their talks.`,
-    Category: 'covid',
+    Category: 'online',
   })
 
   Faqs.push({
     Question: 'Will talks be available online after the conference?',
-    Answer: `Yes! Whether we go ahead in person or online, we’ll be releasing recordings of the talks so you can catch up on anything you may have missed on the day. One of the perks of preparing for a potential online conference is we’ll have high quality recordings ready to go, so no dodgy audio or bad lighting to contend with.`,
-    Category: 'covid',
-  })
-
-  Faqs.push({
-    Question: 'Will the Code of Conduct still apply to the online conference?',
-    Answer: `Absolutely. Our peacekeepers will be monitoring the online conference just as they would in-person and our online platform has technical protections in place that will assist us to enforce the Code of Conduct if needed.`,
-    Category: 'covid',
+    Answer: `Yes! We’ll be releasing recordings of the talks so you can catch up on anything you may have missed on the day.`,
+    Category: 'online',
   })
 
   return Faqs
