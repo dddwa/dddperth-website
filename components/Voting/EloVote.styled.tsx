@@ -10,20 +10,19 @@ export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
   gap: theme.metrics.md,
   inlineSize: '100%',
   maxInlineSize: calcRem(965),
-  /*maxBlockSize: '60vh',*/
   paddingInlineStart: calcRem(theme.metrics.sm),
   paddingInlineEnd: calcRem(theme.metrics.sm),
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
   overflowY: 'auto',
-  maxHeight: '75vh',
+  maxBlockSize: '75vh',
 
   [breakpoint('md')]: {
     gap: theme.metrics.lg,
   },
   [breakpoint('sm')]: {
     gridTemplateColumns: `repeat(2, minmax(${calcRem(80)}, 1fr))`,
-    maxHeight: 'none',
+    maxBlockSize: 'none',
   },
 }))
 
@@ -69,6 +68,7 @@ export const StyledSessionAbstract = styled('div')(({ theme }) => ({
 
 type StyledVoteButtonProps = {
   kind: 'primary' | 'secondary' | 'tertiary'
+  position: 'left' | 'centre' | 'right'
 }
 
 export const StyledEloButtonContainer = styled('div')(() => ({
@@ -78,19 +78,14 @@ export const StyledEloButtonContainer = styled('div')(() => ({
   alignItems: 'center',
 }))
 
-export const StyledVoteButton = styled(Button)<StyledVoteButtonProps>(({ theme, kind }) => ({
+export const StyledVoteButton = styled(Button)<StyledVoteButtonProps>(({ theme, kind, position }) => ({
   alignSelf: 'center',
-  //textTransform: 'uppercase',
-  borderRadius: `${kind == 'primary' ? calcRem(4) : 0} ${kind == 'secondary' ? calcRem(4) : 0}  ${
-    kind == 'secondary' ? calcRem(4) : 0
-  } ${kind == 'primary' ? calcRem(4) : 0}`,
+  borderRadius: position == 'left' ? `${calcRem(4)} 0 0 ${calcRem(4)}` : position === 'right' ? `0 ${calcRem(4)} ${calcRem(4)} 0` : 0,
   boxShadow: '2px 2px 0 0 rgba(0, 0, 0, 0.15)',
   backgroundColor: theme.colors[kind],
   color: theme.colors.white,
 
   '&:hover, &:focus': {
-    // This is a bit of a hack, I'm sure there's a better way to do this but I want to just get this done so people better at NextJS
-    // can review it.
     backgroundColor: theme.colors[kind + 'Dark'],
   },
 

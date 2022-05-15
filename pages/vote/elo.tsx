@@ -94,7 +94,10 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
       <StyledEloButtonContainer>
         <StyledVoteButton
           kind="primary"
-          onClick={() => {
+          position="left"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
             sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, false)
           }}
         >
@@ -102,7 +105,10 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
         </StyledVoteButton>
         <StyledVoteButton
           kind="tertiary"
-          onClick={() => {
+          position="centre"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
             sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
           }}
         >
@@ -110,7 +116,10 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
         </StyledVoteButton>
         <StyledVoteButton
           kind="secondary"
-          onClick={() => {
+          position="right"
+          onClick={(e) => {
+            e.currentTarget.blur()
+            window.scrollTo(0,0)
             sessionChoiceHandler(sessionPair.SubmissionB, sessionPair.SubmissionA, false)
           }}
         >
