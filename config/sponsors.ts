@@ -66,6 +66,13 @@ const goldSponsors: Sponsor[] = [
     name: 'Auth0',
     type: SponsorType.Gold,
     url: 'https://auth0.com',
+  },
+  {
+    id: 'makerx',
+    imageUrl: '/static/images/sponsors/makerX.png',
+    name: 'MakerX',
+    type: SponsorType.Gold,
+    url: 'https://makerx.com.au',
   }
 ]
 
