@@ -98,7 +98,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
           position="left"
           onClick={(e) => {
             e.currentTarget.blur()
-            window.scrollTo(0,0)
+            window.scrollTo(0, 0)
             sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, false)
           }}
         >
@@ -109,7 +109,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
           position="centre"
           onClick={(e) => {
             e.currentTarget.blur()
-            window.scrollTo(0,0)
+            window.scrollTo(0, 0)
             sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
           }}
         >
@@ -120,7 +120,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
           position="right"
           onClick={(e) => {
             e.currentTarget.blur()
-            window.scrollTo(0,0)
+            window.scrollTo(0, 0)
             sessionChoiceHandler(sessionPair.SubmissionB, sessionPair.SubmissionA, false)
           }}
         >

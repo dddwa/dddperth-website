@@ -9,8 +9,7 @@ interface FaqListProps {
 export const FaqList = ({ faqs }: FaqListProps) => (
   <div>
     {faqs.map((faq, i) => {
-      if (faq.Category != "online")
-        return <FaqDetail key={i} faq={faq} />
+      if (faq.Category != 'online') return <FaqDetail key={i} faq={faq} />
     })}
   </div>
 )
