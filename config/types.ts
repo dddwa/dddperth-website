@@ -171,6 +171,7 @@ export enum SponsorType {
   Silver,
   Gold,
   Platinum,
+  CoffeeCart,
   Service,
   Community,
 }

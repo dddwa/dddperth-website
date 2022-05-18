@@ -73,7 +73,7 @@ const goldSponsors: Sponsor[] = [
     name: 'MakerX',
     type: SponsorType.Gold,
     url: 'https://makerx.com.au',
-  }
+  },
 ]
 
 const silverSponsors: Sponsor[] = [
@@ -97,27 +97,34 @@ const silverSponsors: Sponsor[] = [
     name: 'elastic',
     type: SponsorType.Silver,
     url: 'https://www.elastic.co',
-  }
+  },
 ]
 
-const serviceSponsors: Sponsor[] = [
+const coffeeCartSponsors: Sponsor[] = [
   {
     id: '2021-moqdigital',
     imageUrl: '/static/images/sponsors/2021-moqdigital.png',
     name: 'MOQdigital',
-    serviceProvided: 'Coffee Cart',
-    type: SponsorType.Service,
+    type: SponsorType.CoffeeCart,
     url: 'https://www.moqdigital.com/',
   },
   {
     id: '2021-planit',
     imageUrl: '/static/images/sponsors/2021-planit.png',
     name: 'Planit',
-    serviceProvided: 'Coffee Cart',
-    type: SponsorType.Service,
+    type: SponsorType.CoffeeCart,
     url: 'https://www.planittesting.com/',
-  }
+  },
+  {
+    id: '2022-bunnings',
+    imageUrl: '/static/images/sponsors/2022-bunnings.png',
+    name: 'Bunnings',
+    type: SponsorType.CoffeeCart,
+    url: 'https://bunnings.com.au//',
+  },
 ]
+
+const serviceSponsors: Sponsor[] = []
 
 const communityPartners: Sponsor[] = []
 
@@ -125,6 +132,7 @@ const Sponsors: Sponsor[] = [
   ...platinumSponsors,
   ...goldSponsors,
   ...silverSponsors,
+  ...coffeeCartSponsors,
   ...serviceSponsors,
   ...communityPartners,
 ]
