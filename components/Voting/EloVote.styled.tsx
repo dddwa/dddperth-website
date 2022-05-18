@@ -80,7 +80,12 @@ export const StyledEloButtonContainer = styled('div')(() => ({
 
 export const StyledVoteButton = styled(Button)<StyledVoteButtonProps>(({ theme, kind, position }) => ({
   alignSelf: 'center',
-  borderRadius: position == 'left' ? `${calcRem(4)} 0 0 ${calcRem(4)}` : position === 'right' ? `0 ${calcRem(4)} ${calcRem(4)} 0` : 0,
+  borderRadius:
+    position == 'left'
+      ? `${calcRem(4)} 0 0 ${calcRem(4)}`
+      : position === 'right'
+      ? `0 ${calcRem(4)} ${calcRem(4)} 0`
+      : 0,
   boxShadow: '2px 2px 0 0 rgba(0, 0, 0, 0.15)',
   backgroundColor: theme.colors[kind],
   color: theme.colors.white,

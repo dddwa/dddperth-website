@@ -106,9 +106,20 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Will childcare be available?',
     Answer: (
       <Fragment>
-        <p>Yes! Childcare is available for the duration of the main conference and is free. You will be required to provide food for your child for the day if they are under 12. If you would like to book your child in then click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.</p>
-        <p>In addition to childcare, we have an all day coding workshop for ages 12+, in collaboration with SheCodes. All children 12+ years of age are welcome to attend. If you would like to book your child in then click the Workshop link after purchasing your ticket. We will update this FAQ if we reach capacity.</p>
-        <p>DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference. Please ensure all attendees are registered.</p>
+        <p>
+          Yes! Childcare is available for the duration of the main conference and is free. You will be required to
+          provide food for your child for the day if they are under 12. If you would like to book your child in then
+          click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.
+        </p>
+        <p>
+          In addition to childcare, we have an all day coding workshop for ages 12+, in collaboration with SheCodes. All
+          children 12+ years of age are welcome to attend. If you would like to book your child in then click the
+          Workshop link after purchasing your ticket. We will update this FAQ if we reach capacity.
+        </p>
+        <p>
+          DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference.
+          Please ensure all attendees are registered.
+        </p>
       </Fragment>
     ),
     Category: 'tickets',
@@ -440,8 +451,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
-        the WA government instructions regarding COVID testing. And never fear, we’ll be releasing recordings of all the talks so you
-        can watch them back later once you’re recovered!
+        the WA government instructions regarding COVID testing. And never fear, we’ll be releasing recordings of all the
+        talks so you can watch them back later once you’re recovered!
       </Fragment>
     ),
     Category: 'health',
@@ -452,9 +463,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         <p>
-          We intend on hosting an in-person conference, while at the same time making the talks accessible online via high quality livestreams. This
-          should make it easier for those who can't make it to the venue on the day, for one reason or another. While we'll do our best
-          to recreate the DDD Perth <em>vibe</em> as best as we can via the streams, there are some parts of the in-person experience that may be missing.
+          We intend on hosting an in-person conference, while at the same time making the talks accessible online via
+          high quality livestreams. This should make it easier for those who can't make it to the venue on the day, for
+          one reason or another. While we'll do our best to recreate the DDD Perth <em>vibe</em> as best as we can via
+          the streams, there are some parts of the in-person experience that may be missing.
         </p>
         <p>What you can expect from the online experience:</p>
         <StyledList>
