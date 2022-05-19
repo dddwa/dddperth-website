@@ -7,8 +7,10 @@ import { useEffect, useReducer, useState } from 'react'
 import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
-import { StyledEloButtonContainer, StyledVoteButton } from 'components/Voting/EloVote.styled'
+import { StyledEloButtonContainer, StyledEloLayoutSwitch, StyledVoteButton } from 'components/Voting/EloVote.styled'
 import { PRIVACY_ACCEPTED } from 'components/Voting//VoteConst'
+import { Button } from 'components/global/Button/Button'
+import { Text } from 'components/global/text'
 
 type SessionPair = {
   SubmissionA: EloSession
@@ -53,6 +55,9 @@ async function postPair(winningSessionId: string, losingSessionId: string, isDra
 
 export default function Elo({ sessions }: EloProps): JSX.Element {
   const { conference } = useConfig()
+
+  const [sideBySide, setSideBySide] = useState(true)
+
   const [sessionPair, setSessionPair] = useState<SessionPair>(sessions)
   const [nextPair, setNextPair] = useState<SessionPair | undefined>(undefined)
 
@@ -90,6 +95,7 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
         sessionA={sessionPair.SubmissionA}
         sessionB={sessionPair.SubmissionB}
         onSessionChoice={sessionChoiceHandler}
+        sideBySide={sideBySide}
       />
 
       <StyledEloButtonContainer>
@@ -127,6 +133,14 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
           Option 2
         </StyledVoteButton>
       </StyledEloButtonContainer>
+      <StyledEloLayoutSwitch>
+        <Text textAlign="center">
+          {sideBySide ? 'Prefer a different layout? ' : ''}
+          <Button kind="link" onClick={() => setSideBySide((s) => !s)}>
+            {sideBySide ? 'Try a stacked layout' : 'Go back to side-by-side'}
+          </Button>
+        </Text>
+      </StyledEloLayoutSwitch>
     </Main>
   )
 }

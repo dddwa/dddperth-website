@@ -3,9 +3,9 @@ import { Button } from 'components/global/Button/Button'
 import { breakpoint } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 
-export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
+export const StyledEloVoteContainer = styled('div')<{ sideBySide: boolean }>(({ theme, sideBySide }) => ({
   display: 'grid',
-  gridTemplateColumns: `repeat(1, minmax(${calcRem(80)}, 1fr))`,
+  gridTemplateColumns: `repeat(${sideBySide ? 2 : 1}, minmax(${calcRem(80)}, 1fr))`,
   gridColumn: '1 / -1',
   gap: theme.metrics.md,
   inlineSize: '100%',
@@ -121,3 +121,9 @@ export const StyledEloTag = styled('li')(({ theme }) => ({
   borderRadius: 9999,
   color: theme.colors.white,
 }))
+
+export const StyledEloLayoutSwitch = styled('div')({
+  [breakpoint('sm')]: {
+    display: 'none',
+  },
+})

@@ -14,9 +14,10 @@ type EloVoteProps = {
   sessionA: EloSession
   sessionB: EloSession
   onSessionChoice: (winningSession: EloSession, losingSession: EloSession) => void
+  sideBySide: boolean
 }
 
-export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): JSX.Element {
+export function EloVote({ sessionA, sessionB, onSessionChoice, sideBySide }: EloVoteProps): JSX.Element {
   function sessionChoiceHandler(session: EloSession['Id']) {
     const winner = session === sessionA.Id ? sessionA : sessionB
     const loser = session === sessionA.Id ? sessionB : sessionA
@@ -24,7 +25,7 @@ export function EloVote({ sessionA, sessionB, onSessionChoice }: EloVoteProps): 
   }
 
   return (
-    <StyledEloVoteContainer>
+    <StyledEloVoteContainer sideBySide={sideBySide}>
       <EloChoice
         key={sessionA.Id}
         session={sessionA}
