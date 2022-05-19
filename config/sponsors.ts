@@ -124,7 +124,16 @@ const coffeeCartSponsors: Sponsor[] = [
   },
 ]
 
-const serviceSponsors: Sponsor[] = []
+const serviceSponsors: Sponsor[] = [
+  {
+    id: '2022-keystart',
+    imageUrl: '/static/images/sponsors/2022-keystart.png',
+    name: 'Keystart',
+    type: SponsorType.Service,
+    serviceProvided: 'Quiet Room',
+    url: 'https://www.keystart.com.au/',
+  },
+]
 
 const communityPartners: Sponsor[] = []
 
