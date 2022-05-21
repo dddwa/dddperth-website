@@ -1,30 +1,38 @@
 import styled from '@emotion/styled'
 import { Button } from 'components/global/Button/Button'
-import { breakpoint } from 'components/utils/styles/breakpoints'
+import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 
-export const StyledEloVoteContainer = styled('div')(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: `repeat(1, minmax(${calcRem(80)}, 1fr))`,
-  gridColumn: '1 / -1',
-  gap: theme.metrics.md,
-  inlineSize: '100%',
-  maxInlineSize: calcRem(965),
-  paddingInlineStart: calcRem(theme.metrics.sm),
-  paddingInlineEnd: calcRem(theme.metrics.sm),
-  marginInlineStart: 'auto',
-  marginInlineEnd: 'auto',
-  overflowY: 'auto',
-  maxBlockSize: '65vh',
+export type LayoutVariant = 'stacked' | 'expanded'
 
-  [breakpoint('md')]: {
-    gap: theme.metrics.lg,
-  },
-  [breakpoint('sm')]: {
-    gridTemplateColumns: `repeat(2, minmax(${calcRem(80)}, 1fr))`,
-    maxBlockSize: 'none',
-  },
-}))
+type StyledEloVoteContainerProps = {
+  variant: LayoutVariant
+}
+
+export const StyledEloVoteContainer = styled('div')<StyledEloVoteContainerProps>(
+  ({ theme }) => ({
+    gridColumn: '1 / -1',
+    display: 'grid',
+    gap: theme.metrics.md,
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateRows: 'minmax(0, 1fr)',
+    maxInlineSize: calcRem(965),
+    paddingInlineStart: calcRem(theme.metrics.sm),
+    paddingInlineEnd: calcRem(theme.metrics.sm),
+    marginInlineStart: 'auto',
+    marginInlineEnd: 'auto',
+    maxBlockSize: '65vh',
+  }),
+  ({ variant }) => ({
+    [breakpointMax('md')]: {
+      blockSize: '100%',
+      maxBlockSize: variant === 'stacked' ? '75vh' : undefined,
+      gridTemplateColumns: 'unset',
+      gridTemplateRows: variant === 'stacked' ? 'repeat(2, minmax(0, 1fr))' : 'auto',
+      overflowY: 'auto',
+    },
+  }),
+)
 
 type StyledEloChoiceProps = {
   variant?: 'primary' | 'secondary'
@@ -33,7 +41,7 @@ type StyledEloChoiceProps = {
 export const StyledEloChoice = styled('div')<StyledEloChoiceProps>(({ theme, variant = 'primary' }) => ({
   display: 'flex',
   flexDirection: 'column',
-  padding: calcRem(theme.metrics.lg),
+  padding: calcRem(theme.metrics.md),
   paddingInlineStart: calcRem(12),
   paddingInlineEnd: calcRem(12),
   backgroundColor: 'rgba(86, 88, 91, 0.1)',
@@ -59,9 +67,8 @@ export const StyledSessionTitle = styled('h3')(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-export const StyledSessionAbstract = styled('div')(({ theme }) => ({
+export const StyledSessionAbstract = styled('div')(() => ({
   flex: 1,
-  marginBlockEnd: calcRem(theme.metrics.md),
   overflow: 'hidden',
   overflowY: 'auto',
 }))
@@ -120,4 +127,27 @@ export const StyledEloTag = styled('li')(({ theme }) => ({
   backgroundColor: theme.colors.inverse,
   borderRadius: 9999,
   color: theme.colors.white,
+}))
+
+export const StyledEloVoteFooter = styled('div')(() => ({
+  textAlign: 'center',
+}))
+
+export const StyledLayoutLabel = styled('label')(({ theme }) => ({
+  display: 'block',
+  marginBlockStart: calcRem(theme.metrics.sm),
+  textAlign: 'center',
+
+  input: {
+    display: 'none',
+  },
+
+  span: {
+    color: theme.colors.dddpink,
+    textDecoration: 'underline',
+  },
+
+  [breakpoint('md')]: {
+    display: 'none',
+  },
 }))

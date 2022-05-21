@@ -7,8 +7,17 @@ import { useEffect, useReducer, useState } from 'react'
 import { getSessionId } from 'components/global/analytics'
 import { logEvent, logException } from 'components/global/analytics'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
-import { StyledEloButtonContainer, StyledVoteButton } from 'components/Voting/EloVote.styled'
+import {
+  LayoutVariant,
+  StyledEloButtonContainer,
+  StyledEloVoteFooter,
+  StyledLayoutLabel,
+  StyledVoteButton,
+} from 'components/Voting/EloVote.styled'
 import { PRIVACY_ACCEPTED } from 'components/Voting//VoteConst'
+import Cookies from 'js-cookie'
+
+const LAYOUT_COOKIE = 'ddd-vote-layout'
 
 type SessionPair = {
   SubmissionA: EloSession
@@ -17,6 +26,7 @@ type SessionPair = {
 
 type EloProps = {
   sessions: SessionPair
+  userDefinedLayout?: LayoutVariant
 }
 
 async function fetchPair() {
@@ -51,13 +61,19 @@ async function postPair(winningSessionId: string, losingSessionId: string, isDra
   }
 }
 
-export default function Elo({ sessions }: EloProps): JSX.Element {
+export default function Elo({ sessions, userDefinedLayout = 'stacked' }: EloProps): JSX.Element {
   const { conference } = useConfig()
   const [sessionPair, setSessionPair] = useState<SessionPair>(sessions)
   const [nextPair, setNextPair] = useState<SessionPair | undefined>(undefined)
+  const [layoutVariant, setLayoutVariant] = useState<LayoutVariant>(userDefinedLayout)
 
   // this is effectively a "force update" to fetch another pair
   const [next, getNext] = useReducer((x) => x + 1, 0)
+
+  useEffect(() => {
+    Cookies.set(LAYOUT_COOKIE, layoutVariant, { expires: conference.VotingOpenUntil })
+    logEvent('voting', 'layout', { variant: layoutVariant })
+  }, [layoutVariant, conference.VotingOpenUntil])
 
   useEffect(() => {
     async function getPair() {
@@ -72,6 +88,12 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
 
   async function sessionChoiceHandler(winningSession: EloSession, losingSession: EloSession, isDraw = false) {
     await postPair(winningSession.Id, losingSession.Id, isDraw)
+    logEvent('voting', 'vote', {
+      variant: layoutVariant,
+      winningVote: winningSession.Id,
+      losingSession: losingSession.Id,
+      isDraw,
+    })
 
     if (typeof nextPair !== 'undefined') {
       setSessionPair(nextPair)
@@ -90,50 +112,67 @@ export default function Elo({ sessions }: EloProps): JSX.Element {
         sessionA={sessionPair.SubmissionA}
         sessionB={sessionPair.SubmissionB}
         onSessionChoice={sessionChoiceHandler}
+        layout={layoutVariant}
       />
 
-      <StyledEloButtonContainer>
-        <StyledVoteButton
-          kind="primary"
-          position="left"
-          onClick={(e) => {
-            e.currentTarget.blur()
-            window.scrollTo(0, 0)
-            sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, false)
-          }}
-        >
-          Option 1
-        </StyledVoteButton>
-        <StyledVoteButton
-          kind="tertiary"
-          position="centre"
-          onClick={(e) => {
-            e.currentTarget.blur()
-            window.scrollTo(0, 0)
-            sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
-          }}
-        >
-          It's a Draw!
-        </StyledVoteButton>
-        <StyledVoteButton
-          kind="secondary"
-          position="right"
-          onClick={(e) => {
-            e.currentTarget.blur()
-            window.scrollTo(0, 0)
-            sessionChoiceHandler(sessionPair.SubmissionB, sessionPair.SubmissionA, false)
-          }}
-        >
-          Option 2
-        </StyledVoteButton>
-      </StyledEloButtonContainer>
+      <StyledEloVoteFooter>
+        <StyledEloButtonContainer>
+          <StyledVoteButton
+            kind="primary"
+            position="left"
+            onClick={(e) => {
+              e.currentTarget.blur()
+              window.scrollTo(0, 0)
+              sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, false)
+            }}
+          >
+            Option 1
+          </StyledVoteButton>
+          <StyledVoteButton
+            kind="tertiary"
+            position="centre"
+            onClick={(e) => {
+              e.currentTarget.blur()
+              window.scrollTo(0, 0)
+              sessionChoiceHandler(sessionPair.SubmissionA, sessionPair.SubmissionB, true)
+            }}
+          >
+            It's a Draw!
+          </StyledVoteButton>
+          <StyledVoteButton
+            kind="secondary"
+            position="right"
+            onClick={(e) => {
+              e.currentTarget.blur()
+              window.scrollTo(0, 0)
+              sessionChoiceHandler(sessionPair.SubmissionB, sessionPair.SubmissionA, false)
+            }}
+          >
+            Option 2
+          </StyledVoteButton>
+        </StyledEloButtonContainer>
+        <StyledLayoutLabel>
+          <input
+            type="checkbox"
+            onChange={() => {
+              setLayoutVariant((value) => (value === 'expanded' ? 'stacked' : 'expanded'))
+            }}
+          />
+          Change layout? <span>{layoutVariant === 'stacked' ? 'Expand abstracts' : 'Stack talks'}</span>
+        </StyledLayoutLabel>
+      </StyledEloVoteFooter>
     </Main>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<EloProps> = async (context) => {
   const { dates } = getCommonServerSideProps(context)
   const isPrivacyAccepted = Boolean(context.req.cookies[PRIVACY_ACCEPTED])
+  const layoutCookie = context.req.cookies[LAYOUT_COOKIE]
+  const validLayouts: LayoutVariant[] = ['expanded', 'stacked']
+  const userDefinedLayout: LayoutVariant = [...(validLayouts as string[])].includes(layoutCookie)
+    ? (layoutCookie as LayoutVariant)
+    : 'stacked'
 
   if (!dates.VotingOpen) {
     return { notFound: true }
@@ -153,6 +192,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       sessions: data,
+      userDefinedLayout,
     },
   }
 }
