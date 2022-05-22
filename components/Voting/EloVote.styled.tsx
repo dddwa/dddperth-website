@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Button } from 'components/global/Button/Button'
+import { srOnly } from 'components/utils/styles/accessibility'
 import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 
@@ -138,9 +139,7 @@ export const StyledLayoutLabel = styled('label')(({ theme }) => ({
   marginBlockStart: calcRem(theme.metrics.sm),
   textAlign: 'center',
 
-  input: {
-    display: 'none',
-  },
+  input: srOnly,
 
   span: {
     color: theme.colors.dddpink,

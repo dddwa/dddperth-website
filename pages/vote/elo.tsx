@@ -55,7 +55,6 @@ async function postPair(winningSessionId: string, losingSessionId: string, isDra
       headers,
       body: JSON.stringify(body),
     })
-    logEvent('voting', 'elo', { sessionId: body.VoterSessionId })
   } catch (e) {
     logException('Error submitting vote', e, { sessionId: body.VoterSessionId })
   }
@@ -92,6 +91,8 @@ export default function Elo({ sessions, userDefinedLayout = 'stacked' }: EloProp
       variant: layoutVariant,
       winningVote: winningSession.Id,
       losingSession: losingSession.Id,
+      sessionA: sessionPair.SubmissionA.Id,
+      sessionB: sessionPair.SubmissionB.Id,
       isDraw,
     })
 
