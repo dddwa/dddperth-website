@@ -54,7 +54,14 @@ type EloChoiceProps = {
 
 function EloChoice({ session, variant = 'primary' }: EloChoiceProps) {
   const abstract = session.Abstract
-  const paragraphs = useMemo(() => abstract.split('\n').filter((para) => !!para), [abstract])
+  const paragraphs = useMemo(
+    () =>
+      abstract
+        .split('\n')
+        .map((para) => para.trim())
+        .filter((para) => para.length > 0),
+    [abstract],
+  )
 
   return (
     <StyledEloChoice variant={variant}>
