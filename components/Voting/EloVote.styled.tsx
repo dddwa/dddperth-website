@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Button } from 'components/global/Button/Button'
+import { Text } from 'components/global/text'
 import { srOnly } from 'components/utils/styles/accessibility'
 import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
@@ -72,6 +73,10 @@ export const StyledSessionAbstract = styled('div')(() => ({
   flex: 1,
   overflow: 'hidden',
   overflowY: 'auto',
+}))
+
+export const StyledAbstractText = styled(Text)(() => ({
+  whiteSpace: 'pre-wrap',
 }))
 
 type StyledVoteButtonProps = {
