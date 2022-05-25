@@ -32,11 +32,17 @@ export default function VoteLanding({ instance, votingFinished }: VoteLandingPro
         <StyledIntro>Here's how voting works:</StyledIntro>
         <Text>
           You'll be presented with a couple of talk options. Have a read of the abstract and simply select the talk
-          which sounds the best to you based on your interests. We'll keep showing you talks based on what you select,
-          and possibly throw some curve calls at you to keep things interesting.
+          which sounds the best to you based on your interests. If you really can't pick between the two, simply choose
+          "It's a draw!".
         </Text>
-        <Text>You can vote for as many or as little talks as you'd like. Every vote counts.</Text>
-        <Text>You'll be able to continuously vote through the voting period. Voting closes on {votingFinished}.</Text>
+        <Text>
+          Once you've made your selection, two new options will appear. You can continue to vote on the options presented
+          for as long as you like - every vote will count towards formulating the best agenda possible for this year.
+        </Text>
+        <Text>
+          Voting closes on {votingFinished}, so you have between now and then to have your say. You can leave and come back
+          any time until the closing day to get your votes in.
+        </Text>
         <Text>Happy Voting!</Text>
 
         <Text>
