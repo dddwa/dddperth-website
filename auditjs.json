@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    {
+      "id": "sonatype-2017-0717",
+      "reason": "In react package. This needs a react upgrade. Remove this when you upgrade React"
+    },
+    {
+      "id": "sonatype-2012-0022",
+      "reason": "express@4.17.3. Remove this after fixing the issue"
+    }
+  ]
+}

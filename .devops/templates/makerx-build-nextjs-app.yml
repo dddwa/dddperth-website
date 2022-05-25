@@ -68,7 +68,7 @@ stages:
             displayName: npm ci
             workingDirectory: $(sourceDirectory)
 
-          - script: npx auditjs@latest ossi
+          - script: npx auditjs@latest ossi  --whitelist auditjs.json
             displayName: Audit npm dependencies
             workingDirectory: $(sourceDirectory)
 
