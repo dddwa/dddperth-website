@@ -30,7 +30,9 @@ type EloProps = {
 }
 
 async function fetchPair() {
-  const resp = await fetch(process.env.NEXT_PUBLIC_ELO_PAIR)
+  const resp = await fetch(process.env.NEXT_PUBLIC_ELO_PAIR, {
+    credentials: 'include',
+  })
   const data = await resp.json()
 
   return data
