@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import { v4 as uuid } from 'uuid'
 import { EloVote } from 'components/Voting/Elo'
 import { EloSession } from 'config/types'
 import { useConfig } from 'Context/Config'
@@ -14,7 +15,7 @@ import {
   StyledLayoutLabel,
   StyledVoteButton,
 } from 'components/Voting/EloVote.styled'
-import { PRIVACY_ACCEPTED } from 'components/Voting//VoteConst'
+import { PRIVACY_ACCEPTED, ELO_VOTING_SESSION_ID } from 'components/Voting//VoteConst'
 import Cookies from 'js-cookie'
 
 const LAYOUT_COOKIE = 'ddd-vote-layout'
@@ -27,11 +28,14 @@ type SessionPair = {
 type EloProps = {
   sessions: SessionPair
   userDefinedLayout?: LayoutVariant
+  votingSessionId: string
 }
 
-async function fetchPair() {
+async function fetchPair(sessionId: string, sessionIdHeaderName = 'X-DDDPerth-VotingSessionId') {
   const resp = await fetch(process.env.NEXT_PUBLIC_ELO_PAIR, {
-    credentials: 'include',
+    headers: {
+      [sessionIdHeaderName]: sessionId,
+    },
   })
   const data = await resp.json()
 
@@ -62,11 +66,16 @@ async function postPair(winningSessionId: string, losingSessionId: string, isDra
   }
 }
 
-export default function Elo({ sessions, userDefinedLayout = 'stacked' }: EloProps): JSX.Element {
+export default function Elo({ sessions, votingSessionId, userDefinedLayout = 'stacked' }: EloProps): JSX.Element {
   const { conference } = useConfig()
   const [sessionPair, setSessionPair] = useState<SessionPair>(sessions)
   const [nextPair, setNextPair] = useState<SessionPair | undefined>(undefined)
   const [layoutVariant, setLayoutVariant] = useState<LayoutVariant>(userDefinedLayout)
+
+  useEffect(() => {
+    // the cookie is used for reloads, it is read in `getServerSideProps`
+    Cookies.set(ELO_VOTING_SESSION_ID, votingSessionId, { expires: 1 /* 1 day */ })
+  }, [votingSessionId])
 
   // this is effectively a "force update" to fetch another pair
   const [next, getNext] = useReducer((x) => x + 1, 0)
@@ -78,14 +87,14 @@ export default function Elo({ sessions, userDefinedLayout = 'stacked' }: EloProp
 
   useEffect(() => {
     async function getPair() {
-      const data = await fetchPair()
+      const data = await fetchPair(votingSessionId)
       setNextPair(data)
     }
 
     if (typeof nextPair === 'undefined') {
       getPair()
     }
-  }, [next, nextPair])
+  }, [next, nextPair, votingSessionId])
 
   async function sessionChoiceHandler(winningSession: EloSession, losingSession: EloSession, isDraw = false) {
     await postPair(winningSession.Id, losingSession.Id, isDraw)
@@ -172,6 +181,10 @@ export const getServerSideProps: GetServerSideProps<EloProps> = async (context) 
   const { dates } = getCommonServerSideProps(context)
   const isPrivacyAccepted = Boolean(context.req.cookies[PRIVACY_ACCEPTED])
   const layoutCookie = context.req.cookies[LAYOUT_COOKIE]
+
+  // if we don't have the cookie, initialise the value and it'll be passed to the frontend
+  const votingSessionId = context.req.cookies[ELO_VOTING_SESSION_ID] ?? uuid()
+
   const validLayouts: LayoutVariant[] = ['expanded', 'stacked']
   const userDefinedLayout: LayoutVariant = [...(validLayouts as string[])].includes(layoutCookie)
     ? (layoutCookie as LayoutVariant)
@@ -190,12 +203,13 @@ export const getServerSideProps: GetServerSideProps<EloProps> = async (context) 
     }
   }
 
-  const data = await fetchPair()
+  const data = await fetchPair(votingSessionId)
 
   return {
     props: {
       sessions: data,
       userDefinedLayout,
+      votingSessionId,
     },
   }
 }
