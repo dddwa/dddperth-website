@@ -105,6 +105,7 @@ export default function Elo({ sessions, votingSessionId, userDefinedLayout = 'st
       sessionA: sessionPair.SubmissionA.Id,
       sessionB: sessionPair.SubmissionB.Id,
       isDraw,
+      votingSessionId,
     })
 
     if (typeof nextPair !== 'undefined') {
