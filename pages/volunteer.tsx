@@ -9,7 +9,7 @@ import { VolunteerOpportunityList } from 'components/Volunteer/VolunteerOpportun
 const VolunteerPage: NextPage = () => {
   const { conference } = useConfig()
 
-  var webform = '';
+  let webform = '';
 
   if (conference.VolunteerSubmissionFormId) {
     webform = `
