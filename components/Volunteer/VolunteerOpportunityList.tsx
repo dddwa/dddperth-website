@@ -10,7 +10,7 @@ interface VolunteerOpportunityListProps {
 export const VolunteerOpportunityList = ({ opportunities }: VolunteerOpportunityListProps) => (
   <StyledList>
     {opportunities.map((opportunity, i) => {
-      return <li><VolunteerOpportunityDetail key={i} opportunity={opportunity} /></li>
+      return <li key={i}><VolunteerOpportunityDetail opportunity={opportunity} /></li>
     })}
   </StyledList>
 )
