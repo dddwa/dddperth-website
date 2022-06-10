@@ -15,6 +15,13 @@ const platinumSponsors: Sponsor[] = [
     type: SponsorType.Platinum,
     url: 'https://www.microsoft.com/en-au/',
   },
+  {
+    id: '2022-mantel-group',
+    imageUrl: '/static/images/sponsors/2022-mantel-group.png',
+    name: 'Mantel Group',
+    type: SponsorType.Platinum,
+    url: 'https://mantelgroup.com.au/',
+  },
 ]
 
 const goldSponsors: Sponsor[] = [
