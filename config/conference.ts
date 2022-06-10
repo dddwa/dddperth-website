@@ -273,6 +273,8 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
   ],
+
+  VolunteerSubmissionFormId: 'e23713d2-8c3a-411b-b22c-2f8528b77c88'
 }
 
 export default Conference

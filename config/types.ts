@@ -83,6 +83,8 @@ export interface Conference {
   RoomNames: string[]
 
   SessionGroups: SessionGroupWithIds[]
+
+  VolunteerSubmissionFormId?: string
 }
 
 export enum TicketPurchasingOptions {
@@ -241,4 +243,9 @@ export interface Presenter {
   ProfilePhotoUrl: string
   TwitterHandle?: string
   WebsiteUrl?: string
+}
+
+export interface VolunteerOpportunity {
+  RoleTitle: string
+  Description: string | JSX.Element
 }
