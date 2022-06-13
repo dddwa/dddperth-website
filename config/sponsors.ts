@@ -26,18 +26,11 @@ const platinumSponsors: Sponsor[] = [
 
 const goldSponsors: Sponsor[] = [
   {
-    id: '2021-vgw',
-    imageUrl: '/static/images/sponsors/vgw.png',
-    name: 'Virtual Gaming Worlds',
+    id: 'makerx',
+    imageUrl: '/static/images/sponsors/makerX.png',
+    name: 'MakerX',
     type: SponsorType.Gold,
-    url: 'https://www.vgw.co/',
-  },
-  {
-    id: '2021-valrose',
-    imageUrl: '/static/images/sponsors/2021-valrose.png',
-    name: 'Valrose',
-    type: SponsorType.Gold,
-    url: 'https://valrose.com.au/',
+    url: 'https://makerx.com.au',
   },
   {
     id: '2021-insight',
@@ -45,6 +38,13 @@ const goldSponsors: Sponsor[] = [
     name: 'Insight',
     type: SponsorType.Gold,
     url: 'https://au.insight.com/',
+  },
+  {
+    id: '2021-vgw',
+    imageUrl: '/static/images/sponsors/vgw.png',
+    name: 'Virtual Gaming Worlds',
+    type: SponsorType.Gold,
+    url: 'https://www.vgw.co/',
   },
   {
     id: '2021-versent',
@@ -68,18 +68,25 @@ const goldSponsors: Sponsor[] = [
     url: 'https://aws.amazon.com/',
   },
   {
+    id: '2021-valrose',
+    imageUrl: '/static/images/sponsors/2021-valrose.png',
+    name: 'Valrose',
+    type: SponsorType.Gold,
+    url: 'https://valrose.com.au/',
+  },
+  {
+    id: 'github',
+    imageUrl: '/static/images/sponsors/github.png',
+    name: 'GitHub',
+    type: SponsorType.Gold,
+    url: 'https://github.com',
+  },
+  {
     id: '2021-auth0',
     imageUrl: '/static/images/sponsors/2021-auth0.png',
     name: 'Auth0',
     type: SponsorType.Gold,
     url: 'https://auth0.com',
-  },
-  {
-    id: 'makerx',
-    imageUrl: '/static/images/sponsors/makerX.png',
-    name: 'MakerX',
-    type: SponsorType.Gold,
-    url: 'https://makerx.com.au',
   },
 ]
 
