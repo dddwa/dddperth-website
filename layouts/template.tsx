@@ -10,7 +10,6 @@ import Menu from 'config/menu'
 import { ActionBar } from 'components/ActionBar/ActionBar'
 import { Hero } from 'components/Hero/hero'
 import { useConfig } from 'Context/Config'
-import { PageBanner } from 'components/PageBanner/PageBanner'
 import { StyledPageBanner } from 'components/PageBanner/PageBanner.styled'
 
 export interface TemplateProps {
