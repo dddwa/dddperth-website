@@ -10,6 +10,8 @@ import Menu from 'config/menu'
 import { ActionBar } from 'components/ActionBar/ActionBar'
 import { Hero } from 'components/Hero/hero'
 import { useConfig } from 'Context/Config'
+import { PageBanner } from 'components/PageBanner/PageBanner'
+import { StyledPageBanner } from 'components/PageBanner/PageBanner.styled'
 
 export interface TemplateProps {
   title: string
@@ -18,6 +20,7 @@ export interface TemplateProps {
   showHero?: boolean
   children?: React.ReactNode
   showActionBar?: boolean
+  pageBanner?: string
 }
 
 export const Template = ({
@@ -27,6 +30,7 @@ export const Template = ({
   image,
   showHero,
   showActionBar = true,
+  pageBanner = null
 }: TemplateProps): JSX.Element => {
   const { conference, appConfig, dates } = useConfig()
   const menu = Menu(conference, dates)
@@ -41,6 +45,7 @@ export const Template = ({
       </NavigationProvider>
       {showActionBar && <ActionBar />}
       {showHero && <Hero />}
+      {pageBanner && <StyledPageBanner banner_image={pageBanner} />}
       {children}
       <Footer />
       {appConfig.testingMode() && <TestingControl />}
