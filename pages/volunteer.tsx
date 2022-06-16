@@ -1,7 +1,7 @@
 import React from 'react'
 import getVolunteerOpportunities from 'config/volunteerOpportunities'
 import { Text } from 'components/global/text'
-import { PageWithSidebar } from 'layouts/withSidebar'
+import { Main } from 'layouts/main'
 import { NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { VolunteerOpportunityList } from 'components/Volunteer/VolunteerOpportunityList'
@@ -37,7 +37,7 @@ const VolunteerPage: NextPage = () => {
   `;
   }
   return (
-    <PageWithSidebar title="Work With Us" description={`Work with us to organise the ${conference.Name} conference.`}>
+    <Main title="Work With Us" description={`Work with us to organise the ${conference.Name} conference.`} pageBanner="/static/images/volunteer-banner">
       <h1>Work With Us</h1>
       <Text>
         {conference.Name} cannot happen each year without a committed group of volunteers. There is heaps
@@ -45,17 +45,14 @@ const VolunteerPage: NextPage = () => {
       </Text>
       <Text>
         If you would like to be part of the community that makes {conference.Name} happen, check out our
-        current open volunteer opportunities - and sign up!
+        current open volunteer opportunities below - and sign up! On the form below, you can nominate your
+        interest in more than one role as well, if you're up to it.
       </Text>
-      <div>
-        <img src="/static/images/Rob-hi5.jpg" alt="Awesome" loading="lazy" />
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: webform }} />
-      <div>
-        <h2>Volunteer Opportunities</h2>
-        <VolunteerOpportunityList opportunities={getVolunteerOpportunities()} />
-      </div>
-    </PageWithSidebar >
+
+      <h2>Volunteer Opportunities</h2>
+      <VolunteerOpportunityList opportunities={getVolunteerOpportunities()} />
+      <div id="volunteer_form" dangerouslySetInnerHTML={{ __html: webform }}></div>
+    </Main >
   )
 }
 
