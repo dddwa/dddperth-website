@@ -29,7 +29,7 @@ export const Template = ({
   image,
   showHero,
   showActionBar = true,
-  pageBanner = null
+  pageBanner = null,
 }: TemplateProps): JSX.Element => {
   const { conference, appConfig, dates } = useConfig()
   const menu = Menu(conference, dates)
@@ -44,7 +44,7 @@ export const Template = ({
       </NavigationProvider>
       {showActionBar && <ActionBar />}
       {showHero && <Hero />}
-      {pageBanner && <StyledPageBanner banner_image={pageBanner} />}
+      {pageBanner && <StyledPageBanner bannerImage={pageBanner} />}
       {children}
       <Footer />
       {appConfig.testingMode() && <TestingControl />}
