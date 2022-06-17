@@ -55,8 +55,8 @@ export const StyledDescriptionBody = styled('div')(({ theme }) => ({
   '& > *:last-child': {
     marginBottom: 0,
   },
-
-  'div.btn': {
-    textAlign: 'right'
-  }
 }))
+
+export const StyledSignUpButtonContainer = styled('div')({
+  textAlign: 'end',
+})
