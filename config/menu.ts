@@ -66,6 +66,11 @@ export default function Menu(conference: Conference, dates: Dates): { Top: MenuI
     })
   }
 
+  topMenu.push({
+    href: '/volunteer',
+    name: 'Work With Us',
+  })
+
   return {
     Top: topMenu,
     Footer: [
