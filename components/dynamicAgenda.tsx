@@ -74,7 +74,7 @@ export const DynamicAgenda = ({
             >
               {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
                 <StyledUpNext>
-                  <h2>Up next</h2>
+                  <h2>Up next TODO: need to handle this bit</h2>
                   <StyledAgendaRow>
                     <AgendaTime time={nextSessionGroup.timeStart} />
                     {nextSessionGroup.sessions.map((session, index) => (
@@ -126,16 +126,20 @@ export const DynamicAgenda = ({
                             isKeynoteOrLocknote
                               ? (presenters) => (
                                   <StyledAgendaPresenter isKeynote>
-                                    {isLocknote ? 'Locknote' : 'Keynote: '}
+                                    {isLocknote ? 'Locknote: ' : 'Keynote: '}
                                     {presenters}
                                   </StyledAgendaPresenter>
                                 )
                               : undefined
                           }
                         >
-                          {isServiceSession && <StyledTrackHeader>{sessionizeSession.title}</StyledTrackHeader>}
-                          {isServiceSession && sessionizeSession.description && (
-                            <StyledAddress>{sessionizeSession.description}</StyledAddress>
+                          {!isServiceSession ? null : (
+                            <>
+                              {isServiceSession && <StyledTrackHeader>{sessionizeSession.title}</StyledTrackHeader>}
+                              {isServiceSession && sessionizeSession.description && (
+                                <StyledAddress>{sessionizeSession.description}</StyledAddress>
+                              )}
+                            </>
                           )}
                         </AgendaSession>
                       )
@@ -151,4 +155,4 @@ export const DynamicAgenda = ({
   )
 }
 
-DynamicAgenda.displayName = 'CurrentAgenda'
+DynamicAgenda.displayName = 'DynamicAgenda'
