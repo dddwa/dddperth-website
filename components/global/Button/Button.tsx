@@ -25,7 +25,15 @@ interface ButtonAnchorProps
   size?: Size
 }
 
-export const ButtonAnchor = ({ children, kind = 'secondary', size = 'normal', ...props }: ButtonAnchorProps) => (
+export const ButtonAnchor = React.forwardRef<HTMLAnchorElement, ButtonAnchorProps>(
+  ({ children, kind = 'secondary', size = 'normal', ...props }, ref) => (
+    <StyledButtonAnchor ref={ref} kind={kind} size={size} {...props}>
+      {children}
+    </StyledButtonAnchor>
+  ),
+)
+
+export const ButtonAnchorOld = ({ children, kind = 'secondary', size = 'normal', ...props }: ButtonAnchorProps) => (
   <StyledButtonAnchor kind={kind} size={size} {...props}>
     {children}
   </StyledButtonAnchor>
