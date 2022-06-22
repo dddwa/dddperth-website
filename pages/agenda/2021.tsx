@@ -27,16 +27,26 @@ import { Main } from 'layouts/main'
 import AllAgendas from 'components/allAgendas'
 
 import data from 'public/static/agenda/2021.json'
+import sessionizeGridSmart from 'public/static/agenda/2021_gridsmart.json'
+import { DynamicAgenda } from 'components/dynamicAgenda'
 
-type AgendaProps = {
-  sessions: Session[]
+type GridSmartResponse = typeof sessionizeGridSmart
+
+interface AgendaPageProps {
+  sessionizeGridSmart: GridSmartResponse
+  sessions?: Session[]
+  sessionId?: string
   date: string
   conferenceInstance: string
 }
 
-const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance }) => {
+const Agenda2021: NextPage<AgendaPageProps> = ({ sessions, sessionizeGridSmart, sessionId, conferenceInstance }) => {
   const { conference, dates } = useConfig()
-  const dateUTC = new Date(date)
+
+  const agenda = sessionizeGridSmart[0]
+  const dateUTC = new Date(agenda.date)
+  const slots = agenda.timeSlots
+  const rooms = agenda.rooms
 
   return (
     <Main
@@ -46,10 +56,20 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
       <div className="container">
         <h1>{conferenceInstance} Agenda</h1>
 
+        <DynamicAgenda
+          sessions={sessions}
+          selectedSessionId={sessionId}
+          acceptingFeedback={false}
+          date={dateUTC}
+          slots={slots}
+          rooms={rooms}
+          sponsors={From2021.Sponsors}
+          feedbackLink={undefined}
+        />
         <Agenda
           sessions={sessions}
           acceptingFeedback={false}
-          selectedSessionId={undefined}
+          selectedSessionId={sessionId}
           render={(agendaSessions, _, onSelect) => {
             return (
               <AgendaProvider
@@ -253,7 +273,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<AgendaPageProps> = async () => {
   const dateUTC = zonedTimeToUtc('2021-08-14T08:00', '+08:00').toJSON()
 
   return {
@@ -261,6 +281,7 @@ export const getStaticProps: GetStaticProps = async () => {
       sessions: data,
       date: dateUTC,
       conferenceInstance: '2021',
+      sessionizeGridSmart,
     },
   }
 }

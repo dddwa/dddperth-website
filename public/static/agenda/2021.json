@@ -1,6 +1,7 @@
 [
   {
     "Id": "620775e4-6179-4637-80c4-f59027d3c54b",
+    "ExternalId": "261426",
     "Title": "(Un)Anticipated Consequences: Rethinking artificial intelligence and automated systems",
     "Abstract": "From chatbots to electric cars our world is becoming increasingly connected. You can turn your lights on or watch what is happening in private homes from across the globe right from your phone. Elevators make supposedly smart decisions about how best to deliver people to their floors and smart sensors tell us what speed the traffic should flow.\r\n\r\nWe all work on, in, or around technology every day of our lives. Despite our best intentions, we sometimes build systems with the potential for great harm. Visual recognition systems have mistaken a man for a monkey, a chemical plant that nearly levelled a community or a safety system that led to stalking.\r\n\r\nHow is it, the tiny little decisions we make every day can lead to some rather unpleasant outcomes? This talk will explore how our systems are designed, built, maintained, and decommissioned and what can go wrong when we don’t consider where our decisions may lead. It poses some simple questions we can begin to ask ourselves, the companies we work for, and those we buy products from, in order to help us build a safer, fairer, and more equitable world; a world we all want to live in. ",
     "Format": "45 mins",
@@ -20,6 +21,7 @@
   },
   {
     "Id": "ca8d113d-38c6-4042-a006-03f2add9ead4",
+    "ExternalId": "261365",
     "Title": "Animation - a Whole Lottie Tools out There",
     "Abstract": "Little bits of animation make websites and mobile UI \"pop!\" They can add fun and clarity to your UI's micro-interactions.\r\n \r\nLottie is a popular file format for simple vector animations, that's grown to an entire ecosystem. It can be used in websites that have JS enabled as well as native apps.\r\n\r\n This is NOT a talk about Adobe tools but about the cheaper alternatives that make Lottie more accessible to designers and developers. \r\n\r\nRequired: willingness to dabble\r\nOptional: love of visual puns and silliness\r\nUseful: experience with any drawing app",
     "Format": "20 mins",
@@ -39,6 +41,7 @@
   },
   {
     "Id": "798f295f-a38e-49cf-98ad-a3bf4b513b7a",
+    "ExternalId": "261414",
     "Title": "ASX Trading vs. Machine Learning – ML Ops by accident",
     "Abstract": "Trading shares is a complex proposition. There is potentially an enormous volume of information to consider, news articles, announcements, economic indicators, world events and even the time of day. How can anyone distil all of that into a successful trade? What if there was a way to “consider” data and determine if it was tradeable, that is, can be used to make profitable share trades? Enter machine learning!\r\n \r\nIn this talk, we will explore how to use machine learning models to decide what shares to trade and when while wading through a daunting array of disparate data types. With this base level of shared understanding established, we will explore techniques of how to run machine learning at scale as well as practical techniques to automate the creation, development, scoring and deployment of machine learning models. Hope to see you there!",
     "Format": "20 mins",
@@ -58,6 +61,7 @@
   },
   {
     "Id": "3cc93f61-ef21-4a8a-ac91-645c1bca3f16",
+    "ExternalId": "261446",
     "Title": "Build-a-[Mal]bear",
     "Abstract": "TDD, dependency injection, DevOps – buzz-words galore! We constantly hear about how these practices improve software maintainability, increase productivity, and reduce time-to-ship. But what if these practices were applied to malicious software development? In this presentation, I walk through my journey building a real-world ransomware payload which was ultimately executed in multiple production networks, as part of a cyber security exercise.",
     "Format": "20 mins",
@@ -77,6 +81,7 @@
   },
   {
     "Id": "c04dc773-feaa-4c07-8aab-7e7598e58c48",
+    "ExternalId": "256294",
     "Title": "Building a 6 million request per second web server",
     "Abstract": "And to be clear this is not a cluster of web servers.  This talk is about a single web server servicing 6 million requests per second.\r\n\r\nI'm the author of a web server that is ranked in the top 20 of the TechEmpower benchmarks.  These benchmarks performance test various web servers built in any technology.  All the web servers are pitted against each other and the results published yearly.  While some might question the value of performance testing, Microsoft supports these benchmarks after having been called out to improve their IIS performance.\r\n\r\nThis talk goes into the engineering of how to service 6 million requests per second.  This is definitely a technical presentation, as we deep dive into performant software on multi-core hardware. If you want warm and fuzzy soft skills, I highly recommend going elsewhere.  This is a hard skill technical presentation that will enable even junior developers to obtain an appreciation for the engineering required for high performance applications.\r\n\r\nWhat you get out of this talk is an appreciation for what high performant software looks like.  It will highlight key bottlenecks you can avoid in your everyday software practices to improve the performance of the systems you build.  It will also debunk much of the thinking about how to write performant software.  I hear so many developers concerned about certain performance aspects of software, missing simple key things that are significantly more important.",
     "Format": "20 mins",
@@ -96,6 +101,7 @@
   },
   {
     "Id": "83cc08fb-f422-42b3-bb7b-300e75cd1728",
+    "ExternalId": "261169",
     "Title": "Bye bye YAML, painless Kubernetes deployments with CDK8s",
     "Abstract": "AWS CDK has revolutionised the developer experience and significantly improves productivity when deploying AWS resources compared to writing CloudFormation YAML. CDK allows developers to model application infrastructure using familiar programming languages, IDE’s, testing tools, and workflow patterns. I was very relieved to learn the same is possible for Kubernetes using CDK8s and I never need to write another YAML manifest ever again.\r\n\r\nI’ll show how CDK8s can be combined with CDK to spin up an AWS EKS cluster, generate Kubernetes manifests and apply them to the cluster without the headaches of writing any YAML.",
     "Format": "45 mins",
@@ -115,6 +121,7 @@
   },
   {
     "Id": "270889cf-405a-4422-ac97-c4e9bc1f7d8c",
+    "ExternalId": "260914",
     "Title": "Embedding Cybersecurity into your Business Culture",
     "Abstract": "To contend with hackers, you have to think like one. What are the easiest entry points?  \r\n\r\nBeing in the technology-oriented industry, we often get so fascinated by security practices used for developing, testing, and deploying the applications that we forget the most unpredictable cyber-security factor: humans (not machines).  \r\n\r\nAt this talk, you will discover some useful tactics to embed cybersecurity as a part of your business culture. Also, sharing some great examples, and examples of disasters. ",
     "Format": "20 mins",
@@ -134,6 +141,7 @@
   },
   {
     "Id": "cc7b2e63-3eca-4c0a-8205-117e5a53dfc5",
+    "ExternalId": "256700",
     "Title": "Embracing the unknown while working backwards, how Amazon product teams innovate",
     "Abstract": "Businesses often want to enlist talent that will come to them with \"genius\" ideas on how to improve their business or generate more revenue for them. Designers, Product Owners, and Develpoers are often asked how to make products \"loveable\" or create new innovative solutions that \"delight\" customers. Trouble is, at the start of a project most builders don't know anything about the customers who they are building the project for.\r\n\r\nThis talk focuses on how to embrace your own lack of end-user industry expertise, adopt an experiment driven to identify the most important customer benefit of any solution and pivot from an assumption to a data driven product definition. This talk will take you through the process that is used by product teams at Amazon and other global enterprise companies to work backwards from the needs of the customer while reinforcing the value of user feedback to stakeholders.",
     "Format": "45 mins",
@@ -153,6 +161,7 @@
   },
   {
     "Id": "774715b2-dd53-48fc-a144-80df9325eea9",
+    "ExternalId": "259036",
     "Title": "Everything is a Feature Toggle",
     "Abstract": "High performing teams require the ability to deploy code to production on demand, multiple times a day. Continuous delivery techniques such as trunk-based development have demanded the use of patterns that reduce batch size and deployment risk.\r\n\r\nFeature Toggles have emerged as a powerful pattern for enabling developers to deploy to production on-demand with confidence. Most developers will use the Feature Toggle pattern in some form through their journey - sometimes without being aware of it.\r\n\r\nIn this talk, I propose the question; what exactly is a Feature Toggle? What happens if we apply the definition to all code? Could the definition of a feature toggle be broader than most expect?",
     "Format": "45 mins",
@@ -172,6 +181,7 @@
   },
   {
     "Id": "a1765cb1-a194-470d-8654-213e44afe5ba",
+    "ExternalId": "257586",
     "Title": "From start-up founder to Fortune 500 and back again: What I’m doing differently this time",
     "Abstract": "I quit my job at Microsoft to found a start-up in a pandemic. I have the confidence to do this because it’s not my first venture.\r\n\r\nThis talk will explore the lessons I learned from founding my original start-ups, exiting those businesses, working for one of the world’s biggest companies — and then leaving to do it all again.\r\n\r\nThere are some lessons that only experience (read: failure!) can teach us, but there are definitely philosophies and hints that can make life easier for anyone considering starting a business of their own. I’ll be sharing insights into what I wish I knew at every stage of my career and the things I’ll be doing differently as a founder this time around.",
     "Format": "45 mins",
@@ -191,6 +201,7 @@
   },
   {
     "Id": "63183d8b-2e1e-4675-9316-5278a63f8ab7",
+    "ExternalId": "261349",
     "Title": "Functional Domain Modelling in F# (and C# 9)",
     "Abstract": "Functional programming has a reputation for being better at algorithms and logic than business entities and domain models.\r\n\r\nHowever, F# offers a fantastic set of data modelling capabilities that enable you to model your domain more accurately, reliably and concisely than the standard object-oriented approach.\r\n\r\nIf you can’t use F#, the latest version of C# can employ similar techniques and the talk will show examples in both languages.",
     "Format": "45 mins",
@@ -210,6 +221,7 @@
   },
   {
     "Id": "1a67c372-f559-4713-8937-9d67646e23f7",
+    "ExternalId": "259762",
     "Title": "How to design tutorials your users won't ignore",
     "Abstract": "Do you ever find tutorials annoying and think you're smart enough to figure things out on your own?\r\nThen after skipping the tutorial get frustrated with the website/app/game because you can't figure something out?\r\nHear from a former teacher about how people learn and how to use this knowledge to make effective tutorials. \r\nThis presentation will cover topics like:\r\nRepeating information in different ways\r\nProviding information just in time\r\nAttention span and working memory\r\n\r\nThese tips and tricks from cognitive science can help you design tutorials your users won't ignore. \r\n",
     "Format": "20 mins",
@@ -229,6 +241,7 @@
   },
   {
     "Id": "443bd0ee-bef3-4fe7-aa95-8b08782e248e",
+    "ExternalId": "256312",
     "Title": "Lets build a CarPlay app",
     "Abstract": "CarPlay is an extension of iOS that enables a car's infotainment system to display and control a range of apps. As using a phone while driving is illegal and dangerous, how can Apple ensure CarPlay apps are safe to use in the complex driving environment?\r\n\r\nIn order to ensure apps provide quick and clear information, Apple enforces various rules and processes when developing CarPlay functionality. During this presentation I will give an overview of how CarPlay works and how to develop an app with simplistic CarPlay functionality.",
     "Format": "20 mins",
@@ -248,6 +261,7 @@
   },
   {
     "Id": "ed54a247-f530-4057-8000-04fd82d08be1",
+    "ExternalId": "261306",
     "Title": "Moving the needle on diversity in tech - a candid conversation",
     "Abstract": "We've got a Iot of work to do to increase diversity in tech. There's a number of things we can do as individuals (all genders) and organisations to help move the needle. Join me in a safe place to have candid and raw conversation about the challenges we all face and some practical tips to help you navigate what can sometimes feel like a political landmine!\r\n\r\n",
     "Format": "45 mins",
@@ -267,6 +281,7 @@
   },
   {
     "Id": "3560629c-36cd-4dd7-91cf-7d3f00dba047",
+    "ExternalId": "261125",
     "Title": "Practical Performance",
     "Abstract": "A rapid 10x growth in our customer base was wonderful for our company but caused stress on our systems and engineers. Mongo is on fire! Redis is on fire! The network is saturated! These are but a few of the scalability problems we encountered.\r\n\r\nTime again, how could we have avoided the pain? Can we embed performance-centric practices in our daily routines?\r\n\r\nPerformance is often a misinterpreted and unloved responsibility of the modern software engineer. Terms like “premature optimisation” can discourage us to consider the performance implications of the software we write. Additionally, many higher-level abstractions and tools we use have a less visible performance cost. I won’t mention time pressure nor agile!\r\n\r\nIn this session, we review performance principles and practices, and how they relate to common (and very real and experienced!) performance issues. I wrap it up by suggesting some simple means to embed performance practices in the daily routine. \r\n\r\nThe hope is to be blissfully unaware that a performance issue has been avoided through good practices!\r\n\r\n",
     "Format": "45 mins",
@@ -286,6 +301,7 @@
   },
   {
     "Id": "18c9f6a2-2655-4242-8535-cf61c1605cb9",
+    "ExternalId": "259766",
     "Title": "Product Ownership - what is it?",
     "Abstract": "In an world where agile teams keep popping up we hear the term Product Owner, but do we know what it means?\r\n\r\nHave you heard the term product owner? Have you every wondered what it is they own? Do you work with one? Do you want to be one?\r\n\r\nMore often Businesses are getting scrum masters to act as Product Owners or creating agile teams without a true Product Owner. How do we increase the understanding of how effective this role can be in an agile team in making sure we achieve the outcomes that customers love.\r\n\r\nThis talk will help you understand what a product owner is at it’s core and how to navigate the common challenges in both being one and working with one.",
     "Format": "45 mins",
@@ -314,6 +330,7 @@
   },
   {
     "Id": "46cde2ca-8b44-4ff5-9b82-ad3c41a2b329",
+    "ExternalId": "271165",
     "Title": "Return code < human error >",
     "Abstract": "In a world where ransomware can be bought for a couple of dollars and we stand in the throes of a global pandemic, we now learn that over 70% of us are comfortable with restricting peoples’ freedoms to keep Australia safe.\r\n\r\n“Quite an experience to live in fear, isn't it?” Is it inevitable that we hand over our agency or can understanding human performance help save us from cyber crime?",
     "Format": "30 mins",
@@ -333,6 +350,7 @@
   },
   {
     "Id": "cf16b808-ac70-463a-90cc-512b68042962",
+    "ExternalId": "261107",
     "Title": "Show Your Work - Using Data Science to Peek inside the Black Box",
     "Abstract": "As machine learning becomes increasingly integral to decisions that affect health, safety, economic wellbeing, and other aspects of people's lives, it's important to be able to understand how models make predictions; and to be able to explain the rationale for machine learning based decisions.\r\n\r\nIn this session you will learn how to:\r\n\r\n* Interpret global and local feature importance.\r\n* Use an explainer to interpret a model.\r\n* Create model explanations in a training experiment.\r\n* Visualize model explanations.",
     "Format": "45 mins",
@@ -361,6 +379,7 @@
   },
   {
     "Id": "0a75760c-a5f0-4ce2-b942-e3cff923182e",
+    "ExternalId": "261431",
     "Title": "Stop writing tests",
     "Abstract": "Writing tests is one of the best ways to build confidence in releasing our software. It's so useful that many people advocate for test-driven development (TDD) where you write the tests before writing any code. So why would I suggest not writing tests at all?\r\n\r\nThe tests we write now aren't good enough -- we miss things or make mistakes, so for the same reason we've automated so many other processes, it's better to let a computer do it. In this talk we will go over some ways to use formal methods like finite state machines that allow tests to be generated, rather than hand-written and how that will save you time and result in better tests and more confidence in your releases.",
     "Format": "20 mins",
@@ -380,6 +399,7 @@
   },
   {
     "Id": "dec643ab-4886-4ac5-8f2c-452f945174ae",
+    "ExternalId": "261106",
     "Title": "Stringly-Typed to Strongly-Typed with TypeScript",
     "Abstract": "Stringly-typed code. It lurks inside quotation marks in source code, opaque to most to IDE tools, waiting for the unwary developer to rename or refactor something in their codebase. Everything builds and the app is deployed, only to throw runtime errors about references to non-existing HTTP endpoints, CSS classes, database tables, or asset files.\r\n\r\nIn this talk, we'll look at the dangers of stringly-typed code. We'll see how it saps confidence in code changes, making codebases brittle. We'll look for solutions to these issues, using TypeScript to turn opaque strings into well-checked values that can be refactored with confidence.",
     "Format": "45 mins",
@@ -399,6 +419,7 @@
   },
   {
     "Id": "97b4e034-985f-4cc7-bbe2-a1cb22d611a9",
+    "ExternalId": "261410",
     "Title": "The Billion Event Challenge",
     "Abstract": "Event sourcing is popular for many reasons, but it’s easy to rack up databases of millions, hundreds of millions, sometimes billions of events. Turning these events into useful read models requires lots of processing, but what if we can’t afford to wait a day?\r\n\r\nLet’s go on a journey into building high performance read models from the simple to the downright silly. Let’s see how fast we can process 1 billion events.",
     "Format": "45 mins",
@@ -418,6 +439,7 @@
   },
   {
     "Id": "c06c0dd2-224e-4137-abbd-6fe25177a7b0",
+    "ExternalId": "260665",
     "Title": "The Computer Science Behind Colour",
     "Abstract": "We all use colours. Maybe you are a seasoned front end developer or designer, your custom terminal colour scheme is something to behold, or perhaps your small child (or you) is currently going through a finger painting stage. Regardless of what part of tech you work in, you have encountered a situation when you've had to select some colours. The question is, when you pick a colour on a colour wheel or type in a hex or RGB code, how does that colour actually appear on the screen?\r\n\r\nCome and learn about the Computer Science of colour with me. In this talk, we're going to dig deeper into hex codes. What do they mean, how and why do they get converted to RGB codes, and how does a computer use that to generate a colour we can see? We'll unpack it all by learning binary, enjoying a #throwback to mixing paint in kindergarten, and taking a much closer look at the human eye.\r\n\r\nYou will leave this talk with a whole new appreciation and understanding for the science behind something as simple as colour, something you have likely never thought twice about. This talk is not just for designers and front end developers, there is something interesting for everyone to learn here.",
     "Format": "45 mins",
@@ -437,6 +459,7 @@
   },
   {
     "Id": "616cf974-4922-4fe4-8b2a-23bff247f4ce",
+    "ExternalId": "261412",
     "Title": "Unleash Your Inner CTO!",
     "Abstract": "The role of a technology leader has never been more challenging. We are in the midst of unprecedented technological change and yet keeping abreast of such advances alone will not guarantee success. Faced with such myriad options how can we be sure that we are guiding our organisation on the path towards future success?\r\n\r\nIn this talk, we will take an in-depth look at what it takes to create an adaptive technology strategy including metrics, team topologies and evolutionary architecture practices.  We'll explore how to build feedback loops into your organisation’s technology decisions and ensure that its architecture is an accelerator rather than an inhibitor of business agility:\r\n\r\n* How to identify and measure key business-aligned metrics and use these data points to pivot your technology strategy.\r\n* How to enable effective distributed technology decisions across your organisation\r\n* How to build organisational memory surrounding technology decisions that can act as inputs into new decisions.\r\n\r\nBy the end of the session, you will not only understand what is involved in creating a data-informed technology strategy but also have the knowledge to put it into practice. If you want to take to your expertise in crafting effective technology strategies to the next level, then this is the session for you. See you there!",
     "Format": "45 mins",
@@ -456,6 +479,7 @@
   },
   {
     "Id": "ea671390-b7db-4b36-80c9-07b28973142f",
+    "ExternalId": "261278",
     "Title": "What can Indigenous thinking teach us about building sophisticated ethical technology?",
     "Abstract": "Technology moves rapidly. We've learned to move fast and break things, but this method of production often has unintended consequences; machines causing algorithmic harm towards already marginalised groups, a digital economy built to extract data and incrementally influence human behaviour with dubious consent, cryptocurrency contributing harmful emissions and cooking the planet at the same rate as a small country.\r\n\r\nWorking in the tech industry is a privilege and I want to use that good fortune to contribute to a future that is designed to enhance the wellbeing of as many people as possible - not extract and exploit. The sophistication of Indigenous thinking can not only help us build more robust ethical frameworks, but also help unlock the next frontier of technological development.\r\n\r\nIn Australia, we have the privilege of living amongst the world's oldest continuing culture. A culture that has transferred information between generations for 10s of 1000s of years with incredible fidelity does not happen by accident; it involves knowledge of living harmoniously with complex adaptive systems that Western science is slowly catching up to. \r\n\r\nWhat kind of protocols can we learn from Indigenous ways of thinking that can help us build better ethical practices for building technology? How can we optimise for wellbeing and abundance, rather than the kind of limitless growth that is at odds with a healthy planet? \r\n",
     "Format": "45 mins",
@@ -475,6 +499,7 @@
   },
   {
     "Id": "0b404590-9503-42ac-9e66-bf49adc4496f",
+    "ExternalId": "270646",
     "Title": "Your Unique Journey",
     "Abstract": "We spend a significant portion of our lifespans focussing on our careers; a journey that is uniquely yours – your full self, and your experiences. We will reflect on things in your career that have shaped you as a person, and help you to appreciate all the things you may not have realised that you brought to the table.",
     "Format": "30 mins",
@@ -494,6 +519,7 @@
   },
   {
     "Id": "b555388f-5f27-42cb-9a01-266bfcc69464",
+    "ExternalId": "256985",
     "Title": "Yuck… Difficult Conversations & Feedback",
     "Abstract": "Have you ever avoided a conversation because it was too difficult only for it to blow up in your face later down the track? I know I certainly have… Unfortunately, every difficult conversation that is avoided is a missed opportunity. If we equip ourselves with the knowledge and confidence to respectfully handle these conversations, we can really enable growth and opportunities to those involved.  \r\n\r\nWe humans are complex creatures; this presentation covers our delightful complexities and how they contribute to the difficulty of conversations, coupled with a framework and tips that will help you feel more confident and empowered to have them.  \r\n\r\nLet’s make these conversations less terrifying and frame them in a positive light that ensures you maintain strong relationships whilst enabling growth. ",
     "Format": "45 mins",
