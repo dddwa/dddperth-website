@@ -1,6 +1,5 @@
 import React from 'react'
-import { CacheProvider, Global, ThemeProvider } from '@emotion/react'
-import createCache from '@emotion/cache'
+import { Global, ThemeProvider } from '@emotion/react'
 import { theme } from 'components/utils/styles/theme'
 import { CSSReset } from 'components/utils/styles/reset'
 import { globalCSS } from 'components/utils/styles/global'
@@ -9,20 +8,13 @@ import { AppProps } from 'next/app'
 import Script from 'next/script'
 
 function CustomApp({ Component, pageProps }: AppProps): JSX.Element {
-  const emotionCache = createCache({
-    key: 'emotion-cache',
-  })
-  emotionCache.compat = true
-
   return (
     <ConfigProvider>
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={theme}>
-          <Global styles={CSSReset} />
-          <Global styles={globalCSS} />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </CacheProvider>
+      <ThemeProvider theme={theme}>
+        <Global styles={CSSReset} />
+        <Global styles={globalCSS} />
+        <Component {...pageProps} />
+      </ThemeProvider>
       {process.env.NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY ? (
         <Script
           id="appInsightsScript"

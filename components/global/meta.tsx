@@ -25,16 +25,16 @@ const getTitle = (title: string, date: Date, name: string, showDate: boolean) =>
 export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
   const { conference, appConfig, dates } = useConfig()
   const { pathname } = useRouter()
-  const [title, setTitle] = React.useState('')
   const conferenceDates = getConferenceDates(conference, dateTimeProvider.now())
   const ogImage =
     pageImage || conference.Instance !== '2022' || conferenceDates.IsComplete
       ? '/static/images/logo.png'
       : '/static/images/logo-2022-og.jpg'
 
-  React.useEffect(() => {
-    setTitle(getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete))
-  }, [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date])
+  const title = React.useMemo(
+    () => getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete),
+    [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date],
+  )
 
   React.useEffect(() => {
     if (!window.GA_INITIALIZED) {
