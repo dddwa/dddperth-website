@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { v4 as uuid } from 'uuid'
 
 type State = { expanded: boolean; id: string }
 type NavigationAction = 'toggle' | 'open' | 'close'
@@ -20,7 +19,7 @@ function navigationReducer(state: State, action: NavigationAction) {
 }
 
 const NavigationProvider = ({ children }) => {
-  const componentId = React.useRef(`nav-${uuid()}`)
+  const componentId = React.useRef(`nav-component-id`)
   const [state, dispatch] = React.useReducer(navigationReducer, { expanded: false, id: componentId.current })
 
   return (
