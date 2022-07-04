@@ -17,9 +17,9 @@ import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { set } from 'date-fns'
 import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 
-type AgendaJson = typeof import('public/static/agenda/2021_gridsmart.json')
-type Room = Pick<AgendaJson[0]['rooms'][0], 'id' | 'name'>
-type Slot = Pick<AgendaJson[0]['timeSlots'][0], 'rooms' | 'slotStart'>
+export type GridSmartJson = typeof import('public/static/agenda/2021_gridsmart.json')
+type Room = Pick<GridSmartJson[0]['rooms'][0], 'id' | 'name'>
+type Slot = Pick<GridSmartJson[0]['timeSlots'][0], 'rooms' | 'slotStart'>
 
 interface DynamicAgendaProps {
   date: Date
@@ -74,7 +74,7 @@ export const DynamicAgenda = ({
             >
               {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
                 <StyledUpNext>
-                  <h2>Up next TODO: need to handle this bit</h2>
+                  <h2>Up next</h2>
                   <StyledAgendaRow>
                     <AgendaTime time={nextSessionGroup.timeStart} />
                     {nextSessionGroup.sessions.map((session, index) => (
