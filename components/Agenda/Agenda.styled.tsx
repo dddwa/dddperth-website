@@ -9,6 +9,12 @@ interface StyledAgendaRowProps {
   tracks?: number
 }
 
+export const StyledMultiSessionSlot = styled('div')({
+  [`& section:first-of-type`]: {
+    borderBottom: cellBorder,
+  },
+})
+
 export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks = 4 }) => ({
   display: 'grid',
   gridTemplateColumns: `repeat(2, 1fr)`,

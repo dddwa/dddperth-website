@@ -191,7 +191,17 @@ const Conference: IConference = {
 
   Keynotes: [],
 
-  RoomNames: ['Riverside Theatre', 'M6', 'M7', 'M8'],
+  RoomNames: [
+    'Riverside Theatre',
+    'Track 2',
+    'Track 3',
+    'Track 4',
+    'Track 5',
+    'Track 6',
+    'Track 7',
+    'Track 8 (RR1)',
+    'Track 9 (RR2)',
+  ],
 
   SessionGroups: [
     {
@@ -274,7 +284,7 @@ const Conference: IConference = {
     },
   ],
 
-  VolunteerSubmissionFormId: 'e23713d2-8c3a-411b-b22c-2f8528b77c88'
+  VolunteerSubmissionFormId: 'e23713d2-8c3a-411b-b22c-2f8528b77c88',
 }
 
 export default Conference
