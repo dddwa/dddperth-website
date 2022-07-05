@@ -225,6 +225,7 @@ export interface Twitter {
 
 export interface Session {
   Id: string
+  ExternalId?: string
   Title: string
   Abstract: string
   Presenters: Presenter[]

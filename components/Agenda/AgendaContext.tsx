@@ -9,7 +9,9 @@ interface AgendaContextProps {
   getRoom: (roomId: number | string) => string
 }
 
-interface AgendaProviderProps extends Pick<AgendaContextProps, 'onSelect'> {
+interface AgendaProviderProps
+  extends Partial<Omit<AgendaContextProps, 'onSelect'>>,
+    Pick<AgendaContextProps, 'onSelect'> {
   children: React.ReactNode
   sessions: Session[]
   sponsors: Sponsor[]
@@ -18,13 +20,22 @@ interface AgendaProviderProps extends Pick<AgendaContextProps, 'onSelect'> {
 
 const AgendaContext = React.createContext<AgendaContextProps | undefined>(undefined)
 
-export const AgendaProvider = ({ children, onSelect, sessions, sponsors, rooms }: AgendaProviderProps) => {
+export const AgendaProvider = ({
+  children,
+  sessions,
+  sponsors,
+  rooms,
+  onSelect,
+  getRoom = (roomId) => (typeof roomId === 'string' ? roomId : rooms[roomId]),
+  getSession = (id) => sessions.find((session) => session.Id === id),
+  getSponsor = (id) => sponsors.find((sponsor) => sponsor.id === id),
+}: AgendaProviderProps) => {
   return (
     <AgendaContext.Provider
       value={{
-        getRoom: (roomId) => (typeof roomId === 'string' ? roomId : rooms[roomId]),
-        getSession: (id) => sessions.find((session) => session.Id === id),
-        getSponsor: (id) => sponsors.find((sponsor) => sponsor.id === id),
+        getRoom,
+        getSession,
+        getSponsor,
         onSelect,
       }}
     >
