@@ -102,7 +102,7 @@ export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (co
     const resp = await fetch(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
     if (resp.ok) {
       const json = await resp.json()
-      schedule = json
+      schedule = JSON.parse(json)
     }
   } catch (e) {
     // no agenda, so we'll show the "wait for agenda" screen
