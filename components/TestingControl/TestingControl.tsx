@@ -5,7 +5,7 @@ import { TicketPurchasingOptions } from 'config/types'
 import { Button } from 'components/global/Button/Button'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import { StyledButton, StyledTestingControl, StyledTestingHeading, StyledTestingPanel } from './TestingControl.styled'
-import { sub, format } from 'date-fns'
+import { sub, format, set } from 'date-fns'
 import { useConfig } from 'Context/Config'
 import Cookies from 'js-cookie'
 import { TestingControlCookie } from './TestingControlConsts'
@@ -65,6 +65,9 @@ export const TestingControl = (): JSX.Element => {
           </StyledButton>
           <StyledButton kind="primary" onClick={() => storeTime(conference.Date)}>
             On the day
+          </StyledButton>
+          <StyledButton kind="primary" onClick={() => storeTime(set(conference.Date, { hours: 11, minutes: 0 }))}>
+            During the day
           </StyledButton>
           <StyledButton kind="primary" onClick={() => storeTime(conference.EndDate)}>
             Conference over

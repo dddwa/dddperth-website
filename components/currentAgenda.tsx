@@ -71,7 +71,7 @@ export const CurrentAgenda = ({
                     {nextSessionGroup.sessions.map((session, index) => (
                       <AgendaSession
                         key={session.Id}
-                        sessionId={session.Id}
+                        sessionId={session.ExternalId}
                         fullWidth={nextSessionGroup.sessions.length === 1}
                         room={index}
                         alwaysShowRoom={true}

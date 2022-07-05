@@ -33,10 +33,10 @@ interface SessionGroups {
 
 function getSessionById(sessions: Session[], ids: SessionId[]) {
   return sessions
-    .filter((session) => ids.includes(session.Id))
+    .filter((session) => ids.includes(session.Id) || ids.includes(session.ExternalId))
     .sort((sessionA, sessionB) => {
-      const aIndex = ids.indexOf(sessionA.Id)
-      const bIndex = ids.indexOf(sessionB.Id)
+      const aIndex = ids.findIndex((id) => sessionA.Id === id || sessionA.ExternalId === id)
+      const bIndex = ids.findIndex((id) => sessionB.Id === id || sessionB.ExternalId === id)
 
       if (aIndex < bIndex) {
         return -1
