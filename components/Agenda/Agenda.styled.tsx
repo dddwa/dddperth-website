@@ -1,6 +1,7 @@
 import { breakpoint, breakpointBetween, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 import styled from '@emotion/styled'
+import { tableLayoutBreakpointFrom } from './layout'
 
 const rowBackgroundColor = '#f9f9f9'
 const cellBorder = '1px solid #ddd'
@@ -40,7 +41,7 @@ export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks
     },
   },
 
-  [breakpointBetween('xs', 'sm')]: {
+  [breakpointBetween('xs', tableLayoutBreakpointFrom)]: {
     [`& > section:nth-child(${Math.floor(tracks / 2)}n+1)`]: {
       borderRight: 0,
     },
@@ -54,7 +55,7 @@ export const StyledAgendaRow = styled('section')<StyledAgendaRowProps>(({ tracks
     gridTemplateColumns: `repeat(${Math.floor(tracks / 2)}, 1fr)`,
   },
 
-  [breakpoint('sm')]: {
+  [breakpoint(tableLayoutBreakpointFrom)]: {
     gridTemplateColumns: `${calcRem(90)} repeat(auto-fit, minmax(${calcRem(80)}, 1fr))`,
     '& > div:not(:last-child)': {
       borderRight: cellBorder,
@@ -80,7 +81,7 @@ export const StyledAgendaRowList = styled('ul')(({ theme }) => ({
     textAlign: 'center',
   },
 
-  [breakpoint('sm')]: {
+  [breakpoint(tableLayoutBreakpointFrom)]: {
     display: 'grid',
     gridTemplateColumns: `${calcRem(90)} repeat(auto-fit, minmax(${calcRem(80)}, 1fr))`,
     gridGap: calcRem(1),
