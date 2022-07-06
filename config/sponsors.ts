@@ -112,6 +112,13 @@ const silverSponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://www.elastic.co',
   },
+  {
+    id: '2021-first-mode',
+    imageUrl: '/static/images/sponsors/2021-first-mode.png',
+    name: 'FirstMode',
+    type: SponsorType.Silver,
+    url: 'https://firstmode.com/',
+  },
 ]
 
 const coffeeCartSponsors: Sponsor[] = [
