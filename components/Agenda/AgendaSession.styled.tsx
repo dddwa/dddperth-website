@@ -2,6 +2,7 @@ import { breakpoint, breakpointMax } from 'components/utils/styles/breakpoints'
 import { calcRem } from 'components/utils/styles/calcRem'
 import styled from '@emotion/styled'
 import { zIndex } from 'components/utils/styles/zindex'
+import { tableLayoutBreakpointFrom } from './layout'
 
 interface StyledSectionProps {
   fullWidth?: boolean
@@ -11,7 +12,7 @@ interface StyledSectionProps {
 export const StyledSection = styled('section')<StyledSectionProps>(({ fullWidth, session }) => ({
   padding: session ? undefined : calcRem(20, 8),
 
-  [breakpointMax('sm')]: {
+  [breakpointMax(tableLayoutBreakpointFrom)]: {
     gridColumn: fullWidth ? '1 / -1' : 'auto',
   },
 }))
@@ -95,7 +96,7 @@ export const StyledRoom = styled('span')<StyledRoomProps>(({ theme, showOnMobile
   fontWeight: theme.weights.semiBold,
   textAlign: showOnMobile ? 'center' : undefined,
 
-  [breakpoint('sm')]: {
+  [breakpoint(tableLayoutBreakpointFrom)]: {
     display: showOnMobile ? 'none' : undefined,
   },
 }))
