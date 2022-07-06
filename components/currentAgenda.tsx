@@ -15,7 +15,6 @@ import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { set } from 'date-fns'
-import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 
 interface CurrentAgendaProps {
   date: Date
@@ -107,8 +106,12 @@ export const CurrentAgenda = ({
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 9, minutes: 10 })} />
+                <AgendaSession room={0} alwaysShowRoom fullWidth>
+                  <StyledTrackHeader>Keynote</StyledTrackHeader>
+                </AgendaSession>
+                {/* TODO: use this but update sessionId
                 <AgendaSession
-                  sessionId="46cde2ca-8b44-4ff5-9b82-ad3c41a2b329"
+                  sessionId="TODO"
                   room={0}
                   renderPresenters={(presenters) => (
                     <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
@@ -116,7 +119,7 @@ export const CurrentAgenda = ({
                   fullWidth
                   isKeynote
                   alwaysShowRoom
-                />
+                /> */}
               </StyledAgendaRow>
               <StyledAgendaRow>
                 <AgendaTime time={set(date, { hours: 10, minutes: 0 })} />
