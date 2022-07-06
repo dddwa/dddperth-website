@@ -32,9 +32,3 @@ export const ButtonAnchor = React.forwardRef<HTMLAnchorElement, ButtonAnchorProp
     </StyledButtonAnchor>
   ),
 )
-
-export const ButtonAnchorOld = ({ children, kind = 'secondary', size = 'normal', ...props }: ButtonAnchorProps) => (
-  <StyledButtonAnchor kind={kind} size={size} {...props}>
-    {children}
-  </StyledButtonAnchor>
-)
