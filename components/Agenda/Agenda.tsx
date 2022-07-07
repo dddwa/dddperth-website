@@ -80,7 +80,8 @@ export const Agenda = ({ sessions, ...props }: AgendaProps) => {
   }
 
   const onDismissHandler = () => {
-    Router.replace(`${Router.pathname}`)
+    const url = `${Router.pathname}`
+    Router.replace(url, url, { shallow: true, scroll: false })
     dispatch({ type: 'dismiss' })
   }
 
