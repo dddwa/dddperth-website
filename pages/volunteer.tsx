@@ -5,37 +5,11 @@ import { Main } from 'layouts/main'
 import { NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { VolunteerOpportunityList } from 'components/Volunteer/VolunteerOpportunityList'
+import { VolunteerForm } from 'components/Volunteer/VolunteerForm';
 
 const VolunteerPage: NextPage = () => {
   const { conference } = useConfig()
 
-  let webform = '';
-
-  if (conference.VolunteerSubmissionFormId) {
-    webform = `
-  <script>
-    (function(e, t, a, i, d, n, o) {
-        var WEBFORM_DATA = {
-            formId: '${conference.VolunteerSubmissionFormId}',
-            divId: '_sm_webform_',
-            linkName: 'webforms.salesmate.io'
-        };
-        WEBFORM_DATA.loadElement = t.currentScript;
-        e[i] = e[i] || function() {
-            (e[i].q = e[i].q || []).push(arguments)
-        }, n = t.createElement(a), n.onload = function() {
-            if (!WEBFORM_DATA.divId || !t.getElementById(WEBFORM_DATA.divId)) {
-                ld = t.createElement('div');
-                ld.id = WEBFORM_DATA.formId + __salesmate_webform_iframes__.length;
-                WEBFORM_DATA.loadElement.parentNode.insertBefore(ld, WEBFORM_DATA.loadElement);
-                WEBFORM_DATA.divId = ld.id
-            }
-            SmFormSettings.loadForm(WEBFORM_DATA);
-        }, o = t.getElementsByTagName(a)[0], n.id = i, n.src = d, n.async = 1, o.parentNode.insertBefore(n, o)
-    })(window, document, "script", "loadFormScript", "https://webforms.salesmate.io/webforms.js");
-</script>
-  `;
-  }
   return (
     <Main title="Work With Us" description={`Work with us to organise the ${conference.Name} conference.`} pageBanner="/static/images/volunteer-banner">
       <h1>Work With Us</h1>
@@ -51,7 +25,7 @@ const VolunteerPage: NextPage = () => {
 
       <h2>Volunteer Opportunities</h2>
       <VolunteerOpportunityList opportunities={getVolunteerOpportunities()} />
-      <div id="volunteer_form" dangerouslySetInnerHTML={{ __html: webform }}></div>
+      <VolunteerForm />
     </Main >
   )
 }
