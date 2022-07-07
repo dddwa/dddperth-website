@@ -15,6 +15,10 @@ export const StyledMain = styled('main')(({ theme }) => ({
   },
 }))
 
+export const StyledAgenda = styled(StyledMain)(() => ({
+  gridTemplateColumns: 'minmax(1rem, 1fr) minmax(0, 200ch) minmax(1rem, 1fr)',
+}))
+
 export const StyledSidebarContainer = styled('div')(({ theme }) => ({
   display: 'table',
   tableLayout: 'fixed',
