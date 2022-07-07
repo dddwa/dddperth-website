@@ -92,6 +92,13 @@ const goldSponsors: Sponsor[] = [
 
 const silverSponsors: Sponsor[] = [
   {
+    id: '2021-first-mode',
+    imageUrl: '/static/images/sponsors/2021-first-mode.png',
+    name: 'FirstMode',
+    type: SponsorType.Silver,
+    url: 'https://firstmode.com/',
+  },
+  {
     id: '2021-family-zone',
     imageUrl: '/static/images/sponsors/2021-family-zone.png',
     name: 'Family Zone',
@@ -111,6 +118,13 @@ const silverSponsors: Sponsor[] = [
     name: 'elastic',
     type: SponsorType.Silver,
     url: 'https://www.elastic.co',
+  },
+  {
+    id: 'sentient',
+    imageUrl: '/static/images/sponsors/2022-sentient.png',
+    name: 'Sentient Computing',
+    type: SponsorType.Silver,
+    url: 'https://sencom.com.au/',
   },
 ]
 
