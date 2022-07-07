@@ -20,7 +20,7 @@ export const StyledDialogContent = styled(DialogContent)({
   position: 'relative',
   width: '90vw',
   padding: calcRem(15),
-  margin: '5vh auto',
+  margin: '9vh auto',
   backgroundColor: '#fff',
   outline: 'none',
 
