@@ -16,6 +16,7 @@ import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
 import { set } from 'date-fns'
+import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
 
 interface CurrentAgendaProps {
   date: Date
@@ -107,12 +108,8 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 9, minutes: 10 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
-                    <StyledTrackHeader>Keynote</StyledTrackHeader>
-                  </AgendaSession>
-                  {/* TODO: use this but update sessionId
                   <AgendaSession
-                    sessionId="TODO"
+                    sessionId="337380"
                     room={0}
                     renderPresenters={(presenters) => (
                       <StyledAgendaPresenter isKeynote>Keynote: {presenters}</StyledAgendaPresenter>
@@ -120,7 +117,7 @@ export const CurrentAgenda = ({
                     fullWidth
                     isKeynote
                     alwaysShowRoom
-                  /> */}
+                  />
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 10, minutes: 0 })} />
@@ -235,9 +232,16 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 16, minutes: 5 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
-                    <StyledTrackHeader>Locknote</StyledTrackHeader>
-                  </AgendaSession>
+                  <AgendaSession
+                    sessionId="362659"
+                    room={0}
+                    renderPresenters={(presenters) => (
+                      <StyledAgendaPresenter isKeynote>Locknote: {presenters}</StyledAgendaPresenter>
+                    )}
+                    fullWidth
+                    isKeynote
+                    alwaysShowRoom
+                  />
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 16, minutes: 55 })} />
