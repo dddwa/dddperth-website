@@ -205,7 +205,7 @@ const Conference: IConference = {
 
   SessionGroups: [
     {
-      sessions: ['b41ca2ab-70af-4245-be64-0bf49eb1a08e'], // TODO: keynote TBC
+      sessions: ['337380'],
       timeStart: set(date, { hours: 9, minutes: 10 }),
       timeEnd: set(date, { hours: 10, minutes: 0 }),
       type: 'SessionIds',
@@ -247,7 +247,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['8df7d187-765d-438d-820f-61dc422c9c04'], // TODO: locknote TBC
+      sessions: ['362659'],
       timeStart: set(date, { hours: 16, minutes: 5 }),
       timeEnd: set(date, { hours: 16, minutes: 55 }),
       type: 'SessionIds',
