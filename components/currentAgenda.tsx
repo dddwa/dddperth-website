@@ -215,7 +215,7 @@ export const CurrentAgenda = ({
                   <AgendaSession room={1} sessionId="343561" />
                   <AgendaSession room={2} sessionId="341315" />
                   <AgendaSession room={3} sessionId="340848" />
-                  <AgendaSession room={4} sessionId="333736" />
+                  <AgendaSession room={4} sessionId="343948" />
                   <AgendaSession room={5} sessionId="339017" />
                   <AgendaSession room={6} sessionId="344116" />
                   <StyledMultiSessionSlot>
