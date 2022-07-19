@@ -199,8 +199,8 @@ const Conference: IConference = {
     'Track 5',
     'Track 6',
     'Track 7',
-    'Track 8 (RR1)',
-    'Track 9 (RR2)',
+    'Track 8',
+    'Track 9',
   ],
 
   SessionGroups: [
@@ -241,7 +241,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343962', '343561', '341315', '340848', '343948', '339017', '344116', '343793', '344491', '343399'],
+      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '344116', '343793', '344491', '343962'],
       timeStart: set(date, { hours: 15, minutes: 15 }),
       timeEnd: set(date, { hours: 15, minutes: 35 }),
       type: 'SessionIds',
