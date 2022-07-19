@@ -75,6 +75,13 @@ const goldSponsors: Sponsor[] = [
     url: 'https://valrose.com.au/',
   },
   {
+    id: 'bankwest',
+    imageUrl: '/static/images/sponsors/2021-bankwest.png',
+    name: 'Bankwest',
+    type: SponsorType.Gold,
+    url: 'https://bankwest.com.au',
+  },
+  {
     id: 'github',
     imageUrl: '/static/images/sponsors/github.png',
     name: 'GitHub',
