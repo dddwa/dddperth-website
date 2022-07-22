@@ -8,6 +8,7 @@ import { PRIVACY_ACCEPTED } from '../../components/Voting/VoteConst'
 import Cookies from 'js-cookie'
 import { StyledButton, StyledHeader, StyledIntro, StyledLandingContainer } from '../../components/Voting/landing.styled'
 import { format } from 'date-fns'
+import Link from 'next/link'
 
 type VoteLandingProps = {
   instance: string
@@ -36,18 +37,21 @@ export default function VoteLanding({ instance, votingFinished }: VoteLandingPro
           "It's a draw!".
         </Text>
         <Text>
-          Once you've made your selection, two new options will appear. You can continue to vote on the options presented
-          for as long as you like - every vote will count towards formulating the best agenda possible for this year.
+          Once you've made your selection, two new options will appear. You can continue to vote on the options
+          presented for as long as you like - every vote will count towards formulating the best agenda possible for
+          this year.
         </Text>
         <Text>
-          Voting closes on {votingFinished}, so you have between now and then to have your say. You can leave and come back
-          any time until the closing day to get your votes in.
+          Voting closes on {votingFinished}, so you have between now and then to have your say. You can leave and come
+          back any time until the closing day to get your votes in.
         </Text>
         <Text>Happy Voting!</Text>
 
         <Text>
           By selecting <em>'{BUTTON_LABEL}'</em> I have read and accepted the{' '}
-          <a href="/privacy">DDDPerth Privacy statement</a>.
+          <Link href="/privacy">
+            <a>DDDPerth Privacy statement</a>.
+          </Link>
         </Text>
 
         <StyledButton kind="primary" onClick={onClickHandler}>
