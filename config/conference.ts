@@ -8,26 +8,27 @@ import {
   ImportantDate,
 } from './types'
 import venue from './venue'
-import { zonedTimeToUtc } from 'date-fns-tz'
+import { zonedTimeToUtc, utcToZonedTime } from 'date-fns-tz'
 import { add, sub, set, toDate } from 'date-fns'
 
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
+const tz = '+08:00'
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
 const staticDate = '2022-09-10T08:00'
-const date = zonedTimeToUtc(staticDate, '+08:00')
+const date = utcToZonedTime(zonedTimeToUtc(staticDate, '+08:00'), tz)
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
-const registrationOpenFrom = zonedTimeToUtc('2022-05-16T08:00:00', '+08:00')
+const registrationOpenFrom = utcToZonedTime(zonedTimeToUtc('2022-05-16T08:00:00', '+08:00'), tz)
 const registrationOpenUntil = hideDate ? null : set(sub(date, { days: 1 }), { hours: 17 }) // date.clone().add(-1, 'd').startOf('day').add(17, 'h')
-const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-11T08:00:00', '+08:00')
-const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-13T23:59:59', '+08:00')
-const votingOpenFrom = zonedTimeToUtc('2022-05-27T17:00:00', '+08:00')
-const votingOpenUntil = zonedTimeToUtc('2022-06-10T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2022-07-07T17:00:00', '+08:00')
+const presentationSubmissionsOpenFrom = utcToZonedTime(zonedTimeToUtc('2022-04-11T08:00:00', '+08:00'), tz)
+const presentationSubmissionsOpenUntil = utcToZonedTime(zonedTimeToUtc('2022-05-13T23:59:59', '+08:00'), tz)
+const votingOpenFrom = utcToZonedTime(zonedTimeToUtc('2022-05-27T17:00:00', '+08:00'), tz)
+const votingOpenUntil = utcToZonedTime(zonedTimeToUtc('2022-06-10T23:59:59', '+08:00'), tz)
+const agendaPublishedFrom = utcToZonedTime(zonedTimeToUtc('2022-07-07T17:00:00', '+08:00'), tz)
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
@@ -120,8 +121,8 @@ const Conference: IConference = {
   StaticDate: new Date(staticDate),
   Date: date,
   EndDate: endDate,
-  DoorsOpenTime: '8:10am',
-  FinishTime: '5:10pm',
+  DoorsOpenTime: '8:00am',
+  FinishTime: '5:30pm',
   RegistrationOpenFrom: registrationOpenFrom,
   RegistrationOpenUntil: registrationOpenUntil,
   PresentationSubmissionsOpenFrom: presentationSubmissionsOpenFrom,
