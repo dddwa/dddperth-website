@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { PRIVACY_ACCEPTED } from '../../components/Voting/VoteConst'
 import Cookies from 'js-cookie'
 import { StyledButton, StyledHeader, StyledIntro, StyledLandingContainer } from '../../components/Voting/landing.styled'
-import { format } from 'date-fns'
+import { formatInTimeZone } from 'date-fns-tz'
 
 type VoteLandingProps = {
   instance: string
@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       instance: conference.Instance,
-      votingFinished: format(conference.VotingOpenUntil, dates.DateDisplayFormat),
+      votingFinished: formatInTimeZone(conference.VotingOpenUntil, conference.TimeZone, dates.DateDisplayFormat),
     },
   }
 }

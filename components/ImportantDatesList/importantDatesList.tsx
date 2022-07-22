@@ -5,7 +5,8 @@ import { StyledImportantDateList } from './ImportantDate.styled'
 import { ImportantDateTile, ImportantDateTileTBA } from './ImportantDateTile'
 import { ImportantDateTileInline, ImportantDateTileInlineTBA } from './ImportantDateTileInline'
 import { Text } from 'components/global/text'
-import { isAfter, format, isBefore } from 'date-fns'
+import { isAfter, isBefore } from 'date-fns'
+import { getTimezoneOffset } from 'date-fns-tz'
 
 export type ImportantDateListLayouts = 'inline' | 'calendar'
 
@@ -20,9 +21,9 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
 
   return (
     <Fragment>
-      {conference.ImportantDates[0].Date.getTimezoneOffset() !== currentDate.Value.getTimezoneOffset() && (
+      {-(getTimezoneOffset(conference.TimeZone) / 60000) !== currentDate.Value.getTimezoneOffset() && (
         <Text>
-          <em>Note: All dates in {format(conference.ImportantDates[0].Date, 'XX')}.</em>
+          <em>Note: All dates in {conference.TimeZone} time.</em>
         </Text>
       )}
 
@@ -34,7 +35,7 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
             (importantDate.Type === 'conference' && !hasConferenceFinished),
         ).map((importantDate) => {
           const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
-          return <Component key={importantDate.Description} importantDate={importantDate} />
+          return <Component key={importantDate.Description} importantDate={importantDate} tz={conference.TimeZone} />
         })}
         {conference.HideDate &&
           (layout === 'calendar' ? (
@@ -49,7 +50,7 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
             (importantDate.Type !== 'conference' || hasConferenceFinished),
         ).map((importantDate) => {
           const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
-          return <Component key={importantDate.Description} importantDate={importantDate} isFinished />
+          return <Component key={importantDate.Description} importantDate={importantDate} isFinished tz={conference.TimeZone} />
         })}
       </StyledImportantDateList>
     </Fragment>

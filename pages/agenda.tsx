@@ -6,10 +6,10 @@ import { fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
 import { Session, SponsorType } from 'config/types'
 import { Main } from 'layouts/agendaWide'
-import { format } from 'date-fns'
 import { GetServerSideProps, NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
+import { formatInTimeZone } from 'date-fns-tz'
 
 interface AgendaPageProps {
   sessions?: Session[]
@@ -27,8 +27,8 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
         {!dates.AgendaPublished && (
           <p>
             The agenda has not yet been finalised; please come back on{' '}
-            {format(conference.AgendaPublishedFrom, dates.DateDisplayFormat)}{' '}
-            {format(conference.AgendaPublishedFrom, dates.TimeDisplayFormat)}. In the meantime, check out our previous
+            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.DateDisplayFormat)}{' '}
+            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the meantime, check out our previous
             agendas below.
           </p>
         )}
