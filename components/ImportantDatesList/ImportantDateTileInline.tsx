@@ -7,20 +7,21 @@ import {
   StyledInlineDate,
   StyledInlineTimeDescription,
 } from './ImportantDate.styled'
-import { format } from 'date-fns'
+import { formatInTimeZone } from 'date-fns-tz'
 
 interface ImportantDateTileInlineProps {
   importantDate: ImportantDate
   isFinished?: boolean
+  tz?: string
 }
 
-export const ImportantDateTileInline = ({ importantDate, isFinished }: ImportantDateTileInlineProps) => (
+export const ImportantDateTileInline = ({ importantDate, isFinished, tz }: ImportantDateTileInlineProps) => (
   <StyledImportantDateInline isFinished={isFinished} dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledInlineDate>{format(importantDate.Date, 'iiii MMM d')}</StyledInlineDate>
+        <StyledInlineDate>{formatInTimeZone(importantDate.Date, tz, 'iiii MMM d')}</StyledInlineDate>
         <StyledInlineTimeDescription>
-          {format(importantDate.Date, 'hh:mma')} - {importantDate.Description}
+          {formatInTimeZone(importantDate.Date, tz, 'hh:mma')} - {importantDate.Description}
         </StyledInlineTimeDescription>
       </time>
     </StyledImportantDateContent>

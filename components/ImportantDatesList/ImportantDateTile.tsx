@@ -9,20 +9,21 @@ import {
   StyledImportantDateTitle,
   StyledImportantDay,
 } from './ImportantDate.styled'
-import format from 'date-fns/format'
+import { formatInTimeZone } from 'date-fns-tz'
 
 interface ImportantDateProps {
   importantDate: ImportantDate
   isFinished?: boolean
+  tz?: string
 }
 
-export const ImportantDateTile = ({ importantDate, isFinished }: ImportantDateProps) => (
+export const ImportantDateTile = ({ importantDate, isFinished, tz }: ImportantDateProps) => (
   <StyledImportantDate dateType={importantDate.Type}>
     <StyledImportantDateContent isFinished={isFinished}>
       <time dateTime={importantDate.Date.toISOString()}>
-        <StyledImportantDay>{format(importantDate.Date, 'EEEE')}</StyledImportantDay>
-        <StyledImportantDateMonthDay>{format(importantDate.Date, 'MMM d ')}</StyledImportantDateMonthDay>
-        <StyledImportantDateTime>{format(importantDate.Date, 'hh:mma')}</StyledImportantDateTime>
+        <StyledImportantDay>{formatInTimeZone(importantDate.Date, tz, 'EEEE')}</StyledImportantDay>
+        <StyledImportantDateMonthDay>{formatInTimeZone(importantDate.Date, tz, 'MMM d ')}</StyledImportantDateMonthDay>
+        <StyledImportantDateTime>{formatInTimeZone(importantDate.Date, tz, 'hh:mma')}</StyledImportantDateTime>
       </time>
       <StyledImportantDateTitle>{importantDate.Description}</StyledImportantDateTitle>
     </StyledImportantDateContent>

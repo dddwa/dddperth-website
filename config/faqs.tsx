@@ -3,8 +3,8 @@ import { SafeLink } from 'components/global/safeLink'
 import { StyledList } from 'components/global/text'
 import Conference from './conference'
 import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
-import { format } from 'date-fns'
 import Link from 'next/link'
+import { formatInTimeZone } from 'date-fns-tz'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
@@ -136,8 +136,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
           <Fragment>
-            Registration opens on {format(Conference.RegistrationOpenFrom, dates.DateDisplayFormat)} at{' '}
-            {format(Conference.RegistrationOpenFrom, dates.TimeDisplayFormat)}.
+            Registration opens on {formatInTimeZone(Conference.RegistrationOpenFrom, Conference.TimeZone, dates.DateDisplayFormat)} at{' '}
+            {formatInTimeZone(Conference.RegistrationOpenFrom, Conference.TimeZone, dates.TimeDisplayFormat)}.
           </Fragment>
         )}
       </Fragment>

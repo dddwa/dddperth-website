@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { StyledList, Text } from 'components/global/text'
 import { PageWithSidebar } from 'layouts/withSidebar'
 import { ButtonAnchor } from 'components/global/Button/Button'
-import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
+import { formatInTimeZone } from 'date-fns-tz'
 
 const CFPPage: NextPage = () => {
   const { conference, dates } = useConfig()
@@ -92,7 +92,7 @@ const CFPPage: NextPage = () => {
         <li>You will probably have internet access, but you should have a backup plan in case it's unavailable.</li>
         <li>
           We will open voting at{' '}
-          {format(conference.VotingOpenFrom, dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat)}; if your
+          {formatInTimeZone(conference.VotingOpenFrom, conference.TimeZone, dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat)}; if your
           presentation gets voted in and you agree to present then this is a serious commitment.
         </li>
         <li>

@@ -1,11 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 import * as analytics from 'components/global/analytics'
-import { format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useConfig } from 'Context/Config'
 import getConferenceDates from 'config/dates'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
+import { formatInTimeZone } from 'date-fns-tz'
 
 interface MetaArgs {
   pageTitle: string
@@ -19,8 +19,8 @@ declare global {
   }
 }
 
-const getTitle = (title: string, date: Date, name: string, showDate: boolean) =>
-  `${title !== 'Home' ? title + ' - ' : ''}${name}${showDate ? ` | ${format(date, 'do MMMM yyyy')}` : ''}`
+const getTitle = (title: string, date: Date, name: string, showDate: boolean, timezone: string) =>
+  `${title !== 'Home' ? title + ' - ' : ''}${name}${showDate ? ` | ${formatInTimeZone(date, timezone, 'do MMMM yyyy')}` : ''}`
 
 export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
   const { conference, appConfig, dates } = useConfig()
@@ -32,8 +32,8 @@ export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
       : '/static/images/logo-2022-og.jpg'
 
   const title = React.useMemo(
-    () => getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete),
-    [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date],
+    () => getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete, conference.TimeZone),
+    [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date, conference.TimeZone],
   )
 
   React.useEffect(() => {
