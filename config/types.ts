@@ -44,6 +44,7 @@ export interface Conference {
   MaxVotes: number
   WaitingListCanVoteWithEmail: boolean
 
+  TimeZone: string
   StaticDate: Date
   Date: Date
   EndDate: Date
