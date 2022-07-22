@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import * as analytics from 'components/global/analytics'
-import { format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useConfig } from 'Context/Config'
 import getConferenceDates from 'config/dates'
@@ -34,7 +33,7 @@ export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
 
   const title = React.useMemo(
     () => getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete, conference.TimeZone),
-    [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date],
+    [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date, conference.TimeZone],
   )
 
   React.useEffect(() => {
