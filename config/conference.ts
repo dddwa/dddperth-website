@@ -193,15 +193,15 @@ const Conference: IConference = {
   Keynotes: [],
 
   RoomNames: [
-    'Riverside Theatre',
-    'Track 2',
-    'Track 3',
-    'Track 4',
-    'Track 5',
-    'Track 6',
-    'Track 7',
-    'Track 8',
-    'Track 9',
+    'Kwoka (Quokka)',
+    'Kwonding (Quandong)',
+    'Yoorn (Bobtail)',
+    'Mangatj (Banksia)',
+    'Yiibi (Black Cockatoo)',
+    'Mari (Red Gum)',
+    'Djakal-Ngakal (Galah)',
+    'Bilya (River)',
+    'Maali (Black Swan)',
   ],
 
   SessionGroups: [
@@ -224,7 +224,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343996', '343939', '340959', '343697', '344427', '341816', '344501', '344419', '342452'],
+      sessions: ['343996', '343939', '340959', '343697', '343962', '341816', '344501', '344419', '342452'],
       timeStart: set(date, { hours: 12, minutes: 20 }),
       timeEnd: set(date, { hours: 12, minutes: 40 }),
       type: 'SessionIds',
@@ -242,7 +242,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '344116', '343793', '344491', '343962'],
+      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '344116', '343793', '344491', '344427'],
       timeStart: set(date, { hours: 15, minutes: 15 }),
       timeEnd: set(date, { hours: 15, minutes: 35 }),
       type: 'SessionIds',
