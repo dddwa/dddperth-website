@@ -6,7 +6,9 @@ export default function CovidPolicy() {
   return (
     <Main title="COVID-19 Policy" description={`DDD Perth COVID-19 policy`}>
       <Text tag="h1">DDD Perth COVID-19 Policy</Text>
-      <Text>Last updated: 29 July 2022</Text>
+      <Text>
+        <em>Last updated: 29 July 2022</em>
+      </Text>
 
       <Text>
         DDD Perth is a single day, well attended event. We're expecting over 1000 people in 2022, and ask attendees
