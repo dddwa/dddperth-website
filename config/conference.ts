@@ -212,7 +212,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['344274', '343104', '344367', '344044', '344101', '341448', '342543', '334148', '344023'],
+      sessions: ['344274', '343104', '344367', '344044', '344101', '343942', '342543', '334148', '344023'],
       timeStart: set(date, { hours: 10, minutes: 10 }),
       timeEnd: set(date, { hours: 10, minutes: 55 }),
       type: 'SessionIds',
@@ -224,7 +224,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343996', '343939', '340959', '343697', '343962', '341816', '344501', '344419', '342452'],
+      sessions: ['333736', '343939', '340959', '344464', '343953', '341816', '344501', '344419', '342452'],
       timeStart: set(date, { hours: 12, minutes: 20 }),
       timeEnd: set(date, { hours: 12, minutes: 40 }),
       type: 'SessionIds',
@@ -242,7 +242,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '344116', '343793', '344491', '344427'],
+      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '343697', '343793', '344491', '344427'],
       timeStart: set(date, { hours: 15, minutes: 15 }),
       timeEnd: set(date, { hours: 15, minutes: 35 }),
       type: 'SessionIds',
