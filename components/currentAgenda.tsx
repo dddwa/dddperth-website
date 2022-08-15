@@ -49,6 +49,7 @@ export const CurrentAgenda = ({
           />
         </StyledFeedbackActions>
       )}
+      <span></span>
 
       <Agenda
         sessions={sessions}
@@ -132,7 +133,7 @@ export const CurrentAgenda = ({
                   <AgendaSession room={2} sessionId="344367" />
                   <AgendaSession room={3} sessionId="344044" />
                   <AgendaSession room={4} sessionId="344101" />
-                  <AgendaSession room={5} sessionId="341448" />
+                  <AgendaSession room={5} sessionId="343942" />
                   <AgendaSession room={6} sessionId="342543" />
                   <AgendaSession room={7} sessionId="334148" />
                   <AgendaSession room={8} sessionId="344023" />
@@ -163,11 +164,11 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 12, minutes: 20 })} />
-                  <AgendaSession room={0} sessionId="343996" />
+                  <AgendaSession room={0} sessionId="333736" />
                   <AgendaSession room={1} sessionId="343939" />
                   <AgendaSession room={2} sessionId="340959" />
-                  <AgendaSession room={3} sessionId="343697" />
-                  <AgendaSession room={4} sessionId="343962" />
+                  <AgendaSession room={3} sessionId="344464" />
+                  <AgendaSession room={4} sessionId="343953" />
                   <AgendaSession room={5} sessionId="341816" />
                   <AgendaSession room={6} sessionId="344501" />
                   <AgendaSession room={7} sessionId="344419" />
@@ -217,7 +218,7 @@ export const CurrentAgenda = ({
                   <AgendaSession room={3} sessionId="340848" />
                   <AgendaSession room={4} sessionId="343948" />
                   <AgendaSession room={5} sessionId="339017" />
-                  <AgendaSession room={6} sessionId="344116" />
+                  <AgendaSession room={6} sessionId="343697" />
                   <StyledMultiSessionSlot>
                     <AgendaSession room={7} sessionId="343793" />
                     <AgendaSession room={7} sessionId="344491" />
