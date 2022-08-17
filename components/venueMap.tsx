@@ -200,12 +200,10 @@ function pointToLayer(_feature, latlng) {
   return L.marker(latlng)
 }
 
-const mapCenter = { lat: -31.957218363684222, lng: 115.85404107746337 }
-
 const Map = () => {
   return (
     <MapContainer
-      center={mapCenter}
+      center={{ lat: -31.95721836368422, lng: 115.8540410774633 }}
       zoom={20}
       scrollWheelZoom={true}
       style={{ height: 700, width: '100%' }}
