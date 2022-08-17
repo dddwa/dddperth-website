@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { ImageOverlay } from 'react-leaflet'
 import { GeoJSON } from 'react-leaflet'
@@ -115,6 +115,11 @@ Conference.Sponsors.map(function (sponsor) {
   sponsorImgMap[sponsor.name] = sponsor.imageUrl
 })
 
+const sponsorFeatures: GeoJSON.FeatureCollection = {
+  type: 'FeatureCollection',
+  features: [],
+}
+
 const sponsorBooths = [
   { name: 'Microsoft', coordinates: [115.85379067857545, -31.956998761198715] },
   { name: 'Telstra Purple', coordinates: [115.8537477824913, -31.95712278722021] },
@@ -124,10 +129,10 @@ const sponsorBooths = [
   { name: 'Valrose', coordinates: [115.85370211286317, -31.957247564233736] },
   { name: 'Bankwest', coordinates: [115.85386561370767, -31.9573932090583] },
   { name: 'Insight', coordinates: [115.85396319937398, -31.957473996322346] },
-  { name: 'VGW', coordinates: [115.85412674069475, -31.95746972939116] },
+  { name: 'Virtual Gaming Worlds', coordinates: [115.85412674069475, -31.95746972939116] },
   { name: 'Versent', coordinates: [115.8541639396427, -31.95753287995242] },
   { name: 'MakerX', coordinates: [115.85419354189753, -31.956985289182057] },
-  { name: 'AWS', coordinates: [115.85435379079529, -31.95698301347335] },
+  { name: 'Amazon Web Services', coordinates: [115.85435379079529, -31.95698301347335] },
   { name: 'Auth0', coordinates: [115.85435881768018, -31.957060387538018] },
 ]
 
@@ -138,7 +143,7 @@ const coffeeCarts = [
 ]
 
 function plotSponsorbooth(sponsor) {
-  floorLocations.features.push({
+  sponsorFeatures.features.push({
     type: 'Feature',
     properties: {
       type: 'sponsorBooth',
@@ -224,7 +229,14 @@ const Map = () => {
         opacity={0.6}
       />
 
-      <GeoJSON data={floorLocations} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
+      <LayersControl position="topright">
+        <LayersControl.Overlay name="Rooms" checked>
+          <GeoJSON data={floorLocations} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
+        </LayersControl.Overlay>
+        <LayersControl.Overlay name="Sponsors">
+          <GeoJSON data={sponsorFeatures} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
+        </LayersControl.Overlay>
+      </LayersControl>
     </MapContainer>
   )
 }
