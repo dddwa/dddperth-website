@@ -268,11 +268,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Meetup-Group/" target="_blank">
-              Perth Agile Meetup
-            </SafeLink>
-          </li>
-          <li>
             <SafeLink href="http://www.meetup.com/DevOps-Perth/" target="_blank">
               DevOps Perth
             </SafeLink>
@@ -280,21 +275,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <li>
             <SafeLink href="http://www.meetup.com/Front-End-Web-Developers-Perth/" target="_blank">
               Front End Web Developers Perth (Fenders)
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Testing/" target="_blank">
-              Perth Agile Testing
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Perth-Code-Dojo/" target="_blank">
-              Perth Code Dojo
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/Perth-mobile-dot-net-developers/" target="_blank">
-              Perth Mobile .NET Developers
             </SafeLink>
           </li>
           <li>
