@@ -58,6 +58,11 @@ export default function Menu(conference: Conference, dates: Dates): { Top: MenuI
     name: 'FAQs',
   })
 
+  topMenu.push({
+    href: '/covid-policy',
+    name: 'COVID-19 Policy',
+  })
+
   if (conference.Socials.Blog) {
     topMenu.push({
       external: true,

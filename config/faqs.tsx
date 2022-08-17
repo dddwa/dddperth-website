@@ -12,24 +12,29 @@ export default function getFaqs(dates: Dates): FAQ[] {
   if (!Conference.HideDate) {
     Faqs.push({
       Question: 'When and where is it?',
-      Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
-        }.
-          Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${dates.IsComplete ? 'we finished' : "we'll finish"
-        } at ${Conference.FinishTime}${Conference.HasAfterParty
+      Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${
+        Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
+      }.
+          Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
+        dates.IsComplete ? 'we finished' : "we'll finish"
+      } at ${Conference.FinishTime}${
+        Conference.HasAfterParty
           ? ' followed by the afterparty' + Conference.HideAfterpartyVenue
             ? ''
             : ' at ' + Conference.Venue.Afterparty
           : ''
-        }. (Please note that all times on the website are in Perth time: WST or +08:00)`,
+      }. (Please note that all times on the website are in Perth time: WST or +08:00)`,
     })
   }
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${Conference.HasAfterParty ? ' and access to the afterparty!' : '!'
-      }  Amazing value right!?
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${
+      Conference.HasAfterParty ? ' and access to the afterparty!' : '!'
+    }  Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
-      ${Conference.Name
+      ${
+        Conference.Name
       } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
@@ -136,7 +141,8 @@ export default function getFaqs(dates: Dates): FAQ[] {
           <Fragment>Ticket sales have closed.</Fragment>
         ) : (
           <Fragment>
-            Registration opens on {formatInTimeZone(Conference.RegistrationOpenFrom, Conference.TimeZone, dates.DateDisplayFormat)} at{' '}
+            Registration opens on{' '}
+            {formatInTimeZone(Conference.RegistrationOpenFrom, Conference.TimeZone, dates.DateDisplayFormat)} at{' '}
             {formatInTimeZone(Conference.RegistrationOpenFrom, Conference.TimeZone, dates.TimeDisplayFormat)}.
           </Fragment>
         )}
@@ -262,11 +268,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Meetup-Group/" target="_blank">
-              Perth Agile Meetup
-            </SafeLink>
-          </li>
-          <li>
             <SafeLink href="http://www.meetup.com/DevOps-Perth/" target="_blank">
               DevOps Perth
             </SafeLink>
@@ -277,18 +278,48 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Agile-Testing/" target="_blank">
-              Perth Agile Testing
+            <SafeLink href="https://www.meetup.com/perth-scrum-master-and-coaching-guild/" target="_blank">
+              Perth Scrum Master and Agile Coaching Guild
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Code-Dojo/" target="_blank">
-              Perth Code Dojo
+            <SafeLink href="https://www.meetup.com/sectalks-perth/" target="_blank">
+              SecTalks Perth
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://www.meetup.com/Perth-mobile-dot-net-developers/" target="_blank">
-              Perth Mobile .NET Developers
+            <SafeLink href="https://www.meetup.com/perth-digital-transformation-group/" target="_blank">
+              Digital Transformation Perth
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/amazon-web-services-user-group/" target="_blank">
+              Perth AWS User Group
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-ios/" target="_blank">
+              Perth iOS Developers
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/producttank-perth/" target="_blank">
+              ProductTank Perth
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-iot-community/" target="_blank">
+              Perth Internet of Things Community
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-machine-learning-group/" target="_blank">
+              Perth Machine Learning Group
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-data-engineering-meetup/" target="_blank">
+              Perth Data Engineering Meetup
             </SafeLink>
           </li>
           <li>
@@ -451,6 +482,16 @@ export default function getFaqs(dates: Dates): FAQ[] {
       </Fragment>
     ),
     Category: 'health',
+  })
+
+  Faqs.push({
+    Question: 'How are you managing COVID-19 guidelines and restrictions?',
+    Answer: (
+      <Fragment>
+        Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
+        guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
+      </Fragment>
+    ),
   })
 
   Faqs.push({
