@@ -278,6 +278,51 @@ export default function getFaqs(dates: Dates): FAQ[] {
             </SafeLink>
           </li>
           <li>
+            <SafeLink href="https://www.meetup.com/perth-scrum-master-and-coaching-guild/" target="_blank">
+              Perth Scrum Master and Agile Coaching Guild
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/sectalks-perth/" target="_blank">
+              SecTalks Perth
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-digital-transformation-group/" target="_blank">
+              Digital Transformation Perth
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/amazon-web-services-user-group/" target="_blank">
+              Perth AWS User Group
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-ios/" target="_blank">
+              Perth iOS Developers
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/producttank-perth/" target="_blank">
+              ProductTank Perth
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-iot-community/" target="_blank">
+              Perth Internet of Things Community
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-machine-learning-group/" target="_blank">
+              Perth Machine Learning Group
+            </SafeLink>
+          </li>
+          <li>
+            <SafeLink href="https://www.meetup.com/perth-data-engineering-meetup/" target="_blank">
+              Perth Data Engineering Meetup
+            </SafeLink>
+          </li>
+          <li>
             <SafeLink href="http://www.witwa.org.au/" target="_blank">
               Women in Technology, WA
             </SafeLink>
