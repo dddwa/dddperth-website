@@ -1,19 +1,47 @@
+import React from 'react'
 import { GetServerSideProps, NextPage } from 'next'
-import { useConfig } from 'Context/Config'
-import { Main } from 'layouts/main'
-import { format } from 'date-fns'
-import { StyledList, Text } from 'components/global/text'
-import Link from 'next/link'
-import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { format } from 'date-fns'
+import { useConfig } from 'Context/Config'
+import { Session } from 'config/types'
+import { Main } from 'layouts/main'
+import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
+import { fetchSessions } from 'components/utils/useSessions'
+import { useSessionGroups } from 'components/utils/useSessionGroups'
+import { StyledList, Text } from 'components/global/text'
 import { SafeLink } from 'components/global/safeLink'
+import { roomLocations } from 'components/venueMapData'
 
 const VenueMap = dynamic(() => import('components/venueMap'), { ssr: false })
 
-const ConferenceDayPage: NextPage = () => {
+interface ConferencePageProps {
+  sessions?: Session[]
+  sessionId?: string
+}
+
+const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions, sessionId }) => {
   const { conference, dates } = useConfig()
   if (dates.IsInProgress) {
     // dummy
+  }
+
+  const { currentSessionGroup } = useSessionGroups(sessions)
+
+  if (currentSessionGroup && currentSessionGroup.sessions.length > 0) {
+    // NB: This is quite brittle, as it assumes that the list of current sessions is returned in exactly the same order as the definition of rooms
+    currentSessionGroup.sessions.map(function (session, i) {
+      const presenters = []
+      session.Presenters.map((p) => {
+        presenters.push(p.Name)
+      })
+      if (!roomLocations.features[i]) return
+      roomLocations.features[i].properties.currentEvent = {
+        eventId: session.Id,
+        eventName: session.Title,
+        eventPresenters: presenters.join(', '),
+      }
+    })
   }
 
   return (
@@ -94,7 +122,7 @@ const ConferenceDayPage: NextPage = () => {
         chance to win a prize at the end of the day!
       </Text>
 
-      <VenueMap />
+      <VenueMap roomLocationData={roomLocations} />
 
       <h3>Rooms</h3>
       <Text>
@@ -176,14 +204,14 @@ const ConferenceDayPage: NextPage = () => {
         If you wish to report an issue anonymously, you can do so using this form. We can't follow up an anonymous
         report, but we will fully investigate it and take whatever action we can to prevent a recurrence.
       </Text>
-      <Text>
+      <div>
         Emergency contact numbers:
         <StyledList>
           <li>Rebecca Waters - 0405 100 063</li>
           <li>Matt Ward - 0403 695 863</li>
           <li>Amy Kapernick - 0438 984 242</li>
         </StyledList>
-      </Text>
+      </div>
       <h2>COVID-19</h2>
       <Text>
         Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
@@ -214,6 +242,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (!dates.IsInProgress) {
     return { redirect: { destination: '/', permanent: false } }
+  }
+
+  const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
+  const sessionId = context.query.sessionId
+
+  return {
+    props: {
+      ...(sessions ? { sessions } : {}),
+      ...(sessionId ? { sessionId } : {}),
+    },
   }
 
   return {
