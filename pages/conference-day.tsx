@@ -20,7 +20,7 @@ interface ConferencePageProps {
   sessionId?: string
 }
 
-const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions, sessionId }) => {
+const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
   const { conference, dates } = useConfig()
   if (dates.IsInProgress) {
     // dummy
