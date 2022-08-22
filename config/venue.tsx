@@ -4,7 +4,7 @@ import { SafeLink } from 'components/global/safeLink'
 import { Venue } from './types'
 
 const venue: Venue = {
-  Name: 'Perth Convention Centre',
+  Name: 'Perth Convention and Exhibition Centre (PCEC)',
   Address: '21 Mounts Bay Rd, Perth',
   Latitude: -31.9565004,
   Longitude: 115.853,
@@ -29,7 +29,7 @@ const venue: Venue = {
     <Fragment>
       PCEC has parking underneath it for{' '}
       <SafeLink href="https://www.cityofperthparking.com.au/convention-centre" target="_blank">
-        $16.80 for the day
+        $10 for the day
       </SafeLink>
       .
     </Fragment>
