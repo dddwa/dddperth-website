@@ -228,7 +228,7 @@ export const CurrentAgenda = ({
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 15, minutes: 35 })} />
                   <AgendaSession room={0} alwaysShowRoom fullWidth>
-                    <StyledTrackHeader>Afternoon Tea</StyledTrackHeader>
+                    <StyledTrackHeader>Coffee Break</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
                 <StyledAgendaRow>
