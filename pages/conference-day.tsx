@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -12,6 +12,7 @@ import { useSessionGroups } from 'components/utils/useSessionGroups'
 import { StyledList, Text } from 'components/global/text'
 import { SafeLink } from 'components/global/safeLink'
 import { roomLocations } from 'components/venueMapData'
+import Image from 'next/image'
 
 const VenueMap = dynamic(() => import('components/venueMap'), { ssr: false })
 
@@ -59,61 +60,19 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       )}
       <h2>Getting There</h2>
       <Text>
-        <strong>Where</strong>: Perth Convention and Exhibition Centre,{' '}
-        <Link href="https://www.google.com.au/maps/place/Perth+Convention+and+Exhibition+Centre%2c+21+Mounts+Bay+Rd%2c+Perth">
-          21 Mounts Bay Rd, Perth
-        </Link>
-        <StyledList>
-          <li>
-            <strong>Car</strong>: Perth Convention and Exhibition Centre (PCEC) has parking underneath it for{' '}
-            <Link href="https://www.cityofperthparking.com.au/convention-centre">$10 for the day</Link>.
-          </li>
-          <li>
-            <strong>Train</strong>: PCEC is adjoining the Elizabeth Quay Train Station and is a 5 minute walk from it.
-            See <Link href="http://transperth.wa.gov.au/">Transperth</Link> for more details.
-          </li>
-          <li>
-            <strong>Bus</strong>: PCEC is easy to get to via any bus that goes to the Esplanade Busport, which is
-            adjoining the PCEC. See <Link href="http://transperth.wa.gov.au/">Transperth</Link> for more details.
-          </li>
-        </StyledList>
+        Our <SafeLink href="/venue">Venue</SafeLink> page has more information on how to get to the conference.
       </Text>
-      <h2>Registration</h2>
+      <h2>Agenda</h2>
       <Text>
-        We'll be welcoming everyone from <strong>8:00 to 8:40am</strong> at the registration desk in the Central Foyer
-        on Level 2. Level 2 is the main entrance from St Georges Terrace and the bus port into the centre.
-      </Text>
-      <Text>You should have received a QR Code when you registered. Bring that; on your device is fine.</Text>
-      <Text>
-        If you don't have a QR Code, you might not have completed your ticket registration. Find your order email or
-        check your junk folder, and if you still can't find details on how to get that QR Code, just&nbsp;
-        <Link href="mailto:info@dddperth.com?subject=Help%2C%20I%20can't%20find%20my%20ticket&amp;body=I%20can't%20find%20my%20ticket!%20%0A%0AMy%20name%20is%3A%0AMy%20email%20that%20I%20probably%20used%20is%3A%0A">
-          contact us
-        </Link>
-        &nbsp;and we'll help you out.
-      </Text>
-      <h2>Code of Conduct</h2>
-      <Text>
-        Please familiarise yourself with the <Link href="/code-of-conduct">Conference Code of Conduct</Link>.
+        {conference.Name} {format(conference.Date, 'y')} consists of nine tracks, which will be run out of the Riverside
+        Theatre, and Meeting Rooms 1 through to 12. The Keynote and Locknote will take place in the Riverside Theatre.
+        You can <SafeLink href="/agenda">view the full agenda</SafeLink> online.
       </Text>
       <Text>
-        All attendees, speakers, sponsors and volunteers at our conference are required to agree with the code of
-        conduct. Organisers and volunteers will enforce this code throughout the event. We are expecting cooperation
-        from all participants to help ensuring a safe, welcoming environment for everybody.
-      </Text>
-      <h3>What to do if someone makes a complaint about you?</h3>
-      <StyledList>
-        <li>DDD Perth organisers and volunteers will have a conversation with you, and listen to you.</li>
-        <li>
-          Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
-          question
-        </li>
-        <li>Don't be dismissive of the complainant</li>
-        <li>Understand any advice given on how to act in the future</li>
-        <li>Comply with the directions of the DDD Perth organisers and volunteers</li>
-      </StyledList>
-      <Text>
-        We believe everyone here is coming from a good place, and so we expect that you're learning, just like we are.
+        The rooms will be clearly marked on the day, as well as screens outside the rooms indicating upcoming sessions.
+        Rooms have no particular theme, attend whichever sessions most interest you at each time slot. Note: We have a
+        mix of 45 minute and 20 minute sessions. If you wish to move around while sessions are in progress then feel
+        free to do so, however take care to be respectful towards our presenters.
       </Text>
       <h2>Around the Venue</h2>
       <Text>
@@ -121,20 +80,10 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         We also have a treasure hunt running - get your checklist from the DDD Help Desk and complete the hunt for your
         chance to win a prize at the end of the day!
       </Text>
-
       <div style={{ zIndex: 200 }}>
         <VenueMap roomLocationData={roomLocations} />
       </div>
 
-      <h3>Rooms</h3>
-      <Text>
-        {conference.Name} {format(conference.Date, 'y')} consists of nine tracks, which will be run out of the Riverside
-        Theatre, and Meeting Rooms 1 through to 12. The Keynote and Locknote will take place in the Riverside Theatre.
-      </Text>
-      <Text>
-        The rooms will be clearly marked on the day, as well as screens outside the rooms indicating upcoming sessions.
-      </Text>
-      <Text>Rooms have no particular theme, attend whichever sessions most interest you at each time slot.</Text>
       <h3>Toilets</h3>
       <Text>
         The above floorplans show where the toilets are located on level 2. We will explicitly mark the toilets as
@@ -159,19 +108,17 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         PCEC has free wifi for all attendees limited to 512Kb download speed that needs to be renewed every hour. We
         make no guarantees about the quality or speed of the wifi.
       </Text>
-      <h2>Agenda</h2>
-      <Text>
-        At registration, you will be provided with a lanyard bearing your name on the front and our agenda on the back.
-        Note: we have a mix of 45 minute and 20 minute sessions. If you wish to move around while sessions are in
-        progress then feel free to do so, however take care to be respectful towards our presenters. View the DDD Perth
-        agenda.
-      </Text>
+
       <h3>Food and Drink</h3>
       <Text>
         Tea and coffee will be available throughout the day at the Coffee Carts sponsored by Planit, MOQDigital and
         Bunnings.
       </Text>
-      <Text>(Sponsor logos)</Text>
+      <div>
+        <Image src="/static/images/sponsors/2021-moqdigital.png" width="100" height="100" />
+        <Image src="/static/images/sponsors/2021-planit.png" width="100" height="100" />
+        <Image src="/static/images/sponsors/2022-bunnings.png" width="100" height="100" />
+      </div>
       <Text>
         Morning Tea, Lunch, and Afternoon Tea will be provided and will take place in the Northern, Southern and
         Riverside Theatre Foyers.
@@ -189,6 +136,29 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       </Text>
       <h3>Afterparty</h3>
       <Text>There is no official afterparty for 2022.</Text>
+      <h2>Code of Conduct</h2>
+      <Text>
+        Please familiarise yourself with the <Link href="/code-of-conduct">Conference Code of Conduct</Link>.
+      </Text>
+      <Text>
+        All attendees, speakers, sponsors and volunteers at our conference are required to agree with the code of
+        conduct. Organisers and volunteers will enforce this code throughout the event. We are expecting cooperation
+        from all participants to help ensuring a safe, welcoming environment for everybody.
+      </Text>
+      <h3>What to do if someone makes a complaint about you?</h3>
+      <StyledList>
+        <li>DDD Perth organisers and volunteers will have a conversation with you, and listen to you.</li>
+        <li>
+          Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
+          question
+        </li>
+        <li>Don't be dismissive of the complainant</li>
+        <li>Understand any advice given on how to act in the future</li>
+        <li>Comply with the directions of the DDD Perth organisers and volunteers</li>
+      </StyledList>
+      <Text>
+        We believe everyone here is coming from a good place, and so we expect that you're learning, just like we are.
+      </Text>
       <h2>Getting Help</h2>
       <h3>Issues &amp; Questions</h3>
       <Text>
