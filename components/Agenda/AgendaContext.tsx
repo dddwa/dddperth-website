@@ -17,7 +17,7 @@ interface AgendaProviderProps
   sessions: Session[]
   sponsors: Sponsor[]
   rooms: string[]
-  livestreams: string[]
+  livestreams?: string[]
 }
 
 const AgendaContext = React.createContext<AgendaContextProps | undefined>(undefined)
