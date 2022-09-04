@@ -122,7 +122,9 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         chance to win a prize at the end of the day!
       </Text>
 
-      <VenueMap roomLocationData={roomLocations} />
+      <div style={{ zIndex: 200 }}>
+        <VenueMap roomLocationData={roomLocations} />
+      </div>
 
       <h3>Rooms</h3>
       <Text>
