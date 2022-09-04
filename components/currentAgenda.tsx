@@ -92,7 +92,7 @@ export const CurrentAgenda = ({
                 </StyledAgendaRowList>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 8, minutes: 0 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
+                  <AgendaSession room="Riverside Foyer (Level 2)" alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Registration</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
@@ -141,7 +141,7 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 10, minutes: 55 })} />
-                  <AgendaSession room="Riverside Theatre" alwaysShowRoom fullWidth>
+                  <AgendaSession room="Northern, Theatre and Southern Foyers" alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Morning Tea</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
@@ -195,7 +195,7 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 13, minutes: 35 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
+                  <AgendaSession room="Northern, Theatre and Southern Foyers" alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Lunch</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
@@ -228,7 +228,7 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 15, minutes: 35 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
+                  <AgendaSession room="Northern, Theatre and Southern Foyers" alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Coffee Break</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
