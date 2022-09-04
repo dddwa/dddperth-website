@@ -12,6 +12,8 @@ import {
   StyledSpeakerBioHeader,
   StyledTagList,
 } from './SessionDetails.styled'
+import { YouTubeIcon } from 'components/global/Icons/Youtube'
+import { StyledLivestreamLink } from './SessionDetails.styled'
 
 interface SessionDetailsProps {
   session: Session
@@ -19,6 +21,7 @@ interface SessionDetailsProps {
   hideTags: boolean
   hideLevelAndFormat: boolean
   showBio: boolean
+  livestream: string
 }
 
 export const SessionDetails = ({
@@ -27,6 +30,7 @@ export const SessionDetails = ({
   hideTags = false,
   hideLevelAndFormat = false,
   showBio,
+  livestream,
 }: SessionDetailsProps) => {
   return (
     <Fragment>
@@ -68,6 +72,14 @@ export const SessionDetails = ({
             )}
           </StyledBioFigure>
         ))}
+      {livestream && (
+        <StyledLivestreamLink>
+          <SafeLink href={livestream} target="_blank">
+            <YouTubeIcon />
+            Watch Livestream
+          </SafeLink>
+        </StyledLivestreamLink>
+      )}
       <StyledPreWrappedParagraph>{session.Abstract}</StyledPreWrappedParagraph>
 
       {(!hideLevelAndFormat || !hideTags) && (

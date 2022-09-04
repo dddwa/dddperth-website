@@ -32,7 +32,7 @@ export const AgendaSession = ({
   renderTitle,
   renderPresenters,
 }: AgendaSessionProps) => {
-  const { onSelect, getSession, getSponsor, getRoom } = useAgendaContext()
+  const { onSelect, getSession, getSponsor, getRoom, getLivestream } = useAgendaContext()
   const session = sessionId ? getSession(sessionId) : false
   const sponsor = sponsorId ? getSponsor(sponsorId) : undefined
   const presenters = session ? session.Presenters.map((p) => p.Name).join(', ') : ''
@@ -41,7 +41,11 @@ export const AgendaSession = ({
     <StyledSection fullWidth={fullWidth} session={session !== false}>
       {!session && !children && <StyledAgendaPresenter>Loading&hellip;</StyledAgendaPresenter>}
       {session && (
-        <StyledAgendaButton type="button" isKeynote={isKeynote} onClick={() => onSelect(session, sponsor)}>
+        <StyledAgendaButton
+          type="button"
+          isKeynote={isKeynote}
+          onClick={() => onSelect(session, sponsor, getLivestream(room))}
+        >
           {renderPresenters ? (
             renderPresenters(presenters)
           ) : (
