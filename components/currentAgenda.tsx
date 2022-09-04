@@ -64,6 +64,7 @@ export const CurrentAgenda = ({
               sessions={agendaSessions}
               sponsors={sponsors}
               rooms={Conference.RoomNames}
+              livestreams={Conference.Livestreams}
             >
               {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
                 <StyledUpNext>
