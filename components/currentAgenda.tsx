@@ -188,7 +188,7 @@ export const CurrentAgenda = ({
                   <AgendaSession room={3} sessionId="343105" />
                   <AgendaSession room={4} sessionId="336320" />
                   <AgendaSession room={5} sessionId="343968" />
-                  <AgendaSession room={6} sessionId="343579" />
+                  <AgendaSession room={6} sessionId="339597" />
                   <AgendaSession room={7} sessionId="344431" />
                   <AgendaSession room={8} sessionId="341472" />
                 </StyledAgendaRow>
