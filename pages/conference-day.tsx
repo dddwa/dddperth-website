@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -135,7 +135,11 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         and they can't guarantee against kitchen contaminants. This applies particularly to nut allergies.
       </Text>
       <h3>Afterparty</h3>
-      <Text>There is no official afterparty for 2022.</Text>
+      <Text>
+        After the event, we invite you to join us in the foyer adjoining the conference rooms for the afterparty. Some
+        games, food and drink will be provided, while we enjoy the beautiful views over Elizabeth Quay and the Swan
+        River.
+      </Text>
       <h2>Code of Conduct</h2>
       <Text>
         Please familiarise yourself with the <Link href="/code-of-conduct">Conference Code of Conduct</Link>.
