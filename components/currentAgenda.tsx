@@ -91,7 +91,7 @@ export const CurrentAgenda = ({
                   ))}
                 </StyledAgendaRowList>
                 <StyledAgendaRow>
-                  <AgendaTime time={set(date, { hours: 8, minutes: 0 })} />
+                  <AgendaTime time={set(date, { hours: 7, minutes: 45 })} />
                   <AgendaSession room="Riverside Foyer (Level 2)" alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Registration</StyledTrackHeader>
                   </AgendaSession>
@@ -201,9 +201,8 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 14, minutes: 35 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
-                    <StyledTrackHeader>Lunchtime Sessions</StyledTrackHeader>
-                  </AgendaSession>
+                  <AgendaSession room={0} sessionId="379497" alwaysShowRoom />
+                  <AgendaSession room={7} sessionId="379496" alwaysShowRoom />
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 15, minutes: 5 })} />
@@ -255,6 +254,15 @@ export const CurrentAgenda = ({
                   <AgendaTime time={set(date, { hours: 17, minutes: 25 })} />
                   <AgendaSession room={0} alwaysShowRoom fullWidth>
                     <StyledTrackHeader>Closing</StyledTrackHeader>
+                  </AgendaSession>
+                </StyledAgendaRow>
+                <StyledAgendaRow>
+                  <AgendaTime
+                    time={set(date, { hours: 17, minutes: 35 })}
+                    endTime={set(date, { hours: 19, minutes: 30 })}
+                  />
+                  <AgendaSession room="Riverside Foyer" alwaysShowRoom fullWidth>
+                    <StyledTrackHeader>Afterparty</StyledTrackHeader>
                   </AgendaSession>
                 </StyledAgendaRow>
               </StyledAgendaContainer>
