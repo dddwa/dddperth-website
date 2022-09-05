@@ -94,6 +94,8 @@ export const sponsorFeatures: GeoJSON.FeatureCollection = {
 
 function plotSponsorLoc(sponsor, locType, locPopup) {
   const blurb = sponsor.blurb ? sponsor.blurb : sponsor.name + ' ' + locPopup
+  const marker = sponsor.marker ? sponsor.marker : null
+
   sponsorFeatures.features.push({
     type: 'Feature',
     properties: {
@@ -101,6 +103,7 @@ function plotSponsorLoc(sponsor, locType, locPopup) {
       name: sponsor.name,
       popupContent: blurb,
       logo: sponsorImgMap[sponsor.name],
+      marker: marker,
     },
     geometry: {
       type: 'Point',
@@ -114,63 +117,131 @@ const sponsorBooths = [
     name: 'Microsoft',
     coordinates: [115.85379067857545, -31.956998761198715],
     blurb: `Ready to put your driving skills to the test?  Join us at the Microsoft stand for a game of Forza Horizon 5 and show everyone you’re the fastest driver. After your race, sign up to our community and collect some swag!`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Microsoft.png',
+      size: [81.43, 31.07],
+      anchor: [45, 18],
+    },
   },
   {
     name: 'Telstra Purple',
     coordinates: [115.8537477824913, -31.95712278722021],
     blurb: `Come meet the team and try your hand at our augmented reality AirSpeeder demo showing what it's like to compete in the worlds first flying racing car series supported by Telstra Purple. While you're there grab some free swag and pop your name in the draw for a chance to win an Xbox Series X.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-TelstraPurple.png',
+      size: [67, 48],
+      anchor: [40, 28],
+    },
   },
   {
     name: 'Mantel Group',
     coordinates: [115.85371829143345, -31.95739245789998],
     blurb: `Come and visit the Mantel Group booth to meet our team and learn why we've been named #1 Best Place to Work in Australia back to back, in 2021 and 2022. You can also add your name to our digital spinning wheel for a chance to win a DJI Mini 2 4K Drone, Meta Quest 2 with Beat Saber or an Xbox Series S 512GB Console.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-MantelGroup.png',
+      size: [73.57, 29.64],
+      anchor: [28, 18],
+    },
   },
-  { name: 'GitHub', coordinates: [115.85378321883962, -31.95704559544246] },
+  {
+    name: 'GitHub',
+    coordinates: [115.85374784818629, -31.95704559544246],
+    marker: {
+      icon: '/static/images/map/map-sponsor-GitHub.png',
+      size: [47.86, 17.14],
+      anchor: [24, 9],
+    },
+  },
   {
     name: 'Twilio',
-    coordinates: [115.85377886070137, -31.95707290392472],
+    coordinates: [115.85381121070972, -31.95707290392472],
     blurb: `Come visit the Twilio booth to learn what you can build with Twilio APIs. Lead an intrepid crew on a mission to save The Cloud in TwilioQuest. And discover all the best Twilio swag, from t-shirts and socks to stickers and scrunchies.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Twilio.png',
+      size: [52.5, 20.36],
+      anchor: [30, 12],
+    },
   },
   {
     name: 'Valrose',
-    coordinates: [115.85370211286317, -31.957247564233736],
+    coordinates: [115.85370996394003, -31.957241710523032],
     blurb: `Pop to the Valrose stand to grab some donuts to go with your coffee. Feel free to say hi to the team and let them know if you have any career or recruitment questions.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Valrose.png',
+      size: [29, 37],
+      anchor: [13, 15],
+    },
   },
   {
     name: 'Bankwest',
-    coordinates: [115.85386561370767, -31.9573932090583],
+    coordinates: [115.85389703161766, -31.957403285246578],
     blurb: `Come and enjoy a complimentary fresh orange juice, and find out more about what working at Bankwest Technology is like. As one of WA’s largest technology employers, Bankwest is great place to build your career in technology. You can talk to one of our colleagues about the exciting opportunities to work on the latest technologies and innovations in banking. You never know, it may trigger some fresh ideas for your next career opportunity. `,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Bankwest.png',
+      size: [67.86, 20],
+      anchor: [40, 10],
+    },
   },
   {
     name: 'Insight',
     coordinates: [115.85396319937398, -31.957473996322346],
     blurb: `If you’re not sure what the colour fuchsia looks like, you’ll soon find out when you meet the Insight team at booth G5.  Aside from the quality socks and sweets, we have a live IoT set-up and a number of Perth teammates who are keen to chat and learn more about you.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Insight.png',
+      size: [61.43, 17.14],
+      anchor: [35, 16],
+    },
   },
   {
     name: 'Virtual Gaming Worlds',
     coordinates: [115.85412674069475, -31.95746972939116],
     blurb: `VGW has taken the world by storm with their highly innovative entertainment platform that is underpinned by its sophisticated in-house technology, platforms and games. Check out their booth to see how they are disrupting the online social games industry, as well as enter their raffle for the chance to win a pair of Apple AirPods Pro, valued at $399.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-VGW.png',
+      size: [55.71, 22.86],
+      anchor: [33, 6],
+    },
   },
   {
     name: 'Versent',
     coordinates: [115.8541639396427, -31.95753287995242],
     blurb: `"Located next to the coffee cart, say hello whilst in line.
   Versent are an Australian born-in-the-cloud tech firm with the best engineering culture in Australia. Stop by to say hi, grab some awesome swag, and sign up to win cash with DevJam - our Perth-only hackathon, or our quiz."`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Versent.png',
+      size: [65.36, 16.76],
+      anchor: [41, 16],
+    },
   },
   {
     name: 'MakerX',
     coordinates: [115.85419354189753, -31.956985289182057],
     blurb: `Come and make with our Makers via our LEGO station and learn about MakerX, the digital product and venture building company co-founded by the co-founders of DDD Perth #makersmake #cofounderception`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-MakerX.png',
+      size: [61.43, 13.93],
+      anchor: [22, 0],
+    },
   },
   {
     name: 'Amazon Web Services',
-    coordinates: [115.85435379079529, -31.95698301347335],
+    coordinates: [115.85428289275963, -31.95696094531853],
     blurb: `At the AWS booth, you’ll have the opportunity to chat 1:1 with a whole bunch of local AWS peeps – come with your questions you want answered about running software on the AWS platform.  We will also have the chance for you to take part in hands on Labs if you’re curious about getting started on AWS, and there may also be some SWAG too – so come early before it all runs out `,
+    marker: {
+      icon: '/static/images/map/map-sponsor-AWS.png',
+      size: [37.86, 24.29],
+      anchor: [20, 11],
+    },
   },
   {
     name: 'Auth0',
-    coordinates: [115.85435881768018, -31.957060387538018],
+    coordinates: [115.85430502218775, -31.95703035442564],
     blurb: `The Auth0 Identity Platform, a product unit within Okta, takes a modern approach to identity and enables organizations to provide secure access to any application, for any user. Stop by the Auth0 booth to chat with one of our Developer Advocates and try out the Auth0 Login Challenge!`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Auth0.png',
+      size: [35, 31.79],
+      anchor: [18, 14],
+    },
   },
 ]
 

@@ -36,7 +36,7 @@ const talkLocIcon = L.divIcon({
   className: 'myDivIcon',
 })
 
-export const coffeeLocIcon = L.divIcon({
+const coffeeLocIcon = L.divIcon({
   html: '<div style="font-size: 24px;">☕</div>',
   iconSize: [38, 36],
   className: 'myDivIcon',
@@ -82,7 +82,15 @@ function pointToLayer(_feature, latlng) {
       return L.marker(latlng, { icon: coffeeLocIcon })
     case 'room':
       return L.marker(latlng, { icon: talkLocIcon })
-    //case 'sponsorBooth':
+    case 'sponsorBooth':
+      if (_feature.properties.marker) {
+        const sponsorMarker = L.icon({
+          iconUrl: _feature.properties.marker.icon,
+          iconSize: _feature.properties.marker.size,
+          iconAnchor: _feature.properties.marker.anchor,
+        })
+        return L.marker(latlng, { icon: sponsorMarker })
+      }
   }
   return L.marker(latlng)
 }
