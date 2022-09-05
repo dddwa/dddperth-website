@@ -49,13 +49,13 @@ function onEachFeature(feature: any, layer: L.Layer) {
       feature.properties.type &&
       ('sponsorBooth' == feature.properties.type || 'coffeeCart' == feature.properties.type)
     ) {
-      const popup = L.popup()
-      let content = '<img src="' + feature.properties.logo + '" /><br />'
+      const popup = L.popup({ maxWidth: 250 })
+      let content = '<img src="' + feature.properties.logo + '" style="max-height: 75px;" /><br />'
       content += feature.properties.popupContent
       popup.setContent(content)
       layer.bindPopup(popup)
     } else if (feature.properties.type && 'room' == feature.properties.type) {
-      const popup = L.popup()
+      const popup = L.popup({ maxWidth: 250 })
       let content = 'Room: <strong>' + feature.properties.name + '</strong><br />'
       content += 'Track: <strong>' + feature.properties.names.nys + '</strong> (' + feature.properties.names.en + ')'
       if (feature.properties.currentEvent) {
