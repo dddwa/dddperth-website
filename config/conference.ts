@@ -16,13 +16,13 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const staticDate = '2022-09-10T08:00'
+const staticDate = '2022-09-10T07:45'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
 const registrationOpenFrom = zonedTimeToUtc('2022-05-16T08:00:00', '+08:00')
-const registrationOpenUntil = hideDate ? null : sub(date, { hours: 15 })
+const registrationOpenUntil = hideDate ? null : sub(date, { hours: 14, minutes: 45 })
 const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-11T08:00:00', '+08:00')
 const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-13T23:59:59', '+08:00')
 const votingOpenFrom = zonedTimeToUtc('2022-05-27T17:00:00', '+08:00')
