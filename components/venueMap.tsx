@@ -138,32 +138,51 @@ const Map = ({ roomLocationData }) => {
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        url="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=cce3e041f6c24eea9ccd3057375869df"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        //url="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=cce3e041f6c24eea9ccd3057375869df"
         maxZoom={22}
       />
+
       <ImageOverlay
-        url="/static/images/map/2022-floorplan-rot20.png"
+        url="/static/images/map/white.png"
         bounds={[
-          [-31.956632805984096, 115.85340510195257],
-          [-31.957724191559862, 115.85470793359586],
+          [-31.956665707121594, 115.8530553358428],
+          [-31.95776032028587, 115.85483292779615],
+        ]}
+      />
+
+      <ImageOverlay
+        url="/static/images/map/2022-floorplan-edited-tilt.png"
+        bounds={[
+          [-31.95684780598409, 115.85353510195257],
+          [-31.957596191559862, 115.85455793359586],
         ]}
         opacity={1}
       />
 
       <LayersControl position="topright">
+        <LayersControl.Overlay name="Overlay1">
+          <ImageOverlay
+            url="/static/images/map/2022-floorplan-rot20.png"
+            bounds={[
+              [-31.956632805984096, 115.85340510195257],
+              [-31.957724191559862, 115.85470793359586],
+            ]}
+            opacity={1}
+          />
+        </LayersControl.Overlay>
         <LayersControl.Overlay name="Rooms" checked>
           <GeoJSON data={roomLocationData} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Sponsors">
           <GeoJSON data={sponsorFeatures} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
-        <LayersControl.Overlay name="Help Desk" checked>
+        <LayersControl.Overlay name="Help Desk">
           <Polygon positions={helpDeskLoc}>
             <Popup>DDD Help Desk</Popup>
           </Polygon>
         </LayersControl.Overlay>
-        <LayersControl.Overlay name="Media Wall" checked>
+        <LayersControl.Overlay name="Media Wall">
           <Polygon positions={mediaWallLoc}>
             <Popup>DDD Media Wall</Popup>
           </Polygon>
