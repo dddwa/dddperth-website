@@ -248,7 +248,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['7319302c-2d6e-4e0e-abc4-55a090daae6a'], // TODO: lunch sessions TBC
+      sessions: ['379497', '379496'],
       timeStart: set(date, { hours: 14, minutes: 35 }),
       timeEnd: set(date, { hours: 15, minutes: 5 }),
       type: 'SessionIds',

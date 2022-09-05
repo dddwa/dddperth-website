@@ -201,9 +201,8 @@ export const CurrentAgenda = ({
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 14, minutes: 35 })} />
-                  <AgendaSession room={0} alwaysShowRoom fullWidth>
-                    <StyledTrackHeader>Lunchtime Sessions</StyledTrackHeader>
-                  </AgendaSession>
+                  <AgendaSession room={0} sessionId="379497" alwaysShowRoom />
+                  <AgendaSession room={7} sessionId="379496" alwaysShowRoom />
                 </StyledAgendaRow>
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 15, minutes: 5 })} />
