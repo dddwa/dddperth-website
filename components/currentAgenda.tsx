@@ -71,15 +71,29 @@ export const CurrentAgenda = ({
                   <h2>Up next</h2>
                   <StyledAgendaRow>
                     <AgendaTime time={nextSessionGroup.timeStart} />
-                    {nextSessionGroup.sessions.map((session, index) => (
-                      <AgendaSession
-                        key={session.Id}
-                        sessionId={session.ExternalId}
-                        fullWidth={nextSessionGroup.sessions.length === 1}
-                        room={index}
-                        alwaysShowRoom={true}
-                      />
-                    ))}
+                    {nextSessionGroup.sessions.map((session, index) =>
+                      Array.isArray(session) ? (
+                        <Fragment key={index}>
+                          {session.map((sess) => (
+                            <AgendaSession
+                              key={sess.Id}
+                              sessionId={sess.ExternalId}
+                              fullWidth={nextSessionGroup.sessions.length === 1}
+                              room={index}
+                              alwaysShowRoom={true}
+                            />
+                          ))}
+                        </Fragment>
+                      ) : (
+                        <AgendaSession
+                          key={session.Id}
+                          sessionId={session.ExternalId}
+                          fullWidth={nextSessionGroup.sessions.length === 1}
+                          room={index}
+                          alwaysShowRoom={true}
+                        />
+                      ),
+                    )}
                   </StyledAgendaRow>
                 </StyledUpNext>
               )}

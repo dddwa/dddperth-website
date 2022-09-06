@@ -66,7 +66,7 @@ export const TestingControl = (): JSX.Element => {
           <StyledButton kind="primary" onClick={() => storeTime(conference.Date)}>
             On the day
           </StyledButton>
-          <StyledButton kind="primary" onClick={() => storeTime(set(conference.Date, { hours: 11, minutes: 0 }))}>
+          <StyledButton kind="primary" onClick={() => storeTime(set(conference.Date, { hours: 15, minutes: 0 }))}>
             During the day
           </StyledButton>
           <StyledButton kind="primary" onClick={() => storeTime(conference.EndDate)}>
