@@ -65,20 +65,20 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <h2>Agenda</h2>
       <Text>
         {conference.Name} {format(conference.Date, 'y')} consists of nine tracks, which will be run out of the Riverside
-        Theatre, and Meeting Rooms 1 through to 12. The Keynote and Locknote will take place in the Riverside Theatre.
+        Theatre, and Meeting Rooms 1 through to 8. The Keynote and Locknote will take place in the Riverside Theatre.
         You can <SafeLink href="/agenda">view the full agenda</SafeLink> online.
       </Text>
       <Text>
-        The rooms will be clearly marked on the day, as well as screens outside the rooms indicating upcoming sessions.
+        Rooms will be clearly marked on the day, as well as screens outside the rooms indicating upcoming sessions.
         Rooms have no particular theme, attend whichever sessions most interest you at each time slot. Note: We have a
         mix of 45 minute and 20 minute sessions. If you wish to move around while sessions are in progress then feel
         free to do so, however take care to be respectful towards our presenters.
       </Text>
       <h2>Around the Venue</h2>
       <Text>
-        This year, we will be located on level 2 near the Riverside Theatre through to the Northern and Southern Foyers.
-        We also have a treasure hunt running - get your checklist from the DDD Help Desk and complete the hunt for your
-        chance to win a prize at the end of the day!
+        We are located on level 2 near the Riverside Theatre through to the Northern and Southern Foyers. We also have a
+        treasure hunt running - get your checklist from the DDD Help Desk and complete the hunt for your chance to win a
+        prize at the end of the day!
       </Text>
       <div style={{ zIndex: 200 }}>
         <VenueMap roomLocationData={roomLocations} />
@@ -86,21 +86,21 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
 
       <h3>Toilets</h3>
       <Text>
-        The above floorplans show where the toilets are located on level 2. We will explicitly mark the toilets as
-        "Access all toilets", which means that they are open to anyone to use regardless of disability, gender identity
-        or any other personal attribute. Of course, we encourage everyone to use the most appropriate and comfortable
-        toilet for them and not to feel pressured to use the "Access all toilets".
+        The above floorplan shows where the toilets are located on level 2. They will be "Access all toilets", which
+        means that they are open to anyone to use regardless of disability, gender identity or any other personal
+        attribute. We encourage you to use the most appropriate and comfortable toilet for you and not to feel pressured
+        to use the "Access all toilets" on level 2.
       </Text>
       <h3>Childcare</h3>
       <Text>
-        Childcare will be located in Meeting Rooms 10 and 11, opposite the DDD Perth Help Desk on Level 2. If you have
-        bought a childcare ticket then head to registration as normal, where one of our organisers will assist you. An
-        email with more information specific to childcare will be sent to all registered parents prior to the day.
+        Childcare is located in Meeting Room 11, opposite the DDD Perth Help Desk on Level 2. Please let us know during
+        registration that you have a Childcare ticket and one of our organisers will help you. An email with more
+        information is sent to all registered parents and guardians before the conference starts.
       </Text>
       <h3>Private baby-feeding and pumping area</h3>
       <Text>
-        Level 1 has an optional baby changing and feeding room with all the facilities. Go down the lifts to get there.
-        We welcome you to pump or feed your baby anywhere you feel comfortable and if anyone makes you feel otherwise to
+        Level 1 has an optional baby changing and feeding room with all the facilities, close to the lifts. You are
+        welcome to pump or feed your baby anywhere you feel comfortable, and if anyone makes you feel otherwise please
         let a volunteer or organiser know as per our code of conduct.
       </Text>
       <h3>WiFi</h3>
@@ -120,15 +120,10 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         <Image src="/static/images/sponsors/2022-bunnings.png" width="100" height="100" />
       </div>
       <Text>
-        Morning Tea, Lunch, and Afternoon Tea will be provided and will take place in the Northern, Southern and
-        Riverside Theatre Foyers.
-      </Text>
-      <Text>
-        The food provided this year is provided in bags to reduce risks of sharing viruses during Lunch. There will also
-        be a dietary station, next to the Valrose Stand, at the windows nearest the theatre. If you’ve provided any
-        allergy or dietary information as part of the registration process, your name will be recorded here and there
-        should be a Venue Staff member available to help if you need it. Reach out to any Volunteer if you need help and
-        we'll find someone to talk to.
+        Morning Tea, Lunch, and Afternoon Tea will be provided and will be served in the Northern, Southern and
+        Riverside Theatre Foyers. Special dietary requirements will be served at the station next to the Valrose Stand.
+        Your name will be recorded and a Venue Staff member is available to help. Reach out to any Volunteer if you need
+        more help and we'll find someone to talk to.
       </Text>
       <Text>
         <strong>Please bring appropriate precautions (epipen or other)</strong> as the Venue will have a lot of people
@@ -166,19 +161,23 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <h2>Getting Help</h2>
       <h3>Issues &amp; Questions</h3>
       <Text>
-        On the day for any issues or questions please feel free to speak to a member of the DDD Perth team who will be
-        easily identifiable by their Volunteer DDD Perth t-shirts.
+        Please feel free to speak to a member of the DDD Perth team who will be easily identifiable by their Volunteer
+        DDD Perth t-shirts.
       </Text>
       <Text>
-        We'll also be identifying the organisers and volunteers during the welcome, and there will also be a volunteer
-        desk next to registration, attended at all times by members from our wonderful team.
+        We'll identify the organisers and volunteers during the Welcome, and there will also be a help desk next to
+        registration, attended at all times by members from our wonderful team.
       </Text>
       <Text>
         You can also send a tweet to @dddperth or email <Link href="mailto:info@dddperth.com">info@dddperth.com</Link>.
       </Text>
       <Text>
-        If you wish to report an issue anonymously, you can do so using this form. We can't follow up an anonymous
-        report, but we will fully investigate it and take whatever action we can to prevent a recurrence.
+        If you wish to report an issue anonymously, you can do so using{' '}
+        <SafeLink href="https://forms.office.com/Pages/ResponsePage.aspx?id=8IU585acE0S9pvuDhIEiS3674sSFwiFHpg5usp1ihu5URDVGTks2N1VOQVBWWUU1VFJESDZMNlkxNSQlQCN0PWcu">
+          this form
+        </SafeLink>
+        . We can't follow up an anonymous report, but we will fully investigate it and take whatever action we can to
+        prevent a recurrence.
       </Text>
       <div>
         Emergency contact numbers:
