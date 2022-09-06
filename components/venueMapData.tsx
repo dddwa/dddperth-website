@@ -243,6 +243,16 @@ const sponsorBooths = [
       anchor: [18, 14],
     },
   },
+  {
+    name: 'Keystart',
+    coordinates: [115.85378033867292, -31.957273854812865],
+    blurb: `Keystart are proud to sponsor your quiet room today.  If you need some time out, we are ready to welcome you into our lounge room with some shhhhhweet offerings. It's a space away from the hustle and bustle, to take a break, log out, and recharge. Come make yourself at home!`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Keystart.png',
+      size: [51.43, 13.93],
+      anchor: [25, 6],
+    },
+  },
 ]
 
 sponsorBooths.map((sponsor) => {
@@ -254,9 +264,30 @@ const coffeeCarts = [
     name: 'Planit',
     coordinates: [115.85389116436066, -31.95713178781193],
     blurb: `Do you feel the need? The need for caffeine? Stop by our coffee cart and find out why elite engineers, the best of the best, join Planit.`,
+    marker: {
+      icon: '/static/images/map/map-sponsor-Planit.png',
+      size: [54.29, 46.07],
+      anchor: [35, 22],
+    },
   },
-  { name: 'Bunnings', coordinates: [115.85427991448684, -31.957544102862222] },
-  { name: 'MOQdigital', coordinates: [115.85447914253717, -31.957070757115613] },
+  {
+    name: 'Bunnings',
+    coordinates: [115.85425559596831, -31.95754491180062],
+    marker: {
+      icon: '/static/images/map/map-sponsor-Bunnings.png',
+      size: [48.93, 33.93],
+      anchor: [28, 16],
+    },
+  },
+  {
+    name: 'MOQdigital',
+    coordinates: [115.8544586821167, -31.95706473893827],
+    marker: {
+      icon: '/static/images/map/map-sponsor-MOQDigital.png',
+      size: [62.5, 42.86],
+      anchor: [38, 22],
+    },
+  },
 ]
 
 coffeeCarts.map((sponsor) => {

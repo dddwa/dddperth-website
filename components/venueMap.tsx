@@ -78,10 +78,9 @@ function onEachFeature(feature: any, layer: L.Layer) {
 
 function pointToLayer(_feature, latlng) {
   switch (_feature.properties.type) {
-    case 'coffeeCart':
-      return L.marker(latlng, { icon: coffeeLocIcon })
     case 'room':
       return L.marker(latlng, { icon: talkLocIcon })
+    case 'coffeeCart':
     case 'sponsorBooth':
       if (_feature.properties.marker) {
         const sponsorMarker = L.icon({
@@ -160,7 +159,7 @@ const Map = ({ roomLocationData }) => {
       />
 
       <ImageOverlay
-        url="/static/images/map/2022-floorplan-edited-tilt.png"
+        url="/static/images/map/2022-floorplan-edited-tilt-logoclean.png"
         bounds={[
           [-31.95684780598409, 115.85353510195257],
           [-31.957596191559862, 115.85455793359586],
@@ -182,7 +181,7 @@ const Map = ({ roomLocationData }) => {
         <LayersControl.Overlay name="Rooms" checked>
           <GeoJSON data={roomLocationData} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
-        <LayersControl.Overlay name="Sponsors">
+        <LayersControl.Overlay name="Sponsors" checked>
           <GeoJSON data={sponsorFeatures} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Help Desk">
