@@ -36,12 +36,6 @@ const talkLocIcon = L.divIcon({
   className: 'myDivIcon',
 })
 
-const coffeeLocIcon = L.divIcon({
-  html: '<div style="font-size: 24px;">☕</div>',
-  iconSize: [38, 36],
-  className: 'myDivIcon',
-})
-
 function onEachFeature(feature: any, layer: L.Layer) {
   if (feature.properties) {
     const { popupContent } = feature.properties
