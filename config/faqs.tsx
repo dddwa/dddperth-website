@@ -473,18 +473,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
   })
 
   Faqs.push({
-    Question: 'I don’t feel well, can I still come to the conference?',
-    Answer: (
-      <Fragment>
-        We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
-        the WA government instructions regarding COVID testing. And never fear, we’ll be releasing recordings of all the
-        talks so you can watch them back later once you’re recovered!
-      </Fragment>
-    ),
-    Category: 'health',
-  })
-
-  Faqs.push({
     Question: 'How are you managing COVID-19 guidelines and restrictions?',
     Answer: (
       <Fragment>
@@ -492,6 +480,19 @@ export default function getFaqs(dates: Dates): FAQ[] {
         guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
       </Fragment>
     ),
+  })
+
+  Faqs.push({
+    Question: 'I don’t feel well, can I still come to the conference?',
+    Answer: (
+      <Fragment>
+        We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
+        the WA government instructions regarding COVID testing. We will be livestreaming the conference, so you will be
+        able to view the talks remotely, or tune into our{' '}
+        <SafeLink href="https://www.youtube.com/c/DDDPerth">YouTube channel</SafeLink> later to view the recorded talks!
+      </Fragment>
+    ),
+    Category: 'health',
   })
 
   Faqs.push({
@@ -525,7 +526,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'How do I access the online conference?',
-    Answer: `You’ll receive a link to access our online platform before the start of the conference. You’ll need a web browser to access the link but you won’t need to download any special software.`,
+    Answer: (
+      <Fragment>
+        You can access the online conference via a playlist on our{' '}
+        <SafeLink href="https://www.youtube.com/c/DDDPerth">YouTube channel</SafeLink>
+      </Fragment>
+    ),
     Category: 'online',
   })
 

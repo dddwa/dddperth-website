@@ -62,7 +62,7 @@ export const StyledBioFigure = styled('figure')({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
-  marginBottom: calcRem(30),
+  marginBottom: calcRem(15),
 })
 StyledBioFigure.displayName = 'StyledBioFigure'
 
@@ -157,3 +157,14 @@ export const StyledTagList = styled('ul')({
   },
 })
 StyledTagList.displayName = 'StyledTagList'
+
+export const StyledLivestreamLink = styled('div')(({ theme }) => ({
+  marginBottom: calcRem(15),
+  svg: {
+    width: calcRem(theme.metrics.xl),
+    marginRight: calcRem(theme.metrics.sm),
+    fill: 'red',
+    position: 'relative',
+    top: calcRem(5),
+  },
+}))

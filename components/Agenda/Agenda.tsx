@@ -6,7 +6,7 @@ import { SessionGroup, useSessionGroups } from 'components/utils/useSessionGroup
 import { StyledCenteredParagraph, StyledSponsorLogo } from 'components/Agenda/Agenda.styled'
 import { SessionDetails } from 'components/Agenda/SessionDetails'
 import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from 'components/Agenda/SessionDetails.styled'
-export type onSelectCallback = (session: Session, sponsor: Sponsor) => void
+export type onSelectCallback = (session: Session, sponsor: Sponsor, livestream: string) => void
 
 interface AgendaProps {
   sessions: Session[]
@@ -22,6 +22,7 @@ interface AgendaActionSelect {
   type: 'selected'
   session: Session
   sponsor?: Sponsor
+  livestream?: string
 }
 
 interface AgendaActionDismiss {
@@ -34,6 +35,7 @@ interface AgendaState {
   showModal: boolean
   selectedSession?: Session
   sessionSponsor?: Sponsor
+  sessionLivestream?: string
 }
 
 function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaState {
@@ -42,6 +44,7 @@ function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaStat
       return {
         selectedSession: action.session,
         sessionSponsor: action.sponsor,
+        sessionLivestream: action.livestream,
         showModal: true,
       }
     case 'dismiss':
@@ -73,10 +76,10 @@ export const Agenda = ({ sessions, ...props }: AgendaProps) => {
     }
   }, [sessions, props.selectedSessionId])
 
-  const onSelectHandler = (session: Session, sponsor: Sponsor) => {
+  const onSelectHandler = (session: Session, sponsor: Sponsor, livestream: string) => {
     const url = `${Router.pathname}?sessionId=${session.Id}`
     Router.push(url, url, { shallow: true })
-    dispatch({ type: 'selected', session, sponsor })
+    dispatch({ type: 'selected', session, sponsor, livestream })
   }
 
   const onDismissHandler = () => {
@@ -104,6 +107,7 @@ export const Agenda = ({ sessions, ...props }: AgendaProps) => {
             showBio={true}
             hideTags={props.hideTags}
             hideLevelAndFormat={props.hideLevel}
+            livestream={sessionState.sessionLivestream}
           />
 
           {props.acceptingFeedback && (

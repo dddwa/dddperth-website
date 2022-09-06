@@ -16,13 +16,13 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const staticDate = '2022-09-10T08:00'
+const staticDate = '2022-09-10T07:45'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
 const registrationOpenFrom = zonedTimeToUtc('2022-05-16T08:00:00', '+08:00')
-const registrationOpenUntil = hideDate ? null : sub(date, { hours: 15 })
+const registrationOpenUntil = hideDate ? null : sub(date, { hours: 14, minutes: 45 })
 const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-11T08:00:00', '+08:00')
 const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-13T23:59:59', '+08:00')
 const votingOpenFrom = zonedTimeToUtc('2022-05-27T17:00:00', '+08:00')
@@ -204,6 +204,18 @@ const Conference: IConference = {
     'Maali (Black Swan)',
   ],
 
+  Livestreams: [
+    'https://youtu.be/ovEA5PaOdWo?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/8mq3bCMrmbE?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/DsFlSkTPH-Y?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/pqRQ4rN6adg?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/ox6ixHfs4xM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/2KjEBFAVgoU?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/Plo8dSxAjHw?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/EU-VeLYi8LM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/LQ5vtriC_bI?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+  ],
+
   SessionGroups: [
     {
       sessions: ['337380'],
@@ -212,7 +224,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['344274', '343104', '344367', '344044', '344101', '343942', '342543', '334148', '344023'],
+      sessions: ['344274', '343408', '344367', '344044', '344101', '343942', '342543', '334148', '344023'],
       timeStart: set(date, { hours: 10, minutes: 10 }),
       timeEnd: set(date, { hours: 10, minutes: 55 }),
       type: 'SessionIds',
@@ -230,13 +242,13 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['337322', '344493', '343385', '343105', '336320', '343968', '343579', '344431', '341472'],
+      sessions: ['337322', '344493', '343385', '343105', '336320', '343968', '339597', '344431', '341472'],
       timeStart: set(date, { hours: 12, minutes: 50 }),
       timeEnd: set(date, { hours: 13, minutes: 35 }),
       type: 'SessionIds',
     },
     {
-      sessions: ['7319302c-2d6e-4e0e-abc4-55a090daae6a'], // TODO: lunch sessions TBC
+      sessions: ['379497', '379496'],
       timeStart: set(date, { hours: 14, minutes: 35 }),
       timeEnd: set(date, { hours: 15, minutes: 5 }),
       type: 'SessionIds',

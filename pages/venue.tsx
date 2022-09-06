@@ -4,6 +4,7 @@ import { SafeLink } from 'components/global/safeLink'
 import { Main } from 'layouts/main'
 import { Text } from 'components/global/text'
 import { useConfig } from 'Context/Config'
+import { format } from 'date-fns'
 import Conference from 'config/conference'
 
 const VenuePage: NextPage = () => {
@@ -13,7 +14,7 @@ const VenuePage: NextPage = () => {
     <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={true}>
       <h1>Venue</h1>
       <Text>
-        {conference.Name} will be held at {conference.Venue.Name} at{' '}
+        {conference.Name} {format(conference.Date, 'y')} will be held at {conference.Venue.Name} at{' '}
         <SafeLink
           href={
             'https://www.google.com.au/maps/place/' +

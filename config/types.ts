@@ -82,6 +82,7 @@ export interface Conference {
   Keynotes: Session[]
 
   RoomNames: string[]
+  Livestreams: string[]
 
   SessionGroups: SessionGroupWithIds[]
 
