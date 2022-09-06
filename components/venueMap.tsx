@@ -1,18 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import {
-  MapContainer,
-  TileLayer,
-  LayersControl,
-  useMapEvents,
-  ImageOverlay,
-  GeoJSON,
-  Polygon,
-  Popup,
-} from 'react-leaflet'
+import { MapContainer, TileLayer, LayersControl, useMapEvents, ImageOverlay, GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-import { helpDeskLoc, mediaWallLoc, sponsorFeatures } from './venueMapData'
+import { sponsorFeatures } from './venueMapData'
 
 import {} from 'leaflet-easybutton'
 import 'leaflet-easybutton/src/easy-button.js'
@@ -93,6 +84,27 @@ const MapEvents = () => {
     click(e) {
       console.log(e.latlng.lng + ', ' + e.latlng.lat)
     },
+    zoom(e) {
+      const map = e.target
+      if (map.getZoom() >= 20) {
+        if (map.zoomHiddenLayers) {
+          while (map.zoomHiddenLayers.length > 0) {
+            const layer = map.zoomHiddenLayers.pop()
+            map.addLayer(layer)
+          }
+        }
+      } else {
+        map.eachLayer((layer) => {
+          if (layer.feature && layer.feature.properties.type) {
+            if (!map.zoomHiddenLayers) {
+              map.zoomHiddenLayers = []
+            }
+            map.zoomHiddenLayers.push(layer)
+            map.removeLayer(layer)
+          }
+        })
+      }
+    },
   })
   return null
 }
@@ -134,6 +146,7 @@ const Map = ({ roomLocationData }) => {
       zoom={20}
       scrollWheelZoom={true}
       style={{ height: 700, width: '100%' }}
+      minZoom={19}
       maxZoom={22}
       whenCreated={setMap}
     >
@@ -162,31 +175,11 @@ const Map = ({ roomLocationData }) => {
       />
 
       <LayersControl position="topright">
-        <LayersControl.Overlay name="Overlay1">
-          <ImageOverlay
-            url="/static/images/map/2022-floorplan-rot20.png"
-            bounds={[
-              [-31.956632805984096, 115.85340510195257],
-              [-31.957724191559862, 115.85470793359586],
-            ]}
-            opacity={1}
-          />
-        </LayersControl.Overlay>
         <LayersControl.Overlay name="Rooms" checked>
           <GeoJSON data={roomLocationData} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Sponsors" checked>
           <GeoJSON data={sponsorFeatures} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
-        </LayersControl.Overlay>
-        <LayersControl.Overlay name="Help Desk">
-          <Polygon positions={helpDeskLoc}>
-            <Popup>DDD Help Desk</Popup>
-          </Polygon>
-        </LayersControl.Overlay>
-        <LayersControl.Overlay name="Media Wall">
-          <Polygon positions={mediaWallLoc}>
-            <Popup>DDD Media Wall</Popup>
-          </Polygon>
         </LayersControl.Overlay>
       </LayersControl>
       <MapEvents />
