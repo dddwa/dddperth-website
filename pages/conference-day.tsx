@@ -33,14 +33,16 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
     // NB: This is quite brittle, as it assumes that the list of current sessions is returned in exactly the same order as the definition of rooms
     currentSessionGroup.sessions.map(function (session: Session, i) {
       const presenters = []
-      session.Presenters.map((p) => {
-        presenters.push(p.Name)
-      })
-      if (!roomLocations.features[i]) return
-      roomLocations.features[i].properties.currentEvent = {
-        eventId: session.Id,
-        eventName: session.Title,
-        eventPresenters: presenters.join(', '),
+      if (typeof session.Presenters != 'undefined') {
+        session.Presenters.map((p) => {
+          presenters.push(p.Name)
+        })
+        if (!roomLocations.features[i]) return
+        roomLocations.features[i].properties.currentEvent = {
+          eventId: session.Id,
+          eventName: session.Title,
+          eventPresenters: presenters.join(', '),
+        }
       }
     })
   }
@@ -215,7 +217,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { dates } = getCommonServerSideProps(context)
 
-  if (!dates.IsInProgress) {
+  if (!dates.WeekBefore) {
     return { redirect: { destination: '/', permanent: false } }
   }
 

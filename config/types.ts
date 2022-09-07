@@ -142,6 +142,7 @@ export interface Dates {
   AgendaPublished: boolean
   AcceptingFeedback: boolean
   DisplayFormatted: (format: string) => string
+  WeekBefore: boolean
 }
 
 export interface Socials {
