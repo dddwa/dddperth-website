@@ -132,7 +132,7 @@ const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
             <StyledFormRow>
               <StyledHeadingLabel>Which talk do you want to provide feedback for?</StyledHeadingLabel>
               <StyledSessionList>
-                {sessionGroups.previousSessionGroup.sessions.map((session) => (
+                {sessionGroups.previousSessionGroup.sessions.flat().map((session) => (
                   <li key={session.Id}>
                     <SessionInput session={session} checked={values.sessionId === session.Id} onChange={handleChange} />
                   </li>
@@ -154,7 +154,7 @@ const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
                             {format(sessionGroup.timeEnd, 'hh:mm')}
                           </time>
                         </StyledSessionTimeframe>
-                        {sessionGroup.sessions.map((session) => (
+                        {sessionGroup.sessions.flat().map((session) => (
                           <li key={session.Id}>
                             <SessionInput
                               session={session}

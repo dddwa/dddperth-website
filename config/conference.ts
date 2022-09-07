@@ -254,7 +254,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '343697', '343793', '344491', '344427'],
+      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '343697', ['343793', '344491'], '344427'],
       timeStart: set(date, { hours: 15, minutes: 15 }),
       timeEnd: set(date, { hours: 15, minutes: 35 }),
       type: 'SessionIds',

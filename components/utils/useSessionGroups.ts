@@ -14,12 +14,12 @@ export interface SessionGroupBase {
 
 export interface SessionGroup extends SessionGroupBase {
   type: 'Sessions'
-  sessions: Session[]
+  sessions: Array<Session | Session[]>
 }
 
 export interface SessionGroupWithIds extends SessionGroupBase {
   type: 'SessionIds'
-  sessions: string[]
+  sessions: Array<string | string[]> // ['1','2', ['3', '4'], '5']
 }
 
 interface SessionGroups {
@@ -55,7 +55,9 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
     () =>
       Conference.SessionGroups.map((sessionGroup) => ({
         ...sessionGroup,
-        sessions: getSessionById(sessions, sessionGroup.sessions),
+        sessions: sessionGroup.sessions.map((id) =>
+          typeof id === 'string' ? getSessionById(sessions, [id]) : getSessionById(sessions, id),
+        ),
         type: 'Sessions',
       })),
     // Using the session length as the dependency - there was a reason at the time
