@@ -7,7 +7,7 @@ export default function CovidPolicy() {
     <Main title="COVID-19 Policy" description={`DDD Perth COVID-19 policy`}>
       <Text tag="h1">DDD Perth COVID-19 Policy</Text>
       <Text>
-        <em>Last updated: 29 July 2022</em>
+        <em>Last updated: 7 September 2022</em>
       </Text>
 
       <Text>
@@ -18,8 +18,8 @@ export default function CovidPolicy() {
       <Text tag="h2">Attendee Health</Text>
       <Text>
         <strong>If you feel unwell or have flu-like symptoms, please don't attend the event.</strong> You will still be
-        able to watch the sessions at a later date. If, during the course of the day, you feel unwell, please mask up,
-        inform the help desk and leave the event.
+        able to watch the sessions via our livestreams, or the recordings at a later date. If, during the course of the
+        day, you feel unwell, please mask up, inform the help desk and leave the event.
       </Text>
 
       <Text tag="h2">Masks</Text>
