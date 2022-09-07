@@ -145,7 +145,7 @@ const coffeeCartSponsors: Sponsor[] = [
   },
   {
     id: '2021-planit',
-    imageUrl: '/static/images/sponsors/2021-planit.png',
+    imageUrl: '/static/images/sponsors/planit_n.png',
     name: 'Planit',
     type: SponsorType.CoffeeCart,
     url: 'https://www.planittesting.com/',
