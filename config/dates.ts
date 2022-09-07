@@ -1,6 +1,7 @@
 import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { Conference, Dates as IDates, TicketPurchasingOptions } from './types'
 import { formatInTimeZone } from 'date-fns-tz'
+import { sub } from 'date-fns'
 
 export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
   const now = currentDate.Value
@@ -28,5 +29,6 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     VotingFinished: now > conference.VotingOpenUntil,
     AgendaPublished: now > conference.AgendaPublishedFrom,
     AcceptingFeedback: now > conference.FeedbackOpenFrom && now < conference.FeedbackOpenUntil,
+    WeekBefore: now > sub(conference.Date, {days: 7})
   }
 }
