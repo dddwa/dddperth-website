@@ -118,14 +118,14 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       </Text>
       <div>
         <Image src="/static/images/sponsors/2021-moqdigital.png" width="100" height="100" />
-        <Image src="/static/images/sponsors/2021-planit.png" width="100" height="100" />
+        <Image src="/static/images/sponsors/planit_n.png" width="100" height="100" />
         <Image src="/static/images/sponsors/2022-bunnings.png" width="100" height="100" />
       </div>
       <Text>
         Morning Tea, Lunch, and Afternoon Tea will be provided and will be served in the Northern, Southern and
-        Riverside Theatre Foyers. Special dietary requirements will be served at the station next to the Valrose Stand.
-        Your name will be recorded and a Venue Staff member is available to help. Reach out to any Volunteer if you need
-        more help and we'll find someone to talk to.
+        Riverside Theatre Foyers. Special dietary requirements will be served at the station next to the Mantel Group
+        Stand. Your name will be recorded and a Venue Staff member is available to help. Reach out to any Volunteer if
+        you need more help and we'll find someone to talk to.
       </Text>
       <Text>
         <strong>Please bring appropriate precautions (epipen or other)</strong> as the Venue will have a lot of people
@@ -184,9 +184,9 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <div>
         Emergency contact numbers:
         <StyledList>
+          <li>Alex Colville - 0439 227 330</li>
           <li>Rebecca Waters - 0405 100 063</li>
           <li>Matt Ward - 0403 695 863</li>
-          <li>Amy Kapernick - 0438 984 242</li>
         </StyledList>
       </div>
       <h2>COVID-19</h2>
@@ -196,10 +196,13 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       </Text>
       <h3>Feel Unwell During the Day?</h3>
       <StyledList>
-        <li>If you don't feel well ahead of DDD Perth, please just tell us and we'll refund your ticket.</li>
         <li>
-          If on the day you feel unwell, go immediately to helpdesk and obtain a mask. Provide your details so we can
-          check you're going okay and then seek medical assistance. We'll refund your ticket.
+          If you don't feel well ahead of DDD Perth, please stay home and tune into the livestreams instead. Please see
+          below for further details.
+        </li>
+        <li>
+          If on the day you feel unwell, please mask up, inform the help desk and leave the event. Provide your details
+          so we can check you're going okay and then seek medical assistance.
         </li>
       </StyledList>
       <h3>Be COVID Safe</h3>
@@ -210,6 +213,15 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
           wave.
         </li>
       </StyledList>
+      <h2>Livestream</h2>
+      <Text>
+        In 2022, DDD Perth will be livestreamed for the first time ever, which will improve accessibility for those in
+        WA regions or those who can't make it to the venue on the day. Each track of the agenda will have its own
+        livestream, which you can access from each session description on the <SafeLink href="/agenda">Agenda</SafeLink>
+        . We also have a{' '}
+        <SafeLink href="https://www.youtube.com/playlist?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx">playlist</SafeLink>{' '}
+        containing all the streams for ease of access.
+      </Text>
     </Main>
   )
 }
