@@ -29,18 +29,16 @@ const talkLocIcon = L.divIcon({
 
 function onEachFeature(feature: any, layer: L.Layer) {
   if (feature.properties) {
-    const { popupContent } = feature.properties
+    const popup = L.popup({ maxWidth: 250 })
+    let { popupContent } = feature.properties
     if (
       feature.properties.type &&
       ('sponsorBooth' == feature.properties.type || 'coffeeCart' == feature.properties.type)
     ) {
-      const popup = L.popup({ maxWidth: 250 })
       let content = '<img src="' + feature.properties.logo + '" style="max-height: 75px;" /><br />'
       content += feature.properties.popupContent
-      popup.setContent(content)
-      layer.bindPopup(popup)
+      popupContent = content
     } else if (feature.properties.type && 'room' == feature.properties.type) {
-      const popup = L.popup({ maxWidth: 250 })
       let content = 'Room: <strong>' + feature.properties.name + '</strong><br />'
       content += 'Track: <strong>' + feature.properties.names.nys + '</strong> (' + feature.properties.names.en + ')'
       if (feature.properties.currentEvent) {
@@ -53,11 +51,10 @@ function onEachFeature(feature: any, layer: L.Layer) {
           '</a></strong><br />by: ' +
           event.eventPresenters
       }
-      popup.setContent(content)
-      layer.bindPopup(popup)
-    } else {
-      layer.bindPopup(popupContent)
+      popupContent = content
     }
+    popup.setContent(popupContent)
+    layer.bindPopup(popup)
   }
 }
 
@@ -123,7 +120,6 @@ const Map = ({ roomLocationData }) => {
         map
           .locate()
           .on('locationfound', function (e) {
-            //setPosition(e.latlng)
             map.flyTo(e.latlng, map.getZoom())
             if (!userLocMarker) {
               userLocMarker = L.marker(e.latlng, { icon: userLocIcon }).bindPopup('You are here.')
@@ -153,7 +149,6 @@ const Map = ({ roomLocationData }) => {
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        //url="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=cce3e041f6c24eea9ccd3057375869df"
         maxZoom={22}
       />
 

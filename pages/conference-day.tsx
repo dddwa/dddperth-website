@@ -228,10 +228,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ...(sessionId ? { sessionId } : {}),
     },
   }
-
-  return {
-    props: {},
-  }
 }
 
 export default ConferenceDayPage
