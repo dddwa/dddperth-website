@@ -260,7 +260,7 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['362659'],
+      sessions: ['383016'],
       timeStart: set(date, { hours: 16, minutes: 5 }),
       timeEnd: set(date, { hours: 16, minutes: 55 }),
       type: 'SessionIds',

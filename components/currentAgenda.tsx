@@ -248,7 +248,7 @@ export const CurrentAgenda = ({
                 <StyledAgendaRow>
                   <AgendaTime time={set(date, { hours: 16, minutes: 5 })} />
                   <AgendaSession
-                    sessionId="362659"
+                    sessionId="383016"
                     room={0}
                     renderPresenters={(presenters) => (
                       <StyledAgendaPresenter isKeynote>Locknote: {presenters}</StyledAgendaPresenter>
