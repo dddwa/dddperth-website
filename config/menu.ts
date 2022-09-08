@@ -48,7 +48,7 @@ export default function Menu(conference: Conference, dates: Dates): { Top: MenuI
     })
   }
 
-  if (dates.IsInProgress) {
+  if (dates.WeekBefore) {
     topMenu.push({
       href: '/conference-day',
       name: 'Conference Day Info',

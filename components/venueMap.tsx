@@ -3,9 +3,9 @@ import { MapContainer, TileLayer, LayersControl, useMapEvents, ImageOverlay, Geo
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-import { sponsorFeatures } from './venueMapData'
+import { foodLocations, sponsorFeatures } from './venueMapData'
 
-import {} from 'leaflet-easybutton'
+import 'leaflet-easybutton'
 import 'leaflet-easybutton/src/easy-button.js'
 import 'leaflet-easybutton/src/easy-button.css'
 import 'font-awesome/css/font-awesome.min.css'
@@ -30,28 +30,40 @@ const talkLocIcon = L.divIcon({
 function onEachFeature(feature: any, layer: L.Layer) {
   if (feature.properties) {
     const popup = L.popup({ maxWidth: 250 })
+    const item = feature.properties
     let { popupContent } = feature.properties
-    if (
-      feature.properties.type &&
-      ('sponsorBooth' == feature.properties.type || 'coffeeCart' == feature.properties.type)
-    ) {
-      let content = '<img src="' + feature.properties.logo + '" style="max-height: 75px;" /><br />'
-      content += feature.properties.popupContent
-      popupContent = content
-    } else if (feature.properties.type && 'room' == feature.properties.type) {
-      let content = 'Room: <strong>' + feature.properties.name + '</strong><br />'
-      content += 'Track: <strong>' + feature.properties.names.nys + '</strong> (' + feature.properties.names.en + ')'
-      if (feature.properties.currentEvent) {
-        const event = feature.properties.currentEvent
-        content +=
-          '<br /><br /><strong><a target="_blank" href="/agenda/?sessionId=' +
-          event.eventId +
-          '">' +
-          event.eventName +
-          '</a></strong><br />by: ' +
-          event.eventPresenters
+    let content = ''
+    if (item.type) {
+      switch (item.type) {
+        case 'sponsorBooth':
+        case 'coffeeCart':
+          content = '<img src="' + item.logo + '" style="max-height: 75px;" /><br />'
+          content += item.popupContent
+          popupContent = content
+          break
+        case 'room':
+          content = 'Room: <strong>' + item.name + '</strong><br />'
+          content += 'Track: <strong>' + item.names.nys + '</strong> (' + item.names.en + ')'
+          if (item.currentEvent) {
+            const event = item.currentEvent
+            content +=
+              '<br /><br /><strong><a target="_blank" href="/agenda/?sessionId=' +
+              event.eventId +
+              '">' +
+              event.eventName +
+              '</a></strong><br />by: ' +
+              event.eventPresenters
+          }
+          popupContent = content
+          break
+        case 'food':
+          content = '<strong>' + (item.index ? item.index + ': ' : '') + item.name + '</strong><br />'
+          content += item.popupContent
+          if (item.dietaryNotes && item.dietaryNotes.length > 0) {
+            content += ' <em>(' + item.dietaryNotes + ')</em>'
+          }
+          popupContent = content
       }
-      popupContent = content
     }
     popup.setContent(popupContent)
     layer.bindPopup(popup)
@@ -72,6 +84,15 @@ function pointToLayer(_feature, latlng) {
         })
         return L.marker(latlng, { icon: sponsorMarker })
       }
+      break
+    case 'food':
+      return L.marker(latlng, {
+        icon: L.divIcon({
+          html: '<div style="font-size: 24px;">' + _feature.properties.icon + '</div>',
+          iconSize: [38, 36],
+          className: 'myDivIcon',
+        }),
+      })
   }
   return L.marker(latlng)
 }
@@ -175,6 +196,9 @@ const Map = ({ roomLocationData }) => {
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Sponsors" checked>
           <GeoJSON data={sponsorFeatures} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
+        </LayersControl.Overlay>
+        <LayersControl.Overlay name="Lunch">
+          <GeoJSON data={foodLocations} onEachFeature={onEachFeature} pointToLayer={pointToLayer} />
         </LayersControl.Overlay>
       </LayersControl>
       <MapEvents />

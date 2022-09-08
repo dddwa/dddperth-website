@@ -294,6 +294,92 @@ coffeeCarts.map((sponsor) => {
   plotSponsorLoc(sponsor, 'coffeeCart', 'coffee cart')
 })
 
+export const foodLocations: GeoJSON.FeatureCollection = {
+  type: 'FeatureCollection',
+  features: [],
+}
+
+const foodOptions = [
+  {
+    name: 'Sushi',
+    description: 'Assorted Sushi and Nigiri, gluten free soy, wasabi and pickled ginger',
+    dietaryNotes: 'GF',
+    index: 1,
+    icon: '🍣',
+    locations: [[115.85435637068507, -31.957056133921846]],
+  },
+  {
+    name: 'Caesar Salad',
+    description: 'Caesar salad, bacon, parmesan, cos, dressing',
+    dietaryNotes: 'keto friendly, no croutons',
+    index: 2,
+    icon: '🥗',
+    locations: [[115.853806764607, -31.957169919197934]],
+  },
+  {
+    name: 'Curry',
+    description: 'Chana masala curry with aromatic rice',
+    dietaryNotes: 'vegan',
+    index: 3,
+    icon: '🍛',
+    locations: [[115.85415717474496, -31.95754437843464]],
+  },
+  {
+    name: 'Mie Goreng',
+    description: 'Mie goreng with egg noodles, mushrooms, Chinese cabbage and crispy shallots',
+    dietaryNotes: 'pork free, vegetarian',
+    index: 4,
+    icon: '🍜',
+    locations: [[115.85388183275427, -31.957363353843757]],
+  },
+  {
+    name: 'Lamb',
+    description: 'Slow braised lamb shoulder, rosemary, zucchini & mushrooms',
+    dietaryNotes: 'GF, beef free, halal, keto friendly',
+    index: 5,
+    icon: '🐑',
+    locations: [
+      [115.85416333830645, -31.95692528068007],
+      [115.8540078400014, -31.95700720620978],
+    ],
+  },
+  {
+    name: 'Salmon',
+    description: 'Smoked salmon baguette, cream cheese, dill, capers, red onion & rocket',
+    dietaryNotes: 'beef free, pork free',
+    index: 6,
+    icon: '🐟',
+    locations: [[115.85384966069113, -31.957443003285398]],
+  },
+  {
+    name: 'Dietary Station',
+    description:
+      'If you have particular dietary requirements, the dietary station can advise on options available to you.',
+    icon: '🥕',
+    locations: [[115.85367644174427, -31.957389915517922]],
+  },
+]
+
+foodOptions.map((foodOption) => {
+  foodOption.locations.map((location) => {
+    foodLocations.features.push({
+      type: 'Feature',
+      properties: {
+        type: 'food',
+        name: foodOption.name,
+        popupContent: foodOption.description,
+        dietaryNotes: foodOption.dietaryNotes,
+        index: foodOption.index,
+        icon: foodOption.icon,
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: location,
+      },
+    })
+  })
+})
+
 export const helpDeskLoc = [
   { lng: 115.85392352114012, lat: -31.957009010775213 }, // BL
   { lng: 115.85394463405655, lat: -31.956960936429034 }, // TL

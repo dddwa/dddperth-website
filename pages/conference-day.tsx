@@ -122,9 +122,11 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       </div>
       <Text>
         Morning Tea, Lunch, and Afternoon Tea will be provided and will be served in the Northern, Southern and
-        Riverside Theatre Foyers. Special dietary requirements will be served at the station next to the Mantel Group
-        Stand. Your name will be recorded and a Venue Staff member is available to help. Reach out to any Volunteer if
-        you need more help and we'll find someone to talk to.
+        Riverside Theatre Foyers. Your name tag should have a sticker with a number indicating your lunch order - if
+        not, please see the Help Desk for advice. You can use the interactive map above to locate the food station of
+        your choice: use the Layers icon in the top right to enable the 'Lunch' view. Special dietary requirements will
+        be served at the station next to the Mantel Group Stand. Your name will be recorded and a Venue Staff member is
+        available to help. Reach out to any Volunteer if you need more help and we'll find someone to talk to.
       </Text>
       <Text>
         <strong>Please bring appropriate precautions (epipen or other)</strong> as the Venue will have a lot of people
