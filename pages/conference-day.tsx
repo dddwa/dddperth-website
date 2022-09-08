@@ -31,18 +31,17 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
 
   if (currentSessionGroup && currentSessionGroup.sessions.length > 0) {
     // NB: This is quite brittle, as it assumes that the list of current sessions is returned in exactly the same order as the definition of rooms
-    currentSessionGroup.sessions.map(function (session: Session, i) {
+    currentSessionGroup.sessions.map(function (session: Session | Session[], i) {
       const presenters = []
-      if (typeof session.Presenters != 'undefined') {
-        session.Presenters.map((p) => {
-          presenters.push(p.Name)
-        })
-        if (!roomLocations.features[i]) return
-        roomLocations.features[i].properties.currentEvent = {
-          eventId: session.Id,
-          eventName: session.Title,
-          eventPresenters: presenters.join(', '),
-        }
+
+      session[0].Presenters.map((p) => {
+        presenters.push(p.Name)
+      })
+      if (!roomLocations.features[i]) return
+      roomLocations.features[i].properties.currentEvent = {
+        eventId: session[0].Id,
+        eventName: session[0].Title,
+        eventPresenters: presenters.join(', '),
       }
     })
   }
