@@ -174,7 +174,7 @@ const sponsorBooths = [
   },
   {
     name: 'Bankwest',
-    coordinates: [115.85389703161766, -31.957403285246578],
+    coordinates: [115.85398150239295, -31.957428886849208],
     blurb: `Come and enjoy a complimentary fresh orange juice, and find out more about what working at Bankwest Technology is like. As one of WA’s largest technology employers, Bankwest is great place to build your career in technology. You can talk to one of our colleagues about the exciting opportunities to work on the latest technologies and innovations in banking. You never know, it may trigger some fresh ideas for your next career opportunity. `,
     marker: {
       icon: '/static/images/map/map-sponsor-Bankwest.png',
@@ -184,7 +184,7 @@ const sponsorBooths = [
   },
   {
     name: 'Insight',
-    coordinates: [115.85396319937398, -31.957473996322346],
+    coordinates: [115.85397679979994, -31.95748151234335],
     blurb: `If you’re not sure what the colour fuchsia looks like, you’ll soon find out when you meet the Insight team at booth G5.  Aside from the quality socks and sweets, we have a live IoT set-up and a number of Perth teammates who are keen to chat and learn more about you.`,
     marker: {
       icon: '/static/images/map/map-sponsor-Insight.png',
@@ -194,7 +194,7 @@ const sponsorBooths = [
   },
   {
     name: 'Virtual Gaming Worlds',
-    coordinates: [115.85412674069475, -31.95746972939116],
+    coordinates: [115.8540901404348, -31.957465866929322],
     blurb: `VGW has taken the world by storm with their highly innovative entertainment platform that is underpinned by its sophisticated in-house technology, platforms and games. Check out their booth to see how they are disrupting the online social games industry, as well as enter their raffle for the chance to win a pair of Apple AirPods Pro, valued at $399.`,
     marker: {
       icon: '/static/images/map/map-sponsor-VGW.png',
@@ -204,7 +204,7 @@ const sponsorBooths = [
   },
   {
     name: 'Versent',
-    coordinates: [115.8541639396427, -31.95753287995242],
+    coordinates: [115.8541746086521, -31.957494597596668],
     blurb: `"Located next to the coffee cart, say hello whilst in line.
   Versent are an Australian born-in-the-cloud tech firm with the best engineering culture in Australia. Stop by to say hi, grab some awesome swag, and sign up to win cash with DevJam - our Perth-only hackathon, or our quiz."`,
     marker: {
@@ -225,7 +225,7 @@ const sponsorBooths = [
   },
   {
     name: 'Amazon Web Services',
-    coordinates: [115.85428289275963, -31.95696094531853],
+    coordinates: [115.85432045000557, -31.956971754937012],
     blurb: `At the AWS booth, you’ll have the opportunity to chat 1:1 with a whole bunch of local AWS peeps – come with your questions you want answered about running software on the AWS platform.  We will also have the chance for you to take part in hands on Labs if you’re curious about getting started on AWS, and there may also be some SWAG too – so come early before it all runs out `,
     marker: {
       icon: '/static/images/map/map-sponsor-AWS.png',
@@ -262,7 +262,7 @@ sponsorBooths.map((sponsor) => {
 const coffeeCarts = [
   {
     name: 'Planit',
-    coordinates: [115.85389116436066, -31.95713178781193],
+    coordinates: [115.85387289369265, -31.95715466486754],
     blurb: `Do you feel the need? The need for caffeine? Stop by our coffee cart and find out why elite engineers, the best of the best, join Planit.`,
     marker: {
       icon: '/static/images/map/map-sponsor-Planit.png',
