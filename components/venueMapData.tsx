@@ -351,13 +351,6 @@ const foodOptions = [
     icon: '🐟',
     locations: [[115.85384966069113, -31.957443003285398]],
   },
-  {
-    name: 'Dietary Station',
-    description:
-      'If you have particular dietary requirements, the dietary station can advise on options available to you.',
-    icon: '🥕',
-    locations: [[115.85367644174427, -31.957389915517922]],
-  },
 ]
 
 foodOptions.map((foodOption) => {
