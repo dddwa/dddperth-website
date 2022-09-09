@@ -9,6 +9,7 @@ import 'leaflet-easybutton'
 import 'leaflet-easybutton/src/easy-button.js'
 import 'leaflet-easybutton/src/easy-button.css'
 import 'font-awesome/css/font-awesome.min.css'
+import styles from './venueMap.module.css'
 
 L.Marker.prototype.options.icon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -22,7 +23,7 @@ const userLocIcon = L.divIcon({
 })
 
 const talkLocIcon = L.divIcon({
-  html: '<i class="fa fa-users fa-3x" style="color: #D2438E;"></i>',
+  html: '<i class="fa fa-users fa-3x" style="color: #D2438E; text-shadow: 2px 2px 4px grey;"></i>',
   iconSize: [38, 36],
   className: 'myDivIcon',
 })
@@ -81,6 +82,7 @@ function pointToLayer(_feature, latlng) {
           iconUrl: _feature.properties.marker.icon,
           iconSize: _feature.properties.marker.size,
           iconAnchor: _feature.properties.marker.anchor,
+          className: styles.sponsorBooth,
         })
         return L.marker(latlng, { icon: sponsorMarker })
       }
@@ -88,7 +90,7 @@ function pointToLayer(_feature, latlng) {
     case 'food':
       return L.marker(latlng, {
         icon: L.divIcon({
-          html: '<div style="font-size: 24px;">' + _feature.properties.icon + '</div>',
+          html: '<div style="font-size: 24px; text-shadow: 2px 2px 0 grey;">' + _feature.properties.icon + '</div>',
           iconSize: [38, 36],
           className: 'myDivIcon',
         }),
