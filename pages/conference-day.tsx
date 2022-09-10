@@ -51,14 +51,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <h1>
         {conference.Name} {format(conference.Date, 'y')} Conference Day Information
       </h1>
-      {conference.Handbook && (
-        <p>
-          You can also download much of the information on this page as a PDF:&nbsp;
-          <a className="btn btn-pdf" href={'/static/docs/' + conference.Handbook}>
-            Download handbook (PDF)
-          </a>
-        </p>
-      )}
+
       <h2>Getting There</h2>
       <Text>
         Our <SafeLink href="/venue">Venue</SafeLink> page has more information on how to get to the conference.
@@ -221,6 +214,14 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         <SafeLink href="https://www.youtube.com/playlist?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx">playlist</SafeLink>{' '}
         containing all the streams for ease of access.
       </Text>
+      {conference.Handbook && (
+        <p>
+          You can also download much of the information on this page as a PDF:&nbsp;
+          <a className="btn btn-pdf" href={'/static/docs/' + conference.Handbook}>
+            Download handbook (PDF)
+          </a>
+        </p>
+      )}
     </Main>
   )
 }
