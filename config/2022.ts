@@ -196,6 +196,6 @@ export const From2022: From2022 = {
   YouTubeKeynoteEmbedUrl: 'https://www.youtube.com/embed/jlpLSN9A_X4',
   YouTubeLocknoteEmbedUrl: 'https://www.youtube.com/embed/66amcwsJa2I',
   FlickrAlbumUrl: 'https://www.flickr.com/photos/135003652@N08/albums/72157719812274960',
-  HandbookUrl: '/static/docs/handbook2021.pdf',
+  HandbookUrl: '/static/docs/handbook2022.pdf',
   Sponsors,
 }
