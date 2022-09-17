@@ -8,40 +8,34 @@ import {
   StyledAgendaRow,
   StyledAgendaRowList,
   StyledFeedbackActions,
+  StyledMultiSessionSlot,
   StyledTrackHeader,
   StyledUpNext,
 } from 'components/Agenda/Agenda.styled'
 import { AgendaProvider } from 'components/Agenda/AgendaContext'
 import { AgendaSession } from 'components/Agenda/AgendaSession'
 import { AgendaTime } from 'components/Agenda/AgendaTime'
-import { set } from 'date-fns'
 import { StyledAgendaPresenter } from './Agenda/AgendaSession.styled'
-
-export type GridSmartJson = typeof import('public/static/agenda/2021_gridsmart.json')
-type Room = Pick<GridSmartJson[0]['rooms'][0], 'id' | 'name'>
-type Slot = Pick<GridSmartJson[0]['timeSlots'][0], 'rooms' | 'slotStart'>
+import { AgendaForDisplay } from './Agenda/gridSmartUtils'
 
 interface DynamicAgendaProps {
-  date: Date
+  agenda: AgendaForDisplay
   sessions?: Session[]
   sponsors: Sponsor[]
-  rooms: Room[]
-  slots: Slot[]
   acceptingFeedback: boolean
   feedbackLink?: string
   selectedSessionId?: string
 }
 
 export const DynamicAgenda = ({
-  date,
+  agenda,
   sessions = [],
-  rooms = [],
-  slots = [],
   sponsors,
   acceptingFeedback,
   feedbackLink,
   selectedSessionId,
 }: DynamicAgendaProps) => {
+  const { slots, rooms } = agenda
   return (
     <Fragment>
       <p>Select a session to see more details&hellip;</p>
@@ -63,7 +57,6 @@ export const DynamicAgenda = ({
         feedbackLink={feedbackLink}
         selectedSessionId={selectedSessionId}
         render={(agendaSessions, nextSessionGroup, onSelect) => {
-          const roomIndexes = rooms.map((_, index) => index)
           return (
             <AgendaProvider
               getSession={(id) => sessions.find((session) => session.ExternalId === id)}
@@ -77,15 +70,29 @@ export const DynamicAgenda = ({
                   <h2>Up next</h2>
                   <StyledAgendaRow>
                     <AgendaTime time={nextSessionGroup.timeStart} />
-                    {nextSessionGroup.sessions.map((session, index) => (
-                      <AgendaSession
-                        key={session.Id}
-                        sessionId={session.Id}
-                        fullWidth={nextSessionGroup.sessions.length === 1}
-                        room={index}
-                        alwaysShowRoom={true}
-                      />
-                    ))}
+                    {nextSessionGroup.sessions.map((session, index) =>
+                      Array.isArray(session) ? (
+                        <Fragment key={index}>
+                          {session.map((sess) => (
+                            <AgendaSession
+                              key={sess.Id}
+                              sessionId={sess.ExternalId}
+                              fullWidth={nextSessionGroup.sessions.length === 1}
+                              room={index}
+                              alwaysShowRoom={true}
+                            />
+                          ))}
+                        </Fragment>
+                      ) : (
+                        <AgendaSession
+                          key={session.Id}
+                          sessionId={session.ExternalId}
+                          fullWidth={nextSessionGroup.sessions.length === 1}
+                          room={index}
+                          alwaysShowRoom={true}
+                        />
+                      ),
+                    )}
                   </StyledAgendaRow>
                 </StyledUpNext>
               )}
@@ -97,53 +104,59 @@ export const DynamicAgenda = ({
                 ))}
               </StyledAgendaRowList>
               {slots.map((slot, slotIndex) => {
-                const [hours, minutes] = slot.slotStart.split(':').map((n) => Number.parseInt(n, 10))
                 return (
                   <StyledAgendaRow key={slotIndex}>
-                    <AgendaTime time={set(date, { hours, minutes })} />
-                    {roomIndexes.map((index) => {
-                      const sessionInRoom = slot.rooms.find((r) => r.index === index)
-                      if (!sessionInRoom) {
-                        return null
-                      }
+                    <AgendaTime time={new Date(slot.startTime)} />
+                    {slot.type === 'sessions' ? (
+                      rooms.map((room, roomIndex) => {
+                        const roomsForTheConference = agenda.rooms.length
+                        const roomsForThisSession = Object.keys(slot.sessionsByRoom).length
 
-                      const sessionizeSession = sessionInRoom.session
-                      const isServiceSession = sessionizeSession.isServiceSession
-                      const isChangeover =
-                        sessionizeSession.isServiceSession && sessionizeSession.title === 'Changeover'
-                      const isKeynoteOrLocknote = sessionizeSession.isPlenumSession && !isServiceSession
-                      const isLocknote = isKeynoteOrLocknote && slotIndex > 10 // dodgy, but any "keynote" after a certain point is the locknote
-
-                      return (
-                        <AgendaSession
-                          fullWidth={isServiceSession || isKeynoteOrLocknote}
-                          alwaysShowRoom={isServiceSession || isKeynoteOrLocknote}
-                          isKeynote={isKeynoteOrLocknote}
-                          key={sessionizeSession.id}
-                          sessionId={isServiceSession ? undefined : sessionizeSession.id}
-                          room={isChangeover ? undefined : sessionizeSession.room}
-                          renderPresenters={
-                            isKeynoteOrLocknote
-                              ? (presenters) => (
-                                  <StyledAgendaPresenter isKeynote>
-                                    {isLocknote ? 'Locknote: ' : 'Keynote: '}
-                                    {presenters}
-                                  </StyledAgendaPresenter>
-                                )
-                              : undefined
-                          }
-                        >
-                          {!isServiceSession ? null : (
-                            <>
-                              {isServiceSession && <StyledTrackHeader>{sessionizeSession.title}</StyledTrackHeader>}
-                              {isServiceSession && sessionizeSession.description && (
-                                <StyledAddress>{sessionizeSession.description}</StyledAddress>
-                              )}
-                            </>
-                          )}
-                        </AgendaSession>
-                      )
-                    })}
+                        const sessionsInRoom = slot.sessionsByRoom[room.name]
+                        if (!sessionsInRoom) {
+                          return null
+                        }
+                        const hasMoreThanOne = sessionsInRoom.length > 1
+                        const Wrapper = hasMoreThanOne ? StyledMultiSessionSlot : Fragment
+                        return (
+                          <Wrapper key={roomIndex}>
+                            {sessionsInRoom.map((session) => {
+                              return (
+                                <AgendaSession
+                                  fullWidth={roomsForThisSession === 1}
+                                  alwaysShowRoom={roomsForThisSession !== roomsForTheConference}
+                                  isKeynote={session.isKeynote || session.isLocknote}
+                                  sponsorId={session.sponsorId}
+                                  sessionId={session.sessionId}
+                                  key={session.sessionId}
+                                  room={session.roomName}
+                                  renderPresenters={
+                                    session.isKeynote || session.isLocknote
+                                      ? (presenters) => (
+                                          <StyledAgendaPresenter isKeynote>
+                                            {session.isLocknote ? 'Locknote: ' : 'Keynote: '}
+                                            {presenters}
+                                          </StyledAgendaPresenter>
+                                        )
+                                      : undefined
+                                  }
+                                />
+                              )
+                            })}
+                          </Wrapper>
+                        )
+                      })
+                    ) : (
+                      <AgendaSession
+                        fullWidth
+                        alwaysShowRoom
+                        room={slot.service.roomName}
+                        sponsorId={slot.service.sponsorId}
+                      >
+                        <StyledTrackHeader>{slot.service.title}</StyledTrackHeader>
+                        {slot.service.description && <StyledAddress>{slot.service.description}</StyledAddress>}
+                      </AgendaSession>
+                    )}
                   </StyledAgendaRow>
                 )
               })}

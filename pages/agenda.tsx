@@ -1,6 +1,6 @@
 import React from 'react'
 import AllAgendas from 'components/allAgendas'
-import { DynamicAgenda, GridSmartJson } from 'components/dynamicAgenda'
+import { CurrentAgenda } from 'components/currentAgenda'
 import { Sponsors } from 'components/Sponsors/sponsors'
 import { fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
@@ -13,35 +13,11 @@ import { formatInTimeZone } from 'date-fns-tz'
 
 interface AgendaPageProps {
   sessions?: Session[]
-  schedule?: GridSmartJson
   sessionId?: string
 }
 
-const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId, schedule }) => {
+const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
   const { conference, dates } = useConfig()
-
-  let agendaElement = null
-
-  const canShowAgenda = dates.AgendaPublished && schedule && schedule.length > 0
-  if (canShowAgenda) {
-    const agenda = schedule[0]
-    const dateUTC = new Date(agenda.date)
-    const slots = agenda.timeSlots
-    const rooms = agenda.rooms
-
-    agendaElement = (
-      <DynamicAgenda
-        sessions={sessions}
-        selectedSessionId={sessionId}
-        date={dateUTC}
-        slots={slots}
-        rooms={rooms}
-        sponsors={conference.Sponsors}
-        acceptingFeedback={dates.AcceptingFeedback}
-        feedbackLink={conference.SessionFeedbackLink}
-      />
-    )
-  }
 
   return (
     <Main title="Agenda" description={conference.Name + ' agenda.'}>
@@ -52,19 +28,18 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId, schedule }
           <p>
             The agenda has not yet been finalised; please come back on{' '}
             {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.DateDisplayFormat)}{' '}
-            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the meantime, check out our previous
-            agendas below.
+            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the
+            meantime, check out our previous agendas below.
           </p>
         ) : (
-          // <CurrentAgenda
-          //   date={Conference.Date}
-          //   sessions={sessions}
-          //   sponsors={conference.Sponsors}
-          //   acceptingFeedback={dates.AcceptingFeedback}
-          //   feedbackLink={conference.SessionFeedbackLink}
-          //   selectedSessionId={sessionId}
-          // />
-          agendaElement
+          <CurrentAgenda
+            date={Conference.Date}
+            sessions={sessions}
+            sponsors={conference.Sponsors}
+            acceptingFeedback={dates.AcceptingFeedback}
+            feedbackLink={conference.SessionFeedbackLink}
+            selectedSessionId={sessionId}
+          />
         )}
 
         {conference.Handbook && (
@@ -97,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (co
 
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
 
-  let schedule: false | GridSmartJson = false
+  let schedule = false
   try {
     const resp = await fetch(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
     if (resp.ok) {

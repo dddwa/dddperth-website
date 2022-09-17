@@ -227,7 +227,6 @@ export interface Twitter {
 }
 
 export interface Session {
-  ExternalId?: string
   Id: string
   ExternalId?: string
   Title: string
