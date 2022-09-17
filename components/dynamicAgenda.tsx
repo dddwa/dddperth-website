@@ -64,6 +64,9 @@ export const DynamicAgenda = ({
               sessions={agendaSessions}
               sponsors={sponsors}
               rooms={rooms.map((room) => room.name)}
+              getLivestream={(roomId) =>
+                (typeof roomId === 'number' ? rooms[roomId] : rooms.find((r) => r.name === roomId))?.livestreamUrl
+              }
             >
               {Conference.ShowNextSessions && nextSessionGroup && nextSessionGroup.sessions.length > 0 && (
                 <StyledUpNext>

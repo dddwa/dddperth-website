@@ -10,13 +10,19 @@ import { GetServerSideProps, NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { formatInTimeZone } from 'date-fns-tz'
+import { DynamicAgenda } from 'components/dynamicAgenda'
+import { AgendaForDisplay, mapGridSmartToAgendaDisplay } from 'components/Agenda/gridSmartUtils'
+import { with2022Overrides } from './agenda/2022'
+
+const USE_DYNAMIC_AGENDA = true
 
 interface AgendaPageProps {
+  agenda?: AgendaForDisplay
   sessions?: Session[]
   sessionId?: string
 }
 
-const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
+const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, agenda, sessionId }) => {
   const { conference, dates } = useConfig()
 
   return (
@@ -31,6 +37,15 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
             {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the
             meantime, check out our previous agendas below.
           </p>
+        ) : USE_DYNAMIC_AGENDA ? (
+          <DynamicAgenda
+            agenda={agenda}
+            sessions={sessions}
+            sponsors={conference.Sponsors}
+            acceptingFeedback={dates.AcceptingFeedback}
+            feedbackLink={conference.SessionFeedbackLink}
+            selectedSessionId={sessionId}
+          />
         ) : (
           <CurrentAgenda
             date={Conference.Date}
@@ -72,12 +87,14 @@ export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (co
 
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
 
-  let schedule = false
+  let agenda: false | AgendaForDisplay = false
   try {
     const resp = await fetch(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
     if (resp.ok) {
       const json = await resp.json()
-      schedule = JSON.parse(json)
+      const parsed = JSON.parse(json)
+      agenda = mapGridSmartToAgendaDisplay(parsed)
+      agenda = with2022Overrides(agenda)
     }
   } catch (e) {
     // no agenda, so we'll show the "wait for agenda" screen
@@ -89,7 +106,7 @@ export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (co
     props: {
       ...(sessions ? { sessions } : {}),
       ...(sessionId ? { sessionId } : {}),
-      ...(schedule ? { schedule } : {}),
+      ...(agenda ? { agenda } : {}),
     },
   }
 }

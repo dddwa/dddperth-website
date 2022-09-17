@@ -12,7 +12,7 @@ interface AgendaContextProps {
 
 interface AgendaProviderProps
   extends Partial<Omit<AgendaContextProps, 'onSelect'>>,
-  Pick<AgendaContextProps, 'onSelect'> {
+    Pick<AgendaContextProps, 'onSelect'> {
   children: React.ReactNode
   sessions: Session[]
   sponsors: Sponsor[]

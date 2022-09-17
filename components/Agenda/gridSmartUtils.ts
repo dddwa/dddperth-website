@@ -69,7 +69,7 @@ export function mapGridSmartToAgendaDisplay(gridSmart: GridSmartJson): AgendaFor
     livestreamUrl: null, // this can be added later
   }))
 
-  const slots = dayOne.timeSlots.map<AgendaForDisplay['slots'][0]>((timeSlot) => {
+  const slots = dayOne.timeSlots.map<AgendaForDisplay['slots'][0]>((timeSlot, timeSlotIndex) => {
     // ASSUMPTION: all talks in the slot start and end at the same time
     const startTime = zonedTimeToUtc(timeSlot.rooms[0].session.startsAt, '+08:00').toISOString()
     const endTime = zonedTimeToUtc(timeSlot.rooms[0].session.endsAt, '+08:00').toISOString()
@@ -110,8 +110,8 @@ export function mapGridSmartToAgendaDisplay(gridSmart: GridSmartJson): AgendaFor
           // HACK: we can't differentiate between keynote and locknote except by position in the day
           // so assume anything near the start is keynote and anything after that is locknote.
           // review if we add lunchnote talks again
-          isKeynote: room.session.isPlenumSession, //&& timeSlotIndex <= dayOne.timeSlots.length / 2,
-          isLocknote: room.session.isPlenumSession, //&& timeSlotIndex > dayOne.timeSlots.length / 2,
+          isKeynote: room.session.isPlenumSession && timeSlotIndex <= dayOne.timeSlots.length / 2,
+          isLocknote: room.session.isPlenumSession && timeSlotIndex > dayOne.timeSlots.length / 2,
           sponsorId: null, // can be fudged if we want sponsors for particular sessions
         }
         return {

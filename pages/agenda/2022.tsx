@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps<AgendaPageProps> = async () => {
   }
 }
 
-function with2022Overrides(agenda: AgendaForDisplay): AgendaForDisplay {
+export function with2022Overrides(agenda: AgendaForDisplay): AgendaForDisplay {
   // mark keynote and locknote (for some reason they're not marked as `isPlenumSession` by sessionize)
   const sessionSlots = agenda.slots.filter((s): s is SessionSlot => s.type === 'sessions')
   const keynote = sessionSlots[0]
@@ -142,6 +142,20 @@ function with2022Overrides(agenda: AgendaForDisplay): AgendaForDisplay {
     const previous = agenda.slots[secondOfDualTalkSlotIndex - 1] as SessionSlot
     previous.sessionsByRoom[roomName].push(...session)
   }
+
+  // add livestreams
+  const livestreams = [
+    'https://youtu.be/ovEA5PaOdWo?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/8mq3bCMrmbE?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/DsFlSkTPH-Y?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/pqRQ4rN6adg?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/ox6ixHfs4xM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/2KjEBFAVgoU?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/Plo8dSxAjHw?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/EU-VeLYi8LM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+    'https://youtu.be/LQ5vtriC_bI?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
+  ]
+  livestreams.forEach((url, index) => (agenda.rooms[index].livestreamUrl = url))
 
   return agenda
 }
