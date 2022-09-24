@@ -1,7 +1,7 @@
 import React from 'react'
 import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
-import { Session } from 'config/types'
+import { AgendaForDisplay, Session, SessionSlot } from 'config/types'
 import dateTimeProvider from './dateTimeProvider'
 import { isWithinInterval, isAfter } from 'date-fns'
 
@@ -48,21 +48,44 @@ function getSessionById(sessions: Session[], ids: SessionId[]) {
     })
 }
 
-// so manual - ideally there would be a better way to achieve this or expand it to handle the agenda too
-// e.g. on the agenda page show next sessions up top then the whole list
-export function useSessionGroups(sessions: Session[]): SessionGroups {
-  const allSessionGroups: SessionGroup[] = React.useMemo(
-    () =>
-      Conference.SessionGroups.map((sessionGroup) => ({
-        ...sessionGroup,
-        sessions: sessionGroup.sessions.map((id) =>
-          typeof id === 'string' ? getSessionById(sessions, [id]) : getSessionById(sessions, id),
+export function getSessionsFromAgenda(agenda: AgendaForDisplay, sessions: Session[]): SessionGroup[] {
+  return agenda.slots
+    .filter((s): s is SessionSlot => s.type === 'sessions')
+    .map<SessionGroup>((s) => ({
+      sessions: Object.values(s.sessionsByRoom).map((sessionsInRoom) =>
+        getSessionById(
+          sessions,
+          sessionsInRoom.map((x) => x.sessionId),
         ),
-        type: 'Sessions',
-      })),
+      ),
+      timeStart: new Date(s.startTime),
+      timeEnd: new Date(s.endTime),
+      type: 'Sessions',
+    }))
+}
+
+function getSessionsFromConfig(sessions: Session[]): SessionGroup[] {
+  return Conference.SessionGroups.map((sessionGroup) => ({
+    ...sessionGroup,
+    sessions: sessionGroup.sessions.map((id) =>
+      typeof id === 'string' ? getSessionById(sessions, [id]) : getSessionById(sessions, id),
+    ),
+    type: 'Sessions',
+  }))
+}
+
+/**
+ * Gets the agenda from the
+ * @param sessions
+ * @param agenda
+ * @returns
+ */
+export function useSessionGroups(sessions: Session[], agenda: AgendaForDisplay | null): SessionGroups {
+  const allSessionGroups: SessionGroup[] = React.useMemo(
+    () => (agenda ? getSessionsFromAgenda(agenda, sessions) : getSessionsFromConfig(sessions)),
     // Using the session length as the dependency - there was a reason at the time
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [Conference.Date.toString(), sessions.length],
+    [Conference.Date.toString(), agenda, sessions.length],
   )
   const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
 

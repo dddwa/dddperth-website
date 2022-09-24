@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { From2022 } from 'config/2022'
 import { StyledVideoContainer } from 'components/Agenda/Agenda.styled'
-import { Session, SponsorType } from 'config/types'
+import { AgendaForDisplay, ServiceSlot, SessionSlot, Session, SponsorType } from 'config/types'
 import { Sponsors } from 'components/Sponsors/sponsors'
 import ResponsiveVideo from 'components/responsiveVideo'
 import { SafeLink } from 'components/global/safeLink'
@@ -16,12 +16,7 @@ import AllAgendas from 'components/allAgendas'
 import data from 'public/static/agenda/2022.json'
 import sessionizeGridSmart from 'public/static/agenda/2022_gridsmart.json'
 import { DynamicAgenda } from 'components/dynamicAgenda'
-import {
-  AgendaForDisplay,
-  mapGridSmartToAgendaDisplay,
-  ServiceSlot,
-  SessionSlot,
-} from 'components/Agenda/gridSmartUtils'
+import { mapGridSmartToAgendaDisplay } from 'components/Agenda/gridSmartUtils'
 
 interface AgendaPageProps {
   agenda: AgendaForDisplay

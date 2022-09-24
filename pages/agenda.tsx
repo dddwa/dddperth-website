@@ -2,17 +2,16 @@ import React from 'react'
 import AllAgendas from 'components/allAgendas'
 import { CurrentAgenda } from 'components/currentAgenda'
 import { Sponsors } from 'components/Sponsors/sponsors'
-import { fetchSessions } from 'components/utils/useSessions'
+import { fetchAgenda, fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
-import { Session, SponsorType } from 'config/types'
+import { AgendaForDisplay, Session, SponsorType } from 'config/types'
 import { Main } from 'layouts/agendaWide'
 import { GetServerSideProps, NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { formatInTimeZone } from 'date-fns-tz'
 import { DynamicAgenda } from 'components/dynamicAgenda'
-import { AgendaForDisplay, mapGridSmartToAgendaDisplay } from 'components/Agenda/gridSmartUtils'
-import { with2022Overrides } from './agenda/2022'
+import { withOverrides } from 'components/Agenda/agendaOverrides'
 
 const USE_DYNAMIC_AGENDA = true
 
@@ -79,7 +78,7 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, agenda, sessionId }) 
 }
 
 export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (context) => {
-  const { dates } = getCommonServerSideProps(context)
+  const { dates, conference } = getCommonServerSideProps(context)
 
   if (!dates.VotingFinished) {
     return { redirect: { destination: `/agenda/${Conference.PreviousInstance}`, permanent: false } }
@@ -88,16 +87,11 @@ export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (co
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
 
   let agenda: false | AgendaForDisplay = false
-  try {
-    const resp = await fetch(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
-    if (resp.ok) {
-      const json = await resp.json()
-      const parsed = JSON.parse(json)
-      agenda = mapGridSmartToAgendaDisplay(parsed)
-      agenda = with2022Overrides(agenda)
+  if (process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL) {
+    agenda = await fetchAgenda(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
+    if (agenda) {
+      agenda = withOverrides(agenda, conference.Instance)
     }
-  } catch (e) {
-    // no agenda, so we'll show the "wait for agenda" screen
   }
 
   const sessionId = context.query.sessionId as string

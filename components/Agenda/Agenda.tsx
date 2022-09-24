@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import React, { Fragment } from 'react'
-import { Session, Sponsor } from 'config/types'
+import { AgendaForDisplay, Session, Sponsor } from 'config/types'
 import { SafeLink } from 'components/global/safeLink'
 import { SessionGroup, useSessionGroups } from 'components/utils/useSessionGroups'
 import { StyledCenteredParagraph, StyledSponsorLogo } from 'components/Agenda/Agenda.styled'
@@ -9,6 +9,7 @@ import { StyledCloseButton, StyledDialogContent, StyledDialogOverlay } from 'com
 export type onSelectCallback = (session: Session, sponsor: Sponsor, livestream: string) => void
 
 interface AgendaProps {
+  agenda?: AgendaForDisplay | null
   sessions: Session[]
   selectedSessionId: string
   acceptingFeedback: boolean
@@ -56,8 +57,8 @@ function agendaReducer(state: AgendaState, action: AllAgendaActions): AgendaStat
   }
 }
 
-export const Agenda = ({ sessions, ...props }: AgendaProps) => {
-  const { nextSessionGroup } = useSessionGroups(sessions)
+export const Agenda = ({ sessions, agenda = null, ...props }: AgendaProps) => {
+  const { nextSessionGroup } = useSessionGroups(sessions, agenda)
   const [sessionState, dispatch] = React.useReducer(agendaReducer, { showModal: false })
 
   React.useEffect(() => {

@@ -1,51 +1,5 @@
+import { AgendaForDisplay, Room, SessionForDisplay, SessionSlot } from 'config/types'
 import { zonedTimeToUtc } from 'date-fns-tz'
-
-type RoomName = string
-
-interface Room {
-  name: RoomName
-  livestreamUrl: string | null
-}
-
-export interface AgendaForDisplay {
-  date: string
-  rooms: Room[]
-  slots: AgendaSlot[]
-}
-
-interface BaseSlot {
-  type: string
-  startTime: string
-  endTime: string
-}
-
-export interface SessionSlot extends BaseSlot {
-  type: 'sessions'
-  sessionsByRoom: Record<RoomName, [SessionForDisplay, ...SessionForDisplay[]]>
-}
-
-export interface ServiceSlot extends BaseSlot {
-  type: 'service'
-  service: ServiceForDisplay
-}
-
-export type AgendaSlot = ServiceSlot | SessionSlot
-
-export interface SessionForDisplay {
-  roomName: RoomName
-  sessionId: string | null
-  title: string
-  isKeynote: boolean
-  isLocknote: boolean
-  sponsorId: string | null
-}
-
-export interface ServiceForDisplay {
-  title: string
-  description: string | null
-  roomName: RoomName | null
-  sponsorId: string | null
-}
 
 export type GridSmartJson = typeof import('public/static/agenda/2022_gridsmart.json')
 

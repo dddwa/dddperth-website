@@ -4,30 +4,32 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
-import { Session } from 'config/types'
+import { AgendaForDisplay, Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
-import { fetchSessions } from 'components/utils/useSessions'
+import { fetchAgenda, fetchSessions } from 'components/utils/useSessions'
 import { useSessionGroups } from 'components/utils/useSessionGroups'
 import { StyledList, Text } from 'components/global/text'
 import { SafeLink } from 'components/global/safeLink'
 import { roomLocations } from 'components/venueMapData'
 import Image from 'next/image'
+import { withOverrides } from 'components/Agenda/agendaOverrides'
 
 const VenueMap = dynamic(() => import('components/venueMap'), { ssr: false })
 
 interface ConferencePageProps {
+  agenda: AgendaForDisplay | null
   sessions?: Session[]
   sessionId?: string
 }
 
-const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
+const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions, agenda }) => {
   const { conference, dates } = useConfig()
   if (dates.IsInProgress) {
     // dummy
   }
 
-  const { currentSessionGroup } = useSessionGroups(sessions)
+  const { currentSessionGroup } = useSessionGroups(sessions, agenda)
 
   if (currentSessionGroup && currentSessionGroup.sessions.length > 0) {
     // NB: This is quite brittle, as it assumes that the list of current sessions is returned in exactly the same order as the definition of rooms
@@ -226,20 +228,29 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { dates } = getCommonServerSideProps(context)
+export const getServerSideProps: GetServerSideProps<ConferencePageProps> = async (context) => {
+  const { dates, conference } = getCommonServerSideProps(context)
 
   if (!dates.WeekBefore) {
     return { redirect: { destination: '/', permanent: false } }
   }
 
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
-  const sessionId = context.query.sessionId
+  const sessionId = context.query.sessionId as string
+
+  let agenda: false | AgendaForDisplay = false
+  if (process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL) {
+    agenda = await fetchAgenda(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
+    if (agenda) {
+      agenda = withOverrides(agenda, conference.Instance)
+    }
+  }
 
   return {
     props: {
       ...(sessions ? { sessions } : {}),
       ...(sessionId ? { sessionId } : {}),
+      agenda: agenda ? agenda : null,
     },
   }
 }

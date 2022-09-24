@@ -26,12 +26,13 @@ import { getLocalStoredName, storageKey, StorageKeys } from 'components/utils/st
 import { useDeviceId } from 'components/utils/useDeviceId'
 import { useForm } from 'components/utils/useForm'
 import { useSessionGroups } from 'components/utils/useSessionGroups'
-import { fetchSessions } from 'components/utils/useSessions'
-import { Session } from 'config/types'
+import { fetchAgenda, fetchSessions } from 'components/utils/useSessions'
+import { AgendaForDisplay, Session } from 'config/types'
 import { Main } from 'layouts/main'
 import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
+import { withOverrides } from 'components/Agenda/agendaOverrides'
 
 interface FeedbackFormState {
   name: string | undefined
@@ -42,13 +43,14 @@ interface FeedbackFormState {
 }
 
 interface FeedbackProps {
+  agenda: AgendaForDisplay | null
   sessions: Session[]
 }
 
 const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
   const { conference, appConfig } = useConfig()
   const { deviceId } = useDeviceId(conference.Instance)
-  const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions)
+  const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions, /* agenda: */ null)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)
   const hasPreviousSessions =
     sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0
@@ -238,18 +240,27 @@ const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { dates } = getCommonServerSideProps(context)
+export const getServerSideProps: GetServerSideProps<FeedbackProps> = async (context) => {
+  const { dates, conference } = getCommonServerSideProps(context)
 
   if (!dates.AcceptingFeedback) {
     return { redirect: { destination: '/', permanent: false } }
   }
 
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
+  let agenda: false | AgendaForDisplay = false
+
+  if (process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL) {
+    agenda = await fetchAgenda(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
+    if (agenda) {
+      agenda = withOverrides(agenda, conference.Instance)
+    }
+  }
 
   return {
     props: {
       sessions: sessions ? sessions : [],
+      agenda: agenda ? agenda : null,
     },
   }
 }
