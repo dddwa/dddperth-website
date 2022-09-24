@@ -109,9 +109,9 @@ export const DynamicAgenda = ({
                     <li key={room.name}>{room.name}</li>
                   ))}
                 </StyledAgendaRowList>
-                {slots.map((slot, slotIndex) => {
+                {slots.map((slot) => {
                   return (
-                    <StyledAgendaRow key={slotIndex}>
+                    <StyledAgendaRow key={slot.startTime}>
                       <AgendaTime time={new Date(slot.startTime)} />
                       {slot.type === 'sessions' ? (
                         rooms.map((room, roomIndex) => {
