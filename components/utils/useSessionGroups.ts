@@ -75,10 +75,10 @@ function getSessionsFromConfig(sessions: Session[]): SessionGroup[] {
 }
 
 /**
- * Gets the agenda from the
+ * Gets the session groups from the provided agenda, or the manually configured groups in config
  * @param sessions
  * @param agenda
- * @returns
+ * @returns session groups
  */
 export function useSessionGroups(sessions: Session[], agenda: AgendaForDisplay | null): SessionGroups {
   const allSessionGroups: SessionGroup[] = React.useMemo(
