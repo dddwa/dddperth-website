@@ -5,110 +5,90 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
   const opportunities: VolunteerOpportunity[] = []
 
   opportunities.push({
-    RoleTitle: "👩‍🏫 Speaker Mentor",
+    RoleTitle: '👨🏿‍💻 Website',
     Description: (
       <Fragment>
-        Once talks are chosen, we run training sessions for speakers to give them advice and tips on putting together
-        and performing their presentation. These sessions usually have a few mentors who can give advice to speakers,
-        or who can one-on-one pop out and go through things a bit more in-depth with a first time speaker if needed.
+        String and Duct tape are great, but they only go so far! If you want to help us maintain-slash-redo our website,
+        including our voting, our prize draw, our CRM integration... please come and help! This team is needed
+        throughout the year.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "🎁 Speaker Gift Elves",
+    RoleTitle: '👷🏾‍♀️ Logistics',
     Description: (
       <Fragment>
-        Organising, planning, assembling and packing speaker gifts. This is a role that requires some time in the lead
-        up to the conference. The gifts will be sourced already and there will be some time elected (probably in the
-        evening) where a small group will come together with the committee member leading this initiative to assemble
-        the packs. Important note, this is not a standalone role and will be coupled with an "on the day" operational role.
-        Please advise if there are any roles that you specifcially do not want to be assigned. Or if you have another
-        area of interest in an operational role on the day that would be a great help too!
+        Logistics team members curate the attendee experience, from admission right through to catering. If you want to
+        level up childcare, the food, coffee, signage, even the venue itself, this team is the right place. This team is
+        a busy, on the ground team, responsible for making the conference come alive (and stay alive). This team is
+        needed in the lead up to the conference.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "🎤 Room MC's",
+    RoleTitle: '👨🏿‍🎨 Media',
     Description: (
       <Fragment>
-        Room MC, Coordinator, host.. Whatever the right name is. The person who stands in front of the audience in a
-        selected room and makes that room HAPPEN! You are responsible for ensuring each session starts and finishes
-        on time, the speakers are mic'd up and everone behaves themselves. So it goes without saying  - you need to be
-        comfortable speaking in front of large audiences, good at timekeeping and able think on your feet.
+        The Media and Brand team are responsible for our awesome graphics and theme, as well as any merch or swag you
+        see from us. Have some ideas for the day? This team is needed in the lead up, from as early as possible.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "💬 Social Buzz",
+    RoleTitle: '🤳🏻 Comms',
     Description: (
       <Fragment>
-        On the day, one volunteer per room whose sole job is to take a couple of photos and publish social posts about
-        each talk (Tweets and LinkedIn)
+        Our newsletters, witty one-liners and the rest don't write themselves. Come help us reach the masses! This role
+        is needed in the lead up to the conference, from as early as possible.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "🏃‍♀️ General Runners/Ushers",
+    RoleTitle: '👩🏼‍🏫 Director, People',
     Description: (
       <Fragment>
-        General assistance and working under the guidance of the team lead on the day. Ushers simply make stuff happen
-        and are paramount to the effective running of the conference while things are in flight. From herding large
-        groups of people between rooms, enforcing room capacity numbers and bringing a thing from one side of the
-        venue to another becasue someone needs it - prepare for the unexpected!
+        Coordinating our ever growing volunteer base has been elevated to a Director position, as we know we have a huge
+        number of team members and we want to make sure you are all looked after!
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "🎟 Admission",
+    RoleTitle: '💼 Sponsorship',
     Description: (
       <Fragment>
-        Responsible for working under the direction of a team lead to efficiently check delegates into the venue/conference
-        using the nominated digial check-in tool. You will be required to attend a pre-event training session to ensure
-        familiarity and your ability to work in a high pressure environment during the check-in period. The idea here
-        is that this group of people are the same as those from Bump In thus will need to be available from 6am
+        Looking after our sponsors is such an important part of the conference, as we simply couldn't go forth without
+        their generous help. This team is responsible for onboarding, as well as coordinating the nitty gritty to get us
+        to conference day.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "↔ Bump In/Out",
+    RoleTitle: '💸 Finance',
     Description: (
       <Fragment>
-        Requires the Volunteer to be available for a 6am start on the day of the event and able to take direction
-        from a team lead with regards to the effective flow of equipment, supplies and setup from the loading dock
-        to their intended location. Thus it is important volunteers are physically fit, free form any injury that may
-        hinder them from undertaking light to medium lifting and repetitive tasks.
+        Our Treasurer, Matt, needs help! A core role, the treasurer is responsible for the books, but also the direction
+        of the conference, as an office bearer of our organisation.
       </Fragment>
-    )
+    ),
   })
 
   opportunities.push({
-    RoleTitle: "📷 Photography ",
+    RoleTitle: '👨🏼‍🏫 Conference Content',
     Description: (
       <Fragment>
-        PHOTOGRAPHERS! as you know, or if you don't yet you are about to find out. DDD LOVE creating a social buzz
-        and having swathes of pictorial evidence of the fun our attendees, speakers and volunteers have on the day.
-        So if you self-identify as a photographer, and have a super expensive snazzy camera PLEASE REGISTER YOUR INTEREST!
+        The Conference Content team is responsible for finding and coordinating our keynotes, brainstorming the content
+        outline for the conference, and looking after our wonderful speakers. From mentoring first time speakers to
+        booking flights for our keynotes, this is a team that curates the speaker experience. Think our conference
+        should have a workshop track? This is the team for you. This team is needed in the lead up to the conference.
       </Fragment>
-    )
+    ),
   })
 
-  opportunities.push({
-    RoleTitle: "🤝 Concierge",
-    Description: (
-      <Fragment>
-        Works with Gold level sponsors to ensure they maximise the value derived from their partnership with DDD.
-        This includes help with designing their booth experience and assistance on the conference day. This role is
-        required in the lead-up to the event and it would be great to hear if there are some operational roles that
-        are required on the day that you may also be interested in.
-      </Fragment>
-    )
-  })
-
-  return opportunities;
+  return opportunities
 }
