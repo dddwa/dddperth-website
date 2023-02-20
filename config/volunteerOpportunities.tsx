@@ -1,3 +1,4 @@
+import { SafeLink } from 'components/global/safeLink'
 import { Fragment } from 'react'
 import { VolunteerOpportunity } from './types'
 
@@ -5,12 +6,22 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
   const opportunities: VolunteerOpportunity[] = []
 
   opportunities.push({
-    RoleTitle: '👨🏿‍💻 Website',
+    RoleTitle: '👨🏿‍💻 Technology',
     Description: (
       <Fragment>
-        String and Duct tape are great, but they only go so far! If you want to help us maintain-slash-redo our website,
-        including our voting, our prize draw, our CRM integration... please come and help! This team is needed
-        throughout the year.
+        <p>
+          This team is responsible for our public facing technology, including primarily our website. If you are
+          interested in development (DDD Perth is probably a good place...) from our voting platform through to our
+          build process, you would be very welcome to join the team.
+        </p>
+        <p>
+          {' '}
+          Our website and other codebases are available on{' '}
+          <SafeLink href="https://github.com/dddwa" target="?_blank">
+            github
+          </SafeLink>
+          , so you can have a look to see if you want to work in this team ahead of time.
+        </p>
       </Fragment>
     ),
   })
@@ -19,16 +30,17 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
     RoleTitle: '👷🏾‍♀️ Logistics',
     Description: (
       <Fragment>
-        Logistics team members curate the attendee experience, from admission right through to catering. If you want to
-        level up childcare, the food, coffee, signage, even the venue itself, this team is the right place. This team is
-        a busy, on the ground team, responsible for making the conference come alive (and stay alive). This team is
-        needed in the lead up to the conference.
+        Logistics team members curate the attendee experience, from admission right through to catering. The team is
+        responsible for our attendee experience — the conference layout from check-in to sponsors to room layouts, what
+        food to provide and how best to do it, and how best to include any extra like childcare or quiet room. If you
+        want to level up childcare, the food, coffee, signage, even the venue itself, this team is the right place. This
+        team is a busy, on the ground team, responsible for making the conference come alive.
       </Fragment>
     ),
   })
 
   opportunities.push({
-    RoleTitle: '👨🏿‍🎨 Media',
+    RoleTitle: '👨🏽‍🎨 Media',
     Description: (
       <Fragment>
         The Media and Brand team are responsible for our awesome graphics and theme, as well as any merch or swag you
@@ -38,21 +50,21 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
   })
 
   opportunities.push({
-    RoleTitle: '🤳🏻 Comms',
+    RoleTitle: '🤳🏻 Social Media & Communications',
     Description: (
       <Fragment>
-        Our newsletters, witty one-liners and the rest don't write themselves. Come help us reach the masses! This role
-        is needed in the lead up to the conference, from as early as possible.
+        Our newsletters, witty one-liners and the rest don't write themselves. Come help us reach the masses! This team
+        is responsible for public-facing content creation.
       </Fragment>
     ),
   })
 
   opportunities.push({
-    RoleTitle: '👩🏼‍🏫 Director, People',
+    RoleTitle: '👩🏼‍🏫 People (Volunteering)',
     Description: (
       <Fragment>
-        Coordinating our ever growing volunteer base has been elevated to a Director position, as we know we have a huge
-        number of team members and we want to make sure you are all looked after!
+        This conference takes a village to organise, and this team looks after the volunteer experience. From recruiting
+        through to training, this team helps all other Directors find enough team members to get it done.
       </Fragment>
     ),
   })
@@ -69,23 +81,13 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
   })
 
   opportunities.push({
-    RoleTitle: '💸 Finance',
-    Description: (
-      <Fragment>
-        Our Treasurer, Matt, needs help! A core role, the treasurer is responsible for the books, but also the direction
-        of the conference, as an office bearer of our organisation.
-      </Fragment>
-    ),
-  })
-
-  opportunities.push({
-    RoleTitle: '👨🏼‍🏫 Conference Content',
+    RoleTitle: '👩🏻‍🏫 Conference Content',
     Description: (
       <Fragment>
         The Conference Content team is responsible for finding and coordinating our keynotes, brainstorming the content
         outline for the conference, and looking after our wonderful speakers. From mentoring first time speakers to
         booking flights for our keynotes, this is a team that curates the speaker experience. Think our conference
-        should have a workshop track? This is the team for you. This team is needed in the lead up to the conference.
+        should have a workshop track? This is the team for you.
       </Fragment>
     ),
   })
