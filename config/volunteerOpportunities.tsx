@@ -17,7 +17,7 @@ export default function getVolunteerOpportunities(): VolunteerOpportunity[] {
         <p>
           {' '}
           Our website and other codebases are available on{' '}
-          <SafeLink href="https://github.com/dddwa" target="?_blank">
+          <SafeLink href="https://github.com/dddwa" target="_blank">
             github
           </SafeLink>
           , so you can have a look to see if you want to work in this team ahead of time.
