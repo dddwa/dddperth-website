@@ -267,7 +267,7 @@ const Conference: IConference = {
     },
   ],
 
-  VolunteerSubmissionFormId: 'e23713d2-8c3a-411b-b22c-2f8528b77c88',
+  VolunteerSubmissionFormId: '9c302d13-e580-4edf-ba13-5bc27eb7b97f',
 }
 
 export default Conference
