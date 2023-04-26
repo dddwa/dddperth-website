@@ -7,7 +7,7 @@ import {
   TicketsProvider,
   ImportantDate,
 } from './types'
-// import Venue from './venue'
+import venue from './venue'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { add, sub, set, toDate } from 'date-fns'
 
@@ -16,18 +16,18 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const staticDate = '2023-10-07T07:45'
+const staticDate = '2022-09-10T07:45'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
-const registrationOpenFrom = zonedTimeToUtc('2023-05-16T08:00:00', '+08:00')
+const registrationOpenFrom = zonedTimeToUtc('2022-05-16T08:00:00', '+08:00')
 const registrationOpenUntil = hideDate ? null : sub(date, { hours: 14, minutes: 45 })
-const presentationSubmissionsOpenFrom = zonedTimeToUtc('2023-05-22T08:00:00', '+08:00')
-const presentationSubmissionsOpenUntil = zonedTimeToUtc('2023-06-18T23:59:59', '+08:00')
-const votingOpenFrom = zonedTimeToUtc('2023-07-03T17:00:00', '+08:00')
-const votingOpenUntil = zonedTimeToUtc('2023-07-14T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2023-08-04T17:00:00', '+08:00')
+const presentationSubmissionsOpenFrom = zonedTimeToUtc('2022-04-11T08:00:00', '+08:00')
+const presentationSubmissionsOpenUntil = zonedTimeToUtc('2022-05-13T23:59:59', '+08:00')
+const votingOpenFrom = zonedTimeToUtc('2022-05-27T17:00:00', '+08:00')
+const votingOpenUntil = zonedTimeToUtc('2022-06-10T23:59:59', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2022-07-07T17:00:00', '+08:00')
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
@@ -70,8 +70,6 @@ if (!hideDate) {
     Type: 'conference',
   })
 }
-
-const venue = null // Venue
 
 const Conference: IConference = {
   Name: name,
@@ -139,12 +137,12 @@ const Conference: IConference = {
   SessionFeedbackLink: '/feedback',
 
   HideDate: hideDate,
-  HideSponsors: true,
+  HideSponsors: false,
   HideSponsorshipUpsell: true,
   HideVenue: venue === null,
   HasAfterParty: false,
   HideAfterpartyVenue: venue === null || venue.Afterparty === null,
-  ShowNextSessions: false,
+  ShowNextSessions: true,
 
   Venue: venue,
 
