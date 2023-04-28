@@ -36,12 +36,13 @@ export default function VoteLanding({ instance, votingFinished }: VoteLandingPro
           "It's a draw!".
         </Text>
         <Text>
-          Once you've made your selection, two new options will appear. You can continue to vote on the options presented
-          for as long as you like - every vote will count towards formulating the best agenda possible for this year.
+          Once you've made your selection, two new options will appear. You can continue to vote on the options
+          presented for as long as you like - every vote will count towards formulating the best agenda possible for
+          this year.
         </Text>
         <Text>
-          Voting closes on {votingFinished}, so you have between now and then to have your say. You can leave and come back
-          any time until the closing day to get your votes in.
+          Voting closes on {votingFinished}, so you have between now and then to have your say. You can leave and come
+          back any time until the closing day to get your votes in.
         </Text>
         <Text>Happy Voting!</Text>
 

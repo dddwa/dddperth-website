@@ -26,7 +26,7 @@ export interface Conference {
   SessionizeEditUrl: string | null
   PreviouslySubmittedTopics: string
 
-  Venue: Venue
+  Venue: Venue | null
 
   ContactEmail: string
   SponsorshipEmail: string

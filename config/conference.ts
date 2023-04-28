@@ -6,6 +6,7 @@ import {
   TicketPurchasingOptions,
   TicketsProvider,
   ImportantDate,
+  Venue,
 } from './types'
 // import Venue from './venue'
 import { zonedTimeToUtc } from 'date-fns-tz'
@@ -16,7 +17,7 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const staticDate = '2023-10-07T07:45'
+const staticDate = '2023-10-07T08:00'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { hours: 12 })
 const currentInstance = date.getFullYear()
@@ -71,7 +72,7 @@ if (!hideDate) {
   })
 }
 
-const venue = null // Venue
+const venue: Venue | null = null // Venue
 
 const Conference: IConference = {
   Name: name,
