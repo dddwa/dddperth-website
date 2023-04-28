@@ -39,6 +39,7 @@ export interface Conference {
 
   AnonymousVoting: boolean
   PreferentialVoting: boolean
+  NeedsVolunteers?: boolean
   TicketNumberWhileVoting: TicketNumberWhileVoting
   MinVotes: number
   MaxVotes: number

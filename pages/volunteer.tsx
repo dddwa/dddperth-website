@@ -37,8 +37,12 @@ const VolunteerPage: NextPage = () => {
       </Text>
 
       <h2>Membership Volunteer Opportunities</h2>
-      <VolunteerOpportunityList opportunities={getVolunteerOpportunities()} />
-      <VolunteerForm />
+      {conference.NeedsVolunteers ? (
+        <>
+          <VolunteerOpportunityList opportunities={getVolunteerOpportunities()} />
+          <VolunteerForm />
+        </>
+      ) : null}
     </Main>
   )
 }
