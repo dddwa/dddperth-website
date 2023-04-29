@@ -1,0 +1,1092 @@
+[
+  {
+    "Id": "400fc8b7-dd55-4c97-933b-4c44eb6b853d",
+    "Title": "A Sh!tshow: The regrettably relatable retrospective.",
+    "Abstract": "To err is human, to learn, divine. \r\n\r\nEach and every one of us can think of a project that should have earned us a feature on our local firefighters calendar. But how are we meant to learn and grow if everything goes swimmingly? Luckily, one of the cornerstones of the Agile Manifesto gives us some guidance on learning from mistakes: \r\n\"At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.\"\r\n\r\nWhile it's not quite a hot-girl-September, there are so many lessons from crash-and-burn projects that we can reflect on together and commit to improving on the things within our control. \r\n\r\nForget the February spread, put your 20-20 hindsight goggles on and come along for a cathartic retrospective to reflect on working in difficult projects and what we can learn from our collective experiences: \r\n- What anti-patterns did we notice?\r\n- What fixes did we try? \r\n- How impactful were they?\r\n- Did we consider best practice vs best fit?",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343561",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "8ebfb8d6-8642-42cd-aec2-cf476654be80",
+        "Name": "Aish Srinivas",
+        "Tagline": "Actioner with JourneyOne",
+        "Bio": "I'm all about empowering diverse and inclusive teams to be at their best. My involvement within the WA community and my focus on the intersection between business, technology & social impact has led me to be a recipient of the Women in Technology WA Tech [+] 20 Award for 2020, and nominated for the Business News 40 under 40 Award for 2021. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/fb10-400o400o2-M4AfEWQZtFLADD8XVy5hpt.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "8889ea38-b790-41ca-b0f8-9a8bcab5bd73",
+    "Title": "Architecture for all",
+    "Abstract": "A look into how we can create Architecture diagrams that are useful across multiple levels of the business, from Engineers to Product Owners, Stakeholders and everyone in between. Creating a shared understanding of the product being built helps everyone involved to collaborate and build a better product.",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "339017",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "76311be9-222e-4ba4-8153-262b31a782d9",
+        "Name": "Trent Jones",
+        "Tagline": "Tech Lead - AI Media",
+        "Bio": "Trent has been designing, building and testing software for over 10 years, across a wide variety of industries. He has a passion for DevOps and inclusive software, along with a lifelong love of learning and sharing.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/46c9-400o400o2-Mv64LPUoCWZhkTc8JbMMGC.png",
+        "TwitterHandle": "DakarRally",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "56e19dfa-36d3-4abd-bc36-f31ddfe464a3",
+    "Title": "Banning “Best Practice”",
+    "Abstract": "A new toxic element has emerged within the workplace, the defence of “best practice”. This blanket term has become ubiquitous amongst many architectural design sessions and it is hurting innovation and user outcomes. The term “best practice” is often used without any context and used to justify someone’s design decisions without having to explain that justification. It is a term that is used to shutdown any discussion, and will likely be used to elevate one’s ideas without merit.\r\n\r\nI frequently push people to break down their assertion that their design decisions are “best practice”. This involves challenging people to firstly understand the goals with greater clarity:\r\nAre we prioritising costs, user enablement, time? \r\nWhat constraints are we working with? Do we have specific environments we have to work in?\r\nWhat problem are we ACTUALLY trying to solve?\r\n\r\nBy embracing these elements, we can actually frame our decisions in a way that enable a greater level of understanding by rephrasing “best practice” into something that is more structured. For example:\r\n\r\nAs we are trying to get our customers using {product feature} as quickly as possible, I think we should look at using {service A} with {service B} as it will allow us to get consumers on our platform using {product C} quickly. \r\n\r\nBy focusing more on the problem, the priorities/constraints, we can design solutions together that meet our needs, rather than just doing what someone else did and call it “best practice”\r\n",
+    "Format": "10 mins (lightning talk)",
+    "Level": "No experience necessary",
+    "ExternalId": "343793",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "8c871ecd-4065-4780-b1e2-2897320c894c",
+        "Name": "Brendan Crake",
+        "Tagline": "Servian - Senior Consultant",
+        "Bio": "A passionate tech geek that is focused on business solutions. I work well in ambiguous environments where end goals and business outcomes are the key priorities. I am tool agnostic and comfortable working in new environments. I have many years working with data, and have worked across all stages of the data pipeline. The primary focus of my career has been focusing on data modelling, data transformations, data analysis and reporting.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/1fba-400o400o2-9Scv3kqoi5ghKbJoh3rbzJ.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "df8adea3-9409-47b9-8def-7b0433f3431b",
+    "Title": "Choose your own pen-test adventure!",
+    "Abstract": "In this interactive talk, we'll perform a live pen-test on a vulnerable website, with the audience deciding what to try next.\r\n\r\nAt each stage, vote on what approach to take, witness the results, and learn what the website's developers did right/wrong in securing their website.\r\n\r\nEmbark together on an adventure taking us from website user to server admin, and learn some security and pen testing tips along the way!",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "344494",
+    "Tags": ["Security"],
+    "Presenters": [
+      {
+        "Id": "05b74e67-25be-4ff8-967f-441e0de008f9",
+        "Name": "James Hercock",
+        "Tagline": "Engineer at VGW",
+        "Bio": "James is a software engineer at VGW whose career in technology started with developing train simulators. He went on to join Bankwest's graduate program in 2018, where a passion for cyber security was ignited in him while spending time in the incident response & security operations centre.\r\n\r\nWhen not working on tech, he enjoys tinkering with home automation, hacking, gymnastics, board games and copious amounts of video games.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5ec5-400o400o2-TKUB3Sf9MRAwATPPnVYSFN.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "613b4725-db22-4711-8ff5-ab77ef1eb327",
+        "Name": "James Trotter",
+        "Tagline": "Software developer @ Versent",
+        "Bio": "James is a software developer at Versent. He will log back in later and bolster his profile.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/7bb8-400o400o2-S7ydN8wGS6dm92WRnQ512P.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "c9913f7e-e330-4524-ae44-b10fb2deda6c",
+    "Title": "Data Lakes! and other bodies of water that killed 'Big Data'",
+    "Abstract": "Big Data was the big, exciting buzzword of the 2010 era. Everywhere we looked, companies were scrambling to utilize this illustrious beast, telling us that it represented the future of not only computing, but profitability and innovation. Look at Facebook or Google, leveraging vast quantities of information to better push ads targeting our insecurities and desires, or the multi-billion dollar companies that spawned out of it like Palantir or Visallo.\r\n\r\n\r\nFast forward ten years, and we barely ever hear the term Big Data uttered, let alone used in our day to day life. Instead, we’re getting inundated with terms like ‘Data Lake’, ‘Data Pond’, and ‘Data Lake House’. \r\n\r\n\r\nIs this terminology built just to confuse us? Is the ominous man up there in the Cloud making up irrational terms just to peddle us new technologies we don’t need, or is he just thirsty?\r\n\r\n\r\nThis blast-from-the-present talk from a cloud-native data engineer will demystify and un-complicate the current state of ‘Big Data’, and help you impress your friends and coworkers with a knowledge of made-up sounding tech buzzwords.",
+    "Format": "20 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "340848",
+    "Tags": ["Data & Analytics"],
+    "Presenters": [
+      {
+        "Id": "3b80bd40-f987-4454-ae3c-6ff551437a12",
+        "Name": "Aiden Sobey",
+        "Tagline": "Cloud-Native Data Engineer at KZN",
+        "Bio": "Starting out my career in test automation and SaaS development, I quickly found a passion for making sense of data- the bigger and more complicated the better. While I love my career and the tech industry, I take issue with the vast amounts of complicated jargon that are used to confuse people and raise the barrier to entry.\r\nA lot of the things we do aren't actually that complicated, and this gets in the way of people understanding the solutions that are there to help them.\r\nFighting jargon, one acronym at a time.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/aad6-400o400o2-UbQvcfu3vAWbAaPQFi4GB2.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "269dd587-b70a-4a7a-9cee-65e792639e83",
+    "Title": "Deep Fake's within Social Media: An Exploration of Fun and Profit in FinTech",
+    "Abstract": "Social Media is a volume and data business. The equation is simple, the more relevant content you publish, the more traction you gain. Adding to this challenge are algorithms that confirm “video content is king”. Knowing this, how can you possibly compete with media organisation with substantial investment in staff and production?\r\n \r\nEnter Deep Fake's ! \r\n \r\nIn this talk we will explore using deep fakes to grow a user base on social media. How can you target and optimise the use of deep fakes to grow an audience in a niche sector, with limited staff, no production equipment, and most importantly, very little money.\r\n \r\nI will share with you my experience applying a sentiment-driven deep fake framework I have developed. Easy to understand fully automated FinTech sentiment-driven “virtual news presenter” platform.\r\n\r\nHope to see you there!",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344464",
+    "Tags": ["AI & ML"],
+    "Presenters": [
+      {
+        "Id": "a1e6e68c-ab84-491c-9e72-d2b955f9598a",
+        "Name": "David Martin",
+        "Tagline": "David Martin, Grafa, CTO",
+        "Bio": "David Martin is Chief Technology Officer at one of Australia’s fastest growing FinTech startups, Grafa. \r\n \r\nDavid is the technical mastermind behind the development of the Grafa platform which provides a world-first 360 degree view across all asset classes, opening up financial markets to everyone, from Main Street to Wall Street.\r\n \r\nBefore joining Grafa, he was the technical lead for the COVID-19 response for the WA Department of Health. This project won the \"Innovating Government\" category of the 2021 INCITE Awards and the \"ICT Service Transformation\" category of the Australian Computer Society awards.\r\n \r\nIn his spare time, he likes to collect finance qualifications and is a qualified financial planner, in addition to being a qualified computer programmer. \r\n \r\nDavid is often described as a technical guru and as a side hustle, he teaches machine learning and data analytics at the University of Western Australia. \r\n \r\nDavid is a visionary that dreams of unicorns and is hoping that one day (soon) Grafa will become one. To learn more about Grafa check out Grafa.com.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/c1b7-400o400o2-T2GQMTFV8ScdSophreWPgb.png",
+        "TwitterHandle": "BluHrvstDigital",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "c503fd48-d5ab-490b-8940-e62d52adee41",
+    "Title": "Distributed databases - Why, What, and How?",
+    "Abstract": "There are an ever-increasing amount of data-stores to choose from, each promising something special. You've heard that you should \"choose boring technology\", but you also want to choose a database that will scale when you need it the most. However beware the hype - there is no such thing as a free lunch! (but we're getting closer all of the time.)\r\n\r\nIn this technical talk, I'll discuss how databases have journeyed from SQL to NoSQL, and back again. I'll summarise the main technologies that underpin many modern distributed database systems, and what trade-offs have been required to achieve their amazing properties.\r\n\r\nHopefully you will gain some more appreciation for how these databases work, and when you may want to choose one over another.",
+    "Format": "20 mins",
+    "Level": "Mostly advanced",
+    "ExternalId": "344501",
+    "Tags": ["Data & Analytics"],
+    "Presenters": [
+      {
+        "Id": "8ba6512e-e90e-45ec-88b4-d352d728f8a9",
+        "Name": "Todd Becker",
+        "Tagline": "Principal Software Engineer at Family Zone",
+        "Bio": "An experienced software developer, with an interest in distributed systems, scaling, and performance.\r\nCurrently a Principal Software Engineer at Family Zone.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5e3a-400o400o2-PXFtRymeRX1bspfeCA4vyR.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "4b668b2a-52ff-4dc6-bac3-b89ff5422e6a",
+    "Title": "Doodling and Drawing - Expressing ideas and concepts through visual communication",
+    "Abstract": "If you were handed the marker and asked to conceptualise an idea or concept for that next big project, how would you go? Perhaps you have Maikbanphobia, the fear of whiteboards?\r\n\r\nVisual facilitation in meetings and workshops can:\r\n  * Increase engagement\r\n  * Improve comprehension\r\n  * Increase retention rates\r\n\r\nDrawing does not have to be scary or hard. Some very simple techniques can make all the difference when it comes to putting pen to paper, whiteboard or digital tablet to drive a conversation or solidify a design.\r\n\r\nIn this talk, I'll take you on my own journey towards escaping the comfort of Powerpoint and making the digital whiteboard my primary method of visual interaction.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344023",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "19223034-b308-4a72-95e8-8b42305d9f79",
+        "Name": "Phil Wild",
+        "Tagline": "Senior Solutions Engineer, Confluent",
+        "Bio": "Phil Wild is an IT professional with experiences across a wide variety of industries and organisations in Australia. He is currently employed as a Solutions Engineer with Confluent.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/c201-400o400o2-WXwm67zR5WhzHkEGJdjHMt.png",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "50178ff4-a09e-4ec1-a41a-b425387dff62",
+    "Title": "End to End DevOps with GitHub",
+    "Abstract": "GitHub is more than just a place to keep your code. There are features that cover your whole DevOps lifecycle from idea all the way into production.\r\nThis session will take you through an end-to-end software lifecycle, from planning with Issues, coding in the cloud with Codespaces, mature CI/CD with GitHub Actions, and much more.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343105",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "6699e903-60d8-4039-8dcf-0f915c02cbd7",
+        "Name": "Damian Brady",
+        "Tagline": "Senior Developer Advocate at GitHub",
+        "Bio": "Damian is a Developer Advocate at GitHub and loves all things DevOps.\r\n\r\nFormerly a Cloud Advocate at Microsoft for 4 years, and prior to that a dev at Octopus Deploy (https://octopus.com) and a Microsoft MVP, Damian has a 20+ year background in software development and consulting in a broad range of industries.\r\nDamian regularly speak sat conferences, User Groups, and other events around the world.\r\n \r\nMost of the time you'll find Damian talking to developers, IT Pros, and data scientists to help them get the most out of their DevOps and MLOps strategies.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/827c-400o400o2-Qh9gxdxozqFnY9ExvM7Zhb.png",
+        "TwitterHandle": "damovisa",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "241f5061-c758-44c9-83ec-da8472a0aff6",
+    "Title": "Escaping the Vortex: Or How I Learned to Stop Procrastinating and Get Things Done (Mostly)",
+    "Abstract": "Ever picked up your phone and sternly told yourself 5 minutes later to put it down, only to discover you haven't actually done the task you picked it up for? Put off an important task and ended up with not quite enough time to do it as well as you'd like? Realised it's now a whole hour after you promised yourself you'd scroll for \"just five minutes more\"?\r\n\r\nHard same, friend.\r\n\r\nWe've built a world with so many things competing for our attention that it's easy to get sucked into the vortex of distraction. Our best intentions end up sabotaged by our lack of focus and the short-term rewards that procrastination gives us.\r\n\r\nIn this session, I'll be talking about the techniques and tools I've used on my ongoing journey to become distraction-resistant and procrastination-free. Find out what I've learned, what has worked, what hasn't - and what might work for you.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344101",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "af91cd2c-8274-4d55-b29b-d069bbb63e37",
+        "Name": "Ricki Barnes",
+        "Tagline": "Web Developer, Minderoo Foundation/Tattarang",
+        "Bio": "Ricki Barnes is a full stack web developer who made her first website before the turn of the millenium and got hooked. In the time since, she has been in a constant state of learning - and is passionate about encouraging others to start or continue their learning journeys as well. Outside of coding, Ricki is a lover of books, builder of LEGO and mother of cats.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/936e-400o400o2-7NhgxmtvcFCnr9vvF4NnFA.jpg",
+        "TwitterHandle": "rickibarnes",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "24e9bb6e-08b9-45ac-8501-9a53d3f528ae",
+    "Title": "Everyone’s confused about design, and that’s ok.",
+    "Abstract": "“Design” is such a broad term. We’re all familiar with it. We all think we get it. But when you ask someone \"what is design\", it's actually quite hard to answer.\r\n \r\nUX, UI, product design, experience design, customer experience design, interaction design, content design, service design, visual design, strategic design… what does it all mean, and what does it mean for you? \r\n\r\nThis talk is aimed people who want a better understanding of the ever changing design world. If you've ever worked with a designer, then this is for you!\r\n\r\nIn this session, Kristy will cover:\r\n• The different types of designers, and where they sit in the overall product life cycle\r\n• How to improve design collaboration, and\r\n• Why product innovation doesn't just sit with designers.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344418",
+    "Tags": ["Design & UX"],
+    "Presenters": [
+      {
+        "Id": "4f69115f-bbdc-4228-82ee-81d80d941768",
+        "Name": "Kristy Haines",
+        "Tagline": "UX Design Lead, HBF Health",
+        "Bio": "Kristy has over 18 years of experience in design, across a variety of delivery and research roles. She's currently a UX design lead with HBF Health, and has deep experience in both enterprise and agency organisations. \r\n\r\nKristy's passionate about leveraging design to help enable high performing, cross-functional teams. She loves nothing better than working with people in different roles to unravel sticky problems, and creating innovative digital products and experiences.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/2373-400o400o2-M3fHjt8kTGSeTqq4QvQLSH.png",
+        "TwitterHandle": "krustywan",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "8e14395c-c202-42cc-a527-fca2c032f6d8",
+    "Title": "Failure 101:  What life lessons can teach us about better software development",
+    "Abstract": "Much like software development, life is full of mistakes, mis-steps and broken ambitions; the failed career, burnt toast, the not-quite-what-I-ordered item you bought online. \r\n\r\nLet's face it, working in software development is hard and we've all been the victim of a failed development project, dissatisfied stakeholders and abandoned half-functional prototypes. And if you've ever taken part in the post-mortem retrospective of failed project, you know that sometimes it's not exactly clear where a project falls down. \r\n\r\nUsing a series of mistakes from my life, this talk will walk you through identifying three pitfalls that cause failure in software development, and how we can learn to avoid them. ",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344427",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "5e07d2d9-d6ae-44d2-a135-9704ecd69a8e",
+        "Name": "Sarah McGeough",
+        "Tagline": "Former mad-scientist, current data nerd, Agile enthusiast",
+        "Bio": "Sarah began their career as a Medical Scientist where they explored genetic data before transitioning to the Technology industry. Since then, Sarah has worked in multiple areas including research, incident management, software development, and delivery.\r\n\r\nThis has sparked their passion in bringing people together and supporting teams to use data to drive the best outcome for customers, stakeholders and business. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/3ce4-400o400o2-36HmWjZVf3ohXQgFbH9oaM.jpg",
+        "TwitterHandle": "slmcgeough",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "84b3a4fb-bf9a-4c46-bf9c-754007441b0c",
+    "Title": "Five design patterns to build more resilient applications",
+    "Abstract": "To deal with uncertainty, you have to design your software to be resilient. This session will review the most useful patterns for building resilient applications such as graceful degradation, timeouts, exponential back-off, and circuit breakers. It will also explore how we can test our assumptions by injecting failure into our applications and uncovering our weaknesses. You will leave with an understanding of how to build more resilient applications and several patterns that you can apply to your software development projects.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "333791",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "94fabd1b-333b-4fbd-8a74-257e6bb0e55b",
+        "Name": "Derek Bingham",
+        "Tagline": "Developer Advocate @ AWS",
+        "Bio": "Developer with a passion for building software of all shapes and sizes on any conceivable platform. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/d52e-400o400o2-XGqp2msUQCvCNFKoKdkzMQ.png",
+        "TwitterHandle": "deekob",
+        "WebsiteUrl": "https://dev.to/deekob/"
+      }
+    ]
+  },
+  {
+    "Id": "92efe940-9e62-45a3-9891-b832f85bb78f",
+    "Title": "From imposter life to imposter moments: Tips from a Psychologist turned Engineer",
+    "Abstract": "Have you ever felt like you don’t actually deserve your success? Like you don’t belong, and everyone is going to discover you’re a fraud? If so, you’re in good company.\r\n\r\nA whopping 58% of tech workers report experiencing imposter feelings currently in their career, including employees from Apple, Google, Facebook and Uber. And when I started as a software engineer, I quickly became one of them. \r\n\r\nSo why do so many of us feel like we’re undeserving of our success? What’s the cause of this industry-wide lack of self-confidence? And what can we do about it?\r\n\r\nI needed answers. Because as a former-psychologist, I should be able to fix this in no-time, right? (wrong…)\r\n\r\nIn this talk, join me on my journey of changing careers and navigating through a new industry while feeling like an imposter. Find out why you can’t (and shouldn’t have to) ban out imposter feelings on your own, and get the tools and insights you need to turn an imposter life into imposter moments.",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343953",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "d03bba07-9797-49b1-9a0f-fa74af756790",
+        "Name": "Cristi Middag",
+        "Tagline": "Engineer at VGW",
+        "Bio": "A psychologist turned software engineer, currently navigating her way through the world of technology. After a short (but intense) journey of self-learning, Cristi landed a job as an Associate Engineer at VGW and started passing along her knowledge as mentor at She Codes Australia. 6 months later, she got promoted to Engineer, still battling imposter feelings. She's passionate about helping others get into tech, solving exciting coding problems, and cheese.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/6740-400o400o2-Nt2pgqGfniLv5pVkXTq8Lx.png",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "a84b6dc9-2bdf-46cb-b725-61a5300cd779",
+    "Title": "GitHub Copilot, using AI to help you learn, code, and build",
+    "Abstract": "It's time you meet your AI pair programmer. Do you find yourself stuck on a chunk of code? GitHub Copilot can help you. Copilot can help you get unstuck by suggesting lines or code, whole functions, help you explain what you're trying to build, and even translate your code into other languages.\r\n\r\nFind out more about Copilot and watch everything in a live demo.",
+    "Format": "20 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343948",
+    "Tags": ["AI & ML"],
+    "Presenters": [
+      {
+        "Id": "cf71644f-0c96-42ac-b5d8-6c592df4498a",
+        "Name": "Michelle Mannering",
+        "Tagline": "Hackathon Queen®™ | Founder | Esports Queen",
+        "Bio": "I am a highly motivated, curious and compassionate leader with a keen interest in driving entrepreneurial culture and pioneering Melbourne’s esports industry. I have founded several tech companies and, as a result, sits at the forefront of this city’s science, tech, esports and startup scenes.\r\n\r\nEveryday I get to create awesome experiences and engage with the vibrant GitHub developer community. I've run many hackathons, and am an accomplished MC, speaker, and facilitator. You'll often catch me at an event or speaking on stage!\r\n\r\nIn my 'spare' time I'm a streamer, journalist, and always working on something exciting ⚡",
+        "ProfilePhotoUrl": "https://sessionize.com/image/0d1d-400o400o2-T2DpHCzWgrwS7eEBPrvHx2.jpg",
+        "TwitterHandle": "mishmanners/",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "ffc1a76d-7f9b-4cca-a386-d928630b921c",
+    "Title": "How fast is your website really? Shining a light on web performance with real user monitoring",
+    "Abstract": "Monitoring web performance used to be easy - all you had to do was track how long it took for the page to load. However, the extensive use of client-side JavaScript has introduced a raft of new ways modern websites can suffer from poor performance.\r\n\r\nNew performance problems require new metrics.\r\nWith this in mind, Google promotes a set of new metrics known as Core Web Vitals. Core Web Vitals go well beyond directly tracking page load times, instead relying on a set of user-centric metrics that focus on loading, interactivity and visual stability.\r\n\r\nIn this talk, learn how to capture Core Web Vitals metrics from end users in real time and perform continuous monitoring to quickly react to performance regression as they happen.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "339320",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "76807394-876e-4c14-9a5c-623368f074d2",
+        "Name": "Macklin Hartley",
+        "Tagline": "Distributed Systems Engineer",
+        "Bio": "I am a Software Developer with over 7 years of experience building highly-scalable distributed systems. I'm passionate for modern design patterns and architectures such as Domain Driven Design, Event Sourcing and CQRS. I am an advocate for creating cultures of ownership, accountability, transparency and trust. I'm a strong believer in the value of Continuous Delivery, and deploying software frequently with a high degree of automation.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/70a5-400o400o2-7r6SfchMPmKm8WqyY3j4Vq.jpg",
+        "TwitterHandle": "macklin_hartley",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "6d47c30f-3653-4620-a19a-4fcd9f578011",
+    "Title": "How to be productive when working remote",
+    "Abstract": "Working remotely is often a great way to work smarter, not harder. But what are the downsides? What can you do that will help your productivity? \r\n\r\nThe speaker shares their experience of working remotely for 5 years with their team (before the pandemic made it cool) and learns about how distractions and lack of distractions affected mental health and productivity - and how finding ways around these challenges has been crucial to success.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344493",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "48861cc3-33e7-4582-8c42-3b94f9fc4717",
+        "Name": "Ming Johanson",
+        "Tagline": "Mother of Unicorns",
+        "Bio": "Ming Johanson works with businesses across the globe from training social media to managing (with her team) complex digital strategies that deliver tangible and desirable financial returns. She is dedicated to shaping the landscape for leaders to adapt their management, sales and marketing culture to fit into the modern day world of hyper-connectivity.\r\n\r\nRecently recognised and awarded for her ongoing contribution to the technology industries in the 2019 Women In Technology Tech [+] 20 Awards. Ming is a passionate mental health Ambassador for R U OK? Day, a co-facilitator in Startup Weekend Perth and a regular Australian Media Commentator as a Tech Evangelist on a range of topics in Mental Health, Social Media & Technology. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/3d59-400o400o2-p19vfFYivjdeyyP6LF4Z5H.jpg",
+        "TwitterHandle": "http://twitter.com/MingJohanson",
+        "WebsiteUrl": "https://mingjohanson.com.au"
+      }
+    ]
+  },
+  {
+    "Id": "9e595e3c-ad4b-44dc-bd8a-19fd2c3f1f22",
+    "Title": "How to Manage Your Ducks",
+    "Abstract": "Ever feel like everything is a struggle? Like you're constantly being overwhelmed by life? While we can endure it to pull through, this isn't really sustainable.\r\n\r\nWe've all been there, and I'm no different, but thankfully I've learnt a few lessons of things you can do and steps you can take to not only reduce the stress factors you have on you, or sometimes eliminate them altogether.\r\n\r\nJoin me to learn how to set (and stick to) your boundaries, identify if your worry is doing you good or harming you and most importantly, how to manage your ducks.\r\n\r\nLet me share my experiences with you and what I've learnt to help make more sustainable choices with your life.",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "333736",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "be1bf4dd-3b01-4f76-8946-4ec4161e02fe",
+        "Name": "Amy Kapernick",
+        "Tagline": "Front End Dev, Evangelist, Dog Lover",
+        "Bio": "Amy wears many hats as a freelance developer, business owner and conference addict. She regularly shares her knowledge with her peers and the next generation of developers by mentoring, coaching, teaching and feeding into the tech community in many ways.\r\n\r\nAmy can be found volunteering her time with Fenders, ACS, SheCodes (formerly Perth Web Girls) and MusesJS (formerly NodeGirls). She also works as an evangelist for YOW! Conferences, is a Twilio Champion, Microsoft MVP and has been nominated for the WiTWA awards for the last 2 years.\r\n\r\nIn her spare time Amy shares her knowledge and experience on her blogs and speaking at conferences. She has previously given keynotes at multiple events as well as speaking at several international conferences in the US and Europe.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/15d1-400o400o2-5c-ed26-4dc6-8612-0f18abdfd9f5.04ef3ba2-9a2a-430d-bfff-a34185dcbd4d.jpg",
+        "TwitterHandle": "amys_kapers",
+        "WebsiteUrl": "https://amygoestoperth.com.au/"
+      }
+    ]
+  },
+  {
+    "Id": "36273caf-9113-453e-b201-85c90bcf47a4",
+    "Title": "How your simple application could lead to your customers losing their life savings!",
+    "Abstract": "Cyber criminals are becoming incredibly intelligent with sophisticated methods used to link information across multiple platforms to build profiles on victims enabling devastating attacks to take place cleaning out bank accounts and crypto wallets. \r\n\r\n In a world of big data, machine learning and open source tools correlating seemingly innocent information to profile a user has never been easier.\r\n\r\nFind out how an application you develop could be linked to these activities, and what you can do to help your current or future users protect their data and limit their exposure.",
+    "Format": "20 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "340959",
+    "Tags": ["Security"],
+    "Presenters": [
+      {
+        "Id": "68d8b35c-d474-4f3d-a8a5-c14e8a0982a8",
+        "Name": "George Coldham",
+        "Tagline": "Curious, Courageous, Customer Engineer Security @ Microsoft. ",
+        "Bio": "George has been a tech geek for more than 20 years with a passion for technology and the Internet. \r\n\r\nI love learning, teaching and growing.  Security Engineer by day, gamer by night I am happiest when I'm being social and adding value to those around me.\r\n\r\nI have a broad range of interests in technology starting in hardware and infrastructure, maturing into cloud, devops and code, cyber security with both red and blue team activities and finally augmented, virtual and mixed reality.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/e67e-400o400o2-LgWt9K9NrDzjT8RnCTnQPn.jpg",
+        "TwitterHandle": "GeorgeColdham",
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "eee08945-c2ea-477f-84f0-40e23802537e",
+        "Name": "Ke Swen Lee",
+        "Tagline": "ECU, Current Computer Science Student Majoring Cyber Security",
+        "Bio": "An amateur speaker studying Computer Science with a major in Cyber Security at Edith Cowan University, WA. Currently a student ambassador for ECU's School of Science.\r\n\r\nI have a great interest in discovering vulnerabilities and vulnerability exploitation as well as developing secure software and am always keen on challenging myself and taking on new opportunities.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/aa39-400o400o2-34umf8hfQxpXYRZDj8tMPc.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "d3e28108-e606-4343-9dd1-d220af9c2b74",
+    "Title": "I AM A COMPUTER and so are you...",
+    "Abstract": "… well, that’s our current best theory of what we are.  The “Computational Theory of Mind” says that our minds are computers.  But, to be clear, that doesn’t mean we have a CPU, RAM, and hard disk.  Come along to this talk to learn what it really means for a calculator, a phone, and for US to be computers.\r\n\r\nThis is not a talk about machine learning algorithms, it’s more about what it means to be a thinking machine.  It’s not only about helping computers think more like us, but also helping us to understand that we are more like computers.  It will help you prepare for the coming wave of “thinking machines.”\r\n\r\nAI/ML software has already beaten the world’s best humans at Chess, Jeopardy, Go, and some video games, and now it’s learning how to play games from scratch, writing text, writing code, and more.  As a result, it’s also time for us to start talking more about “machine with minds.”\r\n\r\nThis talk will also hypothesise a little about what it means for a computer (and us) to be aware, self-aware, to have free will, and to feel like we do, i.e. to have a mind. It combines research in Computer Science, Cognitive Science, Neuroscience, even and some Philosophy of Mind.\r\n\r\nThe speaker has a PhD in Artificial Intelligence (including Cognitive Science and Neuroscience) from UNSW.  They have written and published research and conference papers on AI.  They have provided advice and guidance to AI startups, and to organisations keen to use AI to improve their operations.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344431",
+    "Tags": ["AI & ML"],
+    "Presenters": [
+      {
+        "Id": "8918e9b9-6814-4a20-9a57-9b11870d3f51",
+        "Name": "Ashley Aitken",
+        "Tagline": "Startup and Corporation Innovation | Event-Driven Microservices & CQRS/ES | Artificial Intelligence and Data / Analytics",
+        "Bio": "Ashley is a startup explorer, software engineer, academic, and professional trainer.  He helps organisations with innovation, enterprise software systems, and coaching / training. \r\n\r\nHe has a PhD in Computer Science & Software Engineering from UNSW and expertise in CQRS/ES, backend and frontend development, cloud deployment, and Artificial Intelligence.\r\n\r\nHe is an evangelist for the Lean Startup (Eric Ries) with Customer Development (Steve Blank) approach to startup and corporate innovation and runs the Lean Startup Perth meetup.  \r\n\r\nAshley has co-founded four tech startups and two consulting and professional training businesses (Innovately.com.au and Running Code Productions).  His latest startup is the Lean Explorers Club.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/a5aa-400o400o2-QN837LKaLrNmM1NFw6uKTQ.jpg",
+        "TwitterHandle": "ashleyaitken",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "cc411985-f2e3-46a4-a088-6cee10115639",
+    "Title": "Inclusive storytelling with dynamic data",
+    "Abstract": "Since the pandemic we've seen an uptick of charts and data visualisation shared by news, government, and health organisations. Most COVID-19 data was presented as images on social media without alternative text-descriptions, or as interactive charts that were often too complicated to understand, or didn't work with increased font size, keyboards, screen readers, and other assistive devices and settings. \r\n\r\nBecause of this, many people with disabilities or varying levels of education and data literacy were excluded from receiving important health information—discrimination with fatal consequences.\r\n\r\nWhen we think about data visualisation accessibility, we often think \"colour blindness\", but what about total blindness? What about using the chart without using a mouse? What about different zoom-levels, font-size and screen widths?\r\n\r\nIn software, our applications are becoming increasingly data-driven, with lots of great JavaScript libraries that produce beautiful charts—currently (April 2022), however, almost all of them have critical accessibility issues. \r\n\r\nIn this session we'll design and build a dynamic bar chart component, commonly used in customer-facing applications, and test it with keyboard, screen reader and other accessibility testing tools. We'll also briefly cover alt-text for static images and data visualisations, JS chart library recommendations, and where to learn more.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "338125",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "734c2c23-6a23-4f77-a4e4-c163e82a7459",
+        "Name": "Larene Le Gassick",
+        "Tagline": "Product Engineer",
+        "Bio": "Larene is an independent software engineer and consultant, Microsoft MVP in Accessibility, and community manager of Tech Leading Ladies Australia.\r\n\r\nShe specialises in building full-stack applications with accessibility and inclusion at front of mind. She is also an international conference speaker and guest university lecturer on digital accessibility and software architecture.\r\n\r\nLarene is one of the core members of the [DatavizA11y group](https://github.com/dataviza11y/Why-We-Exist), formed in 2020. Her and other accessibility advocates and experts came together (virtually) to solve for a lack of resources and guidance for making data visualisation inclusive of people with various disabilities, with the goal of raising awareness and providing guidelines and solutions.\r\n\r\nWhen she's not building software, you'll find her in a bunch ride or scrolling through Twitter.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5dfa-400o400o2-91kcNdtWWfHjXjoZv2u1uk.jpg",
+        "TwitterHandle": "LareneLg",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "f959d3c5-05ff-42c6-8c9e-53442cd1eb18",
+    "Title": "Is there a naked Emperor in your development team?",
+    "Abstract": "It's a little-known fact, but naked Emperors pose the biggest threat to Test Automation.  In this talk you will learn how to spot a naked Emperor in your dev team - and more importantly, make sure you don't become one yourself!  Embarrassing!!\r\n\r\nA thought-provoking but practical guide to the magic ingredient that will allow you to create great Test Automation.",
+    "Format": "10 mins (lightning talk)",
+    "Level": "No experience necessary",
+    "ExternalId": "344491",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "e483e66a-563f-4195-bc6f-1c6d4faeb068",
+        "Name": "Don Sharp",
+        "Tagline": "A Principal Consultant and Account Manager with Planit Perth",
+        "Bio": "Don has been an active member of the Perth IT community since the early 1990s and loves being part of the continuous reinvention that our industry offers.  If you've been to DDD before, you will have seen Don manning the coffee cart at every DDD conference.\r\n \r\nHe has a broad background across almost every area of IT, and bakes together this experience as a Principle Consultant for Planit.  His passion has always been leading people - from 1:1 mentoring, workshopping solutions with clients, through to full enterprise digital transformation. \r\n\r\nDon believes helping development teams achieve better quality, and enjoy themselves while doing it, is how he measures success.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/df5a-400o400o2-UnA4fWpkLmTkCc97qSMVtC.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "bd192e7b-140f-4560-9a0e-d6935a02fd1e",
+    "Title": "Leadership Through Self-Awareness",
+    "Abstract": "Become a better leader by understanding yourself. You can be a leader in any context, within your team, your organisation, your life.\r\n\r\nA true leader is not determined by their title but by their actions and the people who follow them.\r\n\r\nIn this talk, I will dive into self-awareness, what it is, how to develop it, and its power.\r\n\r\nWith self-awareness, you can empower yourself to build on your strengths and lean on the strengths of others. Understand your behaviours and their impacts. Make a positive change and grow your leadership skills.\r\n\r\nThrough understanding yourself, you can be a great leader.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "336320",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "ed94e097-4401-4dd6-93c1-20d7facb6eea",
+        "Name": "Melissa Houghton",
+        "Tagline": "Lead Software Engineer at Azenix | Microsoft MVP Developer Technologies | Community Organiser | International Speaker",
+        "Bio": "Melissa Houghton is a Lead Software Engineer at Azenix and a Microsoft MVP in Developer Technologies.\r\n\r\nHer work is focused on application development using Angular, .NET, and Azure, but she has a wide variety of skills and is always open to learning new things.\r\n\r\nAn advocate for women in tech with a passion for leadership, technology and giving back to the community. She frequents tech events, is an international conference speaker and organiser of DDD Melbourne conference, Melb․NET meetup, and Microsoft AU New Breakpoint Community.\r\n\r\nOriginally from California, Melissa loves to travel and now lives in Melbourne, Australia.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/1d57-400o400o2-KhLj69NuFJHgS8zFGUZTGt.jpg",
+        "TwitterHandle": "meliss_houghton",
+        "WebsiteUrl": "https://melissahoughton.dev/"
+      }
+    ]
+  },
+  {
+    "Id": "cb40da6d-ee0e-4fd8-864e-0586c454dbe6",
+    "Title": "Lessons from the Video Game Industry",
+    "Abstract": "Video Game developers tackle some of the most challenging problems out there in software. From design, to planning to implementation.\r\n\r\nJoin me for a highlight reel of the techniques they've used and the lessons they've learned, distilled down from years of Game Developer Conferences.\r\n\r\nWe'll hit topics like:\r\n\r\n* Using contagion as a key measure in tech debt taxonomy\r\n* Key strategies to employ when facing 5-10x scaling events\r\n* Managing the implied promise of your product",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "344419",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "2235895f-599a-403f-a7d7-100ccfb23a08",
+        "Name": "Jamie Butler",
+        "Tagline": "Telstra Purple - Lead Consultant",
+        "Bio": "In the consulting world I'm a bit of a hyper generalist. I've worked on anything from micro-controllers, to mobile apps to cloud architecture.\r\n\r\nBut my real passion is strategy and communication.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/d85b-400o400o2-M4Jq4PvEgpvg3czo8TjRAb.jpg",
+        "TwitterHandle": "TheStillHeron",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "855a9902-b215-4429-b4d0-df4bdcdcc060",
+    "Title": "Let's grow some feature trees 🌳",
+    "Abstract": "DevOps and Jira backlogs mostly fail at providing developers, designers and product owners with a holistic view of how user stories relate to each other, in context of a broader project or product roadmap.\r\n\r\nEnter... feature trees!\r\n\r\nFeature trees are used as a companion artefact to the product backlog that visualises the relationship between between epics, features and stories in a simple way and shows what has been delivered, what's being worked on and what is coming up next.\r\n\r\nA well organised feature tree also acts as a versatile and strategic communication tool. You can use it to find gaps in your backlog, organise your backlog in a clearer way, onboard new developers, and highlight the features and stories of an MVP or upcoming release. They can even be used in a funding request or proposal to communicate your product vision.\r\n\r\nIn this talk I want to share with you how to create a simple product feature tree and why it should be used in every delivery project.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "344274",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "6e16ad0d-92d8-499f-b410-2cc5eac5d550",
+        "Name": "Cornel Steyn",
+        "Tagline": "Strategy and Design Leadt",
+        "Bio": "Cornel is a Service and Experience Designer that loves creating clarity through research and experimenting to bring products to life.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/1a60-400o400o2-MLtwGWab1TE4ZJyh3Wj6RY.png",
+        "TwitterHandle": "heycorbor",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "79ce27a0-16fe-44ce-9b0c-40b6a6707d24",
+    "Title": "Offline-first, not offline mode",
+    "Abstract": "Building apps that work offline can be difficult, but a reframing from “offline mode” to “offline-first” might be all you need to do to simplify those problems. If you start with an offline-first approach, not only do you have offline mode, but your users will have a better experience to boot.\r\n\r\nThis talk will run through building an offline-first application and the slightly different challenges — but also the benefits — that come with it.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "337322",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "5bcf798c-2f00-4286-8249-938524ad697c",
+        "Name": "Ben Lowry",
+        "Tagline": "Software developer at Telstra Purple",
+        "Bio": "Ben is a software developer at Telstra Purple, which gives him the opportunity to work to help a number of teams solve their business problems. He mostly works in web development, using TypeScript and React, but is interested in all aspects of web development. He loves to share his excitement with those around him, and that's what he's here to do today!",
+        "ProfilePhotoUrl": "https://sessionize.com/image/f301-400o400o2-42-e77c-413a-9e7f-f085c03ad9dd.8e334bab-5878-4fe1-a526-979202ae16d1.jpg",
+        "TwitterHandle": "bplowry",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "8637fbb5-047b-4f51-a224-c2e2c9dcd0c7",
+    "Title": "Panel: AMA (Ask Me Anything)",
+    "Abstract": "Got a burning tech question and don't know who to ask? Let us help! We've assembled a panel of industry experts and they've got the sole job of answering all your curly questions!\r\n\r\nPanel Chair: David Meacock\r\n\r\nSubmit Questions: https://app.sli.do/event/uZzLVNnMfibd7rS3kGmXZo",
+    "Format": null,
+    "Level": null,
+    "ExternalId": "379497",
+    "Tags": [],
+    "Presenters": [
+      {
+        "Id": "fe5a7193-d954-41bf-af94-37182ba4aaff",
+        "Name": "David Meacock",
+        "Tagline": "Manager of Engineering Experience, Family Zone Cyber Safety",
+        "Bio": "Dave is a software professional with a passion for making a difference for customers and colleagues alike. He's shipped code and run teams across a variety of industries, and currently runs an Engineering Experience function at Family Zone, looking to level up both engineers and the environment they work within.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/6d3b-400o400o2-359c8013-7b5b-44a0-bb83-e112afad5640.jpg",
+        "TwitterHandle": "meacod",
+        "WebsiteUrl": "https://blog.meacod.net"
+      },
+      {
+        "Id": "5eedf0bb-59eb-49c1-a019-c2c9fa1137b3",
+        "Name": "Sarada Lee",
+        "Tagline": "Cofounder/Applied AI Researcher, Perth Machine Learning Group",
+        "Bio": "Sarada Lee (MPA, FCCA, HKICPA, GAICD) is a co-founder of Perth Machine Learning Group and received the Women in Technology WA Tech[+] 20 Award in 2019.  She brings machine learning/artificial intelligence and strong corporate governance together to help companies evolute.  Sarada is passionate about sharing knowledge and supporting diversity in tech.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/a74f-400o400o2-fZPgSicPyxitXRDMPcZMMW.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "aca1d5ce-8b42-4f38-b714-9bfbafa72a9c",
+        "Name": "Julie Grundy",
+        "Tagline": "Senior Digital Accessibility Consultant",
+        "Bio": "Julie Grundy is an accessibility expert who works for Intopia, a digital accessibility consultancy. She has over 15 years experience as a front-end web developer in the health and education sectors. She believes in the democratic web and aims to unlock digital worlds for as many people as possible.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/d7b7-400o400o2-wJY9uNachensHnvGWcXNwF.jpg",
+        "TwitterHandle": "stringy",
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "4a669dbf-9fe3-403e-a3e8-26b19827da8c",
+        "Name": "Christina Aldan",
+        "Tagline": "Brand Strategy Consultant",
+        "Bio": "Christina Aldan is a TEDx speaker, trainer, and brand strategy consultant. She offers businesses brand consulting and creative content for everyday media. With over 15 years of experience in the digital realm, Christina is highly regarded for her approach to business, partnering with clients to find unique strategies that ensure their goals are met. Christina builds connections through her keynote addresses, training workshops, and technological education. She uses these tools to help individuals and businesses cultivate value in everyday media. She has delivered talks on all 7 continents, having presented training workshops for the Microsoft MVP community, international corporations, and conferences worldwide. Christina uses her charisma and expertise to inspire others by mentoring women in business like herself. She also has sat on state and local boards supporting women in tech, entrepreneurship, mental health, and children with learning disabilities.\r\n\r\nShe is the recipient of the Las Vegas Women in Tech Community Service Award, the Distinguished Woman of the Year Award in STEM. Learn more at: Luckygirliegirl.com.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5312-400o400o2-EPiL6S2McvoBhSqq6wgo7c.jpg",
+        "TwitterHandle": "luckygirliegirl",
+        "WebsiteUrl": "https://www.luckygirliegirl.com/blog/"
+      },
+      {
+        "Id": "39e1f165-d94e-4c55-93aa-b09d0602d1e8",
+        "Name": "Sam Price",
+        "Tagline": "VP of Engineering, Platform and Data",
+        "Bio": "Sam had a humble beginning as a thick client developer, spending many hours fighting layout managers. He has a passion for all things tech, and is a staunch advocate of \"own and operate\" software engineering - the heart of which is people.\r\n\r\nPresently Sam is a VP of Engineering at Family Zone Cyber Safety, where he is responsible for Platform and Data.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/ca52-400o400o2-fdm7hBQFS4E84LyqJo3xAm.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "9f9d0fe2-0f6a-45f5-ab1c-30e886c0402a",
+    "Title": "Panel: Inclusive Teams and Flexible Working",
+    "Abstract": "As many employees have had a max-exodus, in \"The Great Resignation\", more companies are trying to make their workplaces more desirable, and enticing new employees to join and stay.\r\nBut what does that really mean, how can you make your team more inclusive and what kind of flexible arrangements could you be offering?\r\n\r\nPanel Chair: Rebecca Waters\r\n\r\nSubmit Questions: https://app.sli.do/event/uZzLVNnMfibd7rS3kGmXZo",
+    "Format": null,
+    "Level": null,
+    "ExternalId": "379496",
+    "Tags": [],
+    "Presenters": [
+      {
+        "Id": "86e62b77-c65e-4d00-b3ac-ec1310d0743f",
+        "Name": "Rebecca Waters",
+        "Tagline": "Delivery Manager @ Thales | Community Contributor",
+        "Bio": "Rebecca Waters is a Software Engineer, and now a Delivery Manager (but a cool one, honest!). She has over 10 years experience in the software industry, building everything between surveillance to communications systems and vehicle health systems. \r\nShe is passionate about delivering good software that solves problems.\r\nRebecca is a contributor to the Perth software community through DDD Perth, the Australian Computer Society of WA and University engineering curriculum reviews. \r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/29e8-400o400o2-dd-d04e-48c0-9fa6-7c5f731ad39e.57a09876-bd7b-4564-9567-627fbb01dfa3.jpg",
+        "TwitterHandle": "http://twitter.com/bec_h2o",
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "668c6671-0b65-41b5-b469-225edd4687ac",
+        "Name": "Ryan Oakley",
+        "Tagline": "Developer",
+        "Bio": "Ryan Oakey is a Neurodiverse (Asperger’s) developer and student. He is currently studying a Master of Information Technology at the University of Western Australia",
+        "ProfilePhotoUrl": "https://sessionize.com/image/b4d0-400o400o2-UFuzsLiVoBXHvKh2qFp7ZD.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "69c2f613-583e-4588-b93e-f39eefbbafc2",
+        "Name": "Louise Capper",
+        "Tagline": null,
+        "Bio": null,
+        "ProfilePhotoUrl": "https://sessionize.com/image/973d-400o400o2-BVzbSoKgs9cexxEG79Q4cK.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "f88121d9-a088-42c1-aa00-869153001cf4",
+        "Name": "Teresa Watts",
+        "Tagline": null,
+        "Bio": null,
+        "ProfilePhotoUrl": "https://sessionize.com/image/bc56-400o400o2-axH8kGpphLS6j852GSY8Gi.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      },
+      {
+        "Id": "e514d9cf-5c87-4015-bbf4-1c04b1794c25",
+        "Name": "Tina Ambrose",
+        "Tagline": null,
+        "Bio": null,
+        "ProfilePhotoUrl": "https://sessionize.com/image/5624-400o400o2-7GnZMcg9iqYvivtn3REP7S.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "1ad3007c-66d5-46a7-8899-e3515bbf12e8",
+    "Title": "Paying it forward",
+    "Abstract": "How can you level up your own career while simultaneously helping others less experienced than yourself do the same? And how can this help us to combat the diversity problem in our industry?\r\n\r\nCould we solve both of these problems in one go? Rather than constantly struggling to hire experienced developers, could we up-skill newer developers internally instead?\r\n\r\nIn this talk I’ll walk you through what I’ve learnt from years of training new developers, including bite sized tips and tricks you can take into your next pairing session. I’ll share my experience of becoming a Senior Engineer without exclusively working as an engineer, but rather by teaching others.\r\n\r\nThis talk is open to anyone at any level in tech, but uses anecdotes and advice specific to teaching engineering.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343620",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "47fda855-652d-4bf8-9171-e2c096550e36",
+        "Name": "Hayley Stewart",
+        "Tagline": "Kiwi, Developer, Educator",
+        "Bio": "I am a developer and educator, and have been teaching others to code for as long as I have been coding myself. I am a firm believer that anyone can learn to code, and prove it by dedicating a lot of my working and personal life to helping to improve the diversity in the tech industry.\r\n\r\nI have extensive experience in writing resources and teaching workshops about Computer Science and Programming for all ages and experience levels. My ability to describe technical details in a simple manner certainly sets me apart from others in my field and makes me an asset to any team.\r\n\r\nIn my spare time I can be found teaching my dog tricks, watching Netflix and yelling at \"smart\" home devices.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/ef13-400o400o2-s466LikuJXe5rWhDyG1h89.jpg",
+        "TwitterHandle": "hayley_codes",
+        "WebsiteUrl": "https://hayley.codes/"
+      }
+    ]
+  },
+  {
+    "Id": "031ff873-bf27-4fd6-b4af-40d5e5d14806",
+    "Title": "Project Insanity",
+    "Abstract": "We all know the definition of insanity - doing the same thing over and over and expecting a different result!  So why then do so many organisations with failed IT projects try again in exactly the same way as before? \r\n\r\nIn this era of expecting IT to drive transformational change, why do the projects themselves not embrace the change?\r\n\r\nAnd what should organisations do to set these projects up for success from the beginning?\r\n\r\nThis short talk will \r\n-  explore the classic mistakes we see over and over again in IT projects \r\n- highlight the warning signs that the project setup is bordering on insanity;  and \r\n- outline a few simple steps that organisations and project teams can take before they embark on any new project - especially complex transformational projects.",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "342452",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "22bfc2dd-d9e5-4a95-938e-083c19bb8490",
+        "Name": "Giselle Rowe",
+        "Tagline": "Insight Strategy & Design Practice Lead",
+        "Bio": "Technology has been part of my working career since before PC’s were even invented. I was hooked the first time I was given a computer and I immediately wanted to embrace the new world and to assist others to embrace it as well. This led me away from accounting to the world of IT management consulting which has been my “home” for 30 years.\r\n\r\nI have managed teams of in-house developers, vendor development companies, business analysts, UX designers, \"agilists\", end users, testers as well as small and medium sized company branches. I have been lucky enough to have worked on or managed projects for all kinds of technology - including some that have come and gone and others that are so much a part of our lives it is hard to imagine a life without them. \r\n\r\nBe it IT applications or infrastructure, cloud, mobile telephone networks or even Control Systems, my career has given me the opportunity to work with technologies that have had significant impacts on organisations and people.\r\n\r\nThough the technology changes, in many ways the problems remain unchanged.  Technology may provide many solutions, but it is there to improve the lives of people therefore it should always be designed to meet the needs of people.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/420e-400o400o2-aTFXcdrXYLyh84eEmMVV37.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "8ec91859-9bc7-48fe-876f-3c9c92152259",
+    "Title": "Refactoring Components",
+    "Abstract": "As much as we all like working on greenfields projects, most of the work we actually do is on existing codebases. And existing codebases have technical debt. Technical debt makes code hard to modify. Being hard to modify slows down to development.\r\n\r\nSo, how do we deal with this? We refactor!\r\n\r\nBut, refactoring is an inherently risky process. It's very easy to break things in any complex system, especially if the test coverage is less than ideal. Worse, it's possible to ruin users' experience by accidentally fixing bugs that their workflows had come to rely on. To combat this we need to ensure that our refactor doesn't change the existing behaviour in any way, while also leaving us free to add new functionality.\r\n\r\nWe're going to have a look at how to decide when we actually should refactor, and how we can use tests to ensure we maintain the existing behaviour. We'll have a look at our options for testing JSX, and the pros and cons of snapshot tests. And we'll finish up with a demo, putting it all together.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "342543",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "e4ab261c-365d-4f49-827d-0ae1020eeba0",
+        "Name": "Erin Zimmer",
+        "Tagline": "Developer @ CashApp",
+        "Bio": "Erin is a Google developer expert with over ten years experience in a variety of languages, from JavaScript to Model204 (no, nobody else has heard of it either). She is currently a senior web developer as CashApp. She is an active member of the Melbourne developer community, and has spoken at conferences around the world. If you see her at a conference, she'll probably have knitting needles in hand.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/9150-400o400o2-UVLSpwQ7WPXUHinG7HLsdf.jpg",
+        "TwitterHandle": "http://twitter.com/erinjzimmer",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "d6f0e907-204c-4a64-aa51-c01ca6e8de71",
+    "Title": "Release your inner DevOps",
+    "Abstract": "Many teams struggle with how to release their code quickly, safely and regularly into production. Often, we can feel bogged down by process, unable to see how others can release so quickly or making excuses about how \"it's easier in THAT industry\". That used to be how I felt but not anymore!\r\n\r\nIn this talk, I will guide you through the mindset required to start making the right changes on the journey to release more quickly (but still safely): the so-called \"DevOps Mindset\". I will share the key insights that I have learned from over 10+ years of experience in Banking, Government and the Startup space, leading teams to build, deploy and run systems comprising dozens of microservices. We'll explore practical techniques that you can start using today to enable your releases to go smoothly, whilst also providing you with some key areas of focus in your longer-term DevOps strategy.\r\n\r\nFinally, I'll introduce several really simple, practical coding techniques that make deploying at speed, easy and relatively painless... No matter your team size!",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343628",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "f2b8c9a4-f880-41bf-a2a8-112e21125ca7",
+        "Name": "Dylan Watson",
+        "Tagline": "Senior Engineer - Atlassian",
+        "Bio": "When I'm not writing and deploying code, I'm thinking about ways to do it better.. either that or chasing my toddler around!",
+        "ProfilePhotoUrl": "https://sessionize.com/image/781b-400o400o2-SCH5D8a77FShxCQ8AyeqZf.jpg",
+        "TwitterHandle": "dylanwatsonsw",
+        "WebsiteUrl": "https://dev.to/dylanwatsonsoftware"
+      }
+    ]
+  },
+  {
+    "Id": "84fdef68-cb5c-4fc3-9c0e-c5b4431ad2ab",
+    "Title": "Serverless Testing - Local Considered Harmful?",
+    "Abstract": "How can you test most effectively when building serverless applications?\r\nHow do I run my dependencies?\r\nWhat's the current state of the art, and where are we going as an industry?\r\n\r\nThe most common issue teams have with serverless development is testing. The approaches that served us so well in the pre-cloud era don't seem to hold up in the new reality. \r\n\r\nIt feels like you're spending more time configuring local environments than writing code, tests are flaky and every day is filled with the same feeling of frustration.\r\n\r\nBased on my own experiences building serverless applications for startups in enterprises here in Australia and abroad, and taking testing back to first principles, we'll explore both the patterns and anti-patterns of serverless testing.\r\n\r\nI'll answer such questions as:\r\n- Why localstack sounds great in theory, but fails in reality\r\n- Whether the vaunted testing pyramid is still valid\r\n- How to configure your cloud environments to unblock teams and reach development nirvana",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343385",
+    "Tags": ["Cloud"],
+    "Presenters": [
+      {
+        "Id": "7f5f6298-7bd0-4ef6-b102-b162f25450c3",
+        "Name": "Josh Armitage",
+        "Tagline": "Distinguished Technologist, Contino",
+        "Bio": "Josh is best known for his booming voice, truly awful sense of humour and immaculately coiffed hair. Professionally he is a distinguished technologist at Contino, and the author of the Cloud Native Security Cookbook with O'Reilly.\r\n\r\nA seasoned international speaker, he loves to share the lessons he's learnt in his career hoping that he can save people the pain and lead to happier, more impactful careers.\r\n\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/fa55-400o400o2-Bix7UYF5PsMGwQEUcaHDcQ.png",
+        "TwitterHandle": "josharmi",
+        "WebsiteUrl": "https://thearmitagency.com"
+      }
+    ]
+  },
+  {
+    "Id": "d2986415-fc7c-49da-85b4-937e2b282bc4",
+    "Title": "Standing on the Shoulders of Giants - the Next Great Generation in Tech needs you!",
+    "Abstract": "Every year, hundreds of early-career hires join our Tech industry. They come from all around Australia, bringing their aspirations and anxieties, their talent and potential, hopeful and excited ​for the journey ahead.\r\n \r\nIn this defining moment of growth and transformation, they need those who came before to help them see and find their place to be. Pushing them to explore new terrain, develop technical skills, build community and embrace being innovative leaders in their company and beyond. \r\n\r\nThis session is for a First time Mentor, a Difference Maker or a Tech Leader. You will hear practical tips and real-life examples from the speaker. Come along and learn to be a great giant to raise up the Next Great Generation in Tech!",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "341315",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "ae4ee400-5d32-4c6e-9bf9-29b89cc0cf85",
+        "Name": "Jiaranai Keatnuxsuo",
+        "Tagline": "SELECT * FROM Life_Energy WHERE Life > Self;",
+        "Bio": "Jia is a thriving endurance athlete, Tech Optimiser, a STEM Advocate, a TEDx Speaker, a multi-awards winner of Women in Technology Western Australia 2019, NASA Space App Challenge, Energy Hack, Transport Hack WA, and UWA Innovation Challenge. Her superpower is learning new technology and smashing Microsoft certificates. In the world of fast changes, she strives to be 1 percent better technically every day by cultivating her abilities through persistence and effort.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/8f97-400o400o2-aE847XBt9TxG5RkCnMMDER.png",
+        "TwitterHandle": "jkeatnuxsuo",
+        "WebsiteUrl": "https://www.linkedin.com/in/keatnuxsuo/"
+      }
+    ]
+  },
+  {
+    "Id": "2e57d34f-e525-4d87-9dfd-124306d3e8d9",
+    "Title": "Super Hero Layouts",
+    "Abstract": "Modern CSS layout techniques opened a world of possibilities. Layouts previously thought impossible become possible. A great way of mastering techniques is through play, so I turned to one of my favourite hobbies - comic books.\r\n\r\nTaking well known layouts, how could elements be built in a browser, such as uneven shapes, ever changing layout and many expansions? This talk is going to dive into using modern CSS layout techniques to recreate elements of comic books with CSS Grid, writing mode, CSS shapes and more. Come along to see CSS layouts at play.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "341472",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "9178e140-bd22-48d1-810a-658fcbe353a3",
+        "Name": "Anton Ball",
+        "Tagline": "Fender",
+        "Bio": "Anton is a Front-End Developer, speaker and community organiser. He is passionate about clean, structured code, web standards, accessibility and optimisation. He prides himself on delivering robust, high quality and beautiful solutions. Anton co-organises Fenders Front-End Developer meetup and DDD Perth. Anton has also volunteered as a mentor introducing others to the world of coding.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/a0ee-400o400o2-75Sp9hA3NkKKxXmFT9LN4q.jpg",
+        "TwitterHandle": "antonjb",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "b2d8c81b-68eb-4a87-a0fb-95c295a146b0",
+    "Title": "The Art of Creative Coding",
+    "Abstract": "Can images created with code, be art? Being creative isn’t the same as being artistic. Developers demonstrate creativity every day through problem-solving, application/system design, and code optimization. Even the most creative people can struggle to replicate the images in their heads on paper or canvas with pen or paint. \r\n\r\nSo, what can a developer do to express their inner Van Gogh, Picasso or Da Vinci? Enter creative coding; the creation of visual masterpieces with code! Imagine the graphics library as a canvas, language as paint, algorithms as the method. Let me rouse the artist within you, and inspire you to create intriguing, unique, original, and even beautiful pieces of digital art using code. \r\n\r\nJust like with traditional art, it can be hard to know how or where to start. Graphics programming often involves mathematics that can be daunting for anyone without a PhD in maths. \r\n\r\nIn this session, you will learn some ways to get started, some approaches to creating static and animated art with code, and that the maths really isn't that scary at all. You will be creating your own codified artworks in no time!",
+    "Format": "45 mins",
+    "Level": "Deeply technical",
+    "ExternalId": "344367",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "af3b61d1-e4e3-4c51-84c9-f97821b87cb6",
+        "Name": "Brandon Lewis",
+        "Tagline": "Engineering leader and maker of things!",
+        "Bio": "Brandon is a software engineer and leader with an extensive background in data and systems integration. He has worked across various industries helping organisations design and build reliable and performant software systems. He is an accomplished senior leader currently leading a number of teams at one of WA's largest mutuals.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/0ad6-400o400o2-KAt4vZxwfejE2ER5XK1vaS.jpg",
+        "TwitterHandle": "slashrawr",
+        "WebsiteUrl": "https://leaderkaizen.com/"
+      }
+    ]
+  },
+  {
+    "Id": "af12c14a-3ba7-423f-91ed-1e0d83f0c84f",
+    "Title": "The Cat In The Box",
+    "Abstract": "In 1935, Erwin Schrodinger put a (hypothetical!) cat in a box. With a vile poison and some quantum magic, we were forced to the conclusion that the cat was both alive and dead at the same time. Over 80 years later, it is either one impressive cat or it is surely dead. I will resurrect Schrodinger's cat and discuss the implications of and on the famous thought experiment from the perspective of the recently developed fields of quantum information and computation, but not before showing you how we can share such seemingly complex concepts even to children!",
+    "Format": "Keynote",
+    "Level": null,
+    "ExternalId": "383016",
+    "Tags": [],
+    "Presenters": [
+      {
+        "Id": "9fb4e6b5-941b-40d1-80d3-b561b03bec74",
+        "Name": "Chris Ferrie",
+        "Tagline": " Chris Ferrie is an Associate Professor at the University of Technology Sydney and the Centre for Quantum Software and Information. His research interests include quantum learning and control. He obta",
+        "Bio": "Chris Ferrie is an Associate Professor at the University of Technology Sydney and the Centre for Quantum Software and Information. His research interests include quantum learning and control. He obtained his Ph.D. in Applied Mathematics from the Institute for Quantum Computing and University of Waterloo (Canada) in 2012. Chris’s passion for communicating science has led from the most esoteric topics of mathematical physics to more recently writing children’s books, such as Quantum Physics for Babies, and a whole collection of other titles that make science accessible even for the youngest children.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/90e8-400o400o2-4FJ4783ybKU8ZesTEQRP6C.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "e2187fb5-3a3d-421a-99f5-8f4b228f20c0",
+    "Title": "The limits of my [programming] language mean the limits of my world",
+    "Abstract": "Programming languages are the expressive medium with which we create our software systems. In a sense they are thought-multipliers that enable us to give real-world expression to pure ideas. So we might also ask, are badly-designed ones potentially thought-inhibitors? We've come a long way from punched cards and machine language, but how smug should we be about the programming languages in common use today? Are they part of the reason why software projects are still notorious for running over time and over budget and often ship with costly flaws?\r\n\r\nIn this talk, we'll take a journey through some of the highlights and lowlights in the development of our programming language ideas. We'll critically examine some of today's common practices. And we'll consider the promise of future developments to make it easier to translate our ideas into great, reliable software.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343968",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "0ff53456-7aeb-433d-9d0e-879e11a91d49",
+        "Name": "Troy Gerwien",
+        "Tagline": "Senior Software Engineer at VGW",
+        "Bio": "Troy is a software engineer with broad industry experience, currently developing games at VGW. He also maintains and contributes to several open-source projects, and is a mentor at CoderDojo. Troy is interested in what makes software great, not just for the user, but also for the team maintaining it.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/f496-400o400o2-HNGZWPvVJi25m2MFTJ27PF.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "acf7051d-38c1-47c7-a302-3297b67f3fb8",
+    "Title": "The Mistake Everyone Makes in Google Interviews",
+    "Abstract": "System Design at Google/Meta/Netflix sounds terrifying - do I need to know about Borg? Spanner? Protobuf?!\r\n\r\nIt’s actually a lot simpler than you might think!\r\n\r\nI'll go over how to approach System Design in a structured fashion as we design our own mini-Twitter together, going from REST APIs to Graph Databases!\r\n\r\nWhat I'm covering will not only help you pass System Design Interviews, but hopefully guide you in designing scalable systems based off my experience in mentorship sessions with Google tech leads.\r\n\r\n",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343942",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "012a1e30-d8cc-4891-898c-198a652095c2",
+        "Name": "Nicholas Sia",
+        "Tagline": "Senior Engineer @ VGW",
+        "Bio": "I am an Australian software developer with a decade of professional experience across a range of industries, including Mining & Exploration, Government, Medical, Gaming, Social Media, and Telecommunications.\r\n\r\nMy hot take is that programming is exactly the same as cooking.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/9aca-400o400o2-ERkk9z7AVev3Yp53mMCM63.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "49b210ea-ad71-4cd7-a6d9-1fc5a282a539",
+    "Title": "The most important thing you need to know about Microservices",
+    "Abstract": "Microservice architectures provide some amazing benefits for scale, fault tolerance, and the ability to build teams quickly if necessary. \r\n\r\nHowever too many teams seem to get caught up in the tech stack, and the results can be disastrous. While diving in with Docker, Kubernetes, OpenAPI, centralised logging, and other fun tools, it’s easy to forget about design.\r\n\r\nThis talk will cover some common pitfalls and anti-patterns seen in the real world, as well as how to apply some Domain Driven Design concepts such as Bounded Contexts at an architectural level. By modelling your domain better we can solve a host of problems before they happen, and give your next project a much better chance at success.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "344044",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "b16e5645-52b8-40b0-8ffd-2ad9aafa98eb",
+        "Name": "Damian Maclennan",
+        "Tagline": "Consultant CTO, Technologist, Trainer, Agile Engineering Enthusiast",
+        "Bio": "Damian Maclennan is an experienced software architect, developer, trainer, and agile engineering consultant.\r\n\r\nIn his 20 year career he has designed software architecture for companies of all sizes, been a CTO for early stage startups, developed and run high profile and high traffic websites, as well as mentored and trained hundreds of developers.\r\n\r\nThroughout this time he has developed deep expertise on the architectural patterns, engineering techniques, and team dynamics needed to make successful software.\r\n",
+        "ProfilePhotoUrl": "https://sessionize.com/image/6c6a-400o400o2-90-945b-4289-8e6b-8c8215d1a4a9.0a4f4dd0-5ab3-4ee6-a9c4-2f7e8ac3f64c.jpg",
+        "TwitterHandle": "http://twitter.com/damianm",
+        "WebsiteUrl": "http://damianm.com/"
+      }
+    ]
+  },
+  {
+    "Id": "2cdce961-643f-4648-ac00-d20cb6b5961d",
+    "Title": "The War for Tech Talent",
+    "Abstract": "The War for Technology Talent has been upon us for some time now, but the game has changed.\r\n\r\nIn order to combat closed borders, restricted travel and an adverse attitude towards changing jobs amid a global pandemic, the Perth Technology Talent market has had to undergo an evolution these past few years.\r\n\r\nMany businesses are faced with the same challenge as every other technically inclined business in Perth. How do we attract and retain the best technical people in the market? \r\n\r\nAs a business we are still working on this, but there are a number of talent acquisition strategies and cultural shifts that we have adopted to give us the best possible chance of securing Perth's top talent.\r\n\r\nWith these strategies in place, we have gone from a team of 4 to a team of 28 technical consultants working with the latest in Cloud technology in the space of 9 months. \r\n\r\nHow have we become the fastest growing technical consultancy in Perth? Join this session as we share some of our strategies in the War for Tech Talent!",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343697",
+    "Tags": ["Leadership/Management"],
+    "Presenters": [
+      {
+        "Id": "f09b7f5c-db86-4815-bbda-727b9322ae87",
+        "Name": "Ryan Faulds",
+        "Tagline": "Servian - Technical Talent Acquisition Specialist - AWSN Chapter Lead",
+        "Bio": "Ryan is a Technical Talent Acquisition Specialist who has been recruiting in the Perth Technology market for the past 5 years. He has recruited across Data, Analytics, Cloud, Cyber Security and IT Projects, for two well recognised recruitment agencies.\r\n\r\nRyan is currently the Talent Acquisition Specialist for Servian. Servian is a data and cloud focused company led by our highly talented technical consultants. He is also one of the current WA Chapter Leads for the Australian Women in Security Network, promoting connection, support and inspiration for women in the Cyber Security industry.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/259e-400o400o2-PAKuWg4vVEXWrWAFsqi8PP.png",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "685595ff-0dd3-4802-ab87-3ef296838d33",
+    "Title": "They're people, not users",
+    "Abstract": "Creativity is essential to innovation and problem solving, but our focus on data is narrowing our view of the people using our apps. For both our teams and our audience, this results in less engaging experiences and low retention. So what are you doing wrong? \r\n\r\nOur audience's attitudes towards apps have changed and so we must now move beyond 'users' to also considering the environment, and the world, that they exist within. Now, more than ever, people want inclusive, positive experiences. This, of course, can have big impacts on your budget and your project management, so how do you do it? How can you, as a designer, focus on the 'human' experience and not the 'user' experience? \r\n",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "341816",
+    "Tags": ["Design & UX"],
+    "Presenters": [
+      {
+        "Id": "8d638e78-6374-4d08-8974-8e9e173fcae7",
+        "Name": "Karen Lowry",
+        "Tagline": "UX Design Lecturer, SAE Institute",
+        "Bio": "Dr. Karen Lowry is a UX Design lecturer at SAE Institute in Perth, Western Australia. She has a PhD from Curtin University and is currently researching how AI can help universities augment student intelligence. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/75f9-400o400o2-89-45a8-4486-b60c-1152051f1f65.78fc123a-ae9f-4c9b-81a7-bc1822b283ce.jpg",
+        "TwitterHandle": "kazzalo",
+        "WebsiteUrl": "http://www.kazzalow.com"
+      }
+    ]
+  },
+  {
+    "Id": "0d17329f-b356-4c0c-ac48-c234d6ff1337",
+    "Title": "This Talk Has Been Disabled",
+    "Abstract": "Depending on who you ask, 15-20% of the world's population has some form of disability. Despite this, the vast majority of software isn't fully accessible. Building truly accessible systems starts with asking questions. What does it mean to be disabled? How do we know whether people can use our website? And what if our users have access issues that we don't know about?\r\n\r\nMany of these core concepts are covered by the Web Content Accessibility Guidelines, which are the governing standard for web accessibility. However, some scenarios require us to dig a little deeper. We'll look at situations where you might need to think beyond the guidelines, and some of the resources and tools that you can use to help you do so.\r\n\r\nFinally, we'll learn how to meet a variety of different accessibility requirements by breaking down a series of real-world case studies. We'll take a magnifying glass to a large tech company's user interfaces, time travel back to the GeoCities era, apply some concepts from emergency press conferences to online content delivery, hack a life-saving medical device, and attempt to navigate technical events (and stairs). By the end of the talk, you should understand why it's important to evaluate the accessibility of your software, what goes wrong when assessments don't happen, and how to apply these lessons to design systems that work for everyone.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "334148",
+    "Tags": ["Design & UX"],
+    "Presenters": [
+      {
+        "Id": "56862ff4-f16f-4bad-8c7b-bfed2b86618a",
+        "Name": "Dawn E. Collett",
+        "Tagline": "Cloud Security and DevOps Engineer",
+        "Bio": "Dawn likes to tinker with cloud infrastructure and security, and regularly goes down rabbit holes in a futile search for ways to develop systems that are both reliable and impenetrable. As well as accidental accessibility advocacy, Dawn can regularly be found sharing knowledge within the Melbourne cloud infrastructure and DevOps communities.\r\n\r\nOutside work, Dawn is an occasional author, kitchen alchemist, and raging sportsball fan.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/0068-400o400o2-QSQ6QQjxmtzUJcDWSn8H7M.jpeg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "65286e20-6697-4def-a6f3-4bf6ad342f6a",
+    "Title": "This Talk Won't Change You, But How You Remember It Will",
+    "Abstract": "Memories are unreliable and fickle, yet drive our emotions and our narrative. We are anchored not by our past but how we remember and process our past. Learn to improve the narrative by recognizing the fallibility of memory, how that fallibility serves us, and to release the attachment holding us back.",
+    "Format": "Keynote",
+    "Level": "No experience necessary",
+    "ExternalId": "337380",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "4a669dbf-9fe3-403e-a3e8-26b19827da8c",
+        "Name": "Christina Aldan",
+        "Tagline": "Brand Strategy Consultant",
+        "Bio": "Christina Aldan is a TEDx speaker, trainer, and brand strategy consultant. She offers businesses brand consulting and creative content for everyday media. With over 15 years of experience in the digital realm, Christina is highly regarded for her approach to business, partnering with clients to find unique strategies that ensure their goals are met. Christina builds connections through her keynote addresses, training workshops, and technological education. She uses these tools to help individuals and businesses cultivate value in everyday media. She has delivered talks on all 7 continents, having presented training workshops for the Microsoft MVP community, international corporations, and conferences worldwide. Christina uses her charisma and expertise to inspire others by mentoring women in business like herself. She also has sat on state and local boards supporting women in tech, entrepreneurship, mental health, and children with learning disabilities.\r\n\r\nShe is the recipient of the Las Vegas Women in Tech Community Service Award, the Distinguished Woman of the Year Award in STEM. Learn more at: Luckygirliegirl.com.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5312-400o400o2-EPiL6S2McvoBhSqq6wgo7c.jpg",
+        "TwitterHandle": "luckygirliegirl",
+        "WebsiteUrl": "https://www.luckygirliegirl.com/blog/"
+      }
+    ]
+  },
+  {
+    "Id": "b541a264-ea84-4b9a-ae99-5273e964d3ba",
+    "Title": "Training a PowerPoint AI to Play Tic Tac Toe",
+    "Abstract": "How does machine learning actually work? Is it something set aside from us mere mortals, only for the maths nerds with super-computers?\r\n\r\nUsing basic concepts we will go through how common machine learning algorithms work from first principles.\r\n\r\nIf someone were mad enough, they could even apply these basic concepts to build an Artificial Intelligence out of, say, a Microsoft PowerPoint...\r\n\r\nBut no one in their right mind would be crazy enough to do that.\r\n\r\nRight?\r\n\r\nBased on the Matchbox Educable Noughts And Crosses Engine (MENACE) built by Donald Michie in 1961, this talk strips the complexity and mystery from the black box that is machine learning: Proving that even a PowerPoint (mixed with a few lonely nights and almost 2,000 slides) can be taught the best opening moves of Tic Tac Toe.\r\n\r\nFinally, a truly no-code solution for machine learning enthusiasts.\r\n\r\nNo prior knowledge of Machine Learning, AI, or data science is needed.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "338797",
+    "Tags": ["AI & ML"],
+    "Presenters": [
+      {
+        "Id": "bcb7f09d-d680-41d0-95dc-7aa3304e57f7",
+        "Name": "Brenton Adey",
+        "Tagline": "Data Analytics Consultant at Telstra Purple",
+        "Bio": "I am a data analytics advocate with an emphasis on generating people first insights.\r\n\r\nI come from a unique background with a Bachelor of Science majoring in Mathematics and Psychological Science, and a Master of Applied Artificial Intelligence on the way. I look for unique problem-solving opportunities and thrive in complex environments.\r\n\r\nI am passionate about all things data but have a keen interest in the development of machine learning in combination with traditional BI analytics. My role as a consultant keeps me close to the ground, giving me an insight into the technologies being used across many different domains.\r\n\r\nOutside of my role as a consultant, I help others get into the data field by teaching the Data Analytics Bootcamp at the University of Western Australia.\r\n\r\nData is a rapidly growing domain. It is my vision to spread awareness of the power that comes with taking control of data.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/ab66-400o400o2-nPsz6reEG3ujxczYnP8sNq.png",
+        "TwitterHandle": "BrentonAdey",
+        "WebsiteUrl": "https://www.brentonblogs.com"
+      }
+    ]
+  },
+  {
+    "Id": "e36e7daf-dd89-4a7f-a3de-04d44a71bc56",
+    "Title": "Unleash the Power of VS Code",
+    "Abstract": "VS Code is hot, there's no doubt about it being an utterly amazing editor, but I ask you, are you using it to its full potential? Let's go on a journey together and look to unlock the real power that you can get out of VS Code. Whether it's with shortcuts or extensions, environment standardisation and remote development, collaboration to integrations, there's so many things to uncover that can take you from a user to a pro in no time.\r\n\r\nThis session will leave you itching to get back into your editor and code up a storm on that next piece of work.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "339597",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "3cd70834-370f-45a0-bcdf-2d9503ed6876",
+        "Name": "Aaron Powell",
+        "Tagline": "I like long walks on the beach talking about JavaScript",
+        "Bio": "Aaron is a Developer Advocate at Microsoft. Having spent 15 years doing web development he's seen it all, from browser wars, the rise of AJAX and the fall of 20 JavaScript frameworks (and that was just yesterday!). Always tinkering with something new he explores crazy ideas like writing your own implementation of numbers in .NET, creating IoC in JavaScript or implementing tic-tac-toe using git commits.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/b718-400o400o2-MdY1HSqLnKjmhofWS4uqFn.png",
+        "TwitterHandle": "slace",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "e28e4b54-c970-45f3-86df-de7037ce3a11",
+    "Title": "Web 3 The Great Con",
+    "Abstract": "Have you ever looked at an NFT and wondered why they sell for outrageous sums of money? \r\n\r\nLooking closer at the blockchain, have you wondered how a write-only database is better than what you currently use? \r\n\r\nWhen bombarded with marketing and other developers telling you Web3 is the future, do you find that the bad parts get glossed over with a hand wave?\r\n\r\nJoin me as we pull apart these rose tinted glasses of the Web3 future and look at the damage it causes.\r\n\r\nLearn about the pitfalls of Web3, Blockchain and Crypto. Learn how to see past the distorted dreams of the Web3 crowd. Most importantly, gain a reflection on the impact the systems we build can have. ",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343408",
+    "Tags": ["Core/Non Technical Skills"],
+    "Presenters": [
+      {
+        "Id": "d7787399-b302-429c-8ed1-fdbf9b364ce3",
+        "Name": "Alexander Karan",
+        "Tagline": "Co-Founder & CTO @ ClimateClever. JavaScript dev, TedX speaker and blogger with a passion for software architecture.",
+        "Bio": "I am the co-founder and CTO at ClimateClever, a startup helping schools, homes, and businesses track, reduce, and report their carbon footprint. \r\n\r\nA full-stack developer with over ten years of experience, I have previously run an App development agency, managing various teams from design and marketing to web and native mobile app developers both in Australia and abroad, and overseen the development of many projects. \r\n\r\nMy strengths are in system architecture design and being able to communicate complicated tech to everyday people. I have helped scale numerous startups, and I am passionate about making a positive difference. \r\n\r\nWhen I am not working, you can find me writing new articles about being a programmer, from opinion pieces to tutorials. I regularly talk on various topics, my latest: microservices at Latency Conf 2021 and a TEDx talk on privacy and data.\r\n\r\nI am devastated by the state of the world, love a good political rant and can often be found swearing at no one in particular. I love Node, Deno, React, Svelte, MongoDB and a little bit of Rust.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/df49-400o400o2-p2ciJ72hanAz4sKxzHq3eC.jpg",
+        "TwitterHandle": "alexanderKaran_",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "23846d72-9902-4e32-9077-e48e1587e399",
+    "Title": "Web APIs for delightful two factor auth experiences",
+    "Abstract": "It's a common practice to verify a phone number or implement two factor authentication by sending a one time password over SMS. We can all agree that it's a pretty terrible user experience though.\r\n\r\nThis process may increase security, but the friction can decrease conversion and the user experience in general. Android and iOS have APIs to combat this, so why not the web? In this talk we'll take a look at autocomplete and the WebOTP API to see how the web platform can help us build secure flows and a better experience all round.",
+    "Format": "20 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "343984",
+    "Tags": ["Frontend Development"],
+    "Presenters": [
+      {
+        "Id": "d96f6543-86b4-4838-aaa3-13cd1389e44e",
+        "Name": "Phil Nash",
+        "Tagline": "Developer evangelist for Twilio",
+        "Bio": "Phil is a developer evangelist for Twilio and a Google Developer Expert. He's been in the web industry for 10 years building with JavaScript and Ruby. He can be found hanging out at meetups and conferences, playing with new technologies and APIs or writing open source code online. Sometimes he makes his own beer, but he's more likely to be found discovering new ones around the world.\r\n\r\nPhil tweets at @philnash and you can find him elsewhere online at https://philna.sh.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/5634-400o400o2-77-02a0-4d36-8cf2-eb969d10f9a6.158a5b84-aed9-406b-9ba9-e3c5e0f1e89c.jpg",
+        "TwitterHandle": "philnash",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "8423addc-0959-4c6a-982d-7058cde4fa5c",
+    "Title": "What video games have taught me about designing for motivation",
+    "Abstract": "Have you ever binged watched a show on Netflix? Or kept playing 'just one more level' of your favourite video game? \r\nIn this session we'll look at how motivation works and simple tips for designing software to encourage intrinsic motivation. Using lessons learnt from video game design and how to apply them to other areas of software design (e.g. enterprise). ",
+    "Format": "20 mins",
+    "Level": "No experience necessary",
+    "ExternalId": "343399",
+    "Tags": ["Design & UX"],
+    "Presenters": [
+      {
+        "Id": "768c4f6a-b0c8-4662-986b-9d0059652378",
+        "Name": "Megan Pusey",
+        "Tagline": "PhD Candidate, Murdoch University",
+        "Bio": "Megan is a PhD candidate at Murdoch University researching video games, motivation and resilience. She has a background in education and science communications. Megan is interested in how people learn and interact with technology. In her (very little spare time) she enjoys crafting and playing games. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/ddaf-400o400o2-Udn3eb6KpTnRee9Xupi6bd.jpg",
+        "TwitterHandle": "scienceninjagal",
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "a295a8ad-6a3f-4ead-8aaf-323b5250834a",
+    "Title": "Why is my query slow? An indexing story",
+    "Abstract": "Indexes, the get out of jail card for slow queries am I right? I mean it worked, so should we care beyond that? Like in most things in software development, it depends.\r\n\r\nIn this talk we will go on a journey and learn about:\r\n* What is an index and how does it work?\r\n* When should an index not be used?\r\n* What is the cost of indexing all the indexes?\r\n* Different types of indexes and when to use each?\r\n* How to debug why your index isn't being used?\r\n\r\n",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "ExternalId": "344002",
+    "Tags": ["Backend Development"],
+    "Presenters": [
+      {
+        "Id": "05fc5a5a-e9ea-44ca-82f2-f18e54ed9300",
+        "Name": "Boris Badrov",
+        "Tagline": "Software developer - VGW",
+        "Bio": "Dev by day, kite surfer also... by day otherwise pretending to be a chef cooking whatever dish I found on youtube.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/6934-400o400o2-h1XGNt5sK9GsvLWX4w911C.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  }
+]

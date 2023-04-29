@@ -8,6 +8,7 @@ interface AppConfig {
   baseUrl: string
   feedbackUrl: string
   getAgendaUrl: string
+  getAgendaScheduleUrl: string
   getSubmissionsUrl: string
   instrumentationKey: string
   submitVoteUrl: string
@@ -44,6 +45,7 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }): ReactEleme
           baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
           feedbackUrl: process.env.NEXT_PUBLIC_SUBMIT_FEEDBACK_URL,
           getAgendaUrl: process.env.NEXT_PUBLIC_GET_AGENDA_URL,
+          getAgendaScheduleUrl: process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL,
           getSubmissionsUrl: process.env.NEXT_PUBLIC_GET_SUBMISSIONS_URL,
           instrumentationKey: process.env.NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY,
           submitVoteUrl: process.env.NEXT_PUBLIC_SUBMIT_VOTE_URL,

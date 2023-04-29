@@ -28,14 +28,16 @@ import AllAgendas from 'components/allAgendas'
 
 import data from 'public/static/agenda/2021.json'
 
-type AgendaProps = {
-  sessions: Session[]
+interface AgendaPageProps {
+  sessions?: Session[]
+  sessionId?: string
   date: string
   conferenceInstance: string
 }
 
-const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance }) => {
+const Agenda2021: NextPage<AgendaPageProps> = ({ date, sessions, sessionId, conferenceInstance }) => {
   const { conference, dates } = useConfig()
+
   const dateUTC = new Date(date)
 
   return (
@@ -49,7 +51,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
         <Agenda
           sessions={sessions}
           acceptingFeedback={false}
-          selectedSessionId={undefined}
+          selectedSessionId={sessionId}
           render={(agendaSessions, _, onSelect) => {
             return (
               <AgendaProvider
@@ -253,7 +255,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<AgendaPageProps> = async () => {
   const dateUTC = zonedTimeToUtc('2021-08-14T08:00', '+08:00').toJSON()
 
   return {

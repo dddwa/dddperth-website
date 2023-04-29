@@ -2,21 +2,26 @@ import React from 'react'
 import AllAgendas from 'components/allAgendas'
 import { CurrentAgenda } from 'components/currentAgenda'
 import { Sponsors } from 'components/Sponsors/sponsors'
-import { fetchSessions } from 'components/utils/useSessions'
+import { fetchAgenda, fetchSessions } from 'components/utils/useSessions'
 import Conference from 'config/conference'
-import { Session, SponsorType } from 'config/types'
+import { AgendaForDisplay, Session, SponsorType } from 'config/types'
 import { Main } from 'layouts/agendaWide'
 import { GetServerSideProps, NextPage } from 'next'
 import { useConfig } from 'Context/Config'
 import { getCommonServerSideProps } from 'components/utils/getCommonServerSideProps'
 import { formatInTimeZone } from 'date-fns-tz'
+import { DynamicAgenda } from 'components/dynamicAgenda'
+import { withOverrides } from 'components/Agenda/agendaOverrides'
+
+const USE_DYNAMIC_AGENDA = true
 
 interface AgendaPageProps {
+  agenda?: AgendaForDisplay
   sessions?: Session[]
   sessionId?: string
 }
 
-const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
+const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, agenda, sessionId }) => {
   const { conference, dates } = useConfig()
 
   return (
@@ -24,15 +29,23 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
       <div className="container">
         <h1>{dates.IsComplete && conference.Instance} Agenda</h1>
 
-        {!dates.AgendaPublished && (
+        {!dates.AgendaPublished ? (
           <p>
             The agenda has not yet been finalised; please come back on{' '}
             {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.DateDisplayFormat)}{' '}
-            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the meantime, check out our previous
-            agendas below.
+            {formatInTimeZone(conference.AgendaPublishedFrom, conference.TimeZone, dates.TimeDisplayFormat)}. In the
+            meantime, check out our previous agendas below.
           </p>
-        )}
-        {dates.AgendaPublished && (
+        ) : USE_DYNAMIC_AGENDA ? (
+          <DynamicAgenda
+            agenda={agenda}
+            sessions={sessions}
+            sponsors={conference.Sponsors}
+            acceptingFeedback={dates.AcceptingFeedback}
+            feedbackLink={conference.SessionFeedbackLink}
+            selectedSessionId={sessionId}
+          />
+        ) : (
           <CurrentAgenda
             date={Conference.Date}
             sessions={sessions}
@@ -42,6 +55,7 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
             selectedSessionId={sessionId}
           />
         )}
+
         {conference.Handbook && (
           <React.Fragment>
             <h2>Handbook</h2>
@@ -63,20 +77,30 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { dates } = getCommonServerSideProps(context)
+export const getServerSideProps: GetServerSideProps<AgendaPageProps> = async (context) => {
+  const { dates, conference } = getCommonServerSideProps(context)
 
   if (!dates.VotingFinished) {
     return { redirect: { destination: `/agenda/${Conference.PreviousInstance}`, permanent: false } }
   }
 
   const sessions = await fetchSessions(process.env.NEXT_PUBLIC_GET_AGENDA_URL)
-  const sessionId = context.query.sessionId
+
+  let agenda: false | AgendaForDisplay = false
+  if (process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL) {
+    agenda = await fetchAgenda(process.env.NEXT_PUBLIC_GET_AGENDA_SCHEDULE_URL)
+    if (agenda) {
+      agenda = withOverrides(agenda, conference.Instance)
+    }
+  }
+
+  const sessionId = context.query.sessionId as string
 
   return {
     props: {
       ...(sessions ? { sessions } : {}),
       ...(sessionId ? { sessionId } : {}),
+      ...(agenda ? { agenda } : {}),
     },
   }
 }
