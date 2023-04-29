@@ -20,7 +20,9 @@ declare global {
 }
 
 const getTitle = (title: string, date: Date, name: string, showDate: boolean, timezone: string) =>
-  `${title !== 'Home' ? title + ' - ' : ''}${name}${showDate ? ` | ${formatInTimeZone(date, timezone, 'do MMMM yyyy')}` : ''}`
+  `${title !== 'Home' ? title + ' - ' : ''}${name}${
+    showDate ? ` | ${formatInTimeZone(date, timezone, 'do MMMM yyyy')}` : ''
+  }`
 
 export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
   const { conference, appConfig, dates } = useConfig()
@@ -32,7 +34,14 @@ export const Meta = ({ pageTitle, pageDescription, pageImage }: MetaArgs) => {
       : '/static/images/logo-2022-og.jpg'
 
   const title = React.useMemo(
-    () => getTitle(pageTitle, conference.Date, conference.Name, !conference.HideDate && !dates.IsComplete, conference.TimeZone),
+    () =>
+      getTitle(
+        pageTitle,
+        conference.Date,
+        conference.Name,
+        !conference.HideDate && !dates.IsComplete,
+        conference.TimeZone,
+      ),
     [pageTitle, dates.IsComplete, conference.HideDate, conference.Name, conference.Date, conference.TimeZone],
   )
 

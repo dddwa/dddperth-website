@@ -50,7 +50,14 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
             (importantDate.Type !== 'conference' || hasConferenceFinished),
         ).map((importantDate) => {
           const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
-          return <Component key={importantDate.Description} importantDate={importantDate} isFinished tz={conference.TimeZone} />
+          return (
+            <Component
+              key={importantDate.Description}
+              importantDate={importantDate}
+              isFinished
+              tz={conference.TimeZone}
+            />
+          )
         })}
       </StyledImportantDateList>
     </Fragment>

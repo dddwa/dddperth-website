@@ -11,8 +11,11 @@ export default function getConferenceDates(conference: Conference, currentDate: 
   const registrationClosed = conference.RegistrationOpenUntil !== null && now > conference.RegistrationOpenUntil
 
   return {
-    Display: conference.HideDate ? 'TBA' : `${formatInTimeZone(conference.Date, conference.TimeZone, dateDisplayFormat)}`,
-    DisplayFormatted: (dateFormat: string) => (conference.HideDate ? 'TBA' : `${formatInTimeZone(conference.Date, conference.TimeZone, dateFormat)}`),
+    Display: conference.HideDate
+      ? 'TBA'
+      : `${formatInTimeZone(conference.Date, conference.TimeZone, dateDisplayFormat)}`,
+    DisplayFormatted: (dateFormat: string) =>
+      conference.HideDate ? 'TBA' : `${formatInTimeZone(conference.Date, conference.TimeZone, dateFormat)}`,
     DateDisplayFormat: dateDisplayFormat,
     TimeDisplayFormat: 'h:mma',
     IsComplete: isComplete,
@@ -29,6 +32,6 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     VotingFinished: now > conference.VotingOpenUntil,
     AgendaPublished: now > conference.AgendaPublishedFrom,
     AcceptingFeedback: now > conference.FeedbackOpenFrom && now < conference.FeedbackOpenUntil,
-    WeekBefore: now > sub(conference.Date, {days: 7})
+    WeekBefore: now > sub(conference.Date, { days: 7 }),
   }
 }

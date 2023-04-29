@@ -26,7 +26,7 @@ export interface Conference {
   SessionizeEditUrl: string | null
   PreviouslySubmittedTopics: string
 
-  Venue: Venue
+  Venue: Venue | null
 
   ContactEmail: string
   SponsorshipEmail: string
@@ -39,6 +39,7 @@ export interface Conference {
 
   AnonymousVoting: boolean
   PreferentialVoting: boolean
+  NeedsVolunteers?: boolean
   TicketNumberWhileVoting: TicketNumberWhileVoting
   MinVotes: number
   MaxVotes: number

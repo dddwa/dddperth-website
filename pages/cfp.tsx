@@ -92,8 +92,12 @@ const CFPPage: NextPage = () => {
         <li>You will probably have internet access, but you should have a backup plan in case it's unavailable.</li>
         <li>
           We will open voting at{' '}
-          {formatInTimeZone(conference.VotingOpenFrom, conference.TimeZone, dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat)}; if your
-          presentation gets voted in and you agree to present then this is a serious commitment.
+          {formatInTimeZone(
+            conference.VotingOpenFrom,
+            conference.TimeZone,
+            dates.DateDisplayFormat + ' ' + dates.TimeDisplayFormat,
+          )}
+          ; if your presentation gets voted in and you agree to present then this is a serious commitment.
         </li>
         <li>
           Questions? <a href={`mailto:${conference.ContactEmail}`}>Fire off an email</a> and we'll get right back to you

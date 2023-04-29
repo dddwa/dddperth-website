@@ -48,20 +48,20 @@ export default function getConferenceActions(conference: Conference, dates: Date
     Url: '/agenda',
   })
 
-  if (dates.WeekBefore){
+  if (dates.WeekBefore) {
     actions.push({
       Category: 'conference',
       Title: 'Conference Day Info',
-      Url: '/conference-day'
+      Url: '/conference-day',
     })
   }
 
   if (conference.Handbook) {
-    actions.push({
-      Category: 'conference',
-      Title: 'Download handbook',
-      Url: '/static/docs/' + conference.Handbook,
-    })
+    // actions.push({
+    //   Category: 'conference',
+    //   Title: 'Download handbook',
+    //   Url: '/static/docs/' + conference.Handbook,
+    // })
   }
 
   return actions
