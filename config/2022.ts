@@ -7,10 +7,11 @@ import {
   TicketsProvider,
   ImportantDate,
 } from './types'
-import venue from './venue'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { add, sub, set, toDate } from 'date-fns'
+import { pcec } from './venues/pcec'
 
+const venue = pcec
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
 

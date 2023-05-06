@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import React from 'react'
 import { SafeLink } from 'components/global/safeLink'
-import { Venue } from './types'
+import { Venue } from '../types'
 
-const venue: Venue = {
+export const pcec: Venue = {
   Name: 'Perth Convention and Exhibition Centre (PCEC)',
   Address: '21 Mounts Bay Rd, Perth',
   Latitude: -31.9565004,
@@ -53,5 +53,3 @@ const venue: Venue = {
     </Fragment>
   ),
 }
-
-export default venue

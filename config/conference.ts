@@ -8,9 +8,9 @@ import {
   ImportantDate,
   Venue,
 } from './types'
-// import Venue from './venue'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import { add, sub, set, toDate } from 'date-fns'
+import { optusStadium } from './venues/optus-stadium'
 
 const name = 'DDD Perth'
 const tagLine = `${name} is an inclusive non-profit conference for the Perth software community`
@@ -72,7 +72,7 @@ if (!hideDate) {
   })
 }
 
-const venue: Venue | null = null // Venue
+const venue: Venue | null = optusStadium
 
 const Conference: IConference = {
   Name: name,

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Conference } from 'config/types'
+import { Conference, ImportantDate } from 'config/types'
 import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { StyledImportantDateList } from './ImportantDate.styled'
 import { ImportantDateTile, ImportantDateTileTBA } from './ImportantDateTile'
@@ -13,10 +13,18 @@ export type ImportantDateListLayouts = 'inline' | 'calendar'
 export interface ImportantDatesListProps {
   conference: Conference
   currentDate: CurrentDate
+
+  importantDates?: ImportantDate[]
+
   layout?: ImportantDateListLayouts
 }
 
-export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar' }: ImportantDatesListProps) => {
+export const ImportantDatesList = ({
+  conference,
+  currentDate,
+  importantDates = conference.ImportantDates,
+  layout = 'calendar',
+}: ImportantDatesListProps) => {
   const hasConferenceFinished = isAfter(currentDate.Value, conference.EndDate)
 
   return (
@@ -29,14 +37,16 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
 
       <StyledImportantDateList layout={layout}>
         {/* Upcoming dates */}
-        {conference.ImportantDates.filter(
-          (importantDate) =>
-            isAfter(importantDate.Date, currentDate.Value) ||
-            (importantDate.Type === 'conference' && !hasConferenceFinished),
-        ).map((importantDate) => {
-          const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
-          return <Component key={importantDate.Description} importantDate={importantDate} tz={conference.TimeZone} />
-        })}
+        {importantDates
+          .filter(
+            (importantDate) =>
+              isAfter(importantDate.Date, currentDate.Value) ||
+              (importantDate.Type === 'conference' && !hasConferenceFinished),
+          )
+          .map((importantDate) => {
+            const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
+            return <Component key={importantDate.Description} importantDate={importantDate} tz={conference.TimeZone} />
+          })}
         {conference.HideDate &&
           (layout === 'calendar' ? (
             <ImportantDateTileTBA description="Conference day" type="conference" />
@@ -44,21 +54,23 @@ export const ImportantDatesList = ({ conference, currentDate, layout = 'calendar
             <ImportantDateTileInlineTBA description="Conference day" type="conference" />
           ))}
         {/* Past dates */}
-        {conference.ImportantDates.filter(
-          (importantDate) =>
-            isBefore(importantDate.Date, currentDate.Value) &&
-            (importantDate.Type !== 'conference' || hasConferenceFinished),
-        ).map((importantDate) => {
-          const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
-          return (
-            <Component
-              key={importantDate.Description}
-              importantDate={importantDate}
-              isFinished
-              tz={conference.TimeZone}
-            />
+        {importantDates
+          .filter(
+            (importantDate) =>
+              isBefore(importantDate.Date, currentDate.Value) &&
+              (importantDate.Type !== 'conference' || hasConferenceFinished),
           )
-        })}
+          .map((importantDate) => {
+            const Component = layout === 'calendar' ? ImportantDateTile : ImportantDateTileInline
+            return (
+              <Component
+                key={importantDate.Description}
+                importantDate={importantDate}
+                isFinished
+                tz={conference.TimeZone}
+              />
+            )
+          })}
       </StyledImportantDateList>
     </Fragment>
   )
