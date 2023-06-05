@@ -17,6 +17,8 @@ function dateBorderColor(theme: DDDTheme, dateType: Types) {
       return theme.colors.darkGrey
     case 'conference':
       return theme.colors.primary
+    case 'bio-workshop':
+      return theme.colors.tertiary
     default:
       return theme.colors.secondary
   }

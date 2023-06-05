@@ -1,6 +1,6 @@
 import { SessionGroupWithIds } from 'components/utils/useSessionGroups'
 
-export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
+export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content' | 'bio-workshop' | 'cfp-workshop'
 
 export interface Conference {
   Name: string
