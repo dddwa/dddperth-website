@@ -63,6 +63,9 @@ export const TestingControl = (): JSX.Element => {
           <StyledButton kind="inverse" onClick={() => storeTime(conference.AgendaPublishedFrom)}>
             Agenda published
           </StyledButton>
+          <StyledButton kind="inverse" onClick={() => storeTime(conference.RegistrationOpenFrom)}>
+            Registration opened
+          </StyledButton>
           <StyledButton kind="primary" onClick={() => storeTime(conference.Date)}>
             On the day
           </StyledButton>
