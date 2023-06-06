@@ -48,10 +48,16 @@ export default function getFaqs(dates: Dates): FAQ[] {
           Perth is donating 10 such tickets and we also have an option for people within the community to donate further
           tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
           Financial Assistance tickets by{' '}
-          {Conference.TicketsProviderId === TicketsProvider.Eventbrite ? (
-            <>
-              entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
-            </>
+          {Conference.TicketsProviderId === TicketsProvider.Tito && dates.RegistrationOpen ? (
+            Conference.TicketsProviderFinancialAssistanceCode ? (
+              <>
+                entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
+              </>
+            ) : (
+              <>
+                registering <SafeLink href="https://ti.to/dddperth/2023/with/general-attendee-free">here</SafeLink>
+              </>
+            )
           ) : (
             <>selecting the Financial Assistance ticket</>
           )}

@@ -17,7 +17,8 @@ export interface Conference {
   TicketsProviderId: TicketsProvider
   TicketsProviderAccountId: string
   TicketsProviderEventId: string
-  TicketsProviderFinancialAssistanceCode: string
+  TicketsProviderFinancialAssistanceCode?: string
+  TicketsProviderFinancialAssistanceTicketLink?: string
   TicketPurchasingOptions: TicketPurchasingOptions
   HashTag: string
   SellingPoints: string[]
