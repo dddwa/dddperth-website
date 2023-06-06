@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Script from 'next/script'
+import { useConfig } from 'Context/Config'
 
 interface TitoProps {
   accountId: string
@@ -7,11 +8,13 @@ interface TitoProps {
 }
 
 export const Tito = ({ accountId, eventId }: TitoProps) => {
+  const { appConfig } = useConfig()
+
   return (
     <Fragment>
       <Script
         id="tito-script"
-        src={`https://js.tito.io/v2${process.env.NODE_ENV === 'production' ? '' : '/with/development_mode'}`}
+        src={`https://js.tito.io/v2${appConfig.testingMode() ? '/with/development_mode' : ''}`}
         async
       />
       {React.createElement('tito-widget', {
