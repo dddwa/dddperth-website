@@ -22,6 +22,8 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     IsInProgress: isInProgress && !isComplete,
     HasNotStarted: !isInProgress && !isComplete,
     RegistrationOpen:
+      // Open the registration 15 minutes before the registration open from date
+      // just to avoid any timing issues between social posts and the website
       now > subMinutes(conference.RegistrationOpenFrom, 15) &&
       conference.TicketPurchasingOptions === TicketPurchasingOptions.OnSale &&
       !registrationClosed,
