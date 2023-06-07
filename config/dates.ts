@@ -1,7 +1,7 @@
 import { CurrentDate } from 'components/utils/dateTimeProvider'
 import { Conference, Dates as IDates, TicketPurchasingOptions } from './types'
 import { formatInTimeZone } from 'date-fns-tz'
-import { sub } from 'date-fns'
+import { sub, subMinutes } from 'date-fns'
 
 export default function getConferenceDates(conference: Conference, currentDate: CurrentDate): IDates {
   const now = currentDate.Value
@@ -22,7 +22,9 @@ export default function getConferenceDates(conference: Conference, currentDate: 
     IsInProgress: isInProgress && !isComplete,
     HasNotStarted: !isInProgress && !isComplete,
     RegistrationOpen:
-      now > conference.RegistrationOpenFrom &&
+      // Open the registration 15 minutes before the registration open from date
+      // just to avoid any timing issues between social posts and the website
+      now > subMinutes(conference.RegistrationOpenFrom, 15) &&
       conference.TicketPurchasingOptions === TicketPurchasingOptions.OnSale &&
       !registrationClosed,
     RegistrationClosed: registrationClosed,

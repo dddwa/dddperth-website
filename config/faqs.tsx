@@ -118,11 +118,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
           click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.
         </p>
         <p>
-          In addition to childcare, we have an all day coding workshop for ages 12+, in collaboration with SheCodes. All
-          children 12+ years of age are welcome to attend. If you would like to book your child in then click the
-          Workshop link after purchasing your ticket. We will update this FAQ if we reach capacity.
-        </p>
-        <p>
           DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference.
           Please ensure all attendees are registered.
         </p>
