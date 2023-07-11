@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
 
-export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'conference'
+export type Types = 'conference' | 'voting' | 'tickets' | 'agenda' | 'content'
 
 export interface Conference {
   Name: string

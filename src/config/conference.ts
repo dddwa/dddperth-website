@@ -1,7 +1,13 @@
-import moment from 'moment'
+import moment, { Moment } from 'moment'
 import { orderBy } from '../components/utils/arraySort'
-import SponsorData from '../config/sponsors'
-import { Conference as IConference, TicketNumberWhileVoting, TicketPurchasingOptions, TicketsProvider } from './types'
+import SponsorData from './sponsors'
+import {
+  Conference as IConference,
+  TicketNumberWhileVoting,
+  TicketPurchasingOptions,
+  TicketsProvider,
+  Types,
+} from './types'
 import venue from './venue'
 
 const name = 'DDD Adelaide'
@@ -32,7 +38,7 @@ const feedbackOpenUntil = date
   .add(7, 'd')
   .startOf('day')
   .add(17, 'h')
-const importantDates = [
+const importantDates: Array<{ Date: Moment, Description: string, Type: Types }> = [
   {
     Date: presentationSubmissionsOpenFrom,
     Description: 'Call for presentations open',

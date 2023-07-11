@@ -51,7 +51,7 @@ class CFPPage extends React.Component<WithPageMetadataProps> {
         <ul>
           <li>
             Having an enforced{' '}
-            <Link href="/code-of-conduct">
+            <Link href="/src/pages/code-of-conduct">
               <a>code of conduct</a>
             </Link>{' '}
             to create a friendly, welcoming atmosphere.

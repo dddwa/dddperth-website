@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React, { Fragment, StatelessComponent } from 'react'
 import { Conference, Dates } from '../../config/types'
-import '../../styles/screen.scss'
 
 interface MetaArgs {
   instrumentationKey: string | null
@@ -23,7 +22,6 @@ const Meta: StatelessComponent<MetaArgs> = ({
   pageTitle,
   instrumentationKey,
   pageDescription,
-  pageImage,
   conference,
   dates,
 }) => (

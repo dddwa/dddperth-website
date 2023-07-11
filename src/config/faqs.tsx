@@ -131,7 +131,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <Fragment>
         {dates.RegistrationOpen ? (
           <Fragment>
-            Now! Go to <a href="/tickets">the tickets page</a> to register.
+            Now! Go to <a href="/src/pages/tickets">the tickets page</a> to register.
           </Fragment>
         ) : Conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut ? (
           <Fragment>The conference is now sold out.</Fragment>
@@ -188,7 +188,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Media personnel authorised by {Conference.Name} will be in attendance. These media personnel will respect the
-        photo policy as defined in the <a href="/code-of-conduct#photo-policy">Code of Conduct</a>.
+        photo policy as defined in the <a href="/src/pages/code-of-conduct#photo-policy">Code of Conduct</a>.
       </Fragment>
     ),
   })

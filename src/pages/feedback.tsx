@@ -46,7 +46,7 @@ class FeedbackPage extends React.Component<WithPageMetadataProps> {
         <ul>
           <li>
             Be respectful and give feedback that is constructive and meets our{' '}
-            <Link href="/code-of-conduct">
+            <Link href="/src/pages/code-of-conduct">
               <a>code of conduct</a>
             </Link>
           </li>

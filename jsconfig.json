@@ -9,6 +9,6 @@
     ".next"
   ],
   "files": [
-    "pages/*.js"
+    "src/pages/*.js"
   ]
 }

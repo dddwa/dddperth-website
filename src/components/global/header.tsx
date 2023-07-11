@@ -39,7 +39,7 @@ const Header: StatelessComponent<HeaderArgs> = ({ isHome, hideBanner, conference
               <br />
               <br />
               {conference.Goal} See our{' '}
-              <Link href="/code-of-conduct">
+              <Link href="/src/pages/code-of-conduct">
                 <a>Code of Conduct</a>
               </Link>
               .

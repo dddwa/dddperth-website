@@ -88,7 +88,7 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
         {!hideUpsell && (
           <p>
             If you'd like to explore sponsorship opportunities, please check out our{' '}
-            <Link href="/sponsorship">
+            <Link href="/src/pages/sponsorship">
               <a>sponsorship page</a>
             </Link>{' '}
             for more information.
@@ -116,7 +116,7 @@ const Sponsors: StatelessComponent<SponsorsProps> = ({ sponsors, show, hideUpsel
         <p>
           We are currently looking for sponsors! If you'd like to explore sponsorship opportunities, please check out
           our{' '}
-          <Link href="/sponsorship">
+          <Link href="/src/pages/sponsorship">
             <a>sponsorship page</a>
           </Link>{' '}
           for more information.

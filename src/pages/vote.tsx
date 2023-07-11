@@ -192,7 +192,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
             <div className="col-md-4">
               <p>
                 One of the{' '}
-                <Link href="/about">
+                <Link href="/src/pages/about">
                   <a>core tenets of {this.props.pageMetadata.conference.Name}</a>
                 </Link>{' '}
                 is that the agenda is democratically selected. Session voting is the main mechanism that we employ to
@@ -266,7 +266,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     also feel this is fairer to session submitters since it makes for a more level playing field for
                     social network reach; this year we have an optional field for you to add in your ticket # (from your
                     confirmation email) if you've{' '}
-                    <Link href="/tickets">
+                    <Link href="/src/pages/tickets">
                       <a>purchased a ticket</a>
                     </Link>{' '}
                     which will <strong>give your vote a higher weighting</strong>.
@@ -277,7 +277,7 @@ class VotePage extends React.Component<VoteProps, VoteState> {
                     We ideally want the people who are attending to have the greatest influence on the agenda and we
                     also feel this is fairer to session submitters since it makes for a more level playing field for
                     social network reach; this year you have to{' '}
-                    <Link href="/tickets">
+                    <Link href="/src/pages/tickets">
                       <a>purchase a ticket</a>
                     </Link>{' '}
                     in order to vote.
