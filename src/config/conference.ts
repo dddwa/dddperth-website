@@ -15,11 +15,11 @@ const tagLine = `${name} is an inclusive non-profit conference for the Adelaide 
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const date = moment.parseZone('2019-11-23T08:00+10:30')
+const date = moment.parseZone('2023-11-18T08:00+10:30')
 const endDate = date.clone().add(12, 'h')
 const currentInstance = parseInt(date.format('YYYY'), 10)
 const firstInstance = 2019
-const registrationOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
+const registrationOpenFrom = moment.parseZone('2023-08-01T08:00:00+09:30')
 const registrationOpenUntil = hideDate
   ? null
   : date
@@ -27,11 +27,11 @@ const registrationOpenUntil = hideDate
     .add(-1, 'd')
     .startOf('day')
     .add(17, 'h')
-const presentationSubmissionsOpenFrom = moment.parseZone('2019-08-01T08:00:00+09:30')
-const presentationSubmissionsOpenUntil = moment.parseZone('2019-09-04T23:59:59+09:30')
-const votingOpenFrom = moment.parseZone('2019-09-08T08:00:00+09:30')
-const votingOpenUntil = moment.parseZone('2019-09-27T23:59:59+09:30')
-const agendaPublishedFrom = moment.parseZone('2019-10-04T15:00:00+09:30')
+const presentationSubmissionsOpenFrom = moment.parseZone('2023-08-01T08:00:00+09:30')
+const presentationSubmissionsOpenUntil = moment.parseZone('2023-09-06T23:59:59+09:30')
+const votingOpenFrom = moment.parseZone('2023-09-10T08:00:00+09:30')
+const votingOpenUntil = moment.parseZone('2023-09-29T23:59:59+09:30')
+const agendaPublishedFrom = moment.parseZone('2023-10-06T15:00:00+09:30')
 const feedbackOpenFrom = date.clone()
 const feedbackOpenUntil = date
   .clone()
@@ -99,13 +99,13 @@ const Conference: IConference = {
   ChildcarePrice: null,
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'ddd-adelaide',
-  TicketsProviderEventId: '2019-conference',
+  TicketsProviderEventId: '2023-conference',
   TicketsProviderFinancialAssistanceCode: 'financialassistance',
   TicketPurchasingOptions: ticketPurchasingOptions,
   HashTag: 'DDDAdelaide',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
   Handbook: null,
-  SessionizeUrl: 'https://sessionize.com/ddd-adelaide-2019',
+  SessionizeUrl: 'https://sessionize.com/ddd-adelaide-2023',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
