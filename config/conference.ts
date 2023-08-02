@@ -195,17 +195,7 @@ const Conference: IConference = {
 
   Keynotes: [],
 
-  RoomNames: [
-    'Kwoka (Quokka)',
-    'Kwonding (Quandong)',
-    'Yoorn (Bobtail)',
-    'Mangatj (Banksia)',
-    'Yiibi (Black Cockatoo)',
-    'Mari (Red Gum)',
-    'Djakal-Ngakal (Galah)',
-    'Bilya (River)',
-    'Maali (Black Swan)',
-  ],
+  RoomNames: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5'],
 
   Livestreams: [
     'https://youtu.be/ovEA5PaOdWo?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',

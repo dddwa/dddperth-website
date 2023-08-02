@@ -1,6 +1,5 @@
 import React from 'react'
 import AllAgendas from 'components/allAgendas'
-import { CurrentAgenda } from 'components/currentAgenda'
 import { Sponsors } from 'components/Sponsors/sponsors'
 import { fetchSessions } from 'components/utils/useSessions'
 import conference from 'config/2022'
@@ -10,6 +9,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import { formatInTimeZone } from 'date-fns-tz'
 import dateTimeProvider from 'components/utils/dateTimeProvider'
 import getConferenceDates from 'config/dates'
+import { Agenda2022 } from 'components/2022agenda'
 
 interface AgendaPageProps {
   sessions?: Session[]
@@ -34,7 +34,7 @@ const AgendaPage: NextPage<AgendaPageProps> = ({ sessions, sessionId }) => {
           </p>
         )}
         {dates.AgendaPublished && (
-          <CurrentAgenda
+          <Agenda2022
             date={conference.Date}
             sessions={sessions}
             sponsors={conference.Sponsors}
