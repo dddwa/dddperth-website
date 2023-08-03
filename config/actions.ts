@@ -57,11 +57,11 @@ export default function getConferenceActions(conference: Conference, dates: Date
   }
 
   if (conference.Handbook) {
-    // actions.push({
-    //   Category: 'conference',
-    //   Title: 'Download handbook',
-    //   Url: '/static/docs/' + conference.Handbook,
-    // })
+    actions.push({
+      Category: 'conference',
+      Title: 'Download handbook',
+      Url: '/static/docs/' + conference.Handbook,
+    })
   }
 
   return actions

@@ -97,7 +97,7 @@ const Conference: IConference = {
   TicketPurchasingOptions: ticketPurchasingOptions,
   HashTag: 'DDDPerth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
-  Handbook: 'handbook2022.pdf',
+  Handbook: undefined,
   SessionizeUrl: 'https://sessionize.com/ddd-perth-2023',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
