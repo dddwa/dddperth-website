@@ -113,6 +113,9 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         <p>
+          Unfortunately, childcare is <strong>sold out</strong> for {Conference.Name} {Conference.Instance}.
+        </p>
+        {/* <p>
           Yes! Childcare is available for the duration of the main conference and is free. You will be required to
           provide food for your child for the day if they are under 12. If you would like to book your child in then
           click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.
@@ -120,7 +123,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
         <p>
           DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference.
           Please ensure all attendees are registered.
-        </p>
+        </p> */}
       </Fragment>
     ),
     Category: 'tickets',
