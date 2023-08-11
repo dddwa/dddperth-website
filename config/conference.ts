@@ -198,15 +198,6 @@ const Conference: IConference = {
   RoomNames: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5'],
 
   Livestreams: [
-    'https://youtu.be/ovEA5PaOdWo?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/8mq3bCMrmbE?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/DsFlSkTPH-Y?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/pqRQ4rN6adg?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/ox6ixHfs4xM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/2KjEBFAVgoU?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/Plo8dSxAjHw?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/EU-VeLYi8LM?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
-    'https://youtu.be/LQ5vtriC_bI?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx',
   ],
 
   SessionGroups: [
@@ -217,39 +208,33 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
-      sessions: ['344274', '343408', '344367', '344044', '344101', '343942', '342543', '334148', '344023'],
-      timeStart: set(date, { hours: 10, minutes: 10 }),
-      timeEnd: set(date, { hours: 10, minutes: 55 }),
+      sessions: ['507975', '497057', '507977', '494876', '494314'],
+      timeStart: set(date, { hours: 10, minutes: 30 }),
+      timeEnd: set(date, { hours: 11, minutes: 15 }),
       type: 'SessionIds',
     },
     {
-      sessions: ['333791', '344494', '338797', '344002', '344418', '343628', '338125', '343620', '339320'],
+      sessions: ['505424', '496926', '501705', '507918', '505719'],
       timeStart: set(date, { hours: 11, minutes: 25 }),
       timeEnd: set(date, { hours: 12, minutes: 10 }),
       type: 'SessionIds',
     },
     {
-      sessions: ['333736', '343984', '340959', '344464', '343953', '341816', '344501', '344419', '342452'],
+      sessions: ['501197', '504893', '505543', '501529', '507492'],
       timeStart: set(date, { hours: 12, minutes: 20 }),
       timeEnd: set(date, { hours: 12, minutes: 40 }),
       type: 'SessionIds',
     },
     {
-      sessions: ['337322', '344493', '343385', '343105', '336320', '343968', '339597', '344431', '341472'],
-      timeStart: set(date, { hours: 12, minutes: 50 }),
-      timeEnd: set(date, { hours: 13, minutes: 35 }),
+      sessions: ['494475', '503588', '508126', '508117', '499846'],
+      timeStart: set(date, { hours: 14, minutes: 15 }),
+      timeEnd: set(date, { hours: 15, minutes: 0 }),
       type: 'SessionIds',
     },
     {
-      sessions: ['379497', '379496'],
-      timeStart: set(date, { hours: 14, minutes: 35 }),
-      timeEnd: set(date, { hours: 15, minutes: 5 }),
-      type: 'SessionIds',
-    },
-    {
-      sessions: ['343399', '343561', '341315', '340848', '343948', '339017', '343697', ['343793', '344491'], '344427'],
-      timeStart: set(date, { hours: 15, minutes: 15 }),
-      timeEnd: set(date, { hours: 15, minutes: 35 }),
+      sessions: ['508194', '494781', '508110', '505457', '508055'],
+      timeStart: set(date, { hours: 15, minutes: 10 }),
+      timeEnd: set(date, { hours: 15, minutes: 45 }),
       type: 'SessionIds',
     },
     {
