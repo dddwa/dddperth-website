@@ -197,13 +197,12 @@ const Conference: IConference = {
 
   RoomNames: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5'],
 
-  Livestreams: [
-  ],
+  Livestreams: [],
 
   SessionGroups: [
     {
-      sessions: ['337380'],
-      timeStart: set(date, { hours: 9, minutes: 10 }),
+      sessions: ['530801'],
+      timeStart: set(date, { hours: 9, minutes: 30 }),
       timeEnd: set(date, { hours: 10, minutes: 0 }),
       type: 'SessionIds',
     },
@@ -226,6 +225,12 @@ const Conference: IConference = {
       type: 'SessionIds',
     },
     {
+      sessions: ['528193'],
+      timeStart: set(date, { hours: 13, minutes: 30 }),
+      timeEnd: set(date, { hours: 14, minutes: 15 }),
+      type: 'SessionIds',
+    },
+    {
       sessions: ['494475', '503588', '508126', '508117', '499846'],
       timeStart: set(date, { hours: 14, minutes: 15 }),
       timeEnd: set(date, { hours: 15, minutes: 0 }),
@@ -235,12 +240,6 @@ const Conference: IConference = {
       sessions: ['508194', '494781', '508110', '505457', '508055'],
       timeStart: set(date, { hours: 15, minutes: 10 }),
       timeEnd: set(date, { hours: 15, minutes: 45 }),
-      type: 'SessionIds',
-    },
-    {
-      sessions: ['383016'],
-      timeStart: set(date, { hours: 16, minutes: 5 }),
-      timeEnd: set(date, { hours: 16, minutes: 55 }),
       type: 'SessionIds',
     },
   ],
