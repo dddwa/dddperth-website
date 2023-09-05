@@ -105,13 +105,6 @@ const silverSponsors: Sponsor[] = [
     type: SponsorType.Silver,
     url: 'https://equ.com.au/',
   },
-  {
-    id: 'first-mode',
-    imageUrl: '/static/images/sponsors/first-mode.svg',
-    name: 'First Mode',
-    type: SponsorType.Silver,
-    url: 'https://firstmode.com/',
-  },
 ]
 
 const coffeeCartSponsors: Sponsor[] = [
