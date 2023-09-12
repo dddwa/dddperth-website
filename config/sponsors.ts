@@ -48,7 +48,7 @@ const goldSponsors: Sponsor[] = [
   },
   {
     id: 'qoria',
-    imageUrl: '/static/images/sponsors/qoria.svg',
+    imageUrl: '/static/images/sponsors/qoria.png',
     name: 'Qoria',
     type: SponsorType.Gold,
     url: 'https://qoria.com/',
@@ -79,7 +79,7 @@ const silverSponsors: Sponsor[] = [
   },
   {
     id: 'first-mode',
-    imageUrl: '/static/images/sponsors/first-mode.svg',
+    imageUrl: '/static/images/sponsors/first-mode.png',
     name: 'FirstMode',
     type: SponsorType.Silver,
     url: 'https://firstmode.com/',
