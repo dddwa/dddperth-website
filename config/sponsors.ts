@@ -142,7 +142,22 @@ const serviceSponsors: Sponsor[] = [
   },
 ]
 
-const communityPartners: Sponsor[] = []
+const communityPartners: Sponsor[] = [
+  {
+    id: 'she-codes',
+    imageUrl: '/static/images/sponsors/she-codes.png',
+    name: 'She Codes',
+    type: SponsorType.Community,
+    url: 'https://shecodes.com.au/',
+  },
+  {
+    id: 'level-her-up',
+    imageUrl: '/static/images/sponsors/level-her-up.png',
+    name: 'Level her up',
+    type: SponsorType.Community,
+    url: 'https://levelherup.com.au/',
+  },
+]
 
 const Sponsors: Sponsor[] = [
   ...platinumSponsors,
