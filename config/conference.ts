@@ -195,7 +195,7 @@ const Conference: IConference = {
 
   Keynotes: [],
 
-  RoomNames: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5'],
+  RoomNames: ['Riverview Room 1', 'Riverview Room 2', 'Riverview Room 3', 'Premiership Terrace', 'Champions Terrace'],
 
   Livestreams: [],
 
