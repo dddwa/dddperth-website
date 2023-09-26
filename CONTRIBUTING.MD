@@ -36,3 +36,7 @@ When raising a bug report please include as much detail as possible to ensure we
 - Notes (possibly including why you think this might be happening, or things you tried that didn't work)
 
 Thank you in advance for helping us deliver an even better conference experience for all our awesome DDD attendees. We **love** your work!
+
+## Public images
+
+We cache the public directory, ensure a different filename if the logo changes
