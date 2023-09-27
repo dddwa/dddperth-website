@@ -157,6 +157,13 @@ const communityPartners: Sponsor[] = [
     type: SponsorType.Community,
     url: 'https://levelherup.com.au/',
   },
+  {
+    id: 'bcp',
+    imageUrl: '/static/images/sponsors/2023-bcp.png',
+    name: 'Breast Cancer Partners',
+    type: SponsorType.Community,
+    url: 'https://breastcancerpartners.org/',
+  },
 ]
 
 const Sponsors: Sponsor[] = [
