@@ -1,6 +1,6 @@
 import React from 'react'
 import { GetServerSideProps, NextPage } from 'next'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { useConfig } from 'Context/Config'
@@ -12,9 +12,9 @@ import { useSessionGroups } from 'components/utils/useSessionGroups'
 import { StyledList, Text } from 'components/global/text'
 import { SafeLink } from 'components/global/safeLink'
 import { roomLocations } from 'components/venueMapData'
-import Image from 'next/image'
+// import Image from 'next/image'
 
-const VenueMap = dynamic(() => import('components/venueMap'), { ssr: false })
+// const VenueMap = dynamic(() => import('components/venueMap'), { ssr: false })
 
 interface ConferencePageProps {
   sessions?: Session[]
@@ -56,7 +56,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <Text>
         Our <SafeLink href="/venue">Venue</SafeLink> page has more information on how to get to the conference.
       </Text>
-      <h2>Agenda</h2>
+      {/* <h2>Agenda</h2>
       <Text>
         {conference.Name} {format(conference.Date, 'y')} consists of nine tracks, which will be run out of the Riverside
         Theatre, and Meeting Rooms 1 through to 8. The Keynote and Locknote will take place in the Riverside Theatre.
@@ -128,7 +128,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         After the event, we invite you to join us in the foyer adjoining the conference rooms for the afterparty. Some
         games, food and drink will be provided, while we enjoy the beautiful views over Elizabeth Quay and the Swan
         River.
-      </Text>
+      </Text> */}
       <h2>Code of Conduct</h2>
       <Text>
         Please familiarise yourself with the <Link href="/code-of-conduct">Conference Code of Conduct</Link>.
@@ -178,7 +178,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         <StyledList>
           <li>Alex Colville - 0439 227 330</li>
           <li>Rebecca Waters - 0405 100 063</li>
-          <li>Matt Ward - 0403 695 863</li>
+          {/* <li>Matt Ward - 0403 695 863</li> */}
         </StyledList>
       </div>
       <h2>COVID-19</h2>
@@ -205,7 +205,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
           wave.
         </li>
       </StyledList>
-      <h2>Livestream</h2>
+      {/* <h2>Livestream</h2>
       <Text>
         In 2022, DDD Perth will be livestreamed for the first time ever, which will improve accessibility for those in
         WA regions or those who can't make it to the venue on the day. Each track of the agenda will have its own
@@ -213,7 +213,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         . We also have a{' '}
         <SafeLink href="https://www.youtube.com/playlist?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx">playlist</SafeLink>{' '}
         containing all the streams for ease of access.
-      </Text>
+      </Text> */}
       {conference.Handbook && (
         <p>
           You can also download much of the information on this page as a PDF:&nbsp;

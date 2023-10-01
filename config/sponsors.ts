@@ -34,7 +34,7 @@ const goldSponsors: Sponsor[] = [
   },
   {
     id: 'vgw',
-    imageUrl: '/static/images/sponsors/2023-vgw.png',
+    imageUrl: '/static/images/sponsors/2023-vgw2.png',
     name: 'Virtual Gaming Worlds',
     type: SponsorType.Gold,
     url: 'https://www.vgw.co/',
