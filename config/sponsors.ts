@@ -67,6 +67,13 @@ const goldSponsors: Sponsor[] = [
     type: SponsorType.Gold,
     url: 'https://mantelgroup.com.au/',
   },
+  {
+    id: 'keystart',
+    imageUrl: '/static/images/sponsors/2023-keystart-2.png',
+    name: 'Keystart',
+    type: SponsorType.Gold,
+    url: 'https://www.keystart.com.au/',
+  },
 ]
 
 const silverSponsors: Sponsor[] = [
@@ -131,16 +138,7 @@ const coffeeCartSponsors: Sponsor[] = [
   },
 ]
 
-const serviceSponsors: Sponsor[] = [
-  {
-    id: 'keystart',
-    imageUrl: '/static/images/sponsors/2023-keystart.png',
-    name: 'Keystart',
-    type: SponsorType.Service,
-    serviceProvided: 'Viewing Room',
-    url: 'https://www.keystart.com.au/',
-  },
-]
+const serviceSponsors: Sponsor[] = []
 
 const communityPartners: Sponsor[] = [
   {
