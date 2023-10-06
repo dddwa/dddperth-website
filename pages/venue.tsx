@@ -31,6 +31,14 @@ const VenuePage: NextPage = () => {
           </Text>
 
           <section>
+            <>
+              <h3>Transport</h3>
+              <Text>
+                <SafeLink href="https://optusstadium.com.au/getting-here/non-major-event-days">
+                  Optus Statium - Getting there
+                </SafeLink>
+              </Text>
+            </>
             {conference.Venue.Car && (
               <React.Fragment>
                 <h3>Car</h3>
