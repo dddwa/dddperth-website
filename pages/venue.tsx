@@ -38,6 +38,18 @@ const VenuePage: NextPage = () => {
                   Optus Statium - Getting there
                 </SafeLink>
               </Text>
+
+              <h3>Parking</h3>
+              <Text>
+                <SafeLink href="/static/optus-parking.pdf">Parking info</SafeLink>
+              </Text>
+              <Text>
+                There is also parking information on the{' '}
+                <SafeLink href="https://optusstadium.com.au/getting-here/non-major-event-days">
+                  Optus Statium - Getting there
+                </SafeLink>{' '}
+                page
+              </Text>
             </>
             {conference.Venue.Car && (
               <React.Fragment>
