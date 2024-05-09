@@ -9,7 +9,7 @@ import {
   Venue,
 } from './types'
 import { zonedTimeToUtc } from 'date-fns-tz'
-import { add, sub, toDate } from 'date-fns'
+import { add, set, sub, toDate } from 'date-fns'
 import { optusStadium } from './venues/optus-stadium'
 
 const name = 'DDD Perth'
@@ -199,7 +199,14 @@ const Conference: IConference = {
 
   Livestreams: [],
 
-  SessionGroups: [],
+  SessionGroups: [
+    {
+      sessions: ['530801'],
+      timeStart: set(date, { hours: 9, minutes: 30 }),
+      timeEnd: set(date, { hours: 10, minutes: 0 }),
+      type: 'SessionIds',
+    },
+  ],
 
   VolunteerSubmissionFormId: undefined,
 }
