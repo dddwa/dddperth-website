@@ -26,12 +26,14 @@ const ImportantDates = ({ conference, actions, currentDate }: ImportantDatesProp
         DDD runs a bunch of workshops to help you come up with some amazing talks to submit to our CFP and a great Bio
         to go with it.
       </p>
-      <p>
-        For more info or to book in click{' '}
-        <SafeLink target="_blank" href={workshops.bookingLink}>
-          here
-        </SafeLink>
-      </p>
+      {workshops.bookingLink && (
+        <p>
+          For more info or to book in click{' '}
+          <SafeLink target="_blank" href={workshops.bookingLink}>
+            here
+          </SafeLink>
+        </p>
+      )}
       <ImportantDatesList conference={conference} currentDate={currentDate} importantDates={workshops.dates} />
     </div>
 

@@ -9,7 +9,7 @@ import {
   Venue,
 } from './types'
 import { zonedTimeToUtc } from 'date-fns-tz'
-import { add, sub, toDate } from 'date-fns'
+import { add, sub, set, toDate } from 'date-fns'
 import { optusStadium } from './venues/optus-stadium'
 
 const name = 'DDD Perth'
@@ -17,18 +17,18 @@ const tagLine = `${name} is an inclusive non-profit conference for the Perth sof
 
 const hideDate = false
 const ticketPurchasingOptions = TicketPurchasingOptions.OnSale
-const staticDate = '2024-11-16T08:00'
+const staticDate = '2023-10-07T08:00'
 const date = zonedTimeToUtc(staticDate, '+08:00')
 const endDate = add(date, { days: 2, hours: 12 })
 const currentInstance = date.getFullYear()
 const firstInstance = 2015
-const registrationOpenFrom = zonedTimeToUtc('2024-06-07T08:00:00', '+08:00')
+const registrationOpenFrom = zonedTimeToUtc('2023-06-08T08:00:00', '+08:00')
 const registrationOpenUntil = hideDate ? null : sub(date, { hours: 14, minutes: 45 })
-const presentationSubmissionsOpenFrom = zonedTimeToUtc('2024-06-14T08:00:00', '+08:00')
-const presentationSubmissionsOpenUntil = zonedTimeToUtc('2024-07-07T23:59:59', '+08:00')
-const votingOpenFrom = zonedTimeToUtc('2024-07-21T17:00:00', '+08:00')
-const votingOpenUntil = zonedTimeToUtc('2024-08-06T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2024-08-20T17:00:00', '+08:00')
+const presentationSubmissionsOpenFrom = zonedTimeToUtc('2023-05-22T08:00:00', '+08:00')
+const presentationSubmissionsOpenUntil = zonedTimeToUtc('2023-06-18T23:59:59', '+08:00')
+const votingOpenFrom = zonedTimeToUtc('2023-07-03T17:00:00', '+08:00')
+const votingOpenUntil = zonedTimeToUtc('2023-07-14T23:59:59', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2023-08-04T17:00:00', '+08:00')
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
@@ -92,13 +92,13 @@ const Conference: IConference = {
   ChildcarePrice: 'free',
   TicketsProviderId: TicketsProvider.Tito,
   TicketsProviderAccountId: 'dddperth',
-  TicketsProviderEventId: '2024',
+  TicketsProviderEventId: '2023',
   TicketsProviderFinancialAssistanceTicketLink: 'https://ti.to/dddperth/2023/with/general-attendee-free',
   TicketPurchasingOptions: ticketPurchasingOptions,
   HashTag: 'DDDPerth',
   SellingPoints: ['One day', 'Fully catered', 'Inclusive atmosphere', 'Interesting presentations', 'Awesome people'],
-  Handbook: undefined,
-  SessionizeUrl: 'https://sessionize.com/ddd-perth-2024',
+  Handbook: 'handbook2023.pdf',
+  SessionizeUrl: 'https://sessionize.com/ddd-perth-2023',
   SessionizeEditUrl: 'https://sessionize.com/app/speaker/',
   PreviouslySubmittedTopics:
     'Agile, building great teams, UI design, UX, software testing, virtual reality, women in tech, web accessibility, open source software, workplace culture, mental health, unconscious bias, building engaged teams, self-employment tips, mentoring, Scrum, pair programming, bots, IoT, machine learning, neural networks, quantum encryption, security, reverse engineering, blockchain, Assembly language, automated deployments, mobile development, mobile test automation, Domain Driven Design, cloud native, architecture, microservices, serverless, service meshes, stream programming and Rx, APIs, GraphQL, actors, JavaScript, SPAs, TypeScript, authentication, React, UWP, Elm, HTML, HTTP protocol, Git, Docker and pointers',
@@ -140,7 +140,7 @@ const Conference: IConference = {
   SessionFeedbackLink: '/feedback',
 
   HideDate: hideDate,
-  HideSponsors: true,
+  HideSponsors: false,
   HideSponsorshipUpsell: true,
   HideVenue: venue === null,
   HasAfterParty: false,
@@ -195,13 +195,56 @@ const Conference: IConference = {
 
   Keynotes: [],
 
-  RoomNames: [],
+  RoomNames: ['Riverview Room 1', 'Riverview Room 2', 'Riverview Room 3', 'Champions Terrace', 'Premiership Terrace'],
 
   Livestreams: [],
 
-  SessionGroups: [],
+  SessionGroups: [
+    {
+      sessions: ['530801'],
+      timeStart: set(date, { hours: 9, minutes: 30 }),
+      timeEnd: set(date, { hours: 10, minutes: 0 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['507975', '497057', '507977', '494876', '494314'],
+      timeStart: set(date, { hours: 10, minutes: 30 }),
+      timeEnd: set(date, { hours: 11, minutes: 15 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['503672', '496926', '501705', '507918', '505719'],
+      timeStart: set(date, { hours: 11, minutes: 25 }),
+      timeEnd: set(date, { hours: 12, minutes: 10 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['501197', '504893', '505543', '501529', '507492'],
+      timeStart: set(date, { hours: 12, minutes: 20 }),
+      timeEnd: set(date, { hours: 12, minutes: 40 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['528193'],
+      timeStart: set(date, { hours: 13, minutes: 30 }),
+      timeEnd: set(date, { hours: 14, minutes: 15 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['494475', '503588', '508126', '508117', '499846'],
+      timeStart: set(date, { hours: 14, minutes: 15 }),
+      timeEnd: set(date, { hours: 15, minutes: 0 }),
+      type: 'SessionIds',
+    },
+    {
+      sessions: ['508194', '494781', '508110', '505457', '508055'],
+      timeStart: set(date, { hours: 15, minutes: 10 }),
+      timeEnd: set(date, { hours: 15, minutes: 45 }),
+      type: 'SessionIds',
+    },
+  ],
 
-  VolunteerSubmissionFormId: undefined,
+  VolunteerSubmissionFormId: '9c302d13-e580-4edf-ba13-5bc27eb7b97f',
 }
 
 export default Conference
