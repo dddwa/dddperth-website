@@ -27,6 +27,7 @@ import { Main } from 'layouts/main'
 import AllAgendas from 'components/allAgendas'
 
 import data from 'public/static/agenda/2021.json'
+import Conference from 'config/conference'
 
 type AgendaProps = {
   sessions: Session[]
@@ -48,6 +49,7 @@ const Agenda2021: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance 
 
         <Agenda
           sessions={sessions}
+          conference={{ ...Conference, ...(From2021 as any) }}
           acceptingFeedback={false}
           selectedSessionId={undefined}
           render={(agendaSessions, _, onSelect) => {

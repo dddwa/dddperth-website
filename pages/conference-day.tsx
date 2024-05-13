@@ -27,7 +27,7 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
     // dummy
   }
 
-  const { currentSessionGroup } = useSessionGroups(sessions)
+  const { currentSessionGroup } = useSessionGroups(sessions, conference)
 
   if (currentSessionGroup && currentSessionGroup.sessions.length > 0) {
     // NB: This is quite brittle, as it assumes that the list of current sessions is returned in exactly the same order as the definition of rooms

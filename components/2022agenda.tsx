@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Conference from 'config/conference'
+import Conference from 'config/2022'
 import { Session, Sponsor } from 'config/types'
 import { ActionButton } from 'components/actionButton'
 import { Agenda } from 'components/Agenda/Agenda'
@@ -52,6 +52,7 @@ export const Agenda2022 = ({
       <span></span>
 
       <Agenda
+        conference={Conference}
         sessions={sessions}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}

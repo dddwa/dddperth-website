@@ -1,7 +1,6 @@
 import React from 'react'
-import Conference from 'config/conference'
 import getConferenceDates from 'config/dates'
-import { Session } from 'config/types'
+import { Conference, Session } from 'config/types'
 import dateTimeProvider from './dateTimeProvider'
 import { isWithinInterval, isAfter } from 'date-fns'
 
@@ -50,10 +49,10 @@ function getSessionById(sessions: Session[], ids: SessionId[]) {
 
 // so manual - ideally there would be a better way to achieve this or expand it to handle the agenda too
 // e.g. on the agenda page show next sessions up top then the whole list
-export function useSessionGroups(sessions: Session[]): SessionGroups {
+export function useSessionGroups(sessions: Session[], conference: Conference): SessionGroups {
   const allSessionGroups: SessionGroup[] = React.useMemo(
     () =>
-      Conference.SessionGroups.map((sessionGroup) => ({
+      conference.SessionGroups.map((sessionGroup) => ({
         ...sessionGroup,
         sessions: sessionGroup.sessions.map((id) =>
           typeof id === 'string' ? getSessionById(sessions, [id]) : getSessionById(sessions, id),
@@ -62,9 +61,9 @@ export function useSessionGroups(sessions: Session[]): SessionGroups {
       })),
     // Using the session length as the dependency - there was a reason at the time
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [Conference.Date.toString(), sessions.length],
+    [conference.Date.toString(), sessions.length],
   )
-  const { IsInProgress } = getConferenceDates(Conference, dateTimeProvider.now())
+  const { IsInProgress } = getConferenceDates(conference, dateTimeProvider.now())
 
   let currentSessionIndex = -1
   let previousSessionIndex = -1

@@ -51,6 +51,7 @@ export const CurrentAgenda = ({
       <span></span>
 
       <Agenda
+        conference={Conference}
         sessions={sessions}
         acceptingFeedback={acceptingFeedback}
         feedbackLink={feedbackLink}

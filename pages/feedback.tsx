@@ -48,7 +48,7 @@ interface FeedbackProps {
 const Feedback: NextPage<FeedbackProps> = ({ sessions }) => {
   const { conference, appConfig } = useConfig()
   const { deviceId } = useDeviceId(conference.Instance)
-  const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions)
+  const { allSessionGroups, ...sessionGroups } = useSessionGroups(sessions, conference)
   const [formState, dispatch] = useReducer(formReducer, defaultFormState)
   const hasPreviousSessions =
     sessions && sessionGroups.previousSessionGroup && sessionGroups.previousSessionGroup.sessions.length > 0

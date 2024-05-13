@@ -27,6 +27,7 @@ import { useConfig } from 'Context/Config'
 import AllAgendas from 'components/allAgendas'
 
 import data from 'public/static/agenda/2018.json'
+import Conference from 'config/conference'
 
 type AgendaProps = {
   sessions: Session[]
@@ -49,6 +50,7 @@ const Agenda2018: NextPage<AgendaProps> = ({ sessions, date, conferenceInstance,
 
         <Agenda
           sessions={sessions}
+          conference={{ ...Conference, ...(From2018 as any) }}
           acceptingFeedback={false}
           selectedSessionId={undefined}
           render={(agendaSessions, _, onSelect) => {

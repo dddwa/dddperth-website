@@ -28,6 +28,7 @@ import AllAgendas from 'components/allAgendas'
 import { mapSessions } from 'components/utils/mapSession'
 
 import data from 'public/static/agenda/2017.json'
+import Conference from 'config/conference'
 
 type AgendaProps = {
   sessions: Session[]
@@ -50,6 +51,7 @@ const Agenda2017: NextPage<AgendaProps> = ({ sessions, conferenceInstance, date,
 
         <Agenda
           sessions={sessions}
+          conference={{ ...Conference, ...(From2017 as any) }}
           acceptingFeedback={false}
           selectedSessionId={undefined}
           hideTags={true}
