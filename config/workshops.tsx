@@ -4,7 +4,7 @@ export const workshops: {
   bookingLink?: string
   dates: ImportantDate[]
 } = {
-  bookingLink: undefined,
+  bookingLink: 'https://ti.to/dddperth/virtual-cfp-workshop-2024',
   dates: [
     {
       Type: 'cfp-workshop',
