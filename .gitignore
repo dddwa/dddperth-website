@@ -10,3 +10,4 @@ coverage
 public/_next
 cypress/videos
 cypress/screenshots
+.idea/*
