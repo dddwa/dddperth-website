@@ -37,13 +37,13 @@ const ContactPage: NextPage = () => {
           {conference.EmergencyContactName + ' on ' + conference.EmergencyContactPhoneNumber}
         </li>
       </StyledList>
-      <h2>DDD WA Inc.</h2>
+      <h2>DDD Adelaide Inc.</h2>
       <StyledList>
         <li>
-          <strong>ABN:</strong> 61 201 381 758
+          <strong>ABN:</strong> 77 632 720 298
         </li>
         <li>
-          <strong>Postal Address:</strong> PO Box 7550, Perth WA 6000
+          <strong>Postal Address:</strong> PO Box 3131, RUNDLE MALL SA 5000
         </li>
       </StyledList>
     </PageWithSidebar>

@@ -140,14 +140,14 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       </Text>
       <h3>What to do if someone makes a complaint about you?</h3>
       <StyledList>
-        <li>DDD Perth organisers and volunteers will have a conversation with you, and listen to you.</li>
+        <li>DDD Adelaide organisers and volunteers will have a conversation with you, and listen to you.</li>
         <li>
           Listen to the complaint with an open mind and consider the effect rather than intent of the behaviour in
           question
         </li>
         <li>Don't be dismissive of the complainant</li>
         <li>Understand any advice given on how to act in the future</li>
-        <li>Comply with the directions of the DDD Perth organisers and volunteers</li>
+        <li>Comply with the directions of the DDD Adelaide organisers and volunteers</li>
       </StyledList>
       <Text>
         We believe everyone here is coming from a good place, and so we expect that you're learning, just like we are.
@@ -155,15 +155,15 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <h2>Getting Help</h2>
       <h3>Issues &amp; Questions</h3>
       <Text>
-        Please feel free to speak to a member of the DDD Perth team who will be easily identifiable by their Volunteer
-        DDD Perth t-shirts.
+        Please feel free to speak to a member of the DDD Adelaide team who will be easily identifiable by their Volunteer
+        DDD Adelaide t-shirts.
       </Text>
       <Text>
         We'll identify the organisers and volunteers during the Welcome, and there will also be a help desk next to
         registration, attended at all times by members from our wonderful team.
       </Text>
       <Text>
-        You can also send a tweet to @dddperth or email <Link href="mailto:info@dddperth.com">info@dddperth.com</Link>.
+        You can also send a tweet to @dddadelaide or email <Link href="mailto:info@dddadelaide.com">info@dddadelaide.com</Link>.
       </Text>
       <Text>
         If you wish to report an issue anonymously, you can do so using{' '}
@@ -176,20 +176,14 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
       <div>
         Emergency contact numbers:
         <StyledList>
-          <li>Alex Colville - 0439 227 330</li>
-          <li>Rebecca Waters - 0405 100 063</li>
-          {/* <li>Matt Ward - 0403 695 863</li> */}
+          <li>Andrew Best - 0438 080 385</li>
+          <li>David Gardiner - 0428 650 005</li>
         </StyledList>
       </div>
-      <h2>COVID-19</h2>
-      <Text>
-        Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
-        guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
-      </Text>
       <h3>Feel Unwell During the Day?</h3>
       <StyledList>
         <li>
-          If you don't feel well ahead of DDD Perth, please stay home and tune into the livestreams instead. Please see
+          If you don't feel well ahead of DDD Adelaide, please stay home and tune into the livestreams instead. Please see
           below for further details.
         </li>
         <li>
@@ -205,15 +199,6 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
           wave.
         </li>
       </StyledList>
-      {/* <h2>Livestream</h2>
-      <Text>
-        In 2022, DDD Perth will be livestreamed for the first time ever, which will improve accessibility for those in
-        WA regions or those who can't make it to the venue on the day. Each track of the agenda will have its own
-        livestream, which you can access from each session description on the <SafeLink href="/agenda">Agenda</SafeLink>
-        . We also have a{' '}
-        <SafeLink href="https://www.youtube.com/playlist?list=PLkLJSte3oodSYGOtIq-4ntOD5CH8b-lkx">playlist</SafeLink>{' '}
-        containing all the streams for ease of access.
-      </Text> */}
       {conference.Handbook && (
         <p>
           You can also download much of the information on this page as a PDF:&nbsp;

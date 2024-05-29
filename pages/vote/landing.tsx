@@ -48,7 +48,7 @@ export default function VoteLanding({ instance, votingFinished }: VoteLandingPro
 
         <Text>
           By selecting <em>'{BUTTON_LABEL}'</em> I have read and accepted the{' '}
-          <a href="/privacy">DDDPerth Privacy statement</a>.
+          <a href="/privacy">DDDAdelaide Privacy statement</a>.
         </Text>
 
         <StyledButton kind="primary" onClick={onClickHandler}>
