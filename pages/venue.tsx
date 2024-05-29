@@ -11,7 +11,7 @@ const VenuePage: NextPage = () => {
   const { conference } = useConfig()
 
   return (
-    <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={true}>
+    <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={false}>
       <h1>Venue</h1>
 
       {conference.Venue ? (
@@ -29,28 +29,14 @@ const VenuePage: NextPage = () => {
             </SafeLink>
             .
           </Text>
+          <Text>
+            Further venue information can be found on <SafeLink
+            href={'https://www.adelaide.edu.au/campuses/north-terrace'} target="_blank">The University of Adelaide's
+            Website.</SafeLink>
+          </Text>
 
           <section>
-            <>
-              <h3>Transport</h3>
-              <Text>
-                <SafeLink href="https://optusstadium.com.au/getting-here/non-major-event-days">
-                  Optus Statium - Getting there
-                </SafeLink>
-              </Text>
-
-              <h3>Parking</h3>
-              <Text>
-                <SafeLink href="/static/optus-parking.pdf">Parking info</SafeLink>
-              </Text>
-              <Text>
-                There is also parking information on the{' '}
-                <SafeLink href="https://optusstadium.com.au/getting-here/non-major-event-days">
-                  Optus Statium - Getting there
-                </SafeLink>{' '}
-                page
-              </Text>
-            </>
+            <h2>Transport</h2>
             {conference.Venue.Car && (
               <React.Fragment>
                 <h3>Car</h3>
