@@ -1,0 +1,54 @@
+name: Build, Tag, and Push Docker Image to ACR
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build-tag-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1.1.1
+        with:
+          versionSpec: '5.x'
+
+      - name: Determine Version
+        id: version
+        uses: gittools/actions/gitversion/execute@v1.1.1
+
+      - name: Create Git tag
+        run: |
+          git tag -a v${{ steps.version.outputs.semVer }} -m "Release ${{ steps.version.outputs.semVer }}"
+          git push origin v${{ steps.version.outputs.semVer }}
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Login to ACR via OIDC
+        run: az acr login --name ${{ secrets.REGISTRY_NAME }}
+
+      - name: Build the Docker image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_NAME }}.azurecr.io/myapp:${{ steps.version.outputs.semVer }} .
+
+      - name: Push the Docker image to ACR
+        run: |
+          docker push ${{ secrets.REGISTRY_NAME }}.azurecr.io/myapp:${{ steps.version.outputs.semVer }}
