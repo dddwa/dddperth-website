@@ -65,11 +65,6 @@ export default function Menu(conference: Conference, dates: Dates): { Top: MenuI
     name: 'FAQs',
   })
 
-  topMenu.push({
-    href: '/covid-policy',
-    name: 'COVID-19 Policy',
-  })
-
   if (conference.Socials.Blog) {
     topMenu.push({
       external: true,
@@ -78,22 +73,12 @@ export default function Menu(conference: Conference, dates: Dates): { Top: MenuI
     })
   }
 
-  topMenu.push({
-    href: '/volunteer',
-    name: 'Work With Us',
-  })
-
   return {
     Top: topMenu,
     Footer: [
       {
         href: '/about',
         name: 'About Us',
-      },
-      {
-        external: true,
-        href: 'https://www.redbubble.com/people/dddperth',
-        name: 'Merchandise',
       },
       {
         href: '/code-of-conduct',
