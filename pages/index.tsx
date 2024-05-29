@@ -25,9 +25,6 @@ export const Index: NextPage = () => {
           speak at conferences. The conference is run on a Saturday, and strives to be inclusive of everyone in the
           Adelaide tech community.
         </Text>
-        <Text>
-          Check out the agenda and talks from previous years, or hear more about how we do what we do on our blog.
-        </Text>
       </section>
       <ImportantDates conference={conference} actions={actions} currentDate={currentDate} />
       <Keynotes conference={conference} />
