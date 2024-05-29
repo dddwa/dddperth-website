@@ -21,16 +21,11 @@ export const StyledAnchor = styled('a')({
   marginRight: 'auto',
   marginLeft: 'auto',
   cursor: 'pointer',
-  transition: 'transform 0.25s ease',
   outline: 0,
 
   svg: {
     width: calcRem(144),
     height: calcRem(28),
-  },
-
-  '&:hover, &:focus': {
-    transform: `scale(1.1) rotate(5deg)`,
   },
 
   [breakpoint('sm')]: {
