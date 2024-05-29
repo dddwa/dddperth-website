@@ -32,7 +32,7 @@ export const StyledSafeLink = styled(SafeLink)(({ theme }) => ({
 
   '&:hover, &:focus': {
     svg: {
-      fill: theme.colors.dddpink,
+      fill: theme.colors.dddorange,
     },
   },
 }))
