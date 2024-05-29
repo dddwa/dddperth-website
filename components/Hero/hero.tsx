@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyledHero, StyledCredit, StyledConferenceDetails } from './Hero.styled'
-import { SafeLink } from 'components/global/safeLink'
+import { StyledHero, StyledConferenceDetails } from './Hero.styled'
 import { formatISO } from 'date-fns'
 import { useConfig } from 'Context/Config'
 
