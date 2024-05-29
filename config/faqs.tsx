@@ -2,40 +2,34 @@ import React, { Fragment } from 'react'
 import { SafeLink } from 'components/global/safeLink'
 import { StyledList } from 'components/global/text'
 import Conference from './conference'
-import { Dates, FAQ, TicketPurchasingOptions, TicketsProvider } from './types'
-import Link from 'next/link'
+import { Dates, FAQ, TicketPurchasingOptions } from './types'
 import { formatInTimeZone } from 'date-fns-tz'
 
 export default function getFaqs(dates: Dates): FAQ[] {
   const Faqs: FAQ[] = []
 
+  const hasAfterparty = Conference.Venue.Afterparty !== null
+
   if (!Conference.HideDate) {
+    const afterpartyBlurb = ` followed by the afterparty ${Conference.HideAfterpartyVenue ? '' : ' at ' + Conference.Venue.Afterparty
+    }`
+
     Faqs.push({
       Question: 'When and where is it?',
-      Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${
-        Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
+      Answer: `The event ${dates.IsComplete ? 'was' : 'will be'} held on ${dates.Display}${Conference.HideVenue ? '' : ' at ' + Conference.Venue.Name
       }.
-          Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${
-        dates.IsComplete ? 'we finished' : "we'll finish"
-      } at ${Conference.FinishTime}${
-        Conference.HasAfterParty
-          ? ' followed by the afterparty' + Conference.HideAfterpartyVenue
-            ? ''
-            : ' at ' + Conference.Venue.Afterparty
-          : ''
-      }. (Please note that all times on the website are in Perth time: WST or +08:00)`,
+          Doors ${dates.IsComplete ? 'opened' : 'will open'} at ${Conference.DoorsOpenTime} and ${dates.IsComplete ? 'we finished' : "we'll finish"
+      } at ${Conference.FinishTime}${hasAfterparty ? afterpartyBlurb : ''}.`,
     })
   }
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${
-      Conference.HasAfterParty ? ' and access to the afterparty!' : '!'
-    }  Amazing value right!?
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${hasAfterparty ? ' and access to the afterparty' : ''
+    }! Amazing value right!?
       We are able to keep the ticket price so low thanks to our generous sponsors.
-      ${
-        Conference.Name
-      } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
+      ${Conference.Name
+    } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
 
@@ -45,22 +39,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <div>
         <p>
           If you can't afford the ticket price then we have Sponsored (Financial Assistance) tickets available. DDD
-          Perth is donating 10 such tickets and we also have an option for people within the community to donate further
-          tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
+          Adelaide is donating 10 such tickets and we also have an option for people within the community to donate
+          further tickets. The only requirement for eligibility is that you can't afford the ticket; you can access the
           Financial Assistance tickets by{' '}
-          {Conference.TicketsProviderId === TicketsProvider.Tito && dates.RegistrationOpen ? (
-            Conference.TicketsProviderFinancialAssistanceCode ? (
-              <>
-                entering the promotional code of <code>{Conference.TicketsProviderFinancialAssistanceCode}</code>
-              </>
-            ) : (
-              <>
-                registering <SafeLink href="https://ti.to/dddperth/2023/with/general-attendee-free">here</SafeLink>
-              </>
-            )
-          ) : (
-            <>selecting the Financial Assistance ticket</>
-          )}
+          <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+            contacting us
+          </a>
           .
         </p>
         <StyledList>
@@ -86,7 +70,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'How is the agenda chosen?',
     Answer:
-      'DDD Perth is a community driven event with core values of inclusion and democratic engagement. Proposed sessions are anonymised and voted for by the public, but some curation is inevitably required to produce an agenda that meets our inclusion goals. We aim to maximise the impact of every vote in the process, and always look to the community first in our decision making.',
+      'DDD Adelaide is a community driven event with core values of inclusion and democratic engagement. Proposed sessions are anonymised and voted for by the public, but some curation is inevitably required to produce an agenda that meets our inclusion goals. We aim to maximise the impact of every vote in the process, and always look to the community first in our decision making.',
   })
 
   Faqs.push({
@@ -98,7 +82,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
   Faqs.push({
     Question: 'What about swag?',
     Answer:
-      'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We will have a small number of bags on offer if you need, but it is a good idea to bring your own bag.',
+      'Yes, there will be a bunch of swag on offer on the day both from our swag table as well as with the various sponsors that will have booths. We have decided not to offer showbags this year as they often end up resulting in a lot of waste; this way attendees can choose the swag they want. We will have a small number of bags on offer if you need, but it may also be prudent to bring your own bag.',
   })
 
   if (Conference.Venue && Conference.Venue.Wifi !== null) {
@@ -108,26 +92,13 @@ export default function getFaqs(dates: Dates): FAQ[] {
     })
   }
 
-  Faqs.push({
-    Question: 'Will childcare be available?',
-    Answer: (
-      <Fragment>
-        <p>
-          Unfortunately, childcare is <strong>sold out</strong> for {Conference.Name} {Conference.Instance}.
-        </p>
-        {/* <p>
-          Yes! Childcare is available for the duration of the main conference and is free. You will be required to
-          provide food for your child for the day if they are under 12. If you would like to book your child in then
-          click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.
-        </p>
-        <p>
-          DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference.
-          Please ensure all attendees are registered.
-        </p> */}
-      </Fragment>
-    ),
-    Category: 'tickets',
-  })
+  if (Conference.ChildcarePrice !== null) {
+    Faqs.push({
+      Question: 'Will childcare be available?',
+      Answer: `Yes! We will be providing childcare at this year’s conference. It will be available for the duration of the main conference (not including the afterparty) and will cost ${Conference.ChildcarePrice}. You will be required to provide food for your child for the day. If you would like to book your child in then please purchase an additional ‘Childcare’ ticket when purchasing your ticket. Spots are limited!`,
+      Category: 'tickets',
+    })
+  }
 
   Faqs.push({
     Question: 'When does registration open?',
@@ -135,7 +106,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
       <Fragment>
         {dates.RegistrationOpen ? (
           <Fragment>
-            Now! Go to <Link href="/tickets">the tickets page</Link> to register.
+            Now! Go to <a href="/tickets">the tickets page</a> to register.
           </Fragment>
         ) : Conference.TicketPurchasingOptions === TicketPurchasingOptions.SoldOut ? (
           <Fragment>The conference is now sold out.</Fragment>
@@ -155,8 +126,17 @@ export default function getFaqs(dates: Dates): FAQ[] {
   })
 
   Faqs.push({
-    Question: 'Can I pay by cheque, invoice, cash, Coinye West?',
-    Answer: 'Payments can be made with credit card using Tito via our tickets page when registrations are open.',
+    Question: 'Can I pay by cheque, invoice, cash?',
+    Answer: (
+      <Fragment>
+        Payments can be made with credit card using Tito via our tickets page when registrations are open. Companies
+        that want to buy bulk tickets (&gt; 10) can{' '}
+        <a className="maillink" href={'mailto:' + Conference.ContactEmail}>
+          contact us
+        </a>{' '}
+        to pay by invoice (<abbr title="Electronic funds transfer">EFT</abbr>).
+      </Fragment>
+    ),
     Category: 'tickets',
   })
 
@@ -184,7 +164,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Answer: (
       <Fragment>
         Media personnel authorised by {Conference.Name} will be in attendance. These media personnel will respect the
-        photo policy as defined in the <Link href="/code-of-conduct#photo-policy">Code of Conduct</Link>.
+        photo policy as defined in the <a href="code-of-conduct#photo-policy">Code of Conduct</a>.
       </Fragment>
     ),
   })
@@ -249,106 +229,31 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'How can I go to this kind of thing more often?',
     AnswerWithoutParagraph: (
       <Fragment>
-        <p>Perth has a very active software community. Consider attending one of the meetups/conferences such as:</p>
+        <p>
+          Adelaide has a growing, diverse software community. Consider attending one of the meetups/conferences such as:
+        </p>
         <StyledList>
           <li>
-            <SafeLink href="http://www.meetup.com/PerthDotNet/" target="_blank">
-              Perth .NET
+            <SafeLink href="https://www.meetup.com/en-AU/Adelaide-dotNET/" target="_blank">
+              Adelaide .NET User Group
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Perth-Cloud/" target="_blank">
-              Perth MS Cloud Computing User Group
+            <SafeLink href="https://www.meetup.com/en-AU/Front-End-Developers-Adelaide-FEDA/" target="_blank">
+              Front-End Developers Adelaide
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/PerthFP/" target="_blank">
-              Perth Functional Programmers
+            <SafeLink href="https://www.meetup.com/en-AU/Amazon-Web-Services-User-Group-Adelaide/" target="_blank">
+              Amazon Web Services User Group Adelaide
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="http://www.meetup.com/Agile-Perth/" target="_blank">
-              Agile Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/DevOps-Perth/" target="_blank">
-              DevOps Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.meetup.com/Front-End-Web-Developers-Perth/" target="_blank">
-              Front End Web Developers Perth (Fenders)
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-scrum-master-and-coaching-guild/" target="_blank">
-              Perth Scrum Master and Agile Coaching Guild
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/sectalks-perth/" target="_blank">
-              SecTalks Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-digital-transformation-group/" target="_blank">
-              Digital Transformation Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/amazon-web-services-user-group/" target="_blank">
-              Perth AWS User Group
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-ios/" target="_blank">
-              Perth iOS Developers
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/producttank-perth/" target="_blank">
-              ProductTank Perth
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-iot-community/" target="_blank">
-              Perth Internet of Things Community
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-machine-learning-group/" target="_blank">
-              Perth Machine Learning Group
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://www.meetup.com/perth-data-engineering-meetup/" target="_blank">
-              Perth Data Engineering Meetup
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://www.witwa.org.au/" target="_blank">
-              Women in Technology, WA
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://mixinconf.com/" target="_blank">
-              Mixin conference
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="http://west.yowconference.com.au/" target="_blank">
-              Yow! West conference
+            <SafeLink href="https://www.meetup.com/en-AU/Adelaide-Azure-User-Group/" target="_blank">
+              Adelaide Azure User Group
             </SafeLink>
           </li>
         </StyledList>
-        <p>
-          Furthermore, you can see an up to date list of Australian conferences at{' '}
-          <SafeLink href="https://github.com/readify/devevents" target="_blank">
-            Readify's DevEvents repository
-          </SafeLink>
-          .
-        </p>
       </Fragment>
     ),
   })
@@ -358,197 +263,41 @@ export default function getFaqs(dates: Dates): FAQ[] {
     AnswerWithoutParagraph: (
       <Fragment>
         <p>
-          {Conference.Name} is organised by DDD WA Inc. a non-profit organisation set up to create inclusive events for
-          the WA software community. {Conference.Name} {Conference.Instance} is organised by:
+          {Conference.Name} {Conference.Instance} has been organized by Andrew Best, Claire Webber, David Gardiner,
+          Harnoor Bandesh, Isaac Mann, and Will Turner, with support from the broader DDD Australia community including
+          Melbourne, Sydney, Brisbane, and Perth.
         </p>
         <StyledList>
           <li>
-            <SafeLink href="https://www.linkedin.com/in/rebeccacwaters/" target="_blank">
-              Rebecca Waters
+            <SafeLink href="https://twitter.com/_andrewb" target="_blank">
+              Andrew Best
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/amys_kapers" target="_blank">
-              Amy Kapernick
+            <SafeLink href="https://twitter.com/ClaireLWebber" target="_blank">
+              Claire Webber
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/mattyjward" target="_blank">
-              Matt Ward
+            <SafeLink href="https://twitter.com/davidrgardiner" target="_blank">
+              David Gardiner
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/aidanjmorgan" target="_blank">
-              Aidan Morgan
+            <SafeLink href="https://twitter.com/HBandesh" target="_blank">
+              Harnoor Bandesh
             </SafeLink>
           </li>
           <li>
-            <SafeLink href="https://twitter.com/mzaatar" target="_blank">
-              Mo Zaatar
+            <SafeLink href="https://twitter.com/imann04" target="_blank">
+              Isaac Mann
             </SafeLink>
           </li>
-          <li>
-            <SafeLink href="https://twitter.com/robdcrowley" target="_blank">
-              Rob Crowley
-            </SafeLink>
-          </li>
-          <li>Ming Johanson</li>
-          <li>Rob Chard</li>
-          <li>Alex Colville</li>
-          <li>
-            <SafeLink href="https://twitter.com/eleusis7" target="_blank">
-              Sham Chukoury
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/robdmoore" target="_blank">
-              Rob Moore
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/antonjb" target="_blank">
-              Anton Ball
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/battlepanda_au" target="_blank">
-              David Schokker
-            </SafeLink>
-          </li>
-          <li>
-            <SafeLink href="https://twitter.com/Caiwrote" target="_blank">
-              Cairo Malet
-            </SafeLink>
-          </li>
-          <li>Nehal Ghuman</li>
-          <li>Sarah McGeough</li>
-          <li>
-            <SafeLink href="https://twitter.com/meacod" target="_blank">
-              David Meacock
-            </SafeLink>
-          </li>
-          <li>Jamlek Ngaya</li>
-          <li>Ellie Salimi</li>
-          <li>Jett Soderlund-Jackson</li>
-          <li>Meng Dunmow</li>
-          <li>Marina de la Fuente</li>
-          <li>Carla Marinescu</li>
-          <li>
-            <SafeLink href="https://twitter.com/al5848" target="_blank">
-              Allen Azemia
-            </SafeLink>
-          </li>
-          <li>Andrew Logan</li>
+          <li>Will Turner</li>
         </StyledList>
-        <p>Furthermore, we have many others who volunteer and have assisted with organisation in the past</p>
+        <p>Furthermore, we have many others who volunteer and assist with organization.</p>
       </Fragment>
     ),
-  })
-
-  Faqs.push({
-    Question: 'Can I wear a face mask?',
-    Answer: `Absolutely, we support any attendees who choose to wear a face mask on the day of the conference.`,
-    Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'Will you have sanitiser available at the conference?',
-    Answer: `Yes! We'll have sanitising processes in place for all attendees on the day, and this includes providing hand sanitiser. However, we also encourage everyone to bring their own personal supply too, just in case!`,
-    Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'Why can’t I go to the talk I want?',
-    AnswerWithoutParagraph: (
-      <Fragment>
-        <p>
-          As part of our COVID restrictions, we have capacity limits in place for all of our speaker rooms which will be
-          enforced at the door. This means that once a room is full, we can’t let anyone else in. If there’s a talk
-          you’re desperate to see, we recommend getting to the room as early as you can to avoid disappointment and
-          please be kind to those on the door, we guarantee they don’t enjoy having to turn people away.
-        </p>
-        <p>
-          If you do miss something due to capacity limits, keep an eye out after the conference – we’ll be releasing
-          recordings of all the talks so you’ll have the opportunity to catch up on anything you missed!
-        </p>
-      </Fragment>
-    ),
-    Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'How are you managing COVID-19 guidelines and restrictions?',
-    Answer: (
-      <Fragment>
-        Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
-        guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
-      </Fragment>
-    ),
-  })
-
-  Faqs.push({
-    Question: 'I don’t feel well, can I still come to the conference?',
-    Answer: (
-      <Fragment>
-        We all know the drill by now – if you’re experiencing any cold or flu-like symptoms, please stay home and follow
-        the WA government instructions regarding COVID testing. We will be livestreaming the conference, so you will be
-        able to view the talks remotely, or tune into our{' '}
-        <SafeLink href="https://www.youtube.com/c/DDDPerth">YouTube channel</SafeLink> later to view the recorded talks!
-      </Fragment>
-    ),
-    Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'How will the online conference differ from the in-person conference?',
-    Answer: (
-      <Fragment>
-        <p>
-          We intend on hosting an in-person conference, while at the same time making the talks accessible online via
-          high quality livestreams. This should make it easier for those who can't make it to the venue on the day, for
-          one reason or another. While we'll do our best to recreate the DDD Perth <em>vibe</em> as best as we can via
-          the streams, there are some parts of the in-person experience that may be missing.
-        </p>
-        <p>What you can expect from the online experience:</p>
-        <StyledList>
-          <li>High quality, livestreamed talks from our speakers</li>
-          <li>Breaks between talks so you’re not stuck in back to back sessions</li>
-          <li>Live welcomes and prize draws from the DDD Perth committee</li>
-          <li>Participation with attendees and speakers - online or offline - via the #DDDPerth hashtag</li>
-        </StyledList>
-        <p>What you might not see online:</p>
-        <StyledList>
-          <li>Sponsor booths and swag, along with networking opportunities and sponsor prizes</li>
-          <li>Networking opportunities with fellow attendees and speakers, over a catered lunch, tea or coffee</li>
-          <li>The ability to ask speakers questions live at the end of their talks</li>
-          <li>Selfies at the media wall!</li>
-        </StyledList>
-      </Fragment>
-    ),
-    Category: 'online',
-  })
-
-  Faqs.push({
-    Question: 'How do I access the online conference?',
-    Answer: (
-      <Fragment>
-        You can access the online conference via a playlist on our{' '}
-        <SafeLink href="https://www.youtube.com/c/DDDPerth">YouTube channel</SafeLink>
-      </Fragment>
-    ),
-    Category: 'online',
-  })
-
-  Faqs.push({
-    Question: 'What if I can’t attend the online conference?',
-    Answer: `If you’re not able to attend the online conference, you’ll still get the chance to see our wonderful speakers! We’ll be releasing recordings of the talks online so you can watch them back later.`,
-    Category: 'online',
-  })
-
-  Faqs.push({
-    Question: 'Will talks be available online after the conference?',
-    Answer: `Yes! We’ll be releasing recordings of the talks so you can catch up on anything you may have missed on the day.`,
-    Category: 'online',
   })
 
   return Faqs
