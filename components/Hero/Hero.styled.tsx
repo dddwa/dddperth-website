@@ -36,7 +36,7 @@ export const StyledConferenceDetails = styled('p')(({ theme }) => ({
   display: 'block',
   width: '80%',
   maxWidth: calcRem(1000),
-  color: theme.colors.white,
+  color: theme.colors.secondaryDark,
   fontSize: '7vmin',
   fontWeight: theme.weights.bold,
   lineHeight: 1,

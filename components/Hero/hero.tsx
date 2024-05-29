@@ -17,13 +17,13 @@ export const Hero = (): JSX.Element => {
           {venue && <span>{venue}</span>}
         </StyledConferenceDetails>
       )}
-      <StyledCredit>
-        Photo by{' '}
-        <SafeLink href="https://unsplash.com/@drone_nr" target="_blank">
-          Josh Spires
-        </SafeLink>{' '}
-        - dronenr on Unsplash
-      </StyledCredit>
+      {/*<StyledCredit>*/}
+      {/*  Photo by{' '}*/}
+      {/*  <SafeLink href="https://unsplash.com/@drone_nr" target="_blank">*/}
+      {/*    Josh Spires*/}
+      {/*  </SafeLink>{' '}*/}
+      {/*  - dronenr on Unsplash*/}
+      {/*</StyledCredit>*/}
     </StyledHero>
   )
 }

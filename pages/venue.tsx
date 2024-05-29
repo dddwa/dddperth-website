@@ -11,7 +11,7 @@ const VenuePage: NextPage = () => {
   const { conference } = useConfig()
 
   return (
-    <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={false}>
+    <Main title="Venue" description={`About the ${conference.Name} venue.`} showHero={true}>
       <h1>Venue</h1>
 
       {conference.Venue ? (
