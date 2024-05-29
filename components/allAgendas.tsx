@@ -15,7 +15,7 @@ const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps):
     <p className="text-center">
       {conference.PreviousInstances.map((instance, i) => (
         <Fragment key={instance}>
-          {i !== 0 ? ' | ' : null}
+
           {instance === conferenceInstance ? (
             instance
           ) : (
@@ -23,9 +23,10 @@ const AllAgendas = ({ conference, conferenceInstance, dates }: AllAgendasProps):
               <a>{instance}</a>
             </Link>
           )}
+          {i > 0 && i < conference.PreviousInstances.length ? ' | ' : null}
         </Fragment>
       ))}
-      {dates.AgendaPublished && ' | '}
+      {dates.AgendaPublished && conference.PreviousInstances.length > 0 && ' | '}
       {dates.AgendaPublished && conferenceInstance !== conference.Instance && (
         <Link href="/agenda">
           <a>{conference.Instance}</a>

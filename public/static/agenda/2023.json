@@ -1,0 +1,420 @@
+[
+  {
+    "Id": "ac97fc33-c609-42d1-8f49-ccdd2709cc07",
+    "Title": "A career built on DDD",
+    "Abstract": "In 2009 I did something that would shape my career for the next decade, I submitted to, then spoke at my first conference, DDD Melbourne.\r\n\r\nPrior to this I didn't attend conferences or even user groups, but since my first one I've had opportunities to travel the country, and world, speaking at events. I even managed to land my dream job at a company I'd always hoped to work at.\r\n\r\nLet's talk about DDD, and communities in general, and why they are such a valuable resource in how you can shape a career in tech.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Soft Skills",
+      "Career"
+    ],
+    "Presenters": [
+      {
+        "Id": "622f82fd-9963-4bae-920e-4a56f34ba9b1",
+        "Name": "Aaron Powell",
+        "Tagline": "I like long walks on the beach talking about JavaScript",
+        "Bio": "Aaron is a Developer Advocate at Microsoft. Having spent 15 years doing web development he's seen it all, from browser wars, the rise of AJAX and the fall of 20 JavaScript frameworks (and that was just yesterday!). Always tinkering with something new he explores crazy ideas like writing your own implementation of numbers in .NET, creating IoC in JavaScript or implementing tic-tac-toe using git commits.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/c4f9-400o400o1-agS9RwPzvWAYUWUcKjW7Rj.png",
+        "TwitterHandle": "slace",
+        "WebsiteUrl": "https://www.aaron-powell.com"
+      }
+    ]
+  },
+  {
+    "Id": "42a0d186-0e2f-443c-92f2-dd7ff0d677e9",
+    "Title": "A professional career in open-source",
+    "Abstract": "In technology people dream of joining a big corporation and getting paid well. In doing so you sacrifice the freedom to work on your own on things you are interested in and often get embroiled in organisational politics. There is an alternative path in being an open-source technology specialist maintaining core projects vital to the global technology ecosystem and contracting back independently to technology companies. Often running your own consultancy shop, this talk explorers various options of career paths in open-source and the flexibility it provides. There will always be politics, but you get to choose who you work with.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "War Stories",
+      "Career"
+    ],
+    "Presenters": [
+      {
+        "Id": "29e35d8d-ea6d-470c-9646-7d38ed02d570",
+        "Name": "Tisham Dhar",
+        "Tagline": "Senior Engineer, CSIRO, Space and Astronomy ",
+        "Bio": "Tisham is a Senior Engineer at CSIRO Space and Astronomy division. Previously he held similar roles in various government agencies, private sector companies and startups. He has been pushing pixels since 2004 when he got started using medical imaging devices in Singapore. Since then he has had the priviledge of working with various space agencies such as NASA, DLR, JAXA, CNES etc. and lived through the explosion of publicly available satellite imagery.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/9ce3-400o400o1-XMRkbZugCakTh3VnHFrCXe.jpg",
+        "TwitterHandle": "whatnick",
+        "WebsiteUrl": "https://whatnicklife.blogspot.com"
+      }
+    ]
+  },
+  {
+    "Id": "781dd4d7-46f8-4e14-a4d4-5591aa0aefac",
+    "Title": "A SOLID takedown of OOP",
+    "Abstract": "You may have heard the acronym SOLID. It is one of the most widely-referenced sets of software design principles, appearing everywhere from architecture guidelines to job descriptions. It's also closely associated with the Object-Oriented Programming (OOP) paradigm.\r\n\r\nThis talk builds a critique of OOP through an exploration of the SOLID design principles. You may be thinking something along the lines of \"overengineering\" or \"unnecessary complexity\". But this talk makes a different point: that the simple, maintainable software engendered by SOLID principles may be best achieved by thinking outside of OOP.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "Tags": [
+      "Backend Development",
+      "Programming Languages"
+    ],
+    "Presenters": [
+      {
+        "Id": "aeb0f7c0-1354-4479-9063-2e654e75c206",
+        "Name": "Troy Gerwien",
+        "Tagline": "Software Engineer",
+        "Bio": "Troy has 20+ years software engineering experience across a range of industries including games, education, healthcare, and resources. He also maintains and contributes to several open-source projects, and is a mentor at CoderDojo. Troy is interested in what makes software great, not just for the user, but also for the team maintaining it.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/c2a8-400o400o1-HNGZWPvVJi25m2MFTJ27PF.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://au.linkedin.com/in/troygerwien"
+      }
+    ]
+  },
+  {
+    "Id": "19c02d9c-493a-4d75-b8a7-99c9115391bd",
+    "Title": "Architecting for Longevity",
+    "Abstract": "Lessons learnt in burning everything to the ground, and what we can do to attempt to stop it happening again... and again",
+    "Format": "45 mins",
+    "Level": "Mostly advanced",
+    "Tags": [
+      "Backend Development",
+      "Architecture"
+    ],
+    "Presenters": [
+      {
+        "Id": "5718d7a0-59ae-443c-9640-9df2145a473d",
+        "Name": "Ryan Craig",
+        "Tagline": "Quoterite - CTO",
+        "Bio": "Ryan is currently the CTO at Quoterite, he has worked at multiple start-ups (including his own consultancy) and architected systems across most platforms and is an avid believer in the benefits of good Software Architecture. He has a passion for functional programming, UX, DX, DevOps and his favourite thing is deleting code.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/d095-400o400o1-EPa5M3RVKbbBhP2e9C8K3t.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": null
+      }
+    ]
+  },
+  {
+    "Id": "1ba234a9-553e-485b-8b6d-66abaec063e9",
+    "Title": "Attract, retain and grow technical women",
+    "Abstract": "Women get asked all the time, how do I get more women into my team and company - well I’m here to answer that! There are a lot of factors that play into it from pipeline to company perception. And once women are onboard, there’s work to be done in retention and most importantly GROWTH.\r\n\r\n \u2028\u2028I’ve worked with companies all over Australia on how to be more inclusive for women. I’m also run free coding and workshop events for women, non-binary and trans folk as an organiser of Muses Code JS women. I’ve seen a lot of stuff go down. But I’ve also seen a lot of incredible wins. \u2028\u2028\r\n\r\nThere is gap in how we support our technical women. And I’m keen to share how we as a community can progress and empower technical women.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "People & Culture",
+      "Culture"
+    ],
+    "Presenters": [
+      {
+        "Id": "dabeaf1e-b9e0-449a-9782-a58d59b08550",
+        "Name": "Sammy Herbert",
+        "Tagline": "Head of Developer Experience | Muses Code JS Organiser",
+        "Bio": "Sammy is the Head of Developer Experience at SixPivot, an Australian based consultancy specialising in .NET application development and cloud consulting. Sammy works toward best practices for software developers and agitates to build diverse teams. Sammy and her work have consecutively been recognised in AFR's Best Places to Work in Technology and won numerous awards in employee flexibility, diversity and mental health. She’s also an organiser for Muses Code JS, running free coding workshops events for women, non-binary and trans folk. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/c855-400o400o1-4QiVnKYAUaA9onVHuh1UR1.png",
+        "TwitterHandle": "SammyHerbert",
+        "WebsiteUrl": "https://www.linkedin.com/in/sammyherbert/"
+      }
+    ]
+  },
+  {
+    "Id": "35c9aa76-2734-4492-89d6-2c04df8ef5d4",
+    "Title": "Battling Burnout",
+    "Abstract": "Burnout isn’t just some hypothetical thing that happens when someone is working too much or too hard. There are very real changes that can happen in your brain, body and thought processes. Some of us have or will experience some sort of burnout at some point in our lives or careers. It may come on quickly, or it may be due to the accumulation of stress over a longer period of time. Either way, it can lead to serious problems with your mental health, personal relationships and ability to work.\r\n\r\nWhile burnout may not be the same between any two people, during this I’ll cover some of the signs and symptoms of burnout:\r\n\r\n- How can you recognise burnout in yourself or your staff / colleagues?\r\n- What might be happening and how might you be able to help?\r\n\r\nI’ll also talk through my own experiences having dealt with it myself, and seeing the signs in others. Hopefully you’ll come away with a better understanding of what may or may not be healthy work behaviours, and be able to recognise when things are going wrong before you burnout yourself.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "People & Culture",
+      "Health"
+    ],
+    "Presenters": [
+      {
+        "Id": "72b3cbe8-5ed2-4c40-815c-1c98ad987709",
+        "Name": "Brendan Graham",
+        "Tagline": "Principal Engineer at MakerX",
+        "Bio": "Through 20 years of experience, I have consulted and worked across a large range of sectors, public and private, small and large. I've been a developer, lead teams, managed and coached people and consulted and advised clients from development teams up to C level staff. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/0ed3-400o400o1-a6V9DcKCkDSV8Q5evC92vJ.jpg",
+        "TwitterHandle": "turtlator",
+        "WebsiteUrl": "https://www.linkedin.com/in/brendan-graham-09498225/"
+      }
+    ]
+  },
+  {
+    "Id": "16e8e87c-199c-430a-b5a6-b5a5997f79cf",
+    "Title": "Breaking Down UX Wizardry in Best-Selling Games",
+    "Abstract": "Get a behind-the-scenes look at the UX methodologies employed in hit games. Learn how industry giants master the art of user experience to create chart-topping successes. ",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Design and UX",
+      "Gaming"
+    ],
+    "Presenters": [
+      {
+        "Id": "b39c8dfd-4c9d-416c-ac96-40184a37ecae",
+        "Name": "Rachel Mesler",
+        "Tagline": "UX Designer at Mighty Kingdom",
+        "Bio": "Rachel is a UX designer in games with a burning passion for UX, a deep-rooted love for gaming, and a commitment to fostering diversity and inclusion. Her experience in UX and games research in the games sector provides her with unique insights she's eager to share.\r\n\r\nOutside of work, Rachel busies herself as a Women in Games ambassador and organiser of Women in Tech SA and Product of ADL (local product design meetup). She also plays badminton, learns Japanese and spends a lot of time in the kingdom of Hyrule. ",
+        "ProfilePhotoUrl": "https://sessionize.com/image/6317-400o400o1-h7XP489Xz2JfNwb5ASfWJa.jpg",
+        "TwitterHandle": "RachelMesler",
+        "WebsiteUrl": "https://www.linkedin.com/in/rachel-mesler/"
+      }
+    ]
+  },
+  {
+    "Id": "cfd2052b-16a4-4742-83ba-faeb325925f8",
+    "Title": "Building Accessible Components",
+    "Abstract": "Accessibility is usually measured and defined at the page level, but we often develop at a widget or module level. How can we work in a way which builds accessible chunks instead of waiting until the site is nearly done to test and fix accessibility issues? \r\n\r\nThis is a walkthrough of a four step process you can use on the small tasks that build up to become our larger projects. Learn how to use the accessibility stack to make sure you've covered common use-cases for assistive technology, and add a little bit of delight for your users with impairments. \r\n\r\nYou'll be able to use this process on any size task to meet your accessibility requirements faster and more easily than waiting for an audit or bug report. ",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Frontend Development",
+      "Accessibility"
+    ],
+    "Presenters": [
+      {
+        "Id": "72c3a155-b9c6-47db-abce-1bd529db7768",
+        "Name": "Julie Grundy",
+        "Tagline": "Senior Digital Accessibility Consultant, Former Front End Dev",
+        "Bio": "Julie Grundy is an accessibility expert who works for Intopia, a digital accessibility consultancy. She has over 15 years experience as a front-end web developer in the health and education sectors. She believes in the democratic web and aims to unlock digital worlds for as many people as possible. In her spare time, she knits very slowly and chases very quickly after her two whippets.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/fd6d-400o400o1-a4RFFt1wTJgqsWN9sRVXQE.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://www.juliegrundy.id.au/"
+      }
+    ]
+  },
+  {
+    "Id": "b864988e-252c-4afc-b846-3826d87d4112",
+    "Title": "Documentation for Developers",
+    "Abstract": "It's well known that as developers we all cringe at the thought of documentation and often the biggest barrier to adding some documentation is the friction of getting started. In my work as an engineering manager and consultant I've collated a number of code-first approaches to documentation that are light-weight, and easy to maintain.\r\n\t\r\nIn this talk I will cover topics including: tooling for creating documentation-as-code, Architecture Decision Records (ADRs), the C4 Model, Plant UML, Markdown and how all of this can be used together to minimise the onboarding time for new developers to your projects. \r\n\t\r\nI've presented a version of this talk at DDD Brisbane and to several client teams and it has often resulted in developers and teams adopting new practices and becoming advocates of this approach to documentation and information sharing.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "People & Culture",
+      "Teams"
+    ],
+    "Presenters": [
+      {
+        "Id": "02d4f416-dd60-43a9-b1a3-6b7dc4129b87",
+        "Name": "Shaw Innes",
+        "Tagline": "Principal Consultant, SixPivot",
+        "Bio": "Shaw Innes (he/him) is a developer, consultant, and general tech-fan. He has worked in software development for 20+ years and in this time has moved from being an individual contributor, to becoming a technical leader.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/b7c8-400o400o1-KtkbwfdRVPXfDpocjH9y2T.jpg",
+        "TwitterHandle": "shawinnes",
+        "WebsiteUrl": "https://shawinnes.com"
+      }
+    ]
+  },
+  {
+    "Id": "1dba78ad-5e27-43a9-a709-6b0735eb4a78",
+    "Title": "Getting Comfortable with the Unknown",
+    "Abstract": "At the beginning of anything \"new\" - a new project, a new client, a new company, a new chapter of your life - we can feel overwhelmed by our knowledge gaps - or the unknowns. In this session, I will show you how I use agile methodologies to get clarity on what I need to know, and how I can get that information, and what I can deprioritise in the backlog.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Soft Skills",
+      "Prioritization"
+    ],
+    "Presenters": [
+      {
+        "Id": "1529d148-8c3f-4b0b-8572-3d42a4470142",
+        "Name": "Amanda Pitcher",
+        "Tagline": "Principal Consultant - Design, Innovation, and Strategy at Telstra Purple",
+        "Bio": "I am a designer with a digital production background. I'm all about putting humans at the centre of everything we do, and finding ways to make their lives easier through technology, process, and culture.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/2d86-400o400o1-PA9ez1baXjwHGNy1SFf4ms.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://linkedin.com/in/amandapitcher"
+      }
+    ]
+  },
+  {
+    "Id": "1488a444-27cc-4391-980c-5c346df1c041",
+    "Title": "How Adelaide Builds Product",
+    "Abstract": "We interviewed 6 Engineering leaders in Adelaide working across a range of industries. We asked them how they manage their teams, what they believe is important to an engineering team, and what engineering and product practices they find to be overrated. Here's an unbiased summary of their opinions (not mine). These are all true stories. Names have been changed to protect the guilty.",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "Tags": [
+      "People & Culture",
+      "Management"
+    ],
+    "Presenters": [
+      {
+        "Id": "090c0117-7aa0-4f99-aeba-567d2697c695",
+        "Name": "Ben Ernst",
+        "Tagline": "Chief Product Officer, Optimatics",
+        "Bio": "Ben Ernst is Chief Product Officer at Optimatics, which provides AI-driven solutions to the global water industry. He cares about Engineering and Product, and continuous improvement of self, team and process.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/f9f1-400o400o1-Kg4RoK5yVVH1RubcBvzBhW.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://www.linkedin.com/in/b-ernst/"
+      }
+    ]
+  },
+  {
+    "Id": "b8f734bd-d625-43a3-aaa1-959e8bdea594",
+    "Title": "How to (remotely) win friends and influence people",
+    "Abstract": "Tired of your boss telling you to get back into the office?\r\n\r\nWant to have an amazing impact across the workplace in the comfort of your trackies?\r\n\r\nWhat if I told you that you could lead impactful, supportive, and effective teams, without giving up the commute from your bedroom to your (home) office?\r\n\r\nWhat if I told you that you could grow your own career and influence in your organisation, whilst still making time for growing those tomatoes out the back?\r\n\r\nCome learn how to maximise your impact as a remote leader or team member. We'll take a walk through different techniques and tools to help you prove remote collaboration is just as productive, how to build strong cross-functional relationships remotely, and how to build empowered and productive teams.\r\n\r\nWhilst you'll get the most out of this session if you already work remotely, or are interested in doing so, folks who prefer the office side of life will still come away with ideas, tips, and techniques that will not only help their remote colleagues, but themselves.\r\n\r\n",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Soft Skills",
+      "Career"
+    ],
+    "Presenters": [
+      {
+        "Id": "6f0fea03-dc9d-4a62-9572-842cf1d463d7",
+        "Name": "Tom Ridge",
+        "Tagline": "Staff engineer at Culture Amp",
+        "Bio": "Tom Ridge is a father of 4, an engineer, aspiring entrepreneur, and long time remote worker and leader. \r\n\r\nWhen he does find a scrap of time, he's known to run a D&D game or three.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/422a-400o400o1-Yfb6NKeEov8rEVqRzdBo5a.jpeg",
+        "TwitterHandle": "tjridge",
+        "WebsiteUrl": "https://tomridge.substack.com/"
+      }
+    ]
+  },
+  {
+    "Id": "5c24d137-ae0f-44ab-a955-4570bb6e815f",
+    "Title": "I Connected My Farm To The Internet. Now What?",
+    "Abstract": "Have you ever wondered what happens when llamas meet the Internet of Things? Neither had I, until I connected my llama farm to the Internet! Join me on this wild ride where we’ll venture into the less-trodden path of llama-friendly automation. We'll tackle pressing questions like 'Should my llama-cams run in the cloud, or would local control prevent a llama-lanche?' and 'What if my automatic gate is offline during a llama stampede?' It's like a tech-enabled Noah's Ark, only with more llamas and fewer pairs.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Cloud",
+      "Azure"
+    ],
+    "Presenters": [
+      {
+        "Id": "b7f42343-a583-499a-b5ce-361e146a706a",
+        "Name": "Lars Klint",
+        "Tagline": "Llama Wrangler - Home Automation Nerd - Microsoft MVP",
+        "Bio": "Lars is an author, trainer, Microsoft Azure MVP, community leader, aspiring YouTube host and part time classic car collector. He is heavily involved in the space of cloud computing services, especially Azure, and is a published author, solution architect and writer for numerous publications. He has been a part of the software development community for the past 20 years and co-organises the DDD Melbourne community conference, organises developer events with Microsoft, and also runs a part time car restoration business. He has spoken at numerous technical events around the world and is an expert in Australian Outback Internet.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/eb30-400o400o1-MwHogC8MDk26zpda1ZcaP6.JPG",
+        "TwitterHandle": "larsklint",
+        "WebsiteUrl": "https://larsklint.com/"
+      }
+    ]
+  },
+  {
+    "Id": "7848dfdc-6389-4535-a763-03a82d199964",
+    "Title": "I Terra-formally Invite You to Start Using Terraform as Your Infrastructure as Code Tool!",
+    "Abstract": "Click-Opsing your infrastructure is costing you time, money, and sanity. Join me in an exploration into Terraform and the principles of keeping your Infrastructure simple enough to call it Infrastructure as Text. We will work through an overview of what Terraform is, how to read and write Terraform, and some tricks from a full time Terraformer.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "DevOps",
+      "Programming Languages"
+    ],
+    "Presenters": [
+      {
+        "Id": "9ef202fb-019f-41a3-89a4-71211b7a8743",
+        "Name": "Ryan Royals",
+        "Tagline": "Senior Cloud Infrastructure Consultant at Arkahna",
+        "Bio": "Hi! I'm a passionate guy that loves all things Cloud, Automation, and Optimization. Not a programmer but spend a lot of time in the ecosystem working with startups, specializing deeply in Terraform and Azure.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/3fc0-400o400o1-HNwGj8gg7WVcBzjn5nFE2u.jpg",
+        "TwitterHandle": "RyanRRoyals",
+        "WebsiteUrl": "https://www.linkedin.com/in/ryan-royals-17785b148/"
+      }
+    ]
+  },
+  {
+    "Id": "177a8bf4-955b-44b8-be5a-0e1c31d1cb2c",
+    "Title": "Source Generators: Spending hours to automate what takes minutes to write",
+    "Abstract": "There's a certain joy that I receive from automating a task. Knowing that it gets completed efficiently and precisely without the messy involvement of other humans, or myself. However, source generators have a variety of practical and tangible real-world applications that span far greater than self-satisfaction. \r\n\r\nIn this talk we discuss what source generators are in the C# ecosystem, how they compare to other code generation approaches, tips on how to get started writing your first generator and why they are a valuable tool in your programming toolkit. \r\n\r\nDive with me into a practical real-world example that is applicable to games programming inside the Godot game engine. Highlighting differences of working with this platform compared to more traditional .NET applications. ",
+    "Format": "45 mins",
+    "Level": "Mostly intermediate",
+    "Tags": [
+      "Backend Development",
+      "Coding"
+    ],
+    "Presenters": [
+      {
+        "Id": "96261a75-18db-4b1d-ad92-0cea6005ebbc",
+        "Name": "Scott Cabot",
+        "Tagline": "Game Developer at Mighty Kingdom",
+        "Bio": "Scott is currently a Game Developer at Mighty Kingdom. He has been fortunate to work on a large number of shipped titles including working with world recognised brands.\r\n\r\nScott has an interest in systems and performance and how they can be applied across a wide variety of games projects.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/370e-400o400o1-a37R5U7bk4hmpgy3cZJ9Qw.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://scott.cab/blog/"
+      }
+    ]
+  },
+  {
+    "Id": "9dbd8adb-e2e7-4946-8046-4e4b3fadef80",
+    "Title": "Succeeding as a Junior Software Engineer",
+    "Abstract": "Often when I am given advice to succeed in my role, it comes from the perspective of those who have had long established careers in software. Of course, with all that experience, I’d be a fool not to listen and heed their word - right? Well, sometimes insights like these can be biased towards their own perceived success or may only be applicable to someone just like them. I’ve since learned I can’t listen to every single advice given to me regardless of their long running experience in software. Through this talk, I aim to bring in insights I have gathered through my own experience as a junior software engineer in conjunction with more or less helpful advice and mentoring from my fellow senior peers. By discussing my journey in landing my first developer role through to covering the successes and failures that have navigated my career as a junior software engineer, I hope to reach out to other juniors and help them in their own journey with software engineering.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "People & Culture",
+      "Career"
+    ],
+    "Presenters": [
+      {
+        "Id": "b2ec5013-3130-40fe-af38-e2c56ced0bf4",
+        "Name": "Kate Yvonne Kearsley",
+        "Tagline": "Optimatics",
+        "Bio": "Adelaide local born in the islands of the Philippines. Migrated to Australia in 2006. Educational background in Game Art (AIE) and B. Architectural Design (University of Adelaide).",
+        "ProfilePhotoUrl": "https://sessionize.com/image/a13a-400o400o1-pB56pPv8NTCiav9RpBfzVP.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://www.linkedin.com/in/kate-yvonne-kearsley"
+      }
+    ]
+  },
+  {
+    "Id": "f66e64f8-f731-45dd-8b3e-2844888eb9da",
+    "Title": "They see me scrollin'",
+    "Abstract": "In this talk we'll take a trip far back in history and see how UX design is rooted in 16th century printing techniques. Some of our 'human-centered design strategies' to engage and retain a user's attention find their origins in Antiquity and it's fascinating to see how they translate in code.\r\n\r\nUsing typography as a study case, we'll look at the ebb and flow of technological progress vs return to origins, and understand how far we've come in this competition for our users' attention.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Design and UX",
+      "Design"
+    ],
+    "Presenters": [
+      {
+        "Id": "4ed737dc-fe95-48d8-958d-a7aa7af3b2e5",
+        "Name": "Monelle Trachez",
+        "Tagline": "Ordinary human",
+        "Bio": "I'm a design & print hobbyist, interested in anything super modern and really ancient hence why I like so much to talk about typography.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/9452-400o400o1-SHyEgbNngLfFcgUgGK3dbd.png",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://www.linkedin.com/in/monelle-trachez/"
+      }
+    ]
+  },
+  {
+    "Id": "7cba8b73-494d-48ed-820e-c7201bb520d4",
+    "Title": "What the failed Burke & Wills expedition can teach us about software projects",
+    "Abstract": "The year is 1860. 19 men set out to find a way across Australia from Melbourne to the Gulf of Carpentaria. 7 men died. 1 made the whole journey.\r\n\r\nAlthough 160 years in the past, the key points of this failed expedition are directly relatable to software projects. Let’s dive into some history and learn from it.\r\n\r\nI promise to wear a cowboy hat.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Soft Skills",
+      "Culture"
+    ],
+    "Presenters": [
+      {
+        "Id": "cb18f040-5831-41fa-9b78-e3cf890b4e6b",
+        "Name": "Chris Gilbert",
+        "Tagline": "Common Sense Enthusiast",
+        "Bio": "Consulting Director & Principal Consultant, SixPivot",
+        "ProfilePhotoUrl": "https://sessionize.com/image/bb9e-400o400o1-9rVinQwmjuDVSxcq7DPd1k.jpg",
+        "TwitterHandle": "http://twitter.com/chriswithpants",
+        "WebsiteUrl": "https://www.linkedin.com/in/chriswithpants/"
+      }
+    ]
+  },
+  {
+    "Id": "77ac6e36-be53-4b9a-80bf-07cd2ea8a645",
+    "Title": "Why I started a developer co-operative",
+    "Abstract": "You can't do everything yourself, but when all of the common business models don't sit well with you, how do you get more people involved?\r\n\r\nI turned away from a model that builds piles of gold for myself (and others) to sit on, and was only available to the most privileged of us in society. Instead, I engaged a like minded co-founder to start something equitable, available for all, and where those involved retained ownership of the business.  \r\n\r\nCome and learn about our (very) early stage Developer Co-operative, about some existing successful Developer Co-operatives and absorb some of the philosophical, strategic and commercial challenges you face in giving away control and ownership.",
+    "Format": "45 mins",
+    "Level": "No experience necessary",
+    "Tags": [
+      "Strategy",
+      "Management"
+    ],
+    "Presenters": [
+      {
+        "Id": "8df06840-e904-4c55-b9c7-b98be74776ea",
+        "Name": "Joel Small",
+        "Tagline": "Co-Founder, PremiumBreed",
+        "Bio": "Joel has worked a variety of Development and Leadership roles over the last 20 years, from frontline support to CTO.  He comes with a wealth of experience in bad decisions and a questionable sense of humor, but a solid commitment to making a positive social, environmental and economic impact.",
+        "ProfilePhotoUrl": "https://sessionize.com/image/cda5-400o400o1-9BsgxPmJB2ZJeotycQHpHG.jpg",
+        "TwitterHandle": null,
+        "WebsiteUrl": "https://www.linkedin.com/in/joel-small-au/"
+      }
+    ]
+  }
+]

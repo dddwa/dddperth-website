@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import From2017 from 'config/2017'
+import From2023 from 'config/2023'
 import SponsorData from 'config/sponsors'
 import { TicketPurchasingOptions } from 'config/types'
 import { Button } from 'components/global/Button/Button'
@@ -88,7 +88,7 @@ export const TestingControl = (): JSX.Element => {
           >
             Tickets sold out
           </StyledButton>
-          <StyledButton kind="inverse" onClick={() => (conference.Sponsors = From2017.Sponsors)}>
+          <StyledButton kind="inverse" onClick={() => (conference.Sponsors = From2023.Sponsors)}>
             Add sponsors
           </StyledButton>
           <StyledButton kind="secondary" onClick={resetVote}>
