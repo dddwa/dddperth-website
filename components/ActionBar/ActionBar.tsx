@@ -11,7 +11,7 @@ export const ActionBar = (): JSX.Element => {
 
   return (
     <StyledActionBarContainer>
-      <p>DDD Perth is an inclusive conference for the Perth tech community.</p>
+      <p>{conference.TagLine}</p>
       <ul>
         {secondaryAction && (
           <li>
