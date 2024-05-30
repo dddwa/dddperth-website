@@ -1,8 +1,6 @@
-[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/dddwa.dddperth-website?branchName=main)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=4)
-
 # DDD Adelaide Website
 
-[![Build status](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_apis/build/status/DDD%20Adelaide%20Website-CI)](https://dev.azure.com/dddwa/DDD%20Perth%20Website/_build/latest?definitionId=3)
+[![Build and Deploy](https://github.com/dddadelaide/dddadelaide-website/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/dddadelaide/dddadelaide-website/actions/workflows/build-and-deploy.yml)
 
 The DDD Adelaide website is a fork of the [DDD Perth website](https://github.com/dddwa/dddperth-website).
 
