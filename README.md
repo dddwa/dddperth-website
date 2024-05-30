@@ -49,7 +49,7 @@ If you want to make tweaks to the pages then inspect the files in the `pages` di
 
 ## CI / CD
 
-We use Azure DevOps for CI / CD. This is controlled via [.devops/azure-pipelines.yml](.devops/azure-pipelines.yml).
+We use Github Actions for CI / CD. This is controlled via [.github/workflows/build-and-deploy.yml](.github/workflows/build-and-deploy.yml).
 
 ## Tests
 
