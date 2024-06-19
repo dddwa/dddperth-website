@@ -10,6 +10,7 @@ export const theme = {
     grey100: '#F4F7F6',
     dddorange: '#f35e29',
     dddorange600: '#e33b13',
+    dddorange700: '#bd2a11',
     ///////////////////////////
     primary: '#16a5a6',
     primary800: '#13585c',

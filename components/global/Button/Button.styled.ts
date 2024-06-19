@@ -18,11 +18,11 @@ export const StyledLinkButton = styled('button', {
   textDecoration: 'underline',
   background: 'transparent',
   border: 'none',
-  color: theme.colors.dddorange,
+  color: theme.colors.dddorange600,
   cursor: 'pointer',
 
   '&:hoverm &:focus': {
-    color: theme.colors.dddorange600,
+    color: theme.colors.dddorange700,
   },
 }))
 
@@ -30,23 +30,23 @@ function getButtonStylesForKind(kind: ButtonKinds, theme: DDDTheme): CSSObject {
   switch (kind) {
     case 'primary':
       return {
-        backgroundColor: theme.colors.dddorange,
+        backgroundColor: theme.colors.dddorange600,
         color: theme.colors.white,
         fill: 'currentColor',
 
         '&:hover, &:focus': {
-          backgroundColor: theme.colors.dddorange600,
+          backgroundColor: theme.colors.dddorange700,
           color: theme.colors.white,
         },
 
         '&:focus': {
-          boxShadow: `0 0 0 ${calcRem(theme.metrics.xs)} ${theme.colors.dddorange}`,
+          boxShadow: `0 0 0 ${calcRem(theme.metrics.xs)} ${theme.colors.dddorange600}`,
         },
       }
     default:
       return {
         backgroundColor: theme.colors.grey300,
-        color: theme.colors.dddorange,
+        color: theme.colors.dddorange600,
         '&:hover, &:focus': {
           backgroundColor: theme.colors.grey400,
         },
