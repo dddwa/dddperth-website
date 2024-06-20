@@ -29,13 +29,11 @@ export default function getFaqs(dates: Dates): FAQ[] {
 
   Faqs.push({
     Question: 'How much does it cost to attend?',
-    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day${
-      Conference.HasAfterParty ? ' and access to the afterparty!' : '!'
+    Answer: `${Conference.TicketPrice} covers your entry, food and coffee all day! '
     }  Amazing value right!?
+      After party tickets are purchased separately.
       We are able to keep the ticket price so low thanks to our generous sponsors.
-      ${
-        Conference.Name
-      } is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
+      ${Conference.Name} is a non profit event and any excess will be kept as part of a fund for future events and/or donated to charity.`,
     Category: 'tickets',
   })
 
@@ -78,6 +76,12 @@ export default function getFaqs(dates: Dates): FAQ[] {
   })
 
   Faqs.push({
+    Question: 'How do after party tickets work?',
+    Answer:
+      "After party tickets are only available as an upgrade when purchasing a Conference ticket. Can't attend the conference but still want to attend the After Party - purchase a pay-it-forward or remote conference ticket and you are eligible to purchase an After Party ticket - just contact us once your PIF purchase has been processed",
+  })
+
+  Faqs.push({
     Question: 'Is this just for software developers?',
     Answer:
       'No! While our name implies we are just about devs, our events are aimed at all professionals in the software industry - developers, testers, designers, analysts, managers, etc.',
@@ -112,10 +116,10 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Will childcare be available?',
     Answer: (
       <Fragment>
-        <p>
-          Unfortunately, childcare is <strong>sold out</strong> for {Conference.Name} {Conference.Instance}.
-        </p>
         {/* <p>
+          Unfortunately, childcare is <strong>sold out</strong> for {Conference.Name} {Conference.Instance}.
+        </p> */}
+        <p>
           Yes! Childcare is available for the duration of the main conference and is free. You will be required to
           provide food for your child for the day if they are under 12. If you would like to book your child in then
           click the childcare link after purchasing your ticket. We will update this FAQ if we reach capacity.
@@ -123,7 +127,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
         <p>
           DDD Perth welcomes babies and their prams, and older children are also welcome to attend the conference.
           Please ensure all attendees are registered.
-        </p> */}
+        </p>
       </Fragment>
     ),
     Category: 'tickets',
@@ -455,35 +459,6 @@ export default function getFaqs(dates: Dates): FAQ[] {
     Question: 'Will you have sanitiser available at the conference?',
     Answer: `Yes! We'll have sanitising processes in place for all attendees on the day, and this includes providing hand sanitiser. However, we also encourage everyone to bring their own personal supply too, just in case!`,
     Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'Why can’t I go to the talk I want?',
-    AnswerWithoutParagraph: (
-      <Fragment>
-        <p>
-          As part of our COVID restrictions, we have capacity limits in place for all of our speaker rooms which will be
-          enforced at the door. This means that once a room is full, we can’t let anyone else in. If there’s a talk
-          you’re desperate to see, we recommend getting to the room as early as you can to avoid disappointment and
-          please be kind to those on the door, we guarantee they don’t enjoy having to turn people away.
-        </p>
-        <p>
-          If you do miss something due to capacity limits, keep an eye out after the conference – we’ll be releasing
-          recordings of all the talks so you’ll have the opportunity to catch up on anything you missed!
-        </p>
-      </Fragment>
-    ),
-    Category: 'health',
-  })
-
-  Faqs.push({
-    Question: 'How are you managing COVID-19 guidelines and restrictions?',
-    Answer: (
-      <Fragment>
-        Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
-        guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
-      </Fragment>
-    ),
   })
 
   Faqs.push({

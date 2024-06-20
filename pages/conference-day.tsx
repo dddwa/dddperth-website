@@ -181,11 +181,6 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
           {/* <li>Matt Ward - 0403 695 863</li> */}
         </StyledList>
       </div>
-      <h2>COVID-19</h2>
-      <Text>
-        Our <SafeLink href="/covid-policy">COVID-19 Policy</SafeLink> explains how we're adhering to WA Government
-        guidelines, and our expectations for attendees to enjoy the conference safely and responsibly.
-      </Text>
       <h3>Feel Unwell During the Day?</h3>
       <StyledList>
         <li>
@@ -195,14 +190,6 @@ const ConferenceDayPage: NextPage<ConferencePageProps> = ({ sessions }) => {
         <li>
           If on the day you feel unwell, please mask up, inform the help desk and leave the event. Provide your details
           so we can check you're going okay and then seek medical assistance.
-        </li>
-      </StyledList>
-      <h3>Be COVID Safe</h3>
-      <StyledList>
-        <li>Sanitiser will be available throughout the venue. If you need help, speak to a volunteer.</li>
-        <li>
-          During our prize draw, winners have the option of a high five, foot tap, elbow bump, high five “miss” or a
-          wave.
         </li>
       </StyledList>
       {/* <h2>Livestream</h2>
