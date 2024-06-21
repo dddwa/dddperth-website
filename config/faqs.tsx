@@ -53,7 +53,7 @@ export default function getFaqs(dates: Dates): FAQ[] {
               </>
             ) : (
               <>
-                registering <SafeLink href="https://ti.to/dddperth/2023/with/general-attendee-free">here</SafeLink>
+                registering <SafeLink href="https://ti.to/dddperth/2024/with/general-attendee-free">here</SafeLink>
               </>
             )
           ) : (
