@@ -8,13 +8,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy-test:
     permissions:
       id-token: write
       contents: write
     runs-on: ubuntu-latest
+    needs: build
+    environment: test
+    if: github.event_name != 'workflow_dispatch'
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -30,6 +34,9 @@ jobs:
       - name: Login to ACR via OIDC
         run: az acr login --name ${{ vars.REGISTRY_NAME }}
 
+      - name: Write .env.production
+        run: echo '${{ toJSON(vars) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.production
+
       - name: Build the Docker image
         run: |
           docker build -t ${{ vars.REGISTRY_NAME }}.azurecr.io/dddadelaidewebsite:${{ github.sha }} .
@@ -37,24 +44,6 @@ jobs:
       - name: Push the Docker image to ACR
         run: |
           docker push ${{ vars.REGISTRY_NAME }}.azurecr.io/dddadelaidewebsite:${{ github.sha }}
-
-  deploy:
-    permissions:
-      id-token: write
-      contents: write
-    runs-on: ubuntu-latest
-    needs: build
-    environment: test
-    if: github.event_name != 'workflow_dispatch'
-
-    steps:
-
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ vars.AZURE_CLIENT_ID }}
-          tenant-id: ${{ vars.AZURE_TENANT_ID }}
-          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy Website Revision
         uses: azure/container-apps-deploy-action@v2
@@ -67,18 +56,9 @@ jobs:
           imageToDeploy: dddadelaide.azurecr.io/dddadelaidewebsite:${{ github.sha }}
           targetPort: 3000
           ingress: external
-          environmentVariables: >
-            "NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY=${{ vars.APPINSIGHTS_INSTRUMENTATIONKEY }}"
-            "NEXT_PUBLIC_GET_SUBMISSIONS_URL=${{ vars.BACKEND_URL }}/api/GetSubmissions"
-            "NEXT_PUBLIC_SUBMIT_VOTE_URL=${{ vars.BACKEND_URL }}/api/SubmitVote"
-            "NEXT_PUBLIC_GET_AGENDA_URL=${{ vars.BACKEND_URL }}/api/GetAgenda"
-            "NEXT_PUBLIC_SUBMIT_FEEDBACK_URL=${{ vars.BACKEND_URL }}/api/SubmitFeedback"
-            "NEXT_PUBLIC_TESTING_MODE=${{ vars.TESTING_MODE }}"
-            "NEXT_PUBLIC_ELO_PAIR=${{ vars.BACKEND_URL }}/api/EloVotingGetPair"
-            "NEXT_PUBLIC_ELO_VOTE=${{ vars.BACKEND_URL }}/api/EloVotingSubmitPair"
           disableTelemetry: true
 
-  deploy-production:
+  build-and-deploy-production:
     permissions:
       id-token: write
       contents: write
@@ -89,12 +69,31 @@ jobs:
 
     steps:
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Azure login
         uses: azure/login@v1
         with:
           client-id: ${{ vars.AZURE_CLIENT_ID }}
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Login to ACR via OIDC
+        run: az acr login --name ${{ vars.REGISTRY_NAME }}
+
+      - name: Write .env.production
+        run: echo '${{ toJSON(vars) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.production
+
+      - name: Build the Docker image
+        run: |
+          docker build -t ${{ vars.REGISTRY_NAME }}.azurecr.io/dddadelaidewebsite:${{ github.sha }} .
+
+      - name: Push the Docker image to ACR
+        run: |
+          docker push ${{ vars.REGISTRY_NAME }}.azurecr.io/dddadelaidewebsite:${{ github.sha }}
 
       - name: Deploy Website Revision
         uses: azure/container-apps-deploy-action@v2
@@ -107,13 +106,4 @@ jobs:
           imageToDeploy: dddadelaide.azurecr.io/dddadelaidewebsite:${{ github.sha }}
           targetPort: 3000
           ingress: external
-          environmentVariables: >
-            "NEXT_PUBLIC_APPINSIGHTS_INSTRUMENTATIONKEY=${{ vars.APPINSIGHTS_INSTRUMENTATIONKEY }}"
-            "NEXT_PUBLIC_GET_SUBMISSIONS_URL=${{ vars.BACKEND_URL }}/api/GetSubmissions"
-            "NEXT_PUBLIC_SUBMIT_VOTE_URL=${{ vars.BACKEND_URL }}/api/SubmitVote"
-            "NEXT_PUBLIC_GET_AGENDA_URL=${{ vars.BACKEND_URL }}/api/GetAgenda"
-            "NEXT_PUBLIC_SUBMIT_FEEDBACK_URL=${{ vars.BACKEND_URL }}/api/SubmitFeedback"
-            "NEXT_PUBLIC_TESTING_MODE=${{ vars.TESTING_MODE }}"
-            "NEXT_PUBLIC_ELO_PAIR=${{ vars.BACKEND_URL }}/api/EloVotingGetPair"
-            "NEXT_PUBLIC_ELO_VOTE=${{ vars.BACKEND_URL }}/api/EloVotingSubmitPair"
           disableTelemetry: true
