@@ -36,6 +36,8 @@ export const StyledConferenceDetails = styled('p')(({ theme }) => ({
   display: 'block',
   width: '80%',
   maxWidth: calcRem(1000),
+  padding: 20,
+  backgroundColor: 'rgba(240,240,240, 0.9)',
   color: theme.colors.secondaryDark,
   fontSize: '7vmin',
   fontWeight: theme.weights.bold,
@@ -48,7 +50,7 @@ export const StyledConferenceDetails = styled('p')(({ theme }) => ({
 
   span: {
     display: 'inline-block',
-    width: '70%',
+    width: '80%',
   },
 
   [breakpoint('md')]: {

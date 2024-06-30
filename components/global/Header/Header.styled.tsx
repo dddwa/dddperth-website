@@ -15,13 +15,19 @@ export const StyledHeader = styled('header')(({ theme }) => ({
   zIndex: zIndex.stickyHeader,
 }))
 
-export const StyledAnchor = styled('a')({
+export const StyledAnchor = styled('a')(({ theme }) => ({
   display: 'flex',
   margin: 0,
   marginRight: 'auto',
   marginLeft: 'auto',
   cursor: 'pointer',
   outline: 0,
+
+  '&:focus': {
+    borderWidth: 2,
+    borderColor: theme.colors.dddorange,
+    borderStyle: 'solid',
+  },
 
   svg: {
     width: calcRem(144),
@@ -34,4 +40,5 @@ export const StyledAnchor = styled('a')({
       height: calcRem(35),
     },
   },
-})
+
+}))
