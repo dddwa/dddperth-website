@@ -1,0 +1,5 @@
+properties:
+  template:
+    containers:
+      scale:
+        minReplicas: 1
