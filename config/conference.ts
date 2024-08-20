@@ -28,7 +28,7 @@ const presentationSubmissionsOpenFrom = zonedTimeToUtc('2024-06-14T08:00:00', '+
 const presentationSubmissionsOpenUntil = zonedTimeToUtc('2024-07-12T23:59:59', '+08:00')
 const votingOpenFrom = zonedTimeToUtc('2024-07-23T00:00:00', '+08:00')
 const votingOpenUntil = zonedTimeToUtc('2024-08-06T23:59:59', '+08:00')
-const agendaPublishedFrom = zonedTimeToUtc('2024-08-20T17:00:00', '+08:00')
+const agendaPublishedFrom = zonedTimeToUtc('2024-08-22T17:00:00', '+08:00')
 const feedbackOpenFrom = toDate(date)
 const feedbackOpenUntil = endDate
 const importantDates: ImportantDate[] = [
@@ -75,6 +75,7 @@ if (!hideDate) {
 const venue: Venue | null = optusStadium
 
 const Conference: IConference = {
+  NeedsVolunteers: true,
   Name: name,
   Instance: currentInstance.toString(),
   PreviousInstance: (currentInstance - 1).toString(),
